@@ -58,10 +58,13 @@ Manuelles Auslösen (**Actions → Run workflow**) geht jederzeit zusätzlich.
 Gesamteinschätzung (grün/gelb/rot) + horizontal scrollbarer 48-Punkte-Zeitstrahl
 (24 h zurück · „Jetzt" · 24 h voraus), automatisch zur Jetzt-Position gescrollt.
 
-### Termin-Cross-Check
-Bekannte High-Impact-Events (NFP, US-CPI, PCE, FOMC) **erzwingen ROT** in der
-betroffenen Stunde — unabhängig von der Modell-Einschätzung. Liegt ein solches
-Event im aktuellen Stundenfenster, wird auch die Tages-Ampel auf ROT gezogen.
+### Termin-Cross-Check (mit Vorlauf)
+Bekannte High-Impact-Events (NFP, US-CPI, PCE, FOMC) **erzwingen ROT** — nicht
+erst zur Event-Uhrzeit, sondern schon **~2 Stunden davor** (das Risiko baut sich
+vorher auf). Das Fenster ist über `EVENT_PRE_HOURS` einstellbar (Default 2).
+Liegt ein Event in der aktuellen oder einer der nächsten `EVENT_PRE_HOURS`
+Stunden, wird auch die Tages-Ampel auf ROT gezogen; die Empfehlung nennt dann
+den Vorlauf (z. B. „FOMC in ~2h — Bots rechtzeitig pausieren").
 
 ### Push-Benachrichtigung
 Beim **Wechsel nach ROT** (und bei Entwarnung) schickt das Skript einen Push —

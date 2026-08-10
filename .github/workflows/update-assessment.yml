@@ -46,6 +46,8 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           # Optional: Board-URL für Push-Links (Default im Skript hinterlegt).
           BOARD_URL: ${{ vars.BOARD_URL }}
+          # Optional: Vorlauf-Fenster in Stunden vor High-Impact-Events (Default 2).
+          EVENT_PRE_HOURS: ${{ vars.EVENT_PRE_HOURS }}
         run: node scripts/fetch-assessment.mjs
 
       - name: Committen & pushen, falls geändert

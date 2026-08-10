@@ -34,6 +34,9 @@ const BOARD_URL = process.env.BOARD_URL || 'https://tobiasgiger.github.io/tradeb
 const TIMEZONE = 'Europe/Zurich';
 const MAX_ATTEMPTS = 3;
 const HISTORY_MAX = 200;
+// Wie viele Stunden VOR einem High-Impact-Event bereits ROT gezeigt wird
+// (die Event-Stunde selbst zählt zusätzlich). Über EVENT_PRE_HOURS überschreibbar.
+const EVENT_PRE_HOURS = Number(process.env.EVENT_PRE_HOURS) || 2;
 
 const CODE_TO_STATUS = { G: 'gruen', Y: 'gelb', R: 'rot' };
 const RANK = { gruen: 0, gelb: 1, rot: 2 };
@@ -94,8 +97,8 @@ function daysInMonth(y, mo) {
   return new Date(Date.UTC(y, mo, 0)).getUTCDate();
 }
 
-// Liefert das High-Impact-Event, das in die Stunde von `date` fällt, oder null.
-function eventForSlot(date) {
+// Liefert das High-Impact-Event, das exakt in die Stunde von `date` fällt, oder null.
+function eventAtSlot(date) {
   const { y, mo, d, h } = zurichParts(date);
   const wd = weekdayOf(y, mo, d);
   const occ = Math.floor((d - 1) / 7) + 1; // 1. / 2. / ... Vorkommen des Wochentags
@@ -104,6 +107,16 @@ function eventForSlot(date) {
   if (h === 14 && wd === 5 && d + 7 > daysInMonth(y, mo)) return 'PCE'; // letzter Fr
   const iso = `${y}-${String(mo).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
   if (h === 20 && FOMC_DATES.has(iso)) return 'FOMC';         // 20:00
+  return null;
+}
+
+// Event, das in DIESER Stunde oder in den nächsten EVENT_PRE_HOURS Stunden liegt.
+// Gibt das nächstliegende zurück: { ev, hoursAhead } (hoursAhead 0 = jetzt).
+function eventWindowForSlot(date) {
+  for (let k = 0; k <= EVENT_PRE_HOURS; k++) {
+    const ev = eventAtSlot(new Date(date.getTime() + k * 3600_000));
+    if (ev) return { ev, hoursAhead: k };
+  }
   return null;
 }
 
@@ -127,12 +140,13 @@ function expandCodes(codes, startHour, comments = []) {
   return out;
 }
 
-// Erzwingt ROT in Stunden mit bekanntem High-Impact-Event. Gibt {index: label} zurück.
+// Erzwingt ROT in der Event-Stunde UND den EVENT_PRE_HOURS Stunden davor.
+// Gibt { index: { ev, hoursAhead } } zurück.
 function applyCrossCheck(entries, startHour) {
   const labels = {};
   entries.forEach((e, i) => {
-    const ev = eventForSlot(new Date(startHour.getTime() + i * 3600_000));
-    if (ev) { e.status = 'rot'; labels[i] = ev; }
+    const hit = eventWindowForSlot(new Date(startHour.getTime() + i * 3600_000));
+    if (hit) { e.status = 'rot'; labels[i] = hit; }
   });
   return labels;
 }
@@ -254,7 +268,11 @@ function buildStatusJson(model, now) {
     ? model.forecastKommentare.slice(0, 6).map(String) : [];
   const forecastDetail = forecast.slice(0, 6).map((h, i) => {
     const entry = { stunde: h.stunde, status: h.status, kommentar: kommentare[i] || '' };
-    if (forecastLabels[i]) entry.kommentar = `⚠ ${forecastLabels[i]}: ${entry.kommentar}`.trim();
+    const lab = forecastLabels[i];
+    if (lab) {
+      const tag = lab.hoursAhead > 0 ? `${lab.ev} in ${lab.hoursAhead}h` : lab.ev;
+      entry.kommentar = `⚠ ${tag}: ${entry.kommentar}`.trim();
+    }
     return entry;
   });
 
@@ -264,9 +282,12 @@ function buildStatusJson(model, now) {
   // Tages-Ampel nie ruhiger als die aktuelle Stunde.
   let status = worst(modelDay, forecast[0].status);
   let empfehlung = String(model.empfehlung || '') || 'Keine Empfehlung verfügbar.';
-  if (forecastLabels[0]) {
+  const nowLab = forecastLabels[0];
+  if (nowLab) {
     status = 'rot';
-    empfehlung = `⚠️ ${forecastLabels[0]} jetzt im aktuellen Stundenfenster — Bots pausieren. ${empfehlung}`;
+    empfehlung = nowLab.hoursAhead > 0
+      ? `⚠️ ${nowLab.ev} in ~${nowLab.hoursAhead}h — Bots rechtzeitig pausieren. ${empfehlung}`
+      : `⚠️ ${nowLab.ev} jetzt im aktuellen Stundenfenster — Bots pausieren. ${empfehlung}`;
   }
 
   const conf = new Set(['niedrig', 'mittel', 'hoch']);
