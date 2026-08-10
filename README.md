@@ -100,11 +100,22 @@ Ist die letzte Einschätzung im Handelsfenster älter als ~6 h, warnt das Fronte
 („Daten veraltet"). Am Wochenende zeigt es stattdessen einen ruhigen Hinweis
 („Markt geschlossen").
 
+### Gerätezeit & Versionierung
+Jede Stunde im Ampel-System trägt einen absoluten Zeitstempel (`ts`). Das
+Frontend beschriftet daraus in **deiner Gerätezeit** (praktisch auf Reisen) und
+setzt den **„Jetzt"-Marker nach der tatsächlichen aktuellen Zeit** — nicht am
+Generierungs-Zeitpunkt. Termin- und Handelslogik bleibt in Europe/Zurich
+verankert (nur die Anzeige ist lokal). Ein sichtbares **Versions-Badge**
+(`vX.Y.Z`) im Kopf und Footer zeigt die App-Version; `appVersion` steckt auch in
+`status.json`/`signal.json`, sodass du nach einem Deploy siehst, welche Version
+live ist.
+
 ### `data/status.json` — Schema
 
 ```json
 {
   "generatedAt": "2026-08-10T21:00:00.000Z",
+  "appVersion": "1.6.0",
   "status": "gruen",
   "statusText": "Ruhige Lage",
   "empfehlung": "Bots normal laufen lassen",
@@ -113,12 +124,16 @@ Ist die letzte Einschätzung im Handelsfenster älter als ~6 h, warnt das Fronte
   "confidence": "mittel",
   "quellen": [{ "titel": "Reuters", "url": "https://…" }],
   "rueckblickSummary": "2-3 Sätze",
-  "rueckblick": [{ "stunde": "14:00", "status": "gruen" }],
+  "rueckblick": [{ "stunde": "14:00", "ts": "2026-08-10T12:00:00.000Z", "status": "gruen" }],
   "ausblickSummary": "2-3 Sätze",
-  "forecast": [{ "stunde": "22:00", "status": "gelb" }],
-  "forecastDetail": [{ "stunde": "22:00", "status": "gelb", "kommentar": "…" }]
+  "forecast": [{ "stunde": "22:00", "ts": "2026-08-10T20:00:00.000Z", "status": "gelb" }],
+  "forecastDetail": [{ "stunde": "22:00", "ts": "…", "status": "gelb", "kommentar": "…" }]
 }
 ```
+
+`stunde` ist das Zürcher Label; `ts` der absolute Zeitstempel (das Frontend
+beschriftet daraus in Gerätezeit). Beim Bump von `APP_VERSION` beide Stellen
+(`scripts/fetch-assessment.mjs` und `index.html`) synchron halten.
 
 ---
 

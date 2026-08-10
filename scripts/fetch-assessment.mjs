@@ -38,6 +38,9 @@ const HISTORY_MAX = 200;
 // (die Event-Stunde selbst zählt zusätzlich). Über EVENT_PRE_HOURS überschreibbar.
 const EVENT_PRE_HOURS = Number(process.env.EVENT_PRE_HOURS) || 2;
 
+// App-/Generator-Version. KEEP IN SYNC mit APP_VERSION in index.html.
+const APP_VERSION = '1.6.0';
+
 const CODE_TO_STATUS = { G: 'gruen', Y: 'gelb', R: 'rot' };
 const RANK = { gruen: 0, gelb: 1, rot: 2 };
 const worst = (a, b) => (RANK[a] >= RANK[b] ? a : b);
@@ -133,7 +136,9 @@ function expandCodes(codes, startHour, comments = []) {
   const out = [];
   for (let i = 0; i < 24; i++) {
     const time = new Date(startHour.getTime() + i * 3600_000);
-    const entry = { stunde: zurichHourLabel(time), status: CODE_TO_STATUS[codes[i]] || 'gruen' };
+    // ts = absoluter Zeitstempel der Stunde. Das Frontend beschriftet daraus in
+    // Gerätezeit und positioniert den "Jetzt"-Marker nach echter aktueller Zeit.
+    const entry = { stunde: zurichHourLabel(time), ts: time.toISOString(), status: CODE_TO_STATUS[codes[i]] || 'gruen' };
     if (comments[i] != null) entry.kommentar = String(comments[i]);
     out.push(entry);
   }
@@ -267,7 +272,7 @@ function buildStatusJson(model, now) {
   const kommentare = Array.isArray(model.forecastKommentare)
     ? model.forecastKommentare.slice(0, 6).map(String) : [];
   const forecastDetail = forecast.slice(0, 6).map((h, i) => {
-    const entry = { stunde: h.stunde, status: h.status, kommentar: kommentare[i] || '' };
+    const entry = { stunde: h.stunde, ts: h.ts, status: h.status, kommentar: kommentare[i] || '' };
     const lab = forecastLabels[i];
     if (lab) {
       const tag = lab.hoursAhead > 0 ? `${lab.ev} in ${lab.hoursAhead}h` : lab.ev;
@@ -301,6 +306,7 @@ function buildStatusJson(model, now) {
 
   return {
     generatedAt: now.toISOString(),
+    appVersion: APP_VERSION,
     status,
     statusText: String(model.statusText || '').slice(0, 60) || 'Keine Angabe',
     empfehlung,
@@ -390,6 +396,7 @@ async function main() {
     // Bot-Signal.
     const signal = {
       generatedAt: now.toISOString(),
+      appVersion: APP_VERSION,
       effectiveStatus: effective,
       pause: effective === 'rot',
       caution: effective === 'gelb',
