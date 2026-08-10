@@ -3,8 +3,14 @@ name: Update NQ Pause-Board Assessment
 # Stündlich (cron) plus manuelles Triggern über die GitHub-Oberfläche.
 on:
   schedule:
-    # Jede volle Stunde (UTC). GitHub-Cron kann sich um einige Minuten verzögern.
-    - cron: '0 * * * *'
+    # NQ-Handelswoche: Start Sonntag 22:00 CEST, danach alle 4h bis Freitag 18:00 CEST.
+    # 4h-Raster = CEST 02/06/10/14/18/22 Uhr. Cron laeuft in UTC (CEST = UTC+2),
+    # daher UTC 00/04/08/12/16/20. GitHub-Cron kann sich um einige Minuten verzoegern.
+    # Hinweis: Im Winter (CET = UTC+1) verschieben sich die lokalen Zeiten um 1h;
+    # bei Bedarf die UTC-Stunden dann um 1 zurueckstellen.
+    - cron: '0 20 * * 0'              # So 22:00 CEST (Wochenstart)
+    - cron: '0 0,4,8,12,16,20 * * 1-4' # Mo-Do, alle 4h (CEST 02/06/10/14/18/22)
+    - cron: '0 0,4,8,12,16 * * 5'      # Fr bis 18:00 CEST (22:00 faellt weg)
   workflow_dispatch:
 
 # Schreibrechte, damit der Workflow die aktualisierte status.json zurückcommitten kann.
