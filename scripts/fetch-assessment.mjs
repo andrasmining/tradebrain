@@ -1,106 +1,142 @@
 #!/usr/bin/env node
 // NQ Pause-Board — Backend-Skript
 //
-// Ruft die Anthropic Messages API mit dem web_search-Tool auf, um die aktuelle
-// Marktlage für NQ-Futures (Nasdaq-100) einzuschätzen, und schreibt das Ergebnis
-// nach data/status.json.
+// Ruft die Anthropic Messages API mit dem web_search-Tool auf, schätzt die
+// Marktlage für NQ-Futures ein und schreibt:
+//   - data/status.json   (volle Einschätzung fürs Frontend)
+//   - data/signal.json    (kompaktes Pause-Flag für Trading-Bots)
+//   - data/history.json   (Verlauf der Gesamt-Ampel)
+// und schickt bei Eskalation nach ROT (bzw. Entwarnung) einen Push.
 //
 // Design-Entscheidungen:
-//  - Das Modell liefert KOMPAKTE Codes (24-Zeichen-Strings aus G/Y/R), nicht 48
-//    einzelne JSON-Objekte. Das spart Token/Latenz und senkt die Fehlerquote.
-//  - Die Uhrzeiten (Stunden-Labels) berechnet DIESES Skript deterministisch aus
-//    der aktuellen Zeit und mappt sie per Index auf die Codes. Das Modell erzeugt
-//    also keine Zeitstempel.
-//  - Bei API-Fehlern crasht das Skript NICHT: es schreibt einen klaren Log-Eintrag,
-//    lässt die alte status.json unangetastet und beendet sich mit Exit-Code 0,
-//    damit der Workflow grün bleibt.
-//
-// Umgebungsvariablen:
-//  - ANTHROPIC_API_KEY  (erforderlich)  — Anthropic API-Key
-//  - ANTHROPIC_MODEL    (optional)      — Modell-ID, Default siehe unten
+//  - Das Modell liefert KOMPAKTE Codes (24-Zeichen G/Y/R) + 6 Kommentare +
+//    Quellen + Confidence. Die Uhrzeiten berechnet das Skript deterministisch
+//    (Europe/Zurich) und mappt sie per Index auf die Codes.
+//  - Termin-Cross-Check: bekannte High-Impact-Events (NFP/CPI/PCE/FOMC) erzwingen
+//    ROT in der betroffenen Stunde — unabhängig davon, was das Modell sagt.
+//  - Bei API-Fehlern crasht nichts: 3 Versuche mit Backoff, alte Dateien bleiben
+//    unangetastet, klarer Log, Exit 0.
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const OUTPUT_PATH = join(__dirname, '..', 'data', 'status.json');
+const DATA_DIR = join(__dirname, '..', 'data');
+const STATUS_PATH = join(DATA_DIR, 'status.json');
+const SIGNAL_PATH = join(DATA_DIR, 'signal.json');
+const HISTORY_PATH = join(DATA_DIR, 'history.json');
 
 const API_URL = 'https://api.anthropic.com/v1/messages';
 const API_KEY = process.env.ANTHROPIC_API_KEY;
-// Konfigurierbar via ANTHROPIC_MODEL. Sonnet ist für einen stündlichen
-// Hintergrund-Job ein guter Kosten/Qualitäts-Kompromiss.
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5';
+const BOARD_URL = process.env.BOARD_URL || 'https://tobiasgiger.github.io/tradebrain/';
 const TIMEZONE = 'Europe/Zurich';
 const MAX_ATTEMPTS = 3;
+const HISTORY_MAX = 200;
 
 const CODE_TO_STATUS = { G: 'gruen', Y: 'gelb', R: 'rot' };
+const RANK = { gruen: 0, gelb: 1, rot: 2 };
+const worst = (a, b) => (RANK[a] >= RANK[b] ? a : b);
+
+// FOMC-Zinsentscheide (Zurich 20:00). KEEP IN SYNC mit index.html FOMC_DATES.
+const FOMC_DATES = new Set([
+  '2025-01-29', '2025-03-19', '2025-05-07', '2025-06-18',
+  '2025-07-30', '2025-09-17', '2025-10-29', '2025-12-10',
+  '2026-01-28', '2026-03-18', '2026-04-29', '2026-06-17',
+  '2026-07-29', '2026-09-16', '2026-10-28', '2026-12-09',
+]);
 
 function log(...args) {
   console.log(`[${new Date().toISOString()}]`, ...args);
 }
 
-/**
- * Formatiert ein Date-Objekt als "HH:00"-Label in der Zielzeitzone.
- * @param {Date} date  Absoluter Zeitpunkt (bereits auf volle Stunde gerundet)
- */
-function zurichHourLabel(date) {
-  const fmt = new Intl.DateTimeFormat('de-CH', {
-    timeZone: TIMEZONE,
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  });
-  return fmt.format(date); // z.B. "14:00"
+function readJsonSafe(path) {
+  try {
+    return JSON.parse(readFileSync(path, 'utf8'));
+  } catch {
+    return null;
+  }
 }
 
-/** Formatiert Datum + Uhrzeit lesbar (für den Prompt). */
+// ---------------------------------------------------------------------------
+// Zeit-Helfer (Europe/Zurich)
+// ---------------------------------------------------------------------------
+
+function zurichHourLabel(date) {
+  return new Intl.DateTimeFormat('de-CH', {
+    timeZone: TIMEZONE, hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+  }).format(date); // "14:00"
+}
+
 function zurichDateTime(date) {
   return new Intl.DateTimeFormat('de-CH', {
-    timeZone: TIMEZONE,
-    weekday: 'short',
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
+    timeZone: TIMEZONE, weekday: 'short', day: '2-digit', month: '2-digit',
+    year: 'numeric', hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
   }).format(date);
 }
 
-/**
- * Normalisiert einen vom Modell gelieferten Code-String auf exakt 24 Zeichen
- * aus {G, Y, R}. Ungültige Zeichen werden entfernt, fehlende mit 'G' aufgefüllt.
- */
+// Kalender-Bestandteile eines Zeitpunkts in Zürcher Lokalzeit.
+function zurichParts(date) {
+  const fmt = new Intl.DateTimeFormat('en-CA', {
+    timeZone: TIMEZONE, year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', hourCycle: 'h23',
+  });
+  const p = Object.fromEntries(fmt.formatToParts(date).map((x) => [x.type, x.value]));
+  return { y: +p.year, mo: +p.month, d: +p.day, h: +p.hour };
+}
+
+// Datum-basierter Wochentag (0=So..6=Sa), DST-sicher über UTC-Mittag.
+function weekdayOf(y, mo, d) {
+  return new Date(Date.UTC(y, mo - 1, d, 12)).getUTCDay();
+}
+function daysInMonth(y, mo) {
+  return new Date(Date.UTC(y, mo, 0)).getUTCDate();
+}
+
+// Liefert das High-Impact-Event, das in die Stunde von `date` fällt, oder null.
+function eventForSlot(date) {
+  const { y, mo, d, h } = zurichParts(date);
+  const wd = weekdayOf(y, mo, d);
+  const occ = Math.floor((d - 1) / 7) + 1; // 1. / 2. / ... Vorkommen des Wochentags
+  if (h === 14 && wd === 5 && occ === 1) return 'NFP';        // 1. Freitag 14:30
+  if (h === 14 && wd === 3 && occ === 2) return 'US-CPI';     // 2. Mittwoch 14:30
+  if (h === 14 && wd === 5 && d + 7 > daysInMonth(y, mo)) return 'PCE'; // letzter Fr
+  const iso = `${y}-${String(mo).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  if (h === 20 && FOMC_DATES.has(iso)) return 'FOMC';         // 20:00
+  return null;
+}
+
+// ---------------------------------------------------------------------------
+// Code-Expansion & Cross-Check
+// ---------------------------------------------------------------------------
+
 function normalizeCodes(raw) {
-  const cleaned = String(raw || '')
-    .toUpperCase()
-    .replace(/[^GYR]/g, '');
+  const cleaned = String(raw || '').toUpperCase().replace(/[^GYR]/g, '');
   return (cleaned + 'G'.repeat(24)).slice(0, 24);
 }
 
-/**
- * Baut aus einem 24-Zeichen-Code-String die vollen Stunden-Objekte mit echten
- * Uhrzeiten.
- * @param {string} codes        24 Zeichen G/Y/R
- * @param {Date}   startHour    Zeitpunkt der ERSTEN Stunde (Index 0)
- * @param {string[]} [comments] optionale Kommentare je Index
- */
 function expandCodes(codes, startHour, comments = []) {
   const out = [];
   for (let i = 0; i < 24; i++) {
     const time = new Date(startHour.getTime() + i * 3600_000);
-    const entry = {
-      stunde: zurichHourLabel(time),
-      status: CODE_TO_STATUS[codes[i]] || 'gruen',
-    };
+    const entry = { stunde: zurichHourLabel(time), status: CODE_TO_STATUS[codes[i]] || 'gruen' };
     if (comments[i] != null) entry.kommentar = String(comments[i]);
     out.push(entry);
   }
   return out;
 }
 
-/** Extrahiert ein JSON-Objekt aus einem (möglicherweise umschlossenen) Text. */
+// Erzwingt ROT in Stunden mit bekanntem High-Impact-Event. Gibt {index: label} zurück.
+function applyCrossCheck(entries, startHour) {
+  const labels = {};
+  entries.forEach((e, i) => {
+    const ev = eventForSlot(new Date(startHour.getTime() + i * 3600_000));
+    if (ev) { e.status = 'rot'; labels[i] = ev; }
+  });
+  return labels;
+}
+
 function extractJson(text) {
   let t = String(text).trim();
   const fence = t.match(/```(?:json)?\s*([\s\S]*?)```/i);
@@ -113,6 +149,10 @@ function extractJson(text) {
   return JSON.parse(t.slice(start, end + 1));
 }
 
+// ---------------------------------------------------------------------------
+// Anthropic API
+// ---------------------------------------------------------------------------
+
 function buildPrompt(nowLocal) {
   return `Du bist ein Risiko-Analyst für NQ-Futures (Nasdaq-100) im Mean-Reversion-Trading.
 Aufgabe: Beurteile, wann automatisierte Trading-Bots wegen Marktrisiko (News, Geopolitik, Wirtschaftsdaten) besser pausiert werden sollten.
@@ -124,7 +164,7 @@ Recherchiere mit dem web_search-Tool die aktuelle Lage:
 - US-Wirtschaftsdaten: NFP, CPI, FOMC, PCE — was steht heute / in den nächsten 24h an?
 - Marktbewegung & Volatilität (z.B. VIX), relevante Schlagzeilen der letzten Stunden
 
-Antworte AUSSCHLIESSLICH mit EINEM JSON-Objekt — kein Markdown, kein Text davor oder danach — mit exakt diesen Feldern:
+Antworte AUSSCHLIESSLICH mit EINEM JSON-Objekt — kein Markdown, kein Text davor/danach — mit exakt diesen Feldern:
 
 {
   "status": "gruen | gelb | rot",
@@ -132,28 +172,27 @@ Antworte AUSSCHLIESSLICH mit EINEM JSON-Objekt — kein Markdown, kein Text davo
   "empfehlung": "konkrete Handlungsempfehlung, 1 Satz",
   "headline": "Ticker-Zeile, max. 80 Zeichen",
   "body": "Begründung der Tages-Ampel, 2-3 Sätze",
-  "rueckblickSummary": "was in den letzten 24h markttechnisch relevant war, 2-3 Sätze",
-  "rueckblickCodes": "GENAU 24 Zeichen aus G/Y/R, ein Zeichen pro Stunde, ÄLTESTE Stunde zuerst",
-  "ausblickSummary": "Prognose für die nächsten 24h, 2-3 Sätze",
+  "confidence": "niedrig | mittel | hoch",
+  "quellen": [ { "titel": "Kurztitel der Quelle", "url": "https://..." } ],
+  "rueckblickSummary": "letzte 24h, 2-3 Sätze",
+  "rueckblickCodes": "GENAU 24 Zeichen aus G/Y/R, ein Zeichen pro Stunde, ÄLTESTE zuerst",
+  "ausblickSummary": "nächste 24h, 2-3 Sätze",
   "forecastCodes": "GENAU 24 Zeichen aus G/Y/R, chronologisch ab der aktuellen Stunde",
   "forecastKommentare": ["genau 6 kurze Sätze — je einer für die ersten 6 Zukunftsstunden"]
 }
 
 Ampel-Kriterien je Stunde:
-- R (rot): aktive geopolitische Eskalation, starke Marktbewegung, ODER High-Impact-Release (NFP / CPI / FOMC) in diesem Stundenfenster.
+- R (rot): aktive geopolitische Eskalation, starke Marktbewegung, ODER High-Impact-Release (NFP / CPI / FOMC) in dem Stundenfenster.
 - Y (gelb): erhöhte Unsicherheit, US-Cash-Open (~15:30 ${TIMEZONE}), Power-Hour-Close (~22:00 ${TIMEZONE}), kleinere Termine.
 - G (grün): sonst.
 
-Wichtig: "rueckblickCodes" und "forecastCodes" müssen EXAKT 24 Zeichen lang sein. "forecastKommentare" muss GENAU 6 Einträge enthalten. Keine Uhrzeiten ausgeben — nur die Codes.`;
+Wichtig: "rueckblickCodes"/"forecastCodes" müssen EXAKT 24 Zeichen lang sein. "forecastKommentare" genau 6 Einträge. "quellen" 2-4 wichtigste Quellen mit echten URLs aus deiner Recherche. Keine Uhrzeiten ausgeben.`;
 }
 
-/** Führt einen einzelnen API-Aufruf durch (inkl. pause_turn-Fortsetzung). */
 async function callModel(prompt) {
   const tools = [{ type: 'web_search_20250305', name: 'web_search', max_uses: 5 }];
   let messages = [{ role: 'user', content: prompt }];
 
-  // Server-seitiges web_search kann bei vielen Iterationen mit stop_reason
-  // "pause_turn" zurückkommen — dann Antwort anhängen und fortsetzen.
   for (let cont = 0; cont < 4; cont++) {
     const res = await fetch(API_URL, {
       method: 'POST',
@@ -164,23 +203,16 @@ async function callModel(prompt) {
       },
       body: JSON.stringify({ model: MODEL, max_tokens: 2000, tools, messages }),
     });
-
     if (!res.ok) {
       const errText = await res.text().catch(() => '');
       throw new Error(`HTTP ${res.status}: ${errText.slice(0, 500)}`);
     }
-
     const data = await res.json();
-
     if (data.stop_reason === 'pause_turn') {
       messages.push({ role: 'assistant', content: data.content });
-      continue; // Server setzt automatisch fort
+      continue;
     }
-
-    const text = (data.content || [])
-      .filter((b) => b.type === 'text')
-      .map((b) => b.text)
-      .join('\n');
+    const text = (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('\n');
     if (!text.trim()) throw new Error('Leere Textantwort vom Modell');
     return text;
   }
@@ -192,56 +224,69 @@ async function fetchWithRetry(prompt) {
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     try {
       log(`API-Aufruf Versuch ${attempt}/${MAX_ATTEMPTS} (Modell: ${MODEL})`);
-      const text = await callModel(prompt);
-      return extractJson(text);
+      return extractJson(await callModel(prompt));
     } catch (err) {
       lastErr = err;
       log(`Versuch ${attempt} fehlgeschlagen: ${err.message}`);
-      if (attempt < MAX_ATTEMPTS) {
-        const delay = 2000 * Math.pow(2, attempt - 1); // 2s, 4s, ...
-        await new Promise((r) => setTimeout(r, delay));
-      }
+      if (attempt < MAX_ATTEMPTS) await new Promise((r) => setTimeout(r, 2000 * 2 ** (attempt - 1)));
     }
   }
   throw lastErr;
 }
 
-function buildStatusJson(model, now) {
-  // Auf volle Stunde (absolut) runden.
-  const topOfHour = new Date(Math.floor(now.getTime() / 3600_000) * 3600_000);
+// ---------------------------------------------------------------------------
+// Aufbau von status.json (inkl. Cross-Check)
+// ---------------------------------------------------------------------------
 
-  // Rückblick: 24 Stunden zurück (älteste = jetzt-24h, neueste = jetzt-1h).
+function buildStatusJson(model, now) {
+  const topOfHour = new Date(Math.floor(now.getTime() / 3600_000) * 3600_000);
   const rueckblickStart = new Date(topOfHour.getTime() - 24 * 3600_000);
-  // Ausblick: aktuelle Stunde + 23 folgende.
   const forecastStart = topOfHour;
 
-  const rueckblickCodes = normalizeCodes(model.rueckblickCodes);
-  const forecastCodes = normalizeCodes(model.forecastCodes);
+  const rueckblick = expandCodes(normalizeCodes(model.rueckblickCodes), rueckblickStart);
+  const forecast = expandCodes(normalizeCodes(model.forecastCodes), forecastStart);
+
+  // Termin-Cross-Check: erzwingt ROT bei bekannten Events.
+  applyCrossCheck(rueckblick, rueckblickStart);
+  const forecastLabels = applyCrossCheck(forecast, forecastStart);
 
   const kommentare = Array.isArray(model.forecastKommentare)
-    ? model.forecastKommentare.slice(0, 6).map(String)
+    ? model.forecastKommentare.slice(0, 6).map(String) : [];
+  const forecastDetail = forecast.slice(0, 6).map((h, i) => {
+    const entry = { stunde: h.stunde, status: h.status, kommentar: kommentare[i] || '' };
+    if (forecastLabels[i]) entry.kommentar = `⚠ ${forecastLabels[i]}: ${entry.kommentar}`.trim();
+    return entry;
+  });
+
+  const allowed = new Set(['gruen', 'gelb', 'rot']);
+  const modelDay = allowed.has(model.status) ? model.status : 'gelb';
+
+  // Tages-Ampel nie ruhiger als die aktuelle Stunde.
+  let status = worst(modelDay, forecast[0].status);
+  let empfehlung = String(model.empfehlung || '') || 'Keine Empfehlung verfügbar.';
+  if (forecastLabels[0]) {
+    status = 'rot';
+    empfehlung = `⚠️ ${forecastLabels[0]} jetzt im aktuellen Stundenfenster — Bots pausieren. ${empfehlung}`;
+  }
+
+  const conf = new Set(['niedrig', 'mittel', 'hoch']);
+  const confidence = conf.has(model.confidence) ? model.confidence : 'mittel';
+  const quellen = Array.isArray(model.quellen)
+    ? model.quellen
+        .filter((q) => q && typeof q.url === 'string' && /^https?:\/\//i.test(q.url))
+        .slice(0, 4)
+        .map((q) => ({ titel: String(q.titel || q.url).slice(0, 120), url: q.url }))
     : [];
-
-  const rueckblick = expandCodes(rueckblickCodes, rueckblickStart);
-  const forecast = expandCodes(forecastCodes, forecastStart);
-
-  // forecastDetail: erste 6 Zukunftsstunden inkl. Kommentar.
-  const forecastDetail = expandCodes(
-    forecastCodes.slice(0, 6),
-    forecastStart,
-    kommentare
-  ).slice(0, 6);
-
-  const allowedStatus = new Set(['gruen', 'gelb', 'rot']);
-  const status = allowedStatus.has(model.status) ? model.status : 'gelb';
 
   return {
     generatedAt: now.toISOString(),
     status,
     statusText: String(model.statusText || '').slice(0, 60) || 'Keine Angabe',
-    empfehlung: String(model.empfehlung || '') || 'Keine Empfehlung verfügbar.',
+    empfehlung,
     headline: String(model.headline || '').slice(0, 120) || 'NQ Pause-Board',
     body: String(model.body || ''),
+    confidence,
+    quellen,
     rueckblickSummary: String(model.rueckblickSummary || ''),
     rueckblick,
     ausblickSummary: String(model.ausblickSummary || ''),
@@ -250,37 +295,114 @@ function buildStatusJson(model, now) {
   };
 }
 
+// ---------------------------------------------------------------------------
+// Push-Benachrichtigung (ntfy und/oder Telegram; optional)
+// ---------------------------------------------------------------------------
+
+async function sendPush(title, message, tag) {
+  const tasks = [];
+  const ntfyTopic = process.env.NTFY_TOPIC;
+  if (ntfyTopic) {
+    const server = process.env.NTFY_SERVER || 'https://ntfy.sh';
+    tasks.push(
+      fetch(`${server}/${ntfyTopic}`, {
+        method: 'POST',
+        headers: { Title: title, Click: BOARD_URL, Tags: tag, Priority: 'high' },
+        body: message,
+      }).then((r) => { if (!r.ok) throw new Error('ntfy ' + r.status); })
+    );
+  }
+  const tgToken = process.env.TELEGRAM_BOT_TOKEN;
+  const tgChat = process.env.TELEGRAM_CHAT_ID;
+  if (tgToken && tgChat) {
+    tasks.push(
+      fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: tgChat,
+          text: `${title}\n\n${message}\n\n${BOARD_URL}`,
+          disable_web_page_preview: true,
+        }),
+      }).then((r) => { if (!r.ok) throw new Error('telegram ' + r.status); })
+    );
+  }
+  if (!tasks.length) {
+    log('Push übersprungen: keine Kanäle konfiguriert (NTFY_TOPIC / TELEGRAM_*).');
+    return;
+  }
+  const results = await Promise.allSettled(tasks);
+  results.forEach((r) => { if (r.status === 'rejected') log('Push-Fehler: ' + r.reason.message); });
+  log(`Push versendet (${results.filter((r) => r.status === 'fulfilled').length}/${tasks.length} Kanäle).`);
+}
+
+// ---------------------------------------------------------------------------
+// Main
+// ---------------------------------------------------------------------------
+
 async function main() {
   if (!API_KEY) {
-    log('FEHLER: ANTHROPIC_API_KEY ist nicht gesetzt. status.json bleibt unverändert.');
+    log('FEHLER: ANTHROPIC_API_KEY ist nicht gesetzt. Dateien bleiben unverändert.');
     process.exit(0);
   }
 
   const now = new Date();
-  const prompt = buildPrompt(zurichDateTime(now));
-
   let model;
   try {
-    model = await fetchWithRetry(prompt);
+    model = await fetchWithRetry(buildPrompt(zurichDateTime(now)));
   } catch (err) {
     log(`FEHLER: Alle ${MAX_ATTEMPTS} Versuche fehlgeschlagen (${err.message}).`);
-    log('Die bestehende status.json bleibt unverändert. Exit 0, Workflow bleibt grün.');
+    log('Bestehende Dateien bleiben unverändert. Exit 0, Workflow bleibt grün.');
     process.exit(0);
   }
 
   try {
     const statusJson = buildStatusJson(model, now);
-    mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
-    writeFileSync(OUTPUT_PATH, JSON.stringify(statusJson, null, 2) + '\n', 'utf8');
-    log(`OK: status.json geschrieben (status=${statusJson.status}).`);
+    const effective = statusJson.status; // berücksichtigt Cross-Check + aktuelle Stunde
 
-    // Kleine Konsistenz-Warnung, falls Codes nicht sauber 24 lang waren.
-    if (normalizeCodes(model.rueckblickCodes) !== String(model.rueckblickCodes || '').toUpperCase().replace(/[^GYR]/g, '')) {
-      log('Hinweis: rueckblickCodes wurde auf 24 Zeichen normalisiert.');
+    // Vorherigen Zustand für Transition-Erkennung lesen.
+    const prevEffective = readJsonSafe(SIGNAL_PATH)?.effectiveStatus || null;
+
+    mkdirSync(DATA_DIR, { recursive: true });
+    writeFileSync(STATUS_PATH, JSON.stringify(statusJson, null, 2) + '\n', 'utf8');
+
+    // Bot-Signal.
+    const signal = {
+      generatedAt: now.toISOString(),
+      effectiveStatus: effective,
+      pause: effective === 'rot',
+      caution: effective === 'gelb',
+      dayStatus: statusJson.status,
+      statusText: statusJson.statusText,
+      empfehlung: statusJson.empfehlung,
+      source: 'nq-pause-board',
+    };
+    writeFileSync(SIGNAL_PATH, JSON.stringify(signal, null, 2) + '\n', 'utf8');
+
+    // Verlauf fortschreiben (auf HISTORY_MAX begrenzt).
+    const history = Array.isArray(readJsonSafe(HISTORY_PATH)) ? readJsonSafe(HISTORY_PATH) : [];
+    history.push({ generatedAt: now.toISOString(), status: effective });
+    writeFileSync(HISTORY_PATH, JSON.stringify(history.slice(-HISTORY_MAX), null, 2) + '\n', 'utf8');
+
+    log(`OK: geschrieben (effektiv=${effective}, vorher=${prevEffective ?? 'n/a'}).`);
+
+    // Push nur bei Zustandswechsel.
+    if (effective === 'rot' && prevEffective !== 'rot') {
+      await sendPush(
+        'NQ Pause-Board: ROT',
+        `⚠️ ${statusJson.headline}\n\nEmpfehlung: ${statusJson.empfehlung}`,
+        'rotating_light'
+      );
+    } else if (prevEffective === 'rot' && effective !== 'rot') {
+      await sendPush(
+        'NQ Pause-Board: Entwarnung',
+        `✅ Lage entspannt (${effective}). ${statusJson.statusText}`,
+        'white_check_mark'
+      );
     }
   } catch (err) {
-    log(`FEHLER beim Aufbau/Schreiben von status.json: ${err.message}`);
-    log('Die bestehende status.json bleibt unverändert.');
+    log(`FEHLER beim Aufbau/Schreiben: ${err.message}`);
+    log('Bestehende Dateien bleiben unverändert.');
     process.exit(0);
   }
 }

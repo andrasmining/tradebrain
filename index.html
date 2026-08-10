@@ -24,219 +24,78 @@
       --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
       --head: "Space Grotesk", system-ui, sans-serif;
     }
-
     * { box-sizing: border-box; }
-
     html, body { margin: 0; padding: 0; }
-
     body {
-      background:
-        radial-gradient(1200px 600px at 50% -10%, #101a2e 0%, transparent 60%),
-        var(--bg);
+      background: radial-gradient(1200px 600px at 50% -10%, #101a2e 0%, transparent 60%), var(--bg);
       color: var(--text);
       font-family: var(--mono);
-      font-size: 15px;
-      line-height: 1.5;
+      font-size: 15px; line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      padding: 0 0 48px;
+      min-height: 100vh; padding: 0 0 48px;
     }
-
     .wrap { max-width: 780px; margin: 0 auto; padding: 0 16px; }
 
     /* ---------- Ticker / Header ---------- */
-    .ticker {
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(180deg, #0b1220, #070b12);
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    .ticker-inner {
-      display: inline-block;
-      padding: 9px 0;
-      color: var(--amber-soft);
-      font-size: 13px;
-      letter-spacing: 0.04em;
-      animation: scroll-left 26s linear infinite;
-    }
+    .ticker { border-bottom: 1px solid var(--border); background: linear-gradient(180deg, #0b1220, #070b12); overflow: hidden; white-space: nowrap; }
+    .ticker-inner { display: inline-block; padding: 9px 0; color: var(--amber-soft); font-size: 13px; letter-spacing: 0.04em; animation: scroll-left 26s linear infinite; }
     .ticker-inner::before { content: "▲ "; color: var(--amber); }
-    @keyframes scroll-left {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .ticker-inner { animation: none; white-space: normal; display: block; padding: 9px 16px; }
-    }
+    @keyframes scroll-left { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+    @media (prefers-reduced-motion: reduce) { .ticker-inner { animation: none; white-space: normal; display: block; padding: 9px 16px; } }
 
-    header.brand {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 20px 0 6px;
-      flex-wrap: wrap;
-    }
-    .brand h1 {
-      font-family: var(--head);
-      font-weight: 700;
-      font-size: 22px;
-      margin: 0;
-      letter-spacing: 0.01em;
-    }
+    header.brand { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 20px 0 6px; flex-wrap: wrap; }
+    .brand h1 { font-family: var(--head); font-weight: 700; font-size: 22px; margin: 0; letter-spacing: 0.01em; }
     .brand h1 .accent { color: var(--amber); }
-    .updated {
-      font-size: 12px;
-      color: var(--text-dim);
-    }
+    .updated { font-size: 12px; color: var(--text-dim); }
 
-    h2 {
-      font-family: var(--head);
-      font-weight: 600;
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin: 30px 0 12px;
-    }
+    h2 { font-family: var(--head); font-weight: 600; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin: 30px 0 12px; }
 
-    /* ---------- Panels ---------- */
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-    }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+
+    /* ---------- Banner ---------- */
+    .banner { border-radius: 10px; padding: 11px 14px; margin: 16px 0 4px; font-size: 13.5px; border: 1px solid; }
+    .banner.stale { background: #1a0f0f; border-color: #4a2020; color: #f0b0aa; }
+    .banner.weekend { background: #17130a; border-color: #55401a; color: var(--amber-soft); }
+    .banner.info { background: var(--panel-2); border-color: var(--border); color: var(--text-dim); }
 
     /* ---------- Tages-Ampel ---------- */
-    .tages {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .lamp {
-      flex: 0 0 auto;
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      position: relative;
-      margin-top: 2px;
-    }
-    .lamp::after {
-      content: "";
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      opacity: 0.35;
-      filter: blur(8px);
-      background: inherit;
-      z-index: -1;
-    }
+    .tages { display: flex; gap: 16px; align-items: flex-start; }
+    .lamp { flex: 0 0 auto; width: 54px; height: 54px; border-radius: 50%; position: relative; margin-top: 2px; }
+    .lamp::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; opacity: 0.35; filter: blur(8px); background: inherit; z-index: -1; }
     .lamp.gruen { background: var(--gruen); }
     .lamp.gelb { background: var(--gelb); }
     .lamp.rot { background: var(--rot); }
     .tages-body { flex: 1 1 auto; min-width: 0; }
-    .tages-title {
-      font-family: var(--head);
-      font-weight: 700;
-      font-size: 19px;
-      margin: 0 0 6px;
-    }
+    .tages-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+    .tages-title { font-family: var(--head); font-weight: 700; font-size: 19px; margin: 0; }
     .tages-title.gruen { color: var(--gruen); }
     .tages-title.gelb { color: var(--gelb); }
     .tages-title.rot { color: var(--rot); }
+    .conf { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); border-radius: 20px; padding: 2px 9px; white-space: nowrap; }
+    .conf b { color: var(--amber-soft); font-weight: 600; }
     .tages-text { color: var(--text); margin: 0 0 12px; }
-    .empfehlung {
-      border-left: 3px solid var(--amber);
-      background: var(--panel-2);
-      padding: 8px 12px;
-      border-radius: 0 6px 6px 0;
-      font-size: 14px;
-    }
-    .empfehlung .label {
-      color: var(--amber);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 2px;
-    }
+    .empfehlung { border-left: 3px solid var(--amber); background: var(--panel-2); padding: 8px 12px; border-radius: 0 6px 6px 0; font-size: 14px; }
+    .empfehlung .label { color: var(--amber); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+    .sources { margin-top: 12px; font-size: 12.5px; }
+    .sources .label { color: var(--text-dim); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+    .sources a { color: var(--amber-soft); text-decoration: none; display: inline-block; margin: 2px 10px 2px 0; border-bottom: 1px dotted #55401a; }
+    .sources a:hover { color: var(--amber); }
 
     /* ---------- Zeitstrahl ---------- */
-    .timeline-scroll {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--panel);
-      padding: 14px 4px 10px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
-    }
+    .timeline-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: 12px; background: var(--panel); padding: 14px 4px 10px; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
     .timeline-scroll::-webkit-scrollbar { height: 8px; }
     .timeline-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
-    .timeline {
-      display: inline-flex;
-      align-items: flex-end;
-      gap: 3px;
-      padding: 0 10px;
-      height: 92px;
-    }
-    .tcell {
-      flex: 0 0 auto;
-      width: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      position: relative;
-    }
-    .tbar {
-      width: 12px;
-      border-radius: 3px;
-      transition: height 0.2s;
-    }
+    .timeline { display: inline-flex; align-items: flex-end; gap: 3px; padding: 0 10px; height: 92px; }
+    .tcell { flex: 0 0 auto; width: 20px; display: flex; flex-direction: column; align-items: center; gap: 6px; position: relative; }
+    .tbar { width: 12px; border-radius: 3px; transition: height 0.2s; }
     .tbar.gruen { background: var(--gruen); height: 24px; }
     .tbar.gelb { background: var(--gelb); height: 42px; }
     .tbar.rot { background: var(--rot); height: 66px; }
-    .tlabel {
-      font-size: 9px;
-      color: var(--text-dim);
-      transform: rotate(-90deg) translateX(-2px);
-      transform-origin: center;
-      white-space: nowrap;
-      height: 14px;
-    }
+    .tlabel { font-size: 9px; color: var(--text-dim); transform: rotate(-90deg) translateX(-2px); transform-origin: center; white-space: nowrap; height: 14px; }
     .tcell.hour-mark .tlabel { color: var(--amber-soft); }
-    .now-marker {
-      flex: 0 0 auto;
-      align-self: stretch;
-      width: 2px;
-      background: var(--amber);
-      position: relative;
-      margin: 0 5px;
-      border-radius: 2px;
-    }
-    .now-marker::before {
-      content: "JETZT";
-      position: absolute;
-      top: -4px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 8px;
-      letter-spacing: 0.1em;
-      color: var(--amber);
-      background: var(--panel);
-      padding: 0 3px;
-      white-space: nowrap;
-    }
-    .timeline-legend {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--text-dim);
-    }
+    .now-marker { flex: 0 0 auto; align-self: stretch; width: 2px; background: var(--amber); position: relative; margin: 0 5px; border-radius: 2px; }
+    .now-marker::before { content: "JETZT"; position: absolute; top: -4px; left: 50%; transform: translateX(-50%); font-size: 8px; letter-spacing: 0.1em; color: var(--amber); background: var(--panel); padding: 0 3px; white-space: nowrap; }
+    .timeline-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; font-size: 12px; color: var(--text-dim); }
     .timeline-legend span { display: inline-flex; align-items: center; gap: 6px; }
     .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
     .dot.gruen { background: var(--gruen); }
@@ -245,96 +104,44 @@
 
     .summary-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
     @media (min-width: 620px) { .summary-grid { grid-template-columns: 1fr 1fr; } }
-    .summary-card .summary-head {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 6px;
-    }
+    .summary-card .summary-head { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
 
-    /* ---------- Forecast-Detail (nächste 6h) ---------- */
+    /* ---------- Forecast-Detail ---------- */
     .fc-list { display: grid; gap: 8px; }
-    .fc-row {
-      display: grid;
-      grid-template-columns: 54px 10px 1fr;
-      gap: 10px;
-      align-items: center;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 9px 12px;
-    }
+    .fc-row { display: grid; grid-template-columns: 54px 10px 1fr; gap: 10px; align-items: center; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; }
     .fc-time { font-weight: 600; color: var(--text); }
     .fc-kommentar { color: var(--text-dim); font-size: 13.5px; }
 
+    /* ---------- Verlauf ---------- */
+    .history-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+    .since-red { font-size: 13px; }
+    .since-red b { color: var(--amber-soft); }
+    .hist-strip { display: flex; flex-wrap: wrap; gap: 3px; }
+    .hist-dot { width: 11px; height: 16px; border-radius: 2px; opacity: 0.9; }
+    .hist-dot.gruen { background: var(--gruen); }
+    .hist-dot.gelb { background: var(--gelb); }
+    .hist-dot.rot { background: var(--rot); }
+
     /* ---------- Termine ---------- */
     .termine { display: grid; gap: 10px; }
-    .termin-card {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 12px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 14px;
-    }
+    .termin-card { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
     .termin-card.soon { border-color: #55401a; background: #17130a; }
-    .termin-name {
-      font-family: var(--head);
-      font-weight: 600;
-      font-size: 15px;
-    }
+    .termin-name { font-family: var(--head); font-weight: 600; font-size: 15px; }
     .termin-meta { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
-    .termin-count {
-      text-align: right;
-      font-variant-numeric: tabular-nums;
-    }
-    .termin-count .big {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--amber);
-    }
+    .termin-count { text-align: right; font-variant-numeric: tabular-nums; }
+    .termin-count .big { font-size: 18px; font-weight: 600; color: var(--amber); }
     .termin-count .lbl { font-size: 11px; color: var(--text-dim); }
 
     .next5 { display: grid; gap: 8px; }
-    .next5 .n5row {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 12px;
-      align-items: center;
-      padding: 8px 4px;
-      border-bottom: 1px dashed var(--border);
-      font-size: 14px;
-    }
+    .next5 .n5row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 8px 4px; border-bottom: 1px dashed var(--border); font-size: 14px; }
     .next5 .n5row:last-child { border-bottom: none; }
     .n5idx { color: var(--amber); width: 18px; }
     .n5date { color: var(--text-dim); font-variant-numeric: tabular-nums; }
 
-    footer {
-      margin-top: 40px;
-      padding-top: 18px;
-      border-top: 1px solid var(--border);
-      font-size: 11.5px;
-      color: var(--text-dim);
-      line-height: 1.7;
-    }
+    footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 11.5px; color: var(--text-dim); line-height: 1.7; }
     footer .disclaimer { color: #6b7789; }
-
-    .empty-note {
-      color: var(--text-dim);
-      font-size: 13px;
-      padding: 8px 2px;
-    }
-    .error-box {
-      background: #1a0f0f;
-      border: 1px solid #4a2020;
-      color: #f0b0aa;
-      border-radius: 10px;
-      padding: 14px;
-      font-size: 13px;
-    }
+    .empty-note { color: var(--text-dim); font-size: 13px; padding: 8px 2px; }
+    .error-box { background: #1a0f0f; border: 1px solid #4a2020; color: #f0b0aa; border-radius: 10px; padding: 14px; font-size: 13px; }
   </style>
 </head>
 <body>
@@ -346,9 +153,7 @@
       <span class="updated" id="updated">–</span>
     </header>
 
-    <div id="app">
-      <p class="empty-note">Lade Einschätzung …</p>
-    </div>
+    <div id="app"><p class="empty-note">Lade Einschätzung …</p></div>
 
     <h2>Wiederkehrende Termine</h2>
     <div class="termine" id="recurring"></div>
@@ -364,129 +169,75 @@
         oder veraltet sein. Handelsentscheidungen triffst du eigenverantwortlich.
       </p>
       <p>Zeitzone: Europe/Zurich · FOMC/CPI-Termine werden manuell gepflegt und müssen
-         periodisch aktualisiert werden.</p>
+         periodisch aktualisiert werden. Bots können <code>data/signal.json</code> abfragen.</p>
     </footer>
   </div>
 
   <script>
+  const EPOCH = '1970-01-01T00:00:00.000Z';
+
   //--------------------------------------------------------------------------
   // Wiederkehrende Termine — statisch/deterministisch im Browser berechnet.
-  // Keine API-Calls nötig. Alle Uhrzeiten als lokale Zurich-Zeit (CET/CEST).
   //--------------------------------------------------------------------------
-
-  // FOMC-Entscheide: Termine als Konstante pflegen (8x/Jahr, ~20:00 Zurich).
-  // WICHTIG: Diese Liste muss periodisch (jährlich) manuell aktualisiert werden.
-  // Datum = Tag der Zins-Entscheidung (2. Sitzungstag).
+  // FOMC-Entscheide: KEEP IN SYNC mit scripts/fetch-assessment.mjs FOMC_DATES.
+  // Muss jährlich manuell aktualisiert werden (offizielle Fed-Termine).
   const FOMC_DATES = [
-    // 2025
     '2025-01-29', '2025-03-19', '2025-05-07', '2025-06-18',
     '2025-07-30', '2025-09-17', '2025-10-29', '2025-12-10',
-    // 2026 (voraussichtlich — bei offiziellen Terminen abgleichen)
     '2026-01-28', '2026-03-18', '2026-04-29', '2026-06-17',
     '2026-07-29', '2026-09-16', '2026-10-28', '2026-12-09',
   ];
 
-  // Erzeugt ein Date für "lokale Zurich-Zeit". Wir arbeiten bewusst mit der
-  // Systemzeit des Nutzers (Schweizer Nutzer => Zurich), damit Countdown und
-  // Uhrzeiten ohne Zeitzonen-Bibliothek konsistent sind.
-  function atLocal(year, monthIndex, day, hour, minute) {
-    return new Date(year, monthIndex, day, hour, minute, 0, 0);
-  }
-
-  // n-ter bestimmter Wochentag im Monat (weekday: 0=So..6=Sa).
-  function nthWeekday(year, monthIndex, weekday, n) {
-    const first = new Date(year, monthIndex, 1);
-    const offset = (weekday - first.getDay() + 7) % 7;
-    return 1 + offset + (n - 1) * 7;
-  }
-
-  // Letzter bestimmter Wochentag im Monat.
-  function lastWeekday(year, monthIndex, weekday) {
-    const last = new Date(year, monthIndex + 1, 0); // letzter Tag des Monats
-    const offset = (last.getDay() - weekday + 7) % 7;
-    return last.getDate() - offset;
-  }
-
-  // Liefert für einen "monatlichen" Termin das nächste zukünftige Datum,
-  // indem ab dem aktuellen Monat vorwärts gesucht wird.
-  function nextMonthly(now, buildDate) {
-    for (let i = 0; i < 14; i++) {
-      const probe = new Date(now.getFullYear(), now.getMonth() + i, 1);
-      const d = buildDate(probe.getFullYear(), probe.getMonth());
-      if (d && d.getTime() > now.getTime()) return d;
-    }
-    return null;
-  }
-
-  function nextFOMC(now) {
-    for (const iso of FOMC_DATES) {
-      const [y, m, d] = iso.split('-').map(Number);
-      const dt = atLocal(y, m - 1, d, 20, 0); // 20:00 Zurich
-      if (dt.getTime() > now.getTime()) return dt;
-    }
-    return null;
-  }
+  function atLocal(y, mo, d, h, mi) { return new Date(y, mo, d, h, mi, 0, 0); }
+  function nthWeekday(y, mo, wd, n) { const f = new Date(y, mo, 1); const off = (wd - f.getDay() + 7) % 7; return 1 + off + (n - 1) * 7; }
+  function lastWeekday(y, mo, wd) { const last = new Date(y, mo + 1, 0); const off = (last.getDay() - wd + 7) % 7; return last.getDate() - off; }
+  function nextMonthly(now, build) { for (let i = 0; i < 14; i++) { const p = new Date(now.getFullYear(), now.getMonth() + i, 1); const d = build(p.getFullYear(), p.getMonth()); if (d && d.getTime() > now.getTime()) return d; } return null; }
+  function nextFOMC(now) { for (const iso of FOMC_DATES) { const [y, m, d] = iso.split('-').map(Number); const dt = atLocal(y, m - 1, d, 20, 0); if (dt.getTime() > now.getTime()) return dt; } return null; }
 
   function buildRecurring(now) {
     const events = [];
-
-    // NFP: erster Freitag im Monat, 14:30 Zurich (8:30 ET).
-    const nfp = nextMonthly(now, (y, m) =>
-      atLocal(y, m, nthWeekday(y, m, 5 /*Fr*/, 1), 14, 30));
+    const nfp = nextMonthly(now, (y, m) => atLocal(y, m, nthWeekday(y, m, 5, 1), 14, 30));
     if (nfp) events.push({ name: 'NFP', full: 'US-Arbeitsmarktbericht', date: nfp, impact: 'hoch' });
-
-    // US-CPI: meist 2. Monatswoche — Heuristik: 2. Mittwoch, 14:30 Zurich.
-    const cpi = nextMonthly(now, (y, m) =>
-      atLocal(y, m, nthWeekday(y, m, 3 /*Mi*/, 2), 14, 30));
+    const cpi = nextMonthly(now, (y, m) => atLocal(y, m, nthWeekday(y, m, 3, 2), 14, 30));
     if (cpi) events.push({ name: 'US-CPI', full: 'Verbraucherpreise (≈ 2. Woche, Datum prüfen)', date: cpi, impact: 'hoch' });
-
-    // PCE: letzte Woche im Monat — Heuristik: letzter Freitag, 14:30 Zurich.
-    const pce = nextMonthly(now, (y, m) =>
-      atLocal(y, m, lastWeekday(y, m, 5 /*Fr*/), 14, 30));
+    const pce = nextMonthly(now, (y, m) => atLocal(y, m, lastWeekday(y, m, 5), 14, 30));
     if (pce) events.push({ name: 'PCE', full: 'PCE-Inflation (≈ letzte Woche, Datum prüfen)', date: pce, impact: 'mittel' });
-
-    // FOMC: aus Konstanten-Liste, 20:00 Zurich.
     const fomc = nextFOMC(now);
     if (fomc) events.push({ name: 'FOMC', full: 'Fed-Zinsentscheid', date: fomc, impact: 'hoch' });
-
     return events;
   }
 
   const WD = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
   function fmtDate(d) {
-    const dd = String(d.getDate()).padStart(2, '0');
-    const mm = String(d.getMonth() + 1).padStart(2, '0');
-    const hh = String(d.getHours()).padStart(2, '0');
-    const mi = String(d.getMinutes()).padStart(2, '0');
-    return `${WD[d.getDay()]} ${dd}.${mm}.${d.getFullYear()} · ${hh}:${mi}`;
+    const p = (n) => String(n).padStart(2, '0');
+    return `${WD[d.getDay()]} ${p(d.getDate())}.${p(d.getMonth() + 1)}.${d.getFullYear()} · ${p(d.getHours())}:${p(d.getMinutes())}`;
   }
-
   function countdown(now, target) {
     let ms = target.getTime() - now.getTime();
     if (ms < 0) return { text: 'jetzt', soon: true };
-    const mins = Math.floor(ms / 60000);
-    const days = Math.floor(mins / 1440);
-    const hours = Math.floor((mins % 1440) / 60);
-    const rem = mins % 60;
+    const mins = Math.floor(ms / 60000), days = Math.floor(mins / 1440), hours = Math.floor((mins % 1440) / 60), rem = mins % 60;
     if (days >= 2) return { text: `in ${days} Tagen`, soon: false };
     if (days === 1) return { text: `in 1 Tag ${hours} Std`, soon: hours < 12 };
     if (hours >= 1) return { text: `in ${hours} Std ${rem} min`, soon: true };
     return { text: `in ${rem} min`, soon: true };
   }
+  // Vergangene Dauer menschenlesbar ("vor X …").
+  function ago(now, past) {
+    const mins = Math.floor((now.getTime() - past.getTime()) / 60000);
+    if (mins < 60) return `vor ${mins} min`;
+    const hours = Math.floor(mins / 60);
+    if (hours < 48) return `vor ${hours} Std`;
+    return `vor ${Math.floor(hours / 24)} Tagen`;
+  }
+  // Handelsfenster: So 22:00 → Fr 18:00 (Zürich lokal).
+  function marketOpen(d) { const day = d.getDay(), h = d.getHours(); if (day === 6) return false; if (day === 0) return h >= 22; if (day === 5) return h < 18; return true; }
 
   //--------------------------------------------------------------------------
-  // Rendering
+  // Rendering-Helfer
   //--------------------------------------------------------------------------
-
-  function el(html) {
-    const t = document.createElement('template');
-    t.innerHTML = html.trim();
-    return t.content.firstElementChild;
-  }
-  function esc(s) {
-    return String(s == null ? '' : s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
+  function el(html) { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; }
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function normStatus(s) { return ['gruen', 'gelb', 'rot'].includes(s) ? s : 'gruen'; }
 
   function renderRecurring(now) {
     const box = document.getElementById('recurring');
@@ -494,133 +245,27 @@
     box.innerHTML = '';
     events.forEach((ev) => {
       const cd = countdown(now, ev.date);
-      const card = el(`
+      box.appendChild(el(`
         <div class="termin-card${cd.soon ? ' soon' : ''}">
           <div>
             <div class="termin-name">${esc(ev.name)}</div>
             <div class="termin-meta">${esc(ev.full)} · ${esc(fmtDate(ev.date))}</div>
           </div>
-          <div class="termin-count">
-            <div class="big">${esc(cd.text)}</div>
-            <div class="lbl">Impact: ${esc(ev.impact)}</div>
-          </div>
-        </div>`);
-      box.appendChild(card);
+          <div class="termin-count"><div class="big">${esc(cd.text)}</div><div class="lbl">Impact: ${esc(ev.impact)}</div></div>
+        </div>`));
     });
-
-    // Nächste 5 Termine (sortiert).
     const sorted = events.slice().sort((a, b) => a.date - b.date).slice(0, 5);
     const n5 = document.getElementById('next5');
     n5.innerHTML = '';
-    if (!sorted.length) {
-      n5.appendChild(el('<div class="empty-note">Keine Termine gefunden.</div>'));
-    }
+    if (!sorted.length) n5.appendChild(el('<div class="empty-note">Keine Termine gefunden.</div>'));
     sorted.forEach((ev, i) => {
       n5.appendChild(el(`
-        <div class="n5row">
-          <span class="n5idx">${i + 1}</span>
-          <span><strong>${esc(ev.name)}</strong></span>
-          <span class="n5date">${esc(fmtDate(ev.date))}</span>
-        </div>`));
+        <div class="n5row"><span class="n5idx">${i + 1}</span><span><strong>${esc(ev.name)}</strong></span><span class="n5date">${esc(fmtDate(ev.date))}</span></div>`));
     });
   }
 
-  function renderStatus(data) {
-    const app = document.getElementById('app');
-    app.innerHTML = '';
-
-    const status = ['gruen', 'gelb', 'rot'].includes(data.status) ? data.status : 'gelb';
-
-    // Ticker + Kopf.
-    document.getElementById('ticker').textContent =
-      (data.headline || 'NQ Pause-Board') + '   ·   ' + (data.statusText || '');
-    const gen = data.generatedAt && data.generatedAt !== '1970-01-01T00:00:00.000Z'
-      ? new Date(data.generatedAt)
-      : null;
-    document.getElementById('updated').textContent = gen
-      ? 'Stand: ' + fmtDate(gen)
-      : 'Noch keine echte Einschätzung';
-
-    // Tages-Ampel.
-    app.appendChild(el(`
-      <div class="panel tages">
-        <div class="lamp ${status}"></div>
-        <div class="tages-body">
-          <p class="tages-title ${status}">${esc(data.statusText || '')}</p>
-          <p class="tages-text">${esc(data.body || '')}</p>
-          <div class="empfehlung">
-            <span class="label">Handlungsempfehlung</span>
-            ${esc(data.empfehlung || '')}
-          </div>
-        </div>
-      </div>`));
-
-    // Zeitstrahl (48 Punkte: 24 zurück, Jetzt, 24 voraus).
-    app.appendChild(el('<h2>Stunden-Ampel · 24h zurück &amp; 24h voraus</h2>'));
-    const rueck = Array.isArray(data.rueckblick) ? data.rueckblick : [];
-    const fore = Array.isArray(data.forecast) ? data.forecast : [];
-
-    if (!rueck.length && !fore.length) {
-      app.appendChild(el('<div class="panel"><p class="empty-note">Noch keine Stunden-Daten vorhanden. Nach dem ersten Action-Lauf erscheint hier der Zeitstrahl.</p></div>'));
-    } else {
-      const scroll = el('<div class="timeline-scroll"></div>');
-      const tl = el('<div class="timeline"></div>');
-
-      rueck.forEach((h) => tl.appendChild(cell(h)));
-      const marker = el('<div class="now-marker"></div>');
-      tl.appendChild(marker);
-      fore.forEach((h) => tl.appendChild(cell(h)));
-
-      scroll.appendChild(tl);
-      app.appendChild(scroll);
-      app.appendChild(el(`
-        <div class="timeline-legend">
-          <span><i class="dot gruen"></i> grün — ruhig</span>
-          <span><i class="dot gelb"></i> gelb — Vorsicht</span>
-          <span><i class="dot rot"></i> rot — pausieren</span>
-        </div>`));
-
-      // Automatisch zur "Jetzt"-Position scrollen.
-      requestAnimationFrame(() => {
-        const left = marker.offsetLeft - scroll.clientWidth / 2;
-        scroll.scrollLeft = Math.max(0, left);
-      });
-    }
-
-    // Zusammenfassungen.
-    app.appendChild(el(`
-      <div class="summary-grid" style="margin-top:14px">
-        <div class="panel summary-card">
-          <div class="summary-head">Rückblick 24h</div>
-          <div>${esc(data.rueckblickSummary || '–')}</div>
-        </div>
-        <div class="panel summary-card">
-          <div class="summary-head">Ausblick 24h</div>
-          <div>${esc(data.ausblickSummary || '–')}</div>
-        </div>
-      </div>`));
-
-    // Forecast-Detail (nächste 6 Stunden mit Kommentar).
-    const detail = Array.isArray(data.forecastDetail) ? data.forecastDetail : [];
-    if (detail.length) {
-      app.appendChild(el('<h2>Nächste 6 Stunden im Detail</h2>'));
-      const list = el('<div class="fc-list"></div>');
-      detail.forEach((h) => {
-        const st = ['gruen', 'gelb', 'rot'].includes(h.status) ? h.status : 'gruen';
-        list.appendChild(el(`
-          <div class="fc-row">
-            <span class="fc-time">${esc(h.stunde || '')}</span>
-            <span class="dot ${st}"></span>
-            <span class="fc-kommentar">${esc(h.kommentar || '')}</span>
-          </div>`));
-      });
-      app.appendChild(list);
-    }
-  }
-
   function cell(h) {
-    const st = ['gruen', 'gelb', 'rot'].includes(h.status) ? h.status : 'gruen';
-    // Nur volle 6h-Marken beschriften, damit es nicht zu dicht wird.
+    const st = normStatus(h.status);
     const label = h.stunde || '';
     const isMark = /(:00)$/.test(label) && ['00', '06', '12', '18'].includes((label.split(':')[0] || ''));
     return el(`
@@ -630,23 +275,144 @@
       </div>`);
   }
 
+  function renderStatus(data, now) {
+    const app = document.getElementById('app');
+    app.innerHTML = '';
+    const status = normStatus(data.status);
+    const gen = (data.generatedAt && data.generatedAt !== EPOCH) ? new Date(data.generatedAt) : null;
+
+    document.getElementById('ticker').textContent = (data.headline || 'NQ Pause-Board') + '   ·   ' + (data.statusText || '');
+    document.getElementById('updated').textContent = gen ? 'Stand: ' + fmtDate(gen) : 'Noch keine echte Einschätzung';
+
+    // Banner: veraltet / Wochenende / noch keine Daten.
+    let banner = null;
+    if (!gen) {
+      banner = { cls: 'info', text: 'Noch keine echte Einschätzung — löse die GitHub Action einmal aus.' };
+    } else {
+      const ageH = (now - gen) / 3600000;
+      if (marketOpen(now) && ageH > 6) {
+        banner = { cls: 'stale', text: `⚠️ Daten sind ~${Math.round(ageH)} h alt — möglicherweise veraltet. Nicht blind vertrauen.` };
+      } else if (!marketOpen(now)) {
+        banner = { cls: 'weekend', text: 'Markt geschlossen (Wochenende). Nächste Aktualisierung ab Sonntag 22:00 Uhr.' };
+      }
+    }
+    if (banner) app.appendChild(el(`<div class="banner ${banner.cls}">${esc(banner.text)}</div>`));
+
+    // Tages-Ampel + Confidence + Quellen.
+    const conf = ['niedrig', 'mittel', 'hoch'].includes(data.confidence) ? data.confidence : null;
+    let sourcesHtml = '';
+    if (Array.isArray(data.quellen) && data.quellen.length) {
+      const links = data.quellen
+        .filter((q) => q && /^https?:\/\//i.test(q.url || ''))
+        .map((q) => `<a href="${esc(q.url)}" target="_blank" rel="noopener noreferrer">${esc(q.titel || q.url)}</a>`)
+        .join('');
+      if (links) sourcesHtml = `<div class="sources"><div class="label">Quellen</div>${links}</div>`;
+    }
+    app.appendChild(el(`
+      <div class="panel tages">
+        <div class="lamp ${status}"></div>
+        <div class="tages-body">
+          <div class="tages-head">
+            <p class="tages-title ${status}">${esc(data.statusText || '')}</p>
+            ${conf ? `<span class="conf">Confidence <b>${esc(conf)}</b></span>` : ''}
+          </div>
+          <p class="tages-text">${esc(data.body || '')}</p>
+          <div class="empfehlung"><span class="label">Handlungsempfehlung</span>${esc(data.empfehlung || '')}</div>
+          ${sourcesHtml}
+        </div>
+      </div>`));
+
+    // Zeitstrahl.
+    app.appendChild(el('<h2>Stunden-Ampel · 24h zurück &amp; 24h voraus</h2>'));
+    const rueck = Array.isArray(data.rueckblick) ? data.rueckblick : [];
+    const fore = Array.isArray(data.forecast) ? data.forecast : [];
+    if (!rueck.length && !fore.length) {
+      app.appendChild(el('<div class="panel"><p class="empty-note">Noch keine Stunden-Daten vorhanden.</p></div>'));
+    } else {
+      const scroll = el('<div class="timeline-scroll"></div>');
+      const tl = el('<div class="timeline"></div>');
+      rueck.forEach((h) => tl.appendChild(cell(h)));
+      const marker = el('<div class="now-marker"></div>');
+      tl.appendChild(marker);
+      fore.forEach((h) => tl.appendChild(cell(h)));
+      scroll.appendChild(tl);
+      app.appendChild(scroll);
+      app.appendChild(el(`
+        <div class="timeline-legend">
+          <span><i class="dot gruen"></i> grün — ruhig</span>
+          <span><i class="dot gelb"></i> gelb — Vorsicht</span>
+          <span><i class="dot rot"></i> rot — pausieren</span>
+        </div>`));
+      requestAnimationFrame(() => { scroll.scrollLeft = Math.max(0, marker.offsetLeft - scroll.clientWidth / 2); });
+    }
+
+    // Zusammenfassungen.
+    app.appendChild(el(`
+      <div class="summary-grid" style="margin-top:14px">
+        <div class="panel summary-card"><div class="summary-head">Rückblick 24h</div><div>${esc(data.rueckblickSummary || '–')}</div></div>
+        <div class="panel summary-card"><div class="summary-head">Ausblick 24h</div><div>${esc(data.ausblickSummary || '–')}</div></div>
+      </div>`));
+
+    // Forecast-Detail.
+    const detail = Array.isArray(data.forecastDetail) ? data.forecastDetail : [];
+    if (detail.length) {
+      app.appendChild(el('<h2>Nächste 6 Stunden im Detail</h2>'));
+      const list = el('<div class="fc-list"></div>');
+      detail.forEach((h) => {
+        list.appendChild(el(`
+          <div class="fc-row"><span class="fc-time">${esc(h.stunde || '')}</span><span class="dot ${normStatus(h.status)}"></span><span class="fc-kommentar">${esc(h.kommentar || '')}</span></div>`));
+      });
+      app.appendChild(list);
+    }
+  }
+
+  function renderHistory(history, now) {
+    const app = document.getElementById('app');
+    const entries = Array.isArray(history)
+      ? history.filter((h) => h && h.generatedAt && h.generatedAt !== EPOCH) : [];
+    if (!entries.length) return;
+
+    // Zeit seit letztem ROT.
+    let since;
+    const lastRed = [...entries].reverse().find((h) => h.status === 'rot');
+    if (lastRed) since = `Letztes <b>ROT</b>: ${ago(now, new Date(lastRed.generatedAt))}`;
+    else since = `Kein <b>ROT</b> in den letzten ${entries.length} Läufen`;
+
+    app.appendChild(el('<h2>Verlauf</h2>'));
+    const wrap = el('<div class="panel"></div>');
+    wrap.appendChild(el(`
+      <div class="history-head">
+        <span class="since-red">${since}</span>
+        <span class="empty-note" style="padding:0">${entries.length} Läufe</span>
+      </div>`));
+    const strip = el('<div class="hist-strip"></div>');
+    entries.slice(-72).forEach((h) => {
+      const st = normStatus(h.status);
+      const when = new Date(h.generatedAt);
+      strip.appendChild(el(`<span class="hist-dot ${st}" title="${esc(fmtDate(when))} — ${esc(st)}"></span>`));
+    });
+    wrap.appendChild(strip);
+    app.appendChild(wrap);
+  }
+
   //--------------------------------------------------------------------------
   // Init
   //--------------------------------------------------------------------------
   const now = new Date();
   renderRecurring(now);
 
-  fetch('./data/status.json', { cache: 'no-store' })
-    .then((r) => {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      return r.json();
+  const getJson = (url) => fetch(url, { cache: 'no-store' }).then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+
+  getJson('./data/status.json')
+    .then((data) => {
+      renderStatus(data, now);
+      // Verlauf separat laden; Fehler hier soll die Hauptansicht nicht stören.
+      return getJson('./data/history.json').then((h) => renderHistory(h, now)).catch(() => {});
     })
-    .then((data) => renderStatus(data))
     .catch((err) => {
       document.getElementById('ticker').textContent = 'Fehler beim Laden der Daten';
       document.getElementById('app').innerHTML =
-        '<div class="error-box">Konnte <code>data/status.json</code> nicht laden (' +
-        esc(err.message) + '). Prüfe, ob die GitHub Action bereits gelaufen ist.</div>';
+        '<div class="error-box">Konnte <code>data/status.json</code> nicht laden (' + esc(err.message) + '). Prüfe, ob die GitHub Action bereits gelaufen ist.</div>';
     });
   </script>
 </body>

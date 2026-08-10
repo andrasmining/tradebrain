@@ -32,23 +32,30 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Assessment abrufen
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           # Optional: Modell über eine Repository-Variable überschreiben.
           ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+          # Optional: Push-Kanäle bei Eskalation nach ROT (leer = kein Push).
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_SERVER: ${{ vars.NTFY_SERVER }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Optional: Board-URL für Push-Links (Default im Skript hinterlegt).
+          BOARD_URL: ${{ vars.BOARD_URL }}
         run: node scripts/fetch-assessment.mjs
 
       - name: Committen & pushen, falls geändert
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain data/status.json)" ]]; then
-            git add data/status.json
+          if [[ -n "$(git status --porcelain data/)" ]]; then
+            git add data/
             git commit -m "chore: update assessment $(date -u +%Y-%m-%dT%H:%MZ)"
             git push
           else
-            echo "Keine Änderung an status.json — nichts zu committen."
+            echo "Keine Änderung in data/ — nichts zu committen."
           fi
