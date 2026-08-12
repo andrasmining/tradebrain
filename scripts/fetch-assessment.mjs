@@ -39,7 +39,7 @@ const HISTORY_MAX = 200;
 const EVENT_PRE_HOURS = Number(process.env.EVENT_PRE_HOURS) || 2;
 
 // App-/Generator-Version. KEEP IN SYNC mit APP_VERSION in index.html.
-const APP_VERSION = '1.6.0';
+const APP_VERSION = '1.7.0';
 
 const CODE_TO_STATUS = { G: 'gruen', Y: 'gelb', R: 'rot' };
 const RANK = { gruen: 0, gelb: 1, rot: 2 };
@@ -92,6 +92,20 @@ function zurichParts(date) {
   return { y: +p.year, mo: +p.month, d: +p.day, h: +p.hour };
 }
 
+// Offset (Minuten östlich UTC) einer Zeitzone zu einem Zeitpunkt.
+function tzOffsetMin(date, tz) {
+  const dtf = new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const p = dtf.formatToParts(date).reduce((a, x) => (a[x.type] = x.value, a), {});
+  const asUTC = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second);
+  return (asUTC - date.getTime()) / 60000;
+}
+// Absoluter Zeitpunkt für "h:mi am (y,mo0,d) in Europe/Zurich" (mo0 0-basiert).
+function zurichInstantFromParts(y, mo0, d, h, mi) {
+  const naive = Date.UTC(y, mo0, d, h, mi);
+  const off = tzOffsetMin(new Date(naive), TIMEZONE);
+  return new Date(naive - off * 60000);
+}
+
 // Datum-basierter Wochentag (0=So..6=Sa), DST-sicher über UTC-Mittag.
 function weekdayOf(y, mo, d) {
   return new Date(Date.UTC(y, mo - 1, d, 12)).getUTCDay();
@@ -114,13 +128,45 @@ function eventAtSlot(date) {
 }
 
 // Event, das in DIESER Stunde oder in den nächsten EVENT_PRE_HOURS Stunden liegt.
-// Gibt das nächstliegende zurück: { ev, hoursAhead } (hoursAhead 0 = jetzt).
-function eventWindowForSlot(date) {
+// Berücksichtigt feste Anker (eventAtSlot) UND vom Modell gelieferte High-Impact-
+// Termine (extraHours: Map<hourMs, name>). Gibt { ev, hoursAhead } zurück.
+function eventWindowForSlot(date, extraHours) {
   for (let k = 0; k <= EVENT_PRE_HOURS; k++) {
-    const ev = eventAtSlot(new Date(date.getTime() + k * 3600_000));
-    if (ev) return { ev, hoursAhead: k };
+    const probe = new Date(date.getTime() + k * 3600_000);
+    const name = eventAtSlot(probe) || (extraHours && extraHours.get(probe.getTime()));
+    if (name) return { ev: name, hoursAhead: k };
   }
   return null;
+}
+
+// Validiert die vom Modell gelieferte Terminliste und wandelt sie in absolute
+// Zeitpunkte. Liefert { termine, extraHours }:
+//  - termine: sortierte Liste [{ name, ts, impact }] für die Anzeige (nächste ~8 Tage)
+//  - extraHours: Map<hourMs, name> der High-Impact-Termine (impact "hoch") für den
+//    Cross-Check (erzwingen ROT + Vorlauf).
+function parseTermine(model, now) {
+  const termine = [];
+  const extraHours = new Map();
+  const list = Array.isArray(model.termine) ? model.termine : [];
+  const minTs = now.getTime() - 3600_000;
+  const maxTs = now.getTime() + 8 * 86400_000;
+  for (const t of list) {
+    if (!t) continue;
+    const dm = String(t.datum || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    const tm = String(t.zeitZurich || '').match(/^(\d{1,2}):(\d{2})$/);
+    if (!dm || !tm) continue;
+    const inst = zurichInstantFromParts(+dm[1], +dm[2] - 1, +dm[3], +tm[1], +tm[2]);
+    if (isNaN(inst.getTime()) || inst.getTime() < minTs || inst.getTime() > maxTs) continue;
+    const impact = ['hoch', 'mittel'].includes(t.impact) ? t.impact : 'mittel';
+    const name = String(t.name || 'Termin').slice(0, 60);
+    termine.push({ name, ts: inst.toISOString(), impact });
+    if (impact === 'hoch') {
+      const hourMs = Math.floor(inst.getTime() / 3600_000) * 3600_000;
+      if (!extraHours.has(hourMs)) extraHours.set(hourMs, name);
+    }
+  }
+  termine.sort((a, b) => new Date(a.ts) - new Date(b.ts));
+  return { termine: termine.slice(0, 12), extraHours };
 }
 
 // ---------------------------------------------------------------------------
@@ -147,10 +193,10 @@ function expandCodes(codes, startHour, comments = []) {
 
 // Erzwingt ROT in der Event-Stunde UND den EVENT_PRE_HOURS Stunden davor.
 // Gibt { index: { ev, hoursAhead } } zurück.
-function applyCrossCheck(entries, startHour) {
+function applyCrossCheck(entries, startHour, extraHours) {
   const labels = {};
   entries.forEach((e, i) => {
-    const hit = eventWindowForSlot(new Date(startHour.getTime() + i * 3600_000));
+    const hit = eventWindowForSlot(new Date(startHour.getTime() + i * 3600_000), extraHours);
     if (hit) { e.status = 'rot'; labels[i] = hit; }
   });
   return labels;
@@ -193,6 +239,7 @@ Antworte AUSSCHLIESSLICH mit EINEM JSON-Objekt — kein Markdown, kein Text davo
   "body": "Begründung der Tages-Ampel, 2-3 Sätze",
   "confidence": "niedrig | mittel | hoch",
   "quellen": [ { "titel": "Kurztitel der Quelle", "url": "https://..." } ],
+  "termine": [ { "name": "US Core PPI", "datum": "2026-08-13", "zeitZurich": "14:30", "impact": "hoch" } ],
   "rueckblickSummary": "letzte 24h, 2-3 Sätze",
   "rueckblickCodes": "GENAU 24 Zeichen aus G/Y/R, ein Zeichen pro Stunde, ÄLTESTE zuerst",
   "ausblickSummary": "nächste 24h, 2-3 Sätze",
@@ -205,7 +252,9 @@ Ampel-Kriterien je Stunde:
 - Y (gelb): erhöhte Unsicherheit, US-Cash-Open (~15:30 ${TIMEZONE}), Power-Hour-Close (~22:00 ${TIMEZONE}), kleinere Termine.
 - G (grün): sonst.
 
-Wichtig: "rueckblickCodes"/"forecastCodes" müssen EXAKT 24 Zeichen lang sein. "forecastKommentare" genau 6 Einträge. "quellen" 2-4 wichtigste Quellen mit echten URLs aus deiner Recherche. Keine Uhrzeiten ausgeben.`;
+Zum Feld "termine": Recherchiere den US-Wirtschaftskalender der nächsten 7 Tage und liste ALLE relevanten Termine einzeln auf — CPI, Core CPI, PPI, Core PPI, Retail Sales, NFP, FOMC, PCE, ISM, Jobless Claims, GDP usw. Jeder Eintrag mit exaktem "datum" (YYYY-MM-DD), "zeitZurich" (HH:MM in Europe/Zurich) und "impact" ("hoch" oder "mittel"). "hoch" = markttreibende Releases (CPI/Core CPI, PPI/Core PPI, NFP, FOMC, PCE, Retail Sales) → sie erzwingen automatisch ein rotes Vorlauf-Fenster. Nenne echte, recherchierte Daten; wenn ein Datum unsicher ist, lass den Eintrag weg statt zu raten.
+
+Wichtig: "rueckblickCodes"/"forecastCodes" müssen EXAKT 24 Zeichen lang sein. "forecastKommentare" genau 6 Einträge. "quellen" 2-4 wichtigste Quellen mit echten URLs aus deiner Recherche. Keine Uhrzeiten im Ampel-Teil ausgeben.`;
 }
 
 async function callModel(prompt) {
@@ -265,9 +314,12 @@ function buildStatusJson(model, now) {
   const rueckblick = expandCodes(normalizeCodes(model.rueckblickCodes), rueckblickStart);
   const forecast = expandCodes(normalizeCodes(model.forecastCodes), forecastStart);
 
-  // Termin-Cross-Check: erzwingt ROT bei bekannten Events.
-  applyCrossCheck(rueckblick, rueckblickStart);
-  const forecastLabels = applyCrossCheck(forecast, forecastStart);
+  // Live-Terminkalender aus der Modell-Recherche (CPI, PPI, Retail Sales …).
+  const { termine, extraHours } = parseTermine(model, now);
+
+  // Termin-Cross-Check: erzwingt ROT bei festen Ankern UND Live-High-Impact-Terminen.
+  applyCrossCheck(rueckblick, rueckblickStart, extraHours);
+  const forecastLabels = applyCrossCheck(forecast, forecastStart, extraHours);
 
   const kommentare = Array.isArray(model.forecastKommentare)
     ? model.forecastKommentare.slice(0, 6).map(String) : [];
@@ -319,6 +371,7 @@ function buildStatusJson(model, now) {
     ausblickSummary: String(model.ausblickSummary || ''),
     forecast,
     forecastDetail,
+    termine,
   };
 }
 

@@ -58,13 +58,22 @@ Manuelles Auslösen (**Actions → Run workflow**) geht jederzeit zusätzlich.
 Gesamteinschätzung (grün/gelb/rot) + horizontal scrollbarer 48-Punkte-Zeitstrahl
 (24 h zurück · „Jetzt" · 24 h voraus), automatisch zur Jetzt-Position gescrollt.
 
-### Termin-Cross-Check (mit Vorlauf)
-Bekannte High-Impact-Events (NFP, US-CPI, PCE, FOMC) **erzwingen ROT** — nicht
-erst zur Event-Uhrzeit, sondern schon **~2 Stunden davor** (das Risiko baut sich
-vorher auf). Das Fenster ist über `EVENT_PRE_HOURS` einstellbar (Default 2).
-Liegt ein Event in der aktuellen oder einer der nächsten `EVENT_PRE_HOURS`
-Stunden, wird auch die Tages-Ampel auf ROT gezogen; die Empfehlung nennt dann
-den Vorlauf (z. B. „FOMC in ~2h — Bots rechtzeitig pausieren").
+### Termin-Cross-Check (mit Vorlauf) + Live-Kalender
+High-Impact-Events **erzwingen ROT** — nicht erst zur Event-Uhrzeit, sondern
+schon **~2 Stunden davor** (das Risiko baut sich vorher auf). Das Fenster ist
+über `EVENT_PRE_HOURS` einstellbar (Default 2). Liegt ein Event in der aktuellen
+oder einer der nächsten `EVENT_PRE_HOURS` Stunden, wird auch die Tages-Ampel auf
+ROT gezogen; die Empfehlung nennt den Vorlauf (z. B. „US Core PPI in ~2h").
+
+Zwei Quellen speisen den Cross-Check:
+- **Feste Anker** (im Code, zuverlässig): NFP (1. Freitag), FOMC (gepflegte
+  Liste), plus CPI/PCE-Heuristik.
+- **Live-Kalender aus der Recherche** (auto-aktualisierend): Das Modell liefert
+  bei jedem Lauf den US-Wirtschaftskalender der nächsten 7 Tage als `termine`
+  (CPI, **Core PPI**, Retail Sales, Jobless Claims, ISM …) mit Datum/Uhrzeit und
+  Impact. Alle mit `impact: "hoch"` erzeugen automatisch ein rotes Vorlauf-Fenster
+  — ohne dass du etwas pflegen musst. Das Frontend zeigt die Liste als
+  „Anstehende Termine" mit „Pause-Fenster"-Markierung.
 
 ### Push-Benachrichtigung
 Beim **Wechsel nach ROT** (und bei Entwarnung) schickt das Skript einen Push —
@@ -127,7 +136,8 @@ live ist.
   "rueckblick": [{ "stunde": "14:00", "ts": "2026-08-10T12:00:00.000Z", "status": "gruen" }],
   "ausblickSummary": "2-3 Sätze",
   "forecast": [{ "stunde": "22:00", "ts": "2026-08-10T20:00:00.000Z", "status": "gelb" }],
-  "forecastDetail": [{ "stunde": "22:00", "ts": "…", "status": "gelb", "kommentar": "…" }]
+  "forecastDetail": [{ "stunde": "22:00", "ts": "…", "status": "gelb", "kommentar": "…" }],
+  "termine": [{ "name": "US Core PPI", "ts": "2026-08-13T12:30:00.000Z", "impact": "hoch" }]
 }
 ```
 
@@ -189,18 +199,23 @@ geschrieben und mit Exit 0 beendet. Commit passiert nur bei tatsächlicher Ände
 
 ---
 
-## Wartung: FOMC-/CPI-/PCE-Termine
+## Wartung: Termine
+
+Die meisten Termine kommen jetzt **automatisch** aus der Live-Recherche
+(`termine` im Modell-Output) — inkl. CPI, **Core PPI**, Retail Sales, Jobless
+Claims usw. Da musst du nichts pflegen. Nur die festen Anker sind statisch:
 
 | Termin | Berechnung | Pflege |
 |--------|-----------|--------|
-| **NFP** | 1. Freitag, 14:30 Zurich | automatisch |
-| **US-CPI** | Heuristik: 2. Mittwoch, 14:30 | Datum prüfen |
-| **PCE** | Heuristik: letzter Freitag, 14:30 | Datum prüfen |
-| **FOMC** | feste Terminliste, 20:00 | **manuell nachpflegen** |
+| **Live-Kalender** | Modell-Recherche, nächste 7 Tage | **automatisch** |
+| **NFP** | Anker: 1. Freitag, 14:30 Zurich | automatisch |
+| **US-CPI / PCE** | Anker-Heuristik (2. Mittwoch / letzter Freitag) | grobe Absicherung |
+| **FOMC** | Anker: feste Terminliste, 20:00 | **manuell nachpflegen** |
 
 > ⚠️ Die **FOMC-Terminliste** steht an **zwei** Stellen und muss synchron gehalten
-> werden: `FOMC_DATES` in `scripts/fetch-assessment.mjs` (für den Cross-Check) und
-> in `index.html` (für die Termin-Anzeige). Aktuell gepflegt bis **Dez 2026**.
+> werden: `FOMC_DATES` in `scripts/fetch-assessment.mjs` und in `index.html`.
+> Aktuell gepflegt bis **Dez 2026**. Alles andere aktualisiert sich über die
+> Recherche selbst.
 
 ---
 

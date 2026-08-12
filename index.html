@@ -115,6 +115,8 @@
     .next5 .n5row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 8px 4px; border-bottom: 1px dashed var(--border); font-size: 14px; }
     .next5 .n5row:last-child { border-bottom: none; }
     .n5idx { color: var(--amber); width: 18px; } .n5date { color: var(--text-dim); font-variant-numeric: tabular-nums; }
+    .pausetag { font-size: 10px; color: var(--rot); border: 1px solid #6b2320; border-radius: 10px; padding: 1px 6px; margin-left: 4px; white-space: nowrap; }
+    .termine-note { font-size: 11.5px; color: var(--text-dim); margin: -2px 0 10px; }
 
     .api-lead { color: var(--text-dim); font-size: 13.5px; margin: 4px 0 0; }
     .endpoint { display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap; }
@@ -161,7 +163,8 @@
       <div id="app"><p class="empty-note">Lade Einschätzung …</p></div>
       <h2>Wiederkehrende Termine</h2>
       <div class="termine" id="recurring"></div>
-      <h2>Nächste 5 Termine</h2>
+      <h2 id="next5Head">Nächste 5 Termine</h2>
+      <div class="termine-note" id="termineNote" hidden></div>
       <div class="panel"><div class="next5" id="next5"></div></div>
     </div>
 
@@ -180,7 +183,7 @@
   </div>
 
   <script>
-  const APP_VERSION = '1.6.0';  // KEEP IN SYNC mit APP_VERSION in scripts/fetch-assessment.mjs
+  const APP_VERSION = '1.7.0';  // KEEP IN SYNC mit APP_VERSION in scripts/fetch-assessment.mjs
   const EPOCH = '1970-01-01T00:00:00.000Z';
   const HOUR = 3600000;
 
@@ -314,6 +317,27 @@
     sorted.forEach((ev, i) => n5.appendChild(el(`<div class="n5row"><span class="n5idx">${i + 1}</span><span><strong>${esc(ev.name)}</strong></span><span class="n5date">${esc(fmtDate(ev.date))}</span></div>`)));
   }
 
+  // Live-Terminkalender aus status.json (überschreibt die Anker-Liste, wenn vorhanden).
+  function renderTermineLive(termine, now) {
+    const list = Array.isArray(termine) ? termine.filter((t) => t && t.ts) : [];
+    if (!list.length) return; // Fallback: Anker-Liste aus renderRecurring bleibt stehen
+    document.getElementById('next5Head').textContent = 'Anstehende Termine · Live-Kalender';
+    const note = document.getElementById('termineNote');
+    note.hidden = false;
+    note.innerHTML = '<span class="pausetag">Pause-Fenster</span> = High-Impact → erzwingt automatisch ROT (inkl. Vorlauf). Aus Live-Recherche.';
+    const n5 = document.getElementById('next5');
+    n5.innerHTML = '';
+    list.slice(0, 8).forEach((ev) => {
+      const d = new Date(ev.ts); const cd = countdown(now, d); const hoch = ev.impact === 'hoch';
+      n5.appendChild(el(`
+        <div class="n5row">
+          <span class="dot ${hoch ? 'rot' : 'gelb'}"></span>
+          <span><strong>${esc(ev.name)}</strong> · <span class="n5date">${esc(fmtDate(d))}</span>${hoch ? ' <span class="pausetag">Pause-Fenster</span>' : ''}</span>
+          <span class="n5date">${esc(cd.text)}</span>
+        </div>`));
+    });
+  }
+
   function cell(h) {
     const st = normStatus(h.status); const label = hourLabel(h);
     const isMark = /:00$/.test(label) && ['00', '06', '12', '18'].includes(label.slice(0, 2));
@@ -397,6 +421,8 @@
       detail.forEach((h) => list.appendChild(el(`<div class="fc-row"><span class="fc-time">${esc(hourLabel(h))}</span><span class="dot ${normStatus(h.status)}"></span><span class="fc-kommentar">${esc(h.kommentar || '')}</span></div>`)));
       app.appendChild(list);
     }
+
+    renderTermineLive(data.termine, now);
   }
 
   function renderHistory(history, now) {
