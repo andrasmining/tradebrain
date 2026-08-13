@@ -1,7 +1,11 @@
 # Claude prompt
 
-Claude is prepared as the second independent provider, but no automatic schedule or live assessment is configured by this repository.
+Claude is the second independent provider. Its operational prompt is versioned here as
+[`v1.1.0.md`](v1.1.0.md) and is a 1:1 adaptation of the ChatGPT prompt
+[`prompts/chatgpt/v1.1.0.md`](../chatgpt/v1.1.0.md): identical schema, ranges, action
+mapping and publication contract, differing only in provider-specific tokens
+(`provider=claude`, `providers/claude/**` ownership, canonical prompt path). This keeps
+the two providers' outputs directly comparable.
 
-When a real Claude publisher is added, its operational prompt should be versioned here and must use the same shared schema/action contract as ChatGPT.
-
-Do not add fake Claude assessments merely to populate the UI.
+The prompt is run by an external scheduled Claude publisher. Do not add fake Claude
+assessments merely to populate the UI — only a real publisher run may write provider state.
