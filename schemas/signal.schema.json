@@ -6,7 +6,10 @@
   "required": ["schemaVersion","provider","engineVersion","promptVersion","generatedAt","market","instruments","status","action","pause","caution","tailRiskPct","tailLevel","stressRiskPct","stressLevel","confidencePct","confidenceLevel","dominantMode","dangerWindow","dangerWindowBerlin"],
   "properties": {
     "schemaVersion": {"const":"1.0.0"},
-    "provider": {"type":"string"},
+    "provider": {"type":"string","minLength":1},
+    "engineVersion": {"type":"string","minLength":1},
+    "promptVersion": {"type":"string","minLength":1},
+    "generatedAt": {"type":"string","format":"date-time"},
     "market": {"const":"NASDAQ-100"},
     "instruments": {"const":["NQ_FUTURES","NAS100_CFD"]},
     "status": {"enum":["green","yellow","orange","red"]},
@@ -14,8 +17,18 @@
     "pause": {"type":"boolean"},
     "caution": {"type":"boolean"},
     "tailRiskPct": {"type":"integer","minimum":0,"maximum":100},
+    "tailLevel": {"enum":["low","watch","elevated","high","critical"]},
     "stressRiskPct": {"type":"integer","minimum":0,"maximum":100},
-    "confidencePct": {"type":"integer","minimum":0,"maximum":100}
+    "stressLevel": {"enum":["low","moderate","elevated","high","extreme"]},
+    "confidencePct": {"type":"integer","minimum":0,"maximum":100},
+    "confidenceLevel": {"enum":["low","medium-low","solid","high","very-high"]},
+    "dominantMode": {"enum":["trend-up","trend-down","event/whipsaw","mixed","normal"]},
+    "dangerWindow": {"$ref":"#/$defs/window"},
+    "dangerWindowBerlin": {"$ref":"#/$defs/window"}
+  },
+  "$defs": {
+    "nullableDateTime": {"anyOf":[{"type":"string","format":"date-time"},{"type":"null"}]},
+    "window": {"type":"object","required":["start","end"],"properties":{"start":{"$ref":"#/$defs/nullableDateTime"},"end":{"$ref":"#/$defs/nullableDateTime"}},"additionalProperties":false}
   },
   "additionalProperties": true
 }
