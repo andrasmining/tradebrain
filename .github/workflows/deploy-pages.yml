@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - "providers/chatgpt/snapshots/**/*.json"
       - "providers/*/signal.json"
       - "prompts/**"
       - "index.html"
@@ -18,7 +19,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -35,10 +36,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Finalize pending ChatGPT snapshots
+        run: node scripts/finalize-chatgpt.mjs
+      - name: Commit finalized ChatGPT provider state
+        shell: bash
+        run: |
+          if ! git diff --quiet -- providers/chatgpt/history.json providers/chatgpt/status.json providers/chatgpt/signal.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add providers/chatgpt/history.json providers/chatgpt/status.json providers/chatgpt/signal.json
+            git commit -m "data(chatgpt): finalize provider publication"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
       - name: Validate provider repository state
         run: node scripts/validate-repository.mjs
       - name: Run tests
