@@ -1,0 +1,17 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { spawnSync } from "node:child_process";
+
+function writeJson(root,relative,value){const file=path.join(root,relative);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,`${JSON.stringify(value,null,2)}\n`)}
+function copyRuntime(tmp,files){const scripts=path.join(tmp,"scripts");fs.mkdirSync(scripts,{recursive:true});for(const file of files)fs.copyFileSync(path.join("scripts",file),path.join(scripts,file))}
+function setupBase(tmp){copyRuntime(tmp,["finalize-chatgpt.mjs","lib.mjs"]);const status=JSON.parse(fs.readFileSync("providers/chatgpt/status.json","utf8")),signal=JSON.parse(fs.readFileSync("providers/chatgpt/signal.json","utf8")),history=JSON.parse(fs.readFileSync("providers/chatgpt/history.json","utf8")),latest=history.items.at(-1);assert.ok(latest);fs.mkdirSync(path.join(tmp,path.dirname(latest.snapshot)),{recursive:true});fs.copyFileSync(latest.snapshot,path.join(tmp,latest.snapshot));writeJson(tmp,"providers/chatgpt/status.json",status);writeJson(tmp,"providers/chatgpt/signal.json",signal);writeJson(tmp,"providers/chatgpt/history.json",{...history,items:[latest]});return{status,latest}}
+function run(tmp,script,args=[]){return spawnSync(process.execPath,[`scripts/${script}`,...args],{cwd:tmp,encoding:"utf8"})}
+
+test("invalid unindexed snapshot cannot poison a later valid snapshot",t=>{const tmp=fs.mkdtempSync(path.join(os.tmpdir(),"tb-finalizer-"));t.after(()=>fs.rmSync(tmp,{recursive:true,force:true}));const{status}=setupBase(tmp);fs.mkdirSync(path.join(tmp,"providers/chatgpt/snapshots/2027/01"),{recursive:true});fs.writeFileSync(path.join(tmp,"providers/chatgpt/snapshots/2027/01/a-bad.json"),"{bad json\n");const next={...status,generatedAt:new Date(Date.parse(status.generatedAt)+1000).toISOString()};writeJson(tmp,"providers/chatgpt/snapshots/2027/01/z-good.json",next);const result=run(tmp,"finalize-chatgpt.mjs"),output=`${result.stdout}\n${result.stderr}`;assert.equal(result.status,0,output);assert.match(result.stderr,/Rejected 1 invalid unindexed ChatGPT snapshot/);const finalStatus=JSON.parse(fs.readFileSync(path.join(tmp,"providers/chatgpt/status.json"),"utf8"));assert.equal(finalStatus.generatedAt,next.generatedAt)});
+
+test("invalid indexed snapshot remains a hard failure",t=>{const tmp=fs.mkdtempSync(path.join(os.tmpdir(),"tb-finalizer-"));t.after(()=>fs.rmSync(tmp,{recursive:true,force:true}));const{latest}=setupBase(tmp),indexed=JSON.parse(fs.readFileSync(path.join(tmp,latest.snapshot),"utf8"));indexed.dominantMode="invalid";writeJson(tmp,latest.snapshot,indexed);const result=run(tmp,"finalize-chatgpt.mjs");assert.notEqual(result.status,0);assert.match(result.stderr,/is indexed but invalid/)});
+
+test("provider with snapshots but missing all state files is not treated as first-run",t=>{const tmp=fs.mkdtempSync(path.join(os.tmpdir(),"tb-provider-"));t.after(()=>fs.rmSync(tmp,{recursive:true,force:true}));copyRuntime(tmp,["validate-provider.mjs","lib.mjs"]);fs.mkdirSync(path.join(tmp,"providers/example/snapshots/2026/01"),{recursive:true});fs.writeFileSync(path.join(tmp,"providers/example/snapshots/2026/01/x.json"),"{}\n");const result=run(tmp,"validate-provider.mjs",["example"]);assert.notEqual(result.status,0);assert.match(result.stderr,/was initialized before/)});
