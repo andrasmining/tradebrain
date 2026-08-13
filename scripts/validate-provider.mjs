@@ -40,6 +40,13 @@ const errors = [
   ...validateHistory(history, provider, root)
 ];
 
+const latestHistory = history.items.at(-1);
+if (!latestHistory) {
+  errors.push("history must contain the current published assessment");
+} else if (latestHistory.generatedAt !== status.generatedAt) {
+  errors.push(`current status generatedAt ${status.generatedAt} does not match latest history ${latestHistory.generatedAt}`);
+}
+
 for (const [index, item] of history.items.entries()) {
   const snapshotFile = path.join(root, item.snapshot);
   if (!fs.existsSync(snapshotFile)) continue;
@@ -48,6 +55,11 @@ for (const [index, item] of history.items.entries()) {
     for (const error of validateStatus(snapshot, provider)) errors.push(`snapshot[${index}]: ${error}`);
     for (const key of ["generatedAt","status","action","tailRiskPct","tailLevel","stressRiskPct","stressLevel","confidencePct","confidenceLevel","dominantMode"]) {
       if (JSON.stringify(snapshot[key]) !== JSON.stringify(item[key])) errors.push(`snapshot[${index}].${key} does not match history index`);
+    }
+    if (index === history.items.length - 1 && snapshot.generatedAt === status.generatedAt) {
+      for (const key of ["schemaVersion","provider","engineVersion","promptVersion","generatedAt","market","instruments","status","statusText","recommendation","headline","body","tailRiskPct","tailLevel","stressRiskPct","stressLevel","dominantMode","confidencePct","confidenceLevel","action","dangerWindow","dangerWindowBerlin","sources","lookbackSummary","lookback","outlookSummary","forecast","forecastDetail","events"]) {
+        if (JSON.stringify(snapshot[key]) !== JSON.stringify(status[key])) errors.push(`current status.${key} does not match latest immutable snapshot`);
+      }
     }
   } catch (error) {
     errors.push(`snapshot[${index}] invalid JSON: ${error.message}`);
