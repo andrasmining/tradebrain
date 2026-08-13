@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>NQ Pause-Board</title>
   <meta name="description" content="Wann sollte ich meine NQ-Futures-Bots wegen Marktrisiko pausieren?" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -153,6 +156,8 @@
     </header>
     <div class="nextrun" id="nextrun">&nbsp;</div>
     <div class="tzhint" id="tzhint"></div>
+    <div class="tzhint" id="delaynote">GitHub-Cron kann ~30–60 min später starten; die Seite lädt automatisch, sobald neue Daten da sind.</div>
+    <div id="verBanner"></div>
 
     <div class="tabs">
       <button class="tab active" data-tab="dashboard">Dashboard</button>
@@ -183,7 +188,8 @@
   </div>
 
   <script>
-  const APP_VERSION = '1.7.0';  // KEEP IN SYNC mit APP_VERSION in scripts/fetch-assessment.mjs
+  const APP_VERSION = '1.7.1';  // KEEP IN SYNC mit APP_VERSION in scripts/fetch-assessment.mjs
+  function verCmp(a, b) { const pa = String(a).split('.').map(Number), pb = String(b).split('.').map(Number); for (let i = 0; i < 3; i++) { if ((pa[i] || 0) > (pb[i] || 0)) return 1; if ((pa[i] || 0) < (pb[i] || 0)) return -1; } return 0; }
   const EPOCH = '1970-01-01T00:00:00.000Z';
   const HOUR = 3600000;
 
@@ -353,6 +359,14 @@
     document.getElementById('updated').textContent = gen ? 'Stand: ' + fmtDate(gen) : 'Noch keine echte Einschätzung';
     document.getElementById('verFooter').textContent =
       `App v${APP_VERSION}` + (data.appVersion ? ` · Daten-Generator v${data.appVersion}` : '');
+
+    // Stale-HTML-Erkennung: Daten von neuerem Generator als die geladene Seite → Cache.
+    const vb = document.getElementById('verBanner');
+    if (data.appVersion && verCmp(data.appVersion, APP_VERSION) > 0) {
+      vb.innerHTML = `<div class="banner stale">⚠️ Neuere Version verfügbar (Seite v${esc(APP_VERSION)}, Daten v${esc(data.appVersion)}) — du siehst evtl. eine gecachte alte Seite. <button class="copy-btn" id="reloadBtn" style="padding:2px 10px;margin-left:6px">Neu laden</button></div>`;
+      const b = vb.querySelector('#reloadBtn');
+      if (b) b.addEventListener('click', () => location.reload());
+    } else vb.innerHTML = '';
 
     let banner = null;
     if (!gen) banner = { cls: 'info', text: 'Noch keine echte Einschätzung — löse die GitHub Action einmal aus.' };
@@ -527,7 +541,7 @@ curl -s ${JSON.stringify(signalUrl)} | jq .pause</pre>`));
     const now = new Date();
     const box = document.getElementById('nextrun');
     if (!target || now.getTime() > target.getTime() + 30 * 60000) target = nextRun(now);
-    if (target && now.getTime() < target.getTime()) box.innerHTML = `Nächste Aktualisierung in <b>${fmtRemain(target - now)}</b> · ${esc(fmtHM(target))}`;
+    if (target && now.getTime() < target.getTime()) box.innerHTML = `Nächste Aktualisierung in <b>${fmtRemain(target - now)}</b> · geplant ${esc(fmtHM(target))}`;
     else { box.innerHTML = `<span class="pulse">Aktualisiere … warte auf neue Daten</span>`; if (now.getTime() - lastPoll > 20000) { lastPoll = now.getTime(); pollForUpdate(); } }
     setTimeout(tick, 1000);
   }
@@ -541,7 +555,8 @@ curl -s ${JSON.stringify(signalUrl)} | jq .pause</pre>`));
 
   const now = new Date();
   renderRecurring(now);
-  const getJson = (url) => fetch(url, { cache: 'no-store' }).then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+  // Cache-Bust gegen den GitHub-Pages-CDN-Cache: eindeutiger Query-Parameter pro Abruf.
+  const getJson = (url) => fetch(url + (url.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' }).then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
 
   getJson('./data/status.json')
     .then((data) => {

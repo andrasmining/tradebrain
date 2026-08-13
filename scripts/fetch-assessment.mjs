@@ -39,7 +39,7 @@ const HISTORY_MAX = 200;
 const EVENT_PRE_HOURS = Number(process.env.EVENT_PRE_HOURS) || 2;
 
 // App-/Generator-Version. KEEP IN SYNC mit APP_VERSION in index.html.
-const APP_VERSION = '1.7.0';
+const APP_VERSION = '1.7.1';
 
 const CODE_TO_STATUS = { G: 'gruen', Y: 'gelb', R: 'rot' };
 const RANK = { gruen: 0, gelb: 1, rot: 2 };
