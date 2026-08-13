@@ -1,20 +1,6 @@
 name: Deploy TradeBrain Pages
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "providers/**"
-      - "prompts/**"
-      - "index.html"
-      - "assets/**"
-      - "config/**"
-      - "schemas/**"
-      - "scripts/**"
-      - "test/**"
-      - ".nojekyll"
-      - ".github/workflows/deploy-pages.yml"
-      - "package.json"
   workflow_dispatch:
 
 permissions:
@@ -44,8 +30,6 @@ jobs:
         run: node scripts/build-site.mjs
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
