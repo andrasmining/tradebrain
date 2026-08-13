@@ -2,19 +2,14 @@
 
 This repository is the user-owned public fork of `tobiasgiger/tradebrain`.
 
-It is now a lightweight static risk-state hub for independent AI providers. The UI compares provider assessments; it does **not** create a combined trading signal.
+TradeBrain is a lightweight static risk-state hub for independent AI providers. The UI compares provider assessments; it does **not** create a combined trading signal.
 
 ## Providers
 
-- **ChatGPT** — active scheduled publisher.
-- **Claude** — architecture prepared; unavailable until a real Claude publisher completes its first valid publication.
+- **ChatGPT** — active hourly scheduled publisher.
+- **Claude** — active external scheduled publisher.
 
-Each provider owns only its own directory:
-
-- `providers/chatgpt/**`
-- `providers/claude/**`
-
-Scheduled provider runs must never modify shared UI, schemas, workflows, configuration, or another provider's files.
+Each provider owns only its own provider directory. Scheduled runs must never modify another provider's data or shared UI/schema/workflow files.
 
 ## Market scope
 
@@ -36,20 +31,47 @@ One provider assessment produces one Tail/Kill score, one Stress/Deep-DD score, 
 - 35–49 → `STRONG_BLOCK_NO_NEW_RISK`
 - 50–100 → `EA_OFF_NO_NEW_RISK`
 
-**Stress / Deep-DD risk** estimates a large but potentially recoverable drawdown / volatility environment. Stress does not independently shut down the strategies.
+**Stress / Deep-DD risk** estimates a large but potentially recoverable drawdown / volatility environment. Stress does not independently switch the strategies off.
 
-## Provider publication contract
+## Publication model
 
-A provider publication is transactional:
+ChatGPT scheduled runs create exactly one immutable snapshot under `providers/chatgpt/snapshots/**`. A deterministic GitHub Action validates new snapshots and derives `history.json`, `status.json` and `signal.json`.
 
-1. immutable full snapshot
-2. history index
-3. current status
-4. compact signal **last**
+The finalizer rejects invalid unindexed ChatGPT snapshots without allowing one bad submission to poison later valid snapshots. Corruption of data already referenced by published history remains a hard validation failure.
 
-`signal.json` is the final publication marker.
+Claude publishes its own snapshot/history/status/signal transaction under `providers/claude/**`.
 
-History retention is unlimited. Historical model opinions are immutable and are not rewritten with hindsight.
+Git audit history remains unlimited and immutable. GitHub Pages serves current status/signal plus only the most recent 168 history entries per provider; historical snapshot archives remain in Git and are not copied into every Pages artifact.
+
+## Comparison and freshness
+
+Display-only comparison states are:
+
+- `AGREE`
+- `DIVERGE`
+- `CHATGPT_ONLY`
+- `CLAUDE_ONLY`
+- `NO_FRESH_PROVIDER`
+
+Agreement means both fresh providers map to the same provider action. TradeBrain does not average scores or synthesize a consensus trading signal.
+
+Provider data becomes stale after 130 minutes. The browser refreshes once per minute using `cache: "no-store"` plus cache-busting query parameters.
+
+## Failure isolation
+
+Pages deployment validates/builds providers independently. Invalid or incomplete provider state is omitted from the deployed site instead of blocking a valid provider from being displayed. Repository validation remains available in strict mode for development/PR checks.
+
+Missing provider state is neutral/unavailable — never green.
+
+## Public endpoints
+
+For each provider:
+
+- `/providers/<provider>/status.json`
+- `/providers/<provider>/signal.json`
+- `/providers/<provider>/history.json`
+
+The full immutable snapshot archive is available in the Git repository, not in the Pages artifact.
 
 ## Structure
 
@@ -61,10 +83,11 @@ providers/
     history.json
     snapshots/YYYY/MM/*.json
   claude/
-    README.md
+    status.json
+    signal.json
+    history.json
+    snapshots/YYYY/MM/*.json
 prompts/
-  chatgpt/v1.1.0.md
-  claude/README.md
 schemas/
 config/providers.json
 scripts/
@@ -72,41 +95,9 @@ assets/
 .github/workflows/
 ```
 
-The provider manifest drives frontend discovery. Missing provider data is neutral/unavailable — never green.
-
-## Comparison semantics
-
-TradeBrain calculates display-only comparison states:
-
-- `AGREE`
-- `DIVERGE`
-- `CHATGPT_ONLY`
-- `CLAUDE_ONLY`
-- `NO_FRESH_PROVIDER`
-
-There is deliberately **no consensus trading policy yet**. TradeBrain does not average Tail, take the worst/best Tail, or allow one provider to veto the other. Each provider retains its own authoritative `signal.json`.
-
-## Freshness
-
-The frontend fetches provider JSON with `cache: "no-store"` plus a cache-busting query parameter and checks for changes once per minute.
-
-The dashboard currently marks provider data stale after 130 minutes. Providers are evaluated independently, so one stale/missing provider does not invalidate a fresh provider.
-
-## Public endpoints
-
-After GitHub Pages deployment:
-
-- `/providers/chatgpt/status.json`
-- `/providers/chatgpt/signal.json`
-- `/providers/chatgpt/history.json`
-
-Claude endpoints exist only after Claude publishes real state files. No fake Claude state is committed.
-
 ## GitHub Pages
 
-Deployment uses `.github/workflows/deploy-pages.yml`.
-
-The workflow validates provider data, runs Node built-in tests, builds `dist/`, generates display-only `dist/overview.json`, and deploys the static artifact with GitHub Pages Actions. A Pages failure does not roll back provider data in git.
+Deployment uses `.github/workflows/deploy-pages.yml` with Node 24 GitHub Actions. The workflow finalizes pending ChatGPT snapshots, validates provider state with failure isolation, runs tests, builds `dist/`, generates display-only `dist/overview.json`, and deploys the static artifact.
 
 ## Local validation
 
