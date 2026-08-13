@@ -24,32 +24,43 @@
         <div><span>Last refresh</span><strong id="last-refresh">—</strong></div>
       </div>
     </header>
+
+    <section class="panel priority-timeline" aria-labelledby="forecast-heading">
+      <div class="panel-head"><div><div class="eyebrow">NEXT 24 HOURS</div><h2 id="forecast-heading">Risk timeline</h2></div><div id="timeline-provider" class="small-label"></div></div>
+      <div id="timeline" class="timeline-scroll" tabindex="0" aria-label="24-hour risk forecast"></div>
+    </section>
+
     <section aria-labelledby="providers-heading">
       <div class="section-head"><div><div class="eyebrow">LIVE PROVIDERS</div><h2 id="providers-heading">Risk comparison</h2></div><button id="refresh-button" class="refresh-button" type="button">Refresh</button></div>
       <div id="provider-cards" class="provider-grid" aria-live="polite"></div>
       <div id="agreement-banner" class="agreement neutral">Loading provider state…</div>
     </section>
+
     <section class="panel" aria-labelledby="assessment-heading">
       <div class="panel-head"><div><div class="eyebrow">CURRENT ASSESSMENT</div><h2 id="assessment-heading">Provider detail</h2></div><div id="provider-tabs" class="tabs" role="tablist" aria-label="Assessment provider"></div></div>
       <div id="assessment-detail"></div>
     </section>
-    <section class="panel" aria-labelledby="forecast-heading">
-      <div class="panel-head"><div><div class="eyebrow">NEXT 24 HOURS</div><h2 id="forecast-heading">Risk timeline</h2></div><div id="timeline-provider" class="small-label"></div></div>
-      <div id="timeline" class="timeline-scroll" tabindex="0" aria-label="24-hour risk forecast"></div>
+
+    <section class="panel" aria-labelledby="near-term-heading">
+      <div class="panel-head compact"><div><div class="eyebrow">NEAR TERM</div><h2 id="near-term-heading">Next 6 hours</h2></div></div>
       <div id="forecast-detail" class="detail-grid"></div>
     </section>
+
     <section class="two-column">
       <section class="panel" aria-labelledby="events-heading"><div class="panel-head compact"><div><div class="eyebrow">7-DAY CALENDAR</div><h2 id="events-heading">Upcoming events</h2></div></div><div id="events-list" class="stack-list"></div></section>
       <section class="panel" aria-labelledby="history-heading"><div class="panel-head compact"><div><div class="eyebrow">AUDIT TRAIL</div><h2 id="history-heading">Provider history</h2></div></div><div id="history-list" class="history-strip"></div></section>
     </section>
+
     <section class="panel" aria-labelledby="api-heading">
       <div class="panel-head compact"><div><div class="eyebrow">PUBLIC DATA</div><h2 id="api-heading">Provider endpoints</h2></div></div>
       <div id="api-list" class="api-list"></div>
       <p class="fine-print">Each provider signal is authoritative only for that provider. TradeBrain currently displays comparison metadata; it does not synthesize a combined trading signal.</p>
     </section>
+
     <footer><span>TradeBrain</span><span>Static GitHub Pages · no browser-side AI calls</span></footer>
   </main>
   <noscript>This dashboard requires JavaScript to load provider JSON.</noscript>
+  <script src="./assets/timeline-scroll-guard.js"></script>
   <script type="module" src="./assets/app.js"></script>
 </body>
 </html>
