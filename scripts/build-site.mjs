@@ -17,6 +17,16 @@ const copy = (src, dst = src) => {
 
 for (const item of ["index.html",".nojekyll","assets","providers","config","schemas","prompts"]) copy(item);
 
+// The NOW marker is a separator after the current hourly slot.
+// Example: at 13:xx it belongs between the 13:00 and 14:00 bars.
+const responsivePath = path.join(dist, "assets", "responsive.css");
+if (fs.existsSync(responsivePath)) {
+  let css = fs.readFileSync(responsivePath, "utf8");
+  css = css.replace("left: -5px;", "left: calc(100% + 3px);");
+  css = css.replace("left: -4px;", "left: calc(100% + 3px);");
+  fs.writeFileSync(responsivePath, css);
+}
+
 const run = spawnSync(process.execPath, ["scripts/build-overview.mjs"], { cwd:root, encoding:"utf8" });
 process.stdout.write(run.stdout);
 process.stderr.write(run.stderr);
