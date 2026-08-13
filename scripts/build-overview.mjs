@@ -28,7 +28,12 @@ for (const provider of providers) {
     states[provider.id] = null;
   }
 }
-const comparison = compareProviders(states.chatgpt, states.claude);
+
+const comparison = compareProviders(states.chatgpt, states.claude, Date.now(), 130);
+if (comparison.a?.fresh && comparison.b?.fresh) {
+  comparison.comparison = states.chatgpt.action === states.claude.action ? "AGREE" : "DIVERGE";
+}
+
 const overview = {
   generatedAt: new Date().toISOString(),
   purpose: "DISPLAY/COMPARISON DATA — NOT AN EA SIGNAL",
