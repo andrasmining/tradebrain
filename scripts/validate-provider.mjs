@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { readJson, validateStatus, validateSignal, validateHistory } from "./lib.mjs";
+import { validateStatusContract } from "./status-contract.mjs";
 
 const provider = process.argv[2];
 if (!provider) {
@@ -53,6 +54,7 @@ try {
 
 const errors = [
   ...validateStatus(status, provider),
+  ...validateStatusContract(status),
   ...validateSignal(signal, status, provider),
   ...validateHistory(history, provider, root)
 ];
@@ -74,6 +76,7 @@ for (const [index, item] of history.items.entries()) {
       if (JSON.stringify(snapshot[key]) !== JSON.stringify(item[key])) errors.push(`snapshot[${index}].${key} does not match history index`);
     }
     if (index === history.items.length - 1 && snapshot.generatedAt === status.generatedAt) {
+      for (const error of validateStatusContract(snapshot)) errors.push(`snapshot[${index}]: ${error}`);
       for (const key of ["schemaVersion", "provider", "engineVersion", "promptVersion", "generatedAt", "market", "instruments", "status", "statusText", "recommendation", "headline", "body", "tailRiskPct", "tailLevel", "stressRiskPct", "stressLevel", "dominantMode", "confidencePct", "confidenceLevel", "action", "dangerWindow", "dangerWindowBerlin", "sources", "lookbackSummary", "lookback", "outlookSummary", "forecast", "forecastDetail", "events"]) {
         if (JSON.stringify(snapshot[key]) !== JSON.stringify(status[key])) errors.push(`current status.${key} does not match latest immutable snapshot`);
       }
