@@ -12,19 +12,19 @@
     "generatedAt": {"type":"string","format":"date-time"},
     "market": {"const":"NASDAQ-100"},
     "instruments": {"const":["NQ_FUTURES","NAS100_CFD"]},
-    "status": {"enum":["green","yellow","orange","red"]},
+    "status": {"$ref":"#/$defs/status"},
     "statusText": {"type":"string","minLength":1},
     "recommendation": {"type":"string","minLength":1},
     "headline": {"type":"string","minLength":1},
     "body": {"type":"string","minLength":1},
-    "tailRiskPct": {"type":"integer","minimum":0,"maximum":100},
+    "tailRiskPct": {"$ref":"#/$defs/score"},
     "tailLevel": {"enum":["low","watch","elevated","high","critical"]},
-    "stressRiskPct": {"type":"integer","minimum":0,"maximum":100},
+    "stressRiskPct": {"$ref":"#/$defs/score"},
     "stressLevel": {"enum":["low","moderate","elevated","high","extreme"]},
-    "dominantMode": {"enum":["trend-up","trend-down","event/whipsaw","mixed","normal"]},
-    "confidencePct": {"type":"integer","minimum":0,"maximum":100},
+    "dominantMode": {"$ref":"#/$defs/mode"},
+    "confidencePct": {"$ref":"#/$defs/score"},
     "confidenceLevel": {"enum":["low","medium-low","solid","high","very-high"]},
-    "action": {"enum":["EA_ON","WATCH","BLOCK_NEW_BASE_ENTRIES","STRONG_BLOCK_NO_NEW_RISK","EA_OFF_NO_NEW_RISK"]},
+    "action": {"$ref":"#/$defs/action"},
     "dangerWindow": {"$ref":"#/$defs/window"},
     "dangerWindowBerlin": {"$ref":"#/$defs/window"},
     "sources": {"type":"array","minItems":1,"items":{"$ref":"#/$defs/source"}},
@@ -36,12 +36,72 @@
     "events": {"type":"array","items":{"$ref":"#/$defs/event"}}
   },
   "$defs": {
-    "window": {"type":"object","required":["start","end"],"properties":{"start":{"type":["string","null"]},"end":{"type":["string","null"]}},"additionalProperties":false},
+    "score": {"type":"integer","minimum":0,"maximum":100},
+    "status": {"enum":["green","yellow","orange","red"]},
+    "action": {"enum":["EA_ON","WATCH","BLOCK_NEW_BASE_ENTRIES","STRONG_BLOCK_NO_NEW_RISK","EA_OFF_NO_NEW_RISK"]},
+    "mode": {"enum":["trend-up","trend-down","event/whipsaw","mixed","normal"]},
+    "nullableStatus": {"anyOf":[{"$ref":"#/$defs/status"},{"type":"null"}]},
+    "nullableAction": {"anyOf":[{"$ref":"#/$defs/action"},{"type":"null"}]},
+    "nullableMode": {"anyOf":[{"$ref":"#/$defs/mode"},{"type":"null"}]},
+    "nullableScore": {"anyOf":[{"$ref":"#/$defs/score"},{"type":"null"}]},
+    "nullableDateTime": {"anyOf":[{"type":"string","format":"date-time"},{"type":"null"}]},
+    "window": {"type":"object","required":["start","end"],"properties":{"start":{"$ref":"#/$defs/nullableDateTime"},"end":{"$ref":"#/$defs/nullableDateTime"}},"additionalProperties":false},
     "source": {"type":"object","required":["title","url"],"properties":{"title":{"type":"string","minLength":1},"url":{"type":"string","format":"uri"}},"additionalProperties":true},
-    "lookback": {"type":"object","required":["ts","timeBerlin","available","status","action","tailRiskPct","stressRiskPct","confidencePct","dominantMode"],"additionalProperties":true},
-    "forecast": {"type":"object","required":["ts","timeBerlin","status","action","tailRiskPct","stressRiskPct","confidencePct","dominantMode"],"additionalProperties":true},
-    "detail": {"type":"object","required":["ts","timeBerlin","status","tailRiskPct","stressRiskPct","comment"],"additionalProperties":true},
-    "event": {"type":"object","required":["name","ts","timeBerlin","impact"],"properties":{"impact":{"enum":["high","medium"]}},"additionalProperties":true}
+    "lookback": {
+      "type":"object",
+      "required":["ts","timeBerlin","available","status","action","tailRiskPct","stressRiskPct","confidencePct","dominantMode"],
+      "properties": {
+        "ts":{"type":"string","format":"date-time"},
+        "timeBerlin":{"type":"string","format":"date-time"},
+        "available":{"type":"boolean"},
+        "status":{"$ref":"#/$defs/nullableStatus"},
+        "action":{"$ref":"#/$defs/nullableAction"},
+        "tailRiskPct":{"$ref":"#/$defs/nullableScore"},
+        "stressRiskPct":{"$ref":"#/$defs/nullableScore"},
+        "confidencePct":{"$ref":"#/$defs/nullableScore"},
+        "dominantMode":{"$ref":"#/$defs/nullableMode"}
+      },
+      "additionalProperties":true
+    },
+    "forecast": {
+      "type":"object",
+      "required":["ts","timeBerlin","status","action","tailRiskPct","stressRiskPct","confidencePct","dominantMode"],
+      "properties": {
+        "ts":{"type":"string","format":"date-time"},
+        "timeBerlin":{"type":"string","format":"date-time"},
+        "status":{"$ref":"#/$defs/status"},
+        "action":{"$ref":"#/$defs/action"},
+        "tailRiskPct":{"$ref":"#/$defs/score"},
+        "stressRiskPct":{"$ref":"#/$defs/score"},
+        "confidencePct":{"$ref":"#/$defs/score"},
+        "dominantMode":{"$ref":"#/$defs/mode"}
+      },
+      "additionalProperties":true
+    },
+    "detail": {
+      "type":"object",
+      "required":["ts","timeBerlin","status","tailRiskPct","stressRiskPct","comment"],
+      "properties": {
+        "ts":{"type":"string","format":"date-time"},
+        "timeBerlin":{"type":"string","format":"date-time"},
+        "status":{"$ref":"#/$defs/status"},
+        "tailRiskPct":{"$ref":"#/$defs/score"},
+        "stressRiskPct":{"$ref":"#/$defs/score"},
+        "comment":{"type":"string","minLength":1}
+      },
+      "additionalProperties":true
+    },
+    "event": {
+      "type":"object",
+      "required":["name","ts","timeBerlin","impact"],
+      "properties": {
+        "name":{"type":"string","minLength":1},
+        "ts":{"type":"string","format":"date-time"},
+        "timeBerlin":{"type":"string","format":"date-time"},
+        "impact":{"enum":["high","medium"]}
+      },
+      "additionalProperties":true
+    }
   },
   "additionalProperties": true
 }
