@@ -22,16 +22,18 @@ They must never modify Claude/provider data or unrelated repository files.
 - `signal.json` — compact strategy-facing signal; published last.
 - `history.json` — unlimited chronological index of successful assessments.
 - `snapshots/YYYY/MM/` — immutable full JSON snapshot of every successful assessment, retained indefinitely.
-- `prompts/` — immutable versioned canonical prompts.
+- `/prompts/chatgpt/` — public-safe, immutable canonical prompt versions.
 
 ## Active versions
 
 - Schema: `1.0.0`
 - Engine: `1.0.0`
-- Prompt: `1.0.3`
+- Public prompt: `1.1.0`
 - Provider: `chatgpt`
 - Market: `NASDAQ-100`
 - Instruments: `NQ_FUTURES`, `NAS100_CFD`
+
+Private strategy calibration is intentionally kept out of this public repository and applied only by the scheduled task as a private overlay.
 
 ## Tail / kill-regime risk
 
