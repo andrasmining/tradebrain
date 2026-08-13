@@ -1,196 +1,21 @@
 /* TradeBrain responsive presentation overrides.
    Keeps the existing desktop dashboard design while restoring the compact
    risk-bar timeline and tightening mobile layouts. */
-
-/* --- Compact 24h risk overview: one colored bar per hour --- */
-.timeline-scroll {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: #0c1320;
-  padding: 16px 10px 8px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-inline: contain;
-  scrollbar-width: thin;
-  scrollbar-color: #314156 transparent;
-}
-.timeline-scroll::-webkit-scrollbar { height: 7px; }
-.timeline-scroll::-webkit-scrollbar-thumb { background: #314156; border-radius: 999px; }
-
-.timeline-track {
-  display: flex;
-  align-items: flex-end;
-  gap: 7px;
-  min-width: max-content;
-  height: 196px;
-  padding: 18px 4px 3px;
-}
-
-.hour-card {
-  width: 38px;
-  flex: 0 0 38px;
-  height: 166px;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  position: relative;
-}
-
-.hour-card .small-label {
-  order: 1;
-  width: 100%;
-  height: 132px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  font-size: 0;
-  line-height: 0;
-  color: transparent;
-}
-
-.hour-card .dot {
-  display: block;
-  width: 24px;
-  margin: 0;
-  border-radius: 6px;
-  flex: 0 0 auto;
-}
-.hour-card .dot.green { height: 48px; }
-.hour-card .dot.yellow { height: 84px; }
-.hour-card .dot.orange { height: 108px; }
-.hour-card .dot.red { height: 132px; }
-
-.hour-card .time {
-  order: 2;
-  height: 40px;
-  margin: 6px 0 0;
-  color: var(--muted);
-  font: 600 .63rem/1 var(--mono);
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  letter-spacing: .02em;
-}
-
-/* Tail/Stress remain available in the provider cards and detailed sections.
-   Repeating both inside every hourly cell made the timeline noisy. */
-.hour-card .risk,
-.hour-card .stress { display: none; }
-
-.hour-card.current {
-  outline: 0;
-  box-shadow: none;
-}
-.hour-card.current::after {
-  content: "";
-  position: absolute;
-  left: -5px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  border-radius: 2px;
-  background: var(--yellow);
-  box-shadow: 0 0 10px rgba(241,199,91,.28);
-}
-.hour-card.current::before {
-  content: "NOW";
-  position: absolute;
-  left: -4px;
-  top: -15px;
-  transform: translateX(-48%);
-  color: var(--yellow);
-  font: 600 .58rem/1 var(--mono);
-  letter-spacing: .12em;
-  white-space: nowrap;
-}
-.hour-card.current .time { color: var(--yellow); }
-
-/* --- Mobile-first refinements without changing the desktop visual language --- */
-@media (max-width: 780px) {
-  .shell {
-    width: calc(100% - 20px);
-    padding-top: 16px;
-    padding-bottom: 34px;
-  }
-  .topbar { margin-bottom: 20px; }
-  h1 { font-size: clamp(1.55rem, 8vw, 2rem); }
-  .subtitle { font-size: .84rem; line-height: 1.4; }
-  .section-head { margin-top: 16px; }
-  .provider-grid { gap: 10px; }
-  .provider-card { padding: 14px; }
-  .provider-card-head { margin-bottom: 12px; }
-  .provider-name { font-size: 1rem; }
-  .metrics { gap: 6px; }
-  .metric { padding: 9px 7px; }
-  .metric-label {
-    white-space: normal;
-    line-height: 1.15;
-    min-height: 2.3em;
-  }
-  .metric strong { font-size: 1.42rem; margin-top: 6px; }
-  .panel { padding: 14px; margin-bottom: 12px; border-radius: 13px; }
-  .assessment-copy { gap: 12px; }
-  .body-copy { font-size: .86rem; line-height: 1.5; }
-  .recommendation { padding: 10px 11px; margin: 11px 0; }
-  .timeline-scroll { padding: 16px 7px 7px; }
-  .timeline-track { gap: 5px; height: 190px; padding-inline: 2px; }
-  .hour-card { width: 34px; flex-basis: 34px; }
-  .hour-card .dot { width: 22px; }
-  .detail-card, .event-card { padding: 10px; }
-}
-
-@media (max-width: 560px) {
-  .topbar { display: block; }
-  .header-meta { margin-top: 12px; gap: 6px; }
-  .header-meta > div { padding: 8px 9px; }
-  .section-head { align-items: center; }
-  .panel-head {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 9px;
-  }
-  .panel-head .tabs { width: 100%; }
-  .tabs { padding-bottom: 1px; }
-  .tab { min-height: 38px; padding-inline: 12px; }
-  .agreement { margin: 9px 0 16px; padding: 9px 11px; }
-  .detail-grid { grid-template-columns: 1fr; }
-  .kv { gap: 10px; }
-  .source-list a { font-size: .76rem; }
-}
-
-@media (max-width: 430px) {
-  .shell { width: calc(100% - 16px); }
-  .provider-card-head {
-    display: grid;
-    grid-template-columns: minmax(0,1fr) auto;
-    gap: 8px;
-  }
-  .provider-age { font-size: .62rem; max-width: 126px; }
-  .status-pill { padding: 5px 7px; }
-  .metrics { grid-template-columns: repeat(3, minmax(0,1fr)); }
-  .metric-label { font-size: .55rem; letter-spacing: -.01em; }
-  .metric strong { font-size: 1.32rem; }
-  .metric small { font-size: .57rem; }
-  .provider-meta { font-size: .62rem; gap: 5px 10px; }
-  .timeline-scroll { margin-inline: -3px; }
-  .timeline-track { gap: 4px; }
-  .hour-card { width: 32px; flex-basis: 32px; }
-  .hour-card .dot { width: 21px; }
-  .hour-card .time { font-size: .6rem; }
-  .event-card { grid-template-columns: minmax(0,1fr) auto; }
-  .api-row { padding: 9px 10px; }
-}
-
-@media (max-width: 340px) {
-  .header-meta { grid-template-columns: 1fr 1fr; }
-  .metrics { grid-template-columns: repeat(3, minmax(0,1fr)); }
-  .metrics .metric:last-child { grid-column: auto; }
-  .metric { padding-inline: 5px; }
-  .metric strong { font-size: 1.22rem; }
-  .metric-label { font-size: .51rem; }
-}
+.timeline-scroll { border:1px solid var(--line); border-radius:14px; background:#0c1320; padding:16px 10px 8px; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; overscroll-behavior-inline:contain; scrollbar-width:thin; scrollbar-color:#314156 transparent; }
+.timeline-scroll::-webkit-scrollbar { height:7px; }
+.timeline-scroll::-webkit-scrollbar-thumb { background:#314156; border-radius:999px; }
+.timeline-track { display:flex; align-items:flex-end; gap:7px; min-width:max-content; height:196px; padding:18px 4px 3px; }
+.hour-card { width:38px; flex:0 0 38px; height:166px; padding:0; border:0; border-radius:0; background:transparent; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; position:relative; }
+.hour-card .small-label { order:1; width:100%; height:132px; display:flex; align-items:flex-end; justify-content:center; font-size:0; line-height:0; color:transparent; }
+.hour-card .dot { display:block; width:24px; margin:0; border-radius:6px; flex:0 0 auto; }
+.hour-card .dot.green { height:48px; }.hour-card .dot.yellow { height:84px; }.hour-card .dot.orange { height:108px; }.hour-card .dot.red { height:132px; }
+.hour-card .time { order:2; height:40px; margin:6px 0 0; color:var(--muted); font:600 .63rem/1 var(--mono); writing-mode:vertical-rl; transform:rotate(180deg); letter-spacing:.02em; }
+.hour-card .risk,.hour-card .stress { display:none; }
+.hour-card.current { outline:0; box-shadow:none; }
+.hour-card.current::after { content:""; position:absolute; left:calc(100% + 3px); top:0; bottom:0; width:2px; border-radius:2px; background:var(--yellow); box-shadow:0 0 10px rgba(241,199,91,.28); }
+.hour-card.current::before { content:"NOW"; position:absolute; left:calc(100% + 3px); top:-15px; transform:translateX(-48%); color:var(--yellow); font:600 .58rem/1 var(--mono); letter-spacing:.12em; white-space:nowrap; }
+.hour-card.current .time { color:var(--yellow); }
+@media (max-width:780px) { .shell{width:calc(100% - 20px);padding-top:16px;padding-bottom:34px}.topbar{margin-bottom:20px}h1{font-size:clamp(1.55rem,8vw,2rem)}.subtitle{font-size:.84rem;line-height:1.4}.section-head{margin-top:16px}.provider-grid{gap:10px}.provider-card{padding:14px}.provider-card-head{margin-bottom:12px}.provider-name{font-size:1rem}.metrics{gap:6px}.metric{padding:9px 7px}.metric-label{white-space:normal;line-height:1.15;min-height:2.3em}.metric strong{font-size:1.42rem;margin-top:6px}.panel{padding:14px;margin-bottom:12px;border-radius:13px}.assessment-copy{gap:12px}.body-copy{font-size:.86rem;line-height:1.5}.recommendation{padding:10px 11px;margin:11px 0}.timeline-scroll{padding:16px 7px 7px}.timeline-track{gap:5px;height:190px;padding-inline:2px}.hour-card{width:34px;flex-basis:34px}.hour-card .dot{width:22px}.detail-card,.event-card{padding:10px} }
+@media (max-width:560px) { .topbar{display:block}.header-meta{margin-top:12px;gap:6px}.header-meta>div{padding:8px 9px}.section-head{align-items:center}.panel-head{align-items:flex-start;flex-direction:column;gap:9px}.panel-head .tabs{width:100%}.tabs{padding-bottom:1px}.tab{min-height:38px;padding-inline:12px}.agreement{margin:9px 0 16px;padding:9px 11px}.detail-grid{grid-template-columns:1fr}.kv{gap:10px}.source-list a{font-size:.76rem} }
+@media (max-width:430px) { .shell{width:calc(100% - 16px)}.provider-card-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.provider-age{font-size:.62rem;max-width:126px}.status-pill{padding:5px 7px}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.metric-label{font-size:.55rem;letter-spacing:-.01em}.metric strong{font-size:1.32rem}.metric small{font-size:.57rem}.provider-meta{font-size:.62rem;gap:5px 10px}.timeline-scroll{margin-inline:-3px}.timeline-track{gap:4px}.hour-card{width:32px;flex-basis:32px}.hour-card .dot{width:21px}.hour-card .time{font-size:.6rem}.event-card{grid-template-columns:minmax(0,1fr) auto}.api-row{padding:9px 10px} }
+@media (max-width:340px) { .header-meta{grid-template-columns:1fr 1fr}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.metrics .metric:last-child{grid-column:auto}.metric{padding-inline:5px}.metric strong{font-size:1.22rem}.metric-label{font-size:.51rem} }

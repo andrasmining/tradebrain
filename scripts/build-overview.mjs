@@ -5,19 +5,28 @@ import { readJson, validateStatus, compareProviders } from "./lib.mjs";
 
 const root = process.cwd();
 const outDir = path.join(root, "dist");
-fs.mkdirSync(outDir, { recursive:true });
+fs.mkdirSync(outDir, { recursive: true });
 const providers = readJson(path.join(root, "config", "providers.json"));
 const states = {};
-for (const p of providers) {
-  const file = path.join(root, p.path, "status.json");
-  if (!p.enabled || !fs.existsSync(file)) {
-    states[p.id] = null;
+for (const provider of providers) {
+  const file = path.join(root, provider.path, "status.json");
+  if (!provider.enabled || !fs.existsSync(file)) {
+    states[provider.id] = null;
     continue;
   }
-  const status = readJson(file);
-  const errors = validateStatus(status, p.id);
-  if (errors.length) throw new Error(`${p.id} status invalid: ${errors.join("; ")}`);
-  states[p.id] = status;
+  try {
+    const status = readJson(file);
+    const errors = validateStatus(status, provider.id);
+    if (errors.length) {
+      console.warn(`${provider.id} status omitted from overview: ${errors.join("; ")}`);
+      states[provider.id] = null;
+    } else {
+      states[provider.id] = status;
+    }
+  } catch (error) {
+    console.warn(`${provider.id} status omitted from overview: ${error.message}`);
+    states[provider.id] = null;
+  }
 }
 const comparison = compareProviders(states.chatgpt, states.claude);
 const overview = {
@@ -26,21 +35,21 @@ const overview = {
   comparison: comparison.comparison,
   tailDifference: comparison.tailDifference ?? null,
   stressDifference: comparison.stressDifference ?? null,
-  providers: Object.fromEntries(providers.map(p => {
-    const s = states[p.id];
-    const freshness = comparison[p.id === "chatgpt" ? "a" : "b"] ?? null;
-    return [p.id, s ? {
-      available:true,
-      generatedAt:s.generatedAt,
-      status:s.status,
-      action:s.action,
-      tailRiskPct:s.tailRiskPct,
-      stressRiskPct:s.stressRiskPct,
-      confidencePct:s.confidencePct,
-      dominantMode:s.dominantMode,
-      freshness:freshness?.availability ?? "unknown"
-    } : { available:false, freshness:"missing" }];
+  providers: Object.fromEntries(providers.map(provider => {
+    const status = states[provider.id];
+    const freshness = comparison[provider.id === "chatgpt" ? "a" : "b"] ?? null;
+    return [provider.id, status ? {
+      available: true,
+      generatedAt: status.generatedAt,
+      status: status.status,
+      action: status.action,
+      tailRiskPct: status.tailRiskPct,
+      stressRiskPct: status.stressRiskPct,
+      confidencePct: status.confidencePct,
+      dominantMode: status.dominantMode,
+      freshness: freshness?.availability ?? "unknown"
+    } : { available: false, freshness: "missing" }];
   }))
 };
-fs.writeFileSync(path.join(outDir, "overview.json"), JSON.stringify(overview, null, 2) + "\n");
+fs.writeFileSync(path.join(outDir, "overview.json"), `${JSON.stringify(overview, null, 2)}\n`);
 console.log("Built dist/overview.json");

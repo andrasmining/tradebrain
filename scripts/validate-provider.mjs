@@ -8,14 +8,31 @@ if (!provider) {
   console.error("Usage: node scripts/validate-provider.mjs <provider>");
   process.exit(2);
 }
+
 const root = process.cwd();
 const dir = path.join(root, "providers", provider);
 const statusFile = path.join(dir, "status.json");
 const signalFile = path.join(dir, "signal.json");
 const historyFile = path.join(dir, "history.json");
+const snapshotsDir = path.join(dir, "snapshots");
+const stateFiles = [statusFile, signalFile, historyFile];
+const present = stateFiles.filter(fs.existsSync);
 
-const present = [statusFile, signalFile, historyFile].filter(fs.existsSync);
+function hasSnapshots(dirPath) {
+  if (!fs.existsSync(dirPath)) return false;
+  for (const entry of fs.readdirSync(dirPath, { withFileTypes: true })) {
+    const full = path.join(dirPath, entry.name);
+    if (entry.isDirectory() && hasSnapshots(full)) return true;
+    if (entry.isFile() && entry.name.endsWith(".json")) return true;
+  }
+  return false;
+}
+
 if (present.length === 0) {
+  if (hasSnapshots(snapshotsDir)) {
+    console.error(`${provider}: provider was initialized before, but status.json, signal.json and history.json are all missing.`);
+    process.exit(1);
+  }
   console.log(`${provider}: awaiting first assessment; no provider state files present.`);
   process.exit(0);
 }
@@ -53,11 +70,11 @@ for (const [index, item] of history.items.entries()) {
   try {
     const snapshot = readJson(snapshotFile);
     for (const error of validateStatus(snapshot, provider)) errors.push(`snapshot[${index}]: ${error}`);
-    for (const key of ["generatedAt","status","action","tailRiskPct","tailLevel","stressRiskPct","stressLevel","confidencePct","confidenceLevel","dominantMode"]) {
+    for (const key of ["generatedAt", "status", "action", "tailRiskPct", "tailLevel", "stressRiskPct", "stressLevel", "confidencePct", "confidenceLevel", "dominantMode"]) {
       if (JSON.stringify(snapshot[key]) !== JSON.stringify(item[key])) errors.push(`snapshot[${index}].${key} does not match history index`);
     }
     if (index === history.items.length - 1 && snapshot.generatedAt === status.generatedAt) {
-      for (const key of ["schemaVersion","provider","engineVersion","promptVersion","generatedAt","market","instruments","status","statusText","recommendation","headline","body","tailRiskPct","tailLevel","stressRiskPct","stressLevel","dominantMode","confidencePct","confidenceLevel","action","dangerWindow","dangerWindowBerlin","sources","lookbackSummary","lookback","outlookSummary","forecast","forecastDetail","events"]) {
+      for (const key of ["schemaVersion", "provider", "engineVersion", "promptVersion", "generatedAt", "market", "instruments", "status", "statusText", "recommendation", "headline", "body", "tailRiskPct", "tailLevel", "stressRiskPct", "stressLevel", "dominantMode", "confidencePct", "confidenceLevel", "action", "dangerWindow", "dangerWindowBerlin", "sources", "lookbackSummary", "lookback", "outlookSummary", "forecast", "forecastDetail", "events"]) {
         if (JSON.stringify(snapshot[key]) !== JSON.stringify(status[key])) errors.push(`current status.${key} does not match latest immutable snapshot`);
       }
     }
