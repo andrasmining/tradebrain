@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+import fs from "node:fs";
+import path from "node:path";
+import { readJson, validateStatus, validateSignal, validateHistory } from "./lib.mjs";
+
+const provider = process.argv[2];
+if (!provider) {
+  console.error("Usage: node scripts/validate-provider.mjs <provider>");
+  process.exit(2);
+}
+const root = process.cwd();
+const dir = path.join(root, "providers", provider);
+const statusFile = path.join(dir, "status.json");
+const signalFile = path.join(dir, "signal.json");
+const historyFile = path.join(dir, "history.json");
+
+const present = [statusFile, signalFile, historyFile].filter(fs.existsSync);
+if (present.length === 0) {
+  console.log(`${provider}: awaiting first assessment; no provider state files present.`);
+  process.exit(0);
+}
+if (present.length !== 3) {
+  console.error(`${provider}: corrupt/incomplete provider state; status.json, signal.json and history.json must exist together.`);
+  process.exit(1);
+}
+
+let status, signal, history;
+try {
+  status = readJson(statusFile);
+  signal = readJson(signalFile);
+  history = readJson(historyFile);
+} catch (error) {
+  console.error(`${provider}: invalid JSON: ${error.message}`);
+  process.exit(1);
+}
+
+const errors = [
+  ...validateStatus(status, provider),
+  ...validateSignal(signal, status, provider),
+  ...validateHistory(history, provider, root)
+];
+
+for (const [index, item] of history.items.entries()) {
+  const snapshotFile = path.join(root, item.snapshot);
+  if (!fs.existsSync(snapshotFile)) continue;
+  try {
+    const snapshot = readJson(snapshotFile);
+    for (const error of validateStatus(snapshot, provider)) errors.push(`snapshot[${index}]: ${error}`);
+    for (const key of ["generatedAt","status","action","tailRiskPct","tailLevel","stressRiskPct","stressLevel","confidencePct","confidenceLevel","dominantMode"]) {
+      if (JSON.stringify(snapshot[key]) !== JSON.stringify(item[key])) errors.push(`snapshot[${index}].${key} does not match history index`);
+    }
+  } catch (error) {
+    errors.push(`snapshot[${index}] invalid JSON: ${error.message}`);
+  }
+}
+
+if (errors.length) {
+  console.error(`${provider}: validation failed (${errors.length})`);
+  for (const error of errors) console.error(`- ${error}`);
+  process.exit(1);
+}
+console.log(`${provider}: valid (${status.generatedAt}, ${history.items.length} history entries).`);

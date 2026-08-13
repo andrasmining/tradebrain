@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://andrasmining.github.io/tradebrain/schemas/history.schema.json",
+  "title": "TradeBrain provider history",
+  "type": "object",
+  "required": ["schemaVersion","provider","historyVersion","retentionPolicy","items"],
+  "properties": {
+    "schemaVersion": {"const":"1.0.0"},
+    "provider": {"type":"string"},
+    "historyVersion": {"type":"string"},
+    "retentionPolicy": {"const":"unlimited"},
+    "items": {
+      "type":"array",
+      "items": {
+        "type":"object",
+        "required":["generatedAt","status","action","tailRiskPct","tailLevel","stressRiskPct","stressLevel","confidencePct","confidenceLevel","dominantMode","snapshot"],
+        "additionalProperties":true
+      }
+    }
+  },
+  "additionalProperties": true
+}

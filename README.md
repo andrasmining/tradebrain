@@ -1,232 +1,130 @@
-# NQ Pause-Board
+# TradeBrain — multi-provider Nasdaq-100 risk state
 
-Ein Dashboard, das dir als **NQ-Futures Mean-Reversion-Trader** anzeigt, wann du
-deine automatisierten Trading-Bots wegen Marktrisiko (News, Geopolitik,
-Wirtschaftsdaten) besser pausieren solltest.
+This repository is the user-owned public fork of `tobiasgiger/tradebrain`.
 
-Statisches Frontend + GitHub Action als Backend, gehostet auf GitHub Pages.
-Sprache der Oberfläche: Deutsch, Zeitzone Europe/Zurich.
+It is now a lightweight static risk-state hub for independent AI providers. The UI compares provider assessments; it does **not** create a combined trading signal.
 
-> ⚠️ **Keine Anlageberatung.** Persönliches Hilfsmittel. Einschätzungen können
-> falsch oder veraltet sein — Handelsentscheidungen triffst du eigenverantwortlich.
+## Providers
 
----
+- **ChatGPT** — active scheduled publisher.
+- **Claude** — architecture prepared; unavailable until a real Claude publisher completes its first valid publication.
 
-## Architektur
+Each provider owns only its own directory:
 
-Bewusst **kein Live-API-Call im Browser** (wäre langsam/unzuverlässig). Stattdessen:
+- `providers/chatgpt/**`
+- `providers/claude/**`
 
-```
-GitHub Action (Zeitplan-Cron + manuell)
-   → scripts/fetch-assessment.mjs
-        → Anthropic Messages API (Tool: web_search)
-        → Termin-Cross-Check (NFP/CPI/PCE/FOMC erzwingen ROT)
-        → schreibt data/status.json, data/signal.json, data/history.json
-        → Push bei Eskalation nach ROT (ntfy / Telegram)
-        → committet die Dateien zurück ins Repo
-GitHub Pages (statisch)
-   → index.html liest data/status.json + data/history.json (same-origin)
-Trading-Bots
-   → pollen data/signal.json direkt (maschinenlesbares Pause-Flag)
-```
+Scheduled provider runs must never modify shared UI, schemas, workflows, configuration, or another provider's files.
 
-Der Anthropic API-Key liegt als **GitHub Actions Secret** (`ANTHROPIC_API_KEY`),
-nie im Code. Das Modell liefert kompakte Codes (24-Zeichen `G`/`Y`/`R` + 6
-Kommentare + Quellen + Confidence); die **Uhrzeiten** berechnet das Skript
-deterministisch (Europe/Zurich) und mappt sie per Index auf die Codes.
+## Market scope
 
-### Zeitplan
+Every provider uses the same shared market scope:
 
-An die NQ-Handelswoche angepasst (nicht 24/7 — spart Kosten):
+- `NASDAQ-100`
+- `NQ_FUTURES`
+- `NAS100_CFD`
 
-| Tag | Läufe (CEST) |
-|-----|--------------|
-| Sonntag | 22:00 (Wochenstart) |
-| Mo–Do | 02 · 06 · 10 · 14 · 18 · 22 (alle 4 h) |
-| Freitag | 02 · 06 · 10 · 14 · 18 (Stopp) |
-| Samstag | — aus |
+One provider assessment produces one Tail/Kill score, one Stress/Deep-DD score, one Confidence score, one market mode and one provider action for both instruments.
 
-~30 Läufe/Woche. GitHub-Cron läuft in UTC (`CEST = UTC+2`); im Winter (CET)
-verschieben sich die lokalen Zeiten um 1 h — Kommentar dazu im Workflow.
-Manuelles Auslösen (**Actions → Run workflow**) geht jederzeit zusätzlich.
+## Tail vs Stress
 
----
+**Tail / Kill risk** is the primary action score. It estimates pathological one-way price-path risk where mean reversion fails long enough to overwhelm the strategy.
 
-## Funktionen
+- 0–19 → `EA_ON`
+- 20–24 → `WATCH`
+- 25–34 → `BLOCK_NEW_BASE_ENTRIES`
+- 35–49 → `STRONG_BLOCK_NO_NEW_RISK`
+- 50–100 → `EA_OFF_NO_NEW_RISK`
 
-### Tages-Ampel & Stunden-Ampel
-Gesamteinschätzung (grün/gelb/rot) + horizontal scrollbarer 48-Punkte-Zeitstrahl
-(24 h zurück · „Jetzt" · 24 h voraus), automatisch zur Jetzt-Position gescrollt.
+**Stress / Deep-DD risk** estimates a large but potentially recoverable drawdown / volatility environment. Stress does not independently shut down the strategies.
 
-### Termin-Cross-Check (mit Vorlauf) + Live-Kalender
-High-Impact-Events **erzwingen ROT** — nicht erst zur Event-Uhrzeit, sondern
-schon **~2 Stunden davor** (das Risiko baut sich vorher auf). Das Fenster ist
-über `EVENT_PRE_HOURS` einstellbar (Default 2). Liegt ein Event in der aktuellen
-oder einer der nächsten `EVENT_PRE_HOURS` Stunden, wird auch die Tages-Ampel auf
-ROT gezogen; die Empfehlung nennt den Vorlauf (z. B. „US Core PPI in ~2h").
+## Provider publication contract
 
-Zwei Quellen speisen den Cross-Check:
-- **Feste Anker** (im Code, zuverlässig): NFP (1. Freitag), FOMC (gepflegte
-  Liste), plus CPI/PCE-Heuristik.
-- **Live-Kalender aus der Recherche** (auto-aktualisierend): Das Modell liefert
-  bei jedem Lauf den US-Wirtschaftskalender der nächsten 7 Tage als `termine`
-  (CPI, **Core PPI**, Retail Sales, Jobless Claims, ISM …) mit Datum/Uhrzeit und
-  Impact. Alle mit `impact: "hoch"` erzeugen automatisch ein rotes Vorlauf-Fenster
-  — ohne dass du etwas pflegen musst. Das Frontend zeigt die Liste als
-  „Anstehende Termine" mit „Pause-Fenster"-Markierung.
+A provider publication is transactional:
 
-### Push-Benachrichtigung
-Beim **Wechsel nach ROT** (und bei Entwarnung) schickt das Skript einen Push —
-per **ntfy.sh** (ohne Account) und/oder **Telegram**. Nur bei Zustandswechsel,
-kein Spam. Ohne konfigurierte Kanäle wird der Push übersprungen.
+1. immutable full snapshot
+2. history index
+3. current status
+4. compact signal **last**
 
-### Bot-Signal (`data/signal.json`)
-Kompaktes, maschinenlesbares Flag, das deine Bots direkt pollen können:
+`signal.json` is the final publication marker.
 
-```json
-{
-  "generatedAt": "2026-08-10T14:00:00.000Z",
-  "effectiveStatus": "rot",
-  "pause": true,
-  "caution": false,
-  "dayStatus": "rot",
-  "statusText": "FOMC-Entscheid",
-  "empfehlung": "…",
-  "source": "nq-pause-board"
-}
+History retention is unlimited. Historical model opinions are immutable and are not rewritten with hindsight.
+
+## Structure
+
+```text
+providers/
+  chatgpt/
+    status.json
+    signal.json
+    history.json
+    snapshots/YYYY/MM/*.json
+  claude/
+    README.md
+prompts/
+  chatgpt/v1.1.0.md
+  claude/README.md
+schemas/
+config/providers.json
+scripts/
+assets/
+.github/workflows/
 ```
 
-Bot-Logik z. B.: `if (signal.pause) botsAnhalten()`. Wird bei jedem Lauf
-aktualisiert (alle ~4 h); für stündliche Details siehe `status.json`.
+The provider manifest drives frontend discovery. Missing provider data is neutral/unavailable — never green.
 
-### Verlauf & Quellen
-`data/history.json` protokolliert die Gesamt-Ampel jedes Laufs. Das Frontend
-zeigt einen Verlaufs-Streifen und **„Zeit seit letztem ROT"**. Zusätzlich liefert
-das Modell 2–4 **Quell-Links** und ein **Confidence-Level** zur Nachprüfung.
+## Comparison semantics
 
-### Stale-/Wochenend-Warnung
-Ist die letzte Einschätzung im Handelsfenster älter als ~6 h, warnt das Frontend
-(„Daten veraltet"). Am Wochenende zeigt es stattdessen einen ruhigen Hinweis
-(„Markt geschlossen").
+TradeBrain calculates display-only comparison states:
 
-### Gerätezeit & Versionierung
-Jede Stunde im Ampel-System trägt einen absoluten Zeitstempel (`ts`). Das
-Frontend beschriftet daraus in **deiner Gerätezeit** (praktisch auf Reisen) und
-setzt den **„Jetzt"-Marker nach der tatsächlichen aktuellen Zeit** — nicht am
-Generierungs-Zeitpunkt. Termin- und Handelslogik bleibt in Europe/Zurich
-verankert (nur die Anzeige ist lokal). Ein sichtbares **Versions-Badge**
-(`vX.Y.Z`) im Kopf und Footer zeigt die App-Version; `appVersion` steckt auch in
-`status.json`/`signal.json`, sodass du nach einem Deploy siehst, welche Version
-live ist.
+- `AGREE`
+- `DIVERGE`
+- `CHATGPT_ONLY`
+- `CLAUDE_ONLY`
+- `NO_FRESH_PROVIDER`
 
-### `data/status.json` — Schema
+There is deliberately **no consensus trading policy yet**. TradeBrain does not average Tail, take the worst/best Tail, or allow one provider to veto the other. Each provider retains its own authoritative `signal.json`.
 
-```json
-{
-  "generatedAt": "2026-08-10T21:00:00.000Z",
-  "appVersion": "1.6.0",
-  "status": "gruen",
-  "statusText": "Ruhige Lage",
-  "empfehlung": "Bots normal laufen lassen",
-  "headline": "Kurze Ticker-Zeile",
-  "body": "2-3 Sätze Begründung",
-  "confidence": "mittel",
-  "quellen": [{ "titel": "Reuters", "url": "https://…" }],
-  "rueckblickSummary": "2-3 Sätze",
-  "rueckblick": [{ "stunde": "14:00", "ts": "2026-08-10T12:00:00.000Z", "status": "gruen" }],
-  "ausblickSummary": "2-3 Sätze",
-  "forecast": [{ "stunde": "22:00", "ts": "2026-08-10T20:00:00.000Z", "status": "gelb" }],
-  "forecastDetail": [{ "stunde": "22:00", "ts": "…", "status": "gelb", "kommentar": "…" }],
-  "termine": [{ "name": "US Core PPI", "ts": "2026-08-13T12:30:00.000Z", "impact": "hoch" }]
-}
-```
+## Freshness
 
-`stunde` ist das Zürcher Label; `ts` der absolute Zeitstempel (das Frontend
-beschriftet daraus in Gerätezeit). Beim Bump von `APP_VERSION` beide Stellen
-(`scripts/fetch-assessment.mjs` und `index.html`) synchron halten.
+The frontend fetches provider JSON with `cache: "no-store"` plus a cache-busting query parameter and checks for changes once per minute.
 
----
+The dashboard currently marks provider data stale after 130 minutes. Providers are evaluated independently, so one stale/missing provider does not invalidate a fresh provider.
 
-## Setup
+## Public endpoints
 
-### 1. Anthropic API-Key als Secret
-**Settings → Secrets and variables → Actions → New repository secret**
-Name `ANTHROPIC_API_KEY`, Wert dein Key. Konto braucht **Guthaben** (Billing).
+After GitHub Pages deployment:
 
-Optional (Variables statt Secret): `ANTHROPIC_MODEL` (Default `claude-sonnet-4-5`),
-`BOARD_URL`, `NTFY_SERVER`.
+- `/providers/chatgpt/status.json`
+- `/providers/chatgpt/signal.json`
+- `/providers/chatgpt/history.json`
 
-### 2. Push-Kanäle (optional)
-Als **Secrets** hinterlegen — je nach gewünschtem Kanal:
+Claude endpoints exist only after Claude publishes real state files. No fake Claude state is committed.
 
-- **ntfy.sh** (ohne Account): `NTFY_TOPIC` = ein frei gewähltes, geheimes Topic
-  (z. B. `nq-pause-board-a7x9`). In der ntfy-App dasselbe Topic abonnieren. Fertig.
-- **Telegram**: `TELEGRAM_BOT_TOKEN` (von @BotFather) und `TELEGRAM_CHAT_ID`.
+## GitHub Pages
 
-Ohne diese Secrets läuft alles normal, nur ohne Push.
+Deployment uses `.github/workflows/deploy-pages.yml`.
 
-### 3. GitHub Pages aktivieren
-**Settings → Pages** → Source `Deploy from a branch` → Branch `main`, Ordner
-`/ (root)`. Danach live unter `https://<user>.github.io/<repo>/`.
+The workflow validates provider data, runs Node built-in tests, builds `dist/`, generates display-only `dist/overview.json`, and deploys the static artifact with GitHub Pages Actions. A Pages failure does not roll back provider data in git.
 
-### 4. Workflow-Schreibrechte
-Falls der Rück-Push scheitert: **Settings → Actions → General → Workflow
-permissions → Read and write permissions**.
+## Local validation
 
-### 5. Erste Einschätzung auslösen
-**Actions → „Update NQ Pause-Board Assessment" → Run workflow**. Danach läuft es
-automatisch nach obigem Zeitplan.
-
----
-
-## Lokal testen
+Requires Node 20+.
 
 ```bash
-cp .env.example .env      # ANTHROPIC_API_KEY (+ optional Push) eintragen
-node --env-file=.env scripts/fetch-assessment.mjs
-python3 -m http.server 8080   # Frontend unter http://localhost:8080
+npm test
+npm run validate
+npm run build
+python3 -m http.server 8080 -d dist
 ```
 
-Voraussetzung: **Node 20+** (natives `fetch` und `--env-file`).
+No npm dependencies are required.
 
----
+## Security
 
-## Fehler-Verhalten
+This repository is public. Do not commit API keys, tokens/cookies, `.env`, private scheduler calibration, account/broker/VPS details, balances, position sizes, private trading history, or private strategy code. The browser performs no AI API calls.
 
-Der Workflow crasht bei API-Fehlern **nicht**: 3 Versuche mit Backoff (2 s, 4 s);
-bleibt es dabei, werden **alle Dateien unangetastet** gelassen, ein klarer Log
-geschrieben und mit Exit 0 beendet. Commit passiert nur bei tatsächlicher Änderung.
+## Upstream workflow
 
----
-
-## Wartung: Termine
-
-Die meisten Termine kommen jetzt **automatisch** aus der Live-Recherche
-(`termine` im Modell-Output) — inkl. CPI, **Core PPI**, Retail Sales, Jobless
-Claims usw. Da musst du nichts pflegen. Nur die festen Anker sind statisch:
-
-| Termin | Berechnung | Pflege |
-|--------|-----------|--------|
-| **Live-Kalender** | Modell-Recherche, nächste 7 Tage | **automatisch** |
-| **NFP** | Anker: 1. Freitag, 14:30 Zurich | automatisch |
-| **US-CPI / PCE** | Anker-Heuristik (2. Mittwoch / letzter Freitag) | grobe Absicherung |
-| **FOMC** | Anker: feste Terminliste, 20:00 | **manuell nachpflegen** |
-
-> ⚠️ Die **FOMC-Terminliste** steht an **zwei** Stellen und muss synchron gehalten
-> werden: `FOMC_DATES` in `scripts/fetch-assessment.mjs` und in `index.html`.
-> Aktuell gepflegt bis **Dez 2026**. Alles andere aktualisiert sich über die
-> Recherche selbst.
-
----
-
-## Projektstruktur
-
-```
-.github/workflows/update-assessment.yml   # Zeitplan-Cron + manuelles Triggern
-scripts/fetch-assessment.mjs              # Backend: API + Cross-Check + Push
-data/status.json                          # volle Einschätzung (Frontend)
-data/signal.json                          # Pause-Flag (Bots)
-data/history.json                         # Verlauf der Gesamt-Ampel
-index.html                                # statisches Frontend
-.env.example · .gitignore · README.md
-```
+`andrasmining/tradebrain` is the development/publication fork. Code/UI improvements can later be proposed to `tobiasgiger/tradebrain` with an ordinary fork pull request. Provider data sync is a separate concern and should copy only explicitly owned provider paths.
