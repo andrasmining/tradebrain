@@ -6,14 +6,27 @@
   "required": ["schemaVersion","provider","historyVersion","retentionPolicy","items"],
   "properties": {
     "schemaVersion": {"const":"1.0.0"},
-    "provider": {"type":"string"},
-    "historyVersion": {"type":"string"},
+    "provider": {"type":"string","minLength":1},
+    "historyVersion": {"type":"string","minLength":1},
     "retentionPolicy": {"const":"unlimited"},
     "items": {
       "type":"array",
       "items": {
         "type":"object",
         "required":["generatedAt","status","action","tailRiskPct","tailLevel","stressRiskPct","stressLevel","confidencePct","confidenceLevel","dominantMode","snapshot"],
+        "properties": {
+          "generatedAt":{"type":"string","format":"date-time"},
+          "status":{"enum":["green","yellow","orange","red"]},
+          "action":{"enum":["EA_ON","WATCH","BLOCK_NEW_BASE_ENTRIES","STRONG_BLOCK_NO_NEW_RISK","EA_OFF_NO_NEW_RISK"]},
+          "tailRiskPct":{"type":"integer","minimum":0,"maximum":100},
+          "tailLevel":{"enum":["low","watch","elevated","high","critical"]},
+          "stressRiskPct":{"type":"integer","minimum":0,"maximum":100},
+          "stressLevel":{"enum":["low","moderate","elevated","high","extreme"]},
+          "confidencePct":{"type":"integer","minimum":0,"maximum":100},
+          "confidenceLevel":{"enum":["low","medium-low","solid","high","very-high"]},
+          "dominantMode":{"enum":["trend-up","trend-down","event/whipsaw","mixed","normal"]},
+          "snapshot":{"type":"string","minLength":1}
+        },
         "additionalProperties":true
       }
     }
