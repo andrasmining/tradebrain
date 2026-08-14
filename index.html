@@ -25,63 +25,57 @@
       </div>
     </header>
 
-    <section class="panel ai-view-panel" aria-labelledby="ai-view-heading">
-      <div class="ai-view-layout">
-        <div class="ai-view-copy">
-          <div class="eyebrow">AI VIEW</div>
-          <div class="ai-view-title-row">
-            <h2 id="ai-view-heading">Choose assessment provider</h2>
-            <span class="scope-badge ai-scope">Controls AI-specific sections</span>
-          </div>
-          <p class="scope-help">Switching changes the Risk timeline, Current assessment, Next 6 hours, AI-curated events, and Provider history. Cross-AI comparison and public endpoints do not change.</p>
-        </div>
-        <div id="provider-tabs" class="tabs ai-view-tabs" role="tablist" aria-label="Assessment provider"></div>
+    <nav class="ai-switch-sticky" aria-label="AI assessment view">
+      <div class="ai-switch">
+        <button id="provider-prev" class="ai-switch-chevron" type="button" aria-label="Previous AI provider">‹</button>
+        <button id="provider-toggle" class="ai-switch-current" type="button" aria-label="Switch AI provider">
+          <span class="ai-switch-caption">AI VIEW</span>
+          <strong id="provider-current" class="ai-switch-name" aria-live="polite">ChatGPT</strong>
+        </button>
+        <button id="provider-next" class="ai-switch-chevron" type="button" aria-label="Next AI provider">›</button>
       </div>
-    </section>
+    </nav>
 
-    <section class="panel priority-timeline" aria-labelledby="forecast-heading">
+    <section class="panel priority-timeline" aria-labelledby="forecast-heading" data-scroll-section="timeline">
       <div class="panel-head">
         <div><div class="eyebrow">NEXT 24 HOURS</div><h2 id="forecast-heading">Risk timeline</h2></div>
-        <div class="panel-scope"><span class="scope-badge ai-scope">AI-specific</span><div id="timeline-provider" class="small-label"></div></div>
+        <span class="ai-section-chip"><span class="ai-section-dot"></span><span data-active-ai>ChatGPT</span></span>
       </div>
       <div id="timeline" class="timeline-scroll" tabindex="0" aria-label="24-hour risk forecast"></div>
     </section>
 
-    <section aria-labelledby="providers-heading">
+    <section aria-labelledby="providers-heading" data-scroll-section="comparison">
       <div class="section-head">
         <div><div class="eyebrow">LIVE PROVIDERS</div><h2 id="providers-heading">Risk comparison</h2></div>
-        <div class="section-actions"><span class="scope-badge shared-scope">Cross-AI</span><button id="refresh-button" class="refresh-button" type="button">Refresh</button></div>
+        <div class="section-actions"><span class="cross-ai-chip">BOTH AI</span><button id="refresh-button" class="refresh-button" type="button">Refresh</button></div>
       </div>
       <div id="provider-cards" class="provider-grid" aria-live="polite"></div>
       <div id="agreement-banner" class="agreement neutral">Loading provider state…</div>
     </section>
 
-    <section class="panel" aria-labelledby="assessment-heading">
-      <div class="panel-head"><div><div class="eyebrow">CURRENT ASSESSMENT</div><h2 id="assessment-heading">Provider detail</h2></div><span class="scope-badge ai-scope">AI-specific</span></div>
+    <section class="panel" aria-labelledby="assessment-heading" data-scroll-section="assessment">
+      <div class="panel-head"><div><div class="eyebrow">CURRENT ASSESSMENT</div><h2 id="assessment-heading">Provider detail</h2></div><span class="ai-section-chip"><span class="ai-section-dot"></span><span data-active-ai>ChatGPT</span></span></div>
       <div id="assessment-detail"></div>
     </section>
 
-    <section class="panel" aria-labelledby="near-term-heading">
-      <div class="panel-head compact"><div><div class="eyebrow">NEAR TERM</div><h2 id="near-term-heading">Next 6 hours</h2></div><span class="scope-badge ai-scope">AI-specific</span></div>
+    <section class="panel" aria-labelledby="near-term-heading" data-scroll-section="near-term">
+      <div class="panel-head compact"><div><div class="eyebrow">NEAR TERM</div><h2 id="near-term-heading">Next 6 hours</h2></div><span class="ai-section-chip"><span class="ai-section-dot"></span><span data-active-ai>ChatGPT</span></span></div>
       <div id="forecast-detail" class="detail-grid"></div>
     </section>
 
-    <section class="two-column">
+    <section class="two-column" data-scroll-section="events-history">
       <section class="panel" aria-labelledby="events-heading">
-        <div class="panel-head compact">
-          <div><div class="eyebrow">7-DAY CALENDAR</div><h2 id="events-heading">Upcoming events</h2><p class="section-note">AI-curated verified event feed. The events are external facts, but each provider may select or verify a slightly different list.</p></div>
-          <span class="scope-badge ai-scope">AI-curated</span>
-        </div>
+        <div class="panel-head compact"><div><div class="eyebrow">7-DAY CALENDAR</div><h2 id="events-heading">Upcoming events</h2></div><span class="ai-section-chip"><span class="ai-section-dot"></span><span data-active-ai="feed">ChatGPT feed</span></span></div>
         <div id="events-list" class="stack-list"></div>
       </section>
       <section class="panel" aria-labelledby="history-heading">
-        <div class="panel-head compact"><div><div class="eyebrow">AUDIT TRAIL</div><h2 id="history-heading">Provider history</h2></div><span class="scope-badge ai-scope">AI-specific</span></div>
+        <div class="panel-head compact"><div><div class="eyebrow">AUDIT TRAIL</div><h2 id="history-heading">Provider history</h2></div><span class="ai-section-chip"><span class="ai-section-dot"></span><span data-active-ai>ChatGPT</span></span></div>
         <div id="history-list" class="history-strip"></div>
       </section>
     </section>
 
-    <section class="panel" aria-labelledby="api-heading">
-      <div class="panel-head compact"><div><div class="eyebrow">PUBLIC DATA</div><h2 id="api-heading">Provider endpoints</h2></div><span class="scope-badge shared-scope">All providers</span></div>
+    <section class="panel" aria-labelledby="api-heading" data-scroll-section="public-data">
+      <div class="panel-head compact"><div><div class="eyebrow">PUBLIC DATA</div><h2 id="api-heading">Provider endpoints</h2></div><span class="cross-ai-chip">ALL AI</span></div>
       <div id="api-list" class="api-list"></div>
       <p class="fine-print">Each provider signal is authoritative only for that provider. TradeBrain currently displays comparison metadata; it does not synthesize a combined trading signal.</p>
     </section>
