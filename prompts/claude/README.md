@@ -9,3 +9,13 @@ the two providers' outputs directly comparable.
 
 The prompt is run by an external scheduled Claude publisher. Do not add fake Claude
 assessments merely to populate the UI — only a real publisher run may write provider state.
+
+## v1.1.1 — snapshot-only write contract
+
+[`v1.1.1.md`](v1.1.1.md) mirrors [`prompts/chatgpt/v1.1.1.md`](../chatgpt/v1.1.1.md): it
+inherits the full v1.1.0 contract unchanged and only overrides the **write mechanism**.
+Under v1.1.1 the scheduled task creates exactly ONE immutable snapshot under
+`providers/claude/snapshots/**` and stops; the deterministic `scripts/finalize-claude.mjs`
+GitHub Action then builds `history.json`/`status.json`/`signal.json`, validates repository
+coherence and deploys. Scoring, thresholds and schema are identical to v1.1.0, so Claude and
+ChatGPT outputs remain directly comparable.

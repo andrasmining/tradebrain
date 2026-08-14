@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "providers/chatgpt/snapshots/**/*.json"
+      - "providers/claude/snapshots/**/*.json"
       - "providers/*/signal.json"
       - "prompts/**"
       - "index.html"
@@ -57,6 +58,24 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add providers/chatgpt/history.json providers/chatgpt/status.json providers/chatgpt/signal.json
             git commit -m "data(chatgpt): finalize provider publication"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Finalize pending Claude snapshots
+        id: finalize_claude
+        continue-on-error: true
+        run: node scripts/finalize-claude.mjs
+      - name: Warn if Claude finalization failed
+        if: steps.finalize_claude.outcome == 'failure'
+        run: echo "::warning::Claude finalization failed; Pages will continue with any provider state that still validates."
+      - name: Commit finalized Claude provider state
+        shell: bash
+        run: |
+          if ! git diff --quiet -- providers/claude/history.json providers/claude/status.json providers/claude/signal.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add providers/claude/history.json providers/claude/status.json providers/claude/signal.json
+            git commit -m "data(claude): finalize provider publication"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
