@@ -1,0 +1,663 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.1.0",
+  "generatedAt": "2026-08-14T09:35:24Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Calm, wait-and-see conditions persist into the European late morning ahead of today's 12:30 UTC Retail Sales / 14:00 UTC preliminary UMich data cluster. Chip stocks are broadly firmer in premarket trading (Nvidia, TSMC, Broadcom, SK Hynix, Micron, AMD all higher) following Thursday's soft-PPI record close (S&P 500 +0.65% to 7,798.99; Nasdaq Composite +0.81% to 26,803.03). VIX holds flat near 14.4-14.8 and the 10-year Treasury yield remains anchored near 4.65-4.66%. Iran-Oman Hormuz talks remain unresolved and conditional (Iran continues to withhold full reopening pending U.S. concessions/compensation) -- progress-in-talks, not a resolved discontinuity, and no new kinetic escalation was identified this run. Alpha Vantage remained fully rate-limited on both the initial call and a retry (a ninth consecutive run), so this assessment again relies entirely on WebSearch; this run's NQ futures print via WebSearch was internally inconsistent (mismatched last-price vs bid/ask levels) and both investing.com and Yahoo Finance were blocked by the egress proxy when attempting to fetch a cleaner quote directly -- a genuine and further-degraded live intraday price-path limitation versus prior runs' merely-stale-but-consistent snapshot. Confidence is lowered accordingly this run.",
+  "recommendation": "Current action remains EA_ON. Continue monitoring through the late European morning and into the 12:30 UTC Retail Sales and 14:00 UTC preliminary UMich sentiment cluster; an upgrade to a higher Tail state still requires observed persistent one-way structure with failed pullbacks in the broad Nasdaq-100 complex itself, not the pending data cluster, the unresolved Hormuz talks, the premarket chip rally, or this run's continued Alpha Vantage outage and internally inconsistent futures print.",
+  "headline": "Nasdaq-100 futures print could not be reliably pinned down this run (WebSearch returned an internally inconsistent quote; investing.com and Yahoo Finance both blocked); VIX flat near 14.4-14.8; 10Y anchored ~4.65-4.66%; chip stocks broadly firmer in premarket (Nvidia, TSMC, Broadcom, SK Hynix, Micron, AMD); Iran-Oman Hormuz talks remain unresolved/conditional with no new kinetic escalation; today's 12:30 UTC Retail Sales and 14:00 UTC preliminary UMich sentiment remain the session's main checkpoints; Alpha Vantage remains fully rate-limited for a ninth consecutive run, so Confidence eases further into the low band.",
+  "body": "About 30-35 minutes past the top of the hour, conditions remain calm into the European late morning, roughly one hour on from the prior run. Thursday's session closed with the S&P 500 up 0.65% to a fresh record 7,798.99 (intraday high 7,816.70) and the Nasdaq Composite up 0.81% to 26,803.03, on soft July PPI reinforcing rate-cut expectations. This run's WebSearch results for Nasdaq 100 futures returned internally inconsistent figures (a last price around 29,853.25 alongside a bid/ask of 30,206.50/30,220.00 that do not reconcile), and direct attempts to fetch a cleaner live quote from investing.com and Yahoo Finance were both blocked by the egress proxy -- a genuine live intraday price-path limitation, distinct from and somewhat worse than prior runs' consistently-stale-but-at-least-coherent snapshot. VIX opened near 14.68 with today's range so far 14.39-14.80, essentially flat versus the prior run. The 10-year Treasury yield continues to hold near its recent range (~4.65-4.66%, last reliably observed Thursday); Alpha Vantage TREASURY_YIELD was retried once and both attempts returned an immediate rate_limit error, so yields again come from WebSearch context rather than a fresh pull. On the Strait of Hormuz, Iran continues to withhold a full reopening pending U.S. concessions and compensation even as Oman-brokered talks remain described as very close on managing the waterway -- this remains progress-in-talks rather than a resolved discontinuity, and no new kinetic escalation was identified this run. Semiconductors firmed broadly in premarket trading: Nvidia +1.82%, with TSMC, Broadcom, SK Hynix, Micron and AMD all up between roughly 2.7% and 4.3%, extending the prior run's overnight strength with no negative index-level semiconductor catalyst identified; Nvidia's August 26 earnings remain the next dedicated catalyst. Alpha Vantage's free-tier daily quota remains exhausted for a ninth consecutive run, so per the fallback protocol this assessment again relies entirely on WebSearch for yields, oil, VIX, equities and price-path context; combined with this run's internally inconsistent futures print and blocked direct-fetch attempts, evidence quality has degraded further, and Confidence eases to 34 (low, down from 37) to reflect that. Tail holds at 9% (still low; no persistent one-way structure evidence, and calm overnight/morning conditions plus a broad-based premarket chip rally are not themselves a Nasdaq-100 price-path signal) while Stress firms slightly to 27% (moderate, up from 25%) on generic pre-event positioning, with the main forecast driver remaining the pending 12:30 UTC Retail Sales / 14:00 UTC UMich cluster, which is projected to push Stress toward the upper-40s around the release before easing back through the afternoon, evening, and into the quiet Saturday handover.",
+  "tailRiskPct": 9,
+  "tailLevel": "low",
+  "stressRiskPct": 27,
+  "stressLevel": "moderate",
+  "dominantMode": "normal",
+  "confidencePct": 34,
+  "confidenceLevel": "low",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": "2026-08-14T12:25:00Z",
+    "end": "2026-08-14T14:30:00Z"
+  },
+  "dangerWindowBerlin": {
+    "start": "2026-08-14T14:25:00+02:00",
+    "end": "2026-08-14T16:30:00+02:00"
+  },
+  "sources": [
+    {
+      "title": "Bloomberg — S&P 500 Closes at a Record After Soft Producer Prices",
+      "url": "https://www.bloomberg.com/news/newsletters/2026-08-13/s-p-500-closes-at-a-record-after-soft-producer-prices"
+    },
+    {
+      "title": "Investing.com — VIX (CBOE Volatility Index)",
+      "url": "https://www.investing.com/indices/volatility-s-p-500"
+    },
+    {
+      "title": "Investing.com — US 10 Year Treasury Bond Yield",
+      "url": "https://www.investing.com/rates-bonds/u.s.-10-year-bond-yield"
+    },
+    {
+      "title": "Benzinga — Nvidia Chip Boom Is Spreading: 6 Stocks to Watch",
+      "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/08/61122617/nvidia-chip-boom-spreading-six-stocks-to-watch"
+    },
+    {
+      "title": "CBS News — Iran, Oman deal on Strait of Hormuz getting close, Tehran says",
+      "url": "https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-deal/"
+    },
+    {
+      "title": "Markets Today (X) — US Economic Calendar, August 14, 2026 (Retail Sales, UMich)",
+      "url": "https://x.com/marketsday/status/2085942627464257800"
+    }
+  ],
+  "lookbackSummary": "Tail held in the low band (9-18%) through the full prior 24 hours as the index ground to a fresh S&P 500 record above 7,800 on soft PPI; Stress ran elevated to high (up to 58%) around the Wednesday/Thursday CPI-PPI and AMAT-earnings window before easing back into the low-to-moderate band (23-29%) through Friday's European morning as the after-hours reaction stayed contained to single names and no broader transmission was confirmed.",
+  "lookback": [
+    {
+      "ts": "2026-08-13T09:00:00Z",
+      "timeBerlin": "2026-08-13T11:00:00+02:00",
+      "available": false,
+      "status": null,
+      "action": null,
+      "tailRiskPct": null,
+      "stressRiskPct": null,
+      "confidencePct": null,
+      "dominantMode": null
+    },
+    {
+      "ts": "2026-08-13T10:00:00Z",
+      "timeBerlin": "2026-08-13T12:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 54,
+      "confidencePct": 66,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-13T11:00:00Z",
+      "timeBerlin": "2026-08-13T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 58,
+      "confidencePct": 64,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-13T12:00:00Z",
+      "timeBerlin": "2026-08-13T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 42,
+      "confidencePct": 55,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-13T13:00:00Z",
+      "timeBerlin": "2026-08-13T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 51,
+      "confidencePct": 47,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-13T14:00:00Z",
+      "timeBerlin": "2026-08-13T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 40,
+      "confidencePct": 52,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-13T15:00:00Z",
+      "timeBerlin": "2026-08-13T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 37,
+      "confidencePct": 54,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-13T16:00:00Z",
+      "timeBerlin": "2026-08-13T18:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 34,
+      "confidencePct": 50,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-13T17:00:00Z",
+      "timeBerlin": "2026-08-13T19:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 32,
+      "confidencePct": 54,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-13T18:00:00Z",
+      "timeBerlin": "2026-08-13T20:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 38,
+      "confidencePct": 48,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-13T19:00:00Z",
+      "timeBerlin": "2026-08-13T21:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 43,
+      "confidencePct": 50,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-13T20:00:00Z",
+      "timeBerlin": "2026-08-13T22:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 39,
+      "confidencePct": 61,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-13T21:00:00Z",
+      "timeBerlin": "2026-08-13T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 37,
+      "confidencePct": 56,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-13T22:00:00Z",
+      "timeBerlin": "2026-08-14T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 35,
+      "confidencePct": 51,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-13T23:00:00Z",
+      "timeBerlin": "2026-08-14T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 32,
+      "confidencePct": 50,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T00:00:00Z",
+      "timeBerlin": "2026-08-14T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 30,
+      "confidencePct": 47,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T01:00:00Z",
+      "timeBerlin": "2026-08-14T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 27,
+      "confidencePct": 45,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T02:00:00Z",
+      "timeBerlin": "2026-08-14T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 25,
+      "confidencePct": 46,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T03:00:00Z",
+      "timeBerlin": "2026-08-14T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 23,
+      "confidencePct": 44,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T04:00:00Z",
+      "timeBerlin": "2026-08-14T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 27,
+      "confidencePct": 43,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T05:00:00Z",
+      "timeBerlin": "2026-08-14T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 29,
+      "confidencePct": 41,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T06:00:00Z",
+      "timeBerlin": "2026-08-14T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 26,
+      "confidencePct": 40,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T07:00:00Z",
+      "timeBerlin": "2026-08-14T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 26,
+      "confidencePct": 38,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T08:00:00Z",
+      "timeBerlin": "2026-08-14T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 25,
+      "confidencePct": 37,
+      "dominantMode": "normal"
+    }
+  ],
+  "outlookSummary": "Tail is projected to stay low (5-11%) through the next 24 hours; Stress is projected to build from the high-20s toward the upper-40s across the 12:30-14:00 UTC Retail Sales / UMich sentiment cluster and the U.S. cash-open/power-hour window before easing back through the evening and into the quiet Saturday handover, with no forecast slot currently implying an action change from EA_ON. Confidence is projected to stay in the low-to-medium-low band throughout, reflecting the continued Alpha Vantage outage and this run's inconsistent live futures print.",
+  "forecast": [
+    {
+      "ts": "2026-08-14T09:00:00Z",
+      "timeBerlin": "2026-08-14T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 27,
+      "confidencePct": 34,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T10:00:00Z",
+      "timeBerlin": "2026-08-14T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 29,
+      "confidencePct": 35,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T11:00:00Z",
+      "timeBerlin": "2026-08-14T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 32,
+      "confidencePct": 37,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T12:00:00Z",
+      "timeBerlin": "2026-08-14T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 40,
+      "confidencePct": 40,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-14T13:00:00Z",
+      "timeBerlin": "2026-08-14T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 48,
+      "confidencePct": 44,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-14T14:00:00Z",
+      "timeBerlin": "2026-08-14T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 45,
+      "confidencePct": 43,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-14T15:00:00Z",
+      "timeBerlin": "2026-08-14T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 39,
+      "confidencePct": 40,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T16:00:00Z",
+      "timeBerlin": "2026-08-14T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 34,
+      "confidencePct": 38,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T17:00:00Z",
+      "timeBerlin": "2026-08-14T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 30,
+      "confidencePct": 36,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T18:00:00Z",
+      "timeBerlin": "2026-08-14T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 28,
+      "confidencePct": 35,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T19:00:00Z",
+      "timeBerlin": "2026-08-14T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 26,
+      "confidencePct": 34,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T20:00:00Z",
+      "timeBerlin": "2026-08-14T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 7,
+      "stressRiskPct": 24,
+      "confidencePct": 34,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T21:00:00Z",
+      "timeBerlin": "2026-08-14T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 7,
+      "stressRiskPct": 21,
+      "confidencePct": 33,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T22:00:00Z",
+      "timeBerlin": "2026-08-15T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 20,
+      "confidencePct": 32,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T23:00:00Z",
+      "timeBerlin": "2026-08-15T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 19,
+      "confidencePct": 32,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T00:00:00Z",
+      "timeBerlin": "2026-08-15T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 18,
+      "confidencePct": 31,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T01:00:00Z",
+      "timeBerlin": "2026-08-15T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 17,
+      "confidencePct": 30,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T02:00:00Z",
+      "timeBerlin": "2026-08-15T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 16,
+      "confidencePct": 29,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T03:00:00Z",
+      "timeBerlin": "2026-08-15T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 15,
+      "confidencePct": 29,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T04:00:00Z",
+      "timeBerlin": "2026-08-15T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 15,
+      "confidencePct": 28,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T05:00:00Z",
+      "timeBerlin": "2026-08-15T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 14,
+      "confidencePct": 28,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T06:00:00Z",
+      "timeBerlin": "2026-08-15T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 13,
+      "confidencePct": 27,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T07:00:00Z",
+      "timeBerlin": "2026-08-15T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 13,
+      "confidencePct": 27,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T08:00:00Z",
+      "timeBerlin": "2026-08-15T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 12,
+      "confidencePct": 26,
+      "dominantMode": "normal"
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-08-14T09:00:00Z",
+      "timeBerlin": "2026-08-14T11:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 9,
+      "stressRiskPct": 27,
+      "comment": "European mid/late morning: chip stocks broadly rallying in premarket (Nvidia, TSMC, Broadcom, SK Hynix, Micron, AMD all higher) after Thursday's soft-PPI record close; VIX flat near 14.4-14.8 and the 10Y holds ~4.65-4.66%. Alpha Vantage remained rate-limited on retry (ninth consecutive run) and this run's NQ futures print via WebSearch was internally inconsistent (mismatched last/bid-ask levels) with investing.com and Yahoo Finance both blocked by the egress proxy, a genuine and further-degraded live intraday price-path limitation."
+    },
+    {
+      "ts": "2026-08-14T10:00:00Z",
+      "timeBerlin": "2026-08-14T12:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 9,
+      "stressRiskPct": 29,
+      "comment": "Late European morning holds calm into the U.S. data cluster; Stress ticks up modestly on generic pre-event positioning ahead of Retail Sales."
+    },
+    {
+      "ts": "2026-08-14T11:00:00Z",
+      "timeBerlin": "2026-08-14T13:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 9,
+      "stressRiskPct": 32,
+      "comment": "Final hour before the 12:30 UTC Retail Sales print; Stress continues to build on forecast dispersion and event positioning while Tail stays anchored in the low band absent any observed persistent one-way structure in the Nasdaq-100 complex itself."
+    },
+    {
+      "ts": "2026-08-14T12:00:00Z",
+      "timeBerlin": "2026-08-14T14:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 10,
+      "stressRiskPct": 40,
+      "comment": "U.S. Retail Sales (July, 8:30am ET) prints within this hour -- consensus +0.3% MoM headline, +0.2% ex-auto -- the session's first major checkpoint; Stress rises toward the elevated band on event/whipsaw risk while Tail requires an observed failed-pullback/persistent-extension reaction before it could follow, which is not yet asserted."
+    },
+    {
+      "ts": "2026-08-14T13:00:00Z",
+      "timeBerlin": "2026-08-14T15:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 11,
+      "stressRiskPct": 48,
+      "comment": "University of Michigan preliminary consumer sentiment (August, 10am ET; consensus 54.1 vs 55.2 prior) prints within this hour on the heels of Retail Sales, keeping the window in event/whipsaw mode; Stress is projected to peak here before easing through the afternoon as the data cluster clears."
+    },
+    {
+      "ts": "2026-08-14T14:00:00Z",
+      "timeBerlin": "2026-08-14T16:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 10,
+      "stressRiskPct": 45,
+      "comment": "Data cluster has fully cleared; Stress begins easing back toward the moderate band into the U.S. cash-open/power-hour window, with Tail unchanged absent confirmed persistent one-way structure."
+    }
+  ],
+  "events": [
+    {
+      "name": "U.S. Retail Sales (July)",
+      "ts": "2026-08-14T12:30:00Z",
+      "timeBerlin": "2026-08-14T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "University of Michigan Consumer Sentiment (preliminary, August)",
+      "ts": "2026-08-14T14:00:00Z",
+      "timeBerlin": "2026-08-14T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Empire State Manufacturing Survey",
+      "ts": "2026-08-17T12:30:00Z",
+      "timeBerlin": "2026-08-17T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Industrial Production and Capacity Utilization",
+      "ts": "2026-08-18T13:15:00Z",
+      "timeBerlin": "2026-08-18T15:15:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "FOMC Minutes (July 28-29 meeting)",
+      "ts": "2026-08-19T18:00:00Z",
+      "timeBerlin": "2026-08-19T20:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "U.S. Initial Jobless Claims",
+      "ts": "2026-08-20T12:30:00Z",
+      "timeBerlin": "2026-08-20T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Philadelphia Fed Manufacturing Survey",
+      "ts": "2026-08-20T12:30:00Z",
+      "timeBerlin": "2026-08-20T14:30:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
