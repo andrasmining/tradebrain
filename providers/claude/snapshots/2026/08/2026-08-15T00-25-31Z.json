@@ -1,0 +1,657 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.1.1",
+  "generatedAt": "2026-08-15T00:25:31Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "NQ futures and NAS100 CFD are inside the CME weekend halt that began at Friday's 21:00 UTC weekly close, so there is no live price path to evaluate and Tail stays at the weekend floor of 2% (low), keeping the action at EA_ON and the status green. Stress is raised to 14% (low) from the prior run's 12% for two evidence-based reasons: better sourcing this hour shows Friday's U.S. cash session actually closed modestly lower rather than higher, with the Nasdaq Composite off about 0.3% at roughly 26,729, the S&P 500 down about 0.2% at roughly 7,786, a 6% Broadcom decline dragging semiconductors, July retail sales falling by the most in over a year and preliminary August University of Michigan sentiment printing 51 against a 55 consensus; and the Strait of Hormuz deadlock has now carried into the new week with Iran's restrictive transit draft still unresolved. Neither is a one-way price path, so both raise Stress rather than Tail. Confidence is 38% (low): the Alpha Vantage free-tier daily quota is exhausted for a fourth consecutive run and no live tape exists, so this assessment rests entirely on verified reporting of the last completed session.",
+  "recommendation": "Action is EA_ON with a green status, derived from the current Tail of 2% alone. No directional or event-driven block is warranted while no venue is quoting NQ or NAS100. Treat the CME Sunday reopen near 22:00-23:00 UTC on 16 August as the operative checkpoint: any weekend Middle East headline would express as an opening gap rather than as intraday structure, and evidence should be re-scored there rather than assumed continuous with Friday's close. Existing-position management, exits and emergency protection remain active throughout the halt. This is a general market-risk assessment for a public dashboard, not personalised financial advice, and no trade is being placed or recommended.",
+  "headline": "NQ sits in the CME weekend halt with no live price path: Tail holds the 2% floor and EA_ON, while Stress lifts to 14% on a corrected read of Friday's lower close and a Hormuz deadlock now running into the new week.",
+  "body": "Market state: NQ futures and the NAS100 CFD are approximately three and a half hours into the CME weekend halt that began at Friday's 21:00 UTC weekly close and runs until the Sunday reopen near 22:00 UTC on 16 August. For a fourth consecutive run there is therefore no observable price path - no directional efficiency, no pullback depth, no repeated extension and no session extremes to measure. That absence, not an observation of calm, is why Tail sits at the weekend floor, and it is also the primary driver of the low Confidence reading.\n\nLast confirmed structure, corrected this hour: better sourcing shows Friday's U.S. cash session closed modestly lower rather than higher as the prior run had it. The Nasdaq Composite fell about 0.28% to roughly 26,729 and the S&P 500 slipped about 0.17% to roughly 7,786, easing back from a record close while still capping a third consecutive weekly gain. The stall was led by a soft consumer picture - July retail sales fell by the most in more than a year and preliminary August University of Michigan sentiment printed 51 against a consensus near 55 - alongside a semiconductor drag as Broadcom dropped about 6%. VIX closed at 14.25, down about 2.6%, which is a calm level entirely inconsistent with a stressed or one-way tape. This is a mildly negative, two-way close with a sector drag, not the persistent one-way structure that Tail is designed to measure, so it is scored into Stress.\n\nGeopolitics is the one live channel over the weekend. The Strait of Hormuz crisis remains unresolved: the UAE has attributed Thursday evening's drone and missile attack on two ADNOC vessels to Iran, ADNOC reports 15 of its vessels struck since the conflict began including three this week, and Iran's published draft plan would bar U.S. and Israeli shipping and impose cargo-value penalties on violators, with Tehran conditioning any reopening on sanctions relief and reparations. WTI last traded near $82 and Brent near $87, firm but without a fresh Friday risk-premium expansion. Web research this hour surfaced only continuation coverage of that same deadlock, so no new discrete escalation is confirmed since the prior run. What has changed is duration: reporting earlier in the week flagged that market reaction would stop being benign if the deadlock ran into the following week, and it now has. Combined with the demonstrated weekend precedent - the previous ADNOC tanker attack was reported on Saturday 8 August - this justifies Stress at 14% rather than letting it decay toward a trivial floor, while leaving Tail untouched because the transmission mechanism is a Sunday gap, not an intraday path.\n\nCalendar: no U.S. macro release falls anywhere inside this 24-hour horizon, which sits entirely within the weekend. The single high-impact item in the next seven days is the FOMC minutes from the 28-29 July meeting on Wednesday 19 August at 18:00 UTC, well outside this window and reported to cover a 9-3 vote with a three-way same-direction dissent. The Jackson Hole symposium was checked and falls on 27-29 August, outside the seven-day window, so it is excluded rather than carried as an imminent catalyst. Housing starts, building permits and the NAHB index appear in week-ahead previews with conflicting dates and are omitted rather than guessed, per the contract.\n\nData availability and its effect on Confidence: the Alpha Vantage free-tier daily quota is exhausted - MARKET_STATUS returned a rate_limit error on the initial call and again on the single permitted retry - so no Alpha Vantage hard numbers were obtained this run and every figure above comes from WebSearch-sourced reporting of the last completed session. Confidence is 38% (low), a point above the prior run because the Friday-close figures were corroborated and corrected this hour, but still firmly in the low band because no live price evidence of any kind is obtainable until the Sunday reopen.",
+  "tailRiskPct": 2,
+  "tailLevel": "low",
+  "stressRiskPct": 14,
+  "stressLevel": "low",
+  "dominantMode": "normal",
+  "confidencePct": 38,
+  "confidenceLevel": "low",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": "2026-08-16T22:00:00Z",
+    "end": "2026-08-16T23:00:00Z"
+  },
+  "dangerWindowBerlin": {
+    "start": "2026-08-17T00:00:00+02:00",
+    "end": "2026-08-17T01:00:00+02:00"
+  },
+  "sources": [
+    {
+      "title": "Yahoo Finance - Stock market today: S&P 500 slips from record high but caps third straight week of gains (Aug 14, 2026)",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-august-14-dow-sp-500-nasdaq-102635519.html"
+    },
+    {
+      "title": "Yahoo Finance - Stock Market Today, Aug. 14: Rally Stalls on Disappointing Consumer Data, Broadcom Falls 6%",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-aug-14-213018651.html"
+    },
+    {
+      "title": "CNBC - Hormuz deadlock: Oil price outlook as U.S.-Iran standoff drags on (Aug 11, 2026)",
+      "url": "https://www.cnbc.com/2026/08/11/hormuz-oil-prices-us-iran.html"
+    },
+    {
+      "title": "Al Jazeera - UAE accuses Iran of attacks on ADNOC vessels in the Strait of Hormuz",
+      "url": "https://www.aljazeera.com/news/2026/8/8/uae-says-iran-targeted-adnoc-tanker-in-hormuz-no-casualties-2"
+    },
+    {
+      "title": "Federal Reserve - FOMC meeting calendars, minutes release dates",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "title": "CME Group - Trading Hours (E-mini Nasdaq-100 weekly close and Sunday reopen)",
+      "url": "https://www.cmegroup.com/trading-hours.html"
+    }
+  ],
+  "lookbackSummary": "Across the trailing 24 hours Tail never left the low band, opening the window at 12% in Friday's small hours and grinding down to 8-9% through the Asian, European and U.S. cash sessions before collapsing to 2% once the CME weekly close removed the tape. Stress traced a clean event arc in the opposite direction: it bottomed near 23-25% in the quiet pre-dawn hours, built steadily to a 44% peak at the 15:00 UTC slot as Friday's weak retail sales and University of Michigan sentiment prints combined with a 6% Broadcom decline to produce genuinely two-way volatility, then unwound to 34% into the close and to 12% once the halt began. The defining feature of the session is that Tail fell while Stress rose - the disappointing data and semiconductor drag produced conflicting, mean-reverting price action rather than the persistent directional efficiency that Tail measures, which is exactly the pattern the contract says should be scored into Stress. Confidence swung between 30% and 58%, peaking when the U.S. cash session provided live structure and Alpha Vantage data was still available, then decaying through the evening as the quota exhausted and the tape closed. The 20:00 UTC slot is unavailable because no scheduled run completed in that hour; it is left explicitly null rather than interpolated.",
+  "outlookSummary": "The entire 24-hour horizon falls inside the CME weekend halt. It ends at 23:00 UTC on Saturday, still roughly 23 hours before the Sunday reopen near 22:00 UTC on 16 August, so not a single forecast slot contains a quoting venue or a scheduled U.S. macro release. Tail is therefore projected to hold at the 2% floor for twenty of the twenty-four slots and to tick only marginally to 3% in the final four, reflecting the approach of the reopen rather than any observed structure - a pathological one-way price path cannot form while nothing is trading. Stress is projected to ease from 14% to about 11% through the quietest Saturday hours and then firm back toward 13-14% into the late slots as the Sunday gap comes into view with the Hormuz deadlock still unresolved. Confidence decays steadily from 38% toward 29% across the window because no new price evidence can be gathered and Friday's close ages further with every hour. The action stays EA_ON and the status green throughout, and the first genuinely re-scorable evidence will be the reopening gap, which sits outside this horizon and is flagged separately as the danger window.",
+  "lookback": [
+    {
+      "ts": "2026-08-14T00:00:00Z",
+      "timeBerlin": "2026-08-14T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 30,
+      "confidencePct": 47,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T01:00:00Z",
+      "timeBerlin": "2026-08-14T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 27,
+      "confidencePct": 45,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T02:00:00Z",
+      "timeBerlin": "2026-08-14T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 25,
+      "confidencePct": 46,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T03:00:00Z",
+      "timeBerlin": "2026-08-14T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 23,
+      "confidencePct": 44,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T04:00:00Z",
+      "timeBerlin": "2026-08-14T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 27,
+      "confidencePct": 43,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T05:00:00Z",
+      "timeBerlin": "2026-08-14T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 29,
+      "confidencePct": 41,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T06:00:00Z",
+      "timeBerlin": "2026-08-14T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 26,
+      "confidencePct": 40,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T07:00:00Z",
+      "timeBerlin": "2026-08-14T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 26,
+      "confidencePct": 38,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T08:00:00Z",
+      "timeBerlin": "2026-08-14T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 25,
+      "confidencePct": 37,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T09:00:00Z",
+      "timeBerlin": "2026-08-14T11:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 27,
+      "confidencePct": 34,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T10:00:00Z",
+      "timeBerlin": "2026-08-14T12:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 28,
+      "confidencePct": 36,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T11:00:00Z",
+      "timeBerlin": "2026-08-14T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 33,
+      "confidencePct": 33,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T12:00:00Z",
+      "timeBerlin": "2026-08-14T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 38,
+      "confidencePct": 30,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T13:00:00Z",
+      "timeBerlin": "2026-08-14T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 41,
+      "confidencePct": 58,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T14:00:00Z",
+      "timeBerlin": "2026-08-14T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 42,
+      "confidencePct": 52,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T15:00:00Z",
+      "timeBerlin": "2026-08-14T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 44,
+      "confidencePct": 55,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T16:00:00Z",
+      "timeBerlin": "2026-08-14T18:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 42,
+      "confidencePct": 52,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T17:00:00Z",
+      "timeBerlin": "2026-08-14T19:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 41,
+      "confidencePct": 45,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T18:00:00Z",
+      "timeBerlin": "2026-08-14T20:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 7,
+      "stressRiskPct": 40,
+      "confidencePct": 42,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T19:00:00Z",
+      "timeBerlin": "2026-08-14T21:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 41,
+      "confidencePct": 43,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T20:00:00Z",
+      "timeBerlin": "2026-08-14T22:00:00+02:00",
+      "available": false,
+      "status": null,
+      "action": null,
+      "tailRiskPct": null,
+      "stressRiskPct": null,
+      "confidencePct": null,
+      "dominantMode": null
+    },
+    {
+      "ts": "2026-08-14T21:00:00Z",
+      "timeBerlin": "2026-08-14T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 34,
+      "confidencePct": 40,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-14T22:00:00Z",
+      "timeBerlin": "2026-08-15T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "confidencePct": 37,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-14T23:00:00Z",
+      "timeBerlin": "2026-08-15T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "confidencePct": 37,
+      "dominantMode": "normal"
+    }
+  ],
+  "forecast": [
+    {
+      "ts": "2026-08-15T00:00:00Z",
+      "timeBerlin": "2026-08-15T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 14,
+      "confidencePct": 38,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T01:00:00Z",
+      "timeBerlin": "2026-08-15T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 13,
+      "confidencePct": 37,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T02:00:00Z",
+      "timeBerlin": "2026-08-15T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 13,
+      "confidencePct": 37,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T03:00:00Z",
+      "timeBerlin": "2026-08-15T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "confidencePct": 36,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T04:00:00Z",
+      "timeBerlin": "2026-08-15T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "confidencePct": 36,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T05:00:00Z",
+      "timeBerlin": "2026-08-15T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "confidencePct": 35,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T06:00:00Z",
+      "timeBerlin": "2026-08-15T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 11,
+      "confidencePct": 35,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T07:00:00Z",
+      "timeBerlin": "2026-08-15T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 11,
+      "confidencePct": 34,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T08:00:00Z",
+      "timeBerlin": "2026-08-15T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 11,
+      "confidencePct": 34,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T09:00:00Z",
+      "timeBerlin": "2026-08-15T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 11,
+      "confidencePct": 33,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T10:00:00Z",
+      "timeBerlin": "2026-08-15T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 11,
+      "confidencePct": 33,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T11:00:00Z",
+      "timeBerlin": "2026-08-15T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 11,
+      "confidencePct": 33,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T12:00:00Z",
+      "timeBerlin": "2026-08-15T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 11,
+      "confidencePct": 32,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T13:00:00Z",
+      "timeBerlin": "2026-08-15T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "confidencePct": 32,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T14:00:00Z",
+      "timeBerlin": "2026-08-15T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "confidencePct": 32,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T15:00:00Z",
+      "timeBerlin": "2026-08-15T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "confidencePct": 31,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T16:00:00Z",
+      "timeBerlin": "2026-08-15T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "confidencePct": 31,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T17:00:00Z",
+      "timeBerlin": "2026-08-15T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 13,
+      "confidencePct": 31,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T18:00:00Z",
+      "timeBerlin": "2026-08-15T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 13,
+      "confidencePct": 30,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T19:00:00Z",
+      "timeBerlin": "2026-08-15T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 2,
+      "stressRiskPct": 13,
+      "confidencePct": 30,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T20:00:00Z",
+      "timeBerlin": "2026-08-15T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 13,
+      "confidencePct": 30,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T21:00:00Z",
+      "timeBerlin": "2026-08-15T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 14,
+      "confidencePct": 30,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T22:00:00Z",
+      "timeBerlin": "2026-08-16T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 14,
+      "confidencePct": 29,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-15T23:00:00Z",
+      "timeBerlin": "2026-08-16T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 14,
+      "confidencePct": 29,
+      "dominantMode": "normal"
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-08-15T00:00:00Z",
+      "timeBerlin": "2026-08-15T02:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 2,
+      "stressRiskPct": 14,
+      "comment": "Current hour: NQ futures are roughly three hours into the CME weekend halt that began at Friday's 21:00 UTC weekly close, so there is no live price path to score for directional efficiency, failed pullbacks or repeated extension. Tail holds at the weekend floor of 2% because no session structure exists to be pathological, not because calm structure was newly observed. Stress is lifted to 14% from the prior run's 12% on a corrected read of Friday's cash close (the tape finished modestly lower with a 6% Broadcom drop, not higher) plus a Hormuz deadlock that has now run into the new week."
+    },
+    {
+      "ts": "2026-08-15T01:00:00Z",
+      "timeBerlin": "2026-08-15T03:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 2,
+      "stressRiskPct": 13,
+      "comment": "Deep Saturday pre-dawn UTC. No venue is quoting NQ or NAS100 and no macro release is scheduled, so Tail stays pinned at the 2% floor. Stress eases a point as the immediate post-close headline window passes without new escalation; the only live transmission channel remains a Middle East headline that would express as a Sunday-reopen gap, not as anything tradable in this hour."
+    },
+    {
+      "ts": "2026-08-15T02:00:00Z",
+      "timeBerlin": "2026-08-15T04:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 2,
+      "stressRiskPct": 13,
+      "comment": "Overnight weekend hours with the tape closed. Tail unchanged at 2%. Stress holds at 13% - the Iranian draft plan restricting Hormuz transit remains unresolved and negotiations with Oman are still open-ended, which keeps the weekend headline channel live even though no discrete escalation is confirmed as of this run."
+    },
+    {
+      "ts": "2026-08-15T03:00:00Z",
+      "timeBerlin": "2026-08-15T05:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "comment": "Early Saturday. Continued absence of price discovery keeps Tail at the 2% floor and the action at EA_ON. Stress drifts to 12% as the quietest part of the weekend begins; Confidence decays steadily because the newest verifiable price evidence is Friday's cash close and no fresh tape can refresh it."
+    },
+    {
+      "ts": "2026-08-15T04:00:00Z",
+      "timeBerlin": "2026-08-15T06:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "comment": "Saturday morning Europe. Still no quoting venue, so Tail remains 2%. Stress at 12% reflects an unresolved geopolitical backdrop against a genuinely calm last-confirmed volatility print (VIX 14.25), with no scheduled U.S. macro catalyst anywhere inside this 24-hour horizon."
+    },
+    {
+      "ts": "2026-08-15T05:00:00Z",
+      "timeBerlin": "2026-08-15T07:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 2,
+      "stressRiskPct": 12,
+      "comment": "Mid Saturday morning. Tail holds at the weekend floor; no structural evidence can accumulate while the market is shut. Stress steady at 12%. Weekend wire coverage is the only thing that can change this assessment before the Sunday 22:00 UTC reopen, and the operative risk remains a gap rather than an intraday path."
+    }
+  ],
+  "events": [
+    {
+      "name": "Empire State Manufacturing Survey",
+      "ts": "2026-08-17T12:30:00Z",
+      "timeBerlin": "2026-08-17T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Industrial Production and Capacity Utilization",
+      "ts": "2026-08-18T13:15:00Z",
+      "timeBerlin": "2026-08-18T15:15:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "FOMC Minutes (July 28-29 meeting)",
+      "ts": "2026-08-19T18:00:00Z",
+      "timeBerlin": "2026-08-19T20:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "U.S. Initial Jobless Claims",
+      "ts": "2026-08-20T12:30:00Z",
+      "timeBerlin": "2026-08-20T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Philadelphia Fed Manufacturing Survey",
+      "ts": "2026-08-20T12:30:00Z",
+      "timeBerlin": "2026-08-20T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "S&P Global U.S. Manufacturing/Services/Composite PMI (Flash)",
+      "ts": "2026-08-21T13:45:00Z",
+      "timeBerlin": "2026-08-21T15:45:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
