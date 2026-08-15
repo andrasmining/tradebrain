@@ -3,17 +3,17 @@
   "provider": "chatgpt",
   "engineVersion": "1.0.0",
   "promptVersion": "1.1.1",
-  "generatedAt": "2026-08-15T09:06:16Z",
+  "generatedAt": "2026-08-15T10:05:33Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "green",
-  "statusText": "Mapped policy state: EA_ON. Tail remains low during the weekend closure while headline-driven reopening stress is elevated.",
-  "recommendation": "Tail remains below the block threshold; the current assessment reflects elevated geopolitical and reopening-gap stress rather than observed persistent Nasdaq direction.",
-  "headline": "Weekend closure keeps Tail low while geopolitical Stress stays high",
-  "body": "Friday's Nasdaq decline was modest and orderly, with weakness concentrated in semiconductor shares rather than a broad persistent liquidation. CME equity-index futures are closed for the weekend, so no live NQ path is available to confirm shallow failed retracements or repeated extension. Strait of Hormuz disruption and additional regional security incidents keep reopening-gap Stress elevated.",
+  "statusText": "Mapped policy state: EA_ON. Weekend closure leaves no live NQ price path; Tail remains low while Strait of Hormuz disruption keeps Stress high.",
+  "recommendation": "Mapped policy state: EA_ON. No active modeled danger window falls inside the next 24 hours; weekend geopolitical headline risk remains elevated.",
+  "headline": "Weekend closure: low Tail, high geopolitical Stress",
+  "body": "Friday's Nasdaq decline was modest and orderly, with weakness concentrated in semiconductor names rather than a broad persistent liquidation. CME equity-index futures are closed for the weekend, so no fresh NQ structure is available to confirm shallow failed retracements, repeated extension or extreme pinning. Strait of Hormuz traffic remains severely disrupted and another ADNOC vessel attack was reported, keeping headline and reopening-gap Stress high without observed price-path evidence sufficient to raise Tail above the low band.",
   "tailRiskPct": 16,
   "tailLevel": "low",
   "stressRiskPct": 78,
@@ -32,43 +32,32 @@
   },
   "sources": [
     {
-      "title": "Reuters — S&P 500 ends lower as investors weigh data, Middle East tensions",
+      "title": "Reuters: S&P 500 ends lower as investors weigh data, Middle East tensions",
       "url": "https://www.reuters.com/business/wall-st-futures-muted-higher-oil-prices-temper-risk-appetite-after-sp-record-2026-08-14/"
     },
     {
-      "title": "AP — Vessel attacked in Hormuz and other Middle East developments",
-      "url": "https://apnews.com/article/ba738b9fb8803f28313a19df8bbcac19"
+      "title": "Reuters: Iran defiant on strait as U.S.-Iran tensions persist",
+      "url": "https://www.reuters.com/world/us/trump-urges-americans-accept-higher-gas-prices-he-escalates-iran-rhetoric-2026-08-14/"
     },
     {
-      "title": "CME Group — S&P 500 and Nasdaq-100 futures trading hours",
-      "url": "https://www.cmegroup.com/markets/equities/sp-500-and-nasdaq-100-futures.html"
-    },
-    {
-      "title": "Federal Reserve Bank of New York — August 2026 economic indicators calendar",
+      "title": "New York Fed: August 2026 Economic Indicators Calendar",
       "url": "https://www.newyorkfed.org/research/calendars/i-aug26.html"
     },
     {
-      "title": "Federal Reserve Board — August 2026 calendar",
+      "title": "Federal Reserve Board: August 2026 Calendar",
       "url": "https://www.federalreserve.gov/newsevents/2026-august.htm"
     },
     {
-      "title": "BLS — U.S. Import and Export Price Indexes release schedule",
-      "url": "https://www.bls.gov/schedule/news_release/ximpim.htm"
+      "title": "BLS: August 2026 release schedule",
+      "url": "https://www.bls.gov/schedule/2026/08_sched_list.htm"
+    },
+    {
+      "title": "CME Group: Holiday and Trading Hours",
+      "url": "https://www.cmegroup.com/trading-hours.html"
     }
   ],
-  "lookbackSummary": "Published ChatGPT assessments over the prior 24 clock hours stayed in the green EA_ON state where available. Stress rose into the August 14 U.S. data/open window, peaking at 88%, then eased after the observed session remained two-sided. The 17:00 UTC slot has no published assessment and is marked unavailable.",
+  "lookbackSummary": "Published hourly assessments over the preceding 24 clock hours stayed in the green/low-Tail state. Stress peaked around Friday's U.S. data window, eased into the close, then rose again with weekend Hormuz headlines. The 17:00 UTC slot is unavailable because no successful ChatGPT snapshot was published for that hour.",
   "lookback": [
-    {
-      "ts": "2026-08-14T09:00:00Z",
-      "timeBerlin": "2026-08-14T11:00:00+02:00",
-      "available": true,
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 69,
-      "confidencePct": 83,
-      "dominantMode": "mixed"
-    },
     {
       "ts": "2026-08-14T10:00:00Z",
       "timeBerlin": "2026-08-14T12:00:00+02:00",
@@ -321,20 +310,21 @@
       "stressRiskPct": 77,
       "confidencePct": 88,
       "dominantMode": "mixed"
-    }
-  ],
-  "outlookSummary": "The next 24 clock hours remain inside the CME weekend closure, so the forecast keeps Tail low and Stress high on headline and reopening-gap risk rather than assumed live directional structure. The next scheduled U.S. macro checkpoint is the Empire State Manufacturing Survey on August 17.",
-  "forecast": [
+    },
     {
       "ts": "2026-08-15T09:00:00Z",
       "timeBerlin": "2026-08-15T11:00:00+02:00",
+      "available": true,
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 16,
       "stressRiskPct": 78,
       "confidencePct": 88,
       "dominantMode": "mixed"
-    },
+    }
+  ],
+  "outlookSummary": "The next 24 clock hours remain inside the weekend closure, with no scheduled U.S. macro release in the forecast horizon. Tail stays low absent live one-way price evidence, while Stress remains high because Hormuz disruption can transmit through the Sunday reopening gap; that reopening lies outside this 24-hour forecast.",
+  "forecast": [
     {
       "ts": "2026-08-15T10:00:00Z",
       "timeBerlin": "2026-08-15T12:00:00+02:00",
@@ -564,24 +554,26 @@
       "stressRiskPct": 78,
       "confidencePct": 88,
       "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T09:00:00Z",
+      "timeBerlin": "2026-08-16T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 78,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
     }
   ],
   "forecastDetail": [
-    {
-      "ts": "2026-08-15T09:00:00Z",
-      "timeBerlin": "2026-08-15T11:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 16,
-      "stressRiskPct": 78,
-      "comment": "Weekend CME closure leaves no live NQ price path; Hormuz headlines keep reopening-gap stress elevated."
-    },
     {
       "ts": "2026-08-15T10:00:00Z",
       "timeBerlin": "2026-08-15T12:00:00+02:00",
       "status": "green",
       "tailRiskPct": 16,
       "stressRiskPct": 78,
-      "comment": "No scheduled U.S. macro release occurs in this slot; headline risk remains the main transmission channel."
+      "comment": "Weekend closure; no live NQ path. Hormuz headline risk keeps Stress high."
     },
     {
       "ts": "2026-08-15T11:00:00Z",
@@ -589,7 +581,7 @@
       "status": "green",
       "tailRiskPct": 16,
       "stressRiskPct": 78,
-      "comment": "Closed-market conditions prevent confirmation of persistent directional structure."
+      "comment": "No scheduled U.S. macro release; weekend headline transmission is the main uncertainty."
     },
     {
       "ts": "2026-08-15T12:00:00Z",
@@ -597,7 +589,7 @@
       "status": "green",
       "tailRiskPct": 16,
       "stressRiskPct": 78,
-      "comment": "Tail remains low without observed path evidence, while geopolitical discontinuity keeps Stress high."
+      "comment": "Cash and CME equity-index futures remain closed; no observed directional structure is available."
     },
     {
       "ts": "2026-08-15T13:00:00Z",
@@ -605,7 +597,7 @@
       "status": "green",
       "tailRiskPct": 16,
       "stressRiskPct": 78,
-      "comment": "Weekend closure continues with no live NQ or VIX structure available for confirmation."
+      "comment": "Geopolitical risk remains the primary uncertainty while market confirmation is unavailable."
     },
     {
       "ts": "2026-08-15T14:00:00Z",
@@ -613,7 +605,15 @@
       "status": "green",
       "tailRiskPct": 16,
       "stressRiskPct": 78,
-      "comment": "No scheduled U.S. macro event is due; reopening-gap uncertainty remains the dominant near-term stressor."
+      "comment": "Tail remains low without live one-way price evidence; Stress stays high on Hormuz disruption."
+    },
+    {
+      "ts": "2026-08-15T15:00:00Z",
+      "timeBerlin": "2026-08-15T17:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 16,
+      "stressRiskPct": 78,
+      "comment": "Weekend closure continues; no scheduled U.S. market-moving release falls in this interval."
     }
   ],
   "events": [
@@ -630,7 +630,7 @@
       "impact": "medium"
     },
     {
-      "name": "New Residential Construction (Housing Starts and Building Permits)",
+      "name": "New Residential Construction",
       "ts": "2026-08-18T12:30:00Z",
       "timeBerlin": "2026-08-18T14:30:00+02:00",
       "impact": "medium"
@@ -642,31 +642,31 @@
       "impact": "medium"
     },
     {
-      "name": "NAR Pending Home Sales Index",
+      "name": "Pending Home Sales Index",
       "ts": "2026-08-18T14:00:00Z",
       "timeBerlin": "2026-08-18T16:00:00+02:00",
       "impact": "medium"
     },
     {
-      "name": "FOMC Minutes — July 28–29 meeting",
+      "name": "FOMC Minutes (July 28-29 meeting)",
       "ts": "2026-08-19T18:00:00Z",
       "timeBerlin": "2026-08-19T20:00:00+02:00",
       "impact": "high"
     },
     {
-      "name": "Initial Jobless Claims",
+      "name": "Initial Claims",
       "ts": "2026-08-20T12:30:00Z",
       "timeBerlin": "2026-08-20T14:30:00+02:00",
       "impact": "medium"
     },
     {
-      "name": "Philadelphia Fed Manufacturing Business Outlook Survey",
+      "name": "Philadelphia Fed Manufacturing Survey",
       "ts": "2026-08-20T12:30:00Z",
       "timeBerlin": "2026-08-20T14:30:00+02:00",
       "impact": "medium"
     },
     {
-      "name": "State Employment and Unemployment (Monthly)",
+      "name": "State Employment and Unemployment",
       "ts": "2026-08-21T14:00:00Z",
       "timeBerlin": "2026-08-21T16:00:00+02:00",
       "impact": "medium"
