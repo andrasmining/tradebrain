@@ -66,6 +66,8 @@ Finviz futures remain explicitly delayed/contextual. Breadth and basket changes 
 
 `prompts/chatgpt/v1.2.0.md` is the explicitly confirmed active scheduled ChatGPT contract. It inherits `prompts/chatgpt/v1.1.1.md`, which inherits `prompts/chatgpt/v1.1.0.md`; its snapshot-only publication rules remain in force while v1.2.0 adds the optional Finviz evidence contract. That activation was an external scheduler migration, not a side effect of adding the repository file. `prompts/claude/v1.2.0.md` makes the same optional evidence contract available to Claude, but Claude's active scheduled prompt remains externally controlled and must be verified rather than inferred from the filename.
 
+`prompts/claude/v1.2.1.md` is an available, not-yet-activated Claude contract. It inherits v1.2.0 unchanged and only makes the snapshot write route explicit: publish with `git push origin HEAD:main`, treat a `403 Resource not accessible by integration` from the GitHub contents API as a route limitation rather than a durable permissions defect, and treat a `non-fast-forward` rejection of `git push origin main` as a refspec artifact when `git merge-base --is-ancestor origin/main HEAD` succeeds. It changes no research, risk, schema, or publication semantics. The same guidance is stated version-independently under "Snapshot write route" in `AGENTS.md`, so it applies to scheduled runs still pinned to an earlier prompt version. Activating v1.2.1 requires an explicit external scheduler migration.
+
 ## Dashboard hierarchy, comparison, and freshness
 
 The dashboard's Level-1 overview is manifest-driven and presents three cross-provider views in this order:
