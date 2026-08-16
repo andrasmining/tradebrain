@@ -45,7 +45,19 @@ GitHub Pages
 
 The browser compares independent provider publications. It must never average provider scores or synthesize a consensus action.
 
-Before changing code, read the files relevant to the task. At minimum, understand:
+Before a substantial implementation, a development agent must:
+
+1. read this root `AGENTS.md`;
+2. inspect the current branch and `git status`;
+3. fetch/sync the relevant remote state;
+4. inspect the relevant code, contracts, and tests;
+5. identify its write boundary;
+6. identify whether the task changes architecture;
+7. identify the validation required before coding.
+
+Do not ask the user to repeat repository facts that can be discovered locally.
+
+Read the files relevant to the task. At minimum, understand:
 
 - `README.md`
 - `config/providers.json`
@@ -56,7 +68,15 @@ Before changing code, read the files relevant to the task. At minimum, understan
 - relevant tests under `test/`
 - `.github/workflows/deploy-pages.yml` when changing publication/deployment behavior
 
-Do not assume an old chat description is more current than the repository. The checked-in code and current user instruction are the working source of truth.
+Use this precedence when sources disagree:
+
+1. explicit current user instruction;
+2. current repository HEAD;
+3. this root `AGENTS.md`;
+4. current schemas, contracts, code, and tests;
+5. older chat descriptions.
+
+This guide states repository-wide invariants, but it is not a reason to reject a deliberate architecture change requested by the user. Preserve the applicable invariants and update this guide coherently in the same change. Do not let stale chat context override the checked-in repository or the current request.
 
 ## 2. Identify which operating mode you are in
 
@@ -89,11 +109,11 @@ A provider publisher owns only its own publication path.
 
 ### ChatGPT scheduled publication
 
-At the time this guide was written, the canonical scheduled ChatGPT prompt is:
+At the time this guide was written, the active scheduled ChatGPT prompt contract is:
 
 - `prompts/chatgpt/v1.1.1.md`
 
-Version `1.1.1` inherits `prompts/chatgpt/v1.1.0.md` and overrides its publication behavior. Read both. The newer prompt wins where they differ.
+Version `1.1.1` inherits `prompts/chatgpt/v1.1.0.md` and overrides its publication behavior. Read both. Within this inherited contract, `v1.1.1` wins over `v1.1.0` where they differ.
 
 The current scheduled ChatGPT contract is **snapshot-only**:
 
@@ -122,7 +142,7 @@ The GitHub Action/finalizer owns the deterministic transition from a valid new s
 
 ### Claude scheduled publication
 
-Use the current canonical Claude prompt under `prompts/claude/` and keep Claude writes inside the Claude-owned provider paths defined by that prompt.
+Verify the actual active scheduled Claude contract rather than assuming that the highest versioned filename under `prompts/claude/` is live. Keep Claude writes inside the Claude-owned provider paths defined by the active prompt.
 
 Never make one provider's publisher repair or replace another provider's state.
 
@@ -130,7 +150,109 @@ Never make one provider's publisher repair or replace another provider's state.
 
 Scheduling is external to this repository. A repo task or provider-publication failure must not be "fixed" by silently creating, deleting, pausing, enabling, disabling, renaming, or rescheduling ChatGPT automations. Only change scheduling when the user explicitly asks for scheduling work in the appropriate system.
 
-## 4. Risk semantics are product contracts
+### Available prompts and active scheduled prompts
+
+An **available prompt version** is a versioned prompt checked into the repository. An **active scheduled prompt version** is the contract actually used by the external scheduler. These may differ during a staged migration, and the newest filename is not automatically active.
+
+The ChatGPT active scheduled contract remains `v1.1.1` unless and until an explicit external scheduler migration is performed. Do not infer that a future `v1.2.0`, `v1.3.0`, or later file is live merely because it exists. For Claude, verify the actual current contract from the scheduling context rather than selecting a prompt by filename alone.
+
+Prompt activation follows this sequence:
+
+```text
+create new prompt version
+        |
+        v
+review / test
+        |
+        v
+explicit scheduler migration
+        |
+        v
+new version becomes active
+```
+
+A repository commit can complete the first two stages; it does not perform the scheduler migration.
+
+## 4. Shared external evidence / context providers
+
+Shared external evidence is a separate architectural category from AI providers. Future deterministic sources may include market-data/context, economic-calendar, breadth, earnings, or Finviz-derived collectors. No specific collector is implied to exist merely because this contract defines the category.
+
+```text
+external/context source
+        |
+        v
+deterministic normalized evidence
+        |
+        +--------------------+
+        |                    |
+        v                    v
+    ChatGPT              Claude
+        |                    |
+        v                    v
+independent provider assessments
+```
+
+### Evidence is not a provider
+
+Shared evidence infrastructure:
+
+- does not appear as ChatGPT or Claude;
+- does not own a trading signal;
+- does not publish `tailRiskPct`, `stressRiskPct`, or `confidencePct`;
+- does not publish provider `action` or `status`;
+- must never be treated as a third AI provider.
+
+### Neutral ownership and write boundaries
+
+The same shared evidence may be consumed by multiple AI providers. One provider must not own or alter shared evidence purely for its own benefit. Shared evidence should live outside `providers/chatgpt/**` and `providers/claude/**` unless a future explicit architecture change establishes otherwise.
+
+Future ownership should be defined conceptually as:
+
+```text
+providers/chatgpt/**       ChatGPT provider publication
+providers/claude/**        Claude provider publication
+
+shared context/data/**     deterministic supporting evidence
+shared collector scripts   collection and normalization only
+shared schemas             supporting evidence contracts
+```
+
+These are ownership classes, not final paths for an unimplemented subsystem. Every new subsystem must have an explicit write boundary. A collector must not opportunistically modify provider output, a provider publisher must not opportunistically repair a shared collector, and a UI feature must not rewrite source data.
+
+### Supplementary evidence and risk semantics
+
+External evidence augments provider research. It does not replace current market research, authoritative primary sources, fresh NQ price-path evidence, or provider reasoning. Fresh contradictory evidence takes precedence over stale supporting context.
+
+Supporting evidence may confirm or conflict with other research, inform the AI provider's confidence assessment, and contribute to provider reasoning. It must not mechanically imply Tail risk. These shortcuts are invalid:
+
+```text
+high-impact event exists => Tail high
+actual != expected => Tail high
+supporting futures feed shows +2% => Tail high
+```
+
+Tail remains the risk of a pathological price path or sustained mean-reversion failure under the provider contract. Event importance and generic volatility primarily inform Stress and Confidence until actual market structure supports Tail. The existing Tail thresholds and mappings do not change.
+
+### Freshness, delay, and failure isolation
+
+Normalized evidence must expose enough provenance, as-of, availability, and completeness metadata for consumers to distinguish fresh, stale, partial, and unavailable state. Cached or stale context must not masquerade as current evidence.
+
+Delayed or contextual data must remain labeled delayed. It must never masquerade as evidence of immediate post-event continuation, shallow pullbacks, failed retracements, session-extreme holding, or current one-way NQ structure.
+
+Shared evidence fails open. An evidence source that is unavailable, stale, partial, malformed, rate-limited, returns HTTP 403, times out, changes upstream, or breaks an HTML/parser contract must not automatically break:
+
+- ChatGPT or Claude assessment publication;
+- provider finalization or otherwise-valid provider validation;
+- GitHub Pages deployment;
+- the dashboard.
+
+Consumers must recognize missing, stale, or partial evidence and continue with other research. Optional evidence must not silently become a publication prerequisite. Failing open isolates the evidence failure; it does not permit fabricated evidence, invalid provider output, or a green presentation for missing state.
+
+### Access controls
+
+Development agents and collectors must not bypass CAPTCHAs, Cloudflare, or similar access controls; rotate proxies to evade anti-bot systems; scrape authenticated or private content without an explicit authorized architecture; or commit cookies or session credentials. If a public source blocks automated access, fail safely rather than evade the restriction.
+
+## 5. Risk semantics are product contracts
 
 TradeBrain exists to protect a reverse/mean-reversion/grid style system from pathological price paths. Preserve the distinction between Tail and Stress.
 
@@ -185,7 +307,7 @@ Where the current schema/contract requires a mode, use only:
 
 Do not invent near-synonyms or combined labels.
 
-## 5. Time-series contract must remain exact
+## 6. Time-series contract must remain exact
 
 For the current risk-state contract:
 
@@ -200,7 +322,45 @@ Do not weaken these checks to accept malformed publisher output. Fix the produce
 
 Historical model opinions must not be rewritten with hindsight.
 
-## 6. Source-of-truth hierarchy for data validation
+## 7. Display-only derived analytics and time-series boundaries
+
+Future browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, simple regression/extrapolation, comparison metric, or visual projection. Defining this category does not mean that such a feature currently exists.
+
+```text
+provider historical data
+        |
+        v
+deterministic presentation math
+        |
+        v
+visualization only
+```
+
+Keep these three time-series concepts distinct:
+
+### A. Historical provider assessments
+
+These are actual provider values preserved in provider history and audit state.
+
+### B. Display-only derived projection
+
+This is mathematical presentation output calculated by frontend or build code from historical values. It is visual only.
+
+### C. Provider forecast
+
+This is the provider's actual AI-produced `forecast[]` data from its assessment.
+
+Display-only derived analytics must never:
+
+- rewrite provider history, status, or signal;
+- alter Tail, Stress, Confidence, provider action, or provider status;
+- become an EA command or other trading logic;
+- be persisted into immutable provider snapshots;
+- be described as AI-generated unless the value actually came from provider output.
+
+A visual regression or extrapolation of provider history is not the provider forecast. It must never be reused as trading logic or persisted back into provider state.
+
+## 8. Source-of-truth hierarchy for data validation
 
 Do not treat a single JSON Schema file as the whole contract.
 
@@ -227,7 +387,7 @@ A schema change is effectively a migration. Review at least:
 
 Do not "fix" an incompatibility by making validators permissive without understanding why the invariant exists.
 
-## 7. Snapshot and audit-history rules
+## 9. Snapshot and audit-history rules
 
 Provider snapshots are an immutable audit trail.
 
@@ -247,7 +407,7 @@ ChatGPT finalization intentionally distinguishes two failure classes:
 
 Preserve this failure isolation. One bad new provider submission should not permanently poison later good submissions, but published audit history must not silently change underneath the system.
 
-## 8. Multi-provider behavior
+## 10. Multi-provider behavior
 
 Providers are independent.
 
@@ -264,7 +424,7 @@ Missing, invalid, or stale provider state is unavailable/neutral, never green.
 
 The current browser freshness threshold is 130 minutes. If changing freshness semantics, update frontend behavior, tests, and documentation together.
 
-## 9. Frontend UX invariants
+## 11. Frontend UX invariants
 
 The frontend is intentionally small and dependency-free. Preserve that unless there is a strong task-specific reason to change it.
 
@@ -285,7 +445,7 @@ Important invariants:
 
 When adding click/tap detail to the risk timeline, do not break horizontal swipe/scroll on mobile. Any detail popup or equivalent must be usable with touch and keyboard and must not cause the page to jump.
 
-## 10. GitHub Pages and workflow invariants
+## 12. GitHub Pages and workflow invariants
 
 Current deployment logic lives in `.github/workflows/deploy-pages.yml`.
 
@@ -309,7 +469,13 @@ The repository keeps unlimited audit data, while the deployed site may copy/disp
 
 The Pages workflow and browser must never call OpenAI, Anthropic, or another AI API. AI assessment happens outside the static site.
 
-## 11. Public-repository security rules
+### Optional data-source workflows
+
+If an optional evidence collector is introduced, it should normally have its own schedule, concurrency group, failure state, and write boundary. It must not enter the provider-finalization critical path unless that coupling is explicitly designed and reviewed.
+
+Design these workflows around bot-generated commits, recursive workflow triggers, non-fast-forward pushes, concurrent provider snapshot commits, and unnecessary Pages deployments. An optional context refresh should not trigger expensive unrelated workflows without a documented reason, and its failure must remain isolated from valid provider publication and site deployment.
+
+## 13. Public-repository security rules
 
 This repository is public.
 
@@ -327,7 +493,7 @@ Do not paste secrets into commit messages, comments, fixtures, snapshots, docs, 
 
 If a task requires a secret, use the appropriate external secret store and commit only the interface/configuration that references it.
 
-## 12. Working safely with multiple coding agents
+## 14. Working safely with multiple coding agents
 
 Assume another agent may be editing the repository at the same time.
 
@@ -360,7 +526,7 @@ Before pushing:
 
 Do not create branches, PRs, or merge commits merely because an agent usually prefers them. Follow the user's requested delivery mode and the current repo workflow. Scheduled provider publication is expected to create its permitted snapshot directly in the publication branch; development work may use a branch/PR when appropriate.
 
-## 13. Change discipline
+## 15. Change discipline
 
 Prefer the smallest coherent fix over a rewrite.
 
@@ -392,7 +558,22 @@ For workflow changes:
 - preserve deterministic publication;
 - do not use an Actions workaround to hide an invalid data contract.
 
-## 14. Required checks
+### Dependency discipline
+
+Keep TradeBrain lean without treating dependencies as categorically forbidden.
+
+- Prefer existing platform/runtime functionality and small deterministic implementations.
+- Avoid a frontend framework for an isolated UI feature.
+- Avoid a large charting library when a small SVG implementation is sufficient.
+- Pin important production dependencies appropriately.
+- Do not pull in an entire ecosystem for one helper function.
+- Explain why each new dependency is justified.
+
+### Documentation discipline
+
+Update this guide when repository behavior or architecture intentionally changes, but keep it about durable operating rules. Do not turn it into a changelog, release notes, a duplicate README, or a large inventory of temporary filenames. Add quick-file-map entries only when the corresponding durable files actually exist.
+
+## 16. Required checks
 
 Node 20+ is required locally; Actions currently use Node 24.
 
@@ -408,11 +589,15 @@ For frontend JavaScript changes, make sure scripts parse cleanly as well; the te
 
 For provider/finalizer/schema changes, run the full validation/test/build sequence, not only the test you touched.
 
+For a future network-backed collector, keep normal repository and PR validation deterministic. Unit tests should prefer fixtures, mocks, pure normalization functions, and deterministic input/output cases. Normal PR CI must not depend on a public website being reachable; live external access may be exercised separately as an integration check.
+
+A live-source failure is not a reason to weaken tests, evade anti-bot controls, or hardcode fabricated data. When a Python subsystem is added, document and run its actual repository-defined test command in addition to the existing Node checks. Do not invent a placeholder Python command before that subsystem exists.
+
 Do not commit `dist/` or `node_modules/`.
 
 If a check cannot be run, state exactly which check was not run and why. Do not claim validation you did not perform.
 
-## 15. Definition of done
+## 17. Definition of done
 
 A TradeBrain change is done when all of the following are true:
 
@@ -427,7 +612,22 @@ A TradeBrain change is done when all of the following are true:
 - documentation is updated when the architecture or contract changed;
 - the agent can explain what changed and why without claiming work that was not actually completed.
 
-## 16. Quick file map
+A change involving shared evidence is not done unless:
+
+- ownership and write boundaries are explicit;
+- failure is isolated and stale/partial/unavailable state is distinguishable;
+- provider publication remains independent;
+- the collector synthesizes no direct trading signal;
+- deterministic tests exist where practical.
+
+A display-only analytics feature is not done unless:
+
+- it does not mutate authoritative data;
+- it is clearly labeled as derived;
+- it cannot be confused with a provider forecast or trading action;
+- mobile behavior is considered.
+
+## 18. Quick file map
 
 ```text
 README.md                         system overview and public contract
@@ -456,5 +656,7 @@ assets/timeline-scroll-guard.js   timeline scroll interaction guard
 .github/workflows/validate.yml     PR/manual validation workflow
 test/                             contract, safety, finalizer, frontend tests
 ```
+
+When a new durable subsystem is actually added, update this map with the real resulting files. Do not add speculative future files.
 
 When in doubt, preserve determinism, provider isolation, auditability, and neutral failure behavior before adding convenience.
