@@ -3,20 +3,20 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.2.0",
-  "generatedAt": "2026-08-16T18:29:08Z",
+  "generatedAt": "2026-08-16T19:27:27Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "green",
-  "statusText": "Mapped policy state: EA_ON. Tail risk sits in the low band with no live Nasdaq-100 price path available, while stress-side conditions stay high on the unresolved Strait of Hormuz disruption and rising global long yields.",
-  "recommendation": "Tail remains well below the block threshold, so the deterministic mapping returns EA_ON for both NQ futures and NAS100 CFD. A narrow observation window is flagged around the Sunday CME restart, where thin liquidity and weekend headline risk are concentrated. Existing-position management and emergency protection logic are unaffected by this mapping.",
-  "headline": "Nasdaq-100 in a weekend halt near record territory; low tail, high stress on Hormuz crude and climbing global yields",
-  "body": "No live Nasdaq-100 price path exists at this timestamp. CME equity index futures are inside the weekend halt and are scheduled to restart near 22:00 UTC, so the assessment is built from the last completed cash session, verified cross-asset levels and the current geopolitical and macro backdrop rather than from observed intraday structure.\n\nThe Nasdaq-100 cash index closed Friday 14 August at 30,046.14, down 0.13% on the session, inside a 29,934.66-30,179.82 range and about 2.3% below the 30,762.20 52-week high, still finishing the week higher. VIX ended at 14.25 (-2.60%), consistent with subdued implied volatility rather than a stressed tape. Treasury constant-maturity yields stood at 4.15% for the 2Y, 4.63% for the 10Y and 5.21% for the 30Y at the latest H.15 publication, against a broader theme of rising long rates globally. The July policy rate was held at 3.50-3.75% for a fifth consecutive meeting.\n\nLatest-session internals were conflicting rather than directional and are treated as stress and confidence inputs, not tail evidence. Technology fell 0.46% as a sector, semiconductor equipment fell 1.71% and application software 1.70%, while the megacap set closed two higher and six lower with Broadcom down about 5.9%; within semiconductors AMD rose 6.5% and Micron 2.3%. That dispersion reduces directional conviction instead of establishing persistent one-way structure.\n\nThe dominant unresolved channel remains energy and geopolitics. The Strait of Hormuz stays effectively disrupted with the U.S. naval blockade in place, Iran-Oman navigation talks stalled, and repeated projectile strikes on Gulf tankers reported through the past week, including three attacks on ADNOC vessels within 48 hours. WTI settled near $82.40 (+1.42%) and Brent near $88.52 (+1.67%), a sixth consecutive daily advance and roughly +5% on the week. This is a live discontinuity source capable of producing a repricing gap at the restart, which is why stress is scored in the high band even with VIX at 14.\n\nNo observed amplifier stack is present: there is no measurable retracement behaviour, no session extremes to hold and no opening structure to score while the market is closed. Under the fixed mapping the current tail of 15 keeps the state green with EA_ON. The week ahead is macro-light into midweek, with FOMC minutes on 19 August the first high-impact scheduled catalyst and flash PMIs on 21 August the second.",
+  "statusText": "Mapped policy state: EA_ON. Tail risk sits in the low band with no live Nasdaq-100 price path available, while stress-side conditions stay high on the unresolved Strait of Hormuz disruption, elevated crude and rising global long yields.",
+  "recommendation": "Tail remains well below the block threshold, so the deterministic mapping returns EA_ON for both NQ futures and NAS100 CFD. A narrow observation window is flagged around the Sunday CME restart, where thin liquidity and two-sided weekend headline risk are concentrated. Existing-position management and emergency protection logic are unaffected by this mapping.",
+  "headline": "Nasdaq-100 still in the weekend halt near record territory; low tail, high stress into the Sunday CME restart",
+  "body": "No live Nasdaq-100 price path exists at this timestamp. CME equity index futures remain inside the weekend halt and are scheduled to restart near 22:00 UTC, roughly two and a half hours from this assessment, so the evaluation is built from the last completed cash session, verified cross-asset levels and the current macro and geopolitical backdrop rather than from observed intraday structure.\n\nThe Nasdaq-100 cash index closed Friday 14 August at 30,046.14, down 0.13% on the session, inside a 29,934.66-30,179.82 range and about 2.3% below the 30,762.20 52-week high, still finishing the week higher. VIX ended at 14.25 (-2.60%), consistent with subdued implied volatility rather than a stressed tape. Treasury constant-maturity yields stood at 4.15% for the 2Y, 4.63% for the 10Y and 5.21% for the 30Y at the latest H.15 publication, against a broader theme of rising long rates globally.\n\nFriday's internals were dispersed rather than directional and are treated as stress and confidence inputs, not tail evidence. Technology fell 0.46% as a sector, semiconductor equipment fell 1.71% and application software 1.70%, while the megacap set closed two higher and six lower with Broadcom down about 5.9%; within semiconductors AMD rose 6.5% and Micron 2.3%. Cross-sectional dispersion of that size reduces directional conviction instead of establishing persistent one-way structure. Friday's macro tape was also soft, with preliminary August University of Michigan sentiment at 51 against a 55 consensus and July retail sales falling by the most in over a year.\n\nThe dominant unresolved channel remains energy and geopolitics. The Strait of Hormuz stays effectively disrupted with the U.S. naval blockade in place and repeated projectile strikes on Gulf shipping reported through the past week, including three attacks on ADNOC vessels within 48 hours; transit volumes remain a small fraction of pre-crisis levels. WTI settled near $82.40 (+1.42%) and Brent near $88.52 (+1.67%), a sixth consecutive daily advance and roughly +5% on the week. Set against that, reporting through the past ten days describes Iran, Oman and the United States as close to an arrangement on managed transit, without a full reopening. The headline set is therefore two-sided rather than one-way, which is why the restart is scored as a stress and gap concentration point rather than as directional tail evidence.\n\nNo observed amplifier stack is present: there is no measurable retracement behaviour, no session extremes to hold and no opening structure to score while the market is closed. Under the fixed mapping the current tail of 15 keeps the mapped policy state at EA_ON. The week ahead is macro-light into midweek, with FOMC minutes on 19 August the first high-impact scheduled catalyst and flash PMIs on 21 August the second.",
   "tailRiskPct": 15,
   "tailLevel": "low",
-  "stressRiskPct": 72,
+  "stressRiskPct": 71,
   "stressLevel": "high",
   "dominantMode": "mixed",
   "confidencePct": 69,
@@ -52,24 +52,12 @@
       "url": "https://tradingeconomics.com/united-states/calendar"
     },
     {
-      "title": "Oil prices rise as attacks dent hopes for Strait of Hormuz reopening - Al Jazeera",
-      "url": "https://www.aljazeera.com/economy/2026/8/12/oil-prices-rise-as-attacks-dent-hopes-for-strait-of-hormuz-reopening"
+      "title": "Iran, Oman, US 'close' to Hormuz deal - Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/8/5/iran-oman-us-close-to-hormuz-deal-what-do-they-all-want"
     }
   ],
-  "lookbackSummary": "All 24 preceding published Claude hours are available and uniformly green with EA_ON. Tail moved narrowly between 11 and 17 while stress climbed from 60 into the low 80s before easing back to 70, and confidence ranged from 63 to 80. The entire window falls inside the cash-market weekend and the CME futures halt, so that trajectory reflects an accumulating energy and geopolitical backdrop rather than any observed Nasdaq-100 price structure.",
-  "outlookSummary": "The CME restart near 22:00 UTC carries the highest conditional tail of the forecast at 18, reflecting thin liquidity and unresolved Hormuz headline risk rather than observed structure. Asian and European hours are expected to normalise toward 13-14 if the reopening print is orderly. A secondary rise to 17 is carried across the Monday U.S. cash open and the first hour after it, where opening-auction continuation would be the first genuine tail evidence of the new week. All forecast hours stay below the 20 threshold, so the mapping remains EA_ON throughout on current evidence; a disorderly reopening gap or repeated extension after failed retracements would invalidate that path.",
+  "lookbackSummary": "All 24 preceding published Claude hours are available and uniformly green with EA_ON. Tail moved narrowly between 11 and 17 while stress climbed from 62 into the low 80s before easing back toward 70, and confidence ranged from 64 to 80. The entire window falls inside the cash-market weekend and the CME futures halt, so that trajectory reflects an accumulating energy and geopolitical backdrop rather than any observed Nasdaq-100 price structure.",
   "lookback": [
-    {
-      "ts": "2026-08-15T18:00:00Z",
-      "timeBerlin": "2026-08-15T20:00:00+02:00",
-      "available": true,
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 11,
-      "stressRiskPct": 60,
-      "confidencePct": 63,
-      "dominantMode": "mixed"
-    },
     {
       "ts": "2026-08-15T19:00:00Z",
       "timeBerlin": "2026-08-15T21:00:00+02:00",
@@ -322,26 +310,28 @@
       "stressRiskPct": 70,
       "confidencePct": 68,
       "dominantMode": "mixed"
-    }
-  ],
-  "forecast": [
+    },
     {
       "ts": "2026-08-16T18:00:00Z",
       "timeBerlin": "2026-08-16T20:00:00+02:00",
+      "available": true,
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
       "stressRiskPct": 72,
       "confidencePct": 69,
       "dominantMode": "mixed"
-    },
+    }
+  ],
+  "outlookSummary": "The CME restart near 22:00 UTC carries the highest conditional tail of the forecast at 18, reflecting thin liquidity and a two-sided Hormuz headline set rather than observed structure. Asian and European hours are expected to normalise toward 13-14 if the reopening print is orderly. A secondary rise to 17 is carried across the Monday U.S. cash open and the first hour after it, where opening-auction continuation would be the first genuine tail evidence of the new week. All forecast hours stay below the 20 threshold, so the mapping remains EA_ON throughout on current evidence; a disorderly reopening gap or repeated extension after failed retracements would invalidate that path.",
+  "forecast": [
     {
       "ts": "2026-08-16T19:00:00Z",
       "timeBerlin": "2026-08-16T21:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
-      "stressRiskPct": 72,
+      "stressRiskPct": 71,
       "confidencePct": 69,
       "dominantMode": "mixed"
     },
@@ -351,8 +341,8 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
-      "stressRiskPct": 73,
-      "confidencePct": 68,
+      "stressRiskPct": 71,
+      "confidencePct": 69,
       "dominantMode": "mixed"
     },
     {
@@ -361,8 +351,8 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 16,
-      "stressRiskPct": 74,
-      "confidencePct": 67,
+      "stressRiskPct": 72,
+      "confidencePct": 69,
       "dominantMode": "mixed"
     },
     {
@@ -371,8 +361,8 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 18,
-      "stressRiskPct": 76,
-      "confidencePct": 65,
+      "stressRiskPct": 74,
+      "confidencePct": 66,
       "dominantMode": "event/whipsaw"
     },
     {
@@ -381,7 +371,7 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 17,
-      "stressRiskPct": 74,
+      "stressRiskPct": 73,
       "confidencePct": 66,
       "dominantMode": "event/whipsaw"
     },
@@ -391,8 +381,8 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
-      "stressRiskPct": 72,
-      "confidencePct": 67,
+      "stressRiskPct": 70,
+      "confidencePct": 68,
       "dominantMode": "mixed"
     },
     {
@@ -401,7 +391,7 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 14,
-      "stressRiskPct": 70,
+      "stressRiskPct": 68,
       "confidencePct": 68,
       "dominantMode": "mixed"
     },
@@ -411,8 +401,8 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 14,
-      "stressRiskPct": 69,
-      "confidencePct": 68,
+      "stressRiskPct": 67,
+      "confidencePct": 69,
       "dominantMode": "mixed"
     },
     {
@@ -421,7 +411,7 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 13,
-      "stressRiskPct": 68,
+      "stressRiskPct": 66,
       "confidencePct": 69,
       "dominantMode": "mixed"
     },
@@ -431,7 +421,7 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 13,
-      "stressRiskPct": 68,
+      "stressRiskPct": 65,
       "confidencePct": 69,
       "dominantMode": "mixed"
     },
@@ -441,8 +431,8 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 13,
-      "stressRiskPct": 67,
-      "confidencePct": 69,
+      "stressRiskPct": 64,
+      "confidencePct": 70,
       "dominantMode": "mixed"
     },
     {
@@ -451,7 +441,7 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 13,
-      "stressRiskPct": 67,
+      "stressRiskPct": 64,
       "confidencePct": 70,
       "dominantMode": "mixed"
     },
@@ -461,7 +451,7 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 14,
-      "stressRiskPct": 68,
+      "stressRiskPct": 65,
       "confidencePct": 70,
       "dominantMode": "mixed"
     },
@@ -471,7 +461,7 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 14,
-      "stressRiskPct": 69,
+      "stressRiskPct": 66,
       "confidencePct": 70,
       "dominantMode": "mixed"
     },
@@ -481,8 +471,8 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 14,
-      "stressRiskPct": 69,
-      "confidencePct": 71,
+      "stressRiskPct": 66,
+      "confidencePct": 70,
       "dominantMode": "mixed"
     },
     {
@@ -490,9 +480,9 @@
       "timeBerlin": "2026-08-17T12:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 13,
-      "stressRiskPct": 68,
-      "confidencePct": 71,
+      "tailRiskPct": 14,
+      "stressRiskPct": 66,
+      "confidencePct": 70,
       "dominantMode": "mixed"
     },
     {
@@ -500,8 +490,8 @@
       "timeBerlin": "2026-08-17T13:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 13,
-      "stressRiskPct": 68,
+      "tailRiskPct": 14,
+      "stressRiskPct": 67,
       "confidencePct": 71,
       "dominantMode": "mixed"
     },
@@ -510,10 +500,10 @@
       "timeBerlin": "2026-08-17T14:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 14,
-      "stressRiskPct": 69,
-      "confidencePct": 72,
-      "dominantMode": "mixed"
+      "tailRiskPct": 15,
+      "stressRiskPct": 68,
+      "confidencePct": 71,
+      "dominantMode": "event/whipsaw"
     },
     {
       "ts": "2026-08-17T13:00:00Z",
@@ -522,7 +512,7 @@
       "action": "EA_ON",
       "tailRiskPct": 17,
       "stressRiskPct": 72,
-      "confidencePct": 72,
+      "confidencePct": 71,
       "dominantMode": "event/whipsaw"
     },
     {
@@ -531,8 +521,8 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 17,
-      "stressRiskPct": 72,
-      "confidencePct": 73,
+      "stressRiskPct": 71,
+      "confidencePct": 72,
       "dominantMode": "event/whipsaw"
     },
     {
@@ -540,9 +530,9 @@
       "timeBerlin": "2026-08-17T17:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 15,
-      "stressRiskPct": 70,
-      "confidencePct": 73,
+      "tailRiskPct": 16,
+      "stressRiskPct": 69,
+      "confidencePct": 72,
       "dominantMode": "mixed"
     },
     {
@@ -550,9 +540,9 @@
       "timeBerlin": "2026-08-17T18:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 14,
-      "stressRiskPct": 69,
-      "confidencePct": 73,
+      "tailRiskPct": 15,
+      "stressRiskPct": 68,
+      "confidencePct": 72,
       "dominantMode": "mixed"
     },
     {
@@ -560,60 +550,70 @@
       "timeBerlin": "2026-08-17T19:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 14,
-      "stressRiskPct": 68,
-      "confidencePct": 73,
+      "tailRiskPct": 15,
+      "stressRiskPct": 67,
+      "confidencePct": 72,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T18:00:00Z",
+      "timeBerlin": "2026-08-17T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 66,
+      "confidencePct": 72,
       "dominantMode": "mixed"
     }
   ],
   "forecastDetail": [
     {
-      "ts": "2026-08-16T18:00:00Z",
-      "timeBerlin": "2026-08-16T20:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 15,
-      "stressRiskPct": 72,
-      "comment": "CME equity index futures remain halted for the weekend, so no live Nasdaq-100 price path exists in this slot. Scoring rests on Friday's cash close, subdued implied volatility and the unresolved Hormuz energy channel."
-    },
-    {
       "ts": "2026-08-16T19:00:00Z",
       "timeBerlin": "2026-08-16T21:00:00+02:00",
       "status": "green",
       "tailRiskPct": 15,
-      "stressRiskPct": 72,
-      "comment": "Still inside the futures halt. Tail stays in the low band because no persistent one-way structure has been observed; stress stays high on a sixth consecutive weekly-scale advance in crude and rising global long yields."
+      "stressRiskPct": 71,
+      "comment": "Weekend CME halt with no live Nasdaq-100 price path; assessment rests on the last completed cash session and verified cross-asset levels rather than observed structure."
     },
     {
       "ts": "2026-08-16T20:00:00Z",
       "timeBerlin": "2026-08-16T22:00:00+02:00",
       "status": "green",
       "tailRiskPct": 15,
-      "stressRiskPct": 73,
-      "comment": "Approach to the Sunday restart. Conditional tail edges up only marginally, reflecting the possibility of a weekend repricing gap rather than any observed extension or failed retracement."
+      "stressRiskPct": 71,
+      "comment": "Final quiet hour before the Sunday restart; no mechanism for intraday structure to form and no scheduled U.S. release in the window."
     },
     {
       "ts": "2026-08-16T21:00:00Z",
       "timeBerlin": "2026-08-16T23:00:00+02:00",
       "status": "green",
       "tailRiskPct": 16,
-      "stressRiskPct": 74,
-      "comment": "Final hour before the CME restart. Thin pre-open liquidity and unresolved Iran-Hormuz headline flow raise conditional stress; the mapped policy state stays green because tail remains well under the block threshold."
+      "stressRiskPct": 72,
+      "comment": "Approach to the CME reopening. Conditional tail edges up on thin restart liquidity and unresolved Strait of Hormuz headline risk, not on any observed price behaviour."
     },
     {
       "ts": "2026-08-16T22:00:00Z",
       "timeBerlin": "2026-08-17T00:00:00+02:00",
       "status": "green",
       "tailRiskPct": 18,
-      "stressRiskPct": 76,
-      "comment": "Futures restart window near 22:00 UTC and the highest conditional tail of the forecast. An orderly opening print would resolve this quickly; a gap that extends without retracement would be the first genuine tail evidence of the new week."
+      "stressRiskPct": 74,
+      "comment": "Scheduled CME equity index restart near 22:00 UTC. Highest conditional tail of the forecast: thin liquidity, a two-sided Hormuz headline set and the first repricing of the weekend gap."
     },
     {
       "ts": "2026-08-16T23:00:00Z",
       "timeBerlin": "2026-08-17T01:00:00+02:00",
       "status": "green",
       "tailRiskPct": 17,
-      "stressRiskPct": 74,
-      "comment": "First full hour after the restart. Tail is expected to decay if price discovery is orderly and early retracements appear; sustained one-way continuation would invalidate this path."
+      "stressRiskPct": 73,
+      "comment": "First hour after the restart. An orderly opening print with visible two-way trade would resolve most of the reopening premium; repeated extension without retracement would be the first genuine tail evidence."
+    },
+    {
+      "ts": "2026-08-17T00:00:00Z",
+      "timeBerlin": "2026-08-17T02:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 15,
+      "stressRiskPct": 70,
+      "comment": "Asian hours begin. Conditional tail normalises if the reopening was orderly and cross-asset moves in crude and Treasury futures stay contained."
     }
   ],
   "events": [
