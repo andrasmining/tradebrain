@@ -2,10 +2,11 @@ const SVG_NS="http://www.w3.org/2000/svg";
 export const HOUR_MS=60*60*1000;
 export const DEFAULT_METRIC_ID="tail";
 export const METRIC_OPTIONS=Object.freeze([
-  Object.freeze({id:"tail",label:"TAIL / KILL",field:"tailRiskPct"}),
-  Object.freeze({id:"stress",label:"STRESS / DD",field:"stressRiskPct"}),
-  Object.freeze({id:"confidence",label:"CONFIDENCE",field:"confidencePct"})
+  Object.freeze({id:"tail",label:"TAIL / KILL",legendLabel:"Tail",field:"tailRiskPct"}),
+  Object.freeze({id:"stress",label:"STRESS / DD",legendLabel:"Stress",field:"stressRiskPct"}),
+  Object.freeze({id:"confidence",label:"CONFIDENCE",legendLabel:"Confidence",field:"confidencePct"})
 ]);
+export const DEFAULT_METRIC_IDS=Object.freeze([DEFAULT_METRIC_ID]);
 
 const DEFAULT_WINDOW_HOURS=72;
 const DEFAULT_PROJECTION_HOURS=6;
@@ -17,6 +18,15 @@ const chartResizeState=new WeakMap();
 function metricOption(metric){return METRIC_OPTIONS.find(option=>option.id===metric||option.label===metric||option.field===metric)||null}
 export function metricField(metric){return metricOption(metric)?.field??null}
 export function isMetricId(metric){return METRIC_OPTIONS.some(option=>option.id===metric)}
+export function normalizeMetricIds(metrics=DEFAULT_METRIC_IDS){
+  const requested=new Set((Array.isArray(metrics)?metrics:[metrics]).map(metric=>metricOption(metric)?.id).filter(Boolean));
+  return METRIC_OPTIONS.map(option=>option.id).filter(id=>requested.has(id));
+}
+export function toggleMetricId(metrics,metric){
+  const selected=normalizeMetricIds(metrics),id=metricOption(metric)?.id;
+  if(!id)return selected;
+  return selected.includes(id)?selected.filter(selectedId=>selectedId!==id):normalizeMetricIds([...selected,id]);
+}
 const clampPct=value=>Math.min(100,Math.max(0,value));
 
 function orderedUniquePoints(points){
@@ -85,27 +95,29 @@ export function splitHistorySegments(points){
   return segments;
 }
 
-export function prepareComparisonSeries(providers,metric=DEFAULT_METRIC_ID,{nowMs=Date.now(),windowHours=DEFAULT_WINDOW_HOURS,projectionHours=DEFAULT_PROJECTION_HOURS,staleMinutes=DEFAULT_STALE_MINUTES}={}){
-  const selected=metricOption(metric)||METRIC_OPTIONS[0];
+export function prepareComparisonSeries(providers,metrics=DEFAULT_METRIC_IDS,{nowMs=Date.now(),windowHours=DEFAULT_WINDOW_HOURS,projectionHours=DEFAULT_PROJECTION_HOURS,staleMinutes=DEFAULT_STALE_MINUTES}={}){
+  const selectedMetrics=normalizeMetricIds(metrics).map(id=>metricOption(id));
   const safeNow=Number.isFinite(nowMs)?nowMs:Date.now();
   const windowStart=safeNow-windowHours*HOUR_MS,windowEnd=safeNow+projectionHours*HOUR_MS;
-  const series=(Array.isArray(providers)?providers:[]).map((provider,index)=>{
+  const series=(Array.isArray(providers)?providers:[]).flatMap((provider,index)=>{
     const id=typeof provider?.id==="string"&&provider.id?provider.id:`provider-${index+1}`;
     const label=typeof provider?.label==="string"&&provider.label?provider.label:id;
-    const normalized=normalizeHistory(provider?.historyItems,selected.id).filter(point=>point.timestamp<=safeNow);
-    const historical=normalized.filter(point=>point.timestamp>=windowStart);
     const generatedAt=Date.parse(provider?.generatedAt);
     const fresh=Number.isFinite(generatedAt)&&Math.max(0,safeNow-generatedAt)<=staleMinutes*60*1000;
-    let projection=[],projectionState="available";
-    if(!historical.length)projectionState="no-history";
-    else if(!fresh)projectionState="stale";
-    else{
-      projection=buildProjection(normalized,{horizonHours:projectionHours,maxPoints:DEFAULT_REGRESSION_POINTS});
-      if(!projection.length)projectionState="insufficient-data";
-    }
-    return{id,label,historical,projection,fresh,projectionState,validPointCount:normalized.length};
+    return selectedMetrics.map(metric=>{
+      const normalized=normalizeHistory(provider?.historyItems,metric.id).filter(point=>point.timestamp<=safeNow);
+      const historical=normalized.filter(point=>point.timestamp>=windowStart);
+      let projection=[],projectionState="available";
+      if(!historical.length)projectionState="no-history";
+      else if(!fresh)projectionState="stale";
+      else{
+        projection=buildProjection(normalized,{horizonHours:projectionHours,maxPoints:DEFAULT_REGRESSION_POINTS});
+        if(!projection.length)projectionState="insufficient-data";
+      }
+      return{id,label,metric,historical,projection,fresh,projectionState,validPointCount:normalized.length};
+    });
   });
-  return{metric:selected,nowMs:safeNow,windowStart,windowEnd,windowHours,projectionHours,series};
+  return{metrics:selectedMetrics,nowMs:safeNow,windowStart,windowEnd,windowHours,projectionHours,series};
 }
 
 const domEl=(tag,className="",text=null)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==null)node.textContent=text;return node};
@@ -120,59 +132,56 @@ function axisTime(timestamp,compact){
   return new Intl.DateTimeFormat(undefined,compact?{month:"short",day:"numeric",hour:"2-digit"}:{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}).format(new Date(timestamp));
 }
 
-function scheduleTabFocus(host,metricId){
+function scheduleToggleFocus(host,metricId){
   const focus=()=>{const next=host.querySelector(`[data-comparison-metric="${metricId}"]`);if(!next)return;try{next.focus({preventScroll:true})}catch{next.focus()}};
   if(typeof requestAnimationFrame==="function")requestAnimationFrame(focus);else queueMicrotask(focus);
 }
 
-function renderMetricTabs(host,metric,onMetricChange){
-  const tabs=domEl("div","tabs comparison-metric-tabs");
-  tabs.setAttribute("role","tablist");
-  tabs.setAttribute("aria-label","Historical comparison metric");
-  const buttons=METRIC_OPTIONS.map(option=>{
-    const selected=option.id===metric.id,button=domEl("button","tab comparison-metric-tab",option.label);
+function renderMetricToggles(host,selectedMetricIds,onMetricsChange){
+  const controls=domEl("div","comparison-metric-controls");
+  controls.setAttribute("role","group");
+  controls.setAttribute("aria-label","Displayed comparison metrics");
+  for(const option of METRIC_OPTIONS){
+    const selected=selectedMetricIds.includes(option.id),button=domEl("button",`tab comparison-metric-toggle metric-${option.id}`,option.label);
     button.type="button";
     button.id=`comparison-metric-${option.id}`;
     button.dataset.comparisonMetric=option.id;
-    button.setAttribute("role","tab");
-    button.setAttribute("aria-selected",String(selected));
+    button.setAttribute("aria-pressed",String(selected));
     button.setAttribute("aria-controls","comparison-chart-plot");
-    button.tabIndex=selected?0:-1;
     button.addEventListener("click",()=>{
-      if(selected||typeof onMetricChange!=="function")return;
-      onMetricChange(option.id);
-      scheduleTabFocus(host,option.id);
+      if(typeof onMetricsChange!=="function")return;
+      const next=toggleMetricId(selectedMetricIds,option.id);
+      onMetricsChange(next);
+      scheduleToggleFocus(host,option.id);
     });
-    tabs.append(button);
-    return button;
-  });
-  buttons.forEach((button,index)=>button.addEventListener("keydown",event=>{
-    let nextIndex=null;
-    if(event.key==="ArrowRight")nextIndex=(index+1)%buttons.length;
-    else if(event.key==="ArrowLeft")nextIndex=(index-1+buttons.length)%buttons.length;
-    else if(event.key==="Home")nextIndex=0;
-    else if(event.key==="End")nextIndex=buttons.length-1;
-    if(nextIndex===null)return;
-    event.preventDefault();
-    const nextMetric=METRIC_OPTIONS[nextIndex].id;
-    if(nextMetric!==metric.id&&typeof onMetricChange==="function")onMetricChange(nextMetric);
-    scheduleTabFocus(host,nextMetric);
-  }));
-  return tabs;
+    controls.append(button);
+  }
+  return controls;
 }
 
-function legendItem(series,kind){
-  const item=domEl("span",`comparison-legend-item ${providerClass(series.id)}`);
+function metricClass(id){return`metric-${id}`}
+
+function legendSeriesItem(series){
+  const item=domEl("span",`comparison-legend-item ${providerClass(series.id)} ${metricClass(series.metric.id)}`);
+  const swatch=domEl("span","comparison-legend-line series-historical");
+  swatch.setAttribute("aria-hidden","true");
+  item.append(swatch,document.createTextNode(`${series.label} · ${series.metric.legendLabel}`));
+  return item;
+}
+
+function legendKindItem(kind,label){
+  const item=domEl("span","comparison-legend-kind");
   const swatch=domEl("span",`comparison-legend-line series-${kind}`);
   swatch.setAttribute("aria-hidden","true");
-  item.append(swatch,document.createTextNode(`${series.label} — ${kind==="historical"?"Historical":"Projected"}`));
+  item.append(swatch,document.createTextNode(label));
   return item;
 }
 
 function projectionNote(series){
-  if(series.projectionState==="no-history")return`${series.label}: no valid history in the displayed range.`;
-  if(series.projectionState==="stale")return`${series.label}: projection suppressed because the provider is stale.`;
-  if(series.projectionState==="insufficient-data")return`${series.label}: projection needs at least 3 valid historical points.`;
+  const subject=`${series.label} · ${series.metric.legendLabel}`;
+  if(series.projectionState==="no-history")return`${subject}: no valid history in the displayed range.`;
+  if(series.projectionState==="stale")return`${subject}: projection suppressed because the provider is stale.`;
+  if(series.projectionState==="insufficient-data")return`${subject}: projection needs at least 3 valid historical points.`;
   return null;
 }
 
@@ -191,9 +200,10 @@ function watchChartWidth(host,providers,options){
   state.observer.observe(host);
 }
 
-export function renderComparisonChart(host,providers,{metric=DEFAULT_METRIC_ID,nowMs=Date.now(),staleMinutes=DEFAULT_STALE_MINUTES,onMetricChange=null}={}){
+export function renderComparisonChart(host,providers,{metrics=DEFAULT_METRIC_IDS,nowMs=Date.now(),staleMinutes=DEFAULT_STALE_MINUTES,onMetricsChange=null}={}){
   if(!host||typeof document==="undefined")return null;
-  const prepared=prepareComparisonSeries(providers,metric,{nowMs,staleMinutes});
+  const selectedMetricIds=normalizeMetricIds(metrics);
+  const prepared=prepareComparisonSeries(providers,selectedMetricIds,{nowMs,staleMinutes});
   host.replaceChildren();
 
   const card=domEl("section","comparison-chart-card panel");
@@ -203,14 +213,14 @@ export function renderComparisonChart(host,providers,{metric=DEFAULT_METRIC_ID,n
   heading.id="comparison-chart-heading";
   titleWrap.append(domEl("div","eyebrow","72-HOUR VIEW"),heading);
   head.append(titleWrap,domEl("span","comparison-chart-scale","ACTUAL TIME · 0–100%"));
-  card.append(head,renderMetricTabs(host,prepared.metric,onMetricChange));
+  card.append(head,renderMetricToggles(host,selectedMetricIds,onMetricsChange));
 
   const figure=domEl("figure","comparison-chart-figure"),legend=domEl("div","comparison-chart-legend");
-  legend.setAttribute("aria-label","Chart legend");
   for(const series of prepared.series){
-    if(series.historical.length)legend.append(legendItem(series,"historical"));
-    if(series.projection.length>1)legend.append(legendItem(series,"projected"));
+    if(series.historical.length)legend.append(legendSeriesItem(series));
   }
+  if(prepared.series.some(series=>series.historical.length))legend.append(legendKindItem("historical","Historical"));
+  if(prepared.series.some(series=>series.projection.length>1))legend.append(legendKindItem("projected","Projected"));
   if(legend.childElementCount)figure.append(legend);
 
   const availableWidth=Math.max(280,(host.clientWidth||956)-36),compact=availableWidth<560;
@@ -220,10 +230,11 @@ export function renderComparisonChart(host,providers,{metric=DEFAULT_METRIC_ID,n
   const xScale=timestamp=>margin.left+(timestamp-prepared.windowStart)/(prepared.windowEnd-prepared.windowStart)*plotWidth;
   const yScale=value=>margin.top+(100-value)/100*plotHeight;
   const svg=svgEl("svg",{id:"comparison-chart-plot",class:"comparison-chart-svg",viewBox:`0 0 ${width} ${height}`,role:"img","aria-labelledby":"comparison-chart-svg-title comparison-chart-svg-desc"});
-  const describedProviders=prepared.series.filter(series=>series.historical.length).map(series=>series.label);
+  const describedProviders=[...new Set(prepared.series.filter(series=>series.historical.length).map(series=>series.label))];
   const providerDescription=describedProviders.length?describedProviders.join(" and "):"available provider";
-  svg.append(svgEl("title",{id:"comparison-chart-svg-title"},`${prepared.metric.label} provider history and visual projection`));
-  svg.append(svgEl("desc",{id:"comparison-chart-svg-desc"},`${providerDescription} ${prepared.metric.label} scores over the trailing 72 hours on a fixed zero to one hundred percent scale. Solid lines are historical assessments. Dashed lines are simple six-hour extrapolations when fresh data is sufficient.`));
+  const metricDescription=prepared.metrics.map(metric=>metric.label).join(", ");
+  svg.append(svgEl("title",{id:"comparison-chart-svg-title"},metricDescription?`${metricDescription} provider history and visual projection`:"Provider history chart with no metrics selected"));
+  svg.append(svgEl("desc",{id:"comparison-chart-svg-desc"},metricDescription?`${providerDescription} ${metricDescription} scores over the trailing 72 hours on a fixed zero to one hundred percent scale. Solid lines are historical assessments. Dashed lines are simple six-hour extrapolations when fresh data is sufficient.`:"No metrics are selected. Use the three toggle buttons above the chart to display provider history."));
 
   const nowX=xScale(prepared.nowMs);
   svg.append(svgEl("rect",{class:"comparison-chart-future",x:nowX,y:margin.top,width:Math.max(0,width-margin.right-nowX),height:plotHeight}));
@@ -241,14 +252,15 @@ export function renderComparisonChart(host,providers,{metric=DEFAULT_METRIC_ID,n
   }
 
   for(const series of prepared.series){
-    const className=`comparison-chart-series ${providerClass(series.id)}`;
+    const identityClass=`${providerClass(series.id)} ${metricClass(series.metric.id)}`;
+    const className=`comparison-chart-series ${identityClass}`;
     for(const segment of splitHistorySegments(series.historical)){
       if(segment.length>1)svg.append(svgEl("path",{class:`${className} series-historical`,d:pathData(segment,xScale,yScale)}));
-      else if(segment.length===1)svg.append(svgEl("circle",{class:`comparison-chart-point ${providerClass(series.id)}`,cx:xScale(segment[0].timestamp),cy:yScale(segment[0].value),r:3}));
+      else if(segment.length===1)svg.append(svgEl("circle",{class:`comparison-chart-point ${identityClass}`,cx:xScale(segment[0].timestamp),cy:yScale(segment[0].value),r:3}));
     }
     if(series.historical.length){
-      const last=series.historical.at(-1),point=svgEl("circle",{class:`comparison-chart-endpoint ${providerClass(series.id)}`,cx:xScale(last.timestamp),cy:yScale(last.value),r:3.5});
-      point.append(svgEl("title",{},`${series.label}: ${last.value}% at ${new Date(last.timestamp).toLocaleString()}`));
+      const last=series.historical.at(-1),point=svgEl("circle",{class:`comparison-chart-endpoint ${identityClass}`,cx:xScale(last.timestamp),cy:yScale(last.value),r:3.5});
+      point.append(svgEl("title",{},`${series.label} · ${series.metric.legendLabel}: ${last.value}% at ${new Date(last.timestamp).toLocaleString()}`));
       svg.append(point);
     }
     if(series.projection.length>1)svg.append(svgEl("path",{class:`${className} series-projected`,d:pathData(series.projection,xScale,yScale)}));
@@ -256,7 +268,7 @@ export function renderComparisonChart(host,providers,{metric=DEFAULT_METRIC_ID,n
 
   svg.append(svgEl("line",{class:"comparison-chart-now",x1:nowX,y1:margin.top,x2:nowX,y2:height-margin.bottom}));
   svg.append(svgEl("text",{class:"comparison-chart-now-label",x:Math.min(width-margin.right-2,nowX+5),y:margin.top+11},"NOW"));
-  if(!prepared.series.some(series=>series.historical.length))svg.append(svgEl("text",{class:"comparison-chart-empty",x:margin.left+plotWidth/2,y:margin.top+plotHeight/2,"text-anchor":"middle"},`No valid ${prepared.metric.label} history in the last 72 hours.`));
+  if(!prepared.series.some(series=>series.historical.length))svg.append(svgEl("text",{class:"comparison-chart-empty",x:margin.left+plotWidth/2,y:margin.top+plotHeight/2,"text-anchor":"middle"},prepared.metrics.length?"No valid selected-metric history in the last 72 hours.":"Select one or more metrics to display."));
   figure.append(svg);
 
   const caption=domEl("figcaption","comparison-chart-caption");
@@ -266,6 +278,6 @@ export function renderComparisonChart(host,providers,{metric=DEFAULT_METRIC_ID,n
   if(notes.length){const noteList=domEl("div","comparison-chart-notes");for(const note of notes)noteList.append(domEl("span","",note));figure.append(noteList)}
   card.append(figure);
   host.append(card);
-  watchChartWidth(host,providers,{metric:prepared.metric.id,nowMs,staleMinutes,onMetricChange});
+  watchChartWidth(host,providers,{metrics:selectedMetricIds,nowMs,staleMinutes,onMetricsChange});
   return prepared;
 }

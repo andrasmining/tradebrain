@@ -4,12 +4,19 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import {validateStatus,validateSignal,validateHistory,actionForTail,statusForAction,tailLevel,stressLevel,confidenceLevel,compareProviders,cacheBust,upcomingEvents} from "../scripts/lib.mjs";
+import {validateStatusContract} from "../scripts/status-contract.mjs";
 
 function iso(base,hours){return new Date(Date.parse(base)+hours*3600000).toISOString()}function berlin(utc){const d=new Date(utc),shifted=new Date(d.getTime()+3600000);return shifted.toISOString().replace("Z","+01:00")}
 function makeStatus(provider="chatgpt",generatedAt="2026-01-10T12:10:00Z",tail=18){const hour="2026-01-10T12:00:00Z",action=actionForTail(tail),forecast=Array.from({length:24},(_,i)=>{const ts=iso(hour,i),t=i===5?24:tail,a=actionForTail(t);return{ts,timeBerlin:berlin(ts),status:statusForAction(a),action:a,tailRiskPct:t,stressRiskPct:50,confidencePct:75,dominantMode:"mixed"}}),lookback=Array.from({length:24},(_,i)=>{const ts=iso(hour,i-24);return{ts,timeBerlin:berlin(ts),available:false,status:null,action:null,tailRiskPct:null,stressRiskPct:null,confidencePct:null,dominantMode:null}});return{schemaVersion:"1.0.0",provider,engineVersion:"1.0.0",promptVersion:"1.1.0",generatedAt,market:"NASDAQ-100",instruments:["NQ_FUTURES","NAS100_CFD"],status:statusForAction(action),statusText:"Normal",recommendation:"EA on",headline:"Test",body:"Fixture",tailRiskPct:tail,tailLevel:tailLevel(tail),stressRiskPct:50,stressLevel:stressLevel(50),dominantMode:"mixed",confidencePct:75,confidenceLevel:confidenceLevel(75),action,dangerWindow:{start:null,end:null},dangerWindowBerlin:{start:null,end:null},sources:[{title:"BLS",url:"https://www.bls.gov/"}],lookbackSummary:"Fixture lookback",lookback,outlookSummary:"Fixture outlook",forecast,forecastDetail:forecast.slice(0,6).map(x=>({ts:x.ts,timeBerlin:x.timeBerlin,status:x.status,tailRiskPct:x.tailRiskPct,stressRiskPct:x.stressRiskPct,comment:"Fixture"})),events:[{name:"Fixture event",ts:"2026-01-11T13:30:00Z",timeBerlin:"2026-01-11T14:30:00+01:00",impact:"high"}]}}
 function makeSignal(status){return{schemaVersion:status.schemaVersion,provider:status.provider,engineVersion:status.engineVersion,promptVersion:status.promptVersion,generatedAt:status.generatedAt,market:status.market,instruments:status.instruments,status:status.status,action:status.action,pause:["STRONG_BLOCK_NO_NEW_RISK","EA_OFF_NO_NEW_RISK"].includes(status.action),caution:["WATCH","BLOCK_NEW_BASE_ENTRIES"].includes(status.action),tailRiskPct:status.tailRiskPct,tailLevel:status.tailLevel,stressRiskPct:status.stressRiskPct,stressLevel:status.stressLevel,confidencePct:status.confidencePct,confidenceLevel:status.confidenceLevel,dominantMode:status.dominantMode,dangerWindow:status.dangerWindow,dangerWindowBerlin:status.dangerWindowBerlin}}
 
 test("valid status accepted",()=>assert.deepEqual(validateStatus(makeStatus(),"chatgpt"),[]));
+test("status contract requires an extended signed Berlin offset",()=>{
+  const status=makeStatus();
+  assert.deepEqual(validateStatusContract(status),[]);
+  status.forecast[0].timeBerlin=status.forecast[0].timeBerlin.replace("+01:00","+0100");
+  assert.ok(validateStatusContract(status).some(error=>error.includes("forecast[0].timeBerlin")));
+});
 test("invalid score rejected",()=>{const s=makeStatus();s.tailRiskPct=101;assert.ok(validateStatus(s,"chatgpt").some(e=>e.includes("tailRiskPct")))});
 test("wrong action/Tail mapping rejected",()=>{const s=makeStatus();s.action="WATCH";assert.ok(validateStatus(s,"chatgpt").some(e=>e.includes("action must")))});
 test("wrong status/action mapping rejected",()=>{const s=makeStatus();s.status="red";assert.ok(validateStatus(s,"chatgpt").some(e=>e.includes("status does not match")))});

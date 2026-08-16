@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { readJson, validateStatus } from "./lib.mjs";
+import { validateStatusContract } from "./status-contract.mjs";
 
 const root = process.cwd();
 const provider = "claude";
@@ -83,21 +84,42 @@ if (!Array.isArray(history.items)) throw new Error("Claude history.items must be
 const knownGeneratedAt = new Set(history.items.map(item => item.generatedAt));
 const knownSnapshots = new Set(history.items.map(item => item.snapshot));
 let changed = false;
+const rejected = [];
 
 const candidates = listJsonFiles(snapshotsDir)
-  .map(file => ({ file, repo: repoPath(file), snapshot: readJson(file) }))
-  .sort((a, b) => Date.parse(a.snapshot.generatedAt) - Date.parse(b.snapshot.generatedAt));
+  .map(file => ({ file, repo: repoPath(file) }))
+  .sort((a, b) => a.repo.localeCompare(b.repo));
 
 for (const candidate of candidates) {
-  const errors = validateStatus(candidate.snapshot, provider);
-  if (errors.length) {
-    throw new Error(`${candidate.repo} is invalid: ${errors.join("; ")}`);
+  const indexed = knownSnapshots.has(candidate.repo);
+  let snapshot;
+  try {
+    snapshot = readJson(candidate.file);
+  } catch (error) {
+    if (indexed) {
+      throw new Error(`${candidate.repo} is indexed but contains invalid JSON: ${error.message}`);
+    }
+    rejected.push(`${candidate.repo}: invalid JSON: ${error.message}`);
+    continue;
   }
-  if (knownGeneratedAt.has(candidate.snapshot.generatedAt) || knownSnapshots.has(candidate.repo)) continue;
-  history.items.push(historyItem(candidate.snapshot, candidate.repo));
-  knownGeneratedAt.add(candidate.snapshot.generatedAt);
+
+  const errors = validateStatus(snapshot, provider);
+  if (!indexed) errors.push(...validateStatusContract(snapshot));
+  if (errors.length) {
+    if (indexed) throw new Error(`${candidate.repo} is indexed but invalid: ${errors.join("; ")}`);
+    rejected.push(`${candidate.repo}: ${errors.join("; ")}`);
+    continue;
+  }
+  if (knownGeneratedAt.has(snapshot.generatedAt) || indexed) continue;
+  history.items.push(historyItem(snapshot, candidate.repo));
+  knownGeneratedAt.add(snapshot.generatedAt);
   knownSnapshots.add(candidate.repo);
   changed = true;
+}
+
+if (rejected.length) {
+  console.warn(`Rejected ${rejected.length} invalid unindexed Claude snapshot(s); continuing with valid snapshots:`);
+  for (const item of rejected) console.warn(`- ${item}`);
 }
 
 history.items.sort((a, b) => Date.parse(a.generatedAt) - Date.parse(b.generatedAt));

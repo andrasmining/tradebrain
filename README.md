@@ -41,7 +41,7 @@ The finalizer rejects invalid unindexed ChatGPT snapshots without allowing one b
 
 Claude scheduled runs likewise publish one immutable snapshot under `providers/claude/snapshots/**`; the deterministic Claude finalizer derives its history/status/signal state.
 
-Git audit history remains unlimited and immutable. GitHub Pages serves current status/signal plus only the most recent 168 history entries per provider; historical snapshot archives remain in Git and are not copied into every Pages artifact.
+Git audit history remains unlimited and immutable. GitHub Pages serves valid current status/signal plus only the most recent 168 history entries per provider; historical snapshot archives remain in Git and are not copied into every Pages artifact. A current-status failure does not hide independently validated, snapshot-matched history from the display-only comparison chart.
 
 ## Shared Finviz context
 
@@ -80,11 +80,11 @@ Agreement means both fresh providers map to the same provider action. TradeBrain
 
 Provider data becomes stale after 130 minutes. The browser refreshes once per minute using `cache: "no-store"` plus cache-busting query parameters.
 
-The Risk comparison section also renders one display-only combined trend chart from the already-loaded provider histories. It shows one selected metric (Tail/Kill, Stress/DD, or Confidence) for both providers over the latest 72 hours on a fixed 0-100% scale. A dashed six-hour projection is a deterministic ordinary-least-squares extrapolation of up to eight recent actual points, anchored at the latest assessment; it is not either provider's published forecast or a trading command. Projections require at least three points and are suppressed for stale providers.
+The Risk comparison section also renders one display-only combined trend chart from the already-loaded provider histories. Tail/Kill, Stress/DD, and Confidence are independent toggles, so any subset can overlap for both providers over the latest 72 hours on the same fixed 0-100% scale. Dashed six-hour projections are deterministic ordinary-least-squares extrapolations of up to eight recent actual points, anchored at each latest assessment; they are not either provider's published forecast or a trading command. Projections require at least three points and are suppressed for stale providers.
 
 ## Failure isolation
 
-Pages deployment validates/builds providers independently. Invalid or incomplete provider state is omitted from the deployed site instead of blocking a valid provider from being displayed. Repository validation remains available in strict mode for development/PR checks.
+Pages deployment validates/builds providers independently. Invalid or incomplete current provider state is omitted instead of blocking a valid provider from being displayed. Separately valid history whose scalar scores exactly match immutable snapshots may still be published for the historical chart; it never makes the provider current or available. Repository validation remains available in strict mode for development/PR checks.
 
 Missing provider state is neutral/unavailable — never green.
 

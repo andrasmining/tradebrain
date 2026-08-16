@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { readJson, validateStatus, compareProviders } from "./lib.mjs";
+import { validateStatusContract } from "./status-contract.mjs";
 
 const root = process.cwd();
 const outDir = path.join(root, "dist");
@@ -9,14 +10,16 @@ fs.mkdirSync(outDir, { recursive: true });
 const providers = readJson(path.join(root, "config", "providers.json"));
 const states = {};
 for (const provider of providers) {
-  const file = path.join(root, provider.path, "status.json");
+  // Current endpoints reach dist only after the complete provider publication
+  // passes build-site's provider gate, so overview must read that exact state.
+  const file = path.join(outDir, provider.path, "status.json");
   if (!provider.enabled || !fs.existsSync(file)) {
     states[provider.id] = null;
     continue;
   }
   try {
     const status = readJson(file);
-    const errors = validateStatus(status, provider.id);
+    const errors = [...validateStatus(status, provider.id), ...validateStatusContract(status)];
     if (errors.length) {
       console.warn(`${provider.id} status omitted from overview: ${errors.join("; ")}`);
       states[provider.id] = null;

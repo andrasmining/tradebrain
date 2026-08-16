@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { readJson } from "./lib.mjs";
+import { preparePublicHistory } from "./public-history.mjs";
 
 const root = process.cwd();
 const dist = path.join(root, "dist");
@@ -27,22 +28,35 @@ for (const provider of providers) {
   fs.mkdirSync(targetDir, { recursive: true });
   if (fs.existsSync(path.join(sourceDir, "README.md"))) copy(`${provider.path}/README.md`);
   if (!provider.enabled) continue;
+  let historyPublished = false;
+  const historyPath = path.join(sourceDir, "history.json");
+  if (fs.existsSync(historyPath)) {
+    try {
+      const prepared = preparePublicHistory(readJson(historyPath), provider.id, root, PUBLIC_HISTORY_LIMIT);
+      if (prepared.errors.length) {
+        console.warn(`${provider.id}: chart history omitted from Pages: ${prepared.errors.join("; ")}`);
+      } else {
+        fs.writeFileSync(path.join(targetDir, "history.json"), `${JSON.stringify(prepared.history, null, 2)}\n`);
+        historyPublished = true;
+      }
+    } catch (error) {
+      console.warn(`${provider.id}: chart history omitted from Pages: ${error.message}`);
+    }
+  }
   const stateFiles = ["status.json", "signal.json", "history.json"];
   if (!stateFiles.every(file => fs.existsSync(path.join(sourceDir, file)))) {
-    console.warn(`${provider.id}: no complete provider state for Pages; publishing as unavailable.`);
+    console.warn(`${provider.id}: no complete current provider state for Pages; publishing current state as unavailable${historyPublished ? " while retaining validated chart history" : ""}.`);
     continue;
   }
   const validation = spawnSync(process.execPath, ["scripts/validate-provider.mjs", provider.id], { cwd: root, encoding: "utf8" });
   if (validation.status !== 0) {
-    console.warn(`${provider.id}: invalid provider state omitted from Pages.`);
+    console.warn(`${provider.id}: invalid current provider state omitted from Pages${historyPublished ? "; validated chart history retained" : ""}.`);
     process.stderr.write(validation.stderr);
     continue;
   }
   copy(`${provider.path}/status.json`);
   copy(`${provider.path}/signal.json`);
-  const history = readJson(path.join(sourceDir, "history.json"));
-  const publicHistory = { ...history, items: history.items.slice(-PUBLIC_HISTORY_LIMIT) };
-  fs.writeFileSync(path.join(targetDir, "history.json"), `${JSON.stringify(publicHistory, null, 2)}\n`);
+  if (!historyPublished) throw new Error(`${provider.id}: valid provider state has no publishable history`);
 }
 const run = spawnSync(process.execPath, ["scripts/build-overview.mjs"], { cwd: root, encoding: "utf8" });
 process.stdout.write(run.stdout);

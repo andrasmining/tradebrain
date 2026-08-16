@@ -336,7 +336,7 @@ Historical model opinions must not be rewritten with hindsight.
 
 ## 7. Display-only derived analytics and time-series boundaries
 
-Browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, simple regression/extrapolation, comparison metric, or visual projection. The current Risk comparison chart is one such feature: it uses provider history directly, displays both providers over a rolling 72-hour window on a fixed 0-100% scale, and may show a six-hour visual projection using ordinary least squares over up to eight recent points. Projection requires at least three points and is suppressed for providers stale under the browser's 130-minute threshold.
+Browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, simple regression/extrapolation, comparison metric, or visual projection. The current Risk comparison chart is one such feature: it uses provider history directly, lets the user independently toggle any combination of Tail, Stress, and Confidence for both providers over a rolling 72-hour window on a fixed 0-100% scale, and may show six-hour visual projections using ordinary least squares over up to eight recent points. Projection requires at least three points and is suppressed for providers stale under the browser's 130-minute threshold.
 
 ```text
 provider historical data
@@ -472,6 +472,8 @@ The intended order is conceptually:
 7. upload and deploy the Pages artifact.
 
 Provider finalization is intentionally isolated so one provider problem does not necessarily make all valid provider state disappear from Pages.
+
+Pages may retain a provider's separately validated, immutable-snapshot-matched scalar history for display-only charts when its current status/signal is invalid or unavailable. That history must not make the provider appear current, fresh, green, or actionable; current-state endpoints remain omitted until the complete provider publication validates.
 
 Do not casually remove failure isolation or turn missing provider data into a site-wide false-green state.
 

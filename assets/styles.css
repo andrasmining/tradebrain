@@ -7,16 +7,23 @@
 .comparison-chart-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:12px}
 .comparison-chart-head h3{margin-bottom:0;font-size:1rem;letter-spacing:-.01em}
 .comparison-chart-scale{color:var(--muted);font:600 .63rem/1.4 var(--mono);letter-spacing:.04em;white-space:nowrap}
-.comparison-metric-tabs{margin-bottom:12px}
-.comparison-metric-tab{min-height:42px}
-.comparison-metric-tab[aria-selected="true"]{border-color:rgba(122,167,255,.58);color:#dce8ff;box-shadow:0 0 0 1px rgba(122,167,255,.08) inset}
-.comparison-metric-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.comparison-metric-controls{display:flex;gap:6px;max-width:100%;margin-bottom:12px;overflow-x:auto;scrollbar-width:none}
+.comparison-metric-controls::-webkit-scrollbar{display:none}
+.comparison-metric-toggle{min-height:42px;flex:0 0 auto}
+.comparison-metric-toggle[aria-pressed="true"]{border-color:rgba(122,167,255,.58);color:#dce8ff;background:#172233;box-shadow:0 0 0 1px rgba(122,167,255,.08) inset}
+.comparison-metric-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .comparison-chart-figure{margin:0;min-width:0}
 .comparison-chart-legend{display:flex;flex-wrap:wrap;gap:8px 15px;min-height:20px;margin:2px 0 8px;color:#bdc8d5;font:500 .66rem/1.35 var(--mono)}
-.comparison-legend-item{--series-color:var(--neutral);display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.comparison-legend-item,.comparison-legend-kind{--series-color:var(--neutral);display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
 .provider-chatgpt{--series-color:var(--provider-chatgpt)}
 .provider-claude{--series-color:var(--provider-claude)}
 .provider-neutral{--series-color:var(--neutral)}
+.provider-chatgpt.metric-tail{--series-color:#7aa7ff}
+.provider-chatgpt.metric-stress{--series-color:#c48cff}
+.provider-chatgpt.metric-confidence{--series-color:#63d4f5}
+.provider-claude.metric-tail{--series-color:#63d49a}
+.provider-claude.metric-stress{--series-color:#d8c85f}
+.provider-claude.metric-confidence{--series-color:#4ecbc4}
 .comparison-legend-line{display:inline-block;width:24px;height:0;border-top:2px solid var(--series-color)}
 .comparison-legend-line.series-projected{border-top-style:dashed;opacity:.68}
 .comparison-chart-svg{display:block;width:100%;height:auto;min-width:0;border:1px solid rgba(45,59,76,.82);border-radius:13px;background:linear-gradient(180deg,#0b111a,#090e15);overflow:hidden}

@@ -3,14 +3,17 @@ import assert from"node:assert/strict";
 import fs from"node:fs";
 import{
   DEFAULT_METRIC_ID,
+  DEFAULT_METRIC_IDS,
   HOUR_MS,
   METRIC_OPTIONS,
   buildProjection,
   metricField,
   normalizeHistory,
+  normalizeMetricIds,
   prepareComparisonSeries,
   regressionSlope,
-  splitHistorySegments
+  splitHistorySegments,
+  toggleMetricId
 }from"../assets/comparison-chart.js";
 
 const BASE=Date.parse("2026-08-16T00:00:00Z");
@@ -20,6 +23,7 @@ const closeTo=(actual,expected,epsilon=1e-10)=>assert.ok(Math.abs(actual-expecte
 
 test("metric selector exposes exactly the three contracted mappings",()=>{
   assert.equal(DEFAULT_METRIC_ID,"tail");
+  assert.deepEqual(DEFAULT_METRIC_IDS,["tail"]);
   assert.deepEqual(METRIC_OPTIONS.map(({label,field})=>[label,field]),[
     ["TAIL / KILL","tailRiskPct"],
     ["STRESS / DD","stressRiskPct"],
@@ -29,6 +33,18 @@ test("metric selector exposes exactly the three contracted mappings",()=>{
   assert.equal(metricField("STRESS / DD"),"stressRiskPct");
   assert.equal(metricField("CONFIDENCE"),"confidencePct");
   assert.equal(metricField("unknown"),null);
+});
+
+test("metric selection permits every subset, including all and none",()=>{
+  assert.deepEqual(normalizeMetricIds(["confidence","tail","stress","tail"]),["tail","stress","confidence"]);
+  assert.deepEqual(normalizeMetricIds([]),[]);
+  assert.deepEqual(normalizeMetricIds(["unknown"]),[]);
+  assert.deepEqual(normalizeMetricIds("STRESS / DD"),["stress"]);
+  let selected=[];
+  for(const metric of["tail","stress","confidence"])selected=toggleMetricId(selected,metric);
+  assert.deepEqual(selected,["tail","stress","confidence"]);
+  for(const metric of["tail","stress","confidence"])selected=toggleMetricId(selected,metric);
+  assert.deepEqual(selected,[]);
 });
 
 test("history normalization sorts actual timestamps and preserves irregular spacing",()=>{
@@ -118,19 +134,40 @@ test("series preparation keeps only the rolling 72-hour historical window",()=>{
   assert.deepEqual(prepared.series[0].historical.map(item=>item.timestamp),[BASE+28*HOUR_MS,BASE+75*HOUR_MS,BASE+100*HOUR_MS]);
 });
 
+test("series preparation overlays every selected metric for every provider",()=>{
+  const rows=[history(0),history(1,{tailRiskPct:12,stressRiskPct:55,confidencePct:76}),history(2,{tailRiskPct:14,stressRiskPct:60,confidencePct:77})];
+  const providers=["chatgpt","claude"].map(id=>({id,label:id,generatedAt:new Date(BASE+2*HOUR_MS).toISOString(),historyItems:rows}));
+  const prepared=prepareComparisonSeries(providers,["tail","stress","confidence"],{nowMs:BASE+2*HOUR_MS});
+  assert.deepEqual(prepared.metrics.map(metric=>metric.id),["tail","stress","confidence"]);
+  assert.equal(prepared.series.length,6);
+  assert.deepEqual(prepared.series.map(series=>`${series.id}:${series.metric.id}`),[
+    "chatgpt:tail","chatgpt:stress","chatgpt:confidence",
+    "claude:tail","claude:stress","claude:confidence"
+  ]);
+  assert.ok(prepared.series.every(series=>series.historical.length===3&&series.projection.length===7));
+  assert.deepEqual(prepareComparisonSeries(providers,[],{nowMs:BASE+2*HOUR_MS}).series,[]);
+});
+
 test("combined chart mount sits between provider cards and agreement metadata",()=>{
   const html=fs.readFileSync("index.html","utf8"),cards=html.indexOf('id="provider-cards"'),chart=html.indexOf('id="comparison-chart"'),agreement=html.indexOf('id="agreement-banner"');
   assert.ok(cards>=0&&cards<chart&&chart<agreement);
 });
 
-test("dashboard persists a chart metric and leaves provider switching independent",()=>{
-  const app=fs.readFileSync("assets/app.js","utf8"),chart=fs.readFileSync("assets/comparison-chart.js","utf8");
-  assert.match(app,/tradebrain\.comparisonMetric/);
+test("dashboard persists metric toggles and leaves provider switching independent",()=>{
+  const app=fs.readFileSync("assets/app.js","utf8"),chart=fs.readFileSync("assets/comparison-chart.js","utf8"),styles=fs.readFileSync("assets/styles.css","utf8");
+  assert.match(app,/tradebrain\.comparisonMetrics/);
+  assert.match(app,/JSON\.stringify\(metrics\)/);
   assert.match(app,/renderComparisonChart\(\$\("comparison-chart"\),comparisonProviders\(\)/);
   const switchBody=app.match(/function selectProvider\([^\n]+/)?.[0]??"";
   assert.doesNotMatch(switchBody,/renderComparison/);
   assert.match(chart,/not the providers' published forecast/);
   assert.match(chart,/aria-labelledby/);
   assert.match(chart,/heading\.id="comparison-chart-heading"/);
-  assert.match(chart,/onMetricChange\(option\.id\);\s*scheduleTabFocus\(host,option\.id\)/);
+  assert.match(chart,/setAttribute\("aria-pressed",String\(selected\)\)/);
+  assert.doesNotMatch(chart,/setAttribute\("role","tab"\)/);
+  assert.doesNotMatch(chart,/setAttribute\("aria-selected"/);
+  assert.doesNotMatch(chart,/legend\.setAttribute\("aria-label"/);
+  assert.match(chart,/onMetricsChange\(next\);\s*scheduleToggleFocus\(host,option\.id\)/);
+  assert.match(styles,/\.provider-chatgpt\.metric-stress/);
+  assert.match(styles,/\.provider-claude\.metric-confidence/);
 });
