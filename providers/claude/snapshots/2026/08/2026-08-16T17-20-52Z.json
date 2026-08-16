@@ -1,0 +1,669 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.2.0",
+  "generatedAt": "2026-08-16T17:20:52Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Mapped policy state: EA_ON. Tail risk sits in the low band while stress-side conditions stay high on an unresolved Middle East supply disruption and a weekend price-discovery gap.",
+  "recommendation": "Tail remains well below the block threshold, so the deterministic mapping returns EA_ON for both NQ futures and NAS100 CFD. A narrow observation window is flagged around the Sunday futures restart, where thin liquidity and weekend headline risk concentrate. Existing-position management and emergency protection logic remain unaffected by this mapping.",
+  "headline": "Calm Nasdaq-100 close into a weekend halt; low tail, high stress on Hormuz oil and rising global yields",
+  "body": "The Nasdaq-100 cash index closed Friday 14 August at 30,046.14, down 0.13% on the session, inside a 29,934.66-30,179.82 range and roughly 2.3% below the 30,762.20 52-week high. VIX finished at 14.25 (-2.60%), consistent with subdued implied volatility rather than a stressed tape. Treasury constant-maturity yields stood at 4.15% for the 2Y and 4.63% for the 10Y at the latest H.15 publication, with commentary pointing to a broad global rise in long rates. Friday's internals were conflicting rather than directional: Broadcom fell about 5.9% on an actively exploited VMware vCenter vulnerability and cooling AI-trade sentiment, while AMD gained 6.5% and Micron 2.3%; technology as a sector was down 0.46%. That mix reduces directional conviction and is treated as a stress and confidence input, not as tail evidence.\n\nThe dominant unresolved macro channel is energy and geopolitics. The Strait of Hormuz remains effectively disrupted, Iran-Oman navigation talks are stalled, and reported attacks on Gulf tankers continued during the week. WTI settled near $82.40 (+1.42%) and Brent near $88.52, a sixth consecutive daily advance and roughly +5% on the week. This is a live discontinuity source capable of producing a weekend repricing gap, which is why stress is scored in the high band even with VIX at 14.\n\nNo live Nasdaq-100 price path exists at this timestamp: CME equity index futures are in their weekend halt and resume near 22:00 UTC. There is therefore no observed persistent one-way structure, no shallow-pullback or failed-retracement sequence, and no session-extreme behaviour to score. Under the fixed mapping this keeps tail risk low. Confidence is scored as solid rather than high because the cross-asset, calendar and catalyst evidence is complete and verified while the price-path dimension is roughly 45 hours stale.\n\nThe week ahead carries a moderate scheduled load: Empire State and NAHB on Monday, housing starts and industrial production on Tuesday, FOMC minutes on Wednesday at 18:00 UTC, claims and Philadelphia Fed on Thursday, and S&P Global flash PMIs on Friday. The Jackson Hole symposium falls on 27-29 August, outside this seven-day window.",
+  "tailRiskPct": 15,
+  "tailLevel": "low",
+  "stressRiskPct": 70,
+  "stressLevel": "high",
+  "dominantMode": "mixed",
+  "confidencePct": 68,
+  "confidenceLevel": "solid",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": "2026-08-16T22:00:00Z",
+    "end": "2026-08-16T23:30:00Z"
+  },
+  "dangerWindowBerlin": {
+    "start": "2026-08-17T00:00:00+02:00",
+    "end": "2026-08-17T01:30:00+02:00"
+  },
+  "sources": [
+    {
+      "title": "Nasdaq-100 Index (^NDX) quote - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    {
+      "title": "Federal Reserve H.15 Selected Interest Rates",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "title": "Crude Oil WTI and Brent prices - Trading Economics",
+      "url": "https://tradingeconomics.com/commodity/crude-oil"
+    },
+    {
+      "title": "United States Economic Calendar - Trading Economics",
+      "url": "https://tradingeconomics.com/united-states/calendar"
+    },
+    {
+      "title": "Most Gulf bourses gain despite stalled Iran talks, Hormuz disruption - Reuters",
+      "url": "https://www.reuters.com/business/energy/most-gulf-bourses-gain-despite-stalled-iran-talks-hormuz-disruption-2026-08-16/"
+    }
+  ],
+  "lookbackSummary": "The last 24 published Claude hours are continuously available and uniformly green with EA_ON. Tail drifted narrowly from 10 to 17 while stress climbed from the high-50s into the high-70s and confidence rose from 62 to 80. That trajectory reflects an accumulating weekend geopolitical and energy backdrop rather than any observed Nasdaq-100 price structure, since the entire window falls inside the cash-market weekend and the futures halt.",
+  "outlookSummary": "With the CME restart near 22:00 UTC, the reopening hour carries the highest conditional tail of the forecast at 18, reflecting thin liquidity and unresolved Hormuz headline risk rather than observed structure. Asian and European hours are expected to normalise toward 13-14 if the reopening print is orderly. A secondary rise to 18 is carried across the Monday U.S. cash open and the first hour after it, where opening-auction continuation would be the first genuine tail evidence of the new week. All forecast hours stay below the 20 threshold, so the mapping remains EA_ON throughout on current evidence; a disorderly reopening gap or repeated extension after failed retracements would invalidate that path.",
+  "lookback": [
+    {
+      "ts": "2026-08-15T17:00:00Z",
+      "timeBerlin": "2026-08-15T19:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 57,
+      "confidencePct": 62,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-15T18:00:00Z",
+      "timeBerlin": "2026-08-15T20:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 60,
+      "confidencePct": 63,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-15T19:00:00Z",
+      "timeBerlin": "2026-08-15T21:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 62,
+      "confidencePct": 64,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-15T20:00:00Z",
+      "timeBerlin": "2026-08-15T22:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 65,
+      "confidencePct": 65,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-15T21:00:00Z",
+      "timeBerlin": "2026-08-15T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 67,
+      "confidencePct": 66,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-15T22:00:00Z",
+      "timeBerlin": "2026-08-16T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 67,
+      "confidencePct": 66,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-15T23:00:00Z",
+      "timeBerlin": "2026-08-16T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 68,
+      "confidencePct": 66,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T00:00:00Z",
+      "timeBerlin": "2026-08-16T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 70,
+      "confidencePct": 67,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T01:00:00Z",
+      "timeBerlin": "2026-08-16T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 71,
+      "confidencePct": 68,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T02:00:00Z",
+      "timeBerlin": "2026-08-16T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 73,
+      "confidencePct": 69,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T03:00:00Z",
+      "timeBerlin": "2026-08-16T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 74,
+      "confidencePct": 69,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T04:00:00Z",
+      "timeBerlin": "2026-08-16T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 75,
+      "confidencePct": 70,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T05:00:00Z",
+      "timeBerlin": "2026-08-16T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 70,
+      "confidencePct": 70,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T06:00:00Z",
+      "timeBerlin": "2026-08-16T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 71,
+      "confidencePct": 70,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T07:00:00Z",
+      "timeBerlin": "2026-08-16T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 71,
+      "confidencePct": 70,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T08:00:00Z",
+      "timeBerlin": "2026-08-16T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 78,
+      "confidencePct": 72,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T09:00:00Z",
+      "timeBerlin": "2026-08-16T11:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 79,
+      "confidencePct": 73,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T10:00:00Z",
+      "timeBerlin": "2026-08-16T12:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 78,
+      "confidencePct": 74,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T11:00:00Z",
+      "timeBerlin": "2026-08-16T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 80,
+      "confidencePct": 75,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T12:00:00Z",
+      "timeBerlin": "2026-08-16T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 78,
+      "confidencePct": 76,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T13:00:00Z",
+      "timeBerlin": "2026-08-16T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 81,
+      "confidencePct": 77,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T14:00:00Z",
+      "timeBerlin": "2026-08-16T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 82,
+      "confidencePct": 78,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T15:00:00Z",
+      "timeBerlin": "2026-08-16T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 80,
+      "confidencePct": 79,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T16:00:00Z",
+      "timeBerlin": "2026-08-16T18:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 79,
+      "confidencePct": 80,
+      "dominantMode": "mixed"
+    }
+  ],
+  "forecast": [
+    {
+      "ts": "2026-08-16T17:00:00Z",
+      "timeBerlin": "2026-08-16T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 68,
+      "confidencePct": 68,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T18:00:00Z",
+      "timeBerlin": "2026-08-16T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 68,
+      "confidencePct": 68,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T19:00:00Z",
+      "timeBerlin": "2026-08-16T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 67,
+      "confidencePct": 68,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T20:00:00Z",
+      "timeBerlin": "2026-08-16T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 67,
+      "confidencePct": 67,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T21:00:00Z",
+      "timeBerlin": "2026-08-16T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 68,
+      "confidencePct": 67,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-16T22:00:00Z",
+      "timeBerlin": "2026-08-17T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 72,
+      "confidencePct": 64,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-16T23:00:00Z",
+      "timeBerlin": "2026-08-17T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 71,
+      "confidencePct": 64,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-17T00:00:00Z",
+      "timeBerlin": "2026-08-17T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 69,
+      "confidencePct": 65,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T01:00:00Z",
+      "timeBerlin": "2026-08-17T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 67,
+      "confidencePct": 66,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T02:00:00Z",
+      "timeBerlin": "2026-08-17T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 66,
+      "confidencePct": 66,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T03:00:00Z",
+      "timeBerlin": "2026-08-17T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 65,
+      "confidencePct": 67,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T04:00:00Z",
+      "timeBerlin": "2026-08-17T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 64,
+      "confidencePct": 67,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T05:00:00Z",
+      "timeBerlin": "2026-08-17T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 64,
+      "confidencePct": 68,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T06:00:00Z",
+      "timeBerlin": "2026-08-17T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 65,
+      "confidencePct": 68,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T07:00:00Z",
+      "timeBerlin": "2026-08-17T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 65,
+      "confidencePct": 69,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T08:00:00Z",
+      "timeBerlin": "2026-08-17T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 66,
+      "confidencePct": 69,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T09:00:00Z",
+      "timeBerlin": "2026-08-17T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 67,
+      "confidencePct": 70,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T10:00:00Z",
+      "timeBerlin": "2026-08-17T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 68,
+      "confidencePct": 70,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T11:00:00Z",
+      "timeBerlin": "2026-08-17T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 70,
+      "confidencePct": 71,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-17T12:00:00Z",
+      "timeBerlin": "2026-08-17T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 70,
+      "confidencePct": 71,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T13:00:00Z",
+      "timeBerlin": "2026-08-17T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 72,
+      "confidencePct": 72,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-17T14:00:00Z",
+      "timeBerlin": "2026-08-17T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 71,
+      "confidencePct": 72,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-17T15:00:00Z",
+      "timeBerlin": "2026-08-17T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 69,
+      "confidencePct": 72,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-17T16:00:00Z",
+      "timeBerlin": "2026-08-17T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 68,
+      "confidencePct": 72,
+      "dominantMode": "mixed"
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-08-16T17:00:00Z",
+      "timeBerlin": "2026-08-16T19:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 12,
+      "stressRiskPct": 68,
+      "comment": "Weekend futures halt with no live Nasdaq-100 price path; assessment rests on Friday's cash close near 30,046 on the NDX, VIX 14.25 and verified cross-asset levels."
+    },
+    {
+      "ts": "2026-08-16T18:00:00Z",
+      "timeBerlin": "2026-08-16T20:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 12,
+      "stressRiskPct": 68,
+      "comment": "Closed-market hour. Cross-asset backdrop unchanged: 10Y near 4.63%, WTI around $82 after a sixth consecutive advance tied to the Strait of Hormuz disruption."
+    },
+    {
+      "ts": "2026-08-16T19:00:00Z",
+      "timeBerlin": "2026-08-16T21:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 12,
+      "stressRiskPct": 67,
+      "comment": "Still no price discovery. Conflicting Friday breadth (AVGO -5.9%, AMD +6.5%) argues for uncertainty rather than persistent one-way structure."
+    },
+    {
+      "ts": "2026-08-16T20:00:00Z",
+      "timeBerlin": "2026-08-16T22:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 12,
+      "stressRiskPct": 67,
+      "comment": "Pre-reopen hour. Weekend geopolitical headline flow around Iran and Hormuz remains the principal unresolved gap channel into the futures restart."
+    },
+    {
+      "ts": "2026-08-16T21:00:00Z",
+      "timeBerlin": "2026-08-16T23:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 13,
+      "stressRiskPct": 68,
+      "comment": "Final closed hour before the CME Sunday restart; positioning risk is carried in the opening print rather than in an observed trend."
+    },
+    {
+      "ts": "2026-08-16T22:00:00Z",
+      "timeBerlin": "2026-08-17T00:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 18,
+      "stressRiskPct": 72,
+      "comment": "Futures reopen near 22:00 UTC into thin liquidity. Reopening-gap and early-repricing risk peaks here, though nothing pathological is yet observed."
+    }
+  ],
+  "events": [
+    {
+      "name": "NY Empire State Manufacturing Index (Aug)",
+      "ts": "2026-08-17T12:30:00Z",
+      "timeBerlin": "2026-08-17T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "NAHB Housing Market Index (Aug)",
+      "ts": "2026-08-17T14:00:00Z",
+      "timeBerlin": "2026-08-17T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Housing Starts and Building Permits (Jul)",
+      "ts": "2026-08-18T12:30:00Z",
+      "timeBerlin": "2026-08-18T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Industrial Production (Jul)",
+      "ts": "2026-08-18T13:15:00Z",
+      "timeBerlin": "2026-08-18T15:15:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "FOMC Minutes (July meeting)",
+      "ts": "2026-08-19T18:00:00Z",
+      "timeBerlin": "2026-08-19T20:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Initial Jobless Claims",
+      "ts": "2026-08-20T12:30:00Z",
+      "timeBerlin": "2026-08-20T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Philadelphia Fed Manufacturing Index (Aug)",
+      "ts": "2026-08-20T12:30:00Z",
+      "timeBerlin": "2026-08-20T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "S&P Global Flash US Manufacturing and Services PMI (Aug)",
+      "ts": "2026-08-21T13:45:00Z",
+      "timeBerlin": "2026-08-21T15:45:00+02:00",
+      "impact": "high"
+    }
+  ]
+}
