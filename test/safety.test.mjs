@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 
-function files(){return execFileSync("git",["ls-files","--cached","--others","--exclude-standard"],{encoding:"utf8"}).split(/\r?\n/).filter(Boolean)}
+function files(){return execFileSync("git",["ls-files","--cached","--others","--exclude-standard"],{encoding:"utf8"}).split(/\r?\n/).filter(file=>file&&fs.existsSync(file)&&fs.statSync(file).isFile())}
 
 test("repository contains no tracked env or legacy single-provider pipeline",()=>{const all=files();assert.equal(all.some(f=>path.basename(f)===".env"),false);assert.equal(fs.existsSync("scripts/fetch-assessment.mjs"),false);assert.equal(fs.existsSync(".github/workflows/update-assessment.yml"),false);assert.equal(fs.existsSync("data/status.json"),false);assert.equal(fs.existsSync("data/signal.json"),false);assert.equal(fs.existsSync("data/history.json"),false)});
 

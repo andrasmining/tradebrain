@@ -1,19 +1,20 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
-import { readJson, validateStatus, compareProviders } from "./lib.mjs";
+import { readJson, validateStatus, compareProviderSet } from "./lib.mjs";
 import { validateStatusContract } from "./status-contract.mjs";
 
 const root = process.cwd();
 const outDir = path.join(root, "dist");
 fs.mkdirSync(outDir, { recursive: true });
 const providers = readJson(path.join(root, "config", "providers.json"));
+const enabledProviders = providers.filter(provider => provider.enabled);
 const states = {};
-for (const provider of providers) {
+for (const provider of enabledProviders) {
   // Current endpoints reach dist only after the complete provider publication
   // passes build-site's provider gate, so overview must read that exact state.
   const file = path.join(outDir, provider.path, "status.json");
-  if (!provider.enabled || !fs.existsSync(file)) {
+  if (!fs.existsSync(file)) {
     states[provider.id] = null;
     continue;
   }
@@ -32,20 +33,25 @@ for (const provider of providers) {
   }
 }
 
-const comparison = compareProviders(states.chatgpt, states.claude, Date.now(), 130);
-if (comparison.a?.fresh && comparison.b?.fresh) {
-  comparison.comparison = states.chatgpt.action === states.claude.action ? "AGREE" : "DIVERGE";
-}
+const generatedAt = new Date();
+const comparison = compareProviderSet(enabledProviders, states, generatedAt.getTime(), 130);
 
 const overview = {
-  generatedAt: new Date().toISOString(),
+  generatedAt: generatedAt.toISOString(),
   purpose: "DISPLAY/COMPARISON DATA — NOT AN EA SIGNAL",
   comparison: comparison.comparison,
   tailDifference: comparison.tailDifference ?? null,
   stressDifference: comparison.stressDifference ?? null,
-  providers: Object.fromEntries(providers.map(provider => {
+  enabledProviderCount: comparison.enabledProviderCount,
+  freshProviderCount: comparison.freshProviderCount,
+  freshProviderIds: comparison.freshProviderIds,
+  unavailableProviderIds: comparison.unavailableProviderIds,
+  actionDispersion: comparison.actionDispersion,
+  actionGroups: comparison.actionGroups,
+  scoreRanges: comparison.scoreRanges,
+  providers: Object.fromEntries(enabledProviders.map(provider => {
     const status = states[provider.id];
-    const freshness = comparison[provider.id === "chatgpt" ? "a" : "b"] ?? null;
+    const freshness = comparison.providerStates[provider.id] ?? null;
     return [provider.id, status ? {
       available: true,
       generatedAt: status.generatedAt,

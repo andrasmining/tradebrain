@@ -111,9 +111,9 @@ A provider publisher owns only its own publication path.
 
 At the time this guide was written, the active scheduled ChatGPT prompt contract is:
 
-- `prompts/chatgpt/v1.1.1.md`
+- `prompts/chatgpt/v1.2.0.md`
 
-Version `1.1.1` inherits `prompts/chatgpt/v1.1.0.md` and overrides its publication behavior. Read both. Within this inherited contract, `v1.1.1` wins over `v1.1.0` where they differ.
+Version `1.2.0` inherits the complete `prompts/chatgpt/v1.1.1.md` contract, which in turn inherits `prompts/chatgpt/v1.1.0.md`. Read all three. The newest applicable contract wins where they differ. Version `1.2.0` adds the optional shared Finviz evidence rules while preserving the inherited snapshot-only publication contract.
 
 The current scheduled ChatGPT contract is **snapshot-only**:
 
@@ -154,7 +154,7 @@ Scheduling is external to this repository. A repo task or provider-publication f
 
 An **available prompt version** is a versioned prompt checked into the repository. An **active scheduled prompt version** is the contract actually used by the external scheduler. These may differ during a staged migration, and the newest filename is not automatically active.
 
-The ChatGPT active scheduled contract remains `v1.1.1` unless and until an explicit external scheduler migration is performed. Do not infer that a future `v1.2.0`, `v1.3.0`, or later file is live merely because it exists. For Claude, verify the actual current contract from the scheduling context rather than selecting a prompt by filename alone.
+The ChatGPT active scheduled contract is explicitly known to be `v1.2.0`. Do not infer that a future `v1.3.0` or later file is live merely because it exists. For Claude, verify the actual current contract from the scheduling context rather than selecting a prompt by filename alone.
 
 Prompt activation follows this sequence:
 
@@ -173,7 +173,7 @@ new version becomes active
 
 A repository commit can complete the first two stages; it does not perform the scheduler migration.
 
-Prompt files `prompts/chatgpt/v1.2.0.md` and `prompts/claude/v1.2.0.md` are available contracts for optional shared Finviz evidence. They do not change the active scheduled versions by themselves; the external schedulers remain on their independently pinned contracts until an explicit reviewed migration.
+Prompt files `prompts/chatgpt/v1.2.0.md` and `prompts/claude/v1.2.0.md` are available contracts for optional shared Finviz evidence. The external ChatGPT scheduler has completed the explicit reviewed migration to `v1.2.0`; the Claude file's presence does not establish Claude's active scheduled version, which must still be verified externally.
 
 ## 4. Shared external evidence / context providers
 
@@ -336,7 +336,7 @@ Historical model opinions must not be rewritten with hindsight.
 
 ## 7. Display-only derived analytics and time-series boundaries
 
-Browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, comparison metric, or visual projection. The current Risk comparison chart uses provider history together with each fresh provider's actual 24-slot published `forecast[]`; it does not extrapolate forecast values from history. The user can independently toggle any combination of Tail, Stress, and Confidence for both providers on a fixed 0-100% scale. Its chart-range selector offers 1, 3, 7, 14, or 30 total days and defaults to three, meaning exactly 48 hours of history plus 24 published hourly slots per provider. The one-day range is forecast-only. History and forecast use explicitly labeled separate time scales so the provider forecasts stay readable on mobile at longer ranges, and paths never connect across their divider. Exact forecast timestamps must not be shifted to force providers into the same clock-hour origin; their shared pane may therefore span more than 24 elapsed hours.
+Browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, comparison metric, or visual projection. The current Historical risk trend chart uses provider history together with each fresh enabled provider's actual 24-slot published `forecast[]`; it does not extrapolate forecast values from history. The user can independently toggle any combination of Tail, Stress, and Confidence for the enabled providers on a fixed 0-100% scale. Its chart-range selector offers 1, 3, 7, 14, or 30 total days and defaults to three, meaning exactly 48 hours of history plus 24 published hourly slots per provider. The one-day range is forecast-only. History and forecast use explicitly labeled separate time scales so the provider forecasts stay readable on mobile at longer ranges, and paths never connect across their divider. Exact forecast timestamps must not be shifted to force providers into the same clock-hour origin; their shared pane may therefore span more than 24 elapsed hours.
 
 ```text
 provider historical data ----> HISTORY pane
@@ -427,7 +427,7 @@ The display-only comparison states may describe agreement, divergence, one fresh
 
 Never:
 
-- average ChatGPT and Claude Tail scores;
+- average provider Tail scores;
 - use one provider to overwrite another;
 - infer green because one provider is missing;
 - make provider agreement a prerequisite for displaying valid provider data.
@@ -442,15 +442,17 @@ The frontend is intentionally small and dependency-free. Preserve that unless th
 
 Important invariants:
 
-- The **24-hour risk timeline is priority information** and stays near the top of the page.
-- The AI provider switch remains compact and sticky above the provider-specific content.
-- Switching ChatGPT/Claude must preserve the user's viewport position; do not introduce `scrollIntoView`-style jumps.
-- Preserve the timeline's horizontal scroll position when switching provider where possible.
+- The first three Level-1 views are, in order, the multi-provider **24-hour risk timeline**, the unified current-state Risk comparison, and the Historical risk trend.
+- Level-1 views are driven by enabled entries in `config/providers.json`. Enabling a future provider adds it to all three without pair-specific UI branches.
+- The timeline aligns providers by exact published hourly timestamps and preserves each provider's actual risk-status color. It must not average risks, synthesize a combined status/action, or suppress an individual provider's valid orange or red state.
+- The provider selector appears below the Historical risk trend and controls only the Level-2 provider detail: Current assessment, Next 6 hours, Upcoming events, and Provider history. It is not a global or sticky selector.
+- Switching the Level-2 provider must preserve the user's viewport position and must not rerender, reset, or scroll the Level-1 timeline, comparison, or trend chart.
 - On mobile, the timeline scrolls horizontally inside its container; the entire page must not become horizontally scrollable.
-- Mobile behavior is first-class. Check narrow layouts, touch targets, sticky positioning, and overflow—not only desktop screenshots.
+- Mobile behavior is first-class. Check narrow layouts, touch targets, contained horizontal overflow, and selector usability—not only desktop screenshots.
 - Unknown/missing state uses neutral presentation, not green styling.
 - Provider-specific sections clearly identify the active provider without verbose repeated explanatory copy.
 - Cross-provider sections remain visibly cross-provider.
+- Provider endpoint listings do not appear in the dashboard. The underlying provider JSON endpoints remain public and documented.
 - External source links opened in a new tab keep `rel="noopener noreferrer"`.
 - Data refreshes without a full browser reload and uses no-store/cache-busting behavior so stale Pages/browser cache does not masquerade as fresh provider data.
 - The current-hour timeline marker must correspond to the actual hour window represented by the card, not to a guessed visual position.
@@ -678,9 +680,10 @@ scripts/build-overview.mjs        display-only cross-provider overview
 index.html                        static page structure
 assets/app.js                     provider loading/rendering/refresh logic
 assets/comparison-chart.js        display-only cross-provider trend chart
+assets/multi-provider-timeline.js manifest-driven cross-provider risk timeline
+assets/provider-comparison.js     manifest-driven current-state comparison
 assets/styles.css                 base styling
 assets/responsive.css             mobile/responsive behavior
-assets/timeline-scroll-guard.js   timeline scroll interaction guard
 .github/workflows/deploy-pages.yml publication finalization + Pages deployment
 .github/workflows/collect-finviz.yml isolated shared-context refresh
 .github/workflows/validate.yml     PR/manual validation workflow

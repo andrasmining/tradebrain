@@ -18,6 +18,7 @@ import{
   normalizeWindowDays,
   prepareComparisonSeries,
   prepareInspectionBuckets,
+  providerSeriesColor,
   splitForecastSegments,
   splitHistorySegments,
   toggleMetricId
@@ -195,6 +196,15 @@ test("series preparation overlays every selected metric for every provider",()=>
   assert.deepEqual(prepareComparisonSeries(providers,[],{nowMs:now}).series,[]);
 });
 
+test("future enabled providers receive distinct deterministic chart colors",()=>{
+  const providers=["chatgpt","claude","alpha","beta","gamma"];
+  const colors=providers.map((id,index)=>providerSeriesColor(id,"tail",index));
+  assert.equal(new Set(colors).size,providers.length);
+  assert.equal(providerSeriesColor("chatgpt","tail",4),"#7aa7ff");
+  assert.equal(providerSeriesColor("claude","tail",0),"#63d49a");
+  assert.equal(providerSeriesColor("alpha","stress",2),providerSeriesColor("alpha","stress",2));
+});
+
 test("inspection anchors preserve exact history records without filling missing provider metrics",()=>{
   const tail=METRIC_OPTIONS[0],stress=METRIC_OPTIONS[1];
   const chatTime=BASE+5*60*1000,chatOtherMetricTime=BASE+25*60*1000,claudeTime=BASE+2*HOUR_MS;
@@ -234,9 +244,9 @@ test("history inspection does not snap across gaps larger than one hour",()=>{
   assert.equal(inspectionBucketAtTime(buckets,"forecast",BASE),null);
 });
 
-test("combined chart mount sits between provider cards and agreement metadata",()=>{
-  const html=fs.readFileSync("index.html","utf8"),cards=html.indexOf('id="provider-cards"'),chart=html.indexOf('id="comparison-chart"'),agreement=html.indexOf('id="agreement-banner"');
-  assert.ok(cards>=0&&cards<chart&&chart<agreement);
+test("combined chart is the third provider-agnostic view above detail selection",()=>{
+  const html=fs.readFileSync("index.html","utf8"),timeline=html.indexOf('id="timeline"'),comparison=html.indexOf('id="provider-comparison"'),chart=html.indexOf('id="comparison-chart"'),selector=html.indexOf('id="provider-detail-tabs"');
+  assert.ok(timeline>=0&&timeline<comparison&&comparison<chart&&chart<selector);
 });
 
 test("dashboard persists metric and range controls without coupling provider switching",()=>{
@@ -283,4 +293,6 @@ test("dashboard persists metric and range controls without coupling provider swi
   assert.match(responsive,/\.comparison-chart-controls\{display:grid/);
   assert.match(styles,/\.provider-chatgpt\.metric-stress/);
   assert.match(styles,/\.provider-claude\.metric-confidence/);
+  assert.match(chart,/providerSeriesColor/);
+  assert.match(chart,/providerIndex:index/);
 });

@@ -66,3 +66,41 @@ html.provider-switching [data-scroll-section] { overflow-anchor:none; }
 @media (max-width:340px) {
   .comparison-chart-scale{text-align:left}
 }
+
+@media (max-width:780px) {
+  .provider-detail-gateway{display:grid;gap:14px;margin-top:24px;padding:18px 15px}
+  .provider-detail-tabs{width:100%}
+  .detail-provider-tab{flex:1 0 108px}
+  .provider-comparison-table{min-width:max(100%,calc(96px + var(--comparison-provider-count) * 124px))}
+  .provider-comparison-metric-heading,.provider-comparison-metric{width:96px;min-width:96px}
+  .provider-comparison-provider,.provider-comparison-value{min-width:124px}
+}
+
+@media (max-width:560px) {
+  .priority-timeline{padding-inline:11px}
+  .multi-timeline-scroll{margin-inline:-3px;padding-inline:6px}
+  .multi-timeline-track{gap:3px}
+  .multi-timeline-hour{width:max(46px,calc(var(--timeline-provider-count) * 18px + 10px));min-width:46px;padding-inline:3px}
+  .multi-timeline-bars{gap:2px}
+  .multi-timeline-bar{width:13px}
+  .multi-timeline-provider-label{font-size:.61rem}
+  .multi-timeline-detail{padding:10px}
+  .multi-timeline-detail-table{min-width:610px}
+  .provider-comparison-table{min-width:max(100%,calc(92px + var(--comparison-provider-count) * 116px))}
+  .provider-comparison-table th,.provider-comparison-table td{padding:10px 9px}
+  .provider-comparison-metric-heading,.provider-comparison-metric{width:92px;min-width:92px;font-size:.56rem}
+  .provider-comparison-provider,.provider-comparison-value{min-width:116px}
+  .provider-comparison-provider-name{font-size:.8rem}
+  .provider-comparison-risk{padding-inline:6px;font-size:.56rem}
+  .provider-detail-gateway{margin-inline:-2px;padding:16px 13px}
+  .provider-detail-intro p{font-size:.75rem}
+  .detail-provider-tab{min-height:46px;min-width:106px}
+}
+
+@media (max-width:340px) {
+  .multi-timeline-legend{gap:6px 10px}
+  .multi-timeline-provider-label{font-size:.58rem}
+  .multi-timeline-hour{width:max(44px,calc(var(--timeline-provider-count) * 18px + 8px));min-width:44px}
+  .provider-detail-gateway{padding-inline:11px}
+  .detail-provider-tab{min-width:100px;padding-inline:10px}
+}

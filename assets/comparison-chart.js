@@ -12,11 +12,27 @@ export const METRIC_OPTIONS=Object.freeze([
   Object.freeze({id:"confidence",label:"CONFIDENCE",legendLabel:"Confidence",field:"confidencePct"})
 ]);
 
+const PROVIDER_SERIES_PALETTES=Object.freeze([
+  Object.freeze({tail:"#7aa7ff",stress:"#c48cff",confidence:"#63d4f5"}),
+  Object.freeze({tail:"#63d49a",stress:"#d8c85f",confidence:"#4ecbc4"}),
+  Object.freeze({tail:"#ff9d72",stress:"#f277ad",confidence:"#ffd166"}),
+  Object.freeze({tail:"#a98cff",stress:"#ff7a90",confidence:"#8cd7ff"}),
+  Object.freeze({tail:"#f2b84b",stress:"#8bd17c",confidence:"#be95ff"}),
+  Object.freeze({tail:"#63c7d4",stress:"#e59560",confidence:"#b4db78"}),
+  Object.freeze({tail:"#ef7fb5",stress:"#89a7ff",confidence:"#e6c76b"})
+]);
+
 const DEFAULT_STALE_MINUTES=130;
 const MAX_CONNECTED_GAP_HOURS=12;
 const chartResizeState=new WeakMap();
 
 function metricOption(metric){return METRIC_OPTIONS.find(option=>option.id===metric||option.label===metric||option.field===metric)||null}
+export function providerSeriesColor(providerId,metricId,providerIndex=0){
+  const knownIndex=providerId==="chatgpt"?0:providerId==="claude"?1:null;
+  const fallbackCount=PROVIDER_SERIES_PALETTES.length-2;
+  const paletteIndex=knownIndex??2+(Math.max(0,Number.isInteger(providerIndex)?providerIndex:0)%fallbackCount);
+  return PROVIDER_SERIES_PALETTES[paletteIndex]?.[metricId]??"#778395";
+}
 export function metricField(metric){return metricOption(metric)?.field??null}
 export function isMetricId(metric){return METRIC_OPTIONS.some(option=>option.id===metric)}
 export function normalizeMetricIds(metrics=DEFAULT_METRIC_IDS){
@@ -115,7 +131,7 @@ export function prepareComparisonSeries(providers,metrics=DEFAULT_METRIC_IDS,{no
       const currentAvailable=provider?.availability==="fresh"&&fresh;
       const forecast=currentAvailable?normalizedPublishedForecast.filter(point=>point.timestamp>=forecastStart&&point.timestamp<windowEnd):[];
       const forecastState=provider?.availability==="stale"||provider?.availability==="fresh"&&!fresh?"stale":provider?.availability!=="fresh"?"current-unavailable":!normalizedPublishedForecast.length?"no-forecast":!forecast.length?"outside-window":"available";
-      return{id,label,metric,historical,forecast,fresh,forecastState,validPointCount:normalizedHistory.length};
+      return{id,label,providerIndex:index,metric,historical,forecast,fresh,forecastState,validPointCount:normalizedHistory.length};
     });
   });
   return{metrics:selectedMetrics,nowMs:safeNow,forecastStart,windowStart,windowEnd,windowDays:selectedWindowDays,historyHours,forecastHours:FORECAST_HOURS,series};
@@ -249,6 +265,7 @@ function inspectionTooltip(bucket){
     rows.append(provider);
     for(const{series,point}of group.rows){
       const row=domEl("div",`comparison-chart-tooltip-row ${providerClass(series.id)} ${metricClass(series.metric.id)}`);
+      row.style.setProperty("--series-color",providerSeriesColor(series.id,series.metric.id,series.providerIndex));
       const identity=domEl("span","comparison-chart-tooltip-identity"),swatch=domEl("span","comparison-chart-tooltip-swatch");
       swatch.setAttribute("aria-hidden","true");
       identity.append(swatch,document.createTextNode(series.metric.legendLabel));
@@ -315,6 +332,7 @@ function metricClass(id){return`metric-${id}`}
 
 function legendSeriesItem(series){
   const item=domEl("span",`comparison-legend-item ${providerClass(series.id)} ${metricClass(series.metric.id)}`);
+  item.style.setProperty("--series-color",providerSeriesColor(series.id,series.metric.id,series.providerIndex));
   const swatch=domEl("span","comparison-legend-line series-historical");
   swatch.setAttribute("aria-hidden","true");
   item.append(swatch,document.createTextNode(`${series.label} · ${series.metric.legendLabel}`));
@@ -398,7 +416,7 @@ function installChartInspection({svg,plotWrap,live,prepared,inspectionBuckets,wi
       if(!point)return[];
       const pointX=Math.max(margin.left,Math.min(plotRight,xForTimestamp(bucket.kind,point.timestamp)));
       const identityClass=`${providerClass(series.id)} ${metricClass(series.metric.id)}`;
-      return[svgEl("circle",{class:`comparison-chart-inspection-marker ${identityClass}`,cx:pointX,cy:yScale(point.value),r:4.5})];
+      return[svgEl("circle",{class:`comparison-chart-inspection-marker ${identityClass}`,style:`--series-color:${providerSeriesColor(series.id,series.metric.id,series.providerIndex)}`,cx:pointX,cy:yScale(point.value),r:4.5})];
     });
     layer.replaceChildren(...(band?[band]:[]),crosshair,...markers);
     layer.hidden=false;
@@ -484,7 +502,7 @@ export function renderComparisonChart(host,providers,{metrics=DEFAULT_METRIC_IDS
   const card=domEl("section","comparison-chart-card panel");
   card.setAttribute("aria-labelledby","comparison-chart-heading");
   const head=domEl("div","comparison-chart-head");
-  const titleWrap=domEl("div"),heading=domEl("h3","","Risk history + provider forecast");
+  const titleWrap=domEl("div"),heading=domEl("h3","","History + published forecast");
   heading.id="comparison-chart-heading";
   titleWrap.append(domEl("div","eyebrow",`${prepared.windowDays}-DAY VIEW`),heading);
   head.append(titleWrap,domEl("span","comparison-chart-scale","0–100% · ACTUAL TIME WITH SPLIT SCALE"));
@@ -500,7 +518,7 @@ export function renderComparisonChart(host,providers,{metrics=DEFAULT_METRIC_IDS
   if(prepared.series.some(series=>series.forecast.length))legend.append(legendKindItem("forecast","Published forecast"));
   if(legend.childElementCount)figure.append(legend);
 
-  const availableWidth=Math.max(280,(host.clientWidth||956)-36),compact=availableWidth<560;
+  const availableWidth=Math.max(280,(host.clientWidth||956)-36),compact=availableWidth<560,veryCompact=availableWidth<340;
   const width=Math.round(availableWidth),height=compact?292:336;
   const margin={top:35,right:compact?10:18,bottom:compact?42:46,left:compact?39:48};
   const plotWidth=width-margin.left-margin.right,plotHeight=height-margin.top-margin.bottom;
@@ -536,28 +554,28 @@ export function renderComparisonChart(host,providers,{metrics=DEFAULT_METRIC_IDS
       xTicks.push({timestamp,x:historyScale(timestamp),anchor:index===0?"start":"middle"});
     }
   }
-  const forecastTickCount=compact?2:3;
+  const forecastTickCount=veryCompact?1:compact||forecastWidth<240?2:3;
   for(let index=1;index<=forecastTickCount;index+=1){
     const ratio=index/forecastTickCount,timestamp=prepared.forecastStart+(prepared.windowEnd-prepared.forecastStart)*ratio;
-    xTicks.push({timestamp,x:forecastScale(timestamp),anchor:index===forecastTickCount?"end":"middle"});
+    xTicks.push({timestamp,x:forecastScale(timestamp),anchor:index===forecastTickCount?"end":"middle",compactLabel:true});
   }
   for(const tick of xTicks){
     svg.append(svgEl("line",{class:"comparison-chart-tick",x1:tick.x,y1:height-margin.bottom,x2:tick.x,y2:height-margin.bottom+5}));
-    svg.append(svgEl("text",{class:"comparison-chart-axis-label",x:tick.x,y:height-margin.bottom+18,"text-anchor":tick.anchor},axisTime(tick.timestamp,compact)));
+    svg.append(svgEl("text",{class:"comparison-chart-axis-label",x:tick.x,y:height-margin.bottom+18,"text-anchor":tick.anchor},axisTime(tick.timestamp,compact||tick.compactLabel)));
   }
   if(prepared.historyHours)svg.append(svgEl("text",{class:"comparison-chart-region-label",x:margin.left+5,y:margin.top-10},`HISTORY · ${prepared.historyHours}H`));
   svg.append(svgEl("text",{class:"comparison-chart-region-label comparison-chart-forecast-label",x:width-margin.right-5,y:margin.top-10,"text-anchor":"end"},compact?"FORECAST · 24 EACH":"PUBLISHED FORECAST · 24 SLOTS EACH"));
 
   for(const series of prepared.series){
     const identityClass=`${providerClass(series.id)} ${metricClass(series.metric.id)}`;
-    const className=`comparison-chart-series ${identityClass}`;
+    const className=`comparison-chart-series ${identityClass}`,seriesStyle=`--series-color:${providerSeriesColor(series.id,series.metric.id,series.providerIndex)}`;
     for(const segment of splitHistorySegments(series.historical)){
-      if(segment.length>1)svg.append(svgEl("path",{class:`${className} series-historical`,d:pathData(segment,historyScale,yScale)}));
-      else if(segment.length===1)svg.append(svgEl("circle",{class:`comparison-chart-point ${identityClass}`,cx:historyScale(segment[0].timestamp),cy:yScale(segment[0].value),r:2.75,"aria-hidden":"true"}));
+      if(segment.length>1)svg.append(svgEl("path",{class:`${className} series-historical`,style:seriesStyle,d:pathData(segment,historyScale,yScale)}));
+      else if(segment.length===1)svg.append(svgEl("circle",{class:`comparison-chart-point ${identityClass}`,style:seriesStyle,cx:historyScale(segment[0].timestamp),cy:yScale(segment[0].value),r:2.75,"aria-hidden":"true"}));
     }
     for(const segment of splitForecastSegments(series.forecast)){
       const data=forecastSlotPathData(segment,forecastScale,yScale,prepared.windowEnd);
-      if(data)svg.append(svgEl("path",{class:`${className} series-forecast`,d:data}));
+      if(data)svg.append(svgEl("path",{class:`${className} series-forecast`,style:seriesStyle,d:data}));
     }
   }
 

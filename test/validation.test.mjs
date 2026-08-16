@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import {validateStatus,validateSignal,validateHistory,actionForTail,statusForAction,tailLevel,stressLevel,confidenceLevel,compareProviders,cacheBust,upcomingEvents} from "../scripts/lib.mjs";
+import {validateStatus,validateSignal,validateHistory,actionForTail,statusForAction,tailLevel,stressLevel,confidenceLevel,compareProviders,compareProviderSet,cacheBust,upcomingEvents} from "../scripts/lib.mjs";
 import {validateStatusContract} from "../scripts/status-contract.mjs";
 
 function iso(base,hours){return new Date(Date.parse(base)+hours*3600000).toISOString()}function berlin(utc){const d=new Date(utc),shifted=new Date(d.getTime()+3600000);return shifted.toISOString().replace("Z","+01:00")}
@@ -26,4 +26,67 @@ test("wrong forecast action mapping rejected",()=>{const s=makeStatus();s.foreca
 test("wrong forecastDetail count rejected",()=>{const s=makeStatus();s.forecastDetail.pop();assert.ok(validateStatus(s,"chatgpt").some(e=>e.includes("exactly 6")))});
 test("duplicate history item rejected",()=>{const tmp=fs.mkdtempSync(path.join(os.tmpdir(),"tradebrain-")),snapshot="providers/chatgpt/snapshots/2026/01/a.json";fs.mkdirSync(path.join(tmp,path.dirname(snapshot)),{recursive:true});fs.writeFileSync(path.join(tmp,snapshot),"{}");const item={generatedAt:"2026-01-01T00:00:00Z",status:"green",action:"EA_ON",tailRiskPct:18,tailLevel:"low",stressRiskPct:50,stressLevel:"elevated",confidencePct:75,confidenceLevel:"high",dominantMode:"mixed",snapshot},h={schemaVersion:"1.0.0",provider:"chatgpt",historyVersion:"1.0.0",retentionPolicy:"unlimited",items:[item,{...item}]};assert.ok(validateHistory(h,"chatgpt",tmp).some(e=>e.includes("duplicate")))});
 test("dual-provider comparison states",()=>{const now=Date.parse("2026-01-10T12:30:00Z"),c=makeStatus("chatgpt","2026-01-10T12:10:00Z",18),d=makeStatus("claude","2026-01-10T12:11:00Z",18);assert.equal(compareProviders(c,null,now).comparison,"CHATGPT_ONLY");assert.equal(compareProviders(null,d,now).comparison,"CLAUDE_ONLY");assert.equal(compareProviders(c,d,now).comparison,"AGREE");d.tailRiskPct=23;d.tailLevel="watch";d.action="WATCH";d.status="yellow";assert.equal(compareProviders(c,d,now).comparison,"DIVERGE");const stale=makeStatus("claude","2026-01-10T01:00:00Z",18);assert.equal(compareProviders(c,stale,now,180).comparison,"CHATGPT_ONLY");assert.equal(compareProviders(null,null,now).comparison,"NO_FRESH_PROVIDER")});
+test("enabled-provider comparison keeps one- and two-provider compatibility",()=>{
+  const now=Date.parse("2026-01-10T12:30:00Z"),manifest=[{id:"chatgpt",enabled:true},{id:"claude",enabled:true},{id:"disabled",enabled:false}];
+  const chatgpt=makeStatus("chatgpt","2026-01-10T12:10:00Z",18),claude=makeStatus("claude","2026-01-10T12:11:00Z",18);
+  const solo=compareProviderSet([{id:"alpha",enabled:true}],{alpha:makeStatus("alpha","2026-01-10T12:09:00Z",18)},now,130);
+  assert.equal(solo.comparison,"ALPHA_ONLY");
+  assert.equal(solo.enabledProviderCount,1);
+  assert.equal(solo.freshProviderCount,1);
+  const one=compareProviderSet(manifest,{chatgpt,claude:null,disabled:makeStatus("disabled","2026-01-10T12:12:00Z",55)},now,130);
+  assert.equal(one.comparison,"CHATGPT_ONLY");
+  assert.deepEqual(one.enabledProviderIds,["chatgpt","claude"]);
+  assert.deepEqual(one.freshProviderIds,["chatgpt"]);
+  const both=compareProviderSet(manifest,{chatgpt,claude},now,130);
+  assert.equal(both.comparison,"AGREE");
+  assert.equal(both.tailDifference,0);
+  assert.equal(both.actionDispersion,"NONE");
+});
+test("generic freshness tracks every enabled missing or stale provider",()=>{
+  const now=Date.parse("2026-01-10T12:30:00Z"),manifest=["alpha","beta","gamma"].map(id=>({id,enabled:true}));
+  const comparison=compareProviderSet(manifest,{
+    alpha:makeStatus("alpha","2026-01-10T12:10:00Z",18),
+    beta:makeStatus("beta","2026-01-10T05:00:00Z",18),
+    gamma:null
+  },now,130);
+  assert.equal(comparison.comparison,"ALPHA_ONLY");
+  assert.deepEqual(comparison.freshProviderIds,["alpha"]);
+  assert.deepEqual(comparison.unavailableProviderIds,["beta","gamma"]);
+  assert.equal(comparison.providerStates.alpha.availability,"fresh");
+  assert.equal(comparison.providerStates.beta.availability,"stale");
+  assert.equal(comparison.providerStates.gamma.availability,"missing");
+});
+test("three-provider comparison reports majority divergence and score ranges without averages",()=>{
+  const now=Date.parse("2026-01-10T12:30:00Z"),manifest=["alpha","beta","gamma"].map(id=>({id,enabled:true}));
+  const states={
+    alpha:makeStatus("alpha","2026-01-10T12:10:00Z",18),
+    beta:makeStatus("beta","2026-01-10T12:11:00Z",23),
+    gamma:makeStatus("gamma","2026-01-10T12:12:00Z",23)
+  };
+  const comparison=compareProviderSet(manifest,states,now,130);
+  assert.equal(comparison.comparison,"DIVERGE");
+  assert.equal(comparison.freshProviderCount,3);
+  assert.deepEqual(comparison.actionGroups.map(group=>[group.action,group.count,group.providerIds]),[["WATCH",2,["beta","gamma"]],["EA_ON",1,["alpha"]]]);
+  assert.equal(comparison.actionDispersion,"MIXED");
+  assert.deepEqual(comparison.scoreRanges.tailRiskPct,{providerCount:3,min:18,max:23,spread:5});
+  assert.equal(comparison.tailDifference,null);
+  assert.equal("action"in comparison,false);
+  assert.doesNotMatch(JSON.stringify(comparison),/average|mean|combinedAction|consensusAction/i);
+});
+test("three distinct fresh actions produce high display-only dispersion",()=>{
+  const now=Date.parse("2026-01-10T12:30:00Z"),manifest=["alpha","beta","gamma"].map(id=>({id,enabled:true}));
+  const comparison=compareProviderSet(manifest,{
+    alpha:makeStatus("alpha","2026-01-10T12:10:00Z",18),
+    beta:makeStatus("beta","2026-01-10T12:11:00Z",23),
+    gamma:makeStatus("gamma","2026-01-10T12:12:00Z",28)
+  },now,130);
+  assert.equal(comparison.comparison,"DIVERGE");
+  assert.equal(comparison.actionGroups.length,3);
+  assert.equal(comparison.actionDispersion,"HIGH");
+});
+test("overview build derives every enabled provider through the generic comparison",()=>{
+  const source=fs.readFileSync("scripts/build-overview.mjs","utf8");
+  assert.match(source,/compareProviderSet\(enabledProviders, states,/);
+  assert.doesNotMatch(source,/states\.(?:chatgpt|claude)|provider\.id\s*===\s*["'](?:chatgpt|claude)/);
+});
 test("time helpers advance and filter",()=>{assert.match(cacheBust("/x.json",123),/\?v=123$/);assert.match(cacheBust("/x.json?a=1",123),/&v=123$/);const now=Date.parse("2026-01-10T12:00:00Z"),events=[{ts:"2026-01-10T11:00:00Z"},{ts:"2026-01-10T13:00:00Z"}];assert.equal(upcomingEvents(events,now).length,1)});

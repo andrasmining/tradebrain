@@ -55,6 +55,45 @@ export function validateHistory(history,expectedProvider,repoRoot=null){ const e
 export function readJson(file){ return JSON.parse(fs.readFileSync(file,"utf8")); }
 export function ageMinutes(generatedAt,now=Date.now()){ if(!isDateTime(generatedAt)) return Infinity; return Math.max(0,(now-Date.parse(generatedAt))/60000); }
 export function providerState(status,now=Date.now(),staleMinutes=180){ if(!status) return {availability:"missing",fresh:false,ageMinutes:Infinity}; const age=ageMinutes(status.generatedAt,now); return {availability:age>staleMinutes?"stale":"fresh",fresh:age<=staleMinutes,ageMinutes:age}; }
+function providerStatusFrom(states,id){ if(states instanceof Map) return states.get(id)??null; return states&&typeof states==="object"&&!Array.isArray(states)?states[id]??null:null; }
+function providerOnlyComparison(id){ const token=String(id??"").toUpperCase().replace(/[^A-Z0-9]+/g,"_").replace(/^_+|_+$/g,""); return `${token||"PROVIDER"}_ONLY`; }
+function providerScoreRange(entries,field){ const values=entries.map(entry=>entry.status?.[field]).filter(isScore); if(!values.length) return {providerCount:0,min:null,max:null,spread:null}; const min=Math.min(...values),max=Math.max(...values); return {providerCount:values.length,min,max,spread:max-min}; }
+export function compareProviderSet(providerManifest,states,now=Date.now(),staleMinutes=180){
+  const enabled=(Array.isArray(providerManifest)?providerManifest:[]).filter(provider=>provider?.enabled===true&&typeof provider.id==="string"&&provider.id);
+  const entries=enabled.map(provider=>{ const status=providerStatusFrom(states,provider.id),freshness=providerState(status,now,staleMinutes); return {id:provider.id,status,freshness}; });
+  const providerStates=Object.fromEntries(entries.map(entry=>[entry.id,entry.freshness]));
+  const fresh=entries.filter(entry=>entry.freshness.fresh);
+  const groups=new Map();
+  fresh.forEach((entry,index)=>{ const action=entry.status?.action; if(typeof action!=="string"||!action) return; if(!groups.has(action)) groups.set(action,{action,providerIds:[],firstIndex:index}); groups.get(action).providerIds.push(entry.id); });
+  const actionGroups=[...groups.values()].map(group=>({...group,count:group.providerIds.length})).sort((a,b)=>b.count-a.count||a.firstIndex-b.firstIndex).map(({firstIndex,...group})=>group);
+  const comparedProviderCount=actionGroups.reduce((total,group)=>total+group.count,0);
+  let comparison;
+  if(!fresh.length) comparison="NO_FRESH_PROVIDER";
+  else if(comparedProviderCount!==fresh.length) comparison="INCOMPLETE_COMPARISON";
+  else if(fresh.length===1) comparison=providerOnlyComparison(fresh[0].id);
+  else comparison=actionGroups.length===1?"AGREE":"DIVERGE";
+  const largestGroup=actionGroups[0]?.count??0;
+  const actionDispersion=comparedProviderCount!==fresh.length?"UNAVAILABLE":actionGroups.length<=1?"NONE":actionGroups.length>=3||largestGroup<=fresh.length/2?"HIGH":"MIXED";
+  const scoreRanges={
+    tailRiskPct:providerScoreRange(fresh,"tailRiskPct"),
+    stressRiskPct:providerScoreRange(fresh,"stressRiskPct"),
+    confidencePct:providerScoreRange(fresh,"confidencePct")
+  };
+  return{
+    comparison,
+    enabledProviderCount:enabled.length,
+    freshProviderCount:fresh.length,
+    enabledProviderIds:enabled.map(provider=>provider.id),
+    freshProviderIds:fresh.map(entry=>entry.id),
+    unavailableProviderIds:entries.filter(entry=>!entry.freshness.fresh).map(entry=>entry.id),
+    providerStates,
+    actionGroups,
+    actionDispersion,
+    scoreRanges,
+    tailDifference:fresh.length===2&&scoreRanges.tailRiskPct.providerCount===2?scoreRanges.tailRiskPct.spread:null,
+    stressDifference:fresh.length===2&&scoreRanges.stressRiskPct.providerCount===2?scoreRanges.stressRiskPct.spread:null
+  };
+}
 export function compareProviders(a,b,now=Date.now(),staleMinutes=180){ const as=providerState(a,now,staleMinutes), bs=providerState(b,now,staleMinutes); if(!as.fresh&&!bs.fresh) return {comparison:"NO_FRESH_PROVIDER",a:as,b:bs}; if(as.fresh&&!bs.fresh) return {comparison:"CHATGPT_ONLY",a:as,b:bs}; if(!as.fresh&&bs.fresh) return {comparison:"CLAUDE_ONLY",a:as,b:bs}; return {comparison:a.action===b.action&&a.dominantMode===b.dominantMode?"AGREE":"DIVERGE",a:as,b:bs,tailDifference:Math.abs(a.tailRiskPct-b.tailRiskPct),stressDifference:Math.abs(a.stressRiskPct-b.stressRiskPct)}; }
 export function cacheBust(url,now=Date.now()){ const sep=url.includes("?")?"&":"?"; return `${url}${sep}v=${now}`; }
 export function upcomingEvents(events,now=Date.now()){ return (Array.isArray(events)?events:[]).filter(e=>isDateTime(e.ts)&&Date.parse(e.ts)>=now).sort((a,b)=>Date.parse(a.ts)-Date.parse(b.ts)); }

@@ -64,23 +64,23 @@ Finviz futures remain explicitly delayed/contextual. Breadth and basket changes 
 
 `.github/workflows/collect-finviz.yml` runs independently at minute `:50` every UTC hour and on manual dispatch. Collection runs without repository write credentials; a separate publish job validates the data-only artifact and commits only the shared context output. `data/**` is not a Pages deployment trigger, so hourly context refreshes do not rebuild the dashboard.
 
-Prompt files `prompts/chatgpt/v1.2.0.md` and `prompts/claude/v1.2.0.md` make this optional evidence contract available. External scheduled-provider prompts remain pinned independently and must be migrated explicitly after review; adding these files does not activate them.
+`prompts/chatgpt/v1.2.0.md` is the explicitly confirmed active scheduled ChatGPT contract. It inherits `prompts/chatgpt/v1.1.1.md`, which inherits `prompts/chatgpt/v1.1.0.md`; its snapshot-only publication rules remain in force while v1.2.0 adds the optional Finviz evidence contract. That activation was an external scheduler migration, not a side effect of adding the repository file. `prompts/claude/v1.2.0.md` makes the same optional evidence contract available to Claude, but Claude's active scheduled prompt remains externally controlled and must be verified rather than inferred from the filename.
 
-## Comparison and freshness
+## Dashboard hierarchy, comparison, and freshness
 
-Display-only comparison states are:
+The dashboard's Level-1 overview is manifest-driven and presents three cross-provider views in this order:
 
-- `AGREE`
-- `DIVERGE`
-- `CHATGPT_ONLY`
-- `CLAUDE_ONLY`
-- `NO_FRESH_PROVIDER`
+1. a multi-provider 24-hour risk timeline;
+2. a unified current-state Risk comparison;
+3. a Historical risk trend built from audit history and fresh published forecasts.
 
-Agreement means both fresh providers map to the same provider action. TradeBrain does not average scores or synthesize a consensus trading signal.
+Every enabled entry in `config/providers.json` joins these views in manifest order, including future providers. The timeline aligns exact published hourly slots, keeps every provider's actual risk-status color, and represents stale, missing, or invalid values neutrally. It never averages risks or produces a combined action.
+
+Any agreement or divergence wording is display-only metadata across the fresh available providers. TradeBrain does not average scores or synthesize a consensus trading signal. Below the Historical risk trend, the provider selector controls only the Level-2 detail sections: Current assessment, Next 6 hours, Upcoming events, and Provider history. Changing that selection does not alter or reset the Level-1 views.
 
 Provider data becomes stale after 130 minutes. The browser refreshes once per minute using `cache: "no-store"` plus cache-busting query parameters.
 
-The Risk comparison section renders one display-only combined chart from provider audit history and the current provider-published `forecast[]`. Tail/Kill, Stress/DD, and Confidence are independent toggles, so any subset can overlap for both providers on the same fixed 0-100% scale. The chart-range selector offers 1, 3, 7, 14, or 30 total days and defaults to three: 48 hours of history plus 24 published hourly slots per provider. One day is forecast-only. The history and forecast panes use explicitly labeled separate time scales so the forecast remains readable on mobile at longer ranges; lines never connect across the divider. Exact provider forecast timestamps are preserved, so the shared forecast pane may span more than 24 elapsed hours when provider origins differ. Forecasts are shown only from complete, fresh current provider state and are never synthesized or extrapolated from history.
+The Historical risk trend renders one display-only combined chart from provider audit history and current provider-published `forecast[]` data. Tail/Kill, Stress/DD, and Confidence are independent toggles, so any subset can overlap for the enabled providers on the same fixed 0-100% scale. The chart-range selector offers 1, 3, 7, 14, or 30 total days and defaults to three: 48 hours of history plus 24 published hourly slots per provider. One day is forecast-only. The history and forecast panes use explicitly labeled separate time scales so the forecast remains readable on mobile at longer ranges; lines never connect across the divider. Exact provider forecast timestamps are preserved, so the shared forecast pane may span more than 24 elapsed hours when provider origins differ. Forecasts are shown only from complete, fresh current provider state and are never synthesized or extrapolated from history.
 
 Hovering, tapping, or using the chart's arrow-key inspector reveals the exact source timestamp and percentage for each selected provider metric. Historical inspection uses real published assessments only; missing hours stay empty and line values are never interpolated. Forecast inspection selects the exact published one-hour slot, including truthful provider gaps at non-overlapping forecast edges.
 
@@ -91,6 +91,8 @@ Pages deployment validates/builds providers independently. Invalid or incomplete
 Missing provider state is neutral/unavailable — never green.
 
 ## Public endpoints
+
+The dashboard intentionally does not render an endpoint list, but the provider JSON files remain public for direct consumers.
 
 For each provider:
 
