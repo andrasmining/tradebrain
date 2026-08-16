@@ -113,11 +113,11 @@ A provider publisher owns only its own publication path.
 
 At the time this guide was written, the active scheduled ChatGPT prompt contract is:
 
-- `prompts/chatgpt/v1.2.0.md`
+- `prompts/chatgpt/v1.3.0.md`
 
-Version `1.2.0` inherits the complete `prompts/chatgpt/v1.1.1.md` contract, which in turn inherits `prompts/chatgpt/v1.1.0.md`. Read all three. The newest applicable contract wins where they differ. Version `1.2.0` adds the optional shared Finviz evidence rules while preserving the inherited snapshot-only publication contract.
+Version `1.3.0` inherits the complete `prompts/chatgpt/v1.2.0.md` contract, which inherits `prompts/chatgpt/v1.1.1.md` and `prompts/chatgpt/v1.1.0.md`. Read the full chain. The newest applicable contract wins where they differ. Version `1.2.0` introduced the optional shared Finviz evidence rules, and version `1.3.0` adds bounded rich reasoning, drivers, and verified already-known news to every forecast hour while preserving the inherited snapshot-only publication contract.
 
-`prompts/chatgpt/v1.3.0.md` and `prompts/claude/v1.3.0.md` are staged, reviewable contracts only. They add bounded rich reasoning to every forecast hour without changing risk semantics or publication mechanics. Their presence does not activate either scheduler: ChatGPT remains explicitly pinned to v1.2.0 until a separate migration, and Claude's active version must be verified externally.
+`prompts/claude/v1.3.0.md` is an available, reviewable contract for a future explicit Claude migration. Its presence does not establish Claude's active scheduler version, which must still be verified externally.
 
 The current scheduled ChatGPT contract is **snapshot-only**:
 
@@ -177,7 +177,7 @@ Scheduling is external to this repository. A repo task or provider-publication f
 
 An **available prompt version** is a versioned prompt checked into the repository. An **active scheduled prompt version** is the contract actually used by the external scheduler. These may differ during a staged migration, and the newest filename is not automatically active.
 
-The ChatGPT active scheduled contract is explicitly known to be `v1.2.0`. Do not infer that a future `v1.3.0` or later file is live merely because it exists. For Claude, verify the actual current contract from the scheduling context rather than selecting a prompt by filename alone.
+The ChatGPT active scheduled contract is explicitly known to be `v1.3.0`. Do not infer that a future `v1.4.0` or later file is live merely because it exists. For Claude, verify the actual current contract from the scheduling context rather than selecting a prompt by filename alone.
 
 Prompt activation follows this sequence:
 
@@ -196,7 +196,7 @@ new version becomes active
 
 A repository commit can complete the first two stages; it does not perform the scheduler migration.
 
-Prompt files `prompts/chatgpt/v1.2.0.md` and `prompts/claude/v1.2.0.md` are available contracts for optional shared Finviz evidence. The external ChatGPT scheduler has completed the explicit reviewed migration to `v1.2.0`; the Claude file's presence does not establish Claude's active scheduled version, which must still be verified externally.
+The external ChatGPT scheduler has completed the explicit reviewed migration to `prompts/chatgpt/v1.3.0.md`. Its inherited v1.2.0 Finviz contract and v1.1.1 snapshot-only publication rules remain in force, with v1.3.0 additionally requiring rich hour-specific analysis on all 24 forecast slots. Claude prompt files remain available repository contracts whose active external version must still be verified separately rather than inferred from the newest filename.
 
 ## 4. Shared external evidence / context providers
 
