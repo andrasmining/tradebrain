@@ -336,16 +336,14 @@ Historical model opinions must not be rewritten with hindsight.
 
 ## 7. Display-only derived analytics and time-series boundaries
 
-Browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, simple regression/extrapolation, comparison metric, or visual projection. The current Risk comparison chart is one such feature: it uses provider history directly, lets the user independently toggle any combination of Tail, Stress, and Confidence for both providers over a rolling 72-hour window on a fixed 0-100% scale, and may show six-hour visual projections using ordinary least squares over up to eight recent points. Projection requires at least three points and is suppressed for providers stale under the browser's 130-minute threshold.
+Browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, comparison metric, or visual projection. The current Risk comparison chart uses provider history together with each fresh provider's actual 24-slot published `forecast[]`; it does not extrapolate forecast values from history. The user can independently toggle any combination of Tail, Stress, and Confidence for both providers on a fixed 0-100% scale. Its chart-range selector offers 1, 3, 7, 14, or 30 total days and defaults to three, meaning exactly 48 hours of history plus the fixed 24-hour provider forecast. The one-day range is forecast-only. History and forecast use explicitly labeled separate time scales so the 24-hour forecast stays readable on mobile at longer ranges, and paths never connect across their divider.
 
 ```text
-provider historical data
-        |
-        v
-deterministic presentation math
-        |
-        v
-visualization only
+provider historical data ----> HISTORY pane
+                                        \
+                                         > fixed-scale visualization only
+                                        /
+fresh status.forecast[] -----> PUBLISHED FORECAST pane
 ```
 
 Keep these three time-series concepts distinct:

@@ -4,14 +4,19 @@ import fs from"node:fs";
 import{
   DEFAULT_METRIC_ID,
   DEFAULT_METRIC_IDS,
+  DEFAULT_WINDOW_DAYS,
+  FORECAST_HOURS,
   HOUR_MS,
   METRIC_OPTIONS,
-  buildProjection,
+  WINDOW_DAY_OPTIONS,
+  forecastSlotPathData,
   metricField,
+  normalizeForecast,
   normalizeHistory,
   normalizeMetricIds,
+  normalizeWindowDays,
   prepareComparisonSeries,
-  regressionSlope,
+  splitForecastSegments,
   splitHistorySegments,
   toggleMetricId
 }from"../assets/comparison-chart.js";
@@ -19,7 +24,8 @@ import{
 const BASE=Date.parse("2026-08-16T00:00:00Z");
 const point=(hour,value)=>({timestamp:BASE+hour*HOUR_MS,value});
 const history=(hour,values={})=>({generatedAt:new Date(BASE+hour*HOUR_MS).toISOString(),tailRiskPct:10,stressRiskPct:50,confidencePct:75,...values});
-const closeTo=(actual,expected,epsilon=1e-10)=>assert.ok(Math.abs(actual-expected)<=epsilon,`${actual} is not within ${epsilon} of ${expected}`);
+const forecast=(hour,values={})=>({ts:new Date(BASE+hour*HOUR_MS).toISOString(),tailRiskPct:20,stressRiskPct:60,confidencePct:80,...values});
+const forecastDay=(startHour,valuesForHour=()=>({}))=>Array.from({length:24},(_,index)=>forecast(startHour+index,valuesForHour(index)));
 
 test("metric selector exposes exactly the three contracted mappings",()=>{
   assert.equal(DEFAULT_METRIC_ID,"tail");
@@ -45,6 +51,15 @@ test("metric selection permits every subset, including all and none",()=>{
   assert.deepEqual(selected,["tail","stress","confidence"]);
   for(const metric of["tail","stress","confidence"])selected=toggleMetricId(selected,metric);
   assert.deepEqual(selected,[]);
+});
+
+test("chart range accepts only 1, 3, 7, 14, or 30 days and defaults to three",()=>{
+  assert.equal(DEFAULT_WINDOW_DAYS,3);
+  assert.equal(FORECAST_HOURS,24);
+  assert.deepEqual(WINDOW_DAY_OPTIONS,[1,3,7,14,30]);
+  for(const days of WINDOW_DAY_OPTIONS)assert.equal(normalizeWindowDays(String(days)),days);
+  assert.equal(normalizeWindowDays(2),3);
+  assert.equal(normalizeWindowDays(null),3);
 });
 
 test("history normalization sorts actual timestamps and preserves irregular spacing",()=>{
@@ -75,77 +90,107 @@ test("history normalization resolves duplicate timestamps deterministically",()=
   assert.deepEqual(normalizeHistory(null,"tail"),[]);
 });
 
-test("OLS slope uses real elapsed hours",()=>{
-  const slope=regressionSlope([point(0,10),point(2,14),point(5,20)]);
-  closeTo(slope,2);
+test("forecast normalization uses published ts and values without deriving replacements",()=>{
+  const rows=[
+    forecast(2,{tailRiskPct:91}),
+    forecast(0,{tailRiskPct:7}),
+    forecast(1,{tailRiskPct:43}),
+    {ts:"bad",tailRiskPct:22},
+    forecast(3,{tailRiskPct:101})
+  ];
+  const normalized=normalizeForecast(rows,"tail");
+  assert.deepEqual(normalized.map(item=>item.timestamp),[BASE,BASE+HOUR_MS,BASE+2*HOUR_MS]);
+  assert.deepEqual(normalized.map(item=>item.value),[7,43,91]);
 });
 
-test("OLS uses at most the latest eight valid points",()=>{
-  const points=[point(0,100),...Array.from({length:8},(_,index)=>point(index+1,index+1))];
-  closeTo(regressionSlope(points),1);
+test("historical and forecast paths break at real data gaps",()=>{
+  assert.deepEqual(splitHistorySegments([point(0,10),point(1,12),point(30,18)]).map(segment=>segment.length),[2,1]);
+  assert.deepEqual(splitForecastSegments([point(0,10),point(1,12),point(3,18)]).map(segment=>segment.length),[2,1]);
 });
 
-test("projection needs three points, anchors at the final actual, and emits six future hours",()=>{
-  assert.deepEqual(buildProjection([point(0,10),point(1,12)]),[]);
-  const projection=buildProjection([point(0,10),point(2,14),point(5,20)]);
-  assert.equal(projection.length,7);
-  assert.deepEqual(projection[0],{...point(5,20),projected:true});
-  assert.equal(projection.at(-1).timestamp,BASE+11*HOUR_MS);
-  closeTo(projection.at(-1).value,32);
+test("forecast path is step-after and covers the complete final hourly slot",()=>{
+  const x=timestamp=>(timestamp-BASE)/HOUR_MS,y=value=>value;
+  assert.equal(forecastSlotPathData([point(0,10),point(1,30)],x,y,BASE+2*HOUR_MS),"M 0.00 10.00 H 1.00 L 1.00 30.00 H 2.00");
 });
 
-test("projection clamps rising and falling trends to the fixed percentage scale",()=>{
-  const rising=buildProjection([point(0,80),point(1,90),point(2,100)]);
-  assert.ok(rising.every(item=>item.value>=0&&item.value<=100));
-  assert.equal(rising.at(-1).value,100);
-  const falling=buildProjection([point(0,20),point(1,10),point(2,0)]);
-  assert.ok(falling.every(item=>item.value>=0&&item.value<=100));
-  assert.equal(falling.at(-1).value,0);
+test("default three-day range is exactly 48h history plus 24 published forecast slots",()=>{
+  const startHour=100,now=BASE+startHour*HOUR_MS+30*60*1000;
+  const rows=[history(40),history(51),history(52),history(75),history(99),history(100)];
+  const published=forecastDay(startHour,index=>({tailRiskPct:[9,72,13,88][index%4]}));
+  const prepared=prepareComparisonSeries([{
+    id:"chatgpt",label:"ChatGPT",availability:"fresh",generatedAt:new Date(BASE+startHour*HOUR_MS+10*60*1000).toISOString(),historyItems:rows,forecastItems:published
+  }],"tail",{nowMs:now});
+  assert.equal(prepared.windowDays,3);
+  assert.equal(prepared.historyHours,48);
+  assert.equal(prepared.forecastStart,BASE+startHour*HOUR_MS);
+  assert.equal(prepared.windowStart,now-48*HOUR_MS);
+  assert.equal(prepared.windowEnd,BASE+(startHour+24)*HOUR_MS);
+  assert.deepEqual(prepared.series[0].historical.map(item=>item.timestamp),[BASE+75*HOUR_MS,BASE+99*HOUR_MS,BASE+100*HOUR_MS]);
+  assert.equal(prepared.series[0].forecast.length,24);
+  assert.deepEqual(prepared.series[0].forecast.slice(0,4).map(item=>item.value),[9,72,13,88]);
+  assert.equal(prepared.series[0].forecastState,"available");
 });
 
-test("flat history produces a flat anchored projection",()=>{
-  const projection=buildProjection([point(0,42),point(3,42),point(7,42)]);
-  assert.deepEqual(projection.map(item=>item.value),Array(7).fill(42));
+test("range choices change only history while forecast remains one day",()=>{
+  const startHour=800,now=BASE+startHour*HOUR_MS;
+  const provider={id:"chatgpt",availability:"fresh",generatedAt:new Date(now).toISOString(),historyItems:[history(80),history(104),history(776),history(799)],forecastItems:forecastDay(startHour)};
+  const expectedHistoryHours=new Map([[1,0],[3,48],[7,144],[14,312],[30,696]]);
+  for(const days of WINDOW_DAY_OPTIONS){
+    const prepared=prepareComparisonSeries([provider],"tail",{nowMs:now,windowDays:days});
+    assert.equal(prepared.historyHours,expectedHistoryHours.get(days));
+    assert.equal(prepared.forecastHours,24);
+    assert.equal(prepared.series[0].forecast.length,24);
+  }
+  assert.deepEqual(prepareComparisonSeries([provider],"tail",{nowMs:now,windowDays:1}).series[0].historical,[]);
 });
 
-test("historical paths break instead of bridging enormous gaps",()=>{
-  const segments=splitHistorySegments([point(0,10),point(1,12),point(30,18)]);
-  assert.deepEqual(segments.map(segment=>segment.length),[2,1]);
-});
-
-test("series preparation handles one provider, malformed rows, and stale projection suppression",()=>{
-  const rows=[history(0,{stressRiskPct:40}),history(1,{stressRiskPct:45}),history(3,{stressRiskPct:55}),{generatedAt:"bad",stressRiskPct:90}];
-  const fresh=prepareComparisonSeries([{id:"chatgpt",label:"ChatGPT",generatedAt:new Date(BASE+3*HOUR_MS).toISOString(),historyItems:rows}],"stress",{nowMs:BASE+3*HOUR_MS});
-  assert.equal(fresh.series.length,1);
-  assert.deepEqual(fresh.series[0].historical.map(item=>item.timestamp),[BASE,BASE+HOUR_MS,BASE+3*HOUR_MS]);
-  assert.equal(fresh.series[0].projection.length,7);
-  const stale=prepareComparisonSeries([{id:"chatgpt",label:"ChatGPT",generatedAt:new Date(BASE).toISOString(),historyItems:rows}],"stress",{nowMs:BASE+3*HOUR_MS});
-  assert.equal(stale.series[0].projectionState,"stale");
-  assert.deepEqual(stale.series[0].projection,[]);
-  const empty=prepareComparisonSeries([{id:"claude",label:"Claude",generatedAt:null,historyItems:[{},null]}],"confidence",{nowMs:BASE});
-  assert.deepEqual(empty.series[0].historical,[]);
-  assert.equal(empty.series[0].projectionState,"no-history");
-});
-
-test("series preparation keeps only the rolling 72-hour historical window",()=>{
+test("fresh providers keep differing published origins and chart their timestamp union",()=>{
   const now=BASE+100*HOUR_MS;
-  const rows=[history(20),history(28),history(75),history(100)];
-  const prepared=prepareComparisonSeries([{id:"chatgpt",label:"ChatGPT",generatedAt:new Date(now).toISOString(),historyItems:rows}],"tail",{nowMs:now});
-  assert.deepEqual(prepared.series[0].historical.map(item=>item.timestamp),[BASE+28*HOUR_MS,BASE+75*HOUR_MS,BASE+100*HOUR_MS]);
+  const providers=[
+    {id:"chatgpt",availability:"fresh",generatedAt:new Date(now).toISOString(),historyItems:[],forecastItems:forecastDay(100)},
+    {id:"claude",availability:"fresh",generatedAt:new Date(now).toISOString(),historyItems:[],forecastItems:forecastDay(101)}
+  ];
+  const prepared=prepareComparisonSeries(providers,"tail",{nowMs:now});
+  assert.equal(prepared.forecastStart,BASE+100*HOUR_MS);
+  assert.equal(prepared.windowEnd,BASE+125*HOUR_MS);
+  assert.equal(prepared.series[0].forecast[0].timestamp,BASE+100*HOUR_MS);
+  assert.equal(prepared.series[1].forecast[0].timestamp,BASE+101*HOUR_MS);
+  assert.ok(prepared.series.every(series=>series.forecast.length===24));
+});
+
+test("missing, invalid, and stale current publications retain history but suppress forecasts",()=>{
+  const now=BASE+100*HOUR_MS,rows=[history(98),history(99)],published=forecastDay(100);
+  const providers=[
+    {id:"missing",availability:"missing",generatedAt:null,historyItems:rows,forecastItems:published},
+    {id:"invalid",availability:"invalid",generatedAt:new Date(now).toISOString(),historyItems:rows,forecastItems:published},
+    {id:"stale",availability:"stale",generatedAt:new Date(now-3*HOUR_MS).toISOString(),historyItems:rows,forecastItems:published}
+  ];
+  const prepared=prepareComparisonSeries(providers,"tail",{nowMs:now});
+  assert.ok(prepared.series.every(series=>series.historical.length===2&&series.forecast.length===0));
+  assert.deepEqual(prepared.series.map(series=>series.forecastState),["current-unavailable","current-unavailable","stale"]);
+});
+
+test("fresh complete publication without forecast reports it instead of fabricating data",()=>{
+  const now=BASE+100*HOUR_MS;
+  const prepared=prepareComparisonSeries([{id:"chatgpt",availability:"fresh",generatedAt:new Date(now).toISOString(),historyItems:[history(99)],forecastItems:[]}],"tail",{nowMs:now});
+  assert.equal(prepared.series[0].historical.length,1);
+  assert.deepEqual(prepared.series[0].forecast,[]);
+  assert.equal(prepared.series[0].forecastState,"no-forecast");
 });
 
 test("series preparation overlays every selected metric for every provider",()=>{
-  const rows=[history(0),history(1,{tailRiskPct:12,stressRiskPct:55,confidencePct:76}),history(2,{tailRiskPct:14,stressRiskPct:60,confidencePct:77})];
-  const providers=["chatgpt","claude"].map(id=>({id,label:id,generatedAt:new Date(BASE+2*HOUR_MS).toISOString(),historyItems:rows}));
-  const prepared=prepareComparisonSeries(providers,["tail","stress","confidence"],{nowMs:BASE+2*HOUR_MS});
+  const startHour=100,now=BASE+startHour*HOUR_MS;
+  const rows=[history(97),history(98,{tailRiskPct:12,stressRiskPct:55,confidencePct:76}),history(99,{tailRiskPct:14,stressRiskPct:60,confidencePct:77})];
+  const providers=["chatgpt","claude"].map(id=>({id,label:id,availability:"fresh",generatedAt:new Date(now).toISOString(),historyItems:rows,forecastItems:forecastDay(startHour)}));
+  const prepared=prepareComparisonSeries(providers,["tail","stress","confidence"],{nowMs:now});
   assert.deepEqual(prepared.metrics.map(metric=>metric.id),["tail","stress","confidence"]);
   assert.equal(prepared.series.length,6);
   assert.deepEqual(prepared.series.map(series=>`${series.id}:${series.metric.id}`),[
     "chatgpt:tail","chatgpt:stress","chatgpt:confidence",
     "claude:tail","claude:stress","claude:confidence"
   ]);
-  assert.ok(prepared.series.every(series=>series.historical.length===3&&series.projection.length===7));
-  assert.deepEqual(prepareComparisonSeries(providers,[],{nowMs:BASE+2*HOUR_MS}).series,[]);
+  assert.ok(prepared.series.every(series=>series.historical.length===3&&series.forecast.length===24));
+  assert.deepEqual(prepareComparisonSeries(providers,[],{nowMs:now}).series,[]);
 });
 
 test("combined chart mount sits between provider cards and agreement metadata",()=>{
@@ -153,21 +198,30 @@ test("combined chart mount sits between provider cards and agreement metadata",(
   assert.ok(cards>=0&&cards<chart&&chart<agreement);
 });
 
-test("dashboard persists metric toggles and leaves provider switching independent",()=>{
-  const app=fs.readFileSync("assets/app.js","utf8"),chart=fs.readFileSync("assets/comparison-chart.js","utf8"),styles=fs.readFileSync("assets/styles.css","utf8");
+test("dashboard persists metric and range controls without coupling provider switching",()=>{
+  const app=fs.readFileSync("assets/app.js","utf8"),chart=fs.readFileSync("assets/comparison-chart.js","utf8"),styles=fs.readFileSync("assets/styles.css","utf8"),responsive=fs.readFileSync("assets/responsive.css","utf8");
   assert.match(app,/tradebrain\.comparisonMetrics/);
-  assert.match(app,/JSON\.stringify\(metrics\)/);
+  assert.match(app,/tradebrain\.comparisonWindowDays/);
+  assert.match(app,/forecastItems:Array\.isArray\(data\?\.status\?\.forecast\)/);
+  assert.match(app,/availability:data\?\.availability/);
   assert.match(app,/renderComparisonChart\(\$\("comparison-chart"\),comparisonProviders\(\)/);
   const switchBody=app.match(/function selectProvider\([^\n]+/)?.[0]??"";
   assert.doesNotMatch(switchBody,/renderComparison/);
-  assert.match(chart,/not the providers' published forecast/);
-  assert.match(chart,/aria-labelledby/);
-  assert.match(chart,/heading\.id="comparison-chart-heading"/);
+  assert.doesNotMatch(chart,/regression|projection|extrapolation/i);
+  assert.match(chart,/published hourly forecast/);
+  assert.match(chart,/historical assessments through the actual current time/);
+  assert.doesNotMatch(chart,/>NOW</);
+  assert.match(chart,/CHART RANGE/);
+  assert.match(chart,/WINDOW_DAY_OPTIONS=Object\.freeze\(\[1,3,7,14,30\]\)/);
   assert.match(chart,/setAttribute\("aria-pressed",String\(selected\)\)/);
+  assert.match(chart,/select\.setAttribute\("aria-label","Chart time range"\)/);
+  assert.match(chart,/scheduleFocus\(host,"#comparison-window-days"\)/);
   assert.doesNotMatch(chart,/setAttribute\("role","tab"\)/);
   assert.doesNotMatch(chart,/setAttribute\("aria-selected"/);
   assert.doesNotMatch(chart,/legend\.setAttribute\("aria-label"/);
-  assert.match(chart,/onMetricsChange\(next\);\s*scheduleToggleFocus\(host,option\.id\)/);
+  assert.match(styles,/\.comparison-window-select\{[^}]*min-height:42px/);
+  assert.match(styles,/\.comparison-chart-series\.series-forecast/);
+  assert.match(responsive,/\.comparison-chart-controls\{display:grid/);
   assert.match(styles,/\.provider-chatgpt\.metric-stress/);
   assert.match(styles,/\.provider-claude\.metric-confidence/);
 });

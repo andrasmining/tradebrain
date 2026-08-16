@@ -3,11 +3,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { readJson } from "./lib.mjs";
-import { preparePublicHistory } from "./public-history.mjs";
+import { preparePublicHistory, PUBLIC_HISTORY_LIMIT } from "./public-history.mjs";
 
 const root = process.cwd();
 const dist = path.join(root, "dist");
-const PUBLIC_HISTORY_LIMIT = 168;
 fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 

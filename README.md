@@ -41,7 +41,7 @@ The finalizer rejects invalid unindexed ChatGPT snapshots without allowing one b
 
 Claude scheduled runs likewise publish one immutable snapshot under `providers/claude/snapshots/**`; the deterministic Claude finalizer derives its history/status/signal state.
 
-Git audit history remains unlimited and immutable. GitHub Pages serves valid current status/signal plus only the most recent 168 history entries per provider; historical snapshot archives remain in Git and are not copied into every Pages artifact. A current-status failure does not hide independently validated, snapshot-matched history from the display-only comparison chart.
+Git audit history remains unlimited and immutable. GitHub Pages serves valid current status/signal plus only the most recent 744 history entries per provider, enough for the chart's selectable 30-day range at the nominal hourly cadence; historical snapshot archives remain in Git and are not copied into every Pages artifact. A current-status failure does not hide independently validated, snapshot-matched history from the display-only comparison chart.
 
 ## Shared Finviz context
 
@@ -80,7 +80,7 @@ Agreement means both fresh providers map to the same provider action. TradeBrain
 
 Provider data becomes stale after 130 minutes. The browser refreshes once per minute using `cache: "no-store"` plus cache-busting query parameters.
 
-The Risk comparison section also renders one display-only combined trend chart from the already-loaded provider histories. Tail/Kill, Stress/DD, and Confidence are independent toggles, so any subset can overlap for both providers over the latest 72 hours on the same fixed 0-100% scale. Dashed six-hour projections are deterministic ordinary-least-squares extrapolations of up to eight recent actual points, anchored at each latest assessment; they are not either provider's published forecast or a trading command. Projections require at least three points and are suppressed for stale providers.
+The Risk comparison section renders one display-only combined chart from provider audit history and the current provider-published `forecast[]`. Tail/Kill, Stress/DD, and Confidence are independent toggles, so any subset can overlap for both providers on the same fixed 0-100% scale. The chart-range selector offers 1, 3, 7, 14, or 30 total days and defaults to three: 48 hours of history plus the fixed 24-hour published forecast. One day is forecast-only. The history and forecast panes use explicitly labeled separate time scales so the forecast remains readable on mobile at longer ranges; lines never connect across the divider. Forecasts are shown only from complete, fresh current provider state and are never synthesized or extrapolated from history.
 
 ## Failure isolation
 

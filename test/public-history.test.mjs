@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { preparePublicHistory } from "../scripts/public-history.mjs";
+import { preparePublicHistory, PUBLIC_HISTORY_LIMIT } from "../scripts/public-history.mjs";
 
 const scalarSnapshot = {
   generatedAt: "2026-08-16T16:26:00Z",
@@ -49,8 +49,9 @@ test("public chart history must match immutable snapshot outcomes", t => {
 test("current Claude audit history is safe to expose to the display-only chart", () => {
   const root = process.cwd();
   const history = JSON.parse(fs.readFileSync(path.join(root, "providers/claude/history.json"), "utf8"));
-  const prepared = preparePublicHistory(history, "claude", root, 168);
+  const prepared = preparePublicHistory(history, "claude", root);
   assert.deepEqual(prepared.errors, []);
-  assert.equal(prepared.history.items.length, Math.min(168, history.items.length));
+  assert.equal(PUBLIC_HISTORY_LIMIT, 744);
+  assert.equal(prepared.history.items.length, Math.min(PUBLIC_HISTORY_LIMIT, history.items.length));
   assert.deepEqual(prepared.history.items.at(-1), history.items.at(-1));
 });

@@ -44,8 +44,10 @@ html.provider-switching [data-scroll-section] { overflow-anchor:none; }
   .comparison-chart-legend{gap:6px 12px}
 }
 @media (max-width:560px) {
-  .comparison-chart-head{align-items:flex-end}
-  .comparison-chart-scale{font-size:.56rem;text-align:right}
+  .comparison-chart-head{display:grid;gap:5px}
+  .comparison-chart-scale{font-size:.56rem;text-align:left;white-space:normal}
+  .comparison-chart-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+  .comparison-window-control{grid-template-columns:auto minmax(0,1fr);align-items:center;justify-self:stretch;gap:8px}
   .comparison-chart-caption{display:grid;gap:5px}
   .comparison-chart-disclaimer{text-align:left}
 }
@@ -59,6 +61,5 @@ html.provider-switching [data-scroll-section] { overflow-anchor:none; }
   .comparison-chart-notes{display:grid;gap:3px}
 }
 @media (max-width:340px) {
-  .comparison-chart-head{display:grid;gap:5px}
   .comparison-chart-scale{text-align:left}
 }

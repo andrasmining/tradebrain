@@ -2,7 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { readJson, validateHistory } from "./lib.mjs";
 
-const DEFAULT_PUBLIC_HISTORY_LIMIT = 168;
+// Thirty selectable chart days need up to 29 days of history plus the fixed
+// one-day provider forecast. Keep an extra nominal day of hourly publications
+// so boundary timing does not truncate the oldest visible history point.
+export const PUBLIC_HISTORY_LIMIT = 31 * 24;
 const HISTORY_SNAPSHOT_FIELDS = Object.freeze([
   "generatedAt",
   "status",
@@ -21,7 +24,7 @@ function insideDirectory(file, directory) {
   return relative !== "" && !relative.startsWith(`..${path.sep}`) && relative !== ".." && !path.isAbsolute(relative);
 }
 
-export function preparePublicHistory(history, expectedProvider, repoRoot, limit = DEFAULT_PUBLIC_HISTORY_LIMIT) {
+export function preparePublicHistory(history, expectedProvider, repoRoot, limit = PUBLIC_HISTORY_LIMIT) {
   const errors = validateHistory(history, expectedProvider, repoRoot);
   if (!Array.isArray(history?.items)) return { history: null, errors };
 
@@ -47,6 +50,6 @@ export function preparePublicHistory(history, expectedProvider, repoRoot, limit 
   }
 
   if (errors.length) return { history: null, errors };
-  const safeLimit = Number.isInteger(limit) && limit > 0 ? limit : DEFAULT_PUBLIC_HISTORY_LIMIT;
+  const safeLimit = Number.isInteger(limit) && limit > 0 ? limit : PUBLIC_HISTORY_LIMIT;
   return { history: { ...history, items: history.items.slice(-safeLimit) }, errors: [] };
 }
