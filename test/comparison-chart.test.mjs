@@ -32,7 +32,7 @@ const forecastDay=(startHour,valuesForHour=()=>({}))=>Array.from({length:24},(_,
 
 test("metric selector exposes exactly the three contracted mappings",()=>{
   assert.equal(DEFAULT_METRIC_ID,"tail");
-  assert.deepEqual(DEFAULT_METRIC_IDS,["tail"]);
+  assert.deepEqual(DEFAULT_METRIC_IDS,["tail","stress"]);
   assert.deepEqual(METRIC_OPTIONS.map(({label,field})=>[label,field]),[
     ["TAIL / KILL","tailRiskPct"],
     ["STRESS / DD","stressRiskPct"],
@@ -244,20 +244,22 @@ test("history inspection does not snap across gaps larger than one hour",()=>{
   assert.equal(inspectionBucketAtTime(buckets,"forecast",BASE),null);
 });
 
-test("combined chart is the third provider-agnostic view above detail selection",()=>{
-  const html=fs.readFileSync("index.html","utf8"),timeline=html.indexOf('id="timeline"'),comparison=html.indexOf('id="provider-comparison"'),chart=html.indexOf('id="comparison-chart"'),selector=html.indexOf('id="provider-detail-tabs"');
-  assert.ok(timeline>=0&&timeline<comparison&&comparison<chart&&chart<selector);
+test("combined chart follows the selected-hour overview above detail selection",()=>{
+  const html=fs.readFileSync("index.html","utf8"),timeline=html.indexOf('id="timeline"'),selectedHour=html.indexOf('id="selected-hour-overview"'),chart=html.indexOf('id="comparison-chart"'),selector=html.indexOf('id="provider-detail-tabs"');
+  assert.ok(timeline>=0&&timeline<selectedHour&&selectedHour<chart&&chart<selector);
 });
 
 test("dashboard persists metric and range controls without coupling provider switching",()=>{
   const app=fs.readFileSync("assets/app.js","utf8"),chart=fs.readFileSync("assets/comparison-chart.js","utf8"),styles=fs.readFileSync("assets/styles.css","utf8"),responsive=fs.readFileSync("assets/responsive.css","utf8");
   assert.match(app,/tradebrain\.comparisonMetrics/);
   assert.match(app,/tradebrain\.comparisonWindowDays/);
-  assert.match(app,/forecastItems:Array\.isArray\(data\?\.status\?\.forecast\)/);
-  assert.match(app,/availability:data\?\.availability/);
-  assert.match(app,/renderComparisonChart\(\$\("comparison-chart"\),comparisonProviders\(\)/);
-  const switchBody=app.match(/function selectProvider\([^\n]+/)?.[0]??"";
-  assert.doesNotMatch(switchBody,/renderComparison/);
+  assert.match(app,/forecastItems:\s*Array\.isArray\(data\?\.status\?\.forecast\)/);
+  assert.match(app,/availability:\s*data\?\.availability/);
+  assert.match(app,/renderComparisonChart\(\$\("comparison-chart"\),\s*comparisonProviders\(\)/);
+  const switchStart=app.indexOf("function selectProvider(");
+  const switchEnd=app.indexOf("\nfunction ",switchStart+1);
+  const switchBody=app.slice(switchStart,switchEnd<0?undefined:switchEnd);
+  assert.doesNotMatch(switchBody,/renderComparisonChart|renderTimelineOverview|renderHourOverview/);
   assert.doesNotMatch(chart,/regression|projection|extrapolation/i);
   assert.match(chart,/24 published hourly slots/);
   assert.match(chart,/historical assessments through the actual current time/);

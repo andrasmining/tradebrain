@@ -4,6 +4,26 @@
   "title": "TradeBrain provider risk state",
   "type": "object",
   "required": ["schemaVersion","provider","engineVersion","promptVersion","generatedAt","market","instruments","status","statusText","recommendation","headline","body","tailRiskPct","tailLevel","stressRiskPct","stressLevel","dominantMode","confidencePct","confidenceLevel","action","dangerWindow","dangerWindowBerlin","sources","lookbackSummary","lookback","outlookSummary","forecast","forecastDetail","events"],
+  "allOf": [
+    {
+      "if": {
+        "required": ["promptVersion"],
+        "properties": {
+          "promptVersion": {"$ref":"#/$defs/richPromptVersion"}
+        }
+      },
+      "then": {
+        "properties": {
+          "forecast": {
+            "type":"array",
+            "minItems":24,
+            "maxItems":24,
+            "items":{"$ref":"#/$defs/richForecast"}
+          }
+        }
+      }
+    }
+  ],
   "properties": {
     "schemaVersion": {"const":"1.0.0"},
     "provider": {"type":"string","minLength":1},
@@ -36,6 +56,7 @@
     "events": {"type":"array","items":{"$ref":"#/$defs/event"}}
   },
   "$defs": {
+    "richPromptVersion": {"type":"string","pattern":"^(?:1\\.(?:[3-9]|[1-9][0-9]+)\\.[0-9]+|(?:[2-9]|[1-9][0-9]+)\\.[0-9]+\\.[0-9]+)(?:[-+][0-9A-Za-z.-]+)?$"},
     "score": {"type":"integer","minimum":0,"maximum":100},
     "status": {"enum":["green","yellow","orange","red"]},
     "action": {"enum":["EA_ON","WATCH","BLOCK_NEW_BASE_ENTRIES","STRONG_BLOCK_NO_NEW_RISK","EA_OFF_NO_NEW_RISK"]},
@@ -47,6 +68,23 @@
     "nullableDateTime": {"anyOf":[{"type":"string","format":"date-time"},{"type":"null"}]},
     "window": {"type":"object","required":["start","end"],"properties":{"start":{"$ref":"#/$defs/nullableDateTime"},"end":{"$ref":"#/$defs/nullableDateTime"}},"additionalProperties":false},
     "source": {"type":"object","required":["title","url"],"properties":{"title":{"type":"string","minLength":1},"url":{"type":"string","format":"uri"}},"additionalProperties":true},
+    "hourlyAnalysis": {"type":"string","minLength":1,"maxLength":360,"pattern":"\\S"},
+    "hourlyDrivers": {"type":"array","minItems":1,"maxItems":5,"uniqueItems":true,"items":{"type":"string","minLength":1,"maxLength":120,"pattern":"\\S"}},
+    "hourlyNews": {
+      "type":"array",
+      "minItems":0,
+      "maxItems":3,
+      "items": {
+        "type":"object",
+        "required":["title","url"],
+        "properties": {
+          "title":{"type":"string","minLength":1,"maxLength":180,"pattern":"\\S"},
+          "url":{"type":"string","format":"uri","pattern":"^[Hh][Tt][Tt][Pp][Ss]?://","maxLength":2048},
+          "source":{"type":"string","minLength":1,"maxLength":80,"pattern":"\\S"}
+        },
+        "additionalProperties":false
+      }
+    },
     "lookback": {
       "type":"object",
       "required":["ts","timeBerlin","available","status","action","tailRiskPct","stressRiskPct","confidencePct","dominantMode"],
@@ -74,9 +112,30 @@
         "tailRiskPct":{"$ref":"#/$defs/score"},
         "stressRiskPct":{"$ref":"#/$defs/score"},
         "confidencePct":{"$ref":"#/$defs/score"},
-        "dominantMode":{"$ref":"#/$defs/mode"}
+        "dominantMode":{"$ref":"#/$defs/mode"},
+        "analysis":{"$ref":"#/$defs/hourlyAnalysis"},
+        "drivers":{"$ref":"#/$defs/hourlyDrivers"},
+        "news":{"$ref":"#/$defs/hourlyNews"}
       },
       "additionalProperties":true
+    },
+    "richForecast": {
+      "type":"object",
+      "required":["ts","timeBerlin","status","action","tailRiskPct","stressRiskPct","confidencePct","dominantMode","analysis","drivers","news"],
+      "properties": {
+        "ts":{"type":"string","format":"date-time"},
+        "timeBerlin":{"type":"string","format":"date-time"},
+        "status":{"$ref":"#/$defs/status"},
+        "action":{"$ref":"#/$defs/action"},
+        "tailRiskPct":{"$ref":"#/$defs/score"},
+        "stressRiskPct":{"$ref":"#/$defs/score"},
+        "confidencePct":{"$ref":"#/$defs/score"},
+        "dominantMode":{"$ref":"#/$defs/mode"},
+        "analysis":{"$ref":"#/$defs/hourlyAnalysis"},
+        "drivers":{"$ref":"#/$defs/hourlyDrivers"},
+        "news":{"$ref":"#/$defs/hourlyNews"}
+      },
+      "additionalProperties":false
     },
     "detail": {
       "type":"object",

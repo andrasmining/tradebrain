@@ -11,10 +11,83 @@ export function cautionForAction(action) { return action === "WATCH" || action =
 export function isScore(n) { return Number.isInteger(n) && n >= 0 && n <= 100; }
 export function isDateTime(value) { return typeof value === "string" && Number.isFinite(Date.parse(value)); }
 export function isHttpUrl(value) { try { const u = new URL(value); return u.protocol === "http:" || u.protocol === "https:"; } catch { return false; } }
+export const RICH_HOURLY_FORECAST_LIMITS=Object.freeze({
+  analysisMaxLength:360,
+  driversMinItems:1,
+  driversMaxItems:5,
+  driverMaxLength:120,
+  newsMaxItems:3,
+  newsTitleMaxLength:180,
+  newsUrlMaxLength:2048,
+  newsSourceMaxLength:80
+});
+export function requiresRichHourlyForecast(promptVersion){
+  if(typeof promptVersion!=="string")return false;
+  const match=/^(\d+)\.(\d+)\.(\d+)(?:[-+][0-9A-Za-z.-]+)?$/.exec(promptVersion);
+  if(!match)return false;
+  const major=Number(match[1]),minor=Number(match[2]);
+  return major>1||major===1&&minor>=3;
+}
 function exactInstruments(value) { return Array.isArray(value) && value.length === 2 && value[0] === "NQ_FUTURES" && value[1] === "NAS100_CFD"; }
 function assert(errors, condition, message) { if (!condition) errors.push(message); }
 function validateScoreSet(errors, obj, prefix = "") { assert(errors, isScore(obj.tailRiskPct), `${prefix}tailRiskPct must be an integer 0-100`); assert(errors, isScore(obj.stressRiskPct), `${prefix}stressRiskPct must be an integer 0-100`); assert(errors, isScore(obj.confidencePct), `${prefix}confidencePct must be an integer 0-100`); }
 function validateWindow(errors, window, prefix) { assert(errors, window && typeof window === "object", `${prefix} must be an object`); if (!window || typeof window !== "object") return; const { start, end } = window; assert(errors, start === null || isDateTime(start), `${prefix}.start must be null or ISO date-time`); assert(errors, end === null || isDateTime(end), `${prefix}.end must be null or ISO date-time`); assert(errors, (start === null) === (end === null), `${prefix} must have both endpoints or neither`); if (start !== null && end !== null && isDateTime(start) && isDateTime(end)) assert(errors, Date.parse(start) <= Date.parse(end), `${prefix}.start must be <= end`); }
+const PRIVATE_FIELD_FRAGMENTS=["private","secret","credential","password","apikey","token","cookie","broker","vps","account","balance","positionsize","propfirm","calibration","tradinghistory","strategycode","schedulernotes","researchnotes"];
+const RICH_FORECAST_FIELDS=new Set(["ts","timeBerlin","status","action","tailRiskPct","stressRiskPct","confidencePct","dominantMode","analysis","drivers","news"]);
+function validateNoPrivateFields(errors,value,prefix,seen=new WeakSet()){
+  if(!value||typeof value!=="object"||seen.has(value))return;
+  seen.add(value);
+  for(const[key,nested]of Object.entries(value)){
+    const normalized=key.toLowerCase().replace(/[^a-z0-9]/g,"");
+    if(PRIVATE_FIELD_FRAGMENTS.some(fragment=>normalized.includes(fragment)))errors.push(`${prefix}.${key} is a forbidden private field`);
+    validateNoPrivateFields(errors,nested,`${prefix}.${key}`,seen);
+  }
+}
+function validateRichHourlyForecast(errors,item,index){
+  const prefix=`forecast[${index}]`;
+  const limits=RICH_HOURLY_FORECAST_LIMITS;
+  validateNoPrivateFields(errors,item,prefix);
+  if(item&&typeof item==="object"&&!Array.isArray(item))assert(errors,Object.keys(item).every(key=>RICH_FORECAST_FIELDS.has(key)),`${prefix} contains an unsupported property`);
+  assert(errors,typeof item?.analysis==="string"&&item.analysis.trim().length>0,`${prefix}.analysis must be a non-empty string`);
+  if(typeof item?.analysis==="string"){
+    assert(errors,item.analysis===item.analysis.trim(),`${prefix}.analysis must not have leading or trailing whitespace`);
+    assert(errors,item.analysis.length<=limits.analysisMaxLength,`${prefix}.analysis must be at most ${limits.analysisMaxLength} characters`);
+  }
+  assert(errors,Array.isArray(item?.drivers)&&item.drivers.length>=limits.driversMinItems&&item.drivers.length<=limits.driversMaxItems,`${prefix}.drivers must contain ${limits.driversMinItems}-${limits.driversMaxItems} strings`);
+  if(Array.isArray(item?.drivers)){
+    const seen=new Set();
+    item.drivers.forEach((driver,driverIndex)=>{
+      const field=`${prefix}.drivers[${driverIndex}]`;
+      assert(errors,typeof driver==="string"&&driver.trim().length>0,`${field} must be a non-empty string`);
+      if(typeof driver!=="string")return;
+      assert(errors,driver===driver.trim(),`${field} must not have leading or trailing whitespace`);
+      assert(errors,driver.length<=limits.driverMaxLength,`${field} must be at most ${limits.driverMaxLength} characters`);
+      assert(errors,!seen.has(driver),`${field} must be unique within the hourly slot`);
+      seen.add(driver);
+    });
+  }
+  assert(errors,Array.isArray(item?.news)&&item.news.length<=limits.newsMaxItems,`${prefix}.news must contain at most ${limits.newsMaxItems} items`);
+  if(Array.isArray(item?.news))item.news.forEach((news,newsIndex)=>{
+    const field=`${prefix}.news[${newsIndex}]`;
+    assert(errors,news&&typeof news==="object"&&!Array.isArray(news),`${field} must be an object`);
+    if(!news||typeof news!=="object"||Array.isArray(news))return;
+    assert(errors,Object.keys(news).every(key=>["title","url","source"].includes(key)),`${field} contains an unsupported property`);
+    assert(errors,typeof news.title==="string"&&news.title.trim().length>0,`${field}.title must be a non-empty string`);
+    if(typeof news.title==="string"){
+      assert(errors,news.title===news.title.trim(),`${field}.title must not have leading or trailing whitespace`);
+      assert(errors,news.title.length<=limits.newsTitleMaxLength,`${field}.title must be at most ${limits.newsTitleMaxLength} characters`);
+    }
+    assert(errors,isHttpUrl(news.url),`${field}.url must be http/https`);
+    if(typeof news.url==="string")assert(errors,news.url.length<=limits.newsUrlMaxLength,`${field}.url must be at most ${limits.newsUrlMaxLength} characters`);
+    if(news.source!==undefined){
+      assert(errors,typeof news.source==="string"&&news.source.trim().length>0,`${field}.source must be a non-empty string when provided`);
+      if(typeof news.source==="string"){
+        assert(errors,news.source===news.source.trim(),`${field}.source must not have leading or trailing whitespace`);
+        assert(errors,news.source.length<=limits.newsSourceMaxLength,`${field}.source must be at most ${limits.newsSourceMaxLength} characters`);
+      }
+    }
+  });
+}
 
 export function validateStatus(data, expectedProvider) {
   const errors = [];
@@ -39,7 +112,7 @@ export function validateStatus(data, expectedProvider) {
   assert(errors, Array.isArray(data.lookback) && data.lookback.length === 24, "lookback must contain exactly 24 entries");
   if (Array.isArray(data.lookback) && data.lookback.length === 24) for (let i=0;i<data.lookback.length;i++) { const item=data.lookback[i]; assert(errors,isDateTime(item.ts),`lookback[${i}].ts invalid`); assert(errors,isDateTime(item.timeBerlin),`lookback[${i}].timeBerlin invalid`); assert(errors,typeof item.available === "boolean",`lookback[${i}].available must be boolean`); if(i>0 && isDateTime(item.ts)&&isDateTime(data.lookback[i-1].ts)) assert(errors,Date.parse(item.ts)-Date.parse(data.lookback[i-1].ts)===3600000,`lookback[${i}] must be exactly one hour after previous`); if(item.available){ validateScoreSet(errors,item,`lookback[${i}].`); if(isScore(item.tailRiskPct)){ assert(errors,item.action===actionForTail(item.tailRiskPct),`lookback[${i}].action mismatch`); assert(errors,item.status===statusForAction(item.action),`lookback[${i}].status mismatch`); }} else for(const key of ["status","action","tailRiskPct","stressRiskPct","confidencePct","dominantMode"]) assert(errors,item[key]===null,`lookback[${i}].${key} must be null when unavailable`); }
   assert(errors, Array.isArray(data.forecast) && data.forecast.length === 24, "forecast must contain exactly 24 entries");
-  if (Array.isArray(data.forecast) && data.forecast.length === 24) for(let i=0;i<data.forecast.length;i++){ const item=data.forecast[i]; assert(errors,isDateTime(item.ts),`forecast[${i}].ts invalid`); assert(errors,isDateTime(item.timeBerlin),`forecast[${i}].timeBerlin invalid`); validateScoreSet(errors,item,`forecast[${i}].`); if(i>0 && isDateTime(item.ts)&&isDateTime(data.forecast[i-1].ts)) assert(errors,Date.parse(item.ts)-Date.parse(data.forecast[i-1].ts)===3600000,`forecast[${i}] must be exactly one hour after previous`); if(isScore(item.tailRiskPct)){ const a=actionForTail(item.tailRiskPct); assert(errors,item.action===a,`forecast[${i}].action mismatch`); assert(errors,item.status===statusForAction(a),`forecast[${i}].status mismatch`); } assert(errors,["trend-up","trend-down","event/whipsaw","mixed","normal"].includes(item.dominantMode),`forecast[${i}].dominantMode invalid`); }
+  if (Array.isArray(data.forecast) && data.forecast.length === 24) for(let i=0;i<data.forecast.length;i++){ const item=data.forecast[i]; assert(errors,isDateTime(item.ts),`forecast[${i}].ts invalid`); assert(errors,isDateTime(item.timeBerlin),`forecast[${i}].timeBerlin invalid`); validateScoreSet(errors,item,`forecast[${i}].`); if(i>0 && isDateTime(item.ts)&&isDateTime(data.forecast[i-1].ts)) assert(errors,Date.parse(item.ts)-Date.parse(data.forecast[i-1].ts)===3600000,`forecast[${i}] must be exactly one hour after previous`); if(isScore(item.tailRiskPct)){ const a=actionForTail(item.tailRiskPct); assert(errors,item.action===a,`forecast[${i}].action mismatch`); assert(errors,item.status===statusForAction(a),`forecast[${i}].status mismatch`); } assert(errors,["trend-up","trend-down","event/whipsaw","mixed","normal"].includes(item.dominantMode),`forecast[${i}].dominantMode invalid`); if(requiresRichHourlyForecast(data.promptVersion))validateRichHourlyForecast(errors,item,i); }
   assert(errors, Array.isArray(data.forecastDetail) && data.forecastDetail.length === 6, "forecastDetail must contain exactly 6 entries");
   if(Array.isArray(data.forecastDetail)&&data.forecastDetail.length===6&&Array.isArray(data.forecast)&&data.forecast.length>=6) for(let i=0;i<6;i++){ const detail=data.forecastDetail[i], forecast=data.forecast[i]; assert(errors,detail.ts===forecast.ts,`forecastDetail[${i}].ts must match forecast[${i}]`); assert(errors,detail.timeBerlin===forecast.timeBerlin,`forecastDetail[${i}].timeBerlin must match forecast[${i}]`); assert(errors,detail.status===forecast.status,`forecastDetail[${i}].status must match forecast[${i}]`); assert(errors,detail.tailRiskPct===forecast.tailRiskPct,`forecastDetail[${i}].tailRiskPct must match forecast[${i}]`); assert(errors,detail.stressRiskPct===forecast.stressRiskPct,`forecastDetail[${i}].stressRiskPct must match forecast[${i}]`); assert(errors,typeof detail.comment==="string"&&detail.comment.length>0,`forecastDetail[${i}].comment required`); }
   assert(errors,Array.isArray(data.events),"events must be an array");

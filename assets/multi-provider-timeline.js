@@ -101,7 +101,7 @@ function statusFor(entry) {
   return null;
 }
 
-function validForecastSlot(item, timestamp) {
+export function normalizeForecastSlot(item, timestamp) {
   if (!isRecord(item) || !validTimestamp(item.ts) || Date.parse(item.ts) !== timestamp) return null;
   if (!riskStatus(item.status) || !(item.action in STATUS_BY_ACTION)) return null;
   if (!validScore(item.tailRiskPct) || !validScore(item.stressRiskPct) || !validScore(item.confidencePct)) return null;
@@ -185,7 +185,7 @@ function cellFor(provider, timestamp) {
   if (provider.forecast.duplicates.has(timestamp)) return unavailableCell(provider, "slot-invalid", "Duplicate forecast timestamp");
   const rawSlot = provider.forecast.slots.get(timestamp);
   if (!rawSlot) return unavailableCell(provider, "slot-missing", "No published forecast for this hour");
-  const slot = validForecastSlot(rawSlot, timestamp);
+  const slot = normalizeForecastSlot(rawSlot, timestamp);
   return slot ? availableCell(provider, slot) : unavailableCell(provider, "slot-invalid", "Published forecast slot invalid");
 }
 
@@ -290,15 +290,6 @@ export function timelineHourAriaLabel(hour, options = {}) {
   return `${formatTimelineHourRange(hour, options)}. ${summaries.join(". ")}`;
 }
 
-const stateLabel = state => ({
-  available: "AVAILABLE",
-  stale: "STALE",
-  missing: "UNAVAILABLE",
-  invalid: "INVALID",
-  "slot-missing": "NO SLOT",
-  "slot-invalid": "INVALID SLOT"
-})[state] || "UNAVAILABLE";
-
 const domEl = (doc, tag, className = "", text = null) => {
   const node = doc.createElement(tag);
   if (className) node.className = className;
@@ -323,14 +314,12 @@ function ensureHourVisible(scroller, button) {
   else scroller.scrollLeft = Math.max(0, next);
 }
 
-let timelineMountId = 0;
-
 /**
  * Render a complete multi-provider timeline into host.
  *
  * The renderer intentionally installs no touch/pointer-down handlers, so a
- * horizontal swipe remains native. Click/tap and semantic-button keyboard
- * activation open the same inline detail; arrow/Home/End use roving focus.
+ * horizontal swipe remains native. Selection is controlled by selectedTs and
+ * callbacks emit an exact timestamp; an hour can never be toggled closed.
  */
 export function renderMultiProviderTimeline(host, entries, options = {}) {
   const doc = host?.ownerDocument;
@@ -338,16 +327,24 @@ export function renderMultiProviderTimeline(host, entries, options = {}) {
 
   const previousScroller = host.querySelector?.(".multi-timeline-scroll");
   const preservedScrollLeft = Number.isFinite(options.scrollLeft) ? options.scrollLeft : previousScroller?.scrollLeft;
-  const previousSelection = options.selectedTs || host.getAttribute?.("data-selected-ts") || null;
-  const prepared = prepareMultiProviderTimeline(entries, options);
+  const prepared = options.model?.timeline || options.prepared || prepareMultiProviderTimeline(entries, options);
+  const requestedTs = options.selectedTs || options.model?.selectedTs || null;
+  const requestedTimestamp = typeof requestedTs === "string" ? Date.parse(requestedTs) : NaN;
+  let selectedIndex = Number.isFinite(requestedTimestamp)
+    ? prepared.hours.findIndex(hour => hour.timestamp === requestedTimestamp)
+    : -1;
+  if (selectedIndex < 0) selectedIndex = Math.max(0, prepared.hours.findIndex(hour => hour.current));
+  const selectedHour = prepared.hours[selectedIndex] || null;
   host.replaceChildren();
   host.classList.add("multi-timeline-mount");
   setData(host, "provider-count", prepared.providers.length);
+  if (selectedHour) setData(host, "selected-ts", selectedHour.ts);
+  else host.removeAttribute("data-selected-ts");
   host.style?.setProperty("--timeline-provider-count", String(Math.max(1, prepared.providers.length)));
 
   if (!prepared.providers.length) {
     host.append(domEl(doc, "div", "multi-timeline-empty empty-state", "No enabled AI provider is available."));
-    return Object.freeze({ prepared, getSelectedTs: () => null, selectHour: () => false, closeDetail: () => {} });
+    return Object.freeze({ prepared, getSelectedTs: () => null, selectHour: () => false, selectTs: () => false });
   }
 
   const root = domEl(doc, "div", "multi-provider-timeline");
@@ -369,15 +366,18 @@ export function renderMultiProviderTimeline(host, entries, options = {}) {
   scroller.setAttribute("role", "region");
   scroller.setAttribute("aria-label", "All-provider 24-hour risk forecast");
   const track = domEl(doc, "div", "multi-timeline-track");
-  const detailId = `${host.id || "multi-timeline"}-hour-detail-${++timelineMountId}`;
+  const controlsId = typeof options.controlsId === "string" && options.controlsId.trim()
+    ? options.controlsId.trim()
+    : "selected-hour-overview";
   const hourButtons = [];
 
   for (const hour of prepared.hours) {
-    const button = domEl(doc, "button", `multi-timeline-hour${hour.current ? " is-current" : ""}`);
+    const selected = hour.index === selectedIndex;
+    const button = domEl(doc, "button", `multi-timeline-hour${hour.current ? " is-current" : ""}${selected ? " is-selected" : ""}`);
     button.type = "button";
-    button.tabIndex = hour.current ? 0 : -1;
-    button.setAttribute("aria-controls", detailId);
-    button.setAttribute("aria-expanded", "false");
+    button.tabIndex = selected ? 0 : -1;
+    button.setAttribute("aria-controls", controlsId);
+    button.setAttribute("aria-pressed", String(selected));
     button.setAttribute("aria-label", timelineHourAriaLabel(hour, options));
     if (hour.current) button.setAttribute("aria-current", "time");
     setData(button, "ts", hour.ts);
@@ -405,119 +405,37 @@ export function renderMultiProviderTimeline(host, entries, options = {}) {
     hourButtons.push(button);
   }
   scroller.append(track);
-
-  const detail = domEl(doc, "section", "multi-timeline-detail");
-  detail.id = detailId;
-  detail.hidden = true;
-  detail.setAttribute("aria-live", "polite");
-  const detailHead = domEl(doc, "header", "multi-timeline-detail-head");
-  const detailHeading = domEl(doc, "h3", "multi-timeline-detail-title");
-  detailHeading.id = `${detailId}-title`;
-  detail.setAttribute("aria-labelledby", detailHeading.id);
-  const close = domEl(doc, "button", "multi-timeline-detail-close", "×");
-  close.type = "button";
-  close.setAttribute("aria-label", "Close hour details");
-  detailHead.append(detailHeading, close);
-  const detailBody = domEl(doc, "div", "multi-timeline-detail-scroll");
-  detail.append(detailHead, detailBody);
-  root.append(legend, scroller, detail);
+  root.append(legend, scroller);
   host.append(root);
 
   if (Number.isFinite(preservedScrollLeft)) scroller.scrollLeft = Math.max(0, preservedScrollLeft);
 
-  let selectedIndex = -1;
-  let rovingIndex = Math.max(0, prepared.hours.findIndex(hour => hour.current));
-
   function updateRoving(nextIndex) {
-    rovingIndex = Math.min(hourButtons.length - 1, Math.max(0, nextIndex));
-    hourButtons.forEach((button, index) => { button.tabIndex = index === rovingIndex ? 0 : -1; });
+    const bounded = Math.min(hourButtons.length - 1, Math.max(0, nextIndex));
+    hourButtons.forEach((button, index) => { button.tabIndex = index === bounded ? 0 : -1; });
   }
 
-  function buildDetail(hour) {
-    detailHeading.textContent = formatTimelineHourRange(hour, options);
-    detailBody.replaceChildren();
-    const table = domEl(doc, "table", "multi-timeline-detail-table");
-    table.setAttribute("aria-label", "Published provider forecasts for the selected hour");
-    const head = domEl(doc, "thead");
-    const headRow = domEl(doc, "tr");
-    for (const label of ["Provider", "Tail", "Stress", "Confidence", "Mode", "Action"]) {
-      const heading = domEl(doc, "th", "", label);
-      heading.scope = "col";
-      headRow.append(heading);
-    }
-    head.append(headRow);
-    const body = domEl(doc, "tbody");
-    for (const cell of hour.providers) {
-      const row = domEl(doc, "tr", `provider-${providerClassToken(cell.providerId)} state-${cell.state}`);
-      setData(row, "provider-id", cell.providerId);
-      setData(row, "state", cell.state);
-      setData(row, "risk-status", cell.riskStatus);
-      const providerCell = domEl(doc, "th", "multi-timeline-detail-provider");
-      providerCell.scope = "row";
-      providerCell.append(
-        domEl(doc, "span", "multi-timeline-detail-provider-name", cell.providerLabel),
-        domEl(doc, "span", `multi-timeline-detail-state risk-${cell.riskStatus}`, cell.state === "available" ? cell.status.toUpperCase() : stateLabel(cell.state))
-      );
-      row.append(providerCell);
-      if (cell.state === "available") {
-        row.append(
-          domEl(doc, "td", "", `${cell.tailRiskPct}%`),
-          domEl(doc, "td", "", `${cell.stressRiskPct}%`),
-          domEl(doc, "td", "", `${cell.confidencePct}%`),
-          domEl(doc, "td", "", cell.dominantMode),
-          domEl(doc, "td", "multi-timeline-detail-action", actionLabel(cell.action))
-        );
-      } else {
-        for (let index = 0; index < 4; index += 1) row.append(domEl(doc, "td", "multi-timeline-detail-unavailable", "—"));
-        row.append(domEl(doc, "td", "multi-timeline-detail-reason", cell.reason));
-      }
-      body.append(row);
-    }
-    table.append(head, body);
-    detailBody.append(table);
-  }
-
-  function closeDetail({ restoreFocus = false, notify = true } = {}) {
-    if (selectedIndex < 0) return;
-    const prior = selectedIndex;
-    selectedIndex = -1;
-    detail.hidden = true;
-    hourButtons.forEach(button => {
-      button.classList.remove("is-selected");
-      button.setAttribute("aria-expanded", "false");
-    });
-    host.removeAttribute("data-selected-ts");
-    if (restoreFocus) hourButtons[prior]?.focus?.({ preventScroll: true });
-    if (notify) options.onSelectionChange?.(null);
-  }
-
-  function selectHour(index, { focus = false, toggle = false, notify = true } = {}) {
+  function selectHour(index, { focus = false, notify = true } = {}) {
     if (!Number.isInteger(index) || index < 0 || index >= prepared.hours.length) return false;
-    if (toggle && selectedIndex === index) {
-      closeDetail({ restoreFocus: focus, notify });
-      return false;
-    }
     selectedIndex = index;
     updateRoving(index);
     hourButtons.forEach((button, buttonIndex) => {
       const selected = buttonIndex === index;
       button.classList.toggle("is-selected", selected);
-      button.setAttribute("aria-expanded", String(selected));
+      button.setAttribute("aria-pressed", String(selected));
     });
     const hour = prepared.hours[index];
-    buildDetail(hour);
-    detail.hidden = false;
-    host.setAttribute("data-selected-ts", hour.ts);
+    setData(host, "selected-ts", hour.ts);
     if (focus) hourButtons[index].focus?.({ preventScroll: true });
     ensureHourVisible(scroller, hourButtons[index]);
-    if (notify) options.onSelectionChange?.(hour);
+    if (notify) options.onSelectedTsChange?.(hour.ts, hour);
     return true;
   }
 
   track.addEventListener("click", event => {
     const button = event.target.closest?.(".multi-timeline-hour");
     if (!button || !track.contains(button)) return;
-    selectHour(Number(button.getAttribute("data-hour-index")), { toggle: true });
+    selectHour(Number(button.getAttribute("data-hour-index")));
   });
 
   track.addEventListener("keydown", event => {
@@ -532,28 +450,21 @@ export function renderMultiProviderTimeline(host, entries, options = {}) {
       ensureHourVisible(scroller, hourButtons[next]);
     } else if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      selectHour(index, { toggle: true });
-    } else if (event.key === "Escape") {
-      event.preventDefault();
-      closeDetail({ restoreFocus: true });
+      selectHour(index);
     }
   });
 
-  close.addEventListener("click", () => closeDetail({ restoreFocus: true }));
-  detail.addEventListener("keydown", event => {
-    if (event.key !== "Escape") return;
-    event.preventDefault();
-    closeDetail({ restoreFocus: true });
-  });
-
-  const selectedIndexFromTs = prepared.hours.findIndex(hour => hour.ts === previousSelection);
-  if (selectedIndexFromTs >= 0) selectHour(selectedIndexFromTs, { notify: false });
-  else updateRoving(rovingIndex);
+  updateRoving(selectedIndex);
+  ensureHourVisible(scroller, hourButtons[selectedIndex]);
 
   return Object.freeze({
     prepared,
-    getSelectedTs: () => selectedIndex < 0 ? null : prepared.hours[selectedIndex].ts,
+    getSelectedTs: () => prepared.hours[selectedIndex]?.ts || null,
     selectHour,
-    closeDetail
+    selectTs: (ts, selectionOptions = {}) => {
+      const timestamp = typeof ts === "string" ? Date.parse(ts) : NaN;
+      const index = Number.isFinite(timestamp) ? prepared.hours.findIndex(hour => hour.timestamp === timestamp) : -1;
+      return index >= 0 ? selectHour(index, selectionOptions) : false;
+    }
   });
 }

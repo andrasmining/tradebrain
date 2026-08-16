@@ -244,21 +244,20 @@ test("roving keyboard navigation stays bounded and supports Home/End", () => {
   assert.equal(nextTimelineHourIndex(7, "Unrelated", 24), 7);
 });
 
-test("renderer exposes stable hooks and accessible click/tap/keyboard detail without hijacking swipe", () => {
+test("renderer exposes stable hooks and controlled click/tap/keyboard selection without hijacking swipe", () => {
   const source = fs.readFileSync("assets/multi-provider-timeline.js", "utf8");
   assert.match(source, /multi-timeline-scroll/);
   assert.match(source, /multi-timeline-bars/);
-  assert.match(source, /multi-timeline-detail-table/);
   assert.match(source, /--timeline-provider-count/);
   assert.match(source, /data-\$\{name\}/);
   assert.match(source, /risk-\$\{cell\.riskStatus\}/);
   assert.match(source, /button\.setAttribute\("aria-controls"/);
-  assert.match(source, /button\.setAttribute\("aria-expanded"/);
+  assert.match(source, /button\.setAttribute\("aria-pressed"/);
   assert.match(source, /button\.setAttribute\("aria-current", "time"\)/);
-  assert.match(source, /detail\.setAttribute\("aria-labelledby"/);
   assert.match(source, /track\.addEventListener\("click"/);
   assert.match(source, /track\.addEventListener\("keydown"/);
   assert.match(source, /"Enter" \|\| event\.key === " "/);
-  assert.match(source, /"Escape"/);
+  assert.match(source, /onSelectedTsChange\?\.\(hour\.ts, hour\)/);
+  assert.doesNotMatch(source, /aria-expanded|closeDetail|multi-timeline-detail/);
   assert.doesNotMatch(source, /addEventListener\("(?:touchstart|touchmove|pointerdown|pointermove)"/);
 });

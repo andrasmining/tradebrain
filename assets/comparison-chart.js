@@ -3,7 +3,7 @@ const SVG_NS="http://www.w3.org/2000/svg";
 export const HOUR_MS=60*60*1000;
 export const FORECAST_HOURS=24;
 export const DEFAULT_METRIC_ID="tail";
-export const DEFAULT_METRIC_IDS=Object.freeze([DEFAULT_METRIC_ID]);
+export const DEFAULT_METRIC_IDS=Object.freeze(["tail","stress"]);
 export const WINDOW_DAY_OPTIONS=Object.freeze([1,3,7,14,30]);
 export const DEFAULT_WINDOW_DAYS=3;
 export const METRIC_OPTIONS=Object.freeze([
@@ -519,7 +519,7 @@ export function renderComparisonChart(host,providers,{metrics=DEFAULT_METRIC_IDS
   if(legend.childElementCount)figure.append(legend);
 
   const availableWidth=Math.max(280,(host.clientWidth||956)-36),compact=availableWidth<560,veryCompact=availableWidth<340;
-  const width=Math.round(availableWidth),height=compact?292:336;
+  const width=Math.round(availableWidth),height=compact?292:availableWidth>=1400?400:336;
   const margin={top:35,right:compact?10:18,bottom:compact?42:46,left:compact?39:48};
   const plotWidth=width-margin.left-margin.right,plotHeight=height-margin.top-margin.bottom;
   // Forecast always owns a readable third of the plot. The history pane uses

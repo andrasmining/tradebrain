@@ -28,3 +28,16 @@ provider-neutral Finviz evidence contract. It preserves snapshot-only publicatio
 all provider ownership rules. The file is an available prompt version, not proof that
 the external Claude scheduler has migrated; activation remains a separate reviewed
 scheduler change.
+
+## v1.2.1 - explicit snapshot write route
+
+[`v1.2.1.md`](v1.2.1.md) inherits v1.2.0 unchanged and documents the supported
+`git push origin HEAD:main` snapshot route. It is available but not proof of external
+Claude scheduler activation.
+
+## v1.3.0 - staged rich hourly forecast analysis
+
+[`v1.3.0.md`](v1.3.0.md) inherits the full v1.2.1 chain and adds bounded,
+provider-authored `analysis`, `drivers`, and verified already-known `news` to every
+one of the 24 forecast slots. It is staged for review and does not prove or trigger
+external Claude scheduler activation; verify the active scheduler version separately.

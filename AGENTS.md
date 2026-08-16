@@ -117,6 +117,8 @@ At the time this guide was written, the active scheduled ChatGPT prompt contract
 
 Version `1.2.0` inherits the complete `prompts/chatgpt/v1.1.1.md` contract, which in turn inherits `prompts/chatgpt/v1.1.0.md`. Read all three. The newest applicable contract wins where they differ. Version `1.2.0` adds the optional shared Finviz evidence rules while preserving the inherited snapshot-only publication contract.
 
+`prompts/chatgpt/v1.3.0.md` and `prompts/claude/v1.3.0.md` are staged, reviewable contracts only. They add bounded rich reasoning to every forecast hour without changing risk semantics or publication mechanics. Their presence does not activate either scheduler: ChatGPT remains explicitly pinned to v1.2.0 until a separate migration, and Claude's active version must be verified externally.
+
 The current scheduled ChatGPT contract is **snapshot-only**:
 
 1. research and produce the complete assessment;
@@ -347,6 +349,7 @@ For the current risk-state contract:
 - `lookback` contains exactly 24 hourly slots immediately preceding the UTC clock-hour that contains `generatedAt`;
 - `forecast` contains exactly 24 hourly slots: the current UTC clock-hour plus the next 23;
 - `forecastDetail` contains exactly six entries matching the first six forecast slots;
+- prompt v1.3 and later additionally require every forecast slot to carry one bounded, nonempty hour-specific `analysis`, bounded `drivers`, and bounded verified already-known `news`; older v1.1/v1.2 publications remain valid without those fields;
 - `timeBerlin` must represent exactly the same instant as the paired UTC `ts` using the correct Europe/Berlin offset for that date;
 - unavailable historical slots remain explicitly unavailable with null assessment fields rather than fabricated values;
 - `generatedAt` must be the real assessment time and must not be materially in the future.
@@ -463,12 +466,16 @@ The frontend is intentionally small and dependency-free. Preserve that unless th
 
 Important invariants:
 
-- The first three Level-1 views are, in order, the multi-provider **24-hour risk timeline**, the unified current-state Risk comparison, and the Historical risk trend.
-- Level-1 views are driven by enabled entries in `config/providers.json`. Enabling a future provider adds it to all three without pair-specific UI branches.
+- Level 1 begins with the multi-provider **24-hour risk timeline**, its permanently visible exact selected-hour comparison and provider analysis cards, followed by the Historical risk trend.
+- Level-1 views are driven by enabled entries in `config/providers.json`. Enabling a future provider adds it without pair-specific UI branches.
 - The timeline aligns providers by exact published hourly timestamps and preserves each provider's actual risk-status color. It must not average risks, synthesize a combined status/action, or suppress an individual provider's valid orange or red state.
-- The provider selector appears below the Historical risk trend and controls only the Level-2 provider detail: Current assessment, Next 6 hours, Upcoming events, and Provider history. It is not a global or sticky selector.
-- Switching the Level-2 provider must preserve the user's viewport position and must not rerender, reset, or scroll the Level-1 timeline, comparison, or trend chart.
+- The current clock hour is selected without a click. A manually selected exact timestamp survives periodic refresh while it remains in the rolling window, is not persisted indefinitely, and falls back to current after expiry.
+- Selected-hour metrics use providers as aligned desktop rows and responsive mobile cards. Full provider analyses remain visible below without a second Details action. They use only the exact forecast slot, matching half-open-hour events, and truthful rich/legacy fallback data; never substitute provider-wide body or recommendation text.
+- Rich `forecast[]` analysis is the single canonical source for both the Level-1 selected-hour cards and the Level-2 Next-24 rail. For legacy publications, only an exact matching first-six `forecastDetail[].comment` may be used; later slots explicitly say detailed hourly analysis was not published.
+- The provider selector appears below the Historical risk trend and controls only the Level-2 provider detail: Current assessment, Next 24 hours, Upcoming events, and Provider history. It is not a global or sticky selector.
+- Switching the Level-2 provider must preserve the user's viewport position and must not rerender, reset, or scroll the Level-1 timeline, selected-hour analysis, or trend chart. Preserve a useful exact-timestamp position in the provider's Next-24 rail where practical.
 - On mobile, the timeline scrolls horizontally inside its container; the entire page must not become horizontally scrollable.
+- The Level-2 Next-24 card rail preserves the selected provider's exact 24 published forecast timestamps and uses contained native horizontal scrolling/snap. Overlapping Level-1 and rail hours share one canonical provider-hour object; selected-hour full analyses stack vertically and never become a horizontal card carousel on phones.
 - Mobile behavior is first-class. Check narrow layouts, touch targets, contained horizontal overflow, and selector usability—not only desktop screenshots.
 - Unknown/missing state uses neutral presentation, not green styling.
 - Provider-specific sections clearly identify the active provider without verbose repeated explanatory copy.
@@ -702,7 +709,7 @@ index.html                        static page structure
 assets/app.js                     provider loading/rendering/refresh logic
 assets/comparison-chart.js        display-only cross-provider trend chart
 assets/multi-provider-timeline.js manifest-driven cross-provider risk timeline
-assets/provider-comparison.js     manifest-driven current-state comparison
+assets/provider-hour.js           canonical exact-hour comparison/analysis and Next-24 rail
 assets/styles.css                 base styling
 assets/responsive.css             mobile/responsive behavior
 .github/workflows/deploy-pages.yml publication finalization + Pages deployment
