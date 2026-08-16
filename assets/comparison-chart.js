@@ -121,6 +121,64 @@ export function prepareComparisonSeries(providers,metrics=DEFAULT_METRIC_IDS,{no
   return{metrics:selectedMetrics,nowMs:safeNow,forecastStart,windowStart,windowEnd,windowDays:selectedWindowDays,historyHours,forecastHours:FORECAST_HOURS,series};
 }
 
+const inspectionBucketKey=(kind,timestamp)=>`${kind}:${timestamp}`;
+
+export function prepareInspectionBuckets(prepared){
+  if(!prepared||!Array.isArray(prepared.series)||!prepared.series.length)return[];
+  const validPoints=(series,kind)=>{
+    const points=kind==="history"?series.historical:series.forecast;
+    return(Array.isArray(points)?points:[]).filter(point=>Number.isFinite(point?.timestamp)&&Number.isFinite(point?.value));
+  };
+  const historyBySeries=prepared.series.map(series=>validPoints(series,"history"));
+  const forecastBySeries=prepared.series.map(series=>validPoints(series,"forecast"));
+  const historyAnchors=[...new Set(historyBySeries.flat().map(point=>point.timestamp))].sort((a,b)=>a-b);
+  const forecastAnchors=[...new Set(forecastBySeries.flat().map(point=>point.timestamp))].sort((a,b)=>a-b);
+  const seriesIndexesByProvider=new Map();
+  prepared.series.forEach((series,index)=>{
+    if(!seriesIndexesByProvider.has(series.id))seriesIndexesByProvider.set(series.id,[]);
+    seriesIndexesByProvider.get(series.id).push(index);
+  });
+  const nearestProviderTimestamp=(indexes,timestamp)=>{
+    let nearest=null,distance=Infinity;
+    const candidates=new Set(indexes.flatMap(index=>historyBySeries[index].map(point=>point.timestamp)));
+    for(const candidate of candidates){
+      const nextDistance=Math.abs(candidate-timestamp);
+      if(nextDistance<distance){nearest=candidate;distance=nextDistance}
+    }
+    return distance<=HOUR_MS?nearest:null;
+  };
+  const historyBuckets=prepared.historyHours?historyAnchors.map(anchorTimestamp=>{
+    const selectedTimestampByProvider=new Map([...seriesIndexesByProvider].map(([providerId,indexes])=>[providerId,nearestProviderTimestamp(indexes,anchorTimestamp)]));
+    return{
+      key:inspectionBucketKey("history",anchorTimestamp),kind:"history",hourStart:Math.floor(anchorTimestamp/HOUR_MS)*HOUR_MS,hourEnd:Math.floor(anchorTimestamp/HOUR_MS)*HOUR_MS+HOUR_MS,anchorTimestamp,hasValues:true,
+      rows:prepared.series.map((series,index)=>({series,point:historyBySeries[index].find(point=>point.timestamp===selectedTimestampByProvider.get(series.id))??null}))
+    };
+  }):[];
+  const forecastBuckets=forecastAnchors.map(anchorTimestamp=>({
+    key:inspectionBucketKey("forecast",anchorTimestamp),kind:"forecast",hourStart:anchorTimestamp,hourEnd:anchorTimestamp+HOUR_MS,anchorTimestamp,hasValues:true,
+    rows:prepared.series.map((series,index)=>({series,point:forecastBySeries[index].find(point=>point.timestamp===anchorTimestamp)??null}))
+  }));
+  return[...historyBuckets,...forecastBuckets];
+}
+
+export function inspectionBucketAtTime(buckets,kind,timestamp){
+  if(!Array.isArray(buckets)||!["history","forecast"].includes(kind)||!Number.isFinite(timestamp))return null;
+  const paneBuckets=buckets.filter(bucket=>bucket.kind===kind);
+  if(kind==="forecast"){
+    for(let index=paneBuckets.length-1;index>=0;index-=1){
+      const bucket=paneBuckets[index];
+      if(timestamp>=bucket.anchorTimestamp&&timestamp<bucket.hourEnd)return bucket;
+    }
+    return null;
+  }
+  let nearest=null,distance=Infinity;
+  for(const bucket of paneBuckets){
+    const nextDistance=Math.abs(bucket.anchorTimestamp-timestamp);
+    if(nextDistance<distance){nearest=bucket;distance=nextDistance}
+  }
+  return distance<=HOUR_MS?nearest:null;
+}
+
 const domEl=(tag,className="",text=null)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==null)node.textContent=text;return node};
 const svgEl=(tag,attributes={},text=null)=>{const node=document.createElementNS(SVG_NS,tag);for(const[name,value]of Object.entries(attributes))node.setAttribute(name,String(value));if(text!==null)node.textContent=text;return node};
 const providerClass=id=>id==="chatgpt"?"provider-chatgpt":id==="claude"?"provider-claude":"provider-neutral";
@@ -142,6 +200,68 @@ export function forecastSlotPathData(points,xScale,yScale,windowEnd){
 
 function axisTime(timestamp,compact){
   return new Intl.DateTimeFormat(undefined,compact?{month:"short",day:"numeric",hour:"2-digit"}:{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}).format(new Date(timestamp));
+}
+
+const inspectionMinuteFormatter=new Intl.DateTimeFormat(undefined,{weekday:"short",year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit",timeZoneName:"short"});
+const inspectionSecondFormatter=new Intl.DateTimeFormat(undefined,{weekday:"short",year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit",second:"2-digit",timeZoneName:"short"});
+const inspectionPointFormatter=new Intl.DateTimeFormat(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit",second:"2-digit",timeZoneName:"short"});
+const inspectionIntervalFormatter=new Intl.DateTimeFormat(undefined,{year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit",timeZoneName:"short"});
+
+function inspectionDateTime(timestamp,seconds=false){
+  return(seconds?inspectionSecondFormatter:inspectionMinuteFormatter).format(new Date(timestamp));
+}
+
+function inspectionPointTime(timestamp){
+  return inspectionPointFormatter.format(new Date(timestamp));
+}
+
+function inspectionInterval(start,end){
+  return typeof inspectionIntervalFormatter.formatRange==="function"?inspectionIntervalFormatter.formatRange(new Date(start),new Date(end)):`${inspectionIntervalFormatter.format(new Date(start))} → ${inspectionIntervalFormatter.format(new Date(end))}`;
+}
+
+function inspectionSummary(bucket){
+  const kind=bucket.kind==="forecast"?"Published forecast slot":"Historical assessment";
+  const missing=bucket.kind==="forecast"?"no published slot":"no data at this assessment";
+  const values=bucket.rows.map(({series,point})=>point?`${series.label} ${series.metric.legendLabel}: ${point.value} percent at ${point.sourceTime??new Date(point.timestamp).toISOString()}`:`${series.label} ${series.metric.legendLabel}: ${missing}`);
+  const time=bucket.kind==="forecast"?inspectionInterval(bucket.anchorTimestamp,bucket.hourEnd):inspectionDateTime(bucket.anchorTimestamp,true);
+  return`${kind}, ${time}. ${values.join("; ")}.`;
+}
+
+function inspectionTooltip(bucket){
+  const tooltip=domEl("div",`comparison-chart-tooltip is-${bucket.kind}`);
+  tooltip.setAttribute("role","tooltip");
+  const kicker=bucket.kind==="forecast"?"PUBLISHED FORECAST SLOT":"HISTORICAL ASSESSMENTS";
+  const displayedTime=bucket.kind==="forecast"?inspectionInterval(bucket.anchorTimestamp,bucket.hourEnd):inspectionDateTime(bucket.anchorTimestamp,true);
+  tooltip.append(domEl("div","comparison-chart-tooltip-kicker",kicker),domEl("div","comparison-chart-tooltip-time",displayedTime));
+  const rows=domEl("div","comparison-chart-tooltip-rows");
+  const providerGroups=new Map();
+  for(const row of bucket.rows){
+    const key=row.series.id;
+    if(!providerGroups.has(key))providerGroups.set(key,{label:row.series.label,rows:[]});
+    providerGroups.get(key).rows.push(row);
+  }
+  for(const group of providerGroups.values()){
+    const provider=domEl("div","comparison-chart-tooltip-provider"),providerName=domEl("span","",group.label);
+    const providerPoint=group.rows.find(row=>row.point)?.point;
+    const providerTime=domEl("time","",providerPoint?inspectionPointTime(providerPoint.timestamp):bucket.kind==="forecast"?"No published slot":"No assessment");
+    if(providerPoint)providerTime.dateTime=providerPoint.sourceTime??new Date(providerPoint.timestamp).toISOString();
+    provider.append(providerName,providerTime);
+    rows.append(provider);
+    for(const{series,point}of group.rows){
+      const row=domEl("div",`comparison-chart-tooltip-row ${providerClass(series.id)} ${metricClass(series.metric.id)}`);
+      const identity=domEl("span","comparison-chart-tooltip-identity"),swatch=domEl("span","comparison-chart-tooltip-swatch");
+      swatch.setAttribute("aria-hidden","true");
+      identity.append(swatch,document.createTextNode(series.metric.legendLabel));
+      const reading=domEl("span",`comparison-chart-tooltip-reading${point?"":" is-missing"}`);
+      if(point){
+        reading.append(domEl("strong","",`${point.value}%`));
+      }else reading.textContent=bucket.kind==="forecast"?"— No slot":"— No data";
+      row.append(identity,reading);
+      rows.append(row);
+    }
+  }
+  tooltip.append(rows);
+  return tooltip;
 }
 
 function scheduleFocus(host,selector){
@@ -232,6 +352,129 @@ function watchChartWidth(host,providers,options){
   state.observer.observe(host);
 }
 
+function installChartInspection({svg,plotWrap,live,prepared,inspectionBuckets,width,margin,plotHeight,dividerX,historyScale,forecastScale,yScale}){
+  const buckets=inspectionBuckets??prepareInspectionBuckets(prepared);
+  const layer=svgEl("g",{class:"comparison-chart-inspection-layer","aria-hidden":"true"});
+  layer.hidden=true;
+  svg.append(layer);
+  if(!buckets.length)return false;
+  let activeKey=null,pinned=false,tooltip=null;
+  const plotRight=width-margin.right,plotBottom=margin.top+plotHeight;
+  const xForTimestamp=(kind,timestamp)=>(kind==="history"?historyScale:forecastScale)(timestamp);
+  const xForBucket=bucket=>Math.max(margin.left,Math.min(plotRight,xForTimestamp(bucket.kind,bucket.anchorTimestamp)));
+
+  const positionTooltip=(bucket)=>{
+    if(!tooltip)return;
+    const svgRect=svg.getBoundingClientRect(),wrapRect=plotWrap.getBoundingClientRect();
+    if(!svgRect.width||!svgRect.height)return;
+    const scaleX=svgRect.width/width,scaleY=svgRect.height/Number(svg.getAttribute("viewBox").split(" ")[3]);
+    const plotLeftPx=svgRect.left-wrapRect.left+margin.left*scaleX;
+    const plotRightPx=svgRect.left-wrapRect.left+plotRight*scaleX;
+    const plotTopPx=svgRect.top-wrapRect.top+margin.top*scaleY;
+    const plotBottomPx=svgRect.top-wrapRect.top+plotBottom*scaleY;
+    const crosshairPx=svgRect.left-wrapRect.left+xForBucket(bucket)*scaleX;
+    tooltip.style.maxWidth=`${Math.max(150,plotRightPx-plotLeftPx-8)}px`;
+    tooltip.style.maxHeight=`${Math.max(120,plotBottomPx-plotTopPx-8)}px`;
+    const tooltipWidth=tooltip.offsetWidth,tooltipHeight=tooltip.offsetHeight;
+    let left=crosshairPx+10;
+    if(left+tooltipWidth>plotRightPx-4)left=crosshairPx-tooltipWidth-10;
+    left=Math.max(plotLeftPx+4,Math.min(left,plotRightPx-tooltipWidth-4));
+    const top=Math.max(plotTopPx+4,Math.min(plotTopPx+7,plotBottomPx-tooltipHeight-4));
+    tooltip.style.left=`${left}px`;
+    tooltip.style.top=`${top}px`;
+  };
+
+  const showBucket=(bucket,announce=true)=>{
+    if(!bucket)return;
+    if(activeKey===bucket.key&&tooltip){
+      if(announce)live.textContent=inspectionSummary(bucket);
+      return;
+    }
+    activeKey=bucket.key;
+    const crosshairX=xForBucket(bucket);
+    const crosshair=svgEl("line",{class:"comparison-chart-crosshair",x1:crosshairX,y1:margin.top,x2:crosshairX,y2:plotBottom});
+    const band=bucket.kind==="forecast"?svgEl("rect",{class:"comparison-chart-inspection-band",x:crosshairX,y:margin.top,width:Math.max(1,Math.min(plotRight,forecastScale(bucket.hourEnd))-crosshairX),height:plotHeight}):null;
+    const markers=bucket.rows.flatMap(({series,point})=>{
+      if(!point)return[];
+      const pointX=Math.max(margin.left,Math.min(plotRight,xForTimestamp(bucket.kind,point.timestamp)));
+      const identityClass=`${providerClass(series.id)} ${metricClass(series.metric.id)}`;
+      return[svgEl("circle",{class:`comparison-chart-inspection-marker ${identityClass}`,cx:pointX,cy:yScale(point.value),r:4.5})];
+    });
+    layer.replaceChildren(...(band?[band]:[]),crosshair,...markers);
+    layer.hidden=false;
+    if(tooltip)tooltip.remove();
+    tooltip=inspectionTooltip(bucket);
+    plotWrap.append(tooltip);
+    positionTooltip(bucket);
+    if(announce)live.textContent=inspectionSummary(bucket);
+  };
+
+  const clearInspection=(announce=true)=>{
+    activeKey=null;
+    pinned=false;
+    layer.hidden=true;
+    layer.replaceChildren();
+    if(tooltip)tooltip.remove();
+    tooltip=null;
+    if(announce)live.textContent="Chart inspection cleared.";
+  };
+
+  const bucketAtSvgX=x=>{
+    if(x<margin.left||x>plotRight)return null;
+    const kind=prepared.historyHours&&x<dividerX?"history":"forecast";
+    const start=kind==="history"?prepared.windowStart:prepared.forecastStart;
+    const end=kind==="history"?prepared.nowMs+1:prepared.windowEnd;
+    const paneStart=kind==="history"?margin.left:dividerX;
+    const paneWidth=kind==="history"?dividerX-margin.left:plotRight-dividerX;
+    if(!paneWidth||end<=start)return null;
+    const timestamp=start+(x-paneStart)/paneWidth*(end-start);
+    const bounded=Math.min(end-1,Math.max(start,timestamp));
+    return inspectionBucketAtTime(buckets,kind,bounded);
+  };
+
+  const bucketFromPointer=event=>{
+    const rect=svg.getBoundingClientRect();
+    if(!rect.width||!rect.height)return null;
+    const x=(event.clientX-rect.left)/rect.width*width;
+    const y=(event.clientY-rect.top)/rect.height*Number(svg.getAttribute("viewBox").split(" ")[3]);
+    if(y<margin.top||y>plotBottom)return null;
+    return bucketAtSvgX(x);
+  };
+
+  svg.addEventListener("pointermove",event=>{
+    if(event.pointerType&&!["mouse","pen"].includes(event.pointerType)||pinned)return;
+    const bucket=bucketFromPointer(event);
+    if(bucket)showBucket(bucket,false);else clearInspection(false);
+  });
+  svg.addEventListener("pointerleave",event=>{
+    if((!event.pointerType||["mouse","pen"].includes(event.pointerType))&&!pinned)clearInspection(false);
+  });
+  svg.addEventListener("click",event=>{
+    const bucket=bucketFromPointer(event);
+    if(!bucket)return;
+    if(pinned&&activeKey===bucket.key){clearInspection();return}
+    pinned=true;
+    showBucket(bucket,true);
+  });
+  svg.addEventListener("keydown",event=>{
+    if(event.key==="Escape"){
+      if(activeKey){event.preventDefault();clearInspection()}
+      return;
+    }
+    if(!["ArrowLeft","ArrowRight","Home","End"].includes(event.key))return;
+    event.preventDefault();
+    const navigation=buckets;
+    let index=navigation.findIndex(bucket=>bucket.key===activeKey);
+    if(event.key==="Home")index=0;
+    else if(event.key==="End")index=navigation.length-1;
+    else if(event.key==="ArrowLeft")index=index<0?navigation.length-1:Math.max(0,index-1);
+    else index=index<0?0:Math.min(navigation.length-1,index+1);
+    pinned=true;
+    showBucket(navigation[index],true);
+  });
+  return true;
+}
+
 export function renderComparisonChart(host,providers,{metrics=DEFAULT_METRIC_IDS,windowDays=DEFAULT_WINDOW_DAYS,nowMs=Date.now(),staleMinutes=DEFAULT_STALE_MINUTES,onMetricsChange=null,onWindowDaysChange=null}={}){
   if(!host||typeof document==="undefined")return null;
   const selectedMetricIds=normalizeMetricIds(metrics),selectedWindowDays=normalizeWindowDays(windowDays);
@@ -269,12 +512,15 @@ export function renderComparisonChart(host,providers,{metrics=DEFAULT_METRIC_IDS
   const historyScale=timestamp=>prepared.historyHours?margin.left+(timestamp-prepared.windowStart)/(prepared.nowMs-prepared.windowStart)*historyWidth:margin.left;
   const forecastScale=timestamp=>dividerX+(timestamp-prepared.forecastStart)/(prepared.windowEnd-prepared.forecastStart)*forecastWidth;
   const yScale=value=>margin.top+(100-value)/100*plotHeight;
-  const svg=svgEl("svg",{id:"comparison-chart-plot",class:"comparison-chart-svg",viewBox:`0 0 ${width} ${height}`,role:"img","aria-labelledby":"comparison-chart-svg-title comparison-chart-svg-desc"});
+  const inspectionBuckets=prepareInspectionBuckets(prepared),hasInspection=Boolean(inspectionBuckets.length);
+  const svgAttributes={id:"comparison-chart-plot",class:"comparison-chart-svg",viewBox:`0 0 ${width} ${height}`,role:hasInspection?"group":"img","aria-labelledby":"comparison-chart-svg-title","aria-describedby":hasInspection?"comparison-chart-svg-desc comparison-chart-inspection-help":"comparison-chart-svg-desc"};
+  if(hasInspection){svgAttributes.tabindex="0";svgAttributes["aria-roledescription"]="interactive chart";svgAttributes["aria-keyshortcuts"]="ArrowLeft ArrowRight Home End Escape"}
+  const svg=svgEl("svg",svgAttributes);
   const describedProviders=[...new Set(prepared.series.filter(series=>series.historical.length||series.forecast.length).map(series=>series.label))];
   const providerDescription=describedProviders.length?describedProviders.join(" and "):"available provider";
   const metricDescription=prepared.metrics.map(metric=>metric.label).join(", ");
   svg.append(svgEl("title",{id:"comparison-chart-svg-title"},metricDescription?`${metricDescription} provider history and published 24-hour forecast`:"Provider chart with no metrics selected"));
-  svg.append(svgEl("desc",{id:"comparison-chart-svg-desc"},metricDescription?`${providerDescription} ${metricDescription} scores on a fixed zero to one hundred percent scale. The history and forecast panes each use a linear time scale and meet at the divider. Solid lines are historical assessments through the actual current time. Dashed step lines are each provider's 24 published hourly slots beginning with that assessment's current clock-hour forecast slot.`:"No metrics are selected. Use the three toggle buttons above the chart to display provider history and forecast."));
+  svg.append(svgEl("desc",{id:"comparison-chart-svg-desc"},metricDescription?`${providerDescription} ${metricDescription} scores on a fixed zero to one hundred percent scale. The history and forecast panes each use a linear time scale and meet at the divider. Solid lines are real historical assessments through the actual current time; missing hours are not filled. Dashed step lines are each provider's 24 published hourly slots beginning with that assessment's current clock-hour forecast slot.`:"No metrics are selected. Use the three toggle buttons above the chart to display provider history and forecast."));
 
   svg.append(svgEl("rect",{class:"comparison-chart-future",x:dividerX,y:margin.top,width:forecastWidth,height:plotHeight}));
   for(const tick of[0,25,50,75,100]){
@@ -300,19 +546,14 @@ export function renderComparisonChart(host,providers,{metrics=DEFAULT_METRIC_IDS
     svg.append(svgEl("text",{class:"comparison-chart-axis-label",x:tick.x,y:height-margin.bottom+18,"text-anchor":tick.anchor},axisTime(tick.timestamp,compact)));
   }
   if(prepared.historyHours)svg.append(svgEl("text",{class:"comparison-chart-region-label",x:margin.left+5,y:margin.top-10},`HISTORY · ${prepared.historyHours}H`));
-  svg.append(svgEl("text",{class:"comparison-chart-region-label comparison-chart-forecast-label",x:width-margin.right-5,y:margin.top-10,"text-anchor":"end"},compact?"FORECAST · 24H":"PUBLISHED FORECAST · 24H"));
+  svg.append(svgEl("text",{class:"comparison-chart-region-label comparison-chart-forecast-label",x:width-margin.right-5,y:margin.top-10,"text-anchor":"end"},compact?"FORECAST · 24 EACH":"PUBLISHED FORECAST · 24 SLOTS EACH"));
 
   for(const series of prepared.series){
     const identityClass=`${providerClass(series.id)} ${metricClass(series.metric.id)}`;
     const className=`comparison-chart-series ${identityClass}`;
     for(const segment of splitHistorySegments(series.historical)){
       if(segment.length>1)svg.append(svgEl("path",{class:`${className} series-historical`,d:pathData(segment,historyScale,yScale)}));
-      else if(segment.length===1)svg.append(svgEl("circle",{class:`comparison-chart-point ${identityClass}`,cx:historyScale(segment[0].timestamp),cy:yScale(segment[0].value),r:3}));
-    }
-    if(series.historical.length){
-      const last=series.historical.at(-1),point=svgEl("circle",{class:`comparison-chart-endpoint ${identityClass}`,cx:historyScale(last.timestamp),cy:yScale(last.value),r:3.5});
-      point.append(svgEl("title",{},`${series.label} · ${series.metric.legendLabel}: ${last.value}% at ${new Date(last.timestamp).toLocaleString()}`));
-      svg.append(point);
+      else if(segment.length===1)svg.append(svgEl("circle",{class:`comparison-chart-point ${identityClass}`,cx:historyScale(segment[0].timestamp),cy:yScale(segment[0].value),r:2.75,"aria-hidden":"true"}));
     }
     for(const segment of splitForecastSegments(series.forecast)){
       const data=forecastSlotPathData(segment,forecastScale,yScale,prepared.windowEnd);
@@ -322,11 +563,18 @@ export function renderComparisonChart(host,providers,{metrics=DEFAULT_METRIC_IDS
 
   svg.append(svgEl("line",{class:"comparison-chart-divider",x1:dividerX,y1:margin.top,x2:dividerX,y2:height-margin.bottom}));
   if(!prepared.series.some(series=>series.historical.length||series.forecast.length))svg.append(svgEl("text",{class:"comparison-chart-empty",x:margin.left+plotWidth/2,y:margin.top+plotHeight/2,"text-anchor":"middle"},prepared.metrics.length?"No valid selected-metric history or forecast in this range.":"Select one or more metrics to display."));
-  figure.append(svg);
+  const plotWrap=domEl("div","comparison-chart-plot-wrap"),live=domEl("p","comparison-chart-inspection-live");
+  live.setAttribute("aria-live","polite");
+  live.setAttribute("aria-atomic","true");
+  plotWrap.append(svg);
+  installChartInspection({svg,plotWrap,live,prepared,inspectionBuckets,width,margin,plotHeight,dividerX,historyScale,forecastScale,yScale});
+  figure.append(plotWrap,live);
 
   const caption=domEl("figcaption","comparison-chart-caption");
-  const rangeLabel=prepared.historyHours?`${prepared.historyHours}h history + 24h published forecast · fixed 0–100% scale.`:"Forecast-only 24h view · fixed 0–100% scale.";
-  caption.append(domEl("p","comparison-chart-range",rangeLabel),domEl("p","comparison-chart-disclaimer","Dashed step lines show each provider's published hourly forecast."));
+  const rangeLabel=prepared.historyHours?`${prepared.historyHours}h history + 24 published slots per provider · fixed 0–100% scale.`:"Forecast-only · 24 published slots per provider · fixed 0–100% scale.";
+  const help=domEl("p","comparison-chart-disclaimer",hasInspection?"Hover for exact values · tap/click to pin · arrows inspect · Esc clears. History uses published assessments; missing hours stay empty.":"Dashed steps are the providers' published forecasts.");
+  help.id="comparison-chart-inspection-help";
+  caption.append(domEl("p","comparison-chart-range",rangeLabel),help);
   figure.append(caption);
   const notes=[...new Set(prepared.series.map(forecastNote).filter(Boolean))];
   if(notes.length){const noteList=domEl("div","comparison-chart-notes");for(const note of notes)noteList.append(domEl("span","",note));figure.append(noteList)}

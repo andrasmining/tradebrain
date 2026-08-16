@@ -10,12 +10,14 @@ import{
   METRIC_OPTIONS,
   WINDOW_DAY_OPTIONS,
   forecastSlotPathData,
+  inspectionBucketAtTime,
   metricField,
   normalizeForecast,
   normalizeHistory,
   normalizeMetricIds,
   normalizeWindowDays,
   prepareComparisonSeries,
+  prepareInspectionBuckets,
   splitForecastSegments,
   splitHistorySegments,
   toggleMetricId
@@ -193,6 +195,45 @@ test("series preparation overlays every selected metric for every provider",()=>
   assert.deepEqual(prepareComparisonSeries(providers,[],{nowMs:now}).series,[]);
 });
 
+test("inspection anchors preserve exact history records without filling missing provider metrics",()=>{
+  const tail=METRIC_OPTIONS[0],stress=METRIC_OPTIONS[1];
+  const chatTime=BASE+5*60*1000,chatOtherMetricTime=BASE+25*60*1000,claudeTime=BASE+2*HOUR_MS;
+  const prepared={historyHours:48,series:[
+    {id:"chatgpt",label:"ChatGPT",metric:tail,historical:[{timestamp:chatTime,sourceTime:new Date(chatTime).toISOString(),value:11}],forecast:[]},
+    {id:"chatgpt",label:"ChatGPT",metric:stress,historical:[{timestamp:chatOtherMetricTime,sourceTime:new Date(chatOtherMetricTime).toISOString(),value:55}],forecast:[]},
+    {id:"claude",label:"Claude",metric:tail,historical:[{timestamp:claudeTime,sourceTime:new Date(claudeTime).toISOString(),value:22}],forecast:[]}
+  ]};
+  const buckets=prepareInspectionBuckets(prepared);
+  assert.deepEqual(buckets.map(bucket=>bucket.anchorTimestamp),[chatTime,chatOtherMetricTime,claudeTime]);
+  assert.equal(buckets[0].rows[0].point.timestamp,chatTime);
+  assert.equal(buckets[0].rows[1].point,null,"another metric must not borrow a different assessment timestamp");
+  assert.equal(buckets[0].rows[2].point,null,"a provider more than one hour away stays unavailable");
+  assert.equal(buckets[1].rows[0].point,null);
+  assert.equal(buckets[1].rows[1].point.timestamp,chatOtherMetricTime);
+});
+
+test("inspection forecast buckets are exact half-open slots with provider edge gaps",()=>{
+  const tail=METRIC_OPTIONS[0];
+  const prepared={historyHours:0,series:[
+    {id:"chatgpt",label:"ChatGPT",metric:tail,historical:[],forecast:[point(100,10),point(101,11)]},
+    {id:"claude",label:"Claude",metric:tail,historical:[],forecast:[point(101,20),point(102,21)]}
+  ]};
+  const buckets=prepareInspectionBuckets(prepared);
+  assert.deepEqual(buckets.map(bucket=>bucket.anchorTimestamp),[BASE+100*HOUR_MS,BASE+101*HOUR_MS,BASE+102*HOUR_MS]);
+  assert.ok(buckets.every(bucket=>bucket.hourEnd-bucket.anchorTimestamp===HOUR_MS));
+  assert.deepEqual(buckets.map(bucket=>bucket.rows.map(row=>row.point?.value??null)),[[10,null],[11,20],[null,21]]);
+  assert.equal(inspectionBucketAtTime(buckets,"forecast",BASE+100*HOUR_MS).anchorTimestamp,BASE+100*HOUR_MS);
+  assert.equal(inspectionBucketAtTime(buckets,"forecast",BASE+101*HOUR_MS).anchorTimestamp,BASE+101*HOUR_MS,"a slot end belongs to the next half-open slot");
+  assert.equal(inspectionBucketAtTime(buckets,"forecast",BASE+103*HOUR_MS),null);
+});
+
+test("history inspection does not snap across gaps larger than one hour",()=>{
+  const buckets=[{kind:"history",anchorTimestamp:BASE,key:"history:first"}];
+  assert.equal(inspectionBucketAtTime(buckets,"history",BASE+HOUR_MS).key,"history:first");
+  assert.equal(inspectionBucketAtTime(buckets,"history",BASE+HOUR_MS+1),null);
+  assert.equal(inspectionBucketAtTime(buckets,"forecast",BASE),null);
+});
+
 test("combined chart mount sits between provider cards and agreement metadata",()=>{
   const html=fs.readFileSync("index.html","utf8"),cards=html.indexOf('id="provider-cards"'),chart=html.indexOf('id="comparison-chart"'),agreement=html.indexOf('id="agreement-banner"');
   assert.ok(cards>=0&&cards<chart&&chart<agreement);
@@ -208,7 +249,7 @@ test("dashboard persists metric and range controls without coupling provider swi
   const switchBody=app.match(/function selectProvider\([^\n]+/)?.[0]??"";
   assert.doesNotMatch(switchBody,/renderComparison/);
   assert.doesNotMatch(chart,/regression|projection|extrapolation/i);
-  assert.match(chart,/published hourly forecast/);
+  assert.match(chart,/24 published hourly slots/);
   assert.match(chart,/historical assessments through the actual current time/);
   assert.doesNotMatch(chart,/>NOW</);
   assert.match(chart,/CHART RANGE/);
@@ -221,6 +262,24 @@ test("dashboard persists metric and range controls without coupling provider swi
   assert.doesNotMatch(chart,/legend\.setAttribute\("aria-label"/);
   assert.match(styles,/\.comparison-window-select\{[^}]*min-height:42px/);
   assert.match(styles,/\.comparison-chart-series\.series-forecast/);
+  assert.match(chart,/segment\.length===1\)svg\.append\(svgEl\("circle",\{class:`comparison-chart-point/);
+  assert.match(styles,/\.comparison-chart-point\{[^}]*opacity:\.72;pointer-events:none/);
+  assert.match(chart,/prepareInspectionBuckets/);
+  assert.match(chart,/comparison-chart-crosshair/);
+  assert.match(chart,/comparison-chart-inspection-band/);
+  assert.match(chart,/setAttribute\("aria-live","polite"\)/);
+  assert.match(chart,/\["ArrowLeft","ArrowRight","Home","End"\]/);
+  assert.match(chart,/addEventListener\("pointermove"/);
+  assert.match(chart,/addEventListener\("click"/);
+  assert.match(chart,/if\(bucket\)showBucket\(bucket,false\);else clearInspection\(false\)/);
+  assert.match(chart,/PUBLISHED FORECAST SLOT/);
+  assert.match(chart,/inspectionInterval\(bucket\.anchorTimestamp,bucket\.hourEnd\)/);
+  assert.match(chart,/24 published slots per provider/);
+  assert.match(chart,/tap\/click to pin/);
+  assert.match(chart,/missing hours stay empty/);
+  assert.match(styles,/\.comparison-chart-tooltip\{[^}]*pointer-events:none/);
+  assert.match(styles,/touch-action:pan-y pinch-zoom/);
+  assert.match(responsive,/\.comparison-chart-tooltip\{width:220px/);
   assert.match(responsive,/\.comparison-chart-controls\{display:grid/);
   assert.match(styles,/\.provider-chatgpt\.metric-stress/);
   assert.match(styles,/\.provider-claude\.metric-confidence/);

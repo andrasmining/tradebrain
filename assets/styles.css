@@ -31,7 +31,9 @@
 .provider-claude.metric-confidence{--series-color:#4ecbc4}
 .comparison-legend-line{display:inline-block;width:24px;height:0;border-top:2px solid var(--series-color)}
 .comparison-legend-line.series-forecast{border-top-style:dashed;opacity:.78}
-.comparison-chart-svg{display:block;width:100%;height:auto;min-width:0;border:1px solid rgba(45,59,76,.82);border-radius:13px;background:linear-gradient(180deg,#0b111a,#090e15);overflow:hidden}
+.comparison-chart-plot-wrap{position:relative;min-width:0}
+.comparison-chart-svg{display:block;width:100%;height:auto;min-width:0;border:1px solid rgba(45,59,76,.82);border-radius:13px;background:linear-gradient(180deg,#0b111a,#090e15);overflow:hidden;cursor:crosshair;touch-action:pan-y pinch-zoom}
+.comparison-chart-svg:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
 .comparison-chart-future{fill:rgba(122,167,255,.045)}
 .comparison-chart-grid{stroke:#26313f;stroke-width:1;vector-effect:non-scaling-stroke}
 .comparison-chart-tick{stroke:#3a4655;stroke-width:1;vector-effect:non-scaling-stroke}
@@ -40,8 +42,26 @@
 .comparison-chart-forecast-label{fill:#9bb9ee}
 .comparison-chart-series{fill:none;stroke:var(--series-color);stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
 .comparison-chart-series.series-forecast{stroke-dasharray:7 5;opacity:.8}
-.comparison-chart-point,.comparison-chart-endpoint{fill:var(--series-color);stroke:#0b111a;stroke-width:1.5;vector-effect:non-scaling-stroke}
+.comparison-chart-point{fill:var(--series-color);stroke:#0b111a;stroke-width:1.25;opacity:.72;pointer-events:none;vector-effect:non-scaling-stroke}
 .comparison-chart-divider{stroke:#d0aa4e;stroke-width:1.25;stroke-dasharray:4 5;opacity:.9;vector-effect:non-scaling-stroke}
+.comparison-chart-inspection-layer{pointer-events:none}
+.comparison-chart-inspection-band{fill:rgba(155,185,238,.10);stroke:rgba(155,185,238,.24);stroke-width:1;vector-effect:non-scaling-stroke}
+.comparison-chart-crosshair{stroke:#dbe7fb;stroke-width:1;stroke-dasharray:3 3;opacity:.9;vector-effect:non-scaling-stroke}
+.comparison-chart-inspection-marker{fill:var(--series-color);stroke:#f3f7fc;stroke-width:1.75;filter:drop-shadow(0 0 3px rgba(8,11,16,.9));vector-effect:non-scaling-stroke}
+.comparison-chart-tooltip{position:absolute;z-index:4;width:250px;overflow:auto;overscroll-behavior:contain;padding:9px 10px;border:1px solid rgba(130,150,177,.48);border-radius:10px;background:rgba(8,13,20,.96);box-shadow:0 10px 28px rgba(0,0,0,.48);color:var(--text);pointer-events:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.comparison-chart-tooltip.is-forecast{border-color:rgba(122,167,255,.55);background:rgba(9,16,27,.97)}
+.comparison-chart-tooltip-kicker{color:#9bb9ee;font:700 .54rem/1.2 var(--mono);letter-spacing:.08em}
+.comparison-chart-tooltip-time{margin-top:3px;color:#dce5f0;font:600 .61rem/1.25 var(--mono)}
+.comparison-chart-tooltip-rows{display:grid;gap:2px;margin-top:7px}
+.comparison-chart-tooltip-provider{display:flex;align-items:baseline;justify-content:space-between;gap:7px;margin-top:4px;color:#9daabc;font:700 .55rem/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.comparison-chart-tooltip-provider time{overflow:hidden;color:#738296;font-size:.48rem;font-weight:500;letter-spacing:0;text-overflow:ellipsis;text-transform:none;white-space:nowrap}
+.comparison-chart-tooltip-row{display:grid;grid-template-columns:minmax(52px,1fr) auto;align-items:center;gap:7px;min-height:20px;font:600 .58rem/1.15 var(--mono)}
+.comparison-chart-tooltip-identity{display:flex;align-items:center;gap:5px;min-width:0;color:#c7d1de}
+.comparison-chart-tooltip-swatch{flex:0 0 6px;width:6px;height:6px;border-radius:50%;background:var(--series-color);box-shadow:0 0 0 1px rgba(255,255,255,.13)}
+.comparison-chart-tooltip-reading{display:flex;align-items:baseline;justify-content:flex-end;gap:5px;min-width:0;white-space:nowrap;text-align:right}
+.comparison-chart-tooltip-reading strong{color:#f5f8fc;font-size:.63rem}
+.comparison-chart-tooltip-reading.is-missing{color:#738094;font-weight:500}
+.comparison-chart-inspection-live{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .comparison-chart-empty{fill:#8f9baa;font:500 11px var(--mono)}
 .comparison-chart-caption{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-top:9px}
 .comparison-chart-caption p{margin:0}

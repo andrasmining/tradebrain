@@ -336,7 +336,7 @@ Historical model opinions must not be rewritten with hindsight.
 
 ## 7. Display-only derived analytics and time-series boundaries
 
-Browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, comparison metric, or visual projection. The current Risk comparison chart uses provider history together with each fresh provider's actual 24-slot published `forecast[]`; it does not extrapolate forecast values from history. The user can independently toggle any combination of Tail, Stress, and Confidence for both providers on a fixed 0-100% scale. Its chart-range selector offers 1, 3, 7, 14, or 30 total days and defaults to three, meaning exactly 48 hours of history plus the fixed 24-hour provider forecast. The one-day range is forecast-only. History and forecast use explicitly labeled separate time scales so the 24-hour forecast stays readable on mobile at longer ranges, and paths never connect across their divider.
+Browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, comparison metric, or visual projection. The current Risk comparison chart uses provider history together with each fresh provider's actual 24-slot published `forecast[]`; it does not extrapolate forecast values from history. The user can independently toggle any combination of Tail, Stress, and Confidence for both providers on a fixed 0-100% scale. Its chart-range selector offers 1, 3, 7, 14, or 30 total days and defaults to three, meaning exactly 48 hours of history plus 24 published hourly slots per provider. The one-day range is forecast-only. History and forecast use explicitly labeled separate time scales so the provider forecasts stay readable on mobile at longer ranges, and paths never connect across their divider. Exact forecast timestamps must not be shifted to force providers into the same clock-hour origin; their shared pane may therefore span more than 24 elapsed hours.
 
 ```text
 provider historical data ----> HISTORY pane
@@ -345,6 +345,8 @@ provider historical data ----> HISTORY pane
                                         /
 fresh status.forecast[] -----> PUBLISHED FORECAST pane
 ```
+
+Interactive chart inspection exposes source values, not values inferred from line geometry. Historical hover, tap, and keyboard inspection must resolve to a real provider assessment; missing hours and long gaps remain empty, and nearby providers retain their distinct publication timestamps. Forecast inspection resolves to the exact published half-open hourly slot `[ts, ts + 1h)`. Non-overlapping forecast edges show only the provider that actually published that slot. Pointer interaction must preserve touch scrolling, and the same values must remain available through keyboard interaction.
 
 Keep these three time-series concepts distinct:
 
