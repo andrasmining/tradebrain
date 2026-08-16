@@ -59,7 +59,11 @@ jobs:
             git add providers/chatgpt/history.json providers/chatgpt/status.json providers/chatgpt/signal.json
             git commit -m "data(chatgpt): finalize provider publication"
             git pull --rebase origin main
-            git push origin HEAD:main
+            if ! git push origin HEAD:main; then
+              echo "Push raced with another repository update; rebasing and retrying once."
+              git pull --rebase origin main
+              git push origin HEAD:main
+            fi
           fi
       - name: Finalize pending Claude snapshots
         id: finalize_claude
@@ -77,7 +81,11 @@ jobs:
             git add providers/claude/history.json providers/claude/status.json providers/claude/signal.json
             git commit -m "data(claude): finalize provider publication"
             git pull --rebase origin main
-            git push origin HEAD:main
+            if ! git push origin HEAD:main; then
+              echo "Push raced with another repository update; rebasing and retrying once."
+              git pull --rebase origin main
+              git push origin HEAD:main
+            fi
           fi
       - name: Validate repository for isolated Pages build
         run: node scripts/validate-repository.mjs --isolate-providers

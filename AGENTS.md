@@ -173,9 +173,11 @@ new version becomes active
 
 A repository commit can complete the first two stages; it does not perform the scheduler migration.
 
+Prompt files `prompts/chatgpt/v1.2.0.md` and `prompts/claude/v1.2.0.md` are available contracts for optional shared Finviz evidence. They do not change the active scheduled versions by themselves; the external schedulers remain on their independently pinned contracts until an explicit reviewed migration.
+
 ## 4. Shared external evidence / context providers
 
-Shared external evidence is a separate architectural category from AI providers. Future deterministic sources may include market-data/context, economic-calendar, breadth, earnings, or Finviz-derived collectors. No specific collector is implied to exist merely because this contract defines the category.
+Shared external evidence is a separate architectural category from AI providers. TradeBrain implements Finviz as one deterministic shared context collector; future sources may add other market-data, economic-calendar, breadth, or earnings context without becoming providers.
 
 ```text
 external/context source
@@ -217,7 +219,17 @@ shared collector scripts   collection and normalization only
 shared schemas             supporting evidence contracts
 ```
 
-These are ownership classes, not final paths for an unimplemented subsystem. Every new subsystem must have an explicit write boundary. A collector must not opportunistically modify provider output, a provider publisher must not opportunistically repair a shared collector, and a UI feature must not rewrite source data.
+These are ownership classes, not prescribed paths for every future subsystem. Every new subsystem must have an explicit write boundary. A collector must not opportunistically modify provider output, a provider publisher must not opportunistically repair a shared collector, and a UI feature must not rewrite source data.
+
+The implemented Finviz subsystem uses these explicit boundaries:
+
+- `config/finviz.json` for shared collection configuration;
+- `scripts/collect_finviz.py` for live adapters, normalization, aggregates, and atomic publication;
+- `schemas/finviz-context.schema.json` and `scripts/validate-finviz-context.mjs` for its supporting-evidence contract;
+- `data/finviz/latest.json` as the only collector-owned publication output;
+- `.github/workflows/collect-finviz.yml` as its isolated schedule and commit path.
+
+The scheduled collector may commit only `data/finviz/latest.json`. It must never write provider state.
 
 ### Supplementary evidence and risk semantics
 
@@ -235,7 +247,7 @@ Tail remains the risk of a pathological price path or sustained mean-reversion f
 
 ### Freshness, delay, and failure isolation
 
-Normalized evidence must expose enough provenance, as-of, availability, and completeness metadata for consumers to distinguish fresh, stale, partial, and unavailable state. Cached or stale context must not masquerade as current evidence.
+Normalized evidence must expose enough provenance, as-of, availability, and completeness metadata for consumers to distinguish fresh, stale, partial, and unavailable state. Cached or stale context must not masquerade as current evidence. The current Finviz provider-consumption contract treats context up to 90 minutes old as reasonably fresh. Finviz `generatedAt` records collection time; latest-session breadth and basket changes with no source as-of must remain labeled non-real-time and cannot establish current NQ structure.
 
 Delayed or contextual data must remain labeled delayed. It must never masquerade as evidence of immediate post-event continuation, shallow pullbacks, failed retracements, session-extreme holding, or current one-way NQ structure.
 
@@ -324,7 +336,7 @@ Historical model opinions must not be rewritten with hindsight.
 
 ## 7. Display-only derived analytics and time-series boundaries
 
-Future browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, simple regression/extrapolation, comparison metric, or visual projection. Defining this category does not mean that such a feature currently exists.
+Browser-side or build-time analytics may calculate deterministic presentation values such as a historical trend line, simple regression/extrapolation, comparison metric, or visual projection. The current Risk comparison chart is one such feature: it uses provider history directly, displays both providers over a rolling 72-hour window on a fixed 0-100% scale, and may show a six-hour visual projection using ordinary least squares over up to eight recent points. Projection requires at least three points and is suppressed for providers stale under the browser's 130-minute threshold.
 
 ```text
 provider historical data
@@ -475,6 +487,8 @@ If an optional evidence collector is introduced, it should normally have its own
 
 Design these workflows around bot-generated commits, recursive workflow triggers, non-fast-forward pushes, concurrent provider snapshot commits, and unnecessary Pages deployments. An optional context refresh should not trigger expensive unrelated workflows without a documented reason, and its failure must remain isolated from valid provider publication and site deployment.
 
+The Finviz collector follows this model in `.github/workflows/collect-finviz.yml`: it runs at minute `:50` each UTC hour (plus manual dispatch), has a dedicated concurrency group, and executes the third-party collector in a read-only job without persisted write credentials. A separate narrowly privileged job validates the data-only artifact, stages only its owned context file, syncs current `main` before pushing, and rebases/revalidates on at most one push-race retry. `data/finviz/**` is intentionally absent from the Pages push paths, so hourly evidence refreshes do not deploy the site.
+
 ## 13. Public-repository security rules
 
 This repository is public.
@@ -589,9 +603,15 @@ For frontend JavaScript changes, make sure scripts parse cleanly as well; the te
 
 For provider/finalizer/schema changes, run the full validation/test/build sequence, not only the test you touched.
 
-For a future network-backed collector, keep normal repository and PR validation deterministic. Unit tests should prefer fixtures, mocks, pure normalization functions, and deterministic input/output cases. Normal PR CI must not depend on a public website being reachable; live external access may be exercised separately as an integration check.
+For a network-backed collector, keep normal repository and PR validation deterministic. Unit tests should prefer fixtures, mocks, pure normalization functions, and deterministic input/output cases. Normal PR CI must not depend on a public website being reachable; live external access may be exercised separately as an integration check.
 
-A live-source failure is not a reason to weaken tests, evade anti-bot controls, or hardcode fabricated data. When a Python subsystem is added, document and run its actual repository-defined test command in addition to the existing Node checks. Do not invent a placeholder Python command before that subsystem exists.
+A live-source failure is not a reason to weaken tests, evade anti-bot controls, or hardcode fabricated data. For any Python subsystem, document and run its actual repository-defined test command in addition to the existing Node checks. Do not invent placeholder commands for subsystems that do not exist.
+
+The Finviz Python test command is:
+
+```bash
+python -m unittest discover -s test -p "test_finviz*.py"
+```
 
 Do not commit `dist/` or `node_modules/`.
 
@@ -633,14 +653,20 @@ A display-only analytics feature is not done unless:
 README.md                         system overview and public contract
 AGENTS.md                         repo-wide AI/development operating guide
 config/providers.json             provider manifest
+config/finviz.json                shared Finviz collection configuration
 prompts/chatgpt/                  versioned ChatGPT publication contracts
 prompts/claude/                   versioned Claude publication contracts
 providers/<provider>/snapshots/   immutable provider assessments
 providers/<provider>/history.json derived unlimited audit index
 providers/<provider>/status.json  derived latest full assessment
 providers/<provider>/signal.json  derived compact provider signal
+data/finviz/latest.json            latest normalized shared Finviz context
+requirements-finviz.txt            pinned Finviz collector dependency
 schemas/                          structural JSON contracts
+schemas/finviz-context.schema.json shared evidence structural contract
 scripts/lib.mjs                   shared semantic validation/helpers
+scripts/collect_finviz.py          isolated shared-context collector
+scripts/validate-finviz-context.mjs shared-context semantic validator
 scripts/finalize-chatgpt.mjs      ChatGPT snapshot finalizer
 scripts/finalize-claude.mjs       Claude snapshot finalizer
 scripts/validate-provider.mjs     provider coherence validation
@@ -649,10 +675,12 @@ scripts/build-site.mjs            static Pages artifact builder
 scripts/build-overview.mjs        display-only cross-provider overview
 index.html                        static page structure
 assets/app.js                     provider loading/rendering/refresh logic
+assets/comparison-chart.js        display-only cross-provider trend chart
 assets/styles.css                 base styling
 assets/responsive.css             mobile/responsive behavior
 assets/timeline-scroll-guard.js   timeline scroll interaction guard
 .github/workflows/deploy-pages.yml publication finalization + Pages deployment
+.github/workflows/collect-finviz.yml isolated shared-context refresh
 .github/workflows/validate.yml     PR/manual validation workflow
 test/                             contract, safety, finalizer, frontend tests
 ```

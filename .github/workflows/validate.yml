@@ -17,9 +17,21 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 24
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-finviz.txt
+      - name: Install Finviz collector dependency
+        run: python -m pip install --disable-pip-version-check -r requirements-finviz.txt
       - name: Validate provider repository state
         run: node scripts/validate-repository.mjs
+      - name: Validate shared Finviz context
+        run: node scripts/validate-finviz-context.mjs data/finviz/latest.json
       - name: Run tests
         run: node --test
+      - name: Run Finviz collector tests
+        run: python -m unittest discover -s test -p "test_finviz*.py"
       - name: Build static site
         run: node scripts/build-site.mjs
