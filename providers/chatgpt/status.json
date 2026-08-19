@@ -3,18 +3,15 @@
   "provider": "chatgpt",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-08-19T04:11:55Z",
+  "generatedAt": "2026-08-19T05:10:39Z",
   "market": "NASDAQ-100",
-  "instruments": [
-    "NQ_FUTURES",
-    "NAS100_CFD"
-  ],
+  "instruments": ["NQ_FUTURES", "NAS100_CFD"],
   "status": "yellow",
-  "statusText": "Mapped policy state: WATCH. Tail remains below the blocking threshold.",
-  "recommendation": "Current conditions are classified as WATCH, with the largest conditional hazard concentrated around the FOMC-minutes and immediate post-release interpretation window.",
-  "headline": "Overnight follow-through is limited while FOMC minutes dominate later conditional Tail risk",
-  "body": "Tuesday's technology-led selloff remains important, but early Wednesday U.S. and European stock futures are only slightly softer and bond selling has eased. Brent remains above $90 and Hormuz traffic is reduced, keeping Stress extreme. The main conditional Tail window is around the FOMC minutes and possible delayed rates-to-equity repricing.",
-  "tailRiskPct": 21,
+  "statusText": "Mapped policy state: WATCH. Tail is below the block threshold while rates, energy and geopolitical Stress remain extreme.",
+  "recommendation": "Mapped policy state remains WATCH; the principal conditional hazard is the FOMC-minutes window and any delayed rates-to-equity repricing.",
+  "headline": "Overnight downside follow-through moderates; FOMC minutes dominate the next risk window",
+  "body": "Tuesday's technology-led selloff remains the backdrop, but early Wednesday U.S. and European futures are only slightly softer and the bond selloff has eased in Asia. Brent remains above $91 and Hormuz shipping uncertainty persists. Fresh independent NQ bar evidence does not confirm renewed persistent one-way extension.",
+  "tailRiskPct": 20,
   "tailLevel": "watch",
   "stressRiskPct": 96,
   "stressLevel": "extreme",
@@ -22,857 +19,82 @@
   "confidencePct": 89,
   "confidenceLevel": "high",
   "action": "WATCH",
-  "dangerWindow": {
-    "start": "2026-08-19T17:55:00Z",
-    "end": "2026-08-19T20:30:00Z"
-  },
-  "dangerWindowBerlin": {
-    "start": "2026-08-19T19:55:00+02:00",
-    "end": "2026-08-19T22:30:00+02:00"
-  },
+  "dangerWindow": {"start": "2026-08-19T17:55:00Z", "end": "2026-08-19T20:30:00Z"},
+  "dangerWindowBerlin": {"start": "2026-08-19T19:55:00+02:00", "end": "2026-08-19T22:30:00+02:00"},
   "sources": [
-    {
-      "title": "Bond selloff slows but stocks wobble",
-      "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-08-19/"
-    },
-    {
-      "title": "Hormuz traffic slows as uncertainty over waterway persists",
-      "url": "https://www.reuters.com/world/middle-east/hormuz-traffic-slows-uncertainty-over-waterway-persists-2026-08-19/"
-    },
-    {
-      "title": "Federal Reserve — August 2026 calendar",
-      "url": "https://www.federalreserve.gov/newsevents/2026-august.htm"
-    },
-    {
-      "title": "EIA Weekly Petroleum Status Report schedule",
-      "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php"
-    },
-    {
-      "title": "U.S. Department of Labor weekly unemployment insurance claims",
-      "url": "https://oui.doleta.gov/unemploy/claims_arch.asp/claims.asp"
-    },
-    {
-      "title": "U.S. Census Bureau economic indicators calendar",
-      "url": "https://www.census.gov/economic-indicators/calendar-listview.html"
-    }
+    {"title": "Reuters — Bond selloff slows but stocks wobble", "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-08-19/"},
+    {"title": "Reuters — Oil extends climb on prolonged Hormuz export uncertainty", "url": "https://www.reuters.com/business/energy/oil-edges-up-uncertainty-over-exports-through-hormuz-2026-08-19/"},
+    {"title": "Federal Reserve — August 2026 calendar", "url": "https://www.federalreserve.gov/newsevents/2026-august.htm"},
+    {"title": "U.S. EIA — Weekly Petroleum Status Report schedule", "url": "https://www.eia.gov/petroleum/supply/weekly/schedule.php"},
+    {"title": "Federal Reserve Bank of St. Louis — Unemployment Insurance Weekly Claims release calendar", "url": "https://fred.stlouisfed.org/releases/calendar?od=asc&rid=180&ve=2026-12-31&view=year&vs=2026-01-01"},
+    {"title": "Federal Reserve Bank of Philadelphia — Manufacturing Business Outlook Survey", "url": "https://www.philadelphiafed.org/surveys-and-data/regional-economic-analysis/manufacturing-business-outlook-survey"}
   ],
-  "lookbackSummary": "Tail moved from WATCH into an elevated trend-down regime during Tuesday's technology-led selloff, peaked at 32% late in the U.S. session, then receded to WATCH overnight as follow-through moderated and fresh one-way NQ structure became less evident.",
+  "lookbackSummary": "Tail rose from WATCH into the low-30s during Tuesday's technology-led selloff, then retreated to the low-20s overnight as follow-through moderated and fresh one-way NQ structure was not verified.",
   "lookback": [
-    {
-      "ts": "2026-08-18T04:00:00Z",
-      "timeBerlin": "2026-08-18T06:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 98,
-      "confidencePct": 88,
-      "dominantMode": "event/whipsaw"
-    },
-    {
-      "ts": "2026-08-18T05:00:00Z",
-      "timeBerlin": "2026-08-18T07:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 98,
-      "confidencePct": 88,
-      "dominantMode": "event/whipsaw"
-    },
-    {
-      "ts": "2026-08-18T06:00:00Z",
-      "timeBerlin": "2026-08-18T08:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "event/whipsaw"
-    },
-    {
-      "ts": "2026-08-18T07:00:00Z",
-      "timeBerlin": "2026-08-18T09:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "event/whipsaw"
-    },
-    {
-      "ts": "2026-08-18T08:00:00Z",
-      "timeBerlin": "2026-08-18T10:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "event/whipsaw"
-    },
-    {
-      "ts": "2026-08-18T09:00:00Z",
-      "timeBerlin": "2026-08-18T11:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 26,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T10:00:00Z",
-      "timeBerlin": "2026-08-18T12:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 27,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T11:00:00Z",
-      "timeBerlin": "2026-08-18T13:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 27,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T12:00:00Z",
-      "timeBerlin": "2026-08-18T14:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 27,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T13:00:00Z",
-      "timeBerlin": "2026-08-18T15:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 27,
-      "stressRiskPct": 99,
-      "confidencePct": 88,
-      "dominantMode": "event/whipsaw"
-    },
-    {
-      "ts": "2026-08-18T14:00:00Z",
-      "timeBerlin": "2026-08-18T16:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 28,
-      "stressRiskPct": 99,
-      "confidencePct": 88,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T15:00:00Z",
-      "timeBerlin": "2026-08-18T17:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 29,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T16:00:00Z",
-      "timeBerlin": "2026-08-18T18:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 30,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T17:00:00Z",
-      "timeBerlin": "2026-08-18T19:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 31,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T18:00:00Z",
-      "timeBerlin": "2026-08-18T20:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 31,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T19:00:00Z",
-      "timeBerlin": "2026-08-18T21:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 32,
-      "stressRiskPct": 99,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T20:00:00Z",
-      "timeBerlin": "2026-08-18T22:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 28,
-      "stressRiskPct": 98,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T21:00:00Z",
-      "timeBerlin": "2026-08-18T23:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 27,
-      "stressRiskPct": 98,
-      "confidencePct": 89,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T22:00:00Z",
-      "timeBerlin": "2026-08-19T00:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 27,
-      "stressRiskPct": 98,
-      "confidencePct": 88,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-18T23:00:00Z",
-      "timeBerlin": "2026-08-19T01:00:00+02:00",
-      "available": true,
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 26,
-      "stressRiskPct": 97,
-      "confidencePct": 86,
-      "dominantMode": "trend-down"
-    },
-    {
-      "ts": "2026-08-19T00:00:00Z",
-      "timeBerlin": "2026-08-19T02:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 97,
-      "confidencePct": 87,
-      "dominantMode": "mixed"
-    },
-    {
-      "ts": "2026-08-19T01:00:00Z",
-      "timeBerlin": "2026-08-19T03:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 23,
-      "stressRiskPct": 96,
-      "confidencePct": 87,
-      "dominantMode": "mixed"
-    },
-    {
-      "ts": "2026-08-19T02:00:00Z",
-      "timeBerlin": "2026-08-19T04:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 95,
-      "confidencePct": 86,
-      "dominantMode": "mixed"
-    },
-    {
-      "ts": "2026-08-19T03:00:00Z",
-      "timeBerlin": "2026-08-19T05:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 95,
-      "confidencePct": 87,
-      "dominantMode": "mixed"
-    }
+    {"ts":"2026-08-18T05:00:00Z","timeBerlin":"2026-08-18T07:00:00+02:00","available":true,"status":"yellow","action":"WATCH","tailRiskPct":24,"stressRiskPct":98,"confidencePct":88,"dominantMode":"event/whipsaw"},
+    {"ts":"2026-08-18T06:00:00Z","timeBerlin":"2026-08-18T08:00:00+02:00","available":true,"status":"yellow","action":"WATCH","tailRiskPct":24,"stressRiskPct":99,"confidencePct":89,"dominantMode":"event/whipsaw"},
+    {"ts":"2026-08-18T07:00:00Z","timeBerlin":"2026-08-18T09:00:00+02:00","available":true,"status":"yellow","action":"WATCH","tailRiskPct":24,"stressRiskPct":99,"confidencePct":89,"dominantMode":"event/whipsaw"},
+    {"ts":"2026-08-18T08:00:00Z","timeBerlin":"2026-08-18T10:00:00+02:00","available":true,"status":"yellow","action":"WATCH","tailRiskPct":24,"stressRiskPct":99,"confidencePct":89,"dominantMode":"event/whipsaw"},
+    {"ts":"2026-08-18T09:00:00Z","timeBerlin":"2026-08-18T11:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":26,"stressRiskPct":99,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T10:00:00Z","timeBerlin":"2026-08-18T12:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":27,"stressRiskPct":99,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T11:00:00Z","timeBerlin":"2026-08-18T13:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":27,"stressRiskPct":99,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T12:00:00Z","timeBerlin":"2026-08-18T14:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":27,"stressRiskPct":99,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T13:00:00Z","timeBerlin":"2026-08-18T15:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":27,"stressRiskPct":99,"confidencePct":88,"dominantMode":"event/whipsaw"},
+    {"ts":"2026-08-18T14:00:00Z","timeBerlin":"2026-08-18T16:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":28,"stressRiskPct":99,"confidencePct":88,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T15:00:00Z","timeBerlin":"2026-08-18T17:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":29,"stressRiskPct":99,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T16:00:00Z","timeBerlin":"2026-08-18T18:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":30,"stressRiskPct":99,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T17:00:00Z","timeBerlin":"2026-08-18T19:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":31,"stressRiskPct":99,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T18:00:00Z","timeBerlin":"2026-08-18T20:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":31,"stressRiskPct":99,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T19:00:00Z","timeBerlin":"2026-08-18T21:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":32,"stressRiskPct":99,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T20:00:00Z","timeBerlin":"2026-08-18T22:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":28,"stressRiskPct":98,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T21:00:00Z","timeBerlin":"2026-08-18T23:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":27,"stressRiskPct":98,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T22:00:00Z","timeBerlin":"2026-08-19T00:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":27,"stressRiskPct":98,"confidencePct":89,"dominantMode":"trend-down"},
+    {"ts":"2026-08-18T23:00:00Z","timeBerlin":"2026-08-19T01:00:00+02:00","available":true,"status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":26,"stressRiskPct":97,"confidencePct":86,"dominantMode":"trend-down"},
+    {"ts":"2026-08-19T00:00:00Z","timeBerlin":"2026-08-19T02:00:00+02:00","available":true,"status":"yellow","action":"WATCH","tailRiskPct":24,"stressRiskPct":97,"confidencePct":87,"dominantMode":"mixed"},
+    {"ts":"2026-08-19T01:00:00Z","timeBerlin":"2026-08-19T03:00:00+02:00","available":true,"status":"yellow","action":"WATCH","tailRiskPct":23,"stressRiskPct":96,"confidencePct":87,"dominantMode":"mixed"},
+    {"ts":"2026-08-19T02:00:00Z","timeBerlin":"2026-08-19T04:00:00+02:00","available":true,"status":"yellow","action":"WATCH","tailRiskPct":22,"stressRiskPct":95,"confidencePct":86,"dominantMode":"mixed"},
+    {"ts":"2026-08-19T03:00:00Z","timeBerlin":"2026-08-19T05:00:00+02:00","available":true,"status":"yellow","action":"WATCH","tailRiskPct":21,"stressRiskPct":95,"confidencePct":87,"dominantMode":"mixed"},
+    {"ts":"2026-08-19T04:00:00Z","timeBerlin":"2026-08-19T06:00:00+02:00","available":true,"status":"yellow","action":"WATCH","tailRiskPct":21,"stressRiskPct":96,"confidencePct":89,"dominantMode":"mixed"}
   ],
-  "outlookSummary": "Tail is modeled below the block threshold through Europe and most of the U.S. premarket, rises around the EIA checkpoint, and becomes conditionally elevated around the FOMC minutes and potential delayed rates-to-equity second leg. Later normalization depends on actual retracements and cross-asset stabilization.",
+  "outlookSummary": "Stress remains extreme. Tail is modeled to stay below the block threshold through the morning, then rise conditionally into the FOMC-minutes and delayed-repricing window before decaying only if post-event price discovery is orderly.",
   "forecast": [
-    {
-      "ts": "2026-08-19T04:00:00Z",
-      "timeBerlin": "2026-08-19T06:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 96,
-      "confidencePct": 89,
-      "dominantMode": "mixed",
-      "analysis": "Early Wednesday follow-through is limited: U.S. and European stock futures are only slightly softer, bond selling has eased, and Brent remains above $90. Reduced Hormuz traffic keeps Stress extreme, but there is no fresh evidence of renewed persistent NQ extension.",
-      "drivers": [
-        "Limited overnight equity follow-through after Tuesday's technology selloff",
-        "Brent remains above $90 while Hormuz traffic stays reduced",
-        "FOMC minutes later today keep rates sensitivity elevated"
-      ],
-      "news": [
-        {
-          "title": "Bond selloff slows but stocks wobble",
-          "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-08-19/",
-          "source": "Reuters"
-        },
-        {
-          "title": "Hormuz traffic slows as uncertainty over waterway persists",
-          "url": "https://www.reuters.com/world/middle-east/hormuz-traffic-slows-uncertainty-over-waterway-persists-2026-08-19/",
-          "source": "Reuters"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-19T05:00:00Z",
-      "timeBerlin": "2026-08-19T07:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 96,
-      "confidencePct": 88,
-      "dominantMode": "mixed",
-      "analysis": "During early Europe, Tail stays in WATCH unless renewed directional efficiency appears. The prior technology selloff and elevated energy backdrop remain relevant, while subdued overnight equity follow-through argues against treating continuation as already established.",
-      "drivers": [
-        "European-session handoff is a conditional continuation checkpoint",
-        "Tuesday technology weakness remains a directional backdrop",
-        "Oil and Hormuz uncertainty maintain extreme Stress"
-      ],
-      "news": [
-        {
-          "title": "Bond selloff slows but stocks wobble",
-          "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-08-19/",
-          "source": "Reuters"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-19T06:00:00Z",
-      "timeBerlin": "2026-08-19T08:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 96,
-      "confidencePct": 88,
-      "dominantMode": "mixed",
-      "analysis": "The European morning remains a conditional test of whether Tuesday's downside persists. Tail stays below the block threshold absent shallow failed retracements or synchronized weakness across NQ, yields, volatility and technology leadership.",
-      "drivers": [
-        "Need observed directional efficiency before Tail can re-enter the elevated band",
-        "Long-end yields remain a technology sensitivity",
-        "Hormuz disruption keeps geopolitical Stress high"
-      ],
-      "news": [
-        {
-          "title": "Hormuz traffic slows as uncertainty over waterway persists",
-          "url": "https://www.reuters.com/world/middle-east/hormuz-traffic-slows-uncertainty-over-waterway-persists-2026-08-19/",
-          "source": "Reuters"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-19T07:00:00Z",
-      "timeBerlin": "2026-08-19T09:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 96,
-      "confidencePct": 88,
-      "dominantMode": "mixed",
-      "analysis": "Tail remains WATCH into the core European session. A renewed block state would require actual one-way NQ structure or multiple fresh aligned amplifiers; event proximity and Tuesday's selloff alone are insufficient.",
-      "drivers": [
-        "European cash-session breadth and technology direction are conditional checks",
-        "No assumption of renewed one-way NQ structure",
-        "FOMC minutes remain the day's dominant later catalyst"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T08:00:00Z",
-      "timeBerlin": "2026-08-19T10:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 96,
-      "confidencePct": 88,
-      "dominantMode": "mixed",
-      "analysis": "Risk edges higher as U.S. participation approaches, but Tail remains below the block threshold. The key condition is whether yields, volatility and technology futures become jointly directional rather than merely elevated after Tuesday's selloff.",
-      "drivers": [
-        "Approaching U.S. premarket increases price-discovery relevance",
-        "Rates sensitivity remains elevated after Tuesday's bond move",
-        "Cross-asset alignment must be observed, not presumed"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T09:00:00Z",
-      "timeBerlin": "2026-08-19T11:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 96,
-      "confidencePct": 88,
-      "dominantMode": "mixed",
-      "analysis": "Late European trading is modeled as WATCH. Tail would increase only if U.S. premarket NQ shows persistent extension with weak retracement quality alongside renewed yield, volatility or semiconductor confirmation.",
-      "drivers": [
-        "U.S. premarket NQ structure becomes increasingly informative",
-        "Semiconductor follow-through is a conditional confirmation signal",
-        "Brent above $90 keeps inflation-sensitive Stress elevated"
-      ],
-      "news": [
-        {
-          "title": "Oil edges up on uncertainty over exports through Hormuz",
-          "url": "https://www.reuters.com/business/energy/oil-edges-up-uncertainty-over-exports-through-hormuz-2026-08-19/",
-          "source": "Reuters"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-19T10:00:00Z",
-      "timeBerlin": "2026-08-19T12:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 96,
-      "confidencePct": 88,
-      "dominantMode": "mixed",
-      "analysis": "Around midday Berlin, Tail remains WATCH unless U.S. premarket structure becomes persistently directional. A mixed handoff or meaningful retracements would argue for holding risk below the blocking threshold despite extreme Stress.",
-      "drivers": [
-        "U.S. premarket direction is a conditional structure checkpoint",
-        "Meaningful retracements would reduce Tail evidence",
-        "FOMC minutes keep later rates sensitivity elevated"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T11:00:00Z",
-      "timeBerlin": "2026-08-19T13:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 96,
-      "confidencePct": 88,
-      "dominantMode": "mixed",
-      "analysis": "The early U.S. premarket remains below the block threshold. Tail can rise if technology weakness re-aligns with higher yields, firmer volatility and poor retracement quality; otherwise Tuesday's damage remains a backdrop rather than a current kill path.",
-      "drivers": [
-        "Early U.S. premarket price structure",
-        "Conditional rates-volatility-technology alignment",
-        "Tuesday's semiconductor selloff remains relevant context"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T12:00:00Z",
-      "timeBerlin": "2026-08-19T14:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 23,
-      "stressRiskPct": 97,
-      "confidencePct": 88,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Risk rises ahead of U.S. cash participation and the EIA checkpoint. Tail remains WATCH because the upcoming events are catalysts rather than observed one-way structure; actual pre-open extension and retracement quality remain decisive.",
-      "drivers": [
-        "U.S. cash-open approach increases gap and auction sensitivity",
-        "EIA petroleum data is an upcoming oil-inflation checkpoint",
-        "Event proximity raises Stress more than Tail before outcomes are known"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T13:00:00Z",
-      "timeBerlin": "2026-08-19T15:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 23,
-      "stressRiskPct": 97,
-      "confidencePct": 88,
-      "dominantMode": "event/whipsaw",
-      "analysis": "The final pre-open hour is modeled as WATCH. A block would require actual opening-gap continuation, shallow pullbacks or aligned yields, volatility and semiconductor weakness; the FOMC minutes later in the day keep background Stress extreme.",
-      "drivers": [
-        "Final U.S. pre-open structure is a high-value checkpoint",
-        "Opening-gap continuation would raise conditional Tail",
-        "FOMC minutes later today preserve event sensitivity"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T14:00:00Z",
-      "timeBerlin": "2026-08-19T16:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 98,
-      "confidencePct": 88,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Early cash-session risk is near the block threshold. The 16:30 Berlin EIA release can move oil, yields and inflation expectations, but Tail remains WATCH unless opening price discovery itself becomes persistently one-way.",
-      "drivers": [
-        "Early U.S. cash-session price discovery",
-        "EIA petroleum report at 16:30 Berlin",
-        "Oil-to-rates transmission is a conditional amplifier"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T15:00:00Z",
-      "timeBerlin": "2026-08-19T17:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 98,
-      "confidencePct": 88,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Post-EIA risk remains high but below the block threshold unless the observed response creates aligned one-way NQ, yields and volatility behavior. Orderly price discovery or meaningful retracement would keep Tail contained.",
-      "drivers": [
-        "Post-EIA cross-asset response must be observed before raising Tail",
-        "Cash-session retracement quality",
-        "FOMC minutes remain the dominant later checkpoint"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T16:00:00Z",
-      "timeBerlin": "2026-08-19T18:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 98,
-      "confidencePct": 88,
-      "dominantMode": "event/whipsaw",
-      "analysis": "The hour before the FOMC-minutes window remains WATCH. Tail is held below 25% unless the cash session already shows persistent directional efficiency; event importance alone does not establish a kill path.",
-      "drivers": [
-        "Pre-FOMC positioning and cash-session structure",
-        "Observed retracement quality matters more than event importance alone",
-        "Rates sensitivity remains elevated"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T17:00:00Z",
-      "timeBerlin": "2026-08-19T19:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 99,
-      "confidencePct": 88,
-      "dominantMode": "event/whipsaw",
-      "analysis": "The final pre-minutes hour carries extreme Stress but remains WATCH. Conditional Tail rises only if pre-release price action is already one-way or if independent cross-asset amplifiers align before 20:00 Berlin.",
-      "drivers": [
-        "Final pre-FOMC positioning window",
-        "Conditional pre-release one-way structure",
-        "Bond-market sensitivity into the minutes"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T18:00:00Z",
-      "timeBerlin": "2026-08-19T20:00:00+02:00",
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 31,
-      "stressRiskPct": 99,
-      "confidencePct": 87,
-      "dominantMode": "event/whipsaw",
-      "analysis": "The FOMC-minutes hour is conditionally elevated because a rates-sensitive market can reprice through the release and subsequent bond reaction. The score does not assume the minutes' content or direction; actual NQ retracement quality and yield response remain decisive.",
-      "drivers": [
-        "FOMC minutes scheduled for 20:00 Berlin",
-        "Conditional rates-to-equity repricing after the release",
-        "Tuesday's yield-sensitive technology selloff raises second-leg sensitivity"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T19:00:00Z",
-      "timeBerlin": "2026-08-19T21:00:00+02:00",
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 32,
-      "stressRiskPct": 99,
-      "confidencePct": 87,
-      "dominantMode": "event/whipsaw",
-      "analysis": "The first post-minutes hour has the highest conditional Tail because bond-market interpretation can create a delayed equity second leg. Escalation depends on observed extension and failed retracements; orderly two-sided trading would invalidate the higher-risk path.",
-      "drivers": [
-        "Conditional delayed bond-to-equity second leg",
-        "Observed post-minutes retracement quality",
-        "Potential alignment of yields, volatility and technology breadth"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T20:00:00Z",
-      "timeBerlin": "2026-08-19T22:00:00+02:00",
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 30,
-      "stressRiskPct": 99,
-      "confidencePct": 87,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Closing-hour Tail remains conditionally elevated because the minutes may still be transmitting through yields and technology into the cash close. The elevated state requires actual persistent structure; clear retracement and cross-asset stabilization would argue for faster decay.",
-      "drivers": [
-        "Cash-close price discovery after the FOMC minutes",
-        "Conditional persistence of the rates-to-equity transmission",
-        "Meaningful retracement would invalidate the stronger Tail path"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T21:00:00Z",
-      "timeBerlin": "2026-08-19T23:00:00+02:00",
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 26,
-      "stressRiskPct": 96,
-      "confidencePct": 86,
-      "dominantMode": "event/whipsaw",
-      "analysis": "CME's daily maintenance interval reduces live futures price discovery. Tail is modeled lower than the cash-close window but remains conditionally elevated because unresolved post-minutes interpretation can carry into the reopening.",
-      "drivers": [
-        "CME daily maintenance reduces live futures evidence",
-        "Residual post-FOMC interpretation risk",
-        "Reopening gap risk remains conditional"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T22:00:00Z",
-      "timeBerlin": "2026-08-20T00:00:00+02:00",
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 27,
-      "stressRiskPct": 97,
-      "confidencePct": 86,
-      "dominantMode": "event/whipsaw",
-      "analysis": "The futures reopening is a conditional checkpoint for any delayed second leg from the minutes. Tail stays elevated only if the reopened NQ path shows persistent extension or poor retracement quality; orderly reopening would support decay.",
-      "drivers": [
-        "CME futures reopening after daily maintenance",
-        "Conditional delayed FOMC repricing",
-        "Reopening retracement quality"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-19T23:00:00Z",
-      "timeBerlin": "2026-08-20T01:00:00+02:00",
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 25,
-      "stressRiskPct": 95,
-      "confidencePct": 86,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Tail sits at the lower edge of the elevated band after reopening. Persistent one-way follow-through would preserve the block state; meaningful retracement, softer yields and calmer volatility would support a return to WATCH.",
-      "drivers": [
-        "Conditional post-reopen follow-through",
-        "Yield and volatility stabilization",
-        "Overnight retracement quality"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-20T00:00:00Z",
-      "timeBerlin": "2026-08-20T02:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 93,
-      "confidencePct": 86,
-      "dominantMode": "mixed",
-      "analysis": "The overnight profile conditionally returns to WATCH if the post-minutes path is two-sided. Residual event and geopolitical Stress remain high, while fresh persistent extension would invalidate this normalization path.",
-      "drivers": [
-        "Conditional two-sided overnight price discovery",
-        "Residual FOMC interpretation risk",
-        "Hormuz uncertainty remains a background Stress driver"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-20T01:00:00Z",
-      "timeBerlin": "2026-08-20T03:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 23,
-      "stressRiskPct": 92,
-      "confidencePct": 86,
-      "dominantMode": "mixed",
-      "analysis": "Conditional Tail continues to decay if meaningful retracements and cross-asset stabilization persist. The next scheduled U.S. data cluster later Thursday can re-elevate Stress, but no future release outcome is assumed.",
-      "drivers": [
-        "Conditional overnight stabilization",
-        "Thursday U.S. data remain future checkpoints",
-        "No assumption of future release outcomes"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-20T02:00:00Z",
-      "timeBerlin": "2026-08-20T04:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 91,
-      "confidencePct": 86,
-      "dominantMode": "mixed",
-      "analysis": "Late overnight risk remains WATCH under a stabilization scenario. A renewed one-way move would require reassessment, while absent such evidence the post-FOMC Tail profile continues to normalize despite elevated background Stress.",
-      "drivers": [
-        "Conditional late-overnight stabilization",
-        "Persistent one-way structure would invalidate the decay path",
-        "Background oil and geopolitical Stress remain elevated"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-20T03:00:00Z",
-      "timeBerlin": "2026-08-20T05:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 90,
-      "confidencePct": 86,
-      "dominantMode": "mixed",
-      "analysis": "The final forecast hour remains WATCH if overnight markets continue to retrace and stabilize. Tail would rise again only on observed renewed directional efficiency or fresh independent cross-asset amplification.",
-      "drivers": [
-        "Conditional overnight retracement and stabilization",
-        "Renewed directional efficiency would raise Tail",
-        "Thursday U.S. releases remain later event checkpoints"
-      ],
-      "news": []
-    }
+    {"ts":"2026-08-19T05:00:00Z","timeBerlin":"2026-08-19T07:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":20,"stressRiskPct":96,"confidencePct":89,"dominantMode":"mixed","analysis":"Overnight follow-through is modest: U.S. and European futures are only slightly softer while oil stays above $91 and long yields remain elevated. No fresh independent NQ bar evidence confirms renewed persistent one-way extension.","drivers":["Slightly softer U.S./European futures","Brent above $91","Elevated long-end sovereign yields","No fresh NQ failed-retracement evidence"],"news":[{"title":"Bond selloff slows but stocks wobble","url":"https://www.reuters.com/world/china/global-markets-global-markets-2026-08-19/","source":"Reuters"},{"title":"Oil extends climb on prolonged Hormuz export uncertainty","url":"https://www.reuters.com/business/energy/oil-edges-up-uncertainty-over-exports-through-hormuz-2026-08-19/","source":"Reuters"}]},
+    {"ts":"2026-08-19T06:00:00Z","timeBerlin":"2026-08-19T08:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":20,"stressRiskPct":95,"confidencePct":89,"dominantMode":"mixed","analysis":"Asian technology weakness and high long-end yields keep Stress extreme. Tail stays in WATCH unless fresh NQ structure shows sustained extension with shallow or failed retracements.","drivers":["Asian technology weakness","High long-end yields","Hormuz export uncertainty"],"news":[{"title":"Oil extends climb on prolonged Hormuz export uncertainty","url":"https://www.reuters.com/business/energy/oil-edges-up-uncertainty-over-exports-through-hormuz-2026-08-19/","source":"Reuters"}]},
+    {"ts":"2026-08-19T07:00:00Z","timeBerlin":"2026-08-19T09:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":20,"stressRiskPct":95,"confidencePct":89,"dominantMode":"mixed","analysis":"European price discovery is the next checkpoint. Existing macro and geopolitical stress persists, but future NQ directional efficiency remains unobserved and is treated conditionally.","drivers":["European cash-session price discovery","Oil and sovereign-yield pressure"],"news":[{"title":"Bond selloff slows but stocks wobble","url":"https://www.reuters.com/world/china/global-markets-global-markets-2026-08-19/","source":"Reuters"}]},
+    {"ts":"2026-08-19T08:00:00Z","timeBerlin":"2026-08-19T10:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":20,"stressRiskPct":94,"confidencePct":89,"dominantMode":"mixed","analysis":"Cross-asset pressure remains elevated into the European morning. Tail remains sub-block unless live NQ evidence develops persistent one-way structure rather than ordinary volatility.","drivers":["European cross-asset confirmation check","No assumed future NQ continuation"],"news":[]},
+    {"ts":"2026-08-19T09:00:00Z","timeBerlin":"2026-08-19T11:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":20,"stressRiskPct":94,"confidencePct":88,"dominantMode":"mixed","analysis":"Approaching the U.S. premarket, oil above $90 and elevated sovereign yields remain valuation headwinds. Tail requires fresh confirmation from the actual NQ path, not backdrop alone.","drivers":["U.S. premarket transition","Oil above $90","Elevated Treasury yields"],"news":[{"title":"Trump says no talks planned with Iran, Tehran says Strait of Hormuz still shut","url":"https://www.reuters.com/world/middle-east/trump-says-no-talks-planned-with-iran-tehran-says-strait-hormuz-still-shut-2026-08-18/","source":"Reuters"}]},
+    {"ts":"2026-08-19T10:00:00Z","timeBerlin":"2026-08-19T12:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":20,"stressRiskPct":94,"confidencePct":88,"dominantMode":"mixed","analysis":"The U.S. premarket transition can increase directional sensitivity after Tuesday's tech selloff. Without observed failed retracements, the forecast remains WATCH rather than a block.","drivers":["U.S. premarket liquidity","Tuesday technology selloff remains backdrop"],"news":[]},
+    {"ts":"2026-08-19T11:00:00Z","timeBerlin":"2026-08-19T13:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":21,"stressRiskPct":94,"confidencePct":88,"dominantMode":"event/whipsaw","analysis":"Early U.S. premarket liquidity is a conditional checkpoint. Persistent technology weakness could raise Tail, while orderly retracements would support continued WATCH conditions.","drivers":["Premarket breadth and semiconductor confirmation","NQ retracement quality"],"news":[]},
+    {"ts":"2026-08-19T12:00:00Z","timeBerlin":"2026-08-19T14:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":21,"stressRiskPct":95,"confidencePct":88,"dominantMode":"event/whipsaw","analysis":"Premarket participation and rates transmission become more informative. Tail stays conditional on whether NQ holds directional extremes and rejects meaningful pullbacks.","drivers":["Rates-to-growth-stock transmission","Premarket NQ extreme-holding check"],"news":[]},
+    {"ts":"2026-08-19T13:00:00Z","timeBerlin":"2026-08-19T15:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":22,"stressRiskPct":95,"confidencePct":88,"dominantMode":"event/whipsaw","analysis":"The U.S. cash-open hour begins at 15:30 Berlin. Opening-auction continuation would raise Tail, while two-sided price discovery and meaningful retracements would argue for lower risk.","drivers":["15:30 Berlin U.S. cash open","Opening-auction continuation versus retracement"],"news":[]},
+    {"ts":"2026-08-19T14:00:00Z","timeBerlin":"2026-08-19T16:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":23,"stressRiskPct":96,"confidencePct":88,"dominantMode":"event/whipsaw","analysis":"EIA petroleum data arrive at 16:30 Berlin amid already elevated oil prices and Hormuz uncertainty. The event primarily raises Stress unless rates and NQ develop persistent aligned continuation.","drivers":["16:30 Berlin EIA petroleum report","Hormuz supply uncertainty","Oil-to-yields transmission"],"news":[]},
+    {"ts":"2026-08-19T15:00:00Z","timeBerlin":"2026-08-19T17:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":22,"stressRiskPct":95,"confidencePct":88,"dominantMode":"mixed","analysis":"Post-EIA interpretation is conditional. Stable oil, easing yields, or balanced NQ price discovery would reduce directional risk; renewed cross-asset alignment would keep Tail elevated.","drivers":["Post-EIA oil and yield response","NQ retracement quality"],"news":[]},
+    {"ts":"2026-08-19T16:00:00Z","timeBerlin":"2026-08-19T18:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":22,"stressRiskPct":95,"confidencePct":88,"dominantMode":"mixed","analysis":"Mid-session conditions are expected to depend on actual retracement quality. The forecast does not assume that Tuesday's technology weakness continues without fresh confirmation.","drivers":["Mid-session price-path confirmation","Technology and semiconductor breadth"],"news":[]},
+    {"ts":"2026-08-19T17:00:00Z","timeBerlin":"2026-08-19T19:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":24,"stressRiskPct":97,"confidencePct":88,"dominantMode":"event/whipsaw","analysis":"FOMC proximity begins to dominate. Tail rises to the top of WATCH because rates are already stressed and a later multi-stage policy interpretation remains a credible conditional mechanism.","drivers":["FOMC proximity","Elevated long-end yields","Potential multi-stage policy repricing"],"news":[]},
+    {"ts":"2026-08-19T18:00:00Z","timeBerlin":"2026-08-19T20:00:00+02:00","status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":31,"stressRiskPct":99,"confidencePct":89,"dominantMode":"event/whipsaw","analysis":"FOMC minutes are scheduled for 20:00 Berlin. Tail moves into the elevated band because rates-to-equity repricing can be multi-stage; direction and persistence remain unobserved until the release.","drivers":["20:00 Berlin FOMC minutes","Rates-to-equity repricing risk","Conditional delayed second leg"],"news":[]},
+    {"ts":"2026-08-19T19:00:00Z","timeBerlin":"2026-08-19T21:00:00+02:00","status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":32,"stressRiskPct":99,"confidencePct":89,"dominantMode":"event/whipsaw","analysis":"The first post-minutes hour carries the highest conditional Tail. Bond-market reaction, NQ retracement quality, semiconductors and volatility must be assessed for a delayed second leg.","drivers":["Post-FOMC bond reaction","NQ failed-retracement check","Semiconductor and volatility confirmation"],"news":[]},
+    {"ts":"2026-08-19T20:00:00Z","timeBerlin":"2026-08-19T22:00:00+02:00","status":"orange","action":"BLOCK_NEW_BASE_ENTRIES","tailRiskPct":29,"stressRiskPct":99,"confidencePct":89,"dominantMode":"event/whipsaw","analysis":"The cash-close hour remains conditionally elevated. Persistent post-minutes rate and equity alignment would sustain the block state; orderly retracement and stabilization would lower it.","drivers":["U.S. cash-close price discovery","Post-FOMC persistence versus mean reversion"],"news":[]},
+    {"ts":"2026-08-19T21:00:00Z","timeBerlin":"2026-08-19T23:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":23,"stressRiskPct":98,"confidencePct":88,"dominantMode":"event/whipsaw","analysis":"CME equity-index maintenance reduces live price discovery. Tail falls to WATCH because new path evidence is unavailable, while residual post-FOMC Stress remains high.","drivers":["CME equity-index maintenance","Residual post-FOMC stress"],"news":[]},
+    {"ts":"2026-08-19T22:00:00Z","timeBerlin":"2026-08-20T00:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":24,"stressRiskPct":98,"confidencePct":88,"dominantMode":"event/whipsaw","analysis":"Futures reopen after maintenance. Tail returns to the top of WATCH pending whether post-FOMC price discovery resumes directionally or shows meaningful mean reversion.","drivers":["Futures reopening after maintenance","Post-FOMC retracement quality"],"news":[]},
+    {"ts":"2026-08-19T23:00:00Z","timeBerlin":"2026-08-20T01:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":23,"stressRiskPct":97,"confidencePct":88,"dominantMode":"mixed","analysis":"Late-evening futures trade is conditional on the quality of the reopening. Two-sided trade would support gradual Tail decay; renewed extension would delay normalization.","drivers":["Late-evening NQ structure","Cross-asset stabilization check"],"news":[]},
+    {"ts":"2026-08-20T00:00:00Z","timeBerlin":"2026-08-20T02:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":22,"stressRiskPct":97,"confidencePct":88,"dominantMode":"mixed","analysis":"Overnight risk remains elevated but should decay if yields, oil and NQ stabilize. No future directional continuation is assumed.","drivers":["Overnight rates and oil stabilization","Conditional Tail decay"],"news":[]},
+    {"ts":"2026-08-20T01:00:00Z","timeBerlin":"2026-08-20T03:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":21,"stressRiskPct":96,"confidencePct":88,"dominantMode":"mixed","analysis":"Asia-opening conditions become the next cross-market checkpoint. Tail stays WATCH unless technology weakness and rates pressure re-align with persistent NQ extension.","drivers":["Asia-opening technology breadth","NQ directional-efficiency check"],"news":[]},
+    {"ts":"2026-08-20T02:00:00Z","timeBerlin":"2026-08-20T04:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":20,"stressRiskPct":95,"confidencePct":88,"dominantMode":"mixed","analysis":"Deeper overnight trade is modeled with lower Tail if no renewed one-way price path emerges. Stress remains high because rates and energy risks can re-amplify quickly.","drivers":["Overnight mean-reversion quality","Residual rates and energy stress"],"news":[]},
+    {"ts":"2026-08-20T03:00:00Z","timeBerlin":"2026-08-20T05:00:00+02:00","status":"yellow","action":"WATCH","tailRiskPct":20,"stressRiskPct":95,"confidencePct":88,"dominantMode":"mixed","analysis":"Approaching the Asian morning, Tail remains WATCH under a stabilization scenario. A renewed gap or extreme-holding pattern would invalidate that decay path.","drivers":["Asian morning gap and extreme-holding check","Conditional stabilization path"],"news":[]},
+    {"ts":"2026-08-20T04:00:00Z","timeBerlin":"2026-08-20T06:00:00+02:00","status":"green","action":"EA_ON","tailRiskPct":19,"stressRiskPct":94,"confidencePct":88,"dominantMode":"mixed","analysis":"By the end of the 24-hour horizon, Tail returns to low only if post-FOMC trade has remained orderly and cross-asset pressure has not re-aligned into persistent Nasdaq continuation.","drivers":["24-hour post-FOMC stabilization checkpoint","Cross-asset re-alignment risk"],"news":[]}
   ],
   "forecastDetail": [
-    {
-      "ts": "2026-08-19T04:00:00Z",
-      "timeBerlin": "2026-08-19T06:00:00+02:00",
-      "status": "yellow",
-      "tailRiskPct": 21,
-      "stressRiskPct": 96,
-      "comment": "Overnight equity follow-through is limited; oil and Hormuz risk keep Stress extreme without fresh persistent NQ extension."
-    },
-    {
-      "ts": "2026-08-19T05:00:00Z",
-      "timeBerlin": "2026-08-19T07:00:00+02:00",
-      "status": "yellow",
-      "tailRiskPct": 21,
-      "stressRiskPct": 96,
-      "comment": "Early Europe remains a continuation checkpoint, but current evidence does not justify assuming renewed one-way structure."
-    },
-    {
-      "ts": "2026-08-19T06:00:00Z",
-      "timeBerlin": "2026-08-19T08:00:00+02:00",
-      "status": "yellow",
-      "tailRiskPct": 21,
-      "stressRiskPct": 96,
-      "comment": "Tail stays below the block threshold unless failed retracements or synchronized cross-asset weakness emerge."
-    },
-    {
-      "ts": "2026-08-19T07:00:00Z",
-      "timeBerlin": "2026-08-19T09:00:00+02:00",
-      "status": "yellow",
-      "tailRiskPct": 21,
-      "stressRiskPct": 96,
-      "comment": "European-session breadth and technology direction remain conditional checks; FOMC minutes dominate later risk."
-    },
-    {
-      "ts": "2026-08-19T08:00:00Z",
-      "timeBerlin": "2026-08-19T10:00:00+02:00",
-      "status": "yellow",
-      "tailRiskPct": 22,
-      "stressRiskPct": 96,
-      "comment": "Risk edges higher toward U.S. participation, but a block still requires observed aligned directional structure."
-    },
-    {
-      "ts": "2026-08-19T09:00:00Z",
-      "timeBerlin": "2026-08-19T11:00:00+02:00",
-      "status": "yellow",
-      "tailRiskPct": 22,
-      "stressRiskPct": 96,
-      "comment": "U.S. premarket NQ structure and semiconductor follow-through become more informative while oil keeps Stress elevated."
-    }
+    {"ts":"2026-08-19T05:00:00Z","timeBerlin":"2026-08-19T07:00:00+02:00","status":"yellow","tailRiskPct":20,"stressRiskPct":96,"comment":"Overnight follow-through is modest: U.S. and European futures are only slightly softer while oil stays above $91 and long yields remain elevated. No fresh independent NQ bar evidence confirms renewed persistent one-way extension."},
+    {"ts":"2026-08-19T06:00:00Z","timeBerlin":"2026-08-19T08:00:00+02:00","status":"yellow","tailRiskPct":20,"stressRiskPct":95,"comment":"Asian technology weakness and high long-end yields keep Stress extreme. Tail stays in WATCH unless fresh NQ structure shows sustained extension with shallow or failed retracements."},
+    {"ts":"2026-08-19T07:00:00Z","timeBerlin":"2026-08-19T09:00:00+02:00","status":"yellow","tailRiskPct":20,"stressRiskPct":95,"comment":"European price discovery is the next checkpoint. Existing macro and geopolitical stress persists, but future NQ directional efficiency remains unobserved and is treated conditionally."},
+    {"ts":"2026-08-19T08:00:00Z","timeBerlin":"2026-08-19T10:00:00+02:00","status":"yellow","tailRiskPct":20,"stressRiskPct":94,"comment":"Cross-asset pressure remains elevated into the European morning. Tail remains sub-block unless live NQ evidence develops persistent one-way structure rather than ordinary volatility."},
+    {"ts":"2026-08-19T09:00:00Z","timeBerlin":"2026-08-19T11:00:00+02:00","status":"yellow","tailRiskPct":20,"stressRiskPct":94,"comment":"Approaching the U.S. premarket, oil above $90 and elevated sovereign yields remain valuation headwinds. Tail requires fresh confirmation from the actual NQ path, not backdrop alone."},
+    {"ts":"2026-08-19T10:00:00Z","timeBerlin":"2026-08-19T12:00:00+02:00","status":"yellow","tailRiskPct":20,"stressRiskPct":94,"comment":"The U.S. premarket transition can increase directional sensitivity after Tuesday's tech selloff. Without observed failed retracements, the forecast remains WATCH rather than a block."}
   ],
   "events": [
-    {
-      "name": "EIA Weekly Petroleum Status Report",
-      "ts": "2026-08-19T14:30:00Z",
-      "timeBerlin": "2026-08-19T16:30:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "FOMC Minutes — July 28-29 meeting",
-      "ts": "2026-08-19T18:00:00Z",
-      "timeBerlin": "2026-08-19T20:00:00+02:00",
-      "impact": "high"
-    },
-    {
-      "name": "Initial Jobless Claims",
-      "ts": "2026-08-20T12:30:00Z",
-      "timeBerlin": "2026-08-20T14:30:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "Philadelphia Fed Manufacturing Business Outlook Survey",
-      "ts": "2026-08-20T12:30:00Z",
-      "timeBerlin": "2026-08-20T14:30:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "Conference Board U.S. Leading Economic Index",
-      "ts": "2026-08-20T14:00:00Z",
-      "timeBerlin": "2026-08-20T16:00:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "Advance Services Report — Second Quarter 2026",
-      "ts": "2026-08-20T14:00:00Z",
-      "timeBerlin": "2026-08-20T16:00:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "State Employment and Unemployment — July 2026",
-      "ts": "2026-08-21T14:00:00Z",
-      "timeBerlin": "2026-08-21T16:00:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "New Residential Sales — July 2026",
-      "ts": "2026-08-25T14:00:00Z",
-      "timeBerlin": "2026-08-25T16:00:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "Conference Board Consumer Confidence",
-      "ts": "2026-08-25T14:00:00Z",
-      "timeBerlin": "2026-08-25T16:00:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "Richmond Fed Manufacturing Survey",
-      "ts": "2026-08-25T14:00:00Z",
-      "timeBerlin": "2026-08-25T16:00:00+02:00",
-      "impact": "medium"
-    }
+    {"name":"EIA Weekly Petroleum Status Report","ts":"2026-08-19T14:30:00Z","timeBerlin":"2026-08-19T16:30:00+02:00","impact":"medium"},
+    {"name":"FOMC Minutes — July 28-29 meeting","ts":"2026-08-19T18:00:00Z","timeBerlin":"2026-08-19T20:00:00+02:00","impact":"high"},
+    {"name":"Initial Jobless Claims","ts":"2026-08-20T12:30:00Z","timeBerlin":"2026-08-20T14:30:00+02:00","impact":"medium"},
+    {"name":"Philadelphia Fed Manufacturing Business Outlook Survey","ts":"2026-08-20T12:30:00Z","timeBerlin":"2026-08-20T14:30:00+02:00","impact":"medium"}
   ]
 }
