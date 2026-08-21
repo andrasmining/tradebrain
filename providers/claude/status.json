@@ -3,23 +3,23 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-08-21T01:19:19Z",
+  "generatedAt": "2026-08-21T01:34:51Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "green",
-  "statusText": "Mapped policy state: EA_ON (green). Tail risk is low at 12% while stress is elevated at 60% after a four-session Nasdaq-100 drawdown driven by long-end Treasury yields and an energy-price shock.",
-  "recommendation": "Tail remains well below the block threshold, so the deterministic mapping resolves to EA_ON for both NQ futures and the NAS100 CFD. Concentrated conditional risk is assessed around the 13:30 UTC cash open with the 13:45 UTC S&P Global flash PMI, and most of all around the monthly options-expiration close, which is published as the narrow danger window at 19:00-20:00 UTC. Existing-position management and emergency protection remain unaffected by this mapping.",
-  "headline": "Nasdaq-100 grinds to a fourth lower close on long-end yield stress, but intraday retracements and a 16 VIX keep mean reversion intact",
-  "body": "The Nasdaq-100 closed at 29,213.17 on 20 August, down 0.72% and roughly 2.8% on the week, its fourth consecutive lower close. The decline has been a grind rather than a rout: the 20 August session opened at 29,295.15, traded a 260-point range between 29,378.80 and 29,118.33, and closed about 95 points off the low, so retracements have remained available on every day of the drawdown. The driver is the long end of the Treasury curve. The 30-year yield reached its highest level in nearly two decades on 18 August and finished 20 August above 5.25%, while the 10-year rose about four basis points to roughly 4.69% after the relief from the Treasury's buyback intervention proved short-lived. July FOMC minutes released 19 August were hawkish, with three voting members dissenting in favour of a quarter-point increase. A second channel is energy: crude rose roughly 3% on 20 August, taking Brent above $93 and WTI above $86, after US statements on economic pressure against Iran. Walmart fell more than 9% on slowing comparable sales, adding a consumer-demand signal. Against that, the evidence for a mean-reversion failure is thin. The VIX closed at 16.01, low in absolute terms despite a 7.5% rise. Latest-session internals are split rather than aligned, with semiconductors firm and seven of eight tracked megacaps lower. Overnight, NQ futures hold a narrow range of roughly 0.31% with a modest positive drift, VIX futures are slightly lower and crude has given back a fraction of Thursday's gain. That combination supports low tail risk with elevated stress. Today's scheduled catalyst is the medium-impact S&P Global flash PMI at 13:45 UTC, shortly after the cash open; the more relevant structural feature is the monthly options expiration settling into the 20:00 UTC close, which is the one interval where hedging flow could plausibly suppress retracements.",
+  "statusText": "Mapped policy state: EA_ON (green). Tail risk is low at 12% while stress is elevated at 59%, reflecting a fourth consecutive Nasdaq-100 lower close driven by long-end Treasury yields and an energy-price shock, against an overnight futures range that has stayed contained and two-sided.",
+  "recommendation": "Tail remains well below the block threshold, so the deterministic mapping resolves to EA_ON for both NQ futures and the NAS100 CFD. Conditional risk is concentrated around the 13:30 UTC cash open with the 13:45 UTC S&P Global flash PMI, and most of all around the monthly options-expiration settlement into the 20:00 UTC cash close, which is published as the narrow danger window at 19:00-20:00 UTC. Both of those hours map to WATCH in the forecast rather than to a block. Existing-position management and emergency protection are unaffected by this mapping.",
+  "headline": "Nasdaq-100 posts a fourth lower close on long-end yield stress and an oil shock, while a contained overnight range keeps mean reversion intact",
+  "body": "The Nasdaq-100 closed at 29,213.17 on 20 August, down 0.72% and roughly 2.8% on the week, its fourth consecutive lower close. The decline has been a grind rather than a rout: the session traded a 261-point range between 29,378.81 and 29,118.07 and closed about 95 points off the low, so retracements have remained available on every day of the drawdown. The driver is the long end of the Treasury curve. The 30-year yield closed at 5.250% and the 10-year at 4.699%, both recovering the decline that followed the Treasury's announcement that it would more than double buybacks of 10-, 20- and 30-year debt, and both sitting near the highest levels of this cycle after minutes from the last Federal Reserve meeting read more hawkish than expected. The second pressure source is energy: Brent settled 2.4% higher at $93.78 and WTI 2.3% higher at $87.83, the highest settlements since 24 July, as the United States announced a maximum economic pressure campaign against Iran while Strait of Hormuz shipping remains restricted. Crude is up roughly 6% on the week. Cross-asset internals are conflicted rather than aligned: megacaps closed with seven of eight names lower and a mean decline near 0.9%, while semiconductors were mixed to higher, and the VIX rose 7.5% to 16.01, an elevated daily move from a historically low absolute level. Current overnight evidence is stabilising. NQ futures traded at 29,331.75, up 0.11%, inside a contained 91-point band between 29,274.25 and 29,365.50 as of 00:35 UTC, with volatility futures slightly lower and crude easing modestly. There is no observed persistent directional efficiency, no repeated extension after failed retracements, and no holding near session extremes, which is why tail risk is scored low at 12% while stress remains elevated at 59%. The session ahead concentrates conditional risk in two windows: the 13:30 UTC cash open together with the 13:45 UTC S&P Global flash PMI, and the 19:00-20:00 UTC hour, when monthly expiration flow settles into the cash close alongside weekend risk reduction. CME equity index futures halt for the weekend at 21:00 UTC.",
   "tailRiskPct": 12,
   "tailLevel": "low",
-  "stressRiskPct": 60,
+  "stressRiskPct": 59,
   "stressLevel": "elevated",
   "dominantMode": "mixed",
-  "confidencePct": 82,
+  "confidencePct": 83,
   "confidenceLevel": "high",
   "action": "EA_ON",
   "dangerWindow": {
@@ -32,31 +32,31 @@
   },
   "sources": [
     {
-      "title": "Nasdaq 100 Historical Data (daily OHLC, 17-20 Aug 2026)",
-      "url": "https://www.investing.com/indices/nq-100-historical-data"
+      "title": "Nasdaq 100 index quote and daily range (20 Aug 2026)",
+      "url": "https://www.investing.com/indices/nq-100"
+    },
+    {
+      "title": "Nasdaq 100 futures (NQ=F) overnight quote and range",
+      "url": "https://finance.yahoo.com/quote/NQ%3DF/"
     },
     {
       "title": "Stock market today: Dow, S&P 500, Nasdaq slide as bond relief evaporates (20 Aug 2026)",
       "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-20-dow-sp-500-nasdaq-081139322.html"
     },
     {
-      "title": "Federal Reserve H.15 Selected Interest Rates",
-      "url": "https://www.federalreserve.gov/releases/h15/"
-    },
-    {
-      "title": "CBOE Volatility Index (VIX) quote",
-      "url": "https://www.investing.com/indices/volatility-s-p-500"
+      "title": "US 30-Year Treasury bond yield",
+      "url": "https://www.investing.com/rates-bonds/u.s.-30-year-bond-yield"
     },
     {
       "title": "United States Economic Calendar",
       "url": "https://tradingeconomics.com/united-states/calendar"
     },
     {
-      "title": "Bureau of Economic Analysis release schedule",
-      "url": "https://www.bea.gov/news/schedule"
+      "title": "Crude oil (WTI and Brent) prices and market context",
+      "url": "https://tradingeconomics.com/commodity/crude-oil"
     }
   ],
-  "lookbackSummary": "No published Claude assessment exists for any of the 24 preceding clock-hours. The most recent Claude snapshot in this repository is dated 2026-08-17T14:33:11Z, so the entire lookback window falls inside a provider publication gap and every slot is marked unavailable with null assessment fields. Past opinions are not reconstructed from later information. For context established from independent research rather than from provider history, the Nasdaq-100 fell on each of 17, 18, 19 and 20 August, with the largest single-day decline of 1.68% on 18 August.",
+  "lookbackSummary": "No published Claude assessment exists for any of the 24 preceding clock-hours, so every slot is marked unavailable with null assessment fields and no past opinion is reconstructed from later information. The most recent finalised Claude history entry before this window is dated 2026-08-17T14:33:11Z. For context established from independent research rather than from provider history, the Nasdaq-100 declined on each of 17, 18, 19 and 20 August, with the 20 August session trading a 261-point range and closing about 95 points above its low.",
   "lookback": [
     {
       "ts": "2026-08-20T01:00:00Z",
@@ -323,7 +323,7 @@
       "dominantMode": null
     }
   ],
-  "outlookSummary": "The 24-hour horizon runs from the current Asian hours through a full European and US session and ends inside the weekend closure. Asian and early European hours are scored at low tail risk on contained overnight ranges. Conditional risk rises through the European flash PMI block and then to watch level for the 13:30 UTC US cash open and the 13:45 UTC S&P Global flash PMI, where two-way repricing is the base case. The single highest forecast tail score falls on the 19:00-20:00 UTC hour, when the monthly options expiration settles into the US cash close and hedging flow could plausibly suppress retracements; that hour is published as the danger window. CME equity index futures close for the week at 21:00 UTC, so the final three forecast hours carry no tradable price path and tail risk falls to its floor, leaving weekend gap exposure as the residual. Beyond this horizon, the concentrated cluster is 26 August, when the second estimate of Q2 GDP and the July Core PCE price index are both released at 12:30 UTC.",
+  "outlookSummary": "The 24-hour horizon runs from the current Asian hours through a full European and US session and ends inside the weekend closure. Asian and early European hours are scored at low tail risk on the contained overnight range. Conditional risk rises through the European morning and reaches watch level for the 13:30 UTC US cash open and the 13:45 UTC S&P Global flash PMI, where two-way repricing is the base case. The highest forecast tail score falls on the 19:00-20:00 UTC hour, when monthly options expiration settles into the US cash close alongside weekend risk reduction with an unresolved US-Iran energy escalation in the background; that hour is published as the danger window. CME equity index futures halt for the weekend at 21:00 UTC, so the final three slots describe an untradable market with minimal tail risk and residual weekend gap exposure.",
   "forecast": [
     {
       "ts": "2026-08-21T01:00:00Z",
@@ -331,15 +331,15 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 12,
-      "stressRiskPct": 60,
-      "confidencePct": 82,
+      "stressRiskPct": 59,
+      "confidencePct": 83,
       "dominantMode": "mixed",
-      "analysis": "Observed now: NQ futures hold a narrow overnight range of roughly 0.3% with a modest positive drift after the Nasdaq-100 closed at 29,213.17 on 20 Aug, a fourth straight lower close. Two-way overnight trade and a 16.01 VIX close leave mean reversion intact, while long-end yield stress keeps stress elevated.",
+      "analysis": "Observed now: NQ futures near 29,332 (+0.11%) inside a contained roughly 91-point overnight band of 29,274-29,366, after the cash index closed at 29,213.17, down 0.72%. Two-way movement and available retracements keep mean reversion intact despite a fourth consecutive lower close.",
       "drivers": [
-        "Nasdaq-100 closed 29,213.17 on 20 Aug, -0.72%, fourth consecutive lower close",
-        "Overnight NQ futures range about 0.31% wide with a modest positive drift",
-        "30-year yield above 5.25% and 10-year near 4.69% after Treasury buyback relief faded",
-        "Brent above $93 and WTI above $86 on US-Iran escalation headlines"
+        "NQ futures +0.11%, overnight range 29,274-29,366 as of 00:35 UTC",
+        "Nasdaq-100 closed 29,213.17 on 20 Aug, fourth straight lower close",
+        "VIX 16.01 after a 7.5% daily rise, still historically contained",
+        "30-year yield 5.25% and 10-year 4.70% remain the primary equity headwind"
       ],
       "news": [
         {
@@ -348,9 +348,9 @@
           "source": "Yahoo Finance"
         },
         {
-          "title": "Oil prices rise after Treasury Secretary says U.S. will collapse Iran with economic pressure",
-          "url": "https://www.cnbc.com/2026/08/20/oil-prices-brent-wti-hormuz-trump.html",
-          "source": "CNBC"
+          "title": "Iran dismisses Trump's 'economic D-Day' as distraction from America's fiscal problems",
+          "url": "https://www.foxnews.com/live-news/iran-war-trump-economic-warfare-strait-hormuz-08-20-26",
+          "source": "Fox News"
         }
       ]
     },
@@ -360,37 +360,31 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 12,
-      "stressRiskPct": 59,
-      "confidencePct": 81,
+      "stressRiskPct": 58,
+      "confidencePct": 82,
       "dominantMode": "mixed",
-      "analysis": "Asian-hours liquidity remains thin and the prior session's rotation, with semiconductors firm against broadly weaker megacaps, argues against uniform directional alignment. Conditional risk for this hour stays low unless the contained overnight range is decisively broken and extension follows without a retracement.",
+      "analysis": "Deep Asian hours normally carry the thinnest index-futures participation. Scores hold near the current reading on the assumption that the overnight band persists. A sustained break of 29,274-29,366 without a retracement would be the first structural change; that is a checkpoint, not an observation.",
       "drivers": [
-        "Thin Asian-hours liquidity typically favours range behaviour over persistent extension",
-        "Latest-session internals split: semiconductors firm, seven of eight megacaps lower",
-        "Invalidation checkpoint: a decisive break of the overnight range with no pullback"
+        "Thin Asia-hours liquidity typically compresses ranges absent new headlines",
+        "Overnight band 29,274-29,366 is the reference level for any breakout check",
+        "Treasury futures little changed overnight, 30-year contract -0.14% latest session"
       ],
-      "news": [
-        {
-          "title": "Stock market today: Dow, S&P 500, Nasdaq slide as bond relief evaporates, Walmart stock takes a hit",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-20-dow-sp-500-nasdaq-081139322.html",
-          "source": "Yahoo Finance"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-21T03:00:00Z",
       "timeBerlin": "2026-08-21T05:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 11,
-      "stressRiskPct": 58,
-      "confidencePct": 80,
+      "tailRiskPct": 12,
+      "stressRiskPct": 57,
+      "confidencePct": 82,
       "dominantMode": "normal",
-      "analysis": "Mid-Asian session. No scheduled US macro release falls in this hour, so the conditional path is dominated by carry-over positioning rather than fresh information. Absent a new geopolitical headline, contained two-way trade is the assumed base case and tail risk is scored at the lower end.",
+      "analysis": "Conditional path stays quiet through the Asian afternoon. Stress eases marginally because the 20 August cross-asset shock is a day old and overnight volatility futures are slightly lower, while Tail stays low as long as any move remains two-sided.",
       "drivers": [
-        "No scheduled US macro release inside this clock-hour",
-        "Assumption: carry-over positioning dominates in the absence of new headlines",
-        "Unresolved US-Iran energy escalation remains the main headline-gap channel"
+        "Volatility futures modestly lower overnight, no expansion signal so far",
+        "No scheduled US macro release in this hour",
+        "Weekly Nasdaq-100 drawdown of roughly 2.8% is the backdrop, not a live path"
       ],
       "news": []
     },
@@ -399,21 +393,21 @@
       "timeBerlin": "2026-08-21T06:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 11,
+      "tailRiskPct": 12,
       "stressRiskPct": 57,
-      "confidencePct": 79,
+      "confidencePct": 81,
       "dominantMode": "normal",
-      "analysis": "Late Asian trade. Crude gave back a fraction of Thursday's roughly 3% advance overnight, which slightly reduces the energy-driven pressure channel into Europe. Conditional risk stays low; a renewed oil impulse would be the first amplifier to watch rather than an observed condition.",
+      "analysis": "Late Asian trade is scored as an orderly continuation of the overnight range. Energy remains the key cross-asset swing factor: WTI near $86.7 after a 2.3% settlement gain, so a fresh escalation headline would raise Stress first and Tail only if it produced one-way index follow-through.",
       "drivers": [
-        "Crude eased modestly overnight after Thursday's roughly 3% advance",
-        "Conditional amplifier: a renewed oil impulse alongside equity weakness",
-        "Treasury futures little changed overnight, with the long end marginally heavy"
+        "WTI near $86.7 and Brent near $93.8, highest settlements since 24 July",
+        "Hormuz shipping reported unchanged as of Wednesday, no new discontinuity",
+        "Energy headlines raise Stress before they raise Tail"
       ],
       "news": [
         {
-          "title": "Oil prices rise after Treasury Secretary says U.S. will collapse Iran with economic pressure",
-          "url": "https://www.cnbc.com/2026/08/20/oil-prices-brent-wti-hormuz-trump.html",
-          "source": "CNBC"
+          "title": "Iran dismisses Trump's 'economic D-Day' as distraction from America's fiscal problems",
+          "url": "https://www.foxnews.com/live-news/iran-war-trump-economic-warfare-strait-hormuz-08-20-26",
+          "source": "Fox News"
         }
       ]
     },
@@ -422,15 +416,15 @@
       "timeBerlin": "2026-08-21T07:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 12,
-      "stressRiskPct": 57,
-      "confidencePct": 78,
+      "tailRiskPct": 13,
+      "stressRiskPct": 58,
+      "confidencePct": 81,
       "dominantMode": "normal",
-      "analysis": "Asian close into the European pre-market. Positioning ahead of a global flash PMI day tends to compress ranges in this hour. The conditional path assumes continued containment; persistent one-way extension has not been observed and would need to appear before tail risk is re-rated higher.",
+      "analysis": "The hour ahead of the Tokyo close usually brings the first liquidity pickup of the session. Tail is nudged up by one point for the transition, which remains well below the block threshold and assumes only a normal handover, not observed directional efficiency.",
       "drivers": [
-        "Flash PMI day across Europe and the US compresses pre-positioning ranges",
-        "No observed one-way structure to date; extension would be a re-rating trigger",
-        "Weekly Nasdaq-100 drawdown of roughly 2.8% keeps stress elevated"
+        "Asian cash close approaching, first liquidity pickup of the day",
+        "Handover risk is a transition effect, not evidence of trend persistence",
+        "Mapped policy state stays EA_ON at this forecast Tail"
       ],
       "news": []
     },
@@ -441,42 +435,36 @@
       "action": "EA_ON",
       "tailRiskPct": 13,
       "stressRiskPct": 58,
-      "confidencePct": 77,
-      "dominantMode": "mixed",
-      "analysis": "European pre-market. Attention shifts to the first flash PMI prints in Europe. Conditional risk edges up modestly because a cross-asset repricing in bunds and gilts can transmit to US index futures, though nothing of that kind has been observed at this assessment cutoff.",
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Tokyo cash markets close in this window while European futures desks begin to price the session. Conditional risk stays low; the working assumption is a range handover rather than a directional gap, which would require confirmation from the price path itself.",
       "drivers": [
-        "European flash PMI prints begin, a conditional cross-asset repricing channel",
-        "Long-end yield sensitivity is the dominant transmission mechanism this week",
-        "Checkpoint: whether European bond moves are echoed by US index futures"
+        "Tokyo cash close falls inside this hour",
+        "European pre-open positioning begins, still low participation",
+        "Range handover is the base case, gap continuation is unconfirmed"
       ],
-      "news": [
-        {
-          "title": "Dow Gets Slammed as Walmart Falls 9% and Long-Term Yields Jump",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/dow-gets-slammed-walmart-falls-194413071.html",
-          "source": "Yahoo Finance"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-21T07:00:00Z",
       "timeBerlin": "2026-08-21T09:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 15,
+      "tailRiskPct": 14,
       "stressRiskPct": 60,
-      "confidencePct": 77,
+      "confidencePct": 80,
       "dominantMode": "mixed",
-      "analysis": "European cash open with French and German flash PMIs typically landing in this window. Conditional risk rises because the open concentrates order flow, but the reverse strategy's failure mode requires shallow pullbacks and repeated extension, which remain unobserved rather than assumed.",
+      "analysis": "European morning flash PMI releases land across this block and feed straight into the long end of the curve that has driven the four-session equity decline. Stress rises modestly on that sensitivity; Tail rises only marginally because European data rarely creates persistent Nasdaq-100 one-way structure.",
       "drivers": [
-        "European cash open concentrates order flow into a narrow window",
-        "French and German flash PMIs are the scheduled checkpoints for this hour",
-        "Conditional failure mode would require shallow pullbacks plus repeated extension"
+        "European flash PMI releases arrive during the European morning",
+        "Long-end yields are the transmission channel for any growth surprise",
+        "European data seldom produces persistent US index trend efficiency"
       ],
       "news": [
         {
-          "title": "Dow Gets Slammed as Walmart Falls 9% and Long-Term Yields Jump",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/dow-gets-slammed-walmart-falls-194413071.html",
-          "source": "Yahoo Finance"
+          "title": "Stock Market Today (Aug. 20, 2026): Nasdaq, S&P 500 slip as Treasury rally fades",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-aug-20-135212527.html",
+          "source": "TheStreet"
         }
       ]
     },
@@ -485,15 +473,15 @@
       "timeBerlin": "2026-08-21T10:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 16,
+      "tailRiskPct": 15,
       "stressRiskPct": 61,
-      "confidencePct": 76,
+      "confidencePct": 79,
       "dominantMode": "mixed",
-      "analysis": "Euro-area and UK composite flash PMIs typically print in this hour. Conditional risk is scored slightly higher on event clustering, not on observed structure. A surprise strong enough to push European long yields higher would be the credible route to a directional impulse in NQ.",
+      "analysis": "European cash trade is underway and the yield complex is the variable to watch. If the 30-year holds near 5.25% and the 10-year near 4.70%, the conditional path stays two-sided; a further yield extension would raise Stress and, only with matching index follow-through, Tail.",
       "drivers": [
-        "Euro-area and UK composite flash PMIs cluster inside this clock-hour",
-        "Conditional route to an impulse: a PMI surprise lifting European long yields",
-        "Event clustering raises stress before it would justify a higher tail score"
+        "30-year at 5.25% and 10-year at 4.70% are the reference yield levels",
+        "Yield extension raises Stress first, Tail only with index follow-through",
+        "European cash session adds real liquidity to the index futures book"
       ],
       "news": []
     },
@@ -503,22 +491,16 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
-      "stressRiskPct": 60,
-      "confidencePct": 75,
+      "stressRiskPct": 61,
+      "confidencePct": 79,
       "dominantMode": "mixed",
-      "analysis": "European mid-morning. Post-PMI ranges typically settle once the initial reaction is absorbed. The conditional base case is two-way trade; the alternative, a trend day forming early in Europe and carrying into the US open, would need visible failed retracements to qualify as a tail path.",
+      "analysis": "Mid-morning European hours are scored at the same conditional level. The megacap complex closed the prior session with seven of eight names lower while semiconductors were mixed to higher, so internal conflict argues for a mixed regime rather than a clean directional one.",
       "drivers": [
-        "Post-PMI reaction absorption usually restores two-way range behaviour",
-        "Alternative scenario: an early European trend day carrying into the US open",
-        "Qualifying evidence for a tail path would be visible failed retracements"
+        "Latest-session megacaps: 7 of 8 lower, mean change about -0.9%",
+        "Semiconductor tone mixed to positive in the same session, average +0.5%",
+        "Internal conflict supports a mixed regime, not one-way structure"
       ],
-      "news": [
-        {
-          "title": "Stock market today: Dow, S&P 500, Nasdaq slide as bond relief evaporates, Walmart stock takes a hit",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-20-dow-sp-500-nasdaq-081139322.html",
-          "source": "Yahoo Finance"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-21T10:00:00Z",
@@ -526,14 +508,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 14,
-      "stressRiskPct": 59,
-      "confidencePct": 75,
+      "stressRiskPct": 60,
+      "confidencePct": 78,
       "dominantMode": "mixed",
-      "analysis": "European midday lull. Conditional risk eases as the morning's information is priced. This hour is scored as a quieter interval between the European PMI block and the US session, with stress held elevated by the unresolved long-end yield backdrop rather than by any new observed impulse.",
+      "analysis": "The European midday lull typically reduces directional efficiency. Scores step down by one point on that seasonal pattern, on the assumption that no new escalation headline arrives; the assumption is invalidated by any sustained move outside the European morning range.",
       "drivers": [
-        "Midday lull between the European PMI block and the US session",
-        "Unresolved long-end yield backdrop keeps stress elevated through quiet hours",
-        "No new observed impulse assumed for this interval"
+        "European midday lull normally reduces directional efficiency",
+        "Assumption invalidated by a sustained break of the European morning range",
+        "No scheduled US macro release in this hour"
       ],
       "news": []
     },
@@ -543,22 +525,16 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 14,
-      "stressRiskPct": 59,
-      "confidencePct": 74,
+      "stressRiskPct": 60,
+      "confidencePct": 78,
       "dominantMode": "mixed",
-      "analysis": "European afternoon into the US pre-market build. Conditional risk stays contained. The known checkpoints ahead are the 13:30 UTC cash open, the 13:45 UTC S&P Global flash PMI and the monthly options expiration, none of which have occurred at this assessment cutoff.",
+      "analysis": "Conditions are expected to remain range-like into the US pre-market. This hour matters mainly as a base for the later comparison: whether pullbacks into the US session are being bought or sold determines the afternoon Tail, and that evidence does not exist yet.",
       "drivers": [
-        "Known checkpoints ahead: 13:30 UTC cash open and 13:45 UTC US flash PMI",
-        "Monthly options expiration falls on this session's US cash close",
-        "None of these checkpoints have occurred at the assessment cutoff"
+        "US pre-market positioning begins to build in this window",
+        "Pullback behaviour into the US session is the key later discriminator",
+        "Evidence for afternoon structure is not available at this time"
       ],
-      "news": [
-        {
-          "title": "Stock market today: Dow, S&P 500, Nasdaq snap 3-day losing streak as bonds rally, Moderna skyrockets",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-august-19-dow-sp-500-nasdaq-081116064.html",
-          "source": "Yahoo Finance"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-21T12:00:00Z",
@@ -566,66 +542,55 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
-      "stressRiskPct": 61,
-      "confidencePct": 73,
+      "stressRiskPct": 62,
+      "confidencePct": 78,
       "dominantMode": "mixed",
-      "analysis": "US pre-market hour. Index futures typically firm up a directional lean ahead of the cash open. Conditional risk rises modestly on expiration-related order flow, which can arrive early. Any pre-market lean is a hypothesis for this hour, not an observed structure carried over from the overnight session.",
+      "analysis": "The final hour before the US cash open carries pre-positioning for a monthly options expiration Friday. Stress rises on expiry-related hedging flow; Tail rises only slightly because pre-event positioning is not, by itself, evidence of a failed-retracement path.",
       "drivers": [
-        "Pre-market positioning ahead of the 13:30 UTC cash open",
-        "Monthly expiration order flow can arrive ahead of the opening auction",
-        "Any pre-market lean is treated as hypothesis, not observed structure"
+        "Monthly options expiration Friday concentrates hedging flow",
+        "Pre-positioning is not evidence of mean-reversion failure",
+        "Last hour before the 13:30 UTC cash open"
       ],
-      "news": [
-        {
-          "title": "Stock market today: Dow, S&P 500, Nasdaq slide as bond relief evaporates, Walmart stock takes a hit",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-20-dow-sp-500-nasdaq-081139322.html",
-          "source": "Yahoo Finance"
-        },
-        {
-          "title": "Dow Gets Slammed as Walmart Falls 9% and Long-Term Yields Jump",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/dow-gets-slammed-walmart-falls-194413071.html",
-          "source": "Yahoo Finance"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-21T13:00:00Z",
       "timeBerlin": "2026-08-21T15:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 66,
-      "confidencePct": 72,
+      "tailRiskPct": 21,
+      "stressRiskPct": 67,
+      "confidencePct": 77,
       "dominantMode": "event/whipsaw",
-      "analysis": "Highest-density hour of the forecast: the 13:30 UTC cash open is followed 15 minutes later by the S&P Global US flash PMI. Conditional two-way repricing is likely; the strategy-relevant question is whether the opening auction produces continuation with shallow pullbacks, which is a scenario and not an observation.",
+      "analysis": "Highest-density hour of the European-US overlap: the cash open at 13:30 UTC, index-option expiry settlement flow around that open, and the S&P Global flash PMI at 13:45 UTC. Two-way repricing is the base case, so the forecast maps to a WATCH state rather than a block.",
       "drivers": [
-        "US cash open at 13:30 UTC with the S&P Global flash PMI at 13:45 UTC",
-        "Scenario: opening-auction continuation with shallow pullbacks would raise tail",
-        "Medium-impact release, so event importance is scored into stress first",
-        "Prior session opened at 29,295.15 and closed lower at 29,213.17"
+        "US cash open at 13:30 UTC on a monthly expiration Friday",
+        "S&P Global flash US PMI at 13:45 UTC, services consensus 53.8",
+        "Two-way repricing is the base case for an opening auction",
+        "Mapped policy state at this forecast Tail: WATCH"
       ],
       "news": [
         {
-          "title": "Stock market today: Dow, S&P 500, Nasdaq slide as bond relief evaporates, Walmart stock takes a hit",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-20-dow-sp-500-nasdaq-081139322.html",
-          "source": "Yahoo Finance"
+          "title": "Stock Market Today (Aug. 20, 2026): Nasdaq, S&P 500 slip as Treasury rally fades",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-aug-20-135212527.html",
+          "source": "TheStreet"
         }
       ]
     },
     {
       "ts": "2026-08-21T14:00:00Z",
       "timeBerlin": "2026-08-21T16:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 21,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
       "stressRiskPct": 66,
-      "confidencePct": 71,
+      "confidencePct": 76,
       "dominantMode": "event/whipsaw",
-      "analysis": "Post-release digestion. Historically the second leg after a flash PMI matters more than the first. Conditional risk stays at watch level because the transmission this week runs through long-end yields; an orderly yield reaction with visible retracements would justify a rapid step down in tail risk.",
+      "analysis": "The hour after the open decides the session character. Should the opening move extend with shallow pullbacks and repeated failure of retracements, Tail would need to be revised sharply higher; the orderly two-sided pattern of the last four sessions is the more likely path and is what is scored here.",
       "drivers": [
-        "Second-leg repricing after the flash PMI is the relevant checkpoint",
-        "Transmission this week runs through long-end Treasury yields",
-        "Orderly yields with visible retracements would justify a lower tail score"
+        "Post-open follow-through determines the session character",
+        "Shallow pullbacks plus failed retracements would force a higher Tail",
+        "Four prior sessions all offered intraday retracements"
       ],
       "news": []
     },
@@ -634,23 +599,17 @@
       "timeBerlin": "2026-08-21T17:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 18,
+      "tailRiskPct": 17,
       "stressRiskPct": 64,
-      "confidencePct": 70,
+      "confidencePct": 76,
       "dominantMode": "mixed",
-      "analysis": "US mid-morning. In the absence of a further scheduled catalyst this hour, conditional risk is assumed to normalise as the opening range is resolved. Stress remains elevated because the week's cumulative Nasdaq-100 drawdown and the 30-year yield near multi-decade highs have not been repaired.",
+      "analysis": "Once the opening auction and the flash PMI reaction are absorbed, conditional Tail steps back down. Volatility decay after a scheduled release is the normal pattern, and the low absolute VIX level supports a return to a two-sided regime in the late morning.",
       "drivers": [
-        "No further scheduled US catalyst inside this clock-hour",
-        "Assumption: opening-range resolution allows conditional risk to normalise",
-        "Cumulative weekly drawdown and 30-year yield stress remain unrepaired"
+        "Volatility normally decays after a scheduled release is absorbed",
+        "VIX at 16.01 remains low in absolute terms",
+        "Late-morning US trade typically restores two-way flow"
       ],
-      "news": [
-        {
-          "title": "Dow Gets Slammed as Walmart Falls 9% and Long-Term Yields Jump",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/dow-gets-slammed-walmart-falls-194413071.html",
-          "source": "Yahoo Finance"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-21T16:00:00Z",
@@ -658,14 +617,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 16,
-      "stressRiskPct": 62,
-      "confidencePct": 69,
+      "stressRiskPct": 63,
+      "confidencePct": 75,
       "dominantMode": "mixed",
-      "analysis": "US midday. Liquidity typically thins around the lunch hour and range behaviour tends to reassert. Conditional risk is scored at the lower end of the US session. A midday trend extension without pullbacks would be an early warning for the expiration close, but it is not assumed here.",
+      "analysis": "US midday is scored as the quietest part of the cash session. The conditional assumption is that the index trades inside its opening range; an unbroken drift to new session extremes without retracement would be the signal to reassess, and it is not assumed here.",
       "drivers": [
-        "Midday liquidity thinning typically restores range behaviour",
-        "Early warning would be midday trend extension without pullbacks",
-        "Scored at the lower end of the US-session conditional range"
+        "US midday normally holds the widest part of the opening range",
+        "Drift to session extremes without retracement is the reassessment trigger",
+        "No scheduled US macro release in this hour"
       ],
       "news": []
     },
@@ -675,20 +634,20 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 16,
-      "stressRiskPct": 62,
-      "confidencePct": 68,
+      "stressRiskPct": 63,
+      "confidencePct": 75,
       "dominantMode": "mixed",
-      "analysis": "Early US afternoon. The unresolved US-Iran energy story remains a live headline channel into the weekend and can reprice crude quickly. Conditional risk is unchanged from the prior hour; the energy channel is a discrete headline risk rather than a persistent structural driver at this cutoff.",
+      "analysis": "The Baker Hughes rig count is released at 17:00 UTC and matters only through the energy channel that has carried oil roughly 6% higher this week. Its index-level impact is normally marginal, so it is treated as a checkpoint rather than a Tail driver.",
       "drivers": [
-        "US-Iran energy escalation is a live headline channel into the weekend",
-        "Crude can reprice quickly, transmitting to index futures via rates and margins",
-        "Treated as discrete headline risk, not persistent structure"
+        "Baker Hughes US rig count at 17:00 UTC, energy channel only",
+        "Crude is up roughly 6% on the week on US-Iran escalation",
+        "Rig-count releases rarely move index-level structure"
       ],
       "news": [
         {
-          "title": "Oil prices rise after Treasury Secretary says U.S. will collapse Iran with economic pressure",
-          "url": "https://www.cnbc.com/2026/08/20/oil-prices-brent-wti-hormuz-trump.html",
-          "source": "CNBC"
+          "title": "Iran dismisses Trump's 'economic D-Day' as distraction from America's fiscal problems",
+          "url": "https://www.foxnews.com/live-news/iran-war-trump-economic-warfare-strait-hormuz-08-20-26",
+          "source": "Fox News"
         }
       ]
     },
@@ -698,14 +657,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 17,
-      "stressRiskPct": 63,
-      "confidencePct": 67,
+      "stressRiskPct": 65,
+      "confidencePct": 74,
       "dominantMode": "mixed",
-      "analysis": "Late US afternoon, ahead of the expiration close. Conditional risk edges up as positioning into the monthly settlement begins. Whether dealer hedging produces a persistent drift or a pinning effect is unknown at this cutoff and is treated as a two-sided scenario, not a directional forecast.",
+      "analysis": "Conditional risk begins to rebuild into the final expiration hours as hedges are rolled or closed. Stress rises on flow concentration; Tail stays under the block threshold because expiry flow is typically mechanical and reverses rather than trending persistently.",
       "drivers": [
-        "Positioning into the monthly options settlement typically begins this hour",
-        "Two-sided scenario: hedging can produce either drift or pinning",
-        "No directional assumption is carried into this hour"
+        "Expiry hedge rolls and unwinds concentrate into the last hours",
+        "Expiration flow is usually mechanical and mean-reverting",
+        "Stress rises on flow concentration, Tail stays below the block threshold"
       ],
       "news": []
     },
@@ -714,27 +673,22 @@
       "timeBerlin": "2026-08-21T21:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 23,
-      "stressRiskPct": 68,
-      "confidencePct": 66,
+      "tailRiskPct": 22,
+      "stressRiskPct": 70,
+      "confidencePct": 74,
       "dominantMode": "event/whipsaw",
-      "analysis": "Published danger window. The final cash hour on a monthly options expiration is the interval where dealer hedging can most plausibly produce a persistent one-way drift into the 20:00 UTC settlement without meaningful retracement. This is a conditional mechanism, not an observed path, and it carries the highest forecast tail score.",
+      "analysis": "Highest conditional Tail of the horizon and the published danger window. Equity and ETF option expiry settles into the 20:00 UTC cash close on the same day as weekend risk reduction, with an unresolved US-Iran energy escalation in the background. This is a flow concentration, not an observed path.",
       "drivers": [
-        "Monthly options expiration settles into the 20:00 UTC US cash close",
-        "Mechanism: expiration hedging can suppress retracements into the settlement",
-        "Highest forecast tail score of the 24-hour horizon, published as the danger window",
-        "Conditional mechanism only; no such structure has been observed"
+        "Danger window 19:00-20:00 UTC, published as the narrow protection band",
+        "Equity and ETF expiry settles into the 20:00 UTC cash close",
+        "Weekend risk reduction ahead of an unresolved US-Iran escalation",
+        "Mapped policy state at this forecast Tail: WATCH"
       ],
       "news": [
         {
-          "title": "Stock market today: Dow, S&P 500, Nasdaq slide as bond relief evaporates, Walmart stock takes a hit",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-20-dow-sp-500-nasdaq-081139322.html",
-          "source": "Yahoo Finance"
-        },
-        {
-          "title": "Dow Gets Slammed as Walmart Falls 9% and Long-Term Yields Jump",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/dow-gets-slammed-walmart-falls-194413071.html",
-          "source": "Yahoo Finance"
+          "title": "Iran dismisses Trump's 'economic D-Day' as distraction from America's fiscal problems",
+          "url": "https://www.foxnews.com/live-news/iran-war-trump-economic-warfare-strait-hormuz-08-20-26",
+          "source": "Fox News"
         }
       ]
     },
@@ -744,54 +698,54 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 18,
-      "stressRiskPct": 60,
-      "confidencePct": 64,
+      "stressRiskPct": 65,
+      "confidencePct": 73,
       "dominantMode": "mixed",
-      "analysis": "Post-cash-close futures hour. Liquidity falls sharply after the 20:00 UTC settlement and the remaining hour runs to the weekly CME close. Conditional risk steps down because expiration flow has cleared, though thin books can still produce outsized individual prints.",
+      "analysis": "US cash markets close at 20:00 UTC and index futures continue for one more hour in thinning conditions. Conditional Tail steps down as expiry flow completes, while positioning for next week's calendar, including the 26 August GDP, core PCE and NVIDIA results, begins.",
       "drivers": [
-        "Liquidity falls sharply after the 20:00 UTC cash settlement",
-        "Expiration flow has cleared, lowering the conditional tail mechanism",
-        "Thin post-close books can still produce outsized individual prints"
+        "US cash close at 20:00 UTC, futures continue for one further hour",
+        "Expiry flow completes and liquidity thins into the weekly halt",
+        "Next-week calendar includes 26 August core PCE, GDP and NVIDIA results"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "NVIDIA Sets Conference Call for Second-Quarter Financial Results",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-second-quarter-financial-results-6927195",
+          "source": "NVIDIA"
+        }
+      ]
     },
     {
       "ts": "2026-08-21T21:00:00Z",
       "timeBerlin": "2026-08-21T23:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 8,
-      "stressRiskPct": 42,
-      "confidencePct": 62,
+      "tailRiskPct": 6,
+      "stressRiskPct": 32,
+      "confidencePct": 72,
       "dominantMode": "normal",
-      "analysis": "CME equity index futures close for the week at 21:00 UTC, so no tradable price path exists for this hour. Tail risk is scored near its floor because the strategy has no exposure to an intraday path. Stress reflects weekend carry and gap exposure rather than live volatility.",
+      "analysis": "CME equity index futures halt for the weekend at 21:00 UTC, so no tradable Nasdaq-100 price path exists in this hour. Tail collapses because a path that cannot trade cannot deny mean reversion; residual Stress reflects weekend headline exposure carried into the Sunday reopen.",
       "drivers": [
-        "CME equity index futures close for the week at 21:00 UTC",
-        "No tradable intraday price path exists, so tail risk falls to its floor",
-        "Residual stress reflects weekend carry and gap exposure only"
+        "CME equity index futures halt for the weekend at 21:00 UTC",
+        "No tradable price path can develop while the market is closed",
+        "Residual Stress reflects weekend headline and gap exposure"
       ],
-      "news": [
-        {
-          "title": "Oil prices jump 3% as Trump threatens 'economic warfare'",
-          "url": "https://www.upi.com/Top_News/US/2026/08/20/trump-threatens-economic-operation-iran-oil-prices/4971787233729/",
-          "source": "UPI"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-21T22:00:00Z",
       "timeBerlin": "2026-08-22T00:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 40,
-      "confidencePct": 61,
+      "tailRiskPct": 5,
+      "stressRiskPct": 30,
+      "confidencePct": 72,
       "dominantMode": "normal",
-      "analysis": "Market closed for the weekend. The scored risk for this hour is carry exposure only. Weekend headline channels that could shape the Sunday reopen include the US-Iran energy dispute and the Treasury press conference announced for Monday, neither of which has produced an outcome at this cutoff.",
+      "analysis": "Market remains closed. Scores are placeholders for an untradable hour. The relevant weekend variables are the US-Iran economic pressure campaign and the long-end yield trajectory, both of which would be expressed only at the Sunday futures reopen.",
       "drivers": [
-        "Weekend closure: scored risk is carry exposure only",
-        "Weekend headline channel: unresolved US-Iran energy dispute",
-        "A Treasury press conference on the Iran plan is announced for Monday"
+        "Market closed for the weekend, scores describe an untradable hour",
+        "US-Iran economic pressure campaign is the main weekend headline risk",
+        "Any repricing would appear only at the Sunday futures reopen"
       ],
       "news": []
     },
@@ -800,15 +754,15 @@
       "timeBerlin": "2026-08-22T01:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 40,
-      "confidencePct": 60,
+      "tailRiskPct": 5,
+      "stressRiskPct": 30,
+      "confidencePct": 71,
       "dominantMode": "normal",
-      "analysis": "Market remains closed. No price discovery occurs, so no mean-reversion failure is possible within this hour. Confidence declines gradually across the closed block because live evidence ages, while the fact of the closure itself is certain.",
+      "analysis": "Market remains closed. Confidence declines slightly with distance from the last observed price data rather than because evidence is conflicting. No assessment of live structure is possible or claimed for this hour.",
       "drivers": [
-        "No price discovery occurs while the market is closed",
-        "Mean-reversion failure is not possible inside a closed hour",
-        "Confidence decays gradually as live evidence ages across the weekend"
+        "Market closed, no live price-path evidence is obtainable",
+        "Confidence decays with distance from the last observed quote",
+        "No structural claim is made for a closed hour"
       ],
       "news": []
     },
@@ -817,15 +771,15 @@
       "timeBerlin": "2026-08-22T02:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 40,
-      "confidencePct": 59,
+      "tailRiskPct": 5,
+      "stressRiskPct": 30,
+      "confidencePct": 71,
       "dominantMode": "normal",
-      "analysis": "Final forecast hour, with the market closed. The next scheduled information of consequence is the Monday Treasury press conference on Iran policy and the 24 Aug Chicago Fed National Activity Index, both outside this horizon. Weekend gap risk is the only meaningful exposure carried out of this window.",
+      "analysis": "Final slot of the horizon, still inside the weekend closure. The next meaningful evidence arrives with the Sunday futures reopen, after which the four-session drawdown, the 5.25% 30-year yield and the energy premium are re-tested against a live path.",
       "drivers": [
-        "Market closed; weekend gap risk is the only meaningful exposure",
-        "Next scheduled catalysts fall outside this 24-hour horizon",
-        "Chicago Fed National Activity Index is due 24 Aug at 12:30 UTC"
+        "Horizon ends inside the weekend closure",
+        "Sunday futures reopen provides the next live evidence",
+        "Four-session drawdown and 5.25% 30-year yield are the carried-forward drivers"
       ],
       "news": []
     }
@@ -836,40 +790,40 @@
       "timeBerlin": "2026-08-21T03:00:00+02:00",
       "status": "green",
       "tailRiskPct": 12,
-      "stressRiskPct": 60,
-      "comment": "Overnight NQ futures hold a contained range of roughly 0.3% with a modest positive drift after a fourth straight lower Nasdaq-100 close; two-way trade keeps mean reversion intact while long-end yield stress holds stress elevated."
+      "stressRiskPct": 59,
+      "comment": "Observed contained overnight band with two-way movement after a 0.72% cash decline; mean reversion intact and the mapping resolves to EA_ON."
     },
     {
       "ts": "2026-08-21T02:00:00Z",
       "timeBerlin": "2026-08-21T04:00:00+02:00",
       "status": "green",
       "tailRiskPct": 12,
-      "stressRiskPct": 59,
-      "comment": "Thin Asian-hours liquidity and split latest-session internals, with semiconductors firm against weaker megacaps, argue against uniform directional alignment; a decisive range break with no pullback would be the invalidation."
+      "stressRiskPct": 58,
+      "comment": "Thin Asian hours; scores held on the assumption that the 29,274-29,366 overnight band persists, with a no-retracement break as the invalidation checkpoint."
     },
     {
       "ts": "2026-08-21T03:00:00Z",
       "timeBerlin": "2026-08-21T05:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 11,
-      "stressRiskPct": 58,
-      "comment": "Mid-Asian session with no scheduled US release in the hour; carry-over positioning is assumed to dominate and contained two-way trade is the base case, leaving tail risk near the lower end."
+      "tailRiskPct": 12,
+      "stressRiskPct": 57,
+      "comment": "Quiet Asian afternoon expected; Stress eases marginally as the 20 August cross-asset shock ages and overnight volatility futures sit slightly lower."
     },
     {
       "ts": "2026-08-21T04:00:00Z",
       "timeBerlin": "2026-08-21T06:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 11,
+      "tailRiskPct": 12,
       "stressRiskPct": 57,
-      "comment": "Late Asian trade with crude giving back part of Thursday's advance, slightly easing the energy pressure channel; a renewed oil impulse is the first amplifier to watch rather than an observed condition."
+      "comment": "Orderly late-Asian range assumed; energy remains the swing factor, where a fresh escalation headline would lift Stress before Tail."
     },
     {
       "ts": "2026-08-21T05:00:00Z",
       "timeBerlin": "2026-08-21T07:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 12,
-      "stressRiskPct": 57,
-      "comment": "Asian close into the European pre-market ahead of a global flash PMI day, when ranges typically compress; persistent one-way extension remains unobserved and would be required before any higher tail rating."
+      "tailRiskPct": 13,
+      "stressRiskPct": 58,
+      "comment": "Small step up for the pre-Tokyo-close liquidity pickup, treated as a transition effect rather than observed directional efficiency."
     },
     {
       "ts": "2026-08-21T06:00:00Z",
@@ -877,7 +831,7 @@
       "status": "green",
       "tailRiskPct": 13,
       "stressRiskPct": 58,
-      "comment": "European pre-market, where the first flash PMI prints can start a cross-asset repricing in European long bonds; that transmission channel is a conditional checkpoint and has not been observed at this cutoff."
+      "comment": "Tokyo cash close inside the window with European desks starting to price the session; a range handover rather than a directional gap is the base case."
     }
   ],
   "events": [
@@ -897,6 +851,12 @@
       "name": "Chicago Fed National Activity Index (Jul)",
       "ts": "2026-08-24T12:30:00Z",
       "timeBerlin": "2026-08-24T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Fed Barkin Speech",
+      "ts": "2026-08-25T12:00:00Z",
+      "timeBerlin": "2026-08-25T14:00:00+02:00",
       "impact": "medium"
     },
     {
@@ -930,10 +890,10 @@
       "impact": "high"
     },
     {
-      "name": "Durable Goods Orders (Jul)",
-      "ts": "2026-08-26T12:30:00Z",
-      "timeBerlin": "2026-08-26T14:30:00+02:00",
-      "impact": "medium"
+      "name": "NVIDIA Q2 FY2027 Results Conference Call (after US close)",
+      "ts": "2026-08-26T21:00:00Z",
+      "timeBerlin": "2026-08-26T23:00:00+02:00",
+      "impact": "high"
     },
     {
       "name": "Initial Jobless Claims (week ended 22 Aug)",
