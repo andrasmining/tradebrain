@@ -3,23 +3,23 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-08-25T12:33:57Z",
+  "generatedAt": "2026-08-25T13:40:14Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "yellow",
-  "statusText": "Mapped policy state: WATCH. Tail sits in the 20-24 band, below the block threshold, on an orderly but persistent overnight uptrend in NQ futures with an unfilled gap and aligned cross-assets.",
-  "recommendation": "Tail remains below the block threshold for the current hour. The narrow flagged window covers the 13:30Z U.S. cash open through 15:00Z, where opening-auction continuation from an already aligned bullish regime, coinciding with the 14:00Z medium-impact data batch, is the main conditional hazard to mean reversion. On the forecast path the mapped state moves to BLOCK_NEW_BASE_ENTRIES for the 14:00Z hour and back toward EA_ON from 17:00Z as opening imbalance is normally absorbed.",
-  "headline": "NQ grinds higher near session highs with an unfilled gap; narrow conditional risk window around the U.S. cash open",
-  "body": "NQ futures trade near 29,397, up about 1.0% from Monday's 29,105.75 settlement, inside a 29,190.50-29,425.75 session range. The session low sits above the prior close, so the overnight gap is unfilled and price is holding in the upper part of its range - the structural features that matter most for mean-reversion failure. Cross-assets are aligned rather than conflicting: the 10-year yield is down more than three basis points to 4.666% after reporting that the Treasury may tap its near $1 trillion General Account to fund expanded bond buybacks, VIX is easing, and the semiconductor complex is bid ahead of Nvidia's results. WTI has fallen about 2.9% to roughly $82.5 and Brent to roughly $89.7 as markets judged the latest U.S. sanctions programme on Iran less disruptive to supply than feared, which removes rather than adds a discontinuity channel. Against that, the move is a contained 1% drift with no Tier-1 U.S. release scheduled before Wednesday's July PCE at 12:30Z, and index volatility is compressing into Nvidia's Wednesday-after-close print, a pattern that historically favours range behaviour over persistent trend. Tail is therefore held in the watch band rather than at a blocking level. Stress is elevated: the equity bid rests on a policy-driven decline in yields that already faded once during the week of 21 August, an active U.S. sanctions programme on Iran leaves an unscheduled headline channel open, and a dense catalyst stack - July PCE, Nvidia results and Fed Chair Warsh's first Jackson Hole keynote on 28 August - sits within 72 hours. Confidence is high: NQ level, range and prior settlement were corroborated across two independent providers, yields, oil, the U.S. calendar and event timings were verified against primary and reputable current sources, and the shared cross-asset context file was fresh and healthy at collection.",
-  "tailRiskPct": 21,
+  "statusText": "Mapped policy state: WATCH. Tail sits in the 20-24 band, below the block threshold, as an unfilled overnight gap-up meets an observed retracement from the session high and internally divided index leadership.",
+  "recommendation": "Tail remains below the block threshold for the current hour. The narrow flagged window spans the 13:30Z U.S. cash open to 15:00Z, where opening-auction continuation from an unfilled gap, coinciding with the 14:00Z medium-impact data batch, is the main conditional hazard to mean reversion. On the published forecast path the mapped state stays WATCH through 15:00Z, returns to EA_ON from 16:00Z as opening imbalance is normally absorbed, and returns to WATCH for the 12:00Z hour on 26 August around the July PCE release.",
+  "headline": "NQ holds a 0.75% gap-up into the cash open but retraces from session highs, with leadership split between semiconductors and software",
+  "body": "NQ futures trade near 29,325, up 219.25 points or 0.75% from Monday's 29,105.75 settlement, inside a 29,190.50-29,425.75 session range. The session low sits above the prior settlement, so the overnight gap is unfilled - but price has already retraced roughly 100 points from the session high, so the market is no longer holding at an extreme and two-way trade has been demonstrated. That distinction matters: the amplifier that would most support a mean-reversion failure has weakened rather than strengthened over the past hour. The wider context is corrective rather than trending. Monday was a down day for technology, with the Nasdaq-100 cash index closing at 29,023.18, off 0.97%, and the Nasdaq Composite at 25,980.19, off 0.77%; the index remains roughly 6% below its recent high. Today's move is a rebound inside that drawdown, a setup that historically favours two-way rotation over persistent one-way structure. Internals are divided rather than aligned: semiconductors are broadly bid, with AMD, Intel, ARM and Micron all higher by more than 2.8% on latest-session context, while application software is lower and the Russell 2000 lags by 0.76%. Cross-assets lean mildly risk-positive without adding a discontinuity channel - the 10-year yield has eased to about 4.658% and the 2-year to about 4.217%, Treasury futures are bid across the curve, and WTI has fallen about 3.0% to roughly $82.48 with Brent below $90 as Iran-related supply fears receded on reports of Pakistani mediation. Falling oil removes rather than adds a shock channel. Tail is therefore held at the low edge of the watch band. Stress is elevated: 50% U.S. tariffs on Canadian goods took effect on 22 August with Canadian retaliation flagged for 8 September, the software-versus-semiconductor performance gap is at a record width, and a dense catalyst stack - July PCE and the Q2 GDP second estimate on 26 August, Nvidia's results after that day's close, and the Fed Chair's Jackson Hole keynote on 28 August - sits inside 72 hours. Confidence is high but not maximal: the NQ level, range and prior settlement were corroborated across two independent providers plus the shared cross-asset context file, yields, oil and the U.S. calendar were verified against primary and reputable current sources, and the shared context file was fresh and healthy at collection; against that, one quote provider returned internally inconsistent index data that had to be discarded, and the U.S. cash open occurred only minutes before this assessment, so no post-open price path is yet observable.",
+  "tailRiskPct": 20,
   "tailLevel": "watch",
-  "stressRiskPct": 50,
+  "stressRiskPct": 51,
   "stressLevel": "elevated",
-  "dominantMode": "trend-up",
-  "confidencePct": 86,
+  "dominantMode": "mixed",
+  "confidencePct": 84,
   "confidenceLevel": "high",
   "action": "WATCH",
   "dangerWindow": {
@@ -32,8 +32,8 @@
   },
   "sources": [
     {
-      "title": "S&P 500, Nasdaq futures rise ahead of Nvidia earnings - Yahoo Finance",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-nasdaq-futures-rise-112730428.html"
+      "title": "Nasdaq 100 Futures quote, session range and prior settlement - Investing.com",
+      "url": "https://www.investing.com/indices/nq-100-futures"
     },
     {
       "title": "Federal Reserve H.15 Selected Interest Rates",
@@ -48,27 +48,16 @@
       "url": "https://tradingeconomics.com/united-states/calendar"
     },
     {
-      "title": "Bessent could tap near $1 trillion Treasury General Account to fund bond buybacks - CNBC",
-      "url": "https://www.cnbc.com/2026/08/24/bessent-1-trillion-treasury-general-account-bond-buybacks.html"
+      "title": "Stock market today live coverage, 25 August 2026 - Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-25-dow-sp-500-nasdaq-080527092.html"
     },
     {
-      "title": "Oil hits one-week low as investors shrug off latest U.S. sanctions on Iran - CNBC",
-      "url": "https://www.cnbc.com/2026/08/25/oil-hits-one-week-low-as-investors-shrug-off-iran-sanctions.html"
+      "title": "US-Canada trade talks collapse as new 50% tariffs go into effect - Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/article/us-canada-trade-talks-collapse-as-new-50-tariffs-go-into-effect-160526827.html"
     }
   ],
-  "lookbackSummary": "All 24 preceding clock hours carry a published Claude assessment. The window opened with a brief orange episode at 14:00Z on 24 August (Tail 26, trend-down), then settled into a long green mixed and normal stretch through the U.S. afternoon and Asian session with Tail between 7 and 13. From 04:00Z on 25 August the mode turned to trend-up and Tail climbed steadily from 13 to 20-21, reaching the watch band at 09:00Z where it has stayed for three hours. Stress stayed elevated throughout, in a 42-60 range, and confidence remained high at 80-88.",
+  "lookbackSummary": "All 24 preceding clock hours carry a published Claude assessment. The window opened with a brief orange episode at 14:00Z on 24 August, where Tail reached 26 in a trend-down mode, then settled into a long green stretch of mixed and normal conditions through the U.S. afternoon and the Asian session with Tail between 7 and 13. From 04:00Z on 25 August the published mode turned to trend-up and Tail climbed from 13 to the 20-21 area, entering the watch band at 09:00Z and staying there for the last four hours. Stress held in a 42-60 range throughout and confidence stayed high at 80-88.",
   "lookback": [
-    {
-      "ts": "2026-08-24T12:00:00Z",
-      "timeBerlin": "2026-08-24T14:00:00+02:00",
-      "available": true,
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 11,
-      "stressRiskPct": 48,
-      "confidencePct": 87,
-      "dominantMode": "mixed"
-    },
     {
       "ts": "2026-08-24T13:00:00Z",
       "timeBerlin": "2026-08-24T15:00:00+02:00",
@@ -321,138 +310,128 @@
       "stressRiskPct": 50,
       "confidencePct": 87,
       "dominantMode": "trend-up"
-    }
-  ],
-  "outlookSummary": "The conditional path concentrates risk in a narrow window: Tail rises from 21 now to 24 into the 13:30Z cash open and peaks at 26 for the 14:00Z hour, where the first full cash hour coincides with the medium-impact data batch and opening-auction continuation from an aligned bullish regime is the specific hazard. It then decays to 23, 20 and 18 as the opening imbalance is normally absorbed, bottoming at 16 in the early U.S. afternoon before a mechanical 18 for the closing hour. Overnight Tail falls to 11-13 through the Asian session with no scheduled catalyst, then drifts back to 15-19 across the European morning of 26 August on pre-release mechanics ahead of July PCE at 12:30Z. Both PCE and Nvidia's results fall outside this window. Confidence decays from 86 to 64 with horizon.",
-  "forecast": [
+    },
     {
       "ts": "2026-08-25T12:00:00Z",
       "timeBerlin": "2026-08-25T14:00:00+02:00",
+      "available": true,
       "status": "yellow",
       "action": "WATCH",
       "tailRiskPct": 21,
       "stressRiskPct": 50,
       "confidencePct": 86,
-      "dominantMode": "trend-up",
-      "analysis": "Observed: NQ near 29,397 (+1.0%), day range 29,190.50-29,425.75 with the session low above Monday's 29,105.75 close, so the gap is unfilled and price sits close to the session high. Cross-assets align risk-on (10y 4.666%, VIX easing, semis bid). Orderly drift, no Tier-1 print in this hour.",
-      "drivers": [
-        "NQ holding near session high with an unfilled gap above Monday's close",
-        "10y yield -3bp to 4.666% on Treasury buyback expansion reporting",
-        "Semiconductor complex bid into Wednesday's Nvidia print",
-        "European-afternoon lull; no scheduled U.S. release inside this hour"
-      ],
-      "news": [
-        {
-          "title": "S&P 500, Nasdaq futures rise ahead of Nvidia earnings",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-nasdaq-futures-rise-112730428.html",
-          "source": "Yahoo Finance"
-        },
-        {
-          "title": "Stock futures rise as Treasury yields decline, chipmakers gain ahead of Nvidia earnings: Live updates",
-          "url": "https://www.cnbc.com/2026/08/24/stock-market-today-live-updates.html",
-          "source": "CNBC"
-        }
-      ]
-    },
+      "dominantMode": "trend-up"
+    }
+  ],
+  "outlookSummary": "The conditional path keeps risk narrow and front-loaded. Tail is 20 now and peaks at 24 for the 14:00Z hour, where the first full cash hour overlaps three medium-impact U.S. releases and opening-auction continuation from an unfilled gap is the specific hazard; it stays at the top of the watch band rather than crossing into a block because the amplifiers that would justify one - shallow pullbacks, repeated extension, price pinned at an extreme, aligned internals - are not currently observed. It then decays through 22 and 19 to a session floor of 16 in the early U.S. afternoon, lifts to 18 for the 19:00Z power hour, and falls to 10-12 across the overnight window where no U.S. catalyst is scheduled. Across the European morning of 26 August Tail drifts back from 12 to 18 on pre-release mechanics while Stress builds from 43 to a forecast peak of 57, then Tail returns to the watch band at 22 for the 12:00Z hour that contains the July PCE, Core PCE and Q2 GDP second estimate. Nvidia's results, after that day's cash close, fall outside this window. Confidence decays from 84 to 62 with horizon.",
+  "forecast": [
     {
       "ts": "2026-08-25T13:00:00Z",
       "timeBerlin": "2026-08-25T15:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 54,
-      "confidencePct": 85,
-      "dominantMode": "trend-up",
-      "analysis": "Final pre-market hour into the 13:30Z U.S. cash open. Tail is lifted conditionally because an already aligned bullish regime meets the opening auction, the setup in which mean reversion most often fails. Nothing about opening structure is observed yet; the flagged window opens at 13:30Z.",
+      "tailRiskPct": 20,
+      "stressRiskPct": 51,
+      "confidencePct": 84,
+      "dominantMode": "mixed",
+      "analysis": "NQ trades near 29,325, +0.75% on a 29,190.50-29,425.75 session range whose low sits above Monday's 29,105.75 settlement, so the gap-up is unfilled. Price has already retraced about 100 points from the session high, so it is not pinned at an extreme. The 13:30Z cash open falls inside this hour.",
       "drivers": [
-        "U.S. cash open at 13:30Z from an already aligned bullish regime",
-        "Conditional: opening-auction continuation would be the first real Tail evidence",
-        "Overnight gap remains unfilled as a reference level into the open",
-        "Pre-open dispersion widens while cash liquidity is still absent"
+        "Unfilled gap-up: session low 29,190.50 above Monday's 29,105.75 settlement",
+        "Observed ~100pt retracement off the 29,425.75 session high weakens extreme-holding",
+        "13:30Z U.S. cash open falls inside this hour; opening auction not yet observed",
+        "Index leadership split: semis bid, software and Russell 2000 lagging"
       ],
       "news": [
         {
-          "title": "Stock futures rise as Treasury yields decline, chipmakers gain ahead of Nvidia earnings: Live updates",
-          "url": "https://www.cnbc.com/2026/08/24/stock-market-today-live-updates.html",
-          "source": "CNBC"
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures gain in countdown to Nvidia earnings, Fed Jackson Hole summit",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-25-dow-sp-500-nasdaq-080527092.html",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "Stock Market Today (Aug. 25, 2026): S&P 500 futures climb ahead of Nvidia earnings, Fed symposium",
+          "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-25-2026",
+          "source": "TheStreet"
         }
       ]
     },
     {
       "ts": "2026-08-25T14:00:00Z",
       "timeBerlin": "2026-08-25T16:00:00+02:00",
-      "status": "orange",
-      "action": "BLOCK_NEW_BASE_ENTRIES",
-      "tailRiskPct": 26,
-      "stressRiskPct": 58,
-      "confidencePct": 83,
-      "dominantMode": "trend-up",
-      "analysis": "Conditional peak of the flagged window: the first full cash hour coincides with the 14:00Z batch (CB Consumer Confidence, New Home Sales, Richmond Fed). If opening continuation extends with shallow pullbacks, retracement quality degrades. Mapped policy state would be BLOCK_NEW_BASE_ENTRIES. All medium-impact, none Tier-1.",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 24,
+      "stressRiskPct": 55,
+      "confidencePct": 82,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Highest conditional risk of the session: the first full cash hour overlaps the 14:00Z CB Consumer Confidence, New Home Sales and Richmond Fed batch. If the opening auction extended the gap and pullbacks stayed shallow, mean-reversion conditions would deteriorate; three medium-impact prints are a checkpoint, not a Tier-1 shock.",
       "drivers": [
-        "First full U.S. cash hour, historically the densest directional-efficiency window",
-        "14:00Z medium-impact batch: Consumer Confidence, New Home Sales, Richmond Fed",
-        "Conditional: shallow or failed pullbacks after the open would confirm one-way structure",
-        "Invalidation: an early fill back toward 29,105.75 would cut this Tail sharply"
+        "First full cash hour: opening imbalance typically still resolving",
+        "14:00Z CB Consumer Confidence, New Home Sales, Richmond Fed batch",
+        "Conditional hazard: gap extension with shallow pullbacks, not yet observed",
+        "Medium-impact data historically lift Stress more than realised trend persistence"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures gain in countdown to Nvidia earnings, Fed Jackson Hole summit",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-25-dow-sp-500-nasdaq-080527092.html",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "Stock futures edge higher as investors await Nvidia earnings, inflation report due later this week: Live updates",
+          "url": "https://www.cnbc.com/2026/08/24/stock-market-today-live-updates.html",
+          "source": "CNBC"
+        }
+      ]
     },
     {
       "ts": "2026-08-25T15:00:00Z",
       "timeBerlin": "2026-08-25T17:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 23,
-      "stressRiskPct": 56,
-      "confidencePct": 82,
-      "dominantMode": "trend-up",
-      "analysis": "Second cash hour with the European cash close at 15:30Z removing one liquidity pool. Conditional Tail eases from the open-hour peak because post-auction price discovery is usually more two-sided by this point, but the aligned regime keeps it in the watch band rather than back to low.",
+      "tailRiskPct": 22,
+      "stressRiskPct": 53,
+      "confidencePct": 80,
+      "dominantMode": "mixed",
+      "analysis": "Opening imbalance is normally absorbed within roughly ninety minutes of the cash open. Tail eases but stays in the watch band because any post-data directional leg initiated in the prior hour would still be running here, and the gap edge at 29,105.75 remains an untested reference below.",
       "drivers": [
-        "European cash close at 15:30Z thins one side of the order book",
-        "Conditional: normal post-auction two-way discovery would decay Tail from here",
-        "Aligned yields/VIX/semis keep directional persistence plausible",
-        "14:00Z release reaction typically resolved within this hour"
+        "Opening auction imbalance usually absorbed within ~90 minutes",
+        "Any 14:00Z data-driven leg would still be extending in this hour",
+        "Untested gap-fill reference at Monday's 29,105.75 settlement",
+        "Conditional invalidation: a failed retracement followed by fresh session highs"
       ],
       "news": []
     },
     {
       "ts": "2026-08-25T16:00:00Z",
       "timeBerlin": "2026-08-25T18:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 20,
-      "stressRiskPct": 52,
-      "confidencePct": 80,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 50,
+      "confidencePct": 78,
       "dominantMode": "mixed",
-      "analysis": "Late U.S. morning. Conditional Tail returns to the lower watch band as the opening imbalance is normally absorbed and intraday ranges compress. Oil's slide toward $82.5 WTI on eased U.S.-Iran escalation fear is a risk-supportive cross-asset input rather than a discontinuity source.",
+      "analysis": "Late U.S. morning normally returns two-way trade once the opening range and data reaction are established. Mapped state returns to EA_ON on the conditional path, assuming the data batch produced an orderly reaction rather than persistent one-way extension.",
       "drivers": [
-        "Opening imbalance typically absorbed; ranges compress into midday",
-        "WTI near $82.5 (-2.9%) on reduced Iran supply-disruption premium",
-        "Conditional: a failed midday retracement would keep Tail elevated instead",
-        "No scheduled U.S. release remaining inside the cash session"
+        "Late-morning session typically restores two-way rotation",
+        "Assumes orderly, retracing price discovery after the 14:00Z batch",
+        "No further scheduled U.S. macro release in this hour"
       ],
-      "news": [
-        {
-          "title": "Oil hits one-week low as investors shrug off latest U.S. sanctions on Iran",
-          "url": "https://www.cnbc.com/2026/08/25/oil-hits-one-week-low-as-investors-shrug-off-iran-sanctions.html",
-          "source": "CNBC"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-25T17:00:00Z",
       "timeBerlin": "2026-08-25T19:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 49,
-      "confidencePct": 79,
-      "dominantMode": "mixed",
-      "analysis": "U.S. midday, the flattest liquidity window of the cash session. With no remaining scheduled catalyst today and volatility compressing into Wednesday's Nvidia print, conditional Tail falls back below the watch band. Mapped policy state returns to EA_ON on the forecast path.",
+      "tailRiskPct": 17,
+      "stressRiskPct": 48,
+      "confidencePct": 76,
+      "dominantMode": "normal",
+      "analysis": "Midday U.S. lull with no scheduled catalyst. Conditional Tail sits near the low end of the session as liquidity thins and intraday ranges typically compress ahead of the Nvidia and PCE event stack later in the week.",
       "drivers": [
-        "Midday liquidity trough; two-way flow usually dominates",
-        "Volatility compression ahead of Wednesday's Nvidia results",
-        "No further scheduled U.S. macro release today",
-        "Conditional: renewed extension to new session highs would reverse this decay"
+        "Midday liquidity lull, no scheduled U.S. release",
+        "Range compression is the typical pattern into a major earnings catalyst",
+        "Volatility decay assumed to continue if no new headline lands"
       ],
       "news": []
     },
@@ -463,16 +442,21 @@
       "action": "EA_ON",
       "tailRiskPct": 16,
       "stressRiskPct": 47,
-      "confidencePct": 78,
-      "dominantMode": "mixed",
-      "analysis": "Early U.S. afternoon. Conditional Tail is at its cash-session low: the opening auction is long resolved, the day's medium-impact data is priced, and pre-earnings positioning tends to pin rather than trend. Retracement quality is normally at its best in this window.",
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "Lowest conditional Tail of the U.S. session. Early afternoon usually offers the most reliable mean-reversion conditions of the day, provided no unscheduled tariff or Iran headline arrives to reintroduce a discontinuity channel.",
       "drivers": [
-        "Post-lunch drift; directional conviction typically lowest here",
-        "Pre-Nvidia positioning tends to suppress realised index volatility",
-        "Conditional: a late-afternoon trend leg is the main way this estimate is wrong",
-        "Cross-asset backdrop stable with yields lower and oil weaker"
+        "Early U.S. afternoon historically the most range-bound part of the session",
+        "Open headline channel: Canada tariff retaliation and Iran sanctions",
+        "Conditional on no fresh escalation between now and this hour"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "As Canada readies retaliatory tariffs, Mark Carney says his nation is 'at war' with U.S.",
+          "url": "https://www.npr.org/2026/08/22/nx-s1-5941584/us-canada-tariffs",
+          "source": "NPR"
+        }
+      ]
     },
     {
       "ts": "2026-08-25T19:00:00Z",
@@ -481,32 +465,36 @@
       "action": "EA_ON",
       "tailRiskPct": 18,
       "stressRiskPct": 49,
-      "confidencePct": 77,
+      "confidencePct": 73,
       "dominantMode": "mixed",
-      "analysis": "Power hour into the 20:00Z cash close. Conditional Tail ticks up modestly because closing imbalances, index rebalancing flow and pre-Nvidia repositioning can produce a one-sided final leg. The lift is mechanical to the session clock, not evidence of observed structure.",
+      "analysis": "Power hour into the 20:00Z cash close. Conditional Tail lifts modestly on the usual late-session mechanics, where index rebalancing and position squaring before a major after-close earnings event can produce a directional leg that resists retracement.",
       "drivers": [
-        "Closing-auction imbalance flow into the 20:00Z U.S. cash close",
-        "Pre-earnings repositioning ahead of Wednesday's Nvidia print",
-        "Conditional: a closing trend leg without retracement is the specific hazard",
-        "Effect historically confined to the final 30-60 minutes"
+        "Power hour: late-session continuation or reversal risk",
+        "Position squaring ahead of Wednesday's Nvidia results and July PCE",
+        "Closing-auction imbalance can produce a short one-way leg"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Stock futures edge higher as investors await Nvidia earnings, inflation report due later this week: Live updates",
+          "url": "https://www.cnbc.com/2026/08/24/stock-market-today-live-updates.html",
+          "source": "CNBC"
+        }
+      ]
     },
     {
       "ts": "2026-08-25T20:00:00Z",
       "timeBerlin": "2026-08-25T22:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 17,
-      "stressRiskPct": 48,
-      "confidencePct": 76,
+      "tailRiskPct": 15,
+      "stressRiskPct": 46,
+      "confidencePct": 72,
       "dominantMode": "mixed",
-      "analysis": "U.S. cash close and settlement. Conditional Tail stays in the upper-low band while the closing print is absorbed, then liquidity thins quickly. Directional persistence normally breaks down once the auction clears, though headline sensitivity rises as depth falls.",
+      "analysis": "U.S. cash close at 20:00Z. Futures continue to trade but participation falls sharply, and the closing print typically ends the day's directional impulse. Conditional Tail falls as the main structural driver of the session is retired.",
       "drivers": [
-        "Cash close at 20:00Z; auction clears then depth falls away",
-        "Thinning book raises headline sensitivity even as trend risk falls",
-        "Conditional: a settlement-driven extension would be short-lived",
-        "Cross-asset alignment usually stops updating after the cash close"
+        "20:00Z U.S. cash close retires the session's directional impulse",
+        "Participation drops sharply immediately after the close",
+        "No scheduled U.S. release remains on 25 August after the close"
       ],
       "news": []
     },
@@ -515,24 +503,17 @@
       "timeBerlin": "2026-08-25T23:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 13,
-      "stressRiskPct": 44,
-      "confidencePct": 75,
+      "tailRiskPct": 12,
+      "stressRiskPct": 43,
+      "confidencePct": 70,
       "dominantMode": "normal",
-      "analysis": "Post-close futures hour. Conditional Tail drops materially: the U.S. session is done, no scheduled catalyst remains overnight, and the next index-defining event (Nvidia) is more than 23 hours away and outside this forecast window. Range behaviour normally dominates here.",
+      "analysis": "Post-close futures trade. Conditional Tail drops to the low band: the after-close window carries no scheduled U.S. catalyst on 25 August, and thin but orderly two-way conditions are the normal pattern before the Asian session builds.",
       "drivers": [
-        "Post-close futures; no scheduled U.S. catalyst overnight",
-        "Nvidia results fall outside this 24-hour forecast window",
-        "Thin-book headline risk is the residual, not trend risk",
-        "Conditional: an unscheduled geopolitical headline is the main gap mechanism"
+        "No scheduled U.S. catalyst in the post-close window on 25 August",
+        "Thin participation, but historically orderly two-way futures trade",
+        "Nvidia results are a full day away, on 26 August after the close"
       ],
-      "news": [
-        {
-          "title": "Nvidia Could Swing $282 Billion In Value After Earnings",
-          "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61379652/nvidia-could-swing-282-billion-in-value-after-earnings",
-          "source": "Benzinga"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-25T22:00:00Z",
@@ -541,14 +522,13 @@
       "action": "EA_ON",
       "tailRiskPct": 11,
       "stressRiskPct": 42,
-      "confidencePct": 74,
+      "confidencePct": 70,
       "dominantMode": "normal",
-      "analysis": "Pre-Asia handover, the quietest liquidity window of the 24-hour cycle. Conditional Tail sits at its forecast low. Mean-reverting micro-structure normally dominates, with the residual risk being an unscheduled headline into a thin book rather than a persistent directional path.",
+      "analysis": "Quietest part of the twenty-four hour cycle, between the U.S. close and the Asian open. Conditional Tail is low, with residual risk confined to unscheduled headline flow rather than to any observed structure.",
       "drivers": [
-        "Lowest liquidity window before the Asian open",
-        "No scheduled U.S., European or Asian release inside this hour",
-        "Residual risk is gap-on-headline, not sustained one-way structure",
-        "Conditional: any move here is normally retraced within a few hours"
+        "Gap between the U.S. close and the Asian cash session",
+        "Residual risk limited to unscheduled geopolitical or tariff headlines",
+        "No scheduled macro release in this hour"
       ],
       "news": []
     },
@@ -557,40 +537,32 @@
       "timeBerlin": "2026-08-26T01:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 11,
-      "stressRiskPct": 42,
-      "confidencePct": 73,
+      "tailRiskPct": 10,
+      "stressRiskPct": 41,
+      "confidencePct": 69,
       "dominantMode": "normal",
-      "analysis": "Asian cash open (Tokyo and Sydney). Conditional Tail remains low. The open can produce a short repricing impulse as Asia marks to the U.S. session, but that impulse historically retraces rather than extending into a persistent no-retracement path for NQ.",
+      "analysis": "Asian session opening. Conditional Tail is at its session floor. Regional cash markets take direction from the prior U.S. close, and NQ futures normally track it without initiating an independent one-way trend at this hour.",
       "drivers": [
-        "Tokyo and Sydney cash open marks to the prior U.S. session",
-        "Asian open impulse historically retraces for index futures",
-        "Iran sanctions programme remains an unscheduled headline channel",
-        "Conditional: a fresh escalation headline would be the exception"
+        "Asian cash markets open and take a cue from the U.S. close",
+        "NQ futures rarely initiate independent trend structure at this hour",
+        "No scheduled U.S. macro release overnight"
       ],
-      "news": [
-        {
-          "title": "Oil prices fall as U.S. rolls out global sanctions focused on Iran",
-          "url": "https://www.cnbc.com/2026/08/24/oil-price-today-wti-brent-us-sanctions-iran.html",
-          "source": "CNBC"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-26T00:00:00Z",
       "timeBerlin": "2026-08-26T02:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 12,
-      "stressRiskPct": 43,
-      "confidencePct": 72,
+      "tailRiskPct": 10,
+      "stressRiskPct": 41,
+      "confidencePct": 68,
       "dominantMode": "normal",
-      "analysis": "Asian morning. Conditional Tail stays low with a marginal lift for regional data flow and the Asian FX fix. NQ typically tracks a narrow range in this window unless a U.S.-relevant headline crosses; nothing scheduled is known to fall inside this hour.",
+      "analysis": "Midnight UTC. Conditional Tail holds at the floor with the Asian session established and no U.S. catalyst pending. Any deviation would have to come from an unscheduled overnight development rather than from the calendar.",
       "drivers": [
-        "Asian morning session; NQ typically range-bound",
-        "Regional data flow rarely transmits to Nasdaq futures structure",
-        "Conditional: only a U.S.-relevant headline would change this path",
-        "Confidence decays with horizon; no live evidence exists for this hour"
+        "Asian session established, no scheduled catalyst",
+        "Deviation would require an unscheduled overnight development",
+        "Conditional low-volatility baseline for the overnight window"
       ],
       "news": []
     },
@@ -599,16 +571,15 @@
       "timeBerlin": "2026-08-26T03:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 12,
-      "stressRiskPct": 43,
-      "confidencePct": 71,
+      "tailRiskPct": 11,
+      "stressRiskPct": 42,
+      "confidencePct": 68,
       "dominantMode": "normal",
-      "analysis": "Asian morning continuation. The conditional path is unchanged: range behaviour with intact retracements. The forecast rests on session-structure priors rather than observed price path, because no evidence for this hour exists at the assessment cutoff.",
+      "analysis": "Most active hour of the Asian session. Conditional Tail lifts a point on the normal pickup in regional volume, which occasionally transmits a modest directional impulse into NQ futures without producing sustained no-retracement structure.",
       "drivers": [
-        "Session-structure prior, not observed price path",
-        "No scheduled U.S. macro release in the Asian session",
-        "Retracement quality normally intact through Asian hours",
-        "Conditional: carry-over from a late U.S. trend leg would raise this"
+        "Peak Asian session volume can transmit a modest impulse to NQ",
+        "Historically insufficient on its own to sustain no-retracement structure",
+        "Semiconductor supply-chain names in Asia are a secondary channel"
       ],
       "news": []
     },
@@ -619,14 +590,13 @@
       "action": "EA_ON",
       "tailRiskPct": 11,
       "stressRiskPct": 42,
-      "confidencePct": 70,
+      "confidencePct": 67,
       "dominantMode": "normal",
-      "analysis": "Asian midday. Conditional Tail is at the low end. Liquidity dips over the regional lunch break, which mildly widens spreads without generating directional persistence. No scheduled catalyst is known for this hour.",
+      "analysis": "Asian afternoon. Conditional Tail unchanged. The main hour-specific consideration is that regional positioning ahead of the European open can start to set the overnight range that European traders then react to.",
       "drivers": [
-        "Regional lunch-break liquidity dip widens spreads",
-        "No scheduled catalyst inside this hour",
-        "Spread widening affects execution quality, not trend persistence",
-        "Conditional: unchanged unless an overnight headline crosses"
+        "Asian afternoon positioning begins to set the overnight range",
+        "No scheduled U.S. or European macro release in this hour",
+        "Conditional continuation of the low overnight volatility baseline"
       ],
       "news": []
     },
@@ -637,14 +607,13 @@
       "action": "EA_ON",
       "tailRiskPct": 11,
       "stressRiskPct": 42,
-      "confidencePct": 70,
+      "confidencePct": 67,
       "dominantMode": "normal",
-      "analysis": "Asian afternoon including the China session. Conditional Tail remains low. China-specific headlines can move semiconductors and therefore NQ weightings, but transmission to a persistent index-level one-way path is historically rare in this window.",
+      "analysis": "Late Asian session into the European pre-market handover. Conditional Tail stays at the overnight baseline; the handover itself is a liquidity transition rather than a source of directional persistence.",
       "drivers": [
-        "China session can move semiconductor names and NQ weightings",
-        "Index-level directional transmission from Asia is historically weak",
-        "No scheduled U.S. release inside this hour",
-        "Conditional: a China tech or export-control headline is the exception"
+        "Asia-to-Europe liquidity handover is a transition, not a trend driver",
+        "Overnight range typically established by this point",
+        "No scheduled catalyst in this hour"
       ],
       "news": []
     },
@@ -655,14 +624,13 @@
       "action": "EA_ON",
       "tailRiskPct": 12,
       "stressRiskPct": 43,
-      "confidencePct": 69,
-      "dominantMode": "mixed",
-      "analysis": "Late Asian session approaching the regional close. Conditional Tail edges up marginally as European pre-positioning begins and the overnight range is normally tested. The path assumption is a tested-but-held range rather than directional extension.",
+      "confidencePct": 66,
+      "dominantMode": "normal",
+      "analysis": "European pre-market. Conditional Tail edges up as European participants begin to price the overnight move and the day's PCE risk. Structure at this hour is usually still orderly and two-way.",
       "drivers": [
-        "Asian close approaching; European pre-positioning begins",
-        "Overnight range edges are commonly tested in this window",
-        "Conditional: a clean break of the overnight range would raise Tail",
-        "Assumption is range test then reversion, not extension"
+        "European pre-market participants begin repricing the overnight move",
+        "Early positioning ahead of the 12:30Z July PCE release",
+        "Structure at this hour typically remains orderly and two-way"
       ],
       "news": []
     },
@@ -673,16 +641,21 @@
       "action": "EA_ON",
       "tailRiskPct": 12,
       "stressRiskPct": 44,
-      "confidencePct": 68,
-      "dominantMode": "mixed",
-      "analysis": "Asian close and the gap before European liquidity arrives. Conditional Tail stays low with a small lift for the handover. This is the point where an overnight trend, if one formed, would first become visible; none is observed at the assessment cutoff.",
+      "confidencePct": 66,
+      "dominantMode": "normal",
+      "analysis": "Hour before the European cash open. Conditional Stress rises slightly as the PCE and Nvidia stack on 26 August moves within the trading day, while conditional Tail remains low in the absence of observed directional structure.",
       "drivers": [
-        "Asian close to European pre-open liquidity gap",
-        "First point where any overnight trend would become visible",
-        "No overnight structure observed at the assessment cutoff",
-        "Conditional: a one-way Asian session would carry into Europe"
+        "Event stack for 26 August moves inside the trading day",
+        "Stress rises on catalyst proximity while Tail stays low",
+        "Conditional: no observed directional structure at this horizon"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "US July PCE Data Preview: Core Inflation May Hold at 3.3%, How Will US Stocks, the Dollar, and Gold React?",
+          "url": "https://www.tradingkey.com/analysis/economic/indicators/262129985-us-july-pce-preview-inflation-3-3-percent-us-stocks-dollar-gold-reaction-tradingkey",
+          "source": "TradingKey"
+        }
+      ]
     },
     {
       "ts": "2026-08-26T06:00:00Z",
@@ -691,14 +664,13 @@
       "action": "EA_ON",
       "tailRiskPct": 13,
       "stressRiskPct": 45,
-      "confidencePct": 68,
-      "dominantMode": "mixed",
-      "analysis": "European pre-open hour. Conditional Tail rises modestly as index futures begin to reprice ahead of the 07:00Z cash opens and the day's macro agenda comes into focus, with July PCE at 12:30Z the anchor beyond this window.",
+      "confidencePct": 65,
+      "dominantMode": "normal",
+      "analysis": "European cash open. Conditional Tail lifts modestly on the usual open-driven volume spike. Cross-asset alignment between yields, oil and equities would be the thing to check here, but none of it is observable yet.",
       "drivers": [
-        "European cash opens at 07:00Z draw fresh index flow",
-        "July PCE at 12:30Z on 26 Aug anchors the day's agenda",
-        "Conditional: pre-open repricing can set the session's directional bias",
-        "PCE itself falls outside this 24-hour forecast window"
+        "European cash open volume spike lifts conditional Tail modestly",
+        "Checkpoint: yields, oil and equity alignment at the European open",
+        "No observed cross-asset structure available at this horizon"
       ],
       "news": []
     },
@@ -707,24 +679,17 @@
       "timeBerlin": "2026-08-26T09:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 15,
+      "tailRiskPct": 14,
       "stressRiskPct": 47,
-      "confidencePct": 67,
+      "confidencePct": 65,
       "dominantMode": "mixed",
-      "analysis": "European cash open. Conditional Tail lifts to the mid-teens because open auctions in Frankfurt and London add a genuine directional impulse to NQ. The rates backdrop is the swing factor: the equity bid rests on a policy-driven yield decline that has faded once already this month.",
+      "analysis": "European morning. Conditional Tail and Stress build gradually as the market moves toward the 12:30Z U.S. data release. This is pre-positioning risk rather than any observed trend, and it is fully conditional at this distance.",
       "drivers": [
-        "Frankfurt and London cash opens add a directional impulse",
-        "Equity bid rests on a policy-driven yield decline, not on data",
-        "The buyback-led rally already faded once in the week of 21 Aug",
-        "Conditional: a renewed long-end selloff would flip the tone"
+        "Gradual pre-positioning build toward the 12:30Z U.S. release",
+        "Conditional risk only; no price path observable at this horizon",
+        "European morning ranges typically remain two-way"
       ],
-      "news": [
-        {
-          "title": "Longer-dated Treasury yields rise as Bessent's bond buyback rally fizzles out",
-          "url": "https://www.cnbc.com/2026/08/21/treasury-yields-bonds-inflation-rates.html",
-          "source": "CNBC"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-26T08:00:00Z",
@@ -732,17 +697,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
-      "stressRiskPct": 48,
-      "confidencePct": 66,
+      "stressRiskPct": 49,
+      "confidencePct": 64,
       "dominantMode": "mixed",
-      "analysis": "European morning. Conditional Tail holds in the mid-teens. The opening impulse is normally absorbed within the first hour, restoring two-way flow, while the market's attention shifts toward the U.S. pre-market and the PCE checkpoint later that morning.",
+      "analysis": "Mid European morning on 26 August. Conditional Stress continues to build into the July PCE and GDP second estimate. Tail remains in the low band because pre-release drift historically retraces rather than extending one-way.",
       "drivers": [
-        "European opening impulse typically absorbed within an hour",
-        "Attention rotates toward the U.S. pre-market and PCE checkpoint",
-        "Two-way flow normally restored once the open clears",
-        "Conditional: sustained European extension would lift this estimate"
+        "Stress builds into July PCE and the Q2 GDP second estimate",
+        "Pre-release drift historically retraces rather than extending",
+        "Nvidia results follow after the 26 August cash close"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "US July PCE Data Preview: Core Inflation May Hold at 3.3%, How Will US Stocks, the Dollar, and Gold React?",
+          "url": "https://www.tradingkey.com/analysis/economic/indicators/262129985-us-july-pce-preview-inflation-3-3-percent-us-stocks-dollar-gold-reaction-tradingkey",
+          "source": "TradingKey"
+        }
+      ]
     },
     {
       "ts": "2026-08-26T09:00:00Z",
@@ -750,17 +720,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 16,
-      "stressRiskPct": 50,
-      "confidencePct": 66,
+      "stressRiskPct": 51,
+      "confidencePct": 64,
       "dominantMode": "mixed",
-      "analysis": "European mid-morning with the PCE release now inside three hours. Conditional Tail and Stress both drift higher as pre-event positioning begins, hedging demand picks up and liquidity providers reduce quoted size ahead of a Tier-1 U.S. inflation print.",
+      "analysis": "Roughly three hours before the July PCE print. Conditional Stress moves to the upper elevated band on catalyst proximity; conditional Tail stays low because the published risk contract maps event importance and forecast dispersion to Stress rather than to realised path risk.",
       "drivers": [
-        "July PCE now inside three hours; pre-event positioning begins",
-        "Quoted size typically shrinks ahead of a Tier-1 inflation print",
-        "Hedging demand lifts implied volatility into the release",
-        "Conditional: pre-event drift is usually shallow and two-sided"
+        "Approximately three hours to the 12:30Z July PCE release",
+        "Event importance maps primarily to Stress, not to realised Tail",
+        "Core PCE consensus reported near 3.3% year over year"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "US July PCE Data Preview: Core Inflation May Hold at 3.3%, How Will US Stocks, the Dollar, and Gold React?",
+          "url": "https://www.tradingkey.com/analysis/economic/indicators/262129985-us-july-pce-preview-inflation-3-3-percent-us-stocks-dollar-gold-reaction-tradingkey",
+          "source": "TradingKey"
+        }
+      ]
     },
     {
       "ts": "2026-08-26T10:00:00Z",
@@ -768,97 +743,112 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 17,
-      "stressRiskPct": 52,
-      "confidencePct": 65,
+      "stressRiskPct": 54,
+      "confidencePct": 63,
       "dominantMode": "mixed",
-      "analysis": "European late morning. Conditional Tail continues drifting up on pre-event mechanics alone. Fed Chair Warsh's Jackson Hole keynote on 28 Aug adds a second policy checkpoint beyond this window, keeping the rates channel the dominant medium-term uncertainty for index structure.",
+      "analysis": "Two hours before the release. Conditional Stress is high and liquidity typically thins as participants stand aside. Thin pre-release books can exaggerate a move, which is a Stress and slippage consideration more than a no-retracement mechanism.",
       "drivers": [
-        "Pre-event mechanics, not observed structure, drive this drift",
-        "Warsh Jackson Hole keynote on 28 Aug is a second policy checkpoint",
-        "Rates channel remains the dominant medium-term uncertainty",
-        "Conditional: thinner books amplify any headline that does cross"
+        "Pre-release liquidity typically thins about two hours out",
+        "Thin books exaggerate moves without creating trend persistence",
+        "Conditional path only; nothing observed at this horizon"
       ],
-      "news": [
-        {
-          "title": "Jackson Hole 2026: What to Watch When Warsh Steps to the Podium Friday",
-          "url": "https://www.techtimes.com/articles/325228/20260821/jackson-hole-2026-what-watch-when-warsh-steps-podium-friday.htm",
-          "source": "TechTimes"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-26T11:00:00Z",
       "timeBerlin": "2026-08-26T13:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 19,
-      "stressRiskPct": 55,
-      "confidencePct": 64,
+      "tailRiskPct": 18,
+      "stressRiskPct": 57,
+      "confidencePct": 63,
       "dominantMode": "mixed",
-      "analysis": "Final slot of this window, the hour before July PCE at 12:30Z. Conditional Tail reaches its forecast-day high in the upper-low band on pre-release mechanics: widest spreads, thinnest resting size, highest whipsaw sensitivity. The release itself sits beyond this forecast window.",
+      "analysis": "Final hour before the July PCE and GDP releases. Conditional Stress peaks for the forecast window. Tail remains below the watch band because a pre-release hold is not directional structure, and the release itself lands in the following slot.",
       "drivers": [
-        "Last hour before July PCE at 12:30Z on 26 Aug",
-        "Spreads widest and resting size thinnest immediately pre-release",
-        "PCE print and Nvidia results both fall outside this window",
-        "Conditional: pre-release drift rarely becomes a no-retracement path"
+        "Final hour before the 12:30Z July PCE and GDP second estimate",
+        "Pre-release holding pattern is not directional structure",
+        "Conditional Stress peak of the published forecast window"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-26T12:00:00Z",
+      "timeBerlin": "2026-08-26T14:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 62,
+      "confidencePct": 62,
+      "dominantMode": "event/whipsaw",
+      "analysis": "The 12:30Z July PCE, Core PCE and Q2 GDP second estimate land inside this hour. Conditional Tail returns to the watch band on release-reaction risk, while the larger share of the increase sits in Stress: a surprise raises volatility more reliably than it produces sustained one-way structure.",
+      "drivers": [
+        "12:30Z July PCE, Core PCE and Q2 GDP second estimate release",
+        "Release-reaction whipsaw is the specific conditional hazard",
+        "Surprise magnitude maps mainly to Stress rather than to realised Tail",
+        "Nvidia results still ahead, after the 26 August cash close"
       ],
       "news": [
         {
-          "title": "Stock Market Today (Aug. 25, 2026): S&P 500 futures climb ahead of Nvidia earnings, Fed symposium",
-          "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-25-2026",
-          "source": "TheStreet"
+          "title": "US July PCE Data Preview: Core Inflation May Hold at 3.3%, How Will US Stocks, the Dollar, and Gold React?",
+          "url": "https://www.tradingkey.com/analysis/economic/indicators/262129985-us-july-pce-preview-inflation-3-3-percent-us-stocks-dollar-gold-reaction-tradingkey",
+          "source": "TradingKey"
+        },
+        {
+          "title": "Stock futures edge higher as investors await Nvidia earnings, inflation report due later this week: Live updates",
+          "url": "https://www.cnbc.com/2026/08/24/stock-market-today-live-updates.html",
+          "source": "CNBC"
         }
       ]
     }
   ],
   "forecastDetail": [
     {
-      "ts": "2026-08-25T12:00:00Z",
-      "timeBerlin": "2026-08-25T14:00:00+02:00",
-      "status": "yellow",
-      "tailRiskPct": 21,
-      "stressRiskPct": 50,
-      "comment": "Observed structure: unfilled overnight gap, NQ near the session high, aligned yields, VIX and semiconductors. Orderly drift with no scheduled U.S. release in this hour keeps Tail in the watch band rather than at a blocking level."
-    },
-    {
       "ts": "2026-08-25T13:00:00Z",
       "timeBerlin": "2026-08-25T15:00:00+02:00",
       "status": "yellow",
-      "tailRiskPct": 24,
-      "stressRiskPct": 54,
-      "comment": "Final pre-market hour into the 13:30Z cash open. Tail is raised conditionally for the aligned-regime open only; no opening structure has been observed yet."
+      "tailRiskPct": 20,
+      "stressRiskPct": 51,
+      "comment": "NQ is up 0.75% on an unfilled gap-up but has already retraced about 100 points from the 29,425.75 session high, and index leadership is split between bid semiconductors and lagging software; the 13:30Z cash open falls inside this hour."
     },
     {
       "ts": "2026-08-25T14:00:00Z",
       "timeBerlin": "2026-08-25T16:00:00+02:00",
-      "status": "orange",
-      "tailRiskPct": 26,
-      "stressRiskPct": 58,
-      "comment": "Conditional peak of the flagged window: first cash hour plus the 14:00Z medium-impact batch. Mapped policy state on this path is BLOCK_NEW_BASE_ENTRIES. An early gap fill toward 29,105.75 would invalidate it."
+      "status": "yellow",
+      "tailRiskPct": 24,
+      "stressRiskPct": 55,
+      "comment": "Highest conditional risk hour of the session: the first full cash hour overlaps the 14:00Z CB Consumer Confidence, New Home Sales and Richmond Fed batch. Three medium-impact prints are a checkpoint rather than a Tier-1 shock, so Tail stays at the top of the watch band."
     },
     {
       "ts": "2026-08-25T15:00:00Z",
       "timeBerlin": "2026-08-25T17:00:00+02:00",
       "status": "yellow",
-      "tailRiskPct": 23,
-      "stressRiskPct": 56,
-      "comment": "Second cash hour into the 15:30Z European close. Conditional Tail eases from the open-hour peak as post-auction discovery normally turns two-sided, but the aligned regime keeps it in the watch band."
+      "tailRiskPct": 22,
+      "stressRiskPct": 53,
+      "comment": "Opening imbalance is normally absorbed within about ninety minutes, so conditional Tail eases, but any directional leg started around the data batch would still be running here and the 29,105.75 gap edge remains untested."
     },
     {
       "ts": "2026-08-25T16:00:00Z",
       "timeBerlin": "2026-08-25T18:00:00+02:00",
-      "status": "yellow",
-      "tailRiskPct": 20,
-      "stressRiskPct": 52,
-      "comment": "Late morning: the opening imbalance is normally absorbed and ranges compress. Oil near $82.5 WTI on reduced Iran supply-disruption premium is supportive cross-asset context, not a discontinuity source."
+      "status": "green",
+      "tailRiskPct": 19,
+      "stressRiskPct": 50,
+      "comment": "Late U.S. morning conditionally returns to two-way trade once the opening range and data reaction are set; the mapped state returns to EA_ON on the assumption of orderly, retracing price discovery."
     },
     {
       "ts": "2026-08-25T17:00:00Z",
       "timeBerlin": "2026-08-25T19:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 18,
-      "stressRiskPct": 49,
-      "comment": "Midday liquidity trough with no scheduled catalyst left today and volatility compressing into Wednesday's Nvidia print. Conditional Tail returns below the watch band and the mapped policy state is EA_ON."
+      "tailRiskPct": 17,
+      "stressRiskPct": 48,
+      "comment": "Midday lull with no scheduled catalyst; ranges typically compress ahead of the Nvidia and PCE stack later in the week."
+    },
+    {
+      "ts": "2026-08-25T18:00:00Z",
+      "timeBerlin": "2026-08-25T20:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 16,
+      "stressRiskPct": 47,
+      "comment": "Lowest conditional Tail of the U.S. session in the early afternoon, subject to no fresh Canada tariff or Iran headline reintroducing a discontinuity channel."
     }
   ],
   "events": [
@@ -887,12 +877,6 @@
       "impact": "high"
     },
     {
-      "name": "Durable Goods Orders (Jul)",
-      "ts": "2026-08-26T12:30:00Z",
-      "timeBerlin": "2026-08-26T14:30:00+02:00",
-      "impact": "medium"
-    },
-    {
       "name": "GDP Growth Rate QoQ, 2nd estimate (Q2)",
       "ts": "2026-08-26T12:30:00Z",
       "timeBerlin": "2026-08-26T14:30:00+02:00",
@@ -911,12 +895,6 @@
       "impact": "medium"
     },
     {
-      "name": "Fed Chair Warsh keynote, Jackson Hole Economic Symposium",
-      "ts": "2026-08-28T14:00:00Z",
-      "timeBerlin": "2026-08-28T16:00:00+02:00",
-      "impact": "high"
-    },
-    {
       "name": "Chicago PMI (Aug)",
       "ts": "2026-08-28T13:45:00Z",
       "timeBerlin": "2026-08-28T15:45:00+02:00",
@@ -929,9 +907,15 @@
       "impact": "medium"
     },
     {
-      "name": "Dallas Fed Manufacturing Index (Aug)",
-      "ts": "2026-08-31T14:30:00Z",
-      "timeBerlin": "2026-08-31T16:30:00+02:00",
+      "name": "Fed Chair Warsh keynote, Jackson Hole Economic Symposium",
+      "ts": "2026-08-28T14:00:00Z",
+      "timeBerlin": "2026-08-28T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "S&P Global Manufacturing PMI, final (Aug)",
+      "ts": "2026-09-01T13:45:00Z",
+      "timeBerlin": "2026-09-01T15:45:00+02:00",
       "impact": "medium"
     },
     {
