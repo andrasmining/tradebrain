@@ -3,73 +3,62 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-08-28T07:33:02Z",
+  "generatedAt": "2026-08-28T08:31:30Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "green",
-  "statusText": "Mapped policy state: EA_ON. Tail 11% (low), Stress 50% (elevated), Confidence 88% (high). Nasdaq-100 futures are still rotating inside the narrow overnight band with the 29,592 low intact, and VIX, Treasury yields and crude show no amplifier alignment ahead of the 14:00 UTC Jackson Hole keynote.",
-  "recommendation": "Tail remains well below the block threshold, so the deterministic mapping keeps the published state at EA_ON for both NQ futures and the NAS100 CFD. Stress is carried at 50% because three high-impact U.S. items print together at 14:00 UTC on top of the 13:45 UTC Chicago PMI. The published danger window is narrow and evidence-based, covering 13:30-16:00 UTC from the cash open through the plausible delayed second leg, and the conditional mapping reaches WATCH only across 14:00-16:00 UTC. Existing-position management and emergency protection remain unaffected by this published state.",
-  "headline": "Nasdaq-100 futures hold the overnight band into the European morning as Warsh's first Jackson Hole keynote approaches",
-  "body": "The Nasdaq-100 cash index closed Thursday at 29,641.56, up 1.43% and just below its 29,643.53 session high, after Nvidia rose 8.7% on revenue guidance well above consensus and the semiconductor complex advanced with it. Overnight that leadership has been given back at the single-name level rather than at the index level: PayPal fell about 12% after an acquisition proposal was withdrawn, Marvell fell around 8% on softer near-term gross margins and IREN fell about 9%, while Affirm rose roughly 11%. NQ futures are quoted near 29,614.00, down 0.28%, inside a 29,592-29,707 band that is about 0.39% wide and has now contained roughly eight hours of two-way rotation with the low intact; S&P 500 futures are flat and Dow futures are higher, which is consistent with stock-specific damage rather than an index-level trend. Cross-asset evidence offers no amplifier: VIX is 14.51 and unchanged, the 2-year yield is 4.24% and the 10-year 4.68% with only fractional daily moves, WTI is $83.02 and Brent $88.13, both lower, and reporting on Persian Gulf shipping describes crude flows through the Strait of Hormuz recovering rather than deteriorating. The day's structure is concentrated in a single U.S. window: the Chicago PMI at 13:45 UTC, then Fed Chair Warsh's first Jackson Hole keynote, the BLS preliminary payroll benchmark revision and final Michigan sentiment all at 14:00 UTC, against a backdrop of sticky PCE inflation and market pricing of roughly one-in-three odds of a September rate increase. A chair's speech is structurally multi-stage, so the published danger window extends past the immediate reaction to 16:00 UTC to cover a possible yield-led second leg. None of that is observed structure yet, and under the calibration used here clustered event risk lifts Stress and lowers Confidence before it lifts Tail, so the current Tail reading stays at 11%.",
-  "tailRiskPct": 11,
+  "statusText": "Mapped policy state: EA_ON. Tail risk is low with an orderly overnight price path, while Stress is elevated ahead of the Fed Chair's Jackson Hole keynote at 14:00Z.",
+  "recommendation": "Conditions currently map to the EA_ON state for NQ futures and NAS100 CFD. A narrow danger window is flagged for 13:45Z-15:30Z (15:45-17:30 Berlin) covering Chicago PMI, the Warsh keynote and the immediate post-speech repricing; scores in that window are conditional and will be reassessed on observed price path.",
+  "headline": "Orderly overnight range under Thursday's Nvidia-led close, with the Warsh Jackson Hole keynote as the day's decisive checkpoint",
+  "body": "The Nasdaq-100 cash index closed Thursday at 29,641.56, up 1.43% and effectively at the session high of 29,643.53, after Nvidia's fiscal Q2 report (EPS $2.22, revenue $96.2 billion, up 106% year over year) drove an almost 9% move in the stock and the best day for the technology sector since 4 August. Overnight, NQ futures have given back part of that advance to roughly 29,587, about 0.37% lower, trading inside a contained 29,578.25-29,707.00 range with genuine two-way retracement rather than one-way extension. Marvell's post-earnings drop of more than 7% is holding Nasdaq futures behind S&P 500 and Dow futures. Cross-asset signals are calm: VIX is 14.57, Treasury futures are essentially unchanged, the 2-year is 4.19% and the 10-year 4.66%, and WTI has eased to about $82.98 with Brent near $88.01 as Persian Gulf exports recover toward two-thirds of pre-war levels. The dominant scheduled risk is Fed Chair Kevin Warsh's first Jackson Hole keynote at 14:00Z, arriving alongside the final Michigan sentiment reading and the BLS preliminary payroll benchmark revision, and 15 minutes after Chicago PMI. No policy statement is expected from the symposium. Because no persistent one-way structure, shallow-pullback continuation or session-extreme holding has been observed, the scheduled catalyst stack is scored as Stress and conditional forecast risk rather than as current Tail. Note that CME equity index futures settle at 21:00Z for the weekend, so the later forecast hours cover a closed market.",
+  "tailRiskPct": 12,
   "tailLevel": "low",
-  "stressRiskPct": 50,
+  "stressRiskPct": 53,
   "stressLevel": "elevated",
   "dominantMode": "mixed",
-  "confidencePct": 88,
+  "confidencePct": 87,
   "confidenceLevel": "high",
   "action": "EA_ON",
   "dangerWindow": {
-    "start": "2026-08-28T13:30:00Z",
-    "end": "2026-08-28T16:00:00Z"
+    "start": "2026-08-28T13:45:00Z",
+    "end": "2026-08-28T15:30:00Z"
   },
   "dangerWindowBerlin": {
-    "start": "2026-08-28T15:30:00+02:00",
-    "end": "2026-08-28T18:00:00+02:00"
+    "start": "2026-08-28T15:45:00+02:00",
+    "end": "2026-08-28T17:30:00+02:00"
   },
   "sources": [
     {
-      "title": "Nasdaq 100 futures (NQ=F) overnight price and range - Yahoo Finance",
-      "url": "https://finance.yahoo.com/quote/NQ%3DF/"
-    },
-    {
-      "title": "Nasdaq 100 futures quote, day range and previous close - Investing.com",
-      "url": "https://www.investing.com/indices/nq-100-futures"
-    },
-    {
-      "title": "Nasdaq-100 (^NDX) index level, close and day range - Yahoo Finance",
+      "title": "Nasdaq-100 (^NDX) quote, level, day range and close",
       "url": "https://finance.yahoo.com/quote/%5ENDX/"
     },
     {
-      "title": "Jackson Hole Fed summit live coverage, futures and VIX levels - Yahoo Finance",
-      "url": "https://finance.yahoo.com/economy/live/jackson-hole-fed-summit-live-kevin-warsh-keynote-speech-180442096.html"
+      "title": "Nasdaq 100 futures (NQ=F) quote and overnight range",
+      "url": "https://finance.yahoo.com/quote/NQ%3DF/"
     },
     {
-      "title": "United States Government Bond 10Y and 2Y yields - Trading Economics",
-      "url": "https://tradingeconomics.com/united-states/government-bond-yield"
+      "title": "CBOE Volatility Index (^VIX) quote",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
     },
     {
-      "title": "Crude Oil WTI and Brent prices - Trading Economics",
-      "url": "https://tradingeconomics.com/commodity/crude-oil"
+      "title": "Federal Reserve H.15 Selected Interest Rates",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "title": "United States economic calendar",
+      "url": "https://tradingeconomics.com/united-states/calendar"
+    },
+    {
+      "title": "Fed Chairman Kevin Warsh delivers his key Jackson Hole speech Friday",
+      "url": "https://www.cnbc.com/2026/08/27/fed-chairman-kevin-warsh-delivers-his-key-jackson-hole-speech-friday.html"
     }
   ],
-  "lookbackSummary": "Across the past 24 clock-hours every published Claude assessment stayed in the EA_ON band, with Tail between 10% and 14% and Stress ranging from the mid-40s during the European morning of 27 August to the low 50s across the U.S. session and the overnight hours. The dominant mode was predominantly mixed, with two trend-up marks at 17:00 and 20:00 UTC on 27 August as the Nvidia-led advance extended into the cash close. Confidence held between 82% and 88% throughout. The 09:00 UTC slot on 27 August has no published assessment and is marked unavailable. No hour in the window produced the persistent no-retracement structure that would have lifted Tail into the blocking bands.",
-  "outlookSummary": "The horizon runs from the European morning through a concentrated U.S. afternoon and then into the weekend futures halt. Conditional risk drifts up slowly from the 08:00 UTC European open, steps up at the 13:30 UTC cash open and the 13:45 UTC Chicago PMI, and peaks across 14:00-15:00 UTC on the Warsh keynote, the payroll benchmark revision and final Michigan sentiment, where the mapped conditional state reaches WATCH at Tail 22% and 21%. From 16:00 UTC the conditional path decays on the assumption that discovery is orderly and retracements return; an observed no-retracement path would instead justify higher readings than those published here. Conditional Tail falls sharply from 21:00 UTC, when CME equity index futures halt for the weekend and no tradable price path exists, and the final nine hours describe residual headline and Sunday gap exposure only. The horizon ends before the 22:00 UTC Sunday reopening.",
+  "lookbackSummary": "Over the past 24 hours the assessment stayed in the EA_ON state with Tail between 10 and 14 and Stress between 45 and 54. Two hours late in Thursday's U.S. session were scored trend-up as the Nvidia-driven advance carried the index to a close at 29,641.56, near the day's high. Overnight hours reverted to mixed as futures gave back part of the move inside a contained range. One hour, 09:00Z on 27 August, has no published assessment and is marked unavailable.",
+  "outlookSummary": "The horizon splits into three phases. Through 13:00Z the base case is continued two-way trade inside the overnight range with Stress drifting up on pre-event positioning. From 13:00Z to 16:00Z the U.S. cash open, Chicago PMI at 13:45Z and the Warsh keynote at 14:00Z form the highest-risk stretch, peaking at the 14:00Z hour where the mapped policy state is WATCH; a delayed, rates-first second leg is treated as a real conditional path. From 16:00Z conditional risk decays if price discovery is orderly and retracements occur. CME equity index futures settle at 21:00Z for the weekend, so the final eleven hours cover a closed market where no mean-reversion failure can occur and the residual scores represent unexpressed weekend headline accumulation ahead of the Sunday reopen.",
   "lookback": [
-    {
-      "ts": "2026-08-27T07:00:00Z",
-      "timeBerlin": "2026-08-27T09:00:00+02:00",
-      "available": true,
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 10,
-      "stressRiskPct": 45,
-      "confidencePct": 88,
-      "dominantMode": "mixed"
-    },
     {
       "ts": "2026-08-27T08:00:00Z",
       "timeBerlin": "2026-08-27T10:00:00+02:00",
@@ -322,25 +311,36 @@
       "stressRiskPct": 50,
       "confidencePct": 87,
       "dominantMode": "mixed"
-    }
-  ],
-  "forecast": [
+    },
     {
       "ts": "2026-08-28T07:00:00Z",
       "timeBerlin": "2026-08-28T09:00:00+02:00",
+      "available": true,
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 11,
       "stressRiskPct": 50,
       "confidencePct": 88,
+      "dominantMode": "mixed"
+    }
+  ],
+  "forecast": [
+    {
+      "ts": "2026-08-28T08:00:00Z",
+      "timeBerlin": "2026-08-28T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 53,
+      "confidencePct": 87,
       "dominantMode": "mixed",
-      "analysis": "Observed now: NQ 29,614.00, -0.28%, still inside the 29,592-29,707 overnight band after roughly eight hours of two-way rotation, with the band low intact. VIX 14.51, 2Y 4.24%, 10Y 4.68% and WTI $83.02 leave no amplifier aligned, so Tail stays low into an event-heavy U.S. afternoon.",
+      "analysis": "Observed now: NQ trades near 29,587, about 0.4% under Thursday's 29,641.56 cash close, inside an orderly 29,578-29,707 overnight range with retracements occurring in both directions. VIX 14.57 and flat Treasury futures show no stress build. No one-way structure into the 14:00Z Warsh keynote.",
       "drivers": [
-        "NQ 29,614.00, -0.28%, band low 29,592 still intact after eight hours",
-        "Band 29,592-29,707 is about 0.39% wide with repeated two-way retracement",
-        "ES flat and YM +0.21% show the drag is single-name, not index-wide",
-        "VIX 14.51 unchanged, 2Y 4.24% and 10Y 4.68% show no cross-asset alignment",
-        "WTI $83.02 (-0.62%) and Brent $88.13 remove the energy amplifier"
+        "NQ ~29,587 (-0.37%) rotating inside a 29,578-29,707 overnight range",
+        "NDX closed 29,641.56 (+1.43%) near the session high on the Nvidia beat",
+        "VIX 14.57 with 2Y 4.19% / 10Y 4.66% and flat Treasury futures",
+        "Marvell down over 7% post-earnings caps NQ against ES and YM",
+        "Warsh Jackson Hole keynote at 14:00Z is the day's scheduled checkpoint"
       ],
       "news": [
         {
@@ -349,37 +349,9 @@
           "source": "Yahoo Finance"
         },
         {
-          "title": "Jackson Hole Fed summit live: Kevin Warsh's keynote speech comes at a pivotal moment for the Federal Reserve",
-          "url": "https://finance.yahoo.com/economy/live/jackson-hole-fed-summit-live-kevin-warsh-keynote-speech-180442096.html",
-          "source": "Yahoo Finance"
-        }
-      ]
-    },
-    {
-      "ts": "2026-08-28T08:00:00Z",
-      "timeBerlin": "2026-08-28T10:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 12,
-      "stressRiskPct": 51,
-      "confidencePct": 87,
-      "dominantMode": "mixed",
-      "analysis": "European cash opens into the same band. Conditional risk edges up only because liquidity improves and the 14:00 UTC keynote comes closer; nothing in the current evidence points to directional efficiency. A clean break of 29,592 or 29,707 that then holds would be the first structural checkpoint of the day.",
-      "drivers": [
-        "European cash open adds liquidity without a scheduled U.S. catalyst",
-        "Checkpoint: whether 29,592 or 29,707 breaks and holds on the European open",
-        "Stress carried on the 14:00 UTC keynote still six hours away"
-      ],
-      "news": [
-        {
-          "title": "Jackson Hole Fed summit live: Kevin Warsh's keynote speech comes at a pivotal moment for the Federal Reserve",
-          "url": "https://finance.yahoo.com/economy/live/jackson-hole-fed-summit-live-kevin-warsh-keynote-speech-180442096.html",
-          "source": "Yahoo Finance"
-        },
-        {
-          "title": "Warsh to Make First Jackson Hole Speech as Fed Chair",
-          "url": "https://finance.yahoo.com/economy/policy/articles/warsh-first-jackson-hole-speech-200000444.html",
-          "source": "Bloomberg via Yahoo Finance"
+          "title": "Stock market news for Aug. 27, 2026",
+          "url": "https://www.cnbc.com/2026/08/26/stock-market-today-live-updates.html",
+          "source": "CNBC"
         }
       ]
     },
@@ -389,20 +361,21 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 12,
-      "stressRiskPct": 51,
-      "confidencePct": 86,
+      "stressRiskPct": 53,
+      "confidencePct": 87,
       "dominantMode": "mixed",
-      "analysis": "Mid-European morning is usually the quietest stretch of a Jackson Hole Friday and carries no scheduled U.S. data. Conditional Tail stays low; the risk of interest here is a European-hours drift that removes retracement rather than a shock. The assumed base case remains rotation inside the overnight band.",
+      "analysis": "European cash open hour. The pre-event holding pattern is assumed to persist; mean reversion normally remains available while NQ stays inside the overnight range. A decisive break of 29,578 or 29,707 on this hour would be the first structural change to watch, not something observed yet.",
       "drivers": [
-        "No scheduled U.S. macro release falls inside this hour",
-        "Assumption: rotation persists unless the overnight band resolves",
-        "Semiconductor tone still supported by Nvidia's 8.7% Thursday advance"
+        "European cash open adds volume without a scheduled U.S. catalyst",
+        "Overnight range edges 29,578 / 29,707 as the first invalidation levels",
+        "Positioning ahead of the 14:00Z Warsh keynote caps directional conviction",
+        "VIX near 14.5 implies a contained expected hourly range"
       ],
       "news": [
         {
-          "title": "Nasdaq, S&P 500 lifted by Nvidia's forecast; investors eye speech by Fed's Warsh",
-          "url": "https://www.aol.com/articles/nasdaq-futures-lead-nvidia-forecast-095536000.html",
-          "source": "Reuters via AOL"
+          "title": "S&P 500 futures are little changed as investors count down to Warsh's Jackson Hole address: Live updates",
+          "url": "https://www.cnbc.com/2026/08/27/stock-market-today-live-updates.html",
+          "source": "CNBC"
         }
       ]
     },
@@ -412,20 +385,21 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 12,
-      "stressRiskPct": 52,
-      "confidencePct": 85,
+      "stressRiskPct": 54,
+      "confidencePct": 86,
       "dominantMode": "mixed",
-      "analysis": "Late-European hour. Conditional Stress edges up as U.S. desks begin positioning for the 13:45 UTC Chicago PMI and the 14:00 UTC cluster. Path risk stays conditional: without repeated extension after failed pullbacks this remains a pre-event drift rather than a Tail regime.",
+      "analysis": "Mid-European session. Base case stays two-way drift with the Nvidia-led AI bid intact but Marvell capping semis. Conditional risk rises only if European flow starts extending the move without pullbacks; absent that, the hour is expected to stay inside the prior range.",
       "drivers": [
-        "Pre-positioning ahead of three 14:00 UTC U.S. items begins in this hour",
-        "Invalidation: shallow pullbacks plus repeated extension would lift Tail",
-        "10Y 4.68% and 30Y above 5.18% keep the long-end backdrop in focus"
+        "Semiconductor tone split: Nvidia strength versus Marvell weakness",
+        "European session flow ahead of the U.S. Fed-chair checkpoint",
+        "WTI near $82.98 and Brent near $88.01, easing as Hormuz flows recover",
+        "No U.S. macro release scheduled inside this hour"
       ],
       "news": [
         {
-          "title": "Warsh to Make First Jackson Hole Speech as Fed Chair",
-          "url": "https://finance.yahoo.com/economy/policy/articles/warsh-first-jackson-hole-speech-200000444.html",
-          "source": "Bloomberg via Yahoo Finance"
+          "title": "Hormuz Oil Flows Recover to Two-Thirds of Pre-War Levels, Goldman Says",
+          "url": "https://www.bloomberg.com/news/articles/2026-08-28/goldman-says-hormuz-oil-flows-at-two-thirds-of-pre-war-levels",
+          "source": "Bloomberg"
         }
       ]
     },
@@ -434,17 +408,24 @@
       "timeBerlin": "2026-08-28T13:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 12,
-      "stressRiskPct": 52,
-      "confidencePct": 85,
+      "tailRiskPct": 13,
+      "stressRiskPct": 55,
+      "confidencePct": 86,
       "dominantMode": "mixed",
-      "analysis": "European midday. The conditional profile is unchanged: an event-heavy afternoon keeps Stress elevated while Tail stays in the low band because no observed amplifier alignment exists at the assessment cutoff. Month-end rebalancing flows can widen ranges without producing one-way structure.",
+      "analysis": "Pre-U.S. positioning begins. Stress edges up as the Warsh keynote approaches while Tail stays low because no persistent directional structure has been observed. Any pre-event drift is treated as conditional, and hedging flow can widen the range without denying retracement.",
       "drivers": [
-        "Month-end rebalancing can widen ranges without removing retracement",
-        "Conditional checkpoint: VIX holding near 14.5 would confirm calm pricing",
-        "Stress elevated on event density, not on observed price-path damage"
+        "Pre-event hedging flow typically widens range before a Fed-chair keynote",
+        "Tail held low: event importance maps to Stress, not to observed one-way path",
+        "2Y 4.19% / 10Y 4.66% as the rate-path reference into the speech",
+        "Marvell-driven semiconductor drag is a possible relative-weakness channel"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Fed Chairman Kevin Warsh delivers his key Jackson Hole speech Friday. Here's what to expect",
+          "url": "https://www.cnbc.com/2026/08/27/fed-chairman-kevin-warsh-delivers-his-key-jackson-hole-speech-friday.html",
+          "source": "CNBC"
+        }
+      ]
     },
     {
       "ts": "2026-08-28T12:00:00Z",
@@ -452,20 +433,21 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 13,
-      "stressRiskPct": 54,
-      "confidencePct": 84,
+      "stressRiskPct": 56,
+      "confidencePct": 85,
       "dominantMode": "mixed",
-      "analysis": "The U.S. pre-market builds. Conditional Stress steps up on the approach to the cash open while Tail moves only marginally, because event importance and forecast dispersion primarily raise Stress. Overnight single-name dispersion suggests continued stock-level damage rather than index trend.",
+      "analysis": "Final hour before U.S. equity hours. Liquidity thins into the checkpoint stack and quotes can widen. The scores assume continued two-way trade; a sustained one-way pre-positioning drift would be a conditional amplifier rather than a currently observed one.",
       "drivers": [
-        "U.S. pre-market hour ahead of the 13:30 UTC cash open",
-        "PYPL -12%, MRVL -8% and IREN -9% against AFRM +11% overnight",
-        "Event importance raises Stress ahead of a print, not Tail"
+        "Thinning pre-open liquidity ahead of a stacked 13:45-14:00Z window",
+        "Chicago PMI (Aug) due 13:45Z as the first scheduled U.S. print",
+        "Warsh keynote plus final Michigan sentiment both land at 14:00Z",
+        "No policy statement or rate decision is scheduled at Jackson Hole"
       ],
       "news": [
         {
-          "title": "Nasdaq Futures Sink While S&P 500, Dow Futures Gain Ahead Of Fed Chief Warsh's Jackson Hole Speech: PYPL, MRVL, IREN, AFRM Stocks In Focus",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-futures-sink-while-p-040856643.html",
-          "source": "Yahoo Finance"
+          "title": "What to know about the Federal Reserve's big Jackson Hole conference",
+          "url": "https://www.axios.com/2026/08/27/jackson-hole-federal-reserve",
+          "source": "Axios"
         }
       ]
     },
@@ -475,20 +457,26 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 17,
-      "stressRiskPct": 61,
-      "confidencePct": 82,
+      "stressRiskPct": 62,
+      "confidencePct": 84,
       "dominantMode": "event/whipsaw",
-      "analysis": "This hour carries the 13:30 UTC cash open and the 13:45 UTC Chicago PMI, so the conditional mode shifts to event/whipsaw. Opening-auction continuation with shallow pullbacks would be the first genuine Tail evidence; a two-sided open that retraces its first impulse would leave the mapping unchanged.",
+      "analysis": "U.S. cash open at 13:30Z followed by Chicago PMI at 13:45Z, immediately ahead of the keynote. Opening-auction structure is the key conditional: an orderly two-way open keeps mean reversion available, while an opening drive that holds its extreme with shallow pullbacks would be the amplifier to watch.",
       "drivers": [
-        "13:30 UTC U.S. cash open is the session's first structural checkpoint",
-        "13:45 UTC Chicago PMI (Aug) prints inside this hour",
-        "Tail evidence would require opening continuation with shallow pullbacks",
-        "Mapped policy state stays EA_ON while conditional Tail is below 20%"
+        "U.S. cash open 13:30Z; opening-auction structure is the key conditional",
+        "Chicago PMI (Aug) at 13:45Z, 15 minutes before the keynote",
+        "Shallow-pullback opening continuation is the amplifier to monitor",
+        "Gap behaviour versus the 29,641.56 prior close frames the first hour",
+        "Danger window opens 13:45Z / 15:45 Berlin"
       ],
       "news": [
         {
-          "title": "Jackson Hole Fed summit live: Kevin Warsh's keynote speech comes at a pivotal moment for the Federal Reserve",
-          "url": "https://finance.yahoo.com/economy/live/jackson-hole-fed-summit-live-kevin-warsh-keynote-speech-180442096.html",
+          "title": "S&P 500 futures are little changed as investors count down to Warsh's Jackson Hole address: Live updates",
+          "url": "https://www.cnbc.com/2026/08/27/stock-market-today-live-updates.html",
+          "source": "CNBC"
+        },
+        {
+          "title": "Nasdaq Futures Sink While S&P 500, Dow Futures Gain Ahead Of Fed Chief Warsh's Jackson Hole Speech: PYPL, MRVL, IREN, AFRM Stocks In Focus",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-futures-sink-while-p-040856643.html",
           "source": "Yahoo Finance"
         }
       ]
@@ -498,47 +486,59 @@
       "timeBerlin": "2026-08-28T16:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 69,
-      "confidencePct": 79,
+      "tailRiskPct": 21,
+      "stressRiskPct": 68,
+      "confidencePct": 82,
       "dominantMode": "event/whipsaw",
-      "analysis": "The Warsh Jackson Hole keynote, the BLS preliminary payroll benchmark revision and final Michigan sentiment all land at 14:00 UTC. Conditional Tail peaks at 22%, inside the WATCH band and below the block threshold, because clustered event risk raises Stress first; only an observed no-retracement path would justify more.",
+      "analysis": "Highest scheduled risk hour: Warsh's first Jackson Hole keynote as Fed Chair lands at 14:00Z alongside final Michigan sentiment and the BLS preliminary payroll benchmark revision. Repricing can arrive in stages via yields first, so the hour is scored for whipsaw and a possible delayed second leg.",
       "drivers": [
-        "Fed Chair Warsh's first Jackson Hole keynote at 14:00 UTC",
-        "BLS preliminary nonfarm payroll benchmark revision at the same instant",
-        "Michigan Consumer Sentiment final (Aug) completes the 14:00 UTC cluster",
-        "Markets price roughly one-in-three odds of a September rate increase",
-        "Mapped policy state: WATCH; conditional Tail stays below 25%"
+        "Warsh keynote 14:00Z: first Jackson Hole address as Fed Chair",
+        "Michigan final sentiment and BLS benchmark revision share the 14:00Z slot",
+        "Rates-first transmission can delay the equity second leg",
+        "Mapped policy state at this hour: WATCH",
+        "VIX near 14.5 leaves a thin cushion if the rate path is repriced"
       ],
       "news": [
+        {
+          "title": "The stakes are high as Kevin Warsh is set to give his first major speech as Fed Chair",
+          "url": "https://www.npr.org/2026/08/27/nx-s1-5945044/federal-reserve-kevin-warsh-jackson-hole-wyoming-bond-markets",
+          "source": "NPR"
+        },
         {
           "title": "Jackson Hole Fed summit live: Kevin Warsh's keynote speech comes at a pivotal moment for the Federal Reserve",
           "url": "https://finance.yahoo.com/economy/live/jackson-hole-fed-summit-live-kevin-warsh-keynote-speech-180442096.html",
           "source": "Yahoo Finance"
         },
         {
-          "title": "Warsh to Make First Jackson Hole Speech as Fed Chair",
-          "url": "https://finance.yahoo.com/economy/policy/articles/warsh-first-jackson-hole-speech-200000444.html",
-          "source": "Bloomberg via Yahoo Finance"
+          "title": "Fed Chairman Kevin Warsh delivers his key Jackson Hole speech Friday. Here's what to expect",
+          "url": "https://www.cnbc.com/2026/08/27/fed-chairman-kevin-warsh-delivers-his-key-jackson-hole-speech-friday.html",
+          "source": "CNBC"
         }
       ]
     },
     {
       "ts": "2026-08-28T15:00:00Z",
       "timeBerlin": "2026-08-28T17:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 66,
-      "confidencePct": 79,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 65,
+      "confidencePct": 81,
       "dominantMode": "event/whipsaw",
-      "analysis": "The delayed second-leg window. A Fed-chair speech is structurally multi-stage: headline reaction, then text or Q&A detail, then a bond-market-led repricing that can drag equities a second time. Conditional Tail holds at 21% because that mechanism is credible but unobserved; orderly discovery would let it fall quickly.",
+      "analysis": "Post-keynote digestion. Conditional split: if price discovery is orderly with genuine retracements and yields settle, Tail decays quickly from here. If the tape instead extends after failed pullbacks and holds near its session extreme, the elevated path persists. Neither is observed yet.",
       "drivers": [
-        "Speech reaction is multi-stage: headline, detail, then a yield-led leg",
-        "Checkpoint: whether 2Y and 10Y yields extend or stabilise after the text",
-        "Mapped policy state: WATCH through the danger window to 16:00 UTC"
+        "Post-event retracement quality is the decisive conditional",
+        "Follow-on Jackson Hole commentary and interviews can extend headline flow",
+        "2Y yield reaction is the cleanest read on the repricing impulse",
+        "Failed-retracement extension would be the amplifier to confirm"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Jackson Hole Fed summit live: Kevin Warsh's keynote speech comes at a pivotal moment for the Federal Reserve",
+          "url": "https://finance.yahoo.com/economy/live/jackson-hole-fed-summit-live-kevin-warsh-keynote-speech-180442096.html",
+          "source": "Yahoo Finance"
+        }
+      ]
     },
     {
       "ts": "2026-08-28T16:00:00Z",
@@ -546,14 +546,15 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 17,
-      "stressRiskPct": 59,
-      "confidencePct": 80,
-      "dominantMode": "event/whipsaw",
-      "analysis": "The published danger window ends at the start of this hour. Conditional Tail steps back to 17% on the assumption that price discovery is orderly and retracements return. If instead the index is holding near a session extreme with failed pullbacks, that observed structure would justify a higher reading than published here.",
+      "stressRiskPct": 60,
+      "confidencePct": 82,
+      "dominantMode": "mixed",
+      "analysis": "Early U.S. afternoon. Base case is volatility decay after the event has been absorbed, with two-way trade returning. Scores stay above the pre-event baseline because a delayed second leg remains possible while cross-asset repricing settles.",
       "drivers": [
-        "Danger window 13:30-16:00 UTC closes at the start of this hour",
-        "Assumption: volatility decays and retracement returns after the cluster",
-        "Invalidation: NQ holding a session extreme with failed pullbacks"
+        "Assumed volatility decay once the keynote is absorbed",
+        "Delayed second leg still possible while yields and the dollar settle",
+        "Danger window ends 15:30Z / 17:30 Berlin",
+        "Semiconductor leadership breadth to be reassessed intraday"
       ],
       "news": []
     },
@@ -563,16 +564,23 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
-      "stressRiskPct": 55,
-      "confidencePct": 80,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Early U.S. afternoon. Conditional risk continues to decay under the base case that the keynote is digested and cross-assets stabilise. Friday afternoons ahead of a weekend halt normally see position reduction rather than fresh trend initiation, which supports mean reversion over persistent extension.",
+      "stressRiskPct": 56,
+      "confidencePct": 82,
+      "dominantMode": "mixed",
+      "analysis": "Mid-afternoon U.S. hour with no further scheduled catalyst. Conditional expectation is a return toward range behaviour and normal retracement depth. Residual risk is concentrated in headline follow-through from the symposium rather than in fresh data.",
       "drivers": [
-        "Pre-weekend position reduction typically restores two-way flow",
-        "Conditional decay assumes VIX and yields stabilise after the 14:00 cluster",
-        "Confidence held at 80% because this hour's path is entirely unobserved"
+        "No scheduled U.S. release remains in this hour",
+        "Residual risk is symposium headline follow-through, not fresh data",
+        "Range behaviour and normal retracement depth assumed to return",
+        "WTI near $82.98 remains a background cross-asset input"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "U.S. military says it aided passage of 660 million barrels of oil through Strait of Hormuz since May",
+          "url": "https://www.cnbc.com/2026/08/21/strait-hormuz-central-command-centcom-oil-iran-war.html",
+          "source": "CNBC"
+        }
+      ]
     },
     {
       "ts": "2026-08-28T18:00:00Z",
@@ -580,22 +588,17 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 14,
-      "stressRiskPct": 53,
-      "confidencePct": 81,
+      "stressRiskPct": 54,
+      "confidencePct": 83,
       "dominantMode": "mixed",
-      "analysis": "Mid-afternoon lull. The conditional mode returns to mixed as the scheduled event stack is behind and single-name dispersion, rather than index direction, is expected to dominate again. Stress eases back toward its pre-event level while Tail remains in the low band.",
+      "analysis": "Late-afternoon hour ahead of the final U.S. stretch. Assumed condition is a settled post-event tape with two-way rotation. Friday positioning can produce directional drift, which is treated as a conditional feature of the close rather than an observed trend.",
       "drivers": [
-        "Scheduled U.S. event stack is complete by this hour",
-        "Single-name dispersion expected to dominate index direction again",
-        "Stress easing toward the 50% pre-event level under the base case"
+        "Settled post-event tape assumed, with two-way rotation",
+        "Friday and pre-month-end positioning may create directional drift",
+        "Weekly close in view: unwinding flow can override intraday structure",
+        "Cross-asset alignment of yields, VIX and oil to be reassessed"
       ],
-      "news": [
-        {
-          "title": "Nasdaq Futures Sink While S&P 500, Dow Futures Gain Ahead Of Fed Chief Warsh's Jackson Hole Speech: PYPL, MRVL, IREN, AFRM Stocks In Focus",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-futures-sink-while-p-040856643.html",
-          "source": "Yahoo Finance"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-28T19:00:00Z",
@@ -603,14 +606,15 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
-      "stressRiskPct": 54,
-      "confidencePct": 80,
+      "stressRiskPct": 56,
+      "confidencePct": 83,
       "dominantMode": "mixed",
-      "analysis": "The hour before the cash close carries month-end and pre-weekend rebalancing. Conditional Tail ticks up a point because closing imbalances can extend a move without offering retracement, but that effect is usually short-lived and does not by itself constitute a Tail regime.",
+      "analysis": "Final full U.S. hour, covering the 19:00-20:00Z power-hour stretch into the 20:00Z cash close. Closing-imbalance and weekly-rebalance flow can extend a move late, so conditional risk edges back up even without any new catalyst.",
       "drivers": [
-        "Month-end rebalancing imbalances concentrate into the closing auction",
-        "Conditional extension into the close is typically short-lived",
-        "Checkpoint: whether the index closes near or away from a session extreme"
+        "Power hour 19:00-20:00Z into the 20:00Z U.S. cash close",
+        "Closing imbalances and weekly rebalancing can extend late moves",
+        "Friday-close continuation risk treated as conditional, not observed",
+        "Last liquid stretch before futures wind down"
       ],
       "news": []
     },
@@ -621,13 +625,14 @@
       "action": "EA_ON",
       "tailRiskPct": 13,
       "stressRiskPct": 48,
-      "confidencePct": 80,
+      "confidencePct": 84,
       "dominantMode": "mixed",
-      "analysis": "U.S. cash trading closes at 20:00 UTC. Liquidity thins immediately afterwards and the remaining hour of futures trade is normally a settlement drift. Conditional Tail falls to 13% because a pathological price path needs participation that is no longer present after the close.",
+      "analysis": "U.S. cash close at 20:00Z. Post-close futures liquidity thins sharply and the remaining session is short. Conditional risk falls as the event day completes and participation drains ahead of the weekly futures halt.",
       "drivers": [
-        "20:00 UTC U.S. cash close removes the session's main liquidity pool",
-        "Post-close futures trade is normally settlement drift, not trend",
-        "Weekly and monthly closing levels are set inside this hour"
+        "U.S. cash equities close at 20:00Z / 22:00 Berlin",
+        "Post-close futures liquidity thins quickly",
+        "Event day completed; scheduled catalyst stack is exhausted",
+        "Short remaining session before the weekly futures close"
       ],
       "news": []
     },
@@ -636,15 +641,16 @@
       "timeBerlin": "2026-08-28T23:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 27,
-      "confidencePct": 76,
+      "tailRiskPct": 9,
+      "stressRiskPct": 34,
+      "confidencePct": 85,
       "dominantMode": "normal",
-      "analysis": "CME equity index futures halt for the weekend at 21:00 UTC and do not reopen until 22:00 UTC on Sunday. With no tradable price path there is no mean-reversion failure to measure, so conditional Tail drops to 7% and Stress to 27%, the residual reflecting weekend headline and gap risk only.",
+      "analysis": "Final trading hour of the week: CME equity index futures settle at 21:00Z for the weekend. Very thin participation, then no price path at all. Conditional risk collapses because the strategy has no market to trade after the halt.",
       "drivers": [
-        "CME equity index futures halt for the weekend at 21:00 UTC",
-        "No tradable price path means no measurable mean-reversion failure",
-        "Residual Stress reflects weekend headline and Sunday gap risk"
+        "CME equity index futures weekly close at 21:00Z / 23:00 Berlin",
+        "Very thin final-hour participation into settlement",
+        "Risk collapses once trading stops, not because volatility resolved",
+        "Weekend gap risk sits at the Sunday reopen, outside this window"
       ],
       "news": []
     },
@@ -653,15 +659,15 @@
       "timeBerlin": "2026-08-29T00:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 26,
-      "confidencePct": 75,
+      "tailRiskPct": 6,
+      "stressRiskPct": 17,
+      "confidencePct": 86,
       "dominantMode": "normal",
-      "analysis": "First full hour of the weekend halt. Conditional scores reflect only the accumulation of headline risk while the market cannot price it. The Jackson Hole symposium runs through 29 August, so further commentary would accumulate into Sunday's reopening rather than into a live price path.",
+      "analysis": "Weekend futures halt. CME equity index futures are closed, so there is no price path and no exposure to a no-retracement trend during this hour. Residual score reflects headline accumulation that would only be expressed at the Sunday reopen.",
       "drivers": [
-        "Weekend halt in force; no live NQ price path exists",
-        "Jackson Hole symposium continues through 29 August",
-        "Headline risk accumulates into Sunday's 22:00 UTC reopening"
+        "Futures market closed for the weekend; no tradeable price path",
+        "Headline risk accumulates but cannot be expressed until Sunday",
+        "No scheduled U.S. macro release during the weekend halt"
       ],
       "news": []
     },
@@ -671,14 +677,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 6,
-      "stressRiskPct": 26,
-      "confidencePct": 75,
+      "stressRiskPct": 16,
+      "confidencePct": 86,
       "dominantMode": "normal",
-      "analysis": "The halt continues. The relevant exposure is the size of a Sunday reopening gap rather than any intraday structure. Crude shipments through the Strait of Hormuz have been recovering rather than deteriorating, which lowers the odds of a weekend energy discontinuity.",
+      "analysis": "Weekend halt continues. No quotes, no structure, no mean-reversion failure possible. Scores are held at a floor that represents unexpressed weekend headline accumulation rather than any live market condition.",
       "drivers": [
-        "Sunday gap risk replaces intraday path risk during the halt",
-        "Hormuz crude flows have been recovering, easing the energy amplifier",
-        "No scheduled U.S. macro release falls during the weekend halt"
+        "Weekend halt: no quotes and no structure to assess",
+        "Score floor reflects unexpressed weekend headline accumulation",
+        "Jackson Hole symposium continues through Saturday as a headline source"
       ],
       "news": []
     },
@@ -688,14 +694,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 6,
-      "stressRiskPct": 25,
-      "confidencePct": 74,
+      "stressRiskPct": 16,
+      "confidencePct": 86,
       "dominantMode": "normal",
-      "analysis": "Saturday begins with every relevant market closed. Conditional Stress settles at its weekend floor. The next scheduled U.S. catalysts are Monday's Dallas Fed Manufacturing Index and then the 1 September ISM Manufacturing PMI and JOLTS pair.",
+      "analysis": "Weekend halt. Post-keynote commentary and symposium coverage continue to publish, which shapes the Sunday reopen rather than this hour. No live Nasdaq-100 price path exists to score.",
       "drivers": [
-        "Saturday: no futures, cash equity or U.S. macro session",
-        "Next scheduled U.S. item is the Dallas Fed index on 31 August",
-        "Weekend floor for Stress reflects residual headline risk only"
+        "Weekend halt; symposium commentary shapes the Sunday reopen",
+        "No live Nasdaq-100 price path exists to score in this hour",
+        "Reassessment resumes when futures reopen Sunday evening"
       ],
       "news": []
     },
@@ -705,16 +711,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 6,
-      "stressRiskPct": 25,
-      "confidencePct": 74,
+      "stressRiskPct": 16,
+      "confidencePct": 86,
       "dominantMode": "normal",
-      "analysis": "Deep weekend hours. Nothing in the evidence set can change during this window other than newsflow. Conditional values are held at the weekend floor rather than modelled, and Confidence declines slowly with distance from the assessment cutoff.",
+      "analysis": "Weekend halt. Middle East and Hormuz shipping developments remain the most plausible source of weekend gap risk, but that risk is realised at the Sunday reopen and not inside this closed hour.",
       "drivers": [
-        "Conditional values held at the weekend floor, not modelled",
-        "Confidence decays with distance from the assessment cutoff",
-        "Only newsflow can alter the evidence set during the halt"
+        "Middle East and Hormuz shipping remain the weekend gap-risk channel",
+        "Risk is realised at the Sunday reopen, outside this closed hour",
+        "Futures closed; no directional structure observable"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Iraq Offers Oil Outside Hormuz for First Time Since War Began",
+          "url": "https://www.bloomberg.com/news/articles/2026-08-27/iraq-offers-oil-outside-hormuz-for-first-time-since-war-began",
+          "source": "Bloomberg"
+        }
+      ]
     },
     {
       "ts": "2026-08-29T02:00:00Z",
@@ -722,14 +734,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 6,
-      "stressRiskPct": 25,
-      "confidencePct": 73,
+      "stressRiskPct": 16,
+      "confidencePct": 86,
       "dominantMode": "normal",
-      "analysis": "Weekend halt. Asian markets are also closed, so no proxy price discovery for Nasdaq risk exists in this hour. The published scores describe residual headline exposure and nothing observable in the instrument itself.",
+      "analysis": "Weekend halt. Asian markets are also closed, so no cross-asset price discovery is available. The score floor is unchanged and reflects only the possibility of weekend news accumulating into the next open.",
       "drivers": [
-        "Asian sessions also closed; no proxy price discovery available",
-        "Published scores describe residual headline exposure only",
-        "Mapped policy state remains EA_ON with Tail deep in the low band"
+        "Asian markets closed; no cross-asset price discovery available",
+        "Unchanged score floor during the weekend futures halt",
+        "Next scheduled U.S. catalyst is ISM Manufacturing on 1 September"
       ],
       "news": []
     },
@@ -739,14 +751,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 6,
-      "stressRiskPct": 24,
-      "confidencePct": 73,
+      "stressRiskPct": 16,
+      "confidencePct": 86,
       "dominantMode": "normal",
-      "analysis": "The halt continues. The main forward uncertainty is how the market interprets the keynote once it can trade again, which is a Sunday-evening question rather than a Saturday one and therefore sits outside this forecast horizon.",
+      "analysis": "Weekend halt. The week's macro checkpoint is complete and the next scheduled U.S. catalyst sits in the following week, so no hour-specific catalyst applies. No tradeable structure exists.",
       "drivers": [
-        "Interpretation of the keynote is repriced only at Sunday's reopen",
-        "No tradable instrument in the assessed market during this hour",
-        "Tail floor of 6% reflects the complete absence of a price path"
+        "Week's macro checkpoint complete; next catalyst falls next week",
+        "No tradeable structure exists during the halt",
+        "ISM Manufacturing (1 Sep) and payrolls (4 Sep) are the next checkpoints"
       ],
       "news": []
     },
@@ -756,14 +768,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 6,
-      "stressRiskPct": 24,
-      "confidencePct": 73,
+      "stressRiskPct": 16,
+      "confidencePct": 86,
       "dominantMode": "normal",
-      "analysis": "Weekend halt, with conditional Stress at its 24% floor. Any material commentary published across the remaining symposium sessions will be assessed when it actually appears; it is not carried forward speculatively into this hour.",
+      "analysis": "Weekend halt. Conditions for the Sunday reopen will be set by how the post-keynote rate path is interpreted over the weekend; that interpretation is not yet available and is not assumed here.",
       "drivers": [
-        "Remaining Jackson Hole sessions run through 29 August",
-        "Later commentary will be assessed when it is actually published",
-        "Stress sits at its 24% weekend floor"
+        "Sunday reopen conditions depend on weekend rate-path interpretation",
+        "No weekend interpretation is available or assumed at this time",
+        "Futures remain closed; score floor unchanged"
       ],
       "news": []
     },
@@ -773,16 +785,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 6,
-      "stressRiskPct": 24,
-      "confidencePct": 72,
+      "stressRiskPct": 16,
+      "confidencePct": 86,
       "dominantMode": "normal",
-      "analysis": "Weekend halt. Confidence continues its slow decay because every input behind this assessment is by now roughly 22 hours old, while the scores themselves are structurally insensitive to that staleness during a full market closure.",
+      "analysis": "Weekend halt. Nvidia's results and the resulting AI-leadership bid remain the dominant structural driver into next week, but they cannot generate a price path while futures are closed.",
       "drivers": [
-        "All inputs are roughly 22 hours old by this hour",
-        "Scores are insensitive to staleness while the market is closed",
-        "No scheduled catalyst falls inside this hour"
+        "Nvidia results keep AI leadership as the dominant structural driver",
+        "Driver cannot generate a price path while futures are closed",
+        "Semiconductor breadth to be reassessed at the Sunday reopen"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Nvidia Earnings: Updates and Commentary August 2026",
+          "url": "https://www.kiplinger.com/investing/live/nvidia-earnings-live-updates-and-commentary-august-2026",
+          "source": "Kiplinger"
+        }
+      ]
     },
     {
       "ts": "2026-08-29T06:00:00Z",
@@ -790,66 +808,89 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 6,
-      "stressRiskPct": 24,
-      "confidencePct": 72,
+      "stressRiskPct": 16,
+      "confidencePct": 86,
       "dominantMode": "normal",
-      "analysis": "Final forecast hour, still inside the weekend halt. The horizon ends well before Sunday's 22:00 UTC reopening, so no gap event falls inside the published window, and subsequent hourly runs will re-establish live evidence long before trading resumes.",
+      "analysis": "Weekend halt. Oil remains the cleanest weekend transmission channel given Hormuz shipping conditions, yet with futures closed there is no mechanism for a no-retracement trend inside this hour.",
       "drivers": [
-        "Forecast horizon ends before the Sunday 22:00 UTC reopening",
-        "No gap event falls inside the published forecast window",
-        "Subsequent hourly runs re-establish live evidence before the reopen"
+        "Oil is the cleanest weekend transmission channel into the reopen",
+        "Hormuz shipping conditions remain the geopolitical variable",
+        "No mechanism for a no-retracement trend while futures are closed"
+      ],
+      "news": [
+        {
+          "title": "Hormuz Oil Flows Recover to Two-Thirds of Pre-War Levels, Goldman Says",
+          "url": "https://www.bloomberg.com/news/articles/2026-08-28/goldman-says-hormuz-oil-flows-at-two-thirds-of-pre-war-levels",
+          "source": "Bloomberg"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-29T07:00:00Z",
+      "timeBerlin": "2026-08-29T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 16,
+      "confidencePct": 86,
+      "dominantMode": "normal",
+      "analysis": "Final forecast hour, still inside the weekend futures halt. The next live assessment window begins with the Sunday evening reopen, where gap behaviour rather than intraday structure will drive the first scores.",
+      "drivers": [
+        "Final slot of the horizon; weekend halt still in effect",
+        "Sunday evening reopen begins the next live assessment window",
+        "Gap behaviour, not intraday structure, will drive the first scores"
       ],
       "news": []
     }
   ],
   "forecastDetail": [
     {
-      "ts": "2026-08-28T07:00:00Z",
-      "timeBerlin": "2026-08-28T09:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 11,
-      "stressRiskPct": 50,
-      "comment": "NQ 29,614.00 is holding above the 29,592 overnight band low after roughly eight hours of two-way rotation, and with VIX 14.51, 2Y/10Y at 4.24%/4.68% and WTI $83.02 there is no amplifier alignment, so the mapped state is EA_ON."
-    },
-    {
       "ts": "2026-08-28T08:00:00Z",
       "timeBerlin": "2026-08-28T10:00:00+02:00",
       "status": "green",
       "tailRiskPct": 12,
-      "stressRiskPct": 51,
-      "comment": "The European cash open adds liquidity without a scheduled U.S. catalyst; the first structural checkpoint is whether 29,592 or 29,707 breaks and then holds, and conditional risk edges up only on the approach to the 14:00 UTC keynote."
+      "stressRiskPct": 53,
+      "comment": "NQ near 29,587 is rotating inside an orderly 29,578-29,707 overnight range about 0.4% below Thursday's 29,641.56 close; VIX 14.57 and flat Treasury futures show no stress build, and no one-way structure is present ahead of the 14:00Z keynote."
     },
     {
       "ts": "2026-08-28T09:00:00Z",
       "timeBerlin": "2026-08-28T11:00:00+02:00",
       "status": "green",
       "tailRiskPct": 12,
-      "stressRiskPct": 51,
-      "comment": "Mid-European morning carries no scheduled U.S. release, so the base case stays rotation inside the overnight band with semiconductor tone still supported by Nvidia's 8.7% Thursday advance."
+      "stressRiskPct": 53,
+      "comment": "European cash open adds volume without a U.S. catalyst; the pre-event holding pattern is assumed to persist, with a decisive break of 29,578 or 29,707 as the first structural change to watch."
     },
     {
       "ts": "2026-08-28T10:00:00Z",
       "timeBerlin": "2026-08-28T12:00:00+02:00",
       "status": "green",
       "tailRiskPct": 12,
-      "stressRiskPct": 52,
-      "comment": "Late-European hour: Stress edges up as desks position for the 13:45 UTC Chicago PMI and the 14:00 UTC cluster, while Tail stays low absent repeated extension after failed pullbacks."
+      "stressRiskPct": 54,
+      "comment": "Mid-European trade with semiconductor tone split between Nvidia strength and Marvell weakness; two-way drift is the base case and conditional risk rises only if the move extends without pullbacks."
     },
     {
       "ts": "2026-08-28T11:00:00Z",
       "timeBerlin": "2026-08-28T13:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 12,
-      "stressRiskPct": 52,
-      "comment": "European midday leaves the conditional profile unchanged, with month-end rebalancing able to widen ranges without removing retracement and Stress elevated on event density rather than observed damage."
+      "tailRiskPct": 13,
+      "stressRiskPct": 55,
+      "comment": "Pre-U.S. positioning lifts Stress toward the keynote while Tail stays low, because event importance alone maps to Stress rather than to any observed persistent directional path."
     },
     {
       "ts": "2026-08-28T12:00:00Z",
       "timeBerlin": "2026-08-28T14:00:00+02:00",
       "status": "green",
       "tailRiskPct": 13,
-      "stressRiskPct": 54,
-      "comment": "The U.S. pre-market hour lifts Stress toward the cash open while Tail moves only marginally, with overnight PYPL, MRVL and IREN weakness against AFRM strength pointing to single-name dispersion rather than index trend."
+      "stressRiskPct": 56,
+      "comment": "Final pre-cash hour: liquidity thins into the stacked 13:45-14:00Z window and quotes can widen; scores assume continued two-way trade rather than a one-way pre-positioning drift."
+    },
+    {
+      "ts": "2026-08-28T13:00:00Z",
+      "timeBerlin": "2026-08-28T15:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 17,
+      "stressRiskPct": 62,
+      "comment": "U.S. cash open at 13:30Z then Chicago PMI at 13:45Z just ahead of the keynote; opening-auction structure is the decisive conditional and the danger window opens at 13:45Z / 15:45 Berlin."
     }
   ],
   "events": [
