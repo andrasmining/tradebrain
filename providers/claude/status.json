@@ -3,20 +3,20 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-08-29T00:31:05Z",
+  "generatedAt": "2026-08-29T01:31:26Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "green",
-  "statusText": "Mapped policy state: EA_ON (green). CME equity futures settled for the week at 21:00Z on Friday and the next reopen is Sunday 22:00Z, so every hour of the published window covers a halted market in which no Nasdaq-100 price path can form.",
-  "recommendation": "Tail sits at its weekend floor and no danger window is published, because the forecast horizon contains no U.S. cash session, no CME futures session and no scheduled U.S. macro release. The scores describe deferred gap and headline risk rather than observable intraday structure. Existing-position management and emergency protection rules are unaffected by this assessment. The first genuine repricing checkpoint is the Sunday 22:00Z futures reopen, which lies 23 hours beyond the final published slot; the first scheduled U.S. macro checkpoint is the Dallas Fed Manufacturing Index on Monday, followed by the ISM Manufacturing and JOLTS cluster on Tuesday and August payrolls on Friday 4 September.",
-  "headline": "Weekend halt continues after a hawkish Jackson Hole Friday: NQ settled at 29,509.50 with equity volatility contained",
-  "body": "Fed Chair Kevin Warsh's Jackson Hole address on Friday reset September policy expectations, with market-implied odds of a rate increase rising to roughly 60% from about 35% beforehand on CME FedWatch pricing. The repricing was expressed mainly in rates: the 2-year Treasury yield rose about 11 basis points to 4.34%, its highest in a month, the 10-year added roughly 5 basis points to 4.72% and the 30-year finished near 5.21%, a policy-led flattening rather than a term-premium shock. Equity damage stayed contained and internally split. Cash NDX closed at 29,433.43 (-0.70%) within a 29,383.92-29,752.78 range and NQ September futures settled the week at 29,509.50 (-0.63%) in a 29,436.75-29,811.50 range, both in the lower part of their session ranges, but the decline was rotational: semiconductors gave back part of the Nvidia-led advance while several other large index members finished higher and the Dow ended roughly unchanged. VIX closed at 14.43 in a 14.13-14.84 range, so implied volatility did not confirm a stress event. Energy stayed a stabilising input, with WTI settling at $83.40 after a weekly decline of about 4% and Brent at $89.31, down more than 5% on the week, as Hormuz corridor mediation continued without a finalised agreement. Since the 21:00Z settlement no Nasdaq-100 venue has been open, so the current assessment adds no new price-path evidence to Friday's verified close. Tail is held at 6 because the pathological no-retracement path it measures requires a live market, and Stress at 24 reflects the deferred gap and weekend headline risk carried into the Sunday 22:00Z reopen. The shared Finviz cross-asset file was collected at 19:37Z Friday and is outside the freshness window, so it was treated as stale context only; its latest-session breadth, megacap and semiconductor readings are consistent with the rotational close described above but were not used as price-path evidence.",
-  "tailRiskPct": 6,
+  "statusText": "Mapped policy state: EA_ON. The Nasdaq-100 venue is inside the CME weekend halt, and Tail sits well below the block threshold.",
+  "recommendation": "Mapped policy state remains EA_ON across the whole 24-hour window because every hour falls inside the weekend closure. The next evidence checkpoint is the Globex reopen on Sunday 30 August at 22:00 UTC, which lies beyond this window; opening structure would be assessed on observed evidence in a later run.",
+  "headline": "Weekend halt after a hawkish Warsh Jackson Hole Friday: NQ settled 29,509.50, cash NDX -0.70%, VIX 14.43",
+  "body": "CME Globex has been halted since Friday 21:00 UTC and does not reopen until Sunday 30 August at 22:00 UTC, so the entire forecast window is a closed market with no price discovery. Friday's verified evidence: NQ futures settled 29,509.50 (-0.63%) after a 29,437.75-29,811.50 range, cash NDX closed 29,433.43 (-0.70%) near its session low of 29,383.92, and VIX finished at 14.43 with implied volatility contained. Fed Chair Warsh's Jackson Hole keynote struck a hawkish tone on prices and lifted September rate-hike odds from roughly 35% to above even money, with the 10-year yield reported near 4.72% against the H.15 27 August readings of 2Y 4.20% and 10Y 4.67%. WTI near $83.4 and Brent near $88.2 closed a week down roughly 4% on improved Strait of Hormuz flow reporting, which offsets rather than amplifies the hawkish rates impulse. Tail is scored minimal because a halted venue offers no directional efficiency, no retracement behaviour and no extension that mean reversion could fail against. Stress is held low-to-moderate for the unresolved policy repricing and the week-ahead catalyst stack, and stress alone does not lift the mapped policy state. Confidence is high: settlement, cash close, volatility, rates, energy, catalysts and the seven-day calendar are all verified, and the only missing element is a live price path that does not exist during a weekend closure.",
+  "tailRiskPct": 5,
   "tailLevel": "low",
-  "stressRiskPct": 24,
+  "stressRiskPct": 23,
   "stressLevel": "low",
   "dominantMode": "normal",
   "confidencePct": 83,
@@ -32,43 +32,33 @@
   },
   "sources": [
     {
-      "title": "Nasdaq-100 (^NDX) quote, close and day range",
+      "title": "Nasdaq-100 (^NDX) quote - Yahoo Finance",
       "url": "https://finance.yahoo.com/quote/%5ENDX/"
     },
     {
-      "title": "Nasdaq 100 futures (NQ=F) settlement and day range",
+      "title": "Nasdaq 100 futures (NQ=F) quote - Yahoo Finance",
       "url": "https://finance.yahoo.com/quote/NQ%3DF/"
-    },
-    {
-      "title": "Rate-hike expectations rise on Warsh speech at Jackson Hole (Reuters)",
-      "url": "https://finance.yahoo.com/economy/policy/articles/rate-hike-expectations-rise-warsh-144023525.html"
     },
     {
       "title": "Federal Reserve H.15 Selected Interest Rates",
       "url": "https://www.federalreserve.gov/releases/h15/"
     },
     {
-      "title": "Oil settles lower on clues about Fed policy, rumors of Hormuz deal",
-      "url": "https://www.investing.com/news/commodities-news/oil-on-track-for-weekly-loss-even-as-iran-tensions-simmer-4880409"
+      "title": "Fed's Kevin Warsh warns inflation is too high, sparking bets rate hikes are coming - NPR",
+      "url": "https://www.npr.org/2026/08/28/nx-s1-5947903/federal-reserve-inflation-jackson-hole-interest-rates"
     },
     {
-      "title": "United States economic calendar",
+      "title": "Crude Oil (WTI) price and historical data - Trading Economics",
+      "url": "https://tradingeconomics.com/commodity/crude-oil"
+    },
+    {
+      "title": "United States economic calendar - Trading Economics",
       "url": "https://tradingeconomics.com/united-states/calendar"
     }
   ],
-  "lookbackSummary": "The last 24 hours span Friday's full trading day and the start of the weekend halt. Overnight Asian and European hours held Tail near 11-12 with Stress around 49-55 and a mixed mode. Tail and Stress lifted through the U.S. morning as the Jackson Hole address reset September rate expectations, peaking at Tail 22 and Stress 64 in the 17:00Z hour with an event/whipsaw mode while short yields rose. Price discovery stayed orderly: retracements occurred, VIX eased rather than spiked and the decline was rotational rather than broad, so Tail never approached the block threshold. After the 20:00Z cash close and the 21:00Z futures settlement, Tail and Stress fell to weekend levels of 6-8 and 25-30 with a normal mode. One slot, the 10:00Z hour, has no published Claude assessment and is marked unavailable rather than reconstructed.",
+  "lookbackSummary": "The preceding 24 hours span a full Friday session and the start of the weekend halt. Tail ran 11-13 through the Asian and European hours with stress in the high 40s to mid 50s as the market positioned for Jackson Hole. Tail peaked at 22 and stress at 64 in the 16:00-19:00 UTC block, when Warsh's hawkish keynote drove event-driven two-way trade and the mode was scored event/whipsaw, but the mapped policy state never exceeded WATCH because retracements kept occurring. After the 20:00 UTC close the readings decayed quickly - Tail 12 to 6, stress 52 to 24 - as the venue moved into the weekend closure. One hour, 10:00 UTC, has no published assessment and is marked unavailable.",
+  "outlookSummary": "Every hour of the forecast window falls inside the CME weekend halt, so no Nasdaq-100 price path can form and Tail is held at 5-6 throughout, keeping the mapped policy state at EA_ON in all 24 slots. Stress runs 22-26, drifting from low into the moderate band across the second half of the weekend to reflect the unresolved September policy repricing and the 1-4 September catalyst stack of ISM Manufacturing, JOLTS, ADP, jobless claims, ISM Services and August payrolls. Confidence eases from 83 to 78 purely as Friday's verified prints age. The dominant mode is normal in every slot because a closed market has no structure to classify. Weekend headline and gap exposure accumulates but can only be expressed at the Sunday 22:00 UTC reopen, which lies beyond this window and belongs to a later assessment with observed evidence.",
   "lookback": [
-    {
-      "ts": "2026-08-28T00:00:00Z",
-      "timeBerlin": "2026-08-28T02:00:00+02:00",
-      "available": true,
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 12,
-      "stressRiskPct": 51,
-      "confidencePct": 88,
-      "dominantMode": "mixed"
-    },
     {
       "ts": "2026-08-28T01:00:00Z",
       "timeBerlin": "2026-08-28T03:00:00+02:00",
@@ -321,61 +311,46 @@
       "stressRiskPct": 25,
       "confidencePct": 84,
       "dominantMode": "normal"
-    }
-  ],
-  "outlookSummary": "The published window runs from the current hour through Saturday 23:00Z and contains no cash session, no CME futures session and no scheduled U.S. release; the Sunday 22:00Z reopen sits 23 hours beyond the final slot. With no venue open, the pathological no-retracement path that Tail measures cannot form, so Tail is held at a 6-7 floor throughout and the mapped policy state stays EA_ON with no danger window. Stress decays from 24 to a weekend trough of 19 through the European Saturday hours before rebuilding to 24 by the end of the window as the interval of unpriced weekend information widens ahead of the reopen. Confidence declines gradually from 83 to 76, which is an ageing adjustment rather than a sign of conflicting sources: Friday's closing data, yields, oil and volatility are verified and internally consistent, but the newest market observation keeps growing older with no tick able to replace it. The genuine risk carried across this window is a single reopen gap plus weekend headline flow, principally the unresolved Strait of Hormuz mediation and any further policy commentary on the closing day of the symposium. A gap alone is not the repeated extension after failed retracements that Tail measures, so gap risk is carried in Stress and Confidence until live structure can be observed after the reopen.",
-  "forecast": [
+    },
     {
       "ts": "2026-08-29T00:00:00Z",
       "timeBerlin": "2026-08-29T02:00:00+02:00",
+      "available": true,
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 6,
       "stressRiskPct": 24,
       "confidencePct": 83,
-      "dominantMode": "normal",
-      "analysis": "Current hour: every Nasdaq-100 venue is halted. Cash NDX closed at 29,433.43 and NQ settled at 29,509.50 roughly three and a half hours ago, so no price path can develop. Tail sits at its weekend floor and Stress at 24 carries deferred gap and headline risk only.",
-      "drivers": [
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "Cash NDX closed 29,433.43 (-0.70%) inside 29,383.92-29,752.78",
-        "NQ Sep futures settled 29,509.50 (-0.63%), range 29,436.75-29,811.50",
-        "A halted venue cannot produce the no-retracement path Tail measures",
-        "VIX closed 14.43 in a 14.13-14.84 range; no volatility confirmation"
-      ],
-      "news": [
-        {
-          "title": "S&P 500 falls Friday after Fed's Warsh highlights inflation worries, but index posts positive week",
-          "url": "https://www.cnbc.com/2026/08/27/stock-market-today-live-updates.html",
-          "source": "CNBC"
-        },
-        {
-          "title": "Rate-hike expectations rise on Warsh speech at Jackson Hole",
-          "url": "https://finance.yahoo.com/economy/policy/articles/rate-hike-expectations-rise-warsh-144023525.html",
-          "source": "Reuters"
-        }
-      ]
-    },
+      "dominantMode": "normal"
+    }
+  ],
+  "forecast": [
     {
       "ts": "2026-08-29T01:00:00Z",
       "timeBerlin": "2026-08-29T03:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
+      "tailRiskPct": 5,
       "stressRiskPct": 23,
       "confidencePct": 83,
       "dominantMode": "normal",
-      "analysis": "Early Saturday. Friday's hawkish rates repricing is fully priced into the settled levels and cannot extend while the venue is shut, so the published Tail stays at the halt floor. Stress eases marginally as the last live quote recedes without any new information arriving.",
+      "analysis": "Observed at the cutoff: CME Globex has been halted since Friday 21:00 UTC, with NQ settled at 29,509.50 (-0.63%) and cash NDX at 29,433.43 (-0.70%), both closing in the lower third of Friday's range. VIX 14.43 keeps implied volatility contained. No live price path can form this hour.",
       "drivers": [
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "2Y +11bp to 4.34%, 10Y +5bp to 4.72% after the Jackson Hole address",
-        "CME FedWatch September hike odds near 60%, up from about 35% pre-speech",
-        "A halted venue cannot produce the no-retracement path Tail measures"
+        "CME Globex halted since Fri 21:00 UTC; no NQ price discovery until Sun 22:00 UTC",
+        "NQ settled 29,509.50 (-0.63%); Friday range 29,437.75-29,811.50",
+        "Cash NDX closed 29,433.43 (-0.70%) near the session low",
+        "VIX 14.43 (-0.55%) leaves implied volatility contained"
       ],
       "news": [
         {
-          "title": "Rate-hike expectations rise on Warsh speech at Jackson Hole",
-          "url": "https://finance.yahoo.com/economy/policy/articles/rate-hike-expectations-rise-warsh-144023525.html",
-          "source": "Reuters"
+          "title": "Stock market today: Dow, S&P 500, Nasdaq moderate as markets digest Warsh's Jackson Hole speech",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-august-28-dow-sp-500-nasdaq-dip-fed-warsh-jackson-hole-speech-081514091.html",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "Fed's Kevin Warsh warns inflation is too high, sparking bets rate hikes are coming",
+          "url": "https://www.npr.org/2026/08/28/nx-s1-5947903/federal-reserve-inflation-jackson-hole-interest-rates",
+          "source": "NPR"
         }
       ]
     },
@@ -384,34 +359,38 @@
       "timeBerlin": "2026-08-29T04:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
+      "tailRiskPct": 5,
       "stressRiskPct": 23,
-      "confidencePct": 82,
+      "confidencePct": 83,
       "dominantMode": "normal",
-      "analysis": "Asian pre-dawn hours with no exchange open anywhere in the Nasdaq-100 chain. Absent a handover session, this slot carries no directional information and Tail is held at the floor. Any expression of Friday's policy shift would be deferred to the Sunday 22:00Z reopen.",
+      "analysis": "Second hour of the weekend halt. Friday's hawkish Jackson Hole repricing is a carried-over condition, not an active path: Sept hike odds moved from about 35% to above 50/50 on Warsh's remarks. With no venue open, mean-reversion failure cannot be expressed in this hour.",
       "drivers": [
-        "Asian cash venues are closed for the weekend, so no handover forms",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "CME FedWatch September hike odds near 60%, up from about 35% pre-speech",
-        "A halted venue cannot produce the no-retracement path Tail measures"
+        "No open Nasdaq-100 venue; Tail cannot be realised in a halted hour",
+        "Sept hike odds repriced from ~35% to above 50/50 on Warsh's speech",
+        "Hawkish repricing is a carried condition, not an observed price path"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Rate-hike expectations rise on Warsh speech at Jackson Hole",
+          "url": "https://finance.yahoo.com/economy/policy/articles/rate-hike-expectations-rise-warsh-144023525.html",
+          "source": "Yahoo Finance"
+        }
+      ]
     },
     {
       "ts": "2026-08-29T03:00:00Z",
       "timeBerlin": "2026-08-29T05:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
+      "tailRiskPct": 5,
       "stressRiskPct": 22,
-      "confidencePct": 82,
+      "confidencePct": 83,
       "dominantMode": "normal",
-      "analysis": "The quietest part of the weekend calendar. Stress continues its decay because no venue, release or scheduled speaker can generate volatility in this hour. Confidence steps down by an ageing increment rather than because sources disagree.",
+      "analysis": "Overnight Saturday UTC hour with every Nasdaq-100 venue closed. Rates context stays the anchor: H.15 shows 2Y 4.20% and 10Y 4.67% on 27 Aug, with Friday reporting a further ~4bp rise in the 10Y to 4.72%. Any repricing from here would surface only at the Sunday reopen.",
       "drivers": [
-        "No scheduled U.S. macro release falls inside the published window",
-        "Evidence base ages with no live tick able to refresh it",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "A halted venue cannot produce the no-retracement path Tail measures"
+        "H.15: 2Y 4.20%, 10Y 4.67% (27 Aug); 10Y reported ~4.72% after Friday",
+        "Yield repricing can only be expressed at the Sunday 22:00 UTC reopen",
+        "Stress eased slightly as Friday's event flow completed"
       ],
       "news": []
     },
@@ -420,40 +399,32 @@
       "timeBerlin": "2026-08-29T06:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
+      "tailRiskPct": 5,
       "stressRiskPct": 22,
       "confidencePct": 82,
       "dominantMode": "normal",
-      "analysis": "Still fully halted. The rate-hike repricing that drove Friday's afternoon remains the dominant unresolved theme, but it is a level already set, not a path in progress. Tail therefore stays at the floor and no danger window is published for this slot.",
+      "analysis": "Quiet pre-dawn Berlin hour inside the halt. Energy is a mild disinflationary offset rather than an amplifier: WTI around $83.4 after a weekly loss near 4%, Brent near $88.2, with reporting attributing the fade to improved flows through the Strait of Hormuz.",
       "drivers": [
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "CME FedWatch September hike odds near 60%, up from about 35% pre-speech",
-        "2Y +11bp to 4.34%, 10Y +5bp to 4.72% after the Jackson Hole address",
-        "A halted venue cannot produce the no-retracement path Tail measures"
+        "WTI near $83.4 after a weekly decline of about 4%",
+        "Brent near $88.2; improved Hormuz flow reporting eased the supply premium",
+        "Energy currently offsets rather than amplifies the hawkish rates impulse"
       ],
-      "news": [
-        {
-          "title": "Fed Chairman Warsh warns on inflation at Jackson Hole",
-          "url": "https://www.cnbc.com/2026/08/28/kevin-warsh-jackson-hole-federal-reserve-inflation.html",
-          "source": "CNBC"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-29T05:00:00Z",
       "timeBerlin": "2026-08-29T07:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 21,
-      "confidencePct": 81,
+      "tailRiskPct": 5,
+      "stressRiskPct": 22,
+      "confidencePct": 82,
       "dominantMode": "normal",
-      "analysis": "Approaching what would normally be the Asian morning. With no Tokyo or Sydney cash session to price the weekend's information, the usual first cross-check on Friday's close is unavailable and Stress declines toward the weekend low.",
+      "analysis": "Asian Saturday morning: cash equity markets in the region are closed for the weekend, so no cross-regional transition can be observed. This slot carries the same halted-venue baseline; Tail stays minimal because no retracement structure exists to fail.",
       "drivers": [
-        "Asian cash venues are closed for the weekend, so no handover forms",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "Evidence base ages with no live tick able to refresh it",
-        "A halted venue cannot produce the no-retracement path Tail measures"
+        "Asian cash markets closed for the weekend; no regional transition to read",
+        "No retracement structure exists to fail while the venue is halted",
+        "Baseline held at the prior hour's halted-market assessment"
       ],
       "news": []
     },
@@ -462,38 +433,32 @@
       "timeBerlin": "2026-08-29T08:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 21,
-      "confidencePct": 81,
+      "tailRiskPct": 5,
+      "stressRiskPct": 22,
+      "confidencePct": 82,
       "dominantMode": "normal",
-      "analysis": "No overnight structure exists to evaluate. The oil complex, which finished the week 4-5% lower and has been a stabilising rather than amplifying input, is likewise unquoted, so cross-asset confirmation cannot be refreshed in this hour.",
+      "analysis": "Halt continues through the Asian Saturday session window. Confidence is scored on complete Friday evidence - settlement, cash close, VIX, yields and oil are all verified - with the single limitation that live price-path evidence does not exist during a weekend closure.",
       "drivers": [
-        "WTI settled $83.40 and Brent $89.31, down 4-5% on the week",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "Evidence base ages with no live tick able to refresh it"
+        "Friday settlement, cash close, VIX, yields and oil all verified",
+        "Only limitation is the absence of a live price path during closure",
+        "No new market-moving item published into this hour"
       ],
-      "news": [
-        {
-          "title": "Oil settles lower on clues about Fed policy, rumors of Hormuz deal",
-          "url": "https://www.investing.com/news/commodities-news/oil-on-track-for-weekly-loss-even-as-iran-tensions-simmer-4880409",
-          "source": "Investing.com"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-29T07:00:00Z",
       "timeBerlin": "2026-08-29T09:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 20,
-      "confidencePct": 81,
+      "tailRiskPct": 5,
+      "stressRiskPct": 22,
+      "confidencePct": 82,
       "dominantMode": "normal",
-      "analysis": "Stress reaches the low end of its weekend band. Nothing in the published window can produce repeated extension after failed retracements, the behaviour Tail is defined against, so the floor reading is a structural consequence of the halt rather than a directional view.",
+      "analysis": "Early Saturday European hours with the venue still shut. The one conditional risk that accumulates across the weekend is headline gap risk, which would express itself at the Sunday reopen rather than inside this window, so it is not scored as current Tail here.",
       "drivers": [
-        "A halted venue cannot produce the no-retracement path Tail measures",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "No scheduled U.S. macro release falls inside the published window"
+        "Weekend headline gap risk accumulates but expresses only at the reopen",
+        "Reopen at Sun 2026-08-30 22:00 UTC is outside this forecast window",
+        "Tail held minimal because gap risk is not a within-window path"
       ],
       "news": []
     },
@@ -502,15 +467,15 @@
       "timeBerlin": "2026-08-29T10:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 20,
-      "confidencePct": 80,
+      "tailRiskPct": 5,
+      "stressRiskPct": 22,
+      "confidencePct": 81,
       "dominantMode": "normal",
-      "analysis": "European Saturday morning. Cash venues in Frankfurt and London are closed, so the second normal handover check on Friday's hawkish close is also unavailable. Evidence remains verified and internally consistent, only progressively older.",
+      "analysis": "Saturday mid-morning Berlin. Jackson Hole has concluded, so the scheduled central-bank speaking calendar for this hour is empty. Absent an unscheduled wire item, the halted-market baseline is unchanged and confidence decays only with the ageing of Friday's prints.",
       "drivers": [
-        "European cash venues are closed; no European handover is available",
-        "Evidence base ages with no live tick able to refresh it",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z"
+        "Jackson Hole symposium concluded; no scheduled Fed speakers this hour",
+        "Confidence decays slowly as Friday's verified prints age",
+        "Unscheduled wire headlines remain the only conditional input"
       ],
       "news": []
     },
@@ -519,40 +484,32 @@
       "timeBerlin": "2026-08-29T11:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 20,
-      "confidencePct": 80,
+      "tailRiskPct": 5,
+      "stressRiskPct": 22,
+      "confidencePct": 81,
       "dominantMode": "normal",
-      "analysis": "The Jackson Hole symposium runs to Saturday, so incremental policy commentary is possible in this part of the day. Any such remarks would be weekend headline flow feeding the reopen gap, not an observable price path, and would raise Stress before Tail.",
+      "analysis": "Weekend halt persists. The week ahead is a data-heavy checkpoint stack - ISM Manufacturing and JOLTS on 1 Sep, ADP on 2 Sep, claims and ISM Services on 3 Sep, payrolls on 4 Sep - but every one of those sits beyond this 24-hour window and informs later stress, not this hour.",
       "drivers": [
-        "Jackson Hole symposium concludes Saturday; further commentary possible",
-        "Weekend headline flow is the only channel able to shape the reopen gap",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "No scheduled U.S. macro release falls inside the published window"
+        "ISM Manufacturing and JOLTS scheduled Tue 1 Sep 14:00 UTC",
+        "August payrolls scheduled Fri 4 Sep 12:30 UTC",
+        "All listed catalysts fall outside this 24-hour forecast window"
       ],
-      "news": [
-        {
-          "title": "Fed Chairman Warsh warns on inflation at Jackson Hole",
-          "url": "https://www.cnbc.com/2026/08/28/kevin-warsh-jackson-hole-federal-reserve-inflation.html",
-          "source": "CNBC"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-29T10:00:00Z",
       "timeBerlin": "2026-08-29T12:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 19,
-      "confidencePct": 80,
+      "tailRiskPct": 5,
+      "stressRiskPct": 22,
+      "confidencePct": 81,
       "dominantMode": "normal",
-      "analysis": "Stress sits at the weekend trough. With no venue, no release and no live quote, dispersion between plausible reopen outcomes is the only live risk, and dispersion of that kind is a Stress and Confidence input rather than a Tail amplifier.",
+      "analysis": "Saturday midday UTC with no Nasdaq-100 pricing. Semiconductor tone stays a carried condition from Friday, when chip names lagged the index; whether that persists is a conditional question for the reopen and cannot be observed as structure in a halted hour.",
       "drivers": [
-        "No scheduled U.S. macro release falls inside the published window",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "A halted venue cannot produce the no-retracement path Tail measures",
-        "Evidence base ages with no live tick able to refresh it"
+        "Semiconductor underperformance on Friday is carried context, not live structure",
+        "Sector persistence is a conditional reopen question, not an observation",
+        "Halted venue keeps the mapped policy state unchanged"
       ],
       "news": []
     },
@@ -561,15 +518,49 @@
       "timeBerlin": "2026-08-29T13:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 19,
-      "confidencePct": 79,
+      "tailRiskPct": 5,
+      "stressRiskPct": 22,
+      "confidencePct": 81,
       "dominantMode": "normal",
-      "analysis": "Midday Saturday in Europe. Semiconductor weakness was the main drag on Friday's index decline while other large members held up, so the rotational character of that move is the base case a reopen would either confirm or reverse.",
+      "analysis": "Early Saturday afternoon Berlin. Cross-asset alignment from Friday was only partial - yields firmer and equities lower, but VIX subdued and oil falling - which historically argues for elevated uncertainty rather than a one-way path. No live confirmation is available in this hour.",
       "drivers": [
-        "Rotational decline: semiconductors lagged while other megacaps held up",
-        "Cash NDX closed 29,433.43 (-0.70%) inside 29,383.92-29,752.78",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z"
+        "Friday cross-asset alignment was partial: firm yields, soft equities, low VIX",
+        "Falling oil conflicts with a pure hawkish-shock alignment",
+        "Partial alignment argues for uncertainty rather than one-way structure"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T12:00:00Z",
+      "timeBerlin": "2026-08-29T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Mid-afternoon Berlin Saturday. Stress ticks marginally as the window advances toward the reopen half of the weekend, while Tail stays minimal: the mapped policy state is derived from a Tail that no halted hour can lift above the block threshold.",
+      "drivers": [
+        "Stress edges up as the window advances toward the reopen half of the weekend",
+        "Tail cannot rise on structure while every venue is closed",
+        "Mapped policy state: EA_ON, derived from Tail below the WATCH band"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T13:00:00Z",
+      "timeBerlin": "2026-08-29T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Saturday US-afternoon-equivalent hour. Friday's single largest idiosyncratic move - a double-digit decline in PayPal on the abandoned acquisition approach - was a single-name event and did not translate into index-level one-way structure before the close.",
+      "drivers": [
+        "Friday's largest single-name move stayed idiosyncratic, not index-level",
+        "No index-level one-way structure was established into Friday's close",
+        "Venue remains closed; no confirmation possible this hour"
       ],
       "news": [
         {
@@ -580,54 +571,19 @@
       ]
     },
     {
-      "ts": "2026-08-29T12:00:00Z",
-      "timeBerlin": "2026-08-29T14:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 19,
-      "confidencePct": 79,
-      "dominantMode": "normal",
-      "analysis": "The hour that would normally carry U.S. pre-market positioning is empty. Friday's close remains the last valid print for both instruments, and the published scores describe risk carried across the halt rather than any structure being observed now.",
-      "drivers": [
-        "No U.S. cash session in this window; Friday's close remains the last print",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "NQ Sep futures settled 29,509.50 (-0.63%), range 29,436.75-29,811.50",
-        "A halted venue cannot produce the no-retracement path Tail measures"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-08-29T13:00:00Z",
-      "timeBerlin": "2026-08-29T15:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 20,
-      "confidencePct": 79,
-      "dominantMode": "normal",
-      "analysis": "Stress begins a slow rebuild. The interval of unpriced weekend information widens from here, which raises the dispersion of a possible Sunday gap without providing any evidence that a gap would be followed by persistent one-way continuation.",
-      "drivers": [
-        "Weekend headline flow is the only channel able to shape the reopen gap",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "A halted venue cannot produce the no-retracement path Tail measures"
-      ],
-      "news": []
-    },
-    {
       "ts": "2026-08-29T14:00:00Z",
       "timeBerlin": "2026-08-29T16:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 20,
-      "confidencePct": 78,
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 80,
       "dominantMode": "normal",
-      "analysis": "Equivalent to the U.S. cash open on a trading day, but no auction takes place. Opening-auction continuation and shallow-pullback evidence, normally the strongest Tail inputs available, cannot be gathered anywhere in this window.",
+      "analysis": "Halt continues. Confidence remains in the high band because the evidence set is complete for a closed market: verified settlement, cash close, volatility, rates and energy. The absent element is a live path, which does not exist rather than being unobtainable.",
       "drivers": [
-        "No U.S. cash session in this window; Friday's close remains the last print",
-        "A halted venue cannot produce the no-retracement path Tail measures",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z"
+        "Evidence set is complete for a closed market, so confidence stays high-band",
+        "The absent live path does not exist rather than being unobtainable",
+        "No scheduled US macro release falls in this hour"
       ],
       "news": []
     },
@@ -636,64 +592,49 @@
       "timeBerlin": "2026-08-29T17:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 20,
-      "confidencePct": 78,
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 80,
       "dominantMode": "normal",
-      "analysis": "Geopolitics remains the most plausible source of a weekend headline. Hormuz corridor talks were reported as continuing without a finalised agreement, a state that has so far transmitted to oil rather than to index-level one-way structure.",
+      "analysis": "Late Saturday afternoon UTC. The dominant mode stays normal because a halted market has no directional efficiency, no retracement behaviour and no extension to classify. Any regime label for the coming week would be an assumption, not an observation.",
       "drivers": [
-        "Strait of Hormuz corridor talks continue with no finalised agreement",
-        "WTI settled $83.40 and Brent $89.31, down 4-5% on the week",
-        "Weekend headline flow is the only channel able to shape the reopen gap",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z"
+        "A halted market has no directional efficiency to classify",
+        "Regime labels for the coming week would be assumptions, not observations",
+        "Mode held at normal for every fully closed hour"
       ],
-      "news": [
-        {
-          "title": "Iran, Qatar hold Hormuz talks amid int'l hopes dialogue with US will resume",
-          "url": "https://www.aljazeera.com/news/2026/8/27/iran-qatar-hold-hormuz-talks-amid-intl-hopes-dialogue-with-us-will-resume",
-          "source": "Al Jazeera"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-29T16:00:00Z",
       "timeBerlin": "2026-08-29T18:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
-      "stressRiskPct": 21,
-      "confidencePct": 78,
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 80,
       "dominantMode": "normal",
-      "analysis": "Rates are the second channel to watch across the weekend. Short yields led Friday's move and the 2Y at 4.34% is the reference the reopen would be measured against; that level is fixed until Sunday and cannot extend within this window.",
+      "analysis": "Weekend closure holds into the Saturday evening Berlin hours. Geopolitical monitoring stays live as a discovery task: Middle East supply headlines drove the oil fade into Friday, and a reversal there would be a reopen-gap input rather than a within-window path.",
       "drivers": [
-        "2Y +11bp to 4.34%, 10Y +5bp to 4.72% after the Jackson Hole address",
-        "CME FedWatch September hike odds near 60%, up from about 35% pre-speech",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "A halted venue cannot produce the no-retracement path Tail measures"
+        "Middle East supply headlines drove the oil fade into Friday's close",
+        "A headline reversal would be a reopen-gap input, not a within-window path",
+        "Geopolitical monitoring continues as discovery only"
       ],
-      "news": [
-        {
-          "title": "Rate-hike expectations rise on Warsh speech at Jackson Hole",
-          "url": "https://finance.yahoo.com/economy/policy/articles/rate-hike-expectations-rise-warsh-144023525.html",
-          "source": "Reuters"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-08-29T17:00:00Z",
       "timeBerlin": "2026-08-29T19:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 22,
-      "confidencePct": 77,
+      "tailRiskPct": 6,
+      "stressRiskPct": 24,
+      "confidencePct": 80,
       "dominantMode": "normal",
-      "analysis": "Tail ticks up by a single point as the horizon shortens toward the reopen, remaining far below the block threshold. The adjustment reflects a widening unpriced interval, not any observed directional efficiency, which the halt makes impossible to observe.",
+      "analysis": "Tail nudges up by a single point as the window crosses into the second half of the weekend. This reflects slowly accumulating unresolved-headline exposure ahead of the Sunday reopen, not any observed structure - the market remains closed throughout this hour.",
       "drivers": [
-        "Weekend headline flow is the only channel able to shape the reopen gap",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "A halted venue cannot produce the no-retracement path Tail measures",
-        "Evidence base ages with no live tick able to refresh it"
+        "Tail +1 for accumulating unresolved-headline exposure ahead of the reopen",
+        "No observed structure supports the adjustment; it is conditional exposure only",
+        "Market remains closed for the entirety of this hour"
       ],
       "news": []
     },
@@ -702,33 +643,38 @@
       "timeBerlin": "2026-08-29T20:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 22,
-      "confidencePct": 77,
+      "tailRiskPct": 6,
+      "stressRiskPct": 24,
+      "confidencePct": 79,
       "dominantMode": "normal",
-      "analysis": "Late Saturday afternoon in the U.S. The published scores continue to describe a single deferred repricing checkpoint. Volatility expectations set on Friday, with VIX at 14.43, remain the last verified read on how much movement the reopen is priced for.",
+      "analysis": "Saturday evening. The September policy question stays unresolved into the reopen: hike odds firmed above even money on Friday but reported figures ranged widely across venues, which is a dispersion signal feeding stress and confidence rather than a Tail amplifier.",
       "drivers": [
-        "VIX closed 14.43 in a 14.13-14.84 range; no volatility confirmation",
-        "Weekend headline flow is the only channel able to shape the reopen gap",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z"
+        "Reported Sept hike odds ranged widely across venues after the speech",
+        "Dispersion feeds stress and confidence rather than Tail",
+        "FOMC decision on 16 Sep sits well beyond this window"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Rate-hike expectations rise on Warsh speech at Jackson Hole",
+          "url": "https://finance.yahoo.com/economy/policy/articles/rate-hike-expectations-rise-warsh-144023525.html",
+          "source": "Yahoo Finance"
+        }
+      ]
     },
     {
       "ts": "2026-08-29T19:00:00Z",
       "timeBerlin": "2026-08-29T21:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 23,
-      "confidencePct": 77,
+      "tailRiskPct": 6,
+      "stressRiskPct": 24,
+      "confidencePct": 79,
       "dominantMode": "normal",
-      "analysis": "Stress rebuilds toward its starting level. Next week's calendar is dense from Tuesday onward, but no part of it falls inside this window, so calendar weight is carried as anticipation rather than as an active catalyst in this hour.",
+      "analysis": "Late Saturday UTC. Confidence continues its slow decay as Friday's verified prints age past 24 hours, while the assessment itself is unchanged: no venue, no path, no mechanism for mean reversion to fail inside this hour.",
       "drivers": [
-        "ISM Manufacturing and JOLTS cluster Tuesday 14:00Z",
-        "First macro checkpoint: Dallas Fed Manufacturing, Monday 14:30Z",
-        "No scheduled U.S. macro release falls inside the published window",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z"
+        "Friday's verified prints are now ageing past the 24-hour mark",
+        "No mechanism exists for mean reversion to fail in a halted hour",
+        "Assessment unchanged from the prior halted slot"
       ],
       "news": []
     },
@@ -737,22 +683,21 @@
       "timeBerlin": "2026-08-29T22:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 23,
-      "confidencePct": 77,
+      "tailRiskPct": 6,
+      "stressRiskPct": 25,
+      "confidencePct": 79,
       "dominantMode": "normal",
-      "analysis": "Roughly 24 hours after Friday's cash close. Any conclusion about whether the hawkish repricing extends would require live quotes that will not exist until Sunday, so the assessment stays anchored to verified settlement data.",
+      "analysis": "Stress crosses into the moderate band as the weekend's second half advances with the hawkish repricing still unresolved. Tail stays low: stress describes a potentially recoverable difficult environment at the reopen, not a no-retracement path inside this window.",
       "drivers": [
-        "Cash NDX closed 29,433.43 (-0.70%) inside 29,383.92-29,752.78",
-        "NQ Sep futures settled 29,509.50 (-0.63%), range 29,436.75-29,811.50",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "Evidence base ages with no live tick able to refresh it"
+        "Stress enters the moderate band on unresolved hawkish repricing",
+        "Stress describes reopen difficulty, not a within-window no-retracement path",
+        "Tail held low; stress alone does not lift the mapped policy state"
       ],
       "news": [
         {
-          "title": "S&P 500 falls Friday after Fed's Warsh highlights inflation worries, but index posts positive week",
-          "url": "https://www.cnbc.com/2026/08/27/stock-market-today-live-updates.html",
-          "source": "CNBC"
+          "title": "Fed's Kevin Warsh warns inflation is too high, sparking bets rate hikes are coming",
+          "url": "https://www.npr.org/2026/08/28/nx-s1-5947903/federal-reserve-inflation-jackson-hole-interest-rates",
+          "source": "NPR"
         }
       ]
     },
@@ -761,15 +706,15 @@
       "timeBerlin": "2026-08-29T23:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 24,
-      "confidencePct": 77,
+      "tailRiskPct": 6,
+      "stressRiskPct": 25,
+      "confidencePct": 79,
       "dominantMode": "normal",
-      "analysis": "Exactly 24 hours after the futures settlement. The mapped policy state remains unchanged across the whole window because Tail never approaches the block band; the halt removes the mechanism, not merely the evidence, for a lethal path.",
+      "analysis": "Roughly a day ahead of the Globex reopen. Weekend gap risk would be assessed on observed opening structure once pricing resumes - shallow pullbacks, failed retracements, holding near extremes - none of which can be evaluated before the venue opens.",
       "drivers": [
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "A halted venue cannot produce the no-retracement path Tail measures",
-        "Weekend headline flow is the only channel able to shape the reopen gap"
+        "Reopen structure would be assessed on observed pullback and retracement behaviour",
+        "Shallow-pullback and failed-retracement evidence is unavailable pre-open",
+        "Globex reopen at Sun 22:00 UTC remains outside this window"
       ],
       "news": []
     },
@@ -778,16 +723,15 @@
       "timeBerlin": "2026-08-30T00:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 24,
-      "confidencePct": 76,
+      "tailRiskPct": 6,
+      "stressRiskPct": 25,
+      "confidencePct": 78,
       "dominantMode": "normal",
-      "analysis": "One full day before the Sunday 22:00Z reopen. Stress returns to roughly its level at the start of the window, reflecting the accumulated weekend information gap rather than any deterioration in the underlying evidence.",
+      "analysis": "Final Saturday hours UTC. The evidence base is unchanged from the cutoff, so scores are held rather than refined; confidence reflects staleness of a complete Friday dataset rather than any gap or conflict in what was gathered.",
       "drivers": [
-        "Weekend headline flow is the only channel able to shape the reopen gap",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "Evidence base ages with no live tick able to refresh it",
-        "A halted venue cannot produce the no-retracement path Tail measures"
+        "Scores held because the evidence base is unchanged from the cutoff",
+        "Confidence reflects dataset age, not gaps or conflicts in evidence",
+        "No new verified item published into this hour"
       ],
       "news": []
     },
@@ -796,68 +740,84 @@
       "timeBerlin": "2026-08-30T01:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 24,
-      "confidencePct": 76,
+      "tailRiskPct": 6,
+      "stressRiskPct": 26,
+      "confidencePct": 78,
       "dominantMode": "normal",
-      "analysis": "Final published hour. Confidence ends near 76 purely because Friday's verified close, yields, oil and volatility data are then a full day old. The next assessments will cover the approach to the reopen and the Monday Dallas Fed checkpoint.",
+      "analysis": "Penultimate slot, still fully inside the halt. Stress carries the week-ahead catalyst stack - ISM, JOLTS, ADP, claims and August payrolls all land between 1 and 4 September - which shapes the environment beyond this window without lifting Tail today.",
       "drivers": [
-        "Evidence base ages with no live tick able to refresh it",
-        "First macro checkpoint: Dallas Fed Manufacturing, Monday 14:30Z",
-        "CME equity futures settled Friday 21:00Z; next reopen Sunday 22:00Z",
-        "Shared Finviz cross-asset context is stale (collected 19:37Z Friday)"
+        "Week-ahead stack: ISM and JOLTS 1 Sep, ADP 2 Sep, claims 3 Sep, payrolls 4 Sep",
+        "Catalyst stack shapes stress beyond the window without lifting current Tail",
+        "Event importance is not treated as observed post-event alignment"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-30T00:00:00Z",
+      "timeBerlin": "2026-08-30T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 26,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Closing slot of the window, at Sunday 00:00 UTC and still about 22 hours before Globex reopens. The halted-market baseline carries to the end: minimal Tail, moderate stress on unresolved policy repricing, and no observed structure of any kind.",
+      "drivers": [
+        "Window ends about 22 hours before the Sun 22:00 UTC Globex reopen",
+        "Halted-market baseline carries through the final slot",
+        "Reopen gap assessment belongs to a later run with observed evidence"
       ],
       "news": []
     }
   ],
   "forecastDetail": [
     {
-      "ts": "2026-08-29T00:00:00Z",
-      "timeBerlin": "2026-08-29T02:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 6,
-      "stressRiskPct": 24,
-      "comment": "All venues halted since the 21:00Z futures settlement; Tail at the weekend floor with no danger window and Stress covering deferred gap risk only."
-    },
-    {
       "ts": "2026-08-29T01:00:00Z",
       "timeBerlin": "2026-08-29T03:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 6,
+      "tailRiskPct": 5,
       "stressRiskPct": 23,
-      "comment": "Friday's hawkish rates repricing is embedded in settled levels and cannot extend while the market is shut; Stress eases as the last quote recedes."
+      "comment": "Weekend CME halt in force since Friday 21:00 UTC; NQ settled 29,509.50 and cash NDX closed 29,433.43 in the lower third of the range, with VIX 14.43. No live path can form."
     },
     {
       "ts": "2026-08-29T02:00:00Z",
       "timeBerlin": "2026-08-29T04:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 6,
+      "tailRiskPct": 5,
       "stressRiskPct": 23,
-      "comment": "Asian pre-dawn hours with no handover session available, so this slot carries no directional information and Tail stays at the floor."
+      "comment": "Halt continues. Friday's hawkish Jackson Hole repricing, which lifted September hike odds from about 35% to above even money, is a carried condition rather than an active price path."
     },
     {
       "ts": "2026-08-29T03:00:00Z",
       "timeBerlin": "2026-08-29T05:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 6,
+      "tailRiskPct": 5,
       "stressRiskPct": 22,
-      "comment": "Quietest part of the weekend: no venue, release or speaker can generate volatility, and the Confidence step is an ageing adjustment."
+      "comment": "Closed venue overnight. Rates remain the anchor: H.15 shows 2Y 4.20% and 10Y 4.67% on 27 Aug, with the 10Y reported near 4.72% after Friday. Any repricing surfaces only at the reopen."
     },
     {
       "ts": "2026-08-29T04:00:00Z",
       "timeBerlin": "2026-08-29T06:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 6,
+      "tailRiskPct": 5,
       "stressRiskPct": 22,
-      "comment": "Still fully halted; the September rate-hike repricing is a level already set rather than a path in progress, so Tail remains at the floor."
+      "comment": "Energy stays a mild offset rather than an amplifier, with WTI near $83.4 after a weekly loss of roughly 4% and Brent near $88.2 on improved Hormuz flow reporting."
     },
     {
       "ts": "2026-08-29T05:00:00Z",
       "timeBerlin": "2026-08-29T07:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 6,
-      "stressRiskPct": 21,
-      "comment": "No Asian cash session to cross-check Friday's close, so the usual first handover read is unavailable and Stress moves toward the weekend low."
+      "tailRiskPct": 5,
+      "stressRiskPct": 22,
+      "comment": "Asian cash markets are closed for the weekend, so no regional transition is observable. Tail stays minimal because no retracement structure exists that could fail."
+    },
+    {
+      "ts": "2026-08-29T06:00:00Z",
+      "timeBerlin": "2026-08-29T08:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 22,
+      "comment": "Halt persists through the Asian Saturday window. Friday's settlement, cash close, volatility, rates and energy are all verified; only a live price path is absent, because none exists."
     }
   ],
   "events": [
@@ -902,12 +862,6 @@
       "ts": "2026-09-02T12:15:00Z",
       "timeBerlin": "2026-09-02T14:15:00+02:00",
       "impact": "high"
-    },
-    {
-      "name": "Factory Orders MoM (Jul)",
-      "ts": "2026-09-02T14:00:00Z",
-      "timeBerlin": "2026-09-02T16:00:00+02:00",
-      "impact": "medium"
     },
     {
       "name": "Balance of Trade (Jul)",
