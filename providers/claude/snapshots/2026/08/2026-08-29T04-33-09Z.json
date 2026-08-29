@@ -1,0 +1,945 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-08-29T04:33:09Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Mapped policy state: EA_ON. The Nasdaq-100 venue is inside the CME weekend halt and Tail remains well below the block threshold.",
+  "recommendation": "The mapped policy state stays EA_ON in all 24 slots because every hour falls inside the CME weekend closure and no Nasdaq-100 price path can form. No danger window is defined. The next evidence checkpoint is the Globex reopen on Sunday 30 August at 22:00 UTC, which lies beyond this window; reopening structure would be scored on observed evidence in a later run.",
+  "headline": "Weekend CME halt spans the full window after a hawkish Jackson Hole Friday: NDX closed 29,433.43 (-0.70%), NQ last 29,491.75, VIX 14.43",
+  "body": "CME Globex has been halted since Friday 21:00 UTC and does not reopen until Sunday 30 August at 22:00 UTC, so every hour of this forecast window is a closed venue with no Nasdaq-100 price discovery. Verified pre-halt evidence: cash NDX closed 29,433.43, down 0.70 percent, inside a 29,383.92 to 29,752.78 range against a 29,641.56 previous close; NQ futures last printed 29,491.75, down 0.69 percent, in a 29,436.75 to 29,811.50 range; VIX finished at 14.43 within a 14.13 to 14.84 range. Fed Chair Warsh's Jackson Hole keynote was read as hawkish on inflation, and reporting places September rate-hike odds near 57 to 59 percent against about 35 percent the prior day, with the 2-year yield reported near 4.35 percent and the 10-year near 4.72 percent; official H.15 readings for 27 August are 2Y 4.20 percent and 10Y 4.67 percent. Friday's internals were dispersed rather than aligned: the Dow finished essentially flat at -0.02 percent and the S&P 500 at -0.25 percent while the Nasdaq Composite fell 0.52 percent, as hyperscalers advanced, with Amazon about 4 percent higher and Microsoft, Alphabet and Meta between 1.2 and 1.7 percent higher, while chipmakers retreated, Nvidia about 4.6 percent lower and the semiconductor group down roughly 3 percent. WTI sits near 83.44 dollars and Brent near 88.29 dollars after a weekly decline of about 4 percent. That rotation profile is a Stress and Confidence input rather than evidence of the persistent one-way index path Tail measures, and no such path can form while the venue is closed. Tail is therefore held at 5 across the window, the dominant mode is normal in every slot, and no danger window is defined. The next evidence checkpoint is the Globex reopen on Sunday 30 August at 22:00 UTC, beyond this window, followed by the 1 to 4 September catalyst stack of ISM Manufacturing and JOLTS, ADP, jobless claims and trade balance, ISM Services and August payrolls.",
+  "tailRiskPct": 5,
+  "tailLevel": "low",
+  "stressRiskPct": 23,
+  "stressLevel": "low",
+  "dominantMode": "normal",
+  "confidencePct": 81,
+  "confidenceLevel": "high",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": null,
+    "end": null
+  },
+  "dangerWindowBerlin": {
+    "start": null,
+    "end": null
+  },
+  "sources": [
+    {
+      "title": "Nasdaq-100 (^NDX) index quote - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "Nasdaq 100 futures (NQ=F) quote - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/NQ%3DF/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    {
+      "title": "Federal Reserve H.15 Selected Interest Rates",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "title": "Stock market today: Dow, S&P 500, Nasdaq moderate as markets digest Warsh's Jackson Hole speech - Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-august-28-dow-sp-500-nasdaq-dip-fed-warsh-jackson-hole-speech-081514091.html"
+    },
+    {
+      "title": "United States economic calendar - Trading Economics",
+      "url": "https://tradingeconomics.com/united-states/calendar"
+    }
+  ],
+  "lookbackSummary": "The preceding 24 hours cover Friday's full session and the opening hours of the weekend halt. Tail ran 11 to 13 with Stress in the high 40s to mid 50s through the Asian and European hours as positioning built ahead of the Jackson Hole keynote. Tail peaked at 22 and Stress at 64 in the 16:00 to 19:00 UTC block, when the hawkish keynote produced event-driven two-way trade and the mode was scored event/whipsaw; the mapped policy state never exceeded WATCH because retracements kept occurring. After the 20:00 UTC cash close the readings decayed quickly, Tail from 12 to 5 and Stress from 52 to 22, as the venue entered the weekend closure and the mode reverted to normal. One hour, 10:00 UTC on 28 August, has no published assessment and is marked unavailable.",
+  "lookback": [
+    {
+      "ts": "2026-08-28T04:00:00Z",
+      "timeBerlin": "2026-08-28T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 49,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T05:00:00Z",
+      "timeBerlin": "2026-08-28T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 50,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T06:00:00Z",
+      "timeBerlin": "2026-08-28T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 50,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T07:00:00Z",
+      "timeBerlin": "2026-08-28T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 50,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T08:00:00Z",
+      "timeBerlin": "2026-08-28T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 53,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T09:00:00Z",
+      "timeBerlin": "2026-08-28T11:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 52,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T10:00:00Z",
+      "timeBerlin": "2026-08-28T12:00:00+02:00",
+      "available": false,
+      "status": null,
+      "action": null,
+      "tailRiskPct": null,
+      "stressRiskPct": null,
+      "confidencePct": null,
+      "dominantMode": null
+    },
+    {
+      "ts": "2026-08-28T11:00:00Z",
+      "timeBerlin": "2026-08-28T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 54,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T12:00:00Z",
+      "timeBerlin": "2026-08-28T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 55,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T13:00:00Z",
+      "timeBerlin": "2026-08-28T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 57,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T14:00:00Z",
+      "timeBerlin": "2026-08-28T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 56,
+      "confidencePct": 87,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-28T15:00:00Z",
+      "timeBerlin": "2026-08-28T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 51,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-28T16:00:00Z",
+      "timeBerlin": "2026-08-28T18:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 62,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-28T17:00:00Z",
+      "timeBerlin": "2026-08-28T19:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 64,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-28T18:00:00Z",
+      "timeBerlin": "2026-08-28T20:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 60,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-28T19:00:00Z",
+      "timeBerlin": "2026-08-28T21:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 58,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-08-28T20:00:00Z",
+      "timeBerlin": "2026-08-28T22:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 52,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T21:00:00Z",
+      "timeBerlin": "2026-08-28T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 30,
+      "confidencePct": 86,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-08-28T22:00:00Z",
+      "timeBerlin": "2026-08-29T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 7,
+      "stressRiskPct": 26,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-28T23:00:00Z",
+      "timeBerlin": "2026-08-29T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 25,
+      "confidencePct": 84,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-29T00:00:00Z",
+      "timeBerlin": "2026-08-29T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 24,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-29T01:00:00Z",
+      "timeBerlin": "2026-08-29T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-29T02:00:00Z",
+      "timeBerlin": "2026-08-29T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 82,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-29T03:00:00Z",
+      "timeBerlin": "2026-08-29T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 22,
+      "confidencePct": 82,
+      "dominantMode": "normal"
+    }
+  ],
+  "outlookSummary": "Every hour of the forecast window falls inside the CME weekend halt, so no Nasdaq-100 price path can form and Tail is held at 5 in all 24 slots, keeping the mapped policy state at EA_ON throughout with no danger window. Stress runs 23 to 28, crossing from the low into the moderate band around Saturday midday, carrying the unresolved September policy repricing and the 1 to 4 September catalyst stack of ISM Manufacturing and JOLTS, ADP, jobless claims and trade balance, ISM Services and August payrolls. Confidence eases from 81 to 75 purely as Friday's verified prints age; the evidence base of levels, yields, volatility, oil and calendar is complete but cannot be refreshed until the venue reopens. The dominant mode is normal in every slot because a closed market has no structure to classify. Weekend headline and gap exposure accumulates across the window, but the Globex reopen on Sunday 30 August at 22:00 UTC lies beyond the final slot, so reopening structure is explicitly not forecast here.",
+  "forecast": [
+    {
+      "ts": "2026-08-29T04:00:00Z",
+      "timeBerlin": "2026-08-29T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Current hour observed: CME Globex has been halted since Friday 21:00 UTC, so there is no live NQ price path to score and Tail holds at 5. Verified pre-halt marks are NDX 29,433.43 (-0.70%), NQ last 29,491.75 and VIX 14.43. Stress 23 carries the unresolved September repricing rather than any observed trend.",
+      "drivers": [
+        "CME Globex halted since Friday 21:00 UTC; no Nasdaq-100 price discovery this hour",
+        "Verified Friday close: NDX 29,433.43 (-0.70%), NQ last 29,491.75, VIX 14.43",
+        "September rate-hike odds repriced to roughly 57-59% from about 35%"
+      ],
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq moderate as markets digest Warsh's Jackson Hole speech",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-august-28-dow-sp-500-nasdaq-dip-fed-warsh-jackson-hole-speech-081514091.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-29T05:00:00Z",
+      "timeBerlin": "2026-08-29T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "The venue remains closed under the published CME weekend schedule, so no price-path structure can form in this hour and Tail stays at 5. The hour's only live exposure is headline flow into a closed market. Stress holds at 23 while Friday's hawkish repricing stays unresolved.",
+      "drivers": [
+        "Weekend closure continues; Tail reflects an absent price path, not a directional view",
+        "Unresolved September policy repricing carried as Stress, not Tail",
+        "Front-end yields reported near 4.35% on the 2-year after Friday's move"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T06:00:00Z",
+      "timeBerlin": "2026-08-29T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "No Asian cash or futures reference exists this hour because the weekend halt spans the Asian session. Tail stays at 5 with no path to score. Stress holds at 23; the dispersed Friday internals, hyperscalers higher against chipmakers lower, remain a rotation signal rather than an index trend.",
+      "drivers": [
+        "Asian session falls inside the weekend halt; no cross-venue price reference",
+        "Friday dispersion: hyperscalers higher, Nvidia about -4.6%, semis down roughly 3%",
+        "VIX at 14.43 leaves no volatility premium pointing to a trending reopen"
+      ],
+      "news": [
+        {
+          "title": "A Hawkish Fed Speech Turns a Green Morning Red",
+          "url": "https://www.fool.com/investing/2026/08/28/a-hawkish-fed-speech-turns-a-green-morning-red/",
+          "source": "The Motley Fool"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-29T07:00:00Z",
+      "timeBerlin": "2026-08-29T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Still inside the halt, so this hour contributes no evidence about reopening structure and Tail remains 5. Stress holds at 23. Confidence eases to 80 as Friday's verified prints age by another hour without any refreshing market observation.",
+      "drivers": [
+        "Halt continues; no European pre-market reference forms in this hour",
+        "Confidence decays purely from the ageing of Friday's verified prints",
+        "No danger window defined while the venue is closed"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T08:00:00Z",
+      "timeBerlin": "2026-08-29T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 24,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Saturday morning in Europe with the venue closed. Tail stays 5. Stress edges to 24 as the interval since the last verified price grows and unhedged weekend headline exposure accumulates ahead of the 1-4 September macro stack.",
+      "drivers": [
+        "Accumulating weekend headline exposure into a closed venue",
+        "1-4 September stack: ISM Manufacturing and JOLTS, ADP, claims, ISM Services, payrolls",
+        "Tail unchanged because gap risk is a Stress input, not an observed path"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T09:00:00Z",
+      "timeBerlin": "2026-08-29T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 24,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "The halt spans this hour, so Tail remains 5 and the mode stays normal because a closed market has no structure to classify. Stress holds 24. Oil near 83.44 WTI after a roughly 4% weekly decline is not currently a directional amplifier for the index.",
+      "drivers": [
+        "Closed venue leaves the dominant mode as normal by construction",
+        "WTI near $83.44 and Brent near $88.29 after a weekly fall of about 4%",
+        "No aligned cross-asset amplifier stack was observed into the halt"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T10:00:00Z",
+      "timeBerlin": "2026-08-29T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 24,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Conditional view only: nothing can be observed while trading is halted, so Tail stays 5. Stress holds 24 to reflect that the September hike debate, priced near a coin flip to 59%, is still open and would be re-tested only at the Sunday reopen.",
+      "drivers": [
+        "September hike pricing unresolved into the weekend",
+        "Sunday 30 August 22:00 UTC Globex reopen is the next observation point",
+        "PCE reported near 3.7% year over year remains above the 2% target"
+      ],
+      "news": [
+        {
+          "title": "Wall Street ends lower on hawkish Warsh at Jackson Hole, but rises for the week",
+          "url": "https://za.investing.com/news/stock-market-news/wall-st-futures-steady-after-nvidialed-gains-warshs-jackson-hole-speech-looms-4447013",
+          "source": "Investing.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-29T11:00:00Z",
+      "timeBerlin": "2026-08-29T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 24,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Halt continues through the hour. Tail 5, Stress 24. Confidence steps to 78 as the evidence base is unchanged Friday data. Any statement about reopening continuation or shallow pullbacks would be speculation, so none is carried into this slot.",
+      "drivers": [
+        "No observed continuation, retracement or extension can exist in a closed hour",
+        "Evidence base is static Friday data; confidence decays with age",
+        "Mapped policy state remains EA_ON on Tail 5"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T12:00:00Z",
+      "timeBerlin": "2026-08-29T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Stress crosses to 25 and into the moderate band here, reflecting the widening gap between the last verified price and the reopen rather than any new observation. Tail is unchanged at 5 because the venue is closed and no path can develop.",
+      "drivers": [
+        "Stress crosses into the moderate band on the lengthening time to reopen",
+        "Tail decoupled from Stress: no price path exists to fail mean reversion",
+        "Last verified NQ reference remains Friday's 29,491.75"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T13:00:00Z",
+      "timeBerlin": "2026-08-29T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "This clock hour would normally precede the U.S. cash open, but it is a Saturday and the venue is shut, so no opening-auction or continuation evidence exists. Tail stays 5 and Stress 25 while the hawkish repricing remains the dominant unresolved input.",
+      "drivers": [
+        "No U.S. cash session this calendar day; opening structure cannot be assessed",
+        "Warsh keynote read as hawkish remains the dominant open question",
+        "Two-year yield saw its largest single-day move since June on Friday"
+      ],
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq moderate as markets digest Warsh's Jackson Hole speech",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-august-28-dow-sp-500-nasdaq-dip-fed-warsh-jackson-hole-speech-081514091.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-29T14:00:00Z",
+      "timeBerlin": "2026-08-29T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Halt continues. Tail 5, Stress 25, confidence 77. Friday's semiconductor weakness against advancing hyperscalers is treated as a rotation and breadth observation feeding Stress and Confidence; it is not evidence of the persistent one-way index structure Tail measures.",
+      "drivers": [
+        "Semiconductor weakness set against hyperscaler strength is rotation, not trend",
+        "Breadth dispersion reduces directional conviction rather than raising Tail",
+        "Index-level path evidence unavailable until the Sunday reopen"
+      ],
+      "news": [
+        {
+          "title": "A Hawkish Fed Speech Turns a Green Morning Red",
+          "url": "https://www.fool.com/investing/2026/08/28/a-hawkish-fed-speech-turns-a-green-morning-red/",
+          "source": "The Motley Fool"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-29T15:00:00Z",
+      "timeBerlin": "2026-08-29T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "No trading occurs in this hour. Tail holds 5. Stress holds 25 as the weekend interval extends. Confidence 77. The Monday 31 August calendar is light, with the Dallas Fed manufacturing index the only notable U.S. print before the September stack.",
+      "drivers": [
+        "Monday 31 August is a light calendar; Dallas Fed manufacturing at 14:30 UTC",
+        "Weekend interval extends without any refreshing observation",
+        "No danger window is defined for a closed venue"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T16:00:00Z",
+      "timeBerlin": "2026-08-29T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 77,
+      "dominantMode": "normal",
+      "analysis": "The venue stays closed and Tail remains 5. Stress edges to 26, carrying the cumulative weekend headline window rather than any observed volatility. The equivalent hour on Friday was the event-driven block that peaked at Tail 22; that condition has since fully decayed.",
+      "drivers": [
+        "Friday's 16:00-19:00 UTC event block peaked at Tail 22 and has fully decayed",
+        "Stress edges up on the cumulative weekend headline window",
+        "Mode remains normal because there is no structure to classify"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T17:00:00Z",
+      "timeBerlin": "2026-08-29T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 77,
+      "dominantMode": "normal",
+      "analysis": "Halt continues. Tail 5, Stress 26, confidence 76. Geopolitical developments remain a weekend gap channel rather than a current transmission mechanism, with oil having drifted lower on the week rather than pricing a fresh supply discontinuity.",
+      "drivers": [
+        "Geopolitics is a weekend gap channel, not a live transmission mechanism",
+        "Oil lower on the week argues against a fresh supply-shock premium",
+        "No credible unresolved delayed second-leg mechanism is active in a closed market"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T18:00:00Z",
+      "timeBerlin": "2026-08-29T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 77,
+      "dominantMode": "normal",
+      "analysis": "No price discovery in this hour. Tail 5, Stress 26. The window continues to accumulate unhedgeable gap exposure into the Sunday reopen, which sits beyond the final slot of this forecast and therefore cannot be scored on observed evidence here.",
+      "drivers": [
+        "Reopen at Sunday 22:00 UTC lies beyond the final slot of this window",
+        "Gap exposure accrues but remains conditional and unobserved",
+        "Tail held at 5 across all closed hours by construction"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T19:00:00Z",
+      "timeBerlin": "2026-08-29T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 77,
+      "dominantMode": "normal",
+      "analysis": "Halt continues; Tail 5, Stress 26, confidence 76. Cross-asset alignment into the close was partial at best: yields higher, VIX low, oil soft and equity internals split, which is a conflicting rather than an amplifying configuration.",
+      "drivers": [
+        "Cross-asset configuration into the close was conflicting, not aligned",
+        "VIX finished at 14.43 within a 14.13-14.84 range",
+        "Conflicting signals raise Stress and lower conviction rather than Tail"
+      ],
+      "news": [
+        {
+          "title": "Wall Street ends lower on hawkish Warsh at Jackson Hole, but rises for the week",
+          "url": "https://za.investing.com/news/stock-market-news/wall-st-futures-steady-after-nvidialed-gains-warshs-jackson-hole-speech-looms-4447013",
+          "source": "Investing.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-29T20:00:00Z",
+      "timeBerlin": "2026-08-29T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 27,
+      "confidencePct": 76,
+      "dominantMode": "normal",
+      "analysis": "This hour marks 24 hours since Friday's cash close, with the venue still shut. Tail stays 5 and Stress steps to 27 as the staleness of the last verified reference grows. Confidence 76 continues to reflect complete but ageing evidence.",
+      "drivers": [
+        "24 hours elapsed since Friday's 20:00 UTC cash close",
+        "Stress steps to 27 on the growing staleness of the last verified reference",
+        "Evidence set is complete but not refreshable until the reopen"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T21:00:00Z",
+      "timeBerlin": "2026-08-29T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 27,
+      "confidencePct": 76,
+      "dominantMode": "normal",
+      "analysis": "Exactly 24 hours into the CME halt. Tail remains 5 because a closed venue cannot produce the no-retracement path Tail measures. Stress 27. The interval to the reopen remains the principal unobservable stretch in this assessment.",
+      "drivers": [
+        "Exactly 24 hours elapsed since the 21:00 UTC Friday halt began",
+        "Roughly 25 hours remain until the Globex reopen",
+        "Tail measures a pathological price path, which a halt makes impossible"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T22:00:00Z",
+      "timeBerlin": "2026-08-30T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 27,
+      "confidencePct": 76,
+      "dominantMode": "normal",
+      "analysis": "Midnight Berlin, Sunday, with the halt continuing. Tail 5, Stress 27, confidence 75. This slot is exactly 24 hours ahead of the scheduled Globex reopen, which remains outside the assessed window and would be scored only on later observed evidence.",
+      "drivers": [
+        "Slot sits exactly 24 hours ahead of the scheduled Sunday reopen",
+        "Reopen structure remains explicitly unassessed and conditional",
+        "Confidence settles at 75 as Friday evidence reaches full weekend age"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-29T23:00:00Z",
+      "timeBerlin": "2026-08-30T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 27,
+      "confidencePct": 76,
+      "dominantMode": "normal",
+      "analysis": "Halt continues into Sunday UTC. Tail 5, Stress 27. No new macro releases fall in this window, so the evidence set cannot change; the first scheduled U.S. print after this forecast is the Dallas Fed manufacturing index on Monday 31 August.",
+      "drivers": [
+        "No scheduled U.S. macro release falls inside this forecast window",
+        "First print after the window is Dallas Fed manufacturing on 31 August",
+        "Static evidence set keeps all scores flat through the closed hours"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-30T00:00:00Z",
+      "timeBerlin": "2026-08-30T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 28,
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "Sunday begins with the venue still closed. Tail 5. Stress reaches 28, the window maximum, reflecting the full accumulated weekend interval and the proximity of the September catalyst stack rather than any observed market condition.",
+      "drivers": [
+        "Stress reaches the window maximum of 28 on the full accumulated interval",
+        "ISM Manufacturing and JOLTS on 1 September are the first high-impact catalysts",
+        "Catalyst proximity is a Stress input under the published risk definition"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-30T01:00:00Z",
+      "timeBerlin": "2026-08-30T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 28,
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "Closed venue, Tail 5, Stress 28, confidence 75. Any claim about how the reopen prices the hawkish shift would be conjecture, so this slot carries only the conditional statement that the repricing is unresolved and would be tested after 22:00 UTC.",
+      "drivers": [
+        "Reopening reaction to the hawkish shift is conjecture and is not asserted",
+        "Repricing would be tested only after the 22:00 UTC Sunday reopen",
+        "Mapped policy state remains EA_ON with no danger window"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-30T02:00:00Z",
+      "timeBerlin": "2026-08-30T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 28,
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "Halt continues. Tail 5, Stress 28. The assessment holds a complete verified evidence base of levels, yields, volatility, oil and the seven-day calendar, which is why confidence sits at 75 rather than lower despite the absence of a live price path.",
+      "drivers": [
+        "Complete verified base: levels, yields, VIX, oil and a seven-day calendar",
+        "Absence of a live price path is the sole confidence constraint",
+        "H.15 for 27 August anchors yields at 2Y 4.20% and 10Y 4.67%"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-30T03:00:00Z",
+      "timeBerlin": "2026-08-30T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 28,
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "Final slot of the window, still inside the halt and roughly 19 hours before the Globex reopen. Tail 5, Stress 28, confidence 75. Structure at the reopen is explicitly not forecast here and would be assessed on observed evidence in a later run.",
+      "drivers": [
+        "Final slot sits roughly 19 hours before the Sunday 22:00 UTC reopen",
+        "Reopen structure explicitly deferred to a later observation-based run",
+        "All 24 slots close with Tail 5 and the mapped policy state EA_ON"
+      ],
+      "news": []
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-08-29T04:00:00Z",
+      "timeBerlin": "2026-08-29T06:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "comment": "Current hour is inside the CME weekend halt; no Nasdaq-100 price path exists to score, so Tail sits at 5 against verified pre-halt marks of NDX 29,433.43 and VIX 14.43."
+    },
+    {
+      "ts": "2026-08-29T05:00:00Z",
+      "timeBerlin": "2026-08-29T07:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "comment": "Closure continues; the hour's only exposure is headline flow into a shut venue, with the unresolved September repricing carried in Stress at 23."
+    },
+    {
+      "ts": "2026-08-29T06:00:00Z",
+      "timeBerlin": "2026-08-29T08:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "comment": "The Asian session falls inside the halt, leaving no cross-venue reference; Friday's split internals remain a rotation signal rather than an index trend."
+    },
+    {
+      "ts": "2026-08-29T07:00:00Z",
+      "timeBerlin": "2026-08-29T09:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 23,
+      "comment": "No European pre-market forms in this hour; confidence eases to 80 purely as Friday's verified prints age."
+    },
+    {
+      "ts": "2026-08-29T08:00:00Z",
+      "timeBerlin": "2026-08-29T10:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 24,
+      "comment": "Stress edges to 24 as weekend headline exposure accumulates ahead of the 1-4 September macro stack, while Tail is unchanged at 5."
+    },
+    {
+      "ts": "2026-08-29T09:00:00Z",
+      "timeBerlin": "2026-08-29T11:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 24,
+      "comment": "The mode stays normal because a closed market has no structure to classify, and soft oil is not acting as a directional amplifier."
+    }
+  ],
+  "events": [
+    {
+      "name": "Dallas Fed Manufacturing Index (Aug)",
+      "ts": "2026-08-31T14:30:00Z",
+      "timeBerlin": "2026-08-31T16:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Fed Barr Speech",
+      "ts": "2026-09-01T13:05:00Z",
+      "timeBerlin": "2026-09-01T15:05:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "S&P Global Manufacturing PMI Final (Aug)",
+      "ts": "2026-09-01T13:45:00Z",
+      "timeBerlin": "2026-09-01T15:45:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "ISM Manufacturing PMI (Aug)",
+      "ts": "2026-09-01T14:00:00Z",
+      "timeBerlin": "2026-09-01T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "JOLTS Job Openings (Jul)",
+      "ts": "2026-09-01T14:00:00Z",
+      "timeBerlin": "2026-09-01T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Construction Spending MoM (Jul)",
+      "ts": "2026-09-01T14:00:00Z",
+      "timeBerlin": "2026-09-01T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Dallas Fed Services Index (Aug)",
+      "ts": "2026-09-01T14:30:00Z",
+      "timeBerlin": "2026-09-01T16:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "ADP Employment Change (Aug)",
+      "ts": "2026-09-02T12:15:00Z",
+      "timeBerlin": "2026-09-02T14:15:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Factory Orders MoM (Jul)",
+      "ts": "2026-09-02T14:00:00Z",
+      "timeBerlin": "2026-09-02T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Fed Beige Book",
+      "ts": "2026-09-02T18:00:00Z",
+      "timeBerlin": "2026-09-02T20:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Balance of Trade (Jul)",
+      "ts": "2026-09-03T12:30:00Z",
+      "timeBerlin": "2026-09-03T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Initial Jobless Claims",
+      "ts": "2026-09-03T12:30:00Z",
+      "timeBerlin": "2026-09-03T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Fed Waller Speech",
+      "ts": "2026-09-03T12:30:00Z",
+      "timeBerlin": "2026-09-03T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Challenger Job Cuts (Aug)",
+      "ts": "2026-09-03T13:30:00Z",
+      "timeBerlin": "2026-09-03T15:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "S&P Global Services PMI Final (Aug)",
+      "ts": "2026-09-03T13:45:00Z",
+      "timeBerlin": "2026-09-03T15:45:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "ISM Services PMI (Aug)",
+      "ts": "2026-09-03T14:00:00Z",
+      "timeBerlin": "2026-09-03T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Fed Hammack Speech",
+      "ts": "2026-09-03T19:00:00Z",
+      "timeBerlin": "2026-09-03T21:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Nonfarm Payrolls (Aug)",
+      "ts": "2026-09-04T12:30:00Z",
+      "timeBerlin": "2026-09-04T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Unemployment Rate (Aug)",
+      "ts": "2026-09-04T12:30:00Z",
+      "timeBerlin": "2026-09-04T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Average Hourly Earnings MoM (Aug)",
+      "ts": "2026-09-04T12:30:00Z",
+      "timeBerlin": "2026-09-04T14:30:00+02:00",
+      "impact": "high"
+    }
+  ]
+}
