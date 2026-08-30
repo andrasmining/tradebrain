@@ -1,0 +1,965 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-08-30T19:30:03Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Green. The weekend CME halt leaves no live Nasdaq-100 price path; Tail rests at the low-band floor and the mapped policy state is EA_ON.",
+  "recommendation": "Mapped policy state: EA_ON for NQ futures and NAS100 CFD. Tail remains far below the block threshold across the whole projected window. One narrow observation window is flagged across the 22:00-23:30 UTC Sunday futures reopen, where Friday's front-end repricing first meets thin liquidity and two-way gap risk. Existing-position management and emergency protection are unaffected by this mapping.",
+  "headline": "Nasdaq-100: hawkish front-end repricing meets a closed market, leaving tail risk at the low-band floor into the reopen",
+  "body": "This assessment falls inside the weekend CME halt, so no live NQ price path exists and no mean-reversion failure can be developing. The anchor is Friday's completed session, re-verified against the Nasdaq-100 quote page this hour: the index opened 29,545.90, reached 29,752.78, fell to 29,383.92 and closed 29,433.43, down 0.70% from a 29,641.60 previous close. The close sits about 50 points off the low of a 369-point range, a downside reversal inside a finished session. VIX closed 14.43 within a 14.13-14.84 range and carried no volatility premium into the weekend.\n\nThe macro driver is a hawkish repricing rather than a price-path event. The Federal Reserve's published Jackson Hole keynote by Chairman Warsh states that policymakers must be confident underlying inflation is moving to target \"clearly and at sufficient speed. Otherwise, we have work to do.\" Reuters reporting confirms the market response: the 2-year yield rose 11 basis points to 4.34%, its highest in a month, the 10-year rose to 4.72% and the 30-year to 5.206%, while CME-implied odds of a September rate increase moved from about 35% to about 60%. The H.15 release shows official constant-maturity yields through 27 August at 4.20% for the 2-year and 4.67% for the 10-year, so the repricing sits at the front end.\n\nCross-asset evidence conflicts rather than aligns. The latest session left the semiconductor complex broadly lower, with NVDA down 4.57% and ARM down 6.33%, while the megacap tape was split, with AAPL, MSFT, AMZN, GOOGL and META higher. Under the risk definitions in force, conflicting internals raise Stress and reduce directional conviction; they are not an amplifier of the pathological price path Tail measures. WTI at 83.44 dollars ended last week about 4% lower, with verified weekend reporting describing Strait of Hormuz traffic as still below normal under a sanctions and blockade regime rather than a fresh supply discontinuity.\n\nNone of the amplifiers that would justify a higher Tail are present: there is no observed persistent directional efficiency, no shallow-pullback sequence, no repeated extension after failed retracements, and no market in which any of those could be forming. Tail therefore rests at the low-band floor of 5 and the mapped policy state is EA_ON. Stress at 30 reflects the untested front-end repricing meeting a data-heavy week: ISM Manufacturing and JOLTS on Tuesday, ADP and the Broadcom report on Wednesday, ISM Services on Thursday and August payrolls on Friday. One narrow observation window is flagged across the 22:00-23:30 UTC Sunday reopen, where that repricing first meets thin liquidity and two-way gap risk. Monday 31 August is also month-end, and the UK summer bank holiday leaves London closed, thinning European depth. Existing-position management and emergency protection are unaffected by this mapping.",
+  "tailRiskPct": 5,
+  "tailLevel": "low",
+  "stressRiskPct": 30,
+  "stressLevel": "moderate",
+  "dominantMode": "normal",
+  "confidencePct": 86,
+  "confidenceLevel": "high",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": "2026-08-30T22:00:00Z",
+    "end": "2026-08-30T23:30:00Z"
+  },
+  "dangerWindowBerlin": {
+    "start": "2026-08-31T00:00:00+02:00",
+    "end": "2026-08-31T01:30:00+02:00"
+  },
+  "sources": [
+    {
+      "title": "Nasdaq-100 Index (^NDX) quote, open, day range and close",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote and day range",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    {
+      "title": "Federal Reserve H.15 Selected Interest Rates",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "title": "In Our Time: keynote remarks by Chairman Warsh at the 2026 Jackson Hole symposium",
+      "url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm"
+    },
+    {
+      "title": "Reuters: Rate-hike expectations rise on Warsh speech at Jackson Hole",
+      "url": "https://finance.yahoo.com/economy/policy/articles/rate-hike-expectations-rise-warsh-144023525.html"
+    },
+    {
+      "title": "Trading Economics: WTI crude oil price and drivers",
+      "url": "https://tradingeconomics.com/commodity/crude-oil"
+    }
+  ],
+  "lookbackSummary": "All 24 preceding hourly slots carry a published Claude assessment, covering the weekend halt from Saturday evening through the hour before this one. The series was uniformly green with Tail fixed at 5, dominant mode normal, and Stress confined to a 25-29 band that drifted up only in the final hours. Confidence decayed from 66 to 58 through the overnight hours as published evidence aged across the closed market, then recovered through 64, 72 and 80 to 85 as primary sources were re-verified on each hourly refresh. No hour in the window contained an observable NQ price path.",
+  "lookback": [
+    {
+      "ts": "2026-08-29T19:00:00Z",
+      "timeBerlin": "2026-08-29T21:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 66,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-29T20:00:00Z",
+      "timeBerlin": "2026-08-29T22:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 65,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-29T21:00:00Z",
+      "timeBerlin": "2026-08-29T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 64,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-29T22:00:00Z",
+      "timeBerlin": "2026-08-30T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 63,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-29T23:00:00Z",
+      "timeBerlin": "2026-08-30T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 62,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T00:00:00Z",
+      "timeBerlin": "2026-08-30T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 61,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T01:00:00Z",
+      "timeBerlin": "2026-08-30T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 60,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T02:00:00Z",
+      "timeBerlin": "2026-08-30T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 60,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T03:00:00Z",
+      "timeBerlin": "2026-08-30T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 59,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T04:00:00Z",
+      "timeBerlin": "2026-08-30T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 58,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T05:00:00Z",
+      "timeBerlin": "2026-08-30T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 64,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T06:00:00Z",
+      "timeBerlin": "2026-08-30T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 25,
+      "confidencePct": 72,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T07:00:00Z",
+      "timeBerlin": "2026-08-30T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 73,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T08:00:00Z",
+      "timeBerlin": "2026-08-30T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 74,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T09:00:00Z",
+      "timeBerlin": "2026-08-30T11:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 75,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T10:00:00Z",
+      "timeBerlin": "2026-08-30T12:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 76,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T11:00:00Z",
+      "timeBerlin": "2026-08-30T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 77,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T12:00:00Z",
+      "timeBerlin": "2026-08-30T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 78,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T13:00:00Z",
+      "timeBerlin": "2026-08-30T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 79,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T14:00:00Z",
+      "timeBerlin": "2026-08-30T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 26,
+      "confidencePct": 80,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T15:00:00Z",
+      "timeBerlin": "2026-08-30T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 27,
+      "confidencePct": 81,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T16:00:00Z",
+      "timeBerlin": "2026-08-30T18:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 27,
+      "confidencePct": 82,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T17:00:00Z",
+      "timeBerlin": "2026-08-30T19:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 28,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-08-30T18:00:00Z",
+      "timeBerlin": "2026-08-30T20:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 29,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    }
+  ],
+  "outlookSummary": "The next three projected hours remain inside the weekend CME halt, where no price path can form; Tail stays at the low-band floor of 5 while Stress drifts from 30 to 31 and Confidence eases from 86 to 84. From the projected 22:00 UTC reopen the conditional Tail lifts to 12, still inside the low band and far below the block threshold, covering the first live test of Friday's front-end repricing. It then eases through 11 and 10 across the Asian session to an overnight low of 8, lifts through 9 and 10 into a continental-only European morning thinned by the UK bank holiday, and reaches a projected peak of 15 across the 13:30 UTC U.S. cash open, where opening-auction imbalance meets month-end rebalancing on the final session of August. The window closes at 13 as month-end market-on-close flow builds into the U.S. afternoon. Every projected hour maps to EA_ON and green; Stress peaks at 34 in the moderate band and Confidence decays to 70 at the far end of the projection.",
+  "forecast": [
+    {
+      "ts": "2026-08-30T19:00:00Z",
+      "timeBerlin": "2026-08-30T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 30,
+      "confidencePct": 86,
+      "dominantMode": "normal",
+      "analysis": "Current hour sits inside the weekend CME halt: no NQ price path exists, so no mean-reversion failure can be forming. Anchor re-verified this hour is Friday's finished session, NDX 29,433.43, -0.70%, closing 49 points off the low of a 369-point range. Tail rests at the low-band floor.",
+      "drivers": [
+        "Weekend CME halt: no live NQ price path to observe",
+        "Friday close 29,433.43, day range 29,383.92-29,752.78",
+        "VIX closed 14.43 with no weekend volatility premium",
+        "Mapped policy state: EA_ON, Tail far below the block threshold"
+      ],
+      "news": [
+        {
+          "title": "Rate-hike expectations rise on Warsh speech at Jackson Hole",
+          "url": "https://finance.yahoo.com/economy/policy/articles/rate-hike-expectations-rise-warsh-144023525.html",
+          "source": "Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-30T20:00:00Z",
+      "timeBerlin": "2026-08-30T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 30,
+      "confidencePct": 85,
+      "dominantMode": "normal",
+      "analysis": "Still inside the halt with no observable structure. Stress holds at 30 because Friday's hawkish front-end repricing, 2Y +11bp to 4.34%, is carried into a reopen that has not yet been tested. Confidence eases by one point as the verified evidence set ages without a new print.",
+      "drivers": [
+        "2Y yield 4.34%, 10Y 4.72% after the Jackson Hole keynote",
+        "CME-implied September hike odds near 60%, up from 35%",
+        "No live price discovery until the projected 22:00 UTC reopen"
+      ],
+      "news": [
+        {
+          "title": "In Our Time: keynote remarks by Chairman Kevin Warsh at the 2026 Jackson Hole Economic Policy Symposium",
+          "url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm",
+          "source": "Federal Reserve"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-30T21:00:00Z",
+      "timeBerlin": "2026-08-30T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 31,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "Final projected halt hour before Globex reopens. Stress ticks to 31 to reflect the approaching liquidity transition rather than any observed price behaviour. Tail stays at 5 because a closed market cannot produce the persistent no-retracement path the strategy is exposed to.",
+      "drivers": [
+        "Last projected hour before the Sunday futures reopen",
+        "Thin initial book is a liquidity condition, not observed Tail structure",
+        "Friday's semiconductor weakness remains unresolved into the restart"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-30T22:00:00Z",
+      "timeBerlin": "2026-08-31T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 33,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Projected Globex reopen. This is the first conditional test of Friday's front-end repricing and of the closing-hour softness in NDX. Tail lifts to 12, still deep in the low band, covering gap and thin-book risk. Any one-way extension here would be new evidence, not something observed at assessment time.",
+      "drivers": [
+        "Conditional gap risk at the reopen against Friday's 29,433.43 close",
+        "Thin Sunday-evening liquidity can exaggerate the first prints",
+        "Checkpoint: whether early retracements appear or are refused"
+      ],
+      "news": [
+        {
+          "title": "Rate-hike expectations rise on Warsh speech at Jackson Hole",
+          "url": "https://finance.yahoo.com/economy/policy/articles/rate-hike-expectations-rise-warsh-144023525.html",
+          "source": "Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-30T23:00:00Z",
+      "timeBerlin": "2026-08-31T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 32,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "First full hour after the projected reopen. If the initial gap is absorbed and two-way trade returns, conditional Tail eases to 11. A refusal of the first pullbacks would be the invalidation, but nothing of that kind is observed at assessment time.",
+      "drivers": [
+        "Conditional: absorption of the opening gap restores mean reversion",
+        "Invalidation: repeated extension with no meaningful retracement",
+        "Stress eases as the initial liquidity vacuum normalises"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T00:00:00Z",
+      "timeBerlin": "2026-08-31T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 31,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Asian-hours handover. Tokyo and Sydney typically deliver lower directional efficiency in index futures, so conditional Tail steps down to 10. The hawkish Fed repricing remains the live cross-asset theme rather than an observed NQ trend.",
+      "drivers": [
+        "Asian session historically lower directional efficiency for NQ",
+        "Front-end yields remain the dominant cross-asset theme",
+        "No observed price path carried forward from earlier hours"
+      ],
+      "news": [
+        {
+          "title": "Apple's big handoff and a jobs report: What to watch this week",
+          "url": "https://finance.yahoo.com/markets/article/apples-big-handoff-and-a-jobs-report-what-to-watch-this-week-100000786.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-31T01:00:00Z",
+      "timeBerlin": "2026-08-31T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 30,
+      "confidencePct": 77,
+      "dominantMode": "normal",
+      "analysis": "Mid-Asian session, projected to be the quieter part of the window. Conditional Tail eases to 9 as participation thins and range trade becomes the base case. Month-end positioning may begin to appear but is not yet an observable driver.",
+      "drivers": [
+        "Thin Asian participation favours range conditions",
+        "Month-end rebalancing flow is a checkpoint, not an observation",
+        "Dominant mode projected normal, not directional"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T02:00:00Z",
+      "timeBerlin": "2026-08-31T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 30,
+      "confidencePct": 77,
+      "dominantMode": "normal",
+      "analysis": "Continuation of the quiet Asian window. Scores are held rather than moved because no new scheduled catalyst falls in this hour and no live structure is available to revise them.",
+      "drivers": [
+        "No scheduled U.S. macro release inside this hour",
+        "Conditional path unchanged from the preceding hour",
+        "Tail held at 9 on absence of amplifiers, not on observed calm"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T03:00:00Z",
+      "timeBerlin": "2026-08-31T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 29,
+      "confidencePct": 76,
+      "dominantMode": "normal",
+      "analysis": "Projected overnight trough. With Asian cash markets mature and Europe not yet engaged, conditional Tail reaches 8. Stress falls to 29 as the reopen transition is behind the window and no release is scheduled.",
+      "drivers": [
+        "Overnight liquidity trough between Asian and European hours",
+        "No scheduled catalyst inside the hour",
+        "Conditional Tail at the low end of the projected path"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T04:00:00Z",
+      "timeBerlin": "2026-08-31T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 28,
+      "confidencePct": 76,
+      "dominantMode": "normal",
+      "analysis": "Late Asian hours. Oil remains a background variable: WTI at 83.44 dollars ended last week roughly 4 percent lower as the Iran confrontation was read as a sanctions rather than a supply event. That easing is verified evidence, not a live observation for this hour.",
+      "drivers": [
+        "WTI 83.44 dollars, down about 4 percent last week",
+        "Hormuz disruption persists without fresh market transmission",
+        "Energy path is background context, not an NQ Tail amplifier"
+      ],
+      "news": [
+        {
+          "title": "Strait of Hormuz traffic remains below normal as US sanctions pressure Iran",
+          "url": "https://www.foxnews.com/live-news/iran-war-us-sanctions-trump-strait-hormuz-oman-oil-prices-08-29-2026",
+          "source": "Fox News"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-31T05:00:00Z",
+      "timeBerlin": "2026-08-31T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 28,
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "Pre-European hours with the lowest projected conditional Tail of the window. Nothing scheduled lands here, and mean reversion is the base case unless the overnight session has already established one-way structure, which cannot be known at assessment time.",
+      "drivers": [
+        "Quietest projected hour of the 24-hour window",
+        "Base case is two-way range trade absent new evidence",
+        "Invalidation: overnight trend that survives into Europe"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T06:00:00Z",
+      "timeBerlin": "2026-08-31T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 29,
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "European pre-open. Note that Monday 31 August is the UK summer bank holiday, so London is closed and the continental session carries thinner depth than usual. Conditional Tail lifts modestly to 9 on the handover, not on observed behaviour.",
+      "drivers": [
+        "UK summer bank holiday on 31 August: London market closed",
+        "Continental-only European depth thins the order book",
+        "Handover hours historically carry mild directional risk"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T07:00:00Z",
+      "timeBerlin": "2026-08-31T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 30,
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "European cash open with London absent. Conditional Tail steps to 10 as continental futures and cash equities engage. A thinner book raises the chance of exaggerated moves, which is a Stress and dispersion effect rather than evidence of mean-reversion failure.",
+      "drivers": [
+        "Continental European cash open without London participation",
+        "Thin book exaggerates moves without implying one-way structure",
+        "Checkpoint: whether early European range holds or breaks"
+      ],
+      "news": [
+        {
+          "title": "Apple's big handoff and a jobs report: What to watch this week",
+          "url": "https://finance.yahoo.com/markets/article/apples-big-handoff-and-a-jobs-report-what-to-watch-this-week-100000786.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-31T08:00:00Z",
+      "timeBerlin": "2026-08-31T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 30,
+      "confidencePct": 74,
+      "dominantMode": "normal",
+      "analysis": "European morning. Scores are held because the projected drivers are unchanged and no U.S. release falls in this hour. Month-end index rebalancing is the one structural feature that can build through the European session.",
+      "drivers": [
+        "Month-end rebalancing flow builds through the European morning",
+        "No scheduled U.S. macro release inside this hour",
+        "Conditional mode projected normal"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T09:00:00Z",
+      "timeBerlin": "2026-08-31T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 30,
+      "confidencePct": 74,
+      "dominantMode": "normal",
+      "analysis": "Late European morning. The unresolved question into the U.S. session is whether Friday's semiconductor weakness, with NVDA down 4.57 percent and ARM down 6.33 percent on the latest session, extends or reverses. That is a conditional checkpoint, not an observed continuation.",
+      "drivers": [
+        "Semiconductor complex closed the latest session broadly lower",
+        "Megacap tape was split, which conflicts rather than aligns",
+        "Conflicting internals raise Stress more than Tail"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T10:00:00Z",
+      "timeBerlin": "2026-08-31T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 31,
+      "confidencePct": 74,
+      "dominantMode": "normal",
+      "analysis": "European midday into the U.S. pre-market build. Stress edges to 31 as U.S. participants engage ahead of a data-heavy week. Conditional Tail is unchanged because no amplifier is scheduled to resolve inside this hour.",
+      "drivers": [
+        "U.S. pre-market participation begins to build",
+        "Week ahead carries ISM, JOLTS, ADP and payrolls checkpoints",
+        "No release inside this hour to reprice the front end"
+      ],
+      "news": [
+        {
+          "title": "Apple's big handoff and a jobs report: What to watch this week",
+          "url": "https://finance.yahoo.com/markets/article/apples-big-handoff-and-a-jobs-report-what-to-watch-this-week-100000786.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-31T11:00:00Z",
+      "timeBerlin": "2026-08-31T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 31,
+      "confidencePct": 73,
+      "dominantMode": "normal",
+      "analysis": "U.S. pre-market. Conditional Tail lifts to 11 as overnight ranges are tested by arriving U.S. flow. Month-end is the specific feature of this particular Monday, since 31 August closes the month for index rebalancing.",
+      "drivers": [
+        "31 August is the month-end rebalancing session",
+        "U.S. pre-market flow tests the overnight range",
+        "Checkpoint: pre-market direction versus Friday's close"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T12:00:00Z",
+      "timeBerlin": "2026-08-31T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 32,
+      "confidencePct": 73,
+      "dominantMode": "normal",
+      "analysis": "Final pre-open hour. Conditional Tail steps to 12 as opening-auction imbalances form. Nothing here is observed; the assessment window ended before any Monday price path existed.",
+      "drivers": [
+        "Opening-auction imbalance builds in the final pre-open hour",
+        "Conditional gap against Friday's 29,433.43 close",
+        "Stress rises with participation, not with observed trend"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T13:00:00Z",
+      "timeBerlin": "2026-08-31T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 34,
+      "confidencePct": 73,
+      "dominantMode": "normal",
+      "analysis": "Projected peak of the window: the 13:30 UTC U.S. cash open falls in this hour, and month-end rebalancing overlaps the opening auction. Conditional Tail reaches 15, still inside the low band and well below the block threshold. Opening continuation would be new evidence to score, not a current fact.",
+      "drivers": [
+        "U.S. cash open at 13:30 UTC inside this hour",
+        "Month-end rebalancing overlaps the opening auction",
+        "Amplifier if observed: shallow pullbacks after the open",
+        "Mapped policy state remains EA_ON across the projected peak"
+      ],
+      "news": [
+        {
+          "title": "Rate-hike expectations rise on Warsh speech at Jackson Hole",
+          "url": "https://finance.yahoo.com/economy/policy/articles/rate-hike-expectations-rise-warsh-144023525.html",
+          "source": "Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-31T14:00:00Z",
+      "timeBerlin": "2026-08-31T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 33,
+      "confidencePct": 72,
+      "dominantMode": "normal",
+      "analysis": "First hour after the projected cash open. If the opening imbalance clears and retracements appear, conditional Tail eases to 14. Persistent extension after failed pullbacks would be the invalidation of this projection.",
+      "drivers": [
+        "Conditional: opening imbalance clears and two-way trade returns",
+        "Invalidation: repeated extension after failed retracements",
+        "Confidence decays as the projection extends past 18 hours"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T15:00:00Z",
+      "timeBerlin": "2026-08-31T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 32,
+      "confidencePct": 72,
+      "dominantMode": "normal",
+      "analysis": "U.S. late morning. Conditional Tail eases to 13 as opening volatility typically decays. The front-end repricing from Friday remains the theme that could re-engage if yields extend, which cannot be observed at assessment time.",
+      "drivers": [
+        "Opening volatility typically decays through late morning",
+        "Yield path remains the conditional re-engagement risk",
+        "No scheduled U.S. release inside this hour"
+      ],
+      "news": [
+        {
+          "title": "In Our Time: keynote remarks by Chairman Kevin Warsh at the 2026 Jackson Hole Economic Policy Symposium",
+          "url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm",
+          "source": "Federal Reserve"
+        }
+      ]
+    },
+    {
+      "ts": "2026-08-31T16:00:00Z",
+      "timeBerlin": "2026-08-31T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 31,
+      "confidencePct": 71,
+      "dominantMode": "normal",
+      "analysis": "U.S. midday lull. Conditional Tail steps down to 12 on the usual decline in directional efficiency around the lunch hour. Month-end flow can distort this pattern, which is why Stress does not fall further.",
+      "drivers": [
+        "Midday lull normally lowers directional efficiency",
+        "Month-end flow can distort the usual midday pattern",
+        "Conditional mode projected normal"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T17:00:00Z",
+      "timeBerlin": "2026-08-31T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 31,
+      "confidencePct": 71,
+      "dominantMode": "normal",
+      "analysis": "U.S. early afternoon. Scores are held because the projected drivers are unchanged and the next scheduled catalyst, the Dallas Fed Manufacturing Index at 14:30 UTC, sits outside this hour's window in the top-level calendar.",
+      "drivers": [
+        "Dallas Fed Manufacturing Index is a 14:30 UTC checkpoint",
+        "Held scores reflect unchanged conditional drivers",
+        "No observed structure available for this hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-08-31T18:00:00Z",
+      "timeBerlin": "2026-08-31T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 32,
+      "confidencePct": 70,
+      "dominantMode": "normal",
+      "analysis": "Final projected hour of the window. Conditional Tail lifts to 13 because month-end market-on-close imbalances build into the U.S. afternoon on the last session of August. Confidence reaches its floor at 70 at the far end of the projection.",
+      "drivers": [
+        "Month-end market-on-close imbalance builds into the afternoon",
+        "Last trading session of August amplifies rebalancing flow",
+        "Confidence at its projected floor 23 hours out"
+      ],
+      "news": [
+        {
+          "title": "Apple's big handoff and a jobs report: What to watch this week",
+          "url": "https://finance.yahoo.com/markets/article/apples-big-handoff-and-a-jobs-report-what-to-watch-this-week-100000786.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-08-30T19:00:00Z",
+      "timeBerlin": "2026-08-30T21:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 30,
+      "comment": "Weekend CME halt: no NQ price path exists, so no mean-reversion failure can be developing. Friday's 29,433.43 close, re-verified this hour against the index quote page, is the only anchor and Tail sits at the low-band floor."
+    },
+    {
+      "ts": "2026-08-30T20:00:00Z",
+      "timeBerlin": "2026-08-30T22:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 30,
+      "comment": "Halt continues. Stress holds at 30 because Friday's front-end repricing, with the 2Y at 4.34% and September hike odds near 60%, has not yet met a live order book."
+    },
+    {
+      "ts": "2026-08-30T21:00:00Z",
+      "timeBerlin": "2026-08-30T23:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 31,
+      "comment": "Last projected halt hour. Stress ticks to 31 for the approaching liquidity transition; Tail is unchanged because a closed market cannot generate persistent one-way structure."
+    },
+    {
+      "ts": "2026-08-30T22:00:00Z",
+      "timeBerlin": "2026-08-31T00:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 12,
+      "stressRiskPct": 33,
+      "comment": "Projected 22:00 UTC Globex reopen and the flagged observation window. Conditional Tail lifts to 12 for gap and thin-book risk, still far below the block threshold."
+    },
+    {
+      "ts": "2026-08-30T23:00:00Z",
+      "timeBerlin": "2026-08-31T01:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 11,
+      "stressRiskPct": 32,
+      "comment": "First full hour after the projected reopen. Conditional Tail eases to 11 if the opening gap is absorbed; refusal of the first pullbacks would invalidate that path."
+    },
+    {
+      "ts": "2026-08-31T00:00:00Z",
+      "timeBerlin": "2026-08-31T02:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 10,
+      "stressRiskPct": 31,
+      "comment": "Asian handover, where NQ directional efficiency is historically lower. Conditional Tail steps to 10 with the hawkish Fed repricing still the leading cross-asset theme."
+    }
+  ],
+  "events": [
+    {
+      "name": "Dallas Fed Manufacturing Index (Aug)",
+      "ts": "2026-08-31T14:30:00Z",
+      "timeBerlin": "2026-08-31T16:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Fed Barr Speech",
+      "ts": "2026-09-01T13:05:00Z",
+      "timeBerlin": "2026-09-01T15:05:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "S&P Global US Manufacturing PMI Final (Aug)",
+      "ts": "2026-09-01T13:45:00Z",
+      "timeBerlin": "2026-09-01T15:45:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "ISM Manufacturing PMI (Aug)",
+      "ts": "2026-09-01T14:00:00Z",
+      "timeBerlin": "2026-09-01T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "JOLTS Job Openings (Jul)",
+      "ts": "2026-09-01T14:00:00Z",
+      "timeBerlin": "2026-09-01T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Construction Spending (Jul)",
+      "ts": "2026-09-01T14:00:00Z",
+      "timeBerlin": "2026-09-01T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Dallas Fed Services Index (Aug)",
+      "ts": "2026-09-01T14:30:00Z",
+      "timeBerlin": "2026-09-01T16:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "ADP Employment Change (Aug)",
+      "ts": "2026-09-02T12:15:00Z",
+      "timeBerlin": "2026-09-02T14:15:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Factory Orders (Jul)",
+      "ts": "2026-09-02T14:00:00Z",
+      "timeBerlin": "2026-09-02T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Fed Beige Book",
+      "ts": "2026-09-02T18:00:00Z",
+      "timeBerlin": "2026-09-02T20:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Broadcom (AVGO) Q3 earnings, after the close",
+      "ts": "2026-09-02T20:15:00Z",
+      "timeBerlin": "2026-09-02T22:15:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Balance of Trade (Jul)",
+      "ts": "2026-09-03T12:30:00Z",
+      "timeBerlin": "2026-09-03T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Initial Jobless Claims",
+      "ts": "2026-09-03T12:30:00Z",
+      "timeBerlin": "2026-09-03T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Fed Waller Speech",
+      "ts": "2026-09-03T12:30:00Z",
+      "timeBerlin": "2026-09-03T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "S&P Global US Services PMI Final (Aug)",
+      "ts": "2026-09-03T13:45:00Z",
+      "timeBerlin": "2026-09-03T15:45:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "ISM Services PMI (Aug)",
+      "ts": "2026-09-03T14:00:00Z",
+      "timeBerlin": "2026-09-03T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Nonfarm Payrolls (Aug)",
+      "ts": "2026-09-04T12:30:00Z",
+      "timeBerlin": "2026-09-04T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Unemployment Rate (Aug)",
+      "ts": "2026-09-04T12:30:00Z",
+      "timeBerlin": "2026-09-04T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Average Hourly Earnings (Aug)",
+      "ts": "2026-09-04T12:30:00Z",
+      "timeBerlin": "2026-09-04T14:30:00+02:00",
+      "impact": "high"
+    }
+  ]
+}
