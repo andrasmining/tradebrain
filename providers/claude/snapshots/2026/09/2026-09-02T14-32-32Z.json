@@ -1,0 +1,921 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-09-02T14:32:32Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Mapped policy state: EA_ON. Tail eases to 16% because the US cash session is printing a recovery rather than a one-way path: NQ trades 29,142 with the 28,927.50 session low fully retraced, NDX cash is 29,139 at +0.21%, VIX has dropped to 15.62 at -4.40% near its 15.59 session low, and the 2Y, 10Y and 30Y are all modestly lower. Stress eases to 63% as crude slips below $90, but stays elevated on the Strait of Hormuz backdrop and the after-close Broadcom print.",
+  "recommendation": "Mapped policy state is EA_ON for both NQ futures and the NAS100 CFD, reflecting observed two-way price discovery and decaying implied volatility rather than a resolution of the macro backdrop. Tail remains below the block threshold for most of the next 24 hours; forecast Tail crosses it only inside the narrow 20:00-22:00 UTC window covering the Broadcom results and management call, with single-hour watch-band checkpoints at the 18:00 UTC Beige Book and the 12:00 UTC Thursday claims hour. Existing-position management and emergency protection are unaffected by this mapping.",
+  "headline": "Nasdaq-100 recovers its session low as VIX breaks under 15.70, the curve eases and crude slips back below $90",
+  "body": "One hour into the US cash session the price path is a recovery, not a continuation. NQ futures trade 29,142.00, up 16.50 points or 0.06% from the 29,125.50 previous close, with a day range of 28,927.50 to 29,170.00 on Yahoo Finance and an independent Investing.com quote at 29,140.00 inside a 28,927.25 to 29,141.75 range. The cash Nasdaq-100 stands at 29,139.13, up 61.91 points or 0.21%, against a 28,971.90 to 29,139.34 day range. The morning low has now been fully retraced for a fourth consecutive published hour and price has worked back above the previous close rather than extending away from it. The cash index sitting close to its own session high is noted, but it has been reached by a graded recovery from a retraced low with volatility falling, which is the opposite configuration to repeated extension after failed retracements. That is why Tail steps down from 17% to 16%.\n\nCross-asset evidence confirms the de-escalation. VIX trades 15.62, down 0.72 or 4.40%, below its 16.34 previous close and far under the 16.82 session high, with the session low at 15.59 immediately beneath the current print. The Treasury curve is lower across every tenor: 2Y 4.39% down 1.8bp, 5Y 4.55% down 1.4bp, 10Y 4.79% down 0.7bp after a five-session rally that had carried the 10Y above 4.81%, and 30Y 5.26% down 1.7bp. Crude is fading rather than extending, with WTI at $89.85 down 0.41% and Brent at $94.57 down 0.09%, pausing a two-session rally that had reached a six-week high. Volatility, yields and crude are easing together rather than aligning into a single amplified impulse, and that is the configuration in which Tail normally stays low even while Stress remains meaningful.\n\nToday's US data have been mixed and have not produced a directional impulse. The August ADP report printed 38,000 private jobs at 12:15 UTC against a 47,000 consensus, the slowest pace since January, and July Factory Orders printed +0.9% at 14:00 UTC against a +0.6% consensus, with the ex-transportation measure at +0.6%. Neither release created persistent one-way structure. Stress eases to 63% and moves into the elevated band, but it stays high relative to a normal session because the backdrop is structural rather than intraday: US strikes on Iranian targets around the Strait of Hormuz continued into 1 September, crude remains roughly 12% higher on the month, the 30Y is close to multi-decade highs, and the semiconductor complex closed the previous session sharply weaker. The shared Finviz cross-asset context was collected at 09:58 UTC and is more than 90 minutes old at this assessment, so under the inherited contract it is treated as stale, and this assessment rests entirely on independently fetched primary sources.\n\nThe dominant forward risk remains scheduled rather than current. Broadcom, a top-five Nasdaq-100 constituent trading at $368.85 and down 0.22% ahead of the print, reports fiscal Q3 results after the 20:00 UTC close with the management call at 21:00 UTC, against consensus revenue near $29.3 billion. The June 2026 report produced a double-digit single-session decline despite beating on revenue and earnings, driven by forward AI revenue commentary on the call rather than by the printed quarter. A repricing of that magnitude in a top-weight constituent, landing in a thin post-close Globex book with read-across to the wider semiconductor complex, is a credible mechanism for index-level one-way structure with a delayed second leg, which is why the danger window is placed narrowly at 20:00 to 22:00 UTC rather than across the session. EIA crude inventories at 14:30 UTC and the Beige Book at 18:00 UTC are treated as checkpoints, with only the Beige Book lifting forecast Tail into the watch band for a single hour.",
+  "tailRiskPct": 16,
+  "tailLevel": "low",
+  "stressRiskPct": 63,
+  "stressLevel": "elevated",
+  "dominantMode": "mixed",
+  "confidencePct": 88,
+  "confidenceLevel": "high",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": "2026-09-02T20:00:00Z",
+    "end": "2026-09-02T22:00:00Z"
+  },
+  "dangerWindowBerlin": {
+    "start": "2026-09-02T22:00:00+02:00",
+    "end": "2026-09-03T00:00:00+02:00"
+  },
+  "sources": [
+    {
+      "title": "Nasdaq 100 futures (NQ=F) quote - price, change, previous close and day range",
+      "url": "https://finance.yahoo.com/quote/NQ%3DF/"
+    },
+    {
+      "title": "NASDAQ-100 cash index (^NDX) quote - level, change and day range",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote - level, change and day range",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    {
+      "title": "US government bond yields - 2Y, 5Y, 10Y and 30Y levels and daily change",
+      "url": "https://tradingeconomics.com/united-states/government-bond-yield"
+    },
+    {
+      "title": "WTI and Brent crude oil prices and daily change",
+      "url": "https://tradingeconomics.com/commodity/crude-oil"
+    },
+    {
+      "title": "United States economic calendar - scheduled releases and published actuals",
+      "url": "https://tradingeconomics.com/united-states/calendar"
+    }
+  ],
+  "lookbackSummary": "The previous 24 hours opened with Tail at 24% around the 1 September US cash open, while the US-Iran escalation, the crude surge and the sovereign-yield selloff were still being priced. Tail then held a 20-25% watch band for eighteen consecutive published hours, touching 25% at 19:00 UTC on 1 September, before easing into the low band at 12:00 UTC on 2 September and again at 13:00 UTC. The dominant mode ran as event/whipsaw through the US afternoon and the overnight session, rotated to trend-down during the European morning as the index worked lower, then to mixed once the session low was fully retraced. Stress stayed persistently high in a 66-77% range across the whole window. Three hours are unavailable because no assessment was published for them: 15:00 and 20:00 UTC on 1 September and 01:00 UTC on 2 September. Taken together, the window describes a difficult, high-volatility environment in which retracements kept occurring rather than a sustained one-way trend, and this cycle's continued recovery is consistent with that reading.",
+  "lookback": [
+    {
+      "ts": "2026-09-01T14:00:00Z",
+      "timeBerlin": "2026-09-01T16:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 24,
+      "stressRiskPct": 71,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-01T15:00:00Z",
+      "timeBerlin": "2026-09-01T17:00:00+02:00",
+      "available": false,
+      "status": null,
+      "action": null,
+      "tailRiskPct": null,
+      "stressRiskPct": null,
+      "confidencePct": null,
+      "dominantMode": null
+    },
+    {
+      "ts": "2026-09-01T16:00:00Z",
+      "timeBerlin": "2026-09-01T18:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 70,
+      "confidencePct": 89,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-01T17:00:00Z",
+      "timeBerlin": "2026-09-01T19:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 24,
+      "stressRiskPct": 73,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-01T18:00:00Z",
+      "timeBerlin": "2026-09-01T20:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 74,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-01T19:00:00Z",
+      "timeBerlin": "2026-09-01T21:00:00+02:00",
+      "available": true,
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 25,
+      "stressRiskPct": 77,
+      "confidencePct": 89,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-01T20:00:00Z",
+      "timeBerlin": "2026-09-01T22:00:00+02:00",
+      "available": false,
+      "status": null,
+      "action": null,
+      "tailRiskPct": null,
+      "stressRiskPct": null,
+      "confidencePct": null,
+      "dominantMode": null
+    },
+    {
+      "ts": "2026-09-01T21:00:00Z",
+      "timeBerlin": "2026-09-01T23:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 76,
+      "confidencePct": 82,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-01T22:00:00Z",
+      "timeBerlin": "2026-09-02T00:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 73,
+      "confidencePct": 85,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-01T23:00:00Z",
+      "timeBerlin": "2026-09-02T01:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 74,
+      "confidencePct": 86,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-02T00:00:00Z",
+      "timeBerlin": "2026-09-02T02:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 72,
+      "confidencePct": 87,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-02T01:00:00Z",
+      "timeBerlin": "2026-09-02T03:00:00+02:00",
+      "available": false,
+      "status": null,
+      "action": null,
+      "tailRiskPct": null,
+      "stressRiskPct": null,
+      "confidencePct": null,
+      "dominantMode": null
+    },
+    {
+      "ts": "2026-09-02T02:00:00Z",
+      "timeBerlin": "2026-09-02T04:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 74,
+      "confidencePct": 87,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-02T03:00:00Z",
+      "timeBerlin": "2026-09-02T05:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 74,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-02T04:00:00Z",
+      "timeBerlin": "2026-09-02T06:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 74,
+      "confidencePct": 87,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-02T05:00:00Z",
+      "timeBerlin": "2026-09-02T07:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 73,
+      "confidencePct": 87,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-02T06:00:00Z",
+      "timeBerlin": "2026-09-02T08:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 75,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-02T07:00:00Z",
+      "timeBerlin": "2026-09-02T09:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 72,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-02T08:00:00Z",
+      "timeBerlin": "2026-09-02T10:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 71,
+      "confidencePct": 88,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-02T09:00:00Z",
+      "timeBerlin": "2026-09-02T11:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 73,
+      "confidencePct": 88,
+      "dominantMode": "trend-down"
+    },
+    {
+      "ts": "2026-09-02T10:00:00Z",
+      "timeBerlin": "2026-09-02T12:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 73,
+      "confidencePct": 88,
+      "dominantMode": "trend-down"
+    },
+    {
+      "ts": "2026-09-02T11:00:00Z",
+      "timeBerlin": "2026-09-02T13:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 72,
+      "confidencePct": 88,
+      "dominantMode": "trend-down"
+    },
+    {
+      "ts": "2026-09-02T12:00:00Z",
+      "timeBerlin": "2026-09-02T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 68,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-02T13:00:00Z",
+      "timeBerlin": "2026-09-02T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 66,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    }
+  ],
+  "outlookSummary": "The forecast holds Tail in the low band for most of the next 24 hours and lifts it above the block threshold only for the two-hour cluster from 20:00 to 22:00 UTC covering the Broadcom results and the 21:00 UTC management call, where a top-weight semiconductor constituent with a double-digit single-session precedent can move the complex in a thin post-close book. Three single-hour watch-band checkpoints sit around it: the Beige Book at 18:00 UTC, the immediate post-call hour at 22:00 UTC, and the 12:00 UTC Thursday hour containing Initial Jobless Claims and the trade balance, with the 13:00 UTC pre-open and ISM Services cluster closing the horizon. Stress eases through the Asian session to a 56% low as crude and the curve are assumed to stabilise, then rebuilds into the European morning and the Thursday data block, remaining in the elevated-to-high range throughout because the crude, sovereign-yield and geopolitical backdrop is structural rather than intraday. Confidence decays with horizon from 88% to 57%, reflecting that the current reading rests on directly observed price-path evidence while later hours rest on conditional scenarios.",
+  "forecast": [
+    {
+      "ts": "2026-09-02T14:00:00Z",
+      "timeBerlin": "2026-09-02T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 63,
+      "confidencePct": 88,
+      "dominantMode": "mixed",
+      "analysis": "Observed: NQ trades 29,142 at +0.06% with the 28,927.50 session low fully retraced, and NDX cash is 29,139 at +0.21%. VIX has fallen to 15.62, down 4.40% and near its 15.59 session low, the 2Y, 10Y and 30Y are all lower and WTI has slipped to $89.85. Two-way discovery with decaying volatility keeps Tail in the low band.",
+      "drivers": [
+        "Session low 28,927.50 fully retraced; no repeated extension observed",
+        "VIX 15.62 at -4.40%, trading near its 15.59 session low",
+        "2Y 4.39%, 10Y 4.79% and 30Y 5.26% all modestly lower",
+        "WTI $89.85 at -0.41%, pausing below the six-week high",
+        "July Factory Orders +0.9% versus +0.6% consensus, printed 14:00 UTC"
+      ],
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq mixed as US-Iran war escalates, inflation jitters return",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-september-2-dow-sp-500-nasdaq-082624175.html",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "US calendar: August ADP Employment Change 38K and July Factory Orders +0.9% released 2 September 2026",
+          "url": "https://tradingeconomics.com/united-states/calendar",
+          "source": "Trading Economics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-02T15:00:00Z",
+      "timeBerlin": "2026-09-02T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 62,
+      "confidencePct": 86,
+      "dominantMode": "mixed",
+      "analysis": "Mid-session hour following the 14:30 UTC EIA crude inventory print. The scores assume orderly two-way discovery persists. A renewed crude impulse alongside a fresh session extreme that holds without a retracement would be the condition for a higher reading, and it is not assumed here.",
+      "drivers": [
+        "EIA crude inventories at 14:30 UTC as a crude-transmission checkpoint",
+        "Consensus near -1.1M barrels against +0.095M previously",
+        "Conditional: a renewed crude impulse would raise Stress before Tail"
+      ],
+      "news": [
+        {
+          "title": "Crude oil edges below $90 a barrel, pausing a two-session rally to a six-week high",
+          "url": "https://tradingeconomics.com/commodity/crude-oil",
+          "source": "Trading Economics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-02T16:00:00Z",
+      "timeBerlin": "2026-09-02T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 61,
+      "confidencePct": 84,
+      "dominantMode": "mixed",
+      "analysis": "Typically the quietest stretch of the US cash session, between the data block and the Beige Book. Stress is assumed to ease further if implied volatility keeps decaying. The reading would only change materially if price were to leave the day range and hold outside it without a retracement.",
+      "drivers": [
+        "No scheduled US macro release inside this hour",
+        "Assumed continuation of decaying implied volatility",
+        "Invalidation: a held break of the day range without any retracement"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-02T17:00:00Z",
+      "timeBerlin": "2026-09-02T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 62,
+      "confidencePct": 82,
+      "dominantMode": "mixed",
+      "analysis": "Positioning hour ahead of the 18:00 UTC Beige Book. Tail is nudged up by a single point as a scheduled-checkpoint allowance only. No pre-event cross-asset alignment is treated as already observed, and the mapped state stays in the low band.",
+      "drivers": [
+        "Beige Book at 18:00 UTC approaching as a scheduled checkpoint",
+        "Pre-event allowance only; no observed alignment assumed",
+        "Semiconductor complex tone into the after-close Broadcom print"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-02T18:00:00Z",
+      "timeBerlin": "2026-09-02T20:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 65,
+      "confidencePct": 80,
+      "dominantMode": "event/whipsaw",
+      "analysis": "The Federal Reserve Beige Book is released at 18:00 UTC. Regional commentary on prices and hiring can produce a short two-way repricing in rates and index futures, so forecast Tail lifts into the watch band for this hour only and the mode is framed as event/whipsaw on that conditional basis.",
+      "drivers": [
+        "Federal Reserve Beige Book at 18:00 UTC",
+        "Conditional two-way repricing across rates and index futures",
+        "Soft 38K August ADP raises sensitivity to hiring commentary",
+        "Watch-band lift is a single-hour allowance, not a trend call"
+      ],
+      "news": [
+        {
+          "title": "US calendar: August ADP Employment Change 38K and July Factory Orders +0.9% released 2 September 2026",
+          "url": "https://tradingeconomics.com/united-states/calendar",
+          "source": "Trading Economics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-02T19:00:00Z",
+      "timeBerlin": "2026-09-02T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 63,
+      "confidencePct": 78,
+      "dominantMode": "mixed",
+      "analysis": "Final full cash hour before the close. The scores assume the Beige Book reaction decays and price discovery stays two-way into 20:00 UTC. A late-session one-way extension into the close would be the condition for a higher reading; it is not assumed at this horizon.",
+      "drivers": [
+        "Assumed decay of the Beige Book reaction",
+        "Late-session continuation risk into the 20:00 UTC cash close",
+        "Position-squaring ahead of after-close semiconductor results"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-02T20:00:00Z",
+      "timeBerlin": "2026-09-02T22:00:00+02:00",
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 27,
+      "stressRiskPct": 70,
+      "confidencePct": 76,
+      "dominantMode": "event/whipsaw",
+      "analysis": "US cash closes at 20:00 UTC and Broadcom, a top-five Nasdaq-100 constituent, reports fiscal Q3 after the bell. A single-name repricing of that weight in a thinning post-close book is a credible mechanism for index-level one-way structure, so forecast Tail is lifted above the block threshold for this hour.",
+      "drivers": [
+        "Broadcom fiscal Q3 results after the 20:00 UTC cash close",
+        "Top-five index weight with read-across to the semiconductor complex",
+        "Thinning post-close Globex liquidity amplifies any gap",
+        "Consensus near $29.3bn revenue is the stated reference point"
+      ],
+      "news": [
+        {
+          "title": "Broadcom earnings outlook: four watchpoints ahead of September 2 report",
+          "url": "https://www.investing.com/news/stock-market-news/broadcom-earnings-outlook-four-watchpoints-ahead-of-september-2-report-93CH-4884519",
+          "source": "Investing.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-02T21:00:00Z",
+      "timeBerlin": "2026-09-02T23:00:00+02:00",
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 29,
+      "stressRiskPct": 72,
+      "confidencePct": 74,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Broadcom's management call is scheduled for 21:00 UTC. The June 2026 report produced a double-digit single-session decline despite a revenue and earnings beat, driven by forward AI commentary on the call rather than the printed quarter, so the call carries the delayed second-leg risk rather than the release.",
+      "drivers": [
+        "Broadcom management call at 21:00 UTC",
+        "Forward AI revenue commentary historically drives the reaction",
+        "Delayed second leg after the print is the specific Tail mechanism",
+        "The 20:00-22:00 UTC danger window covers this hour"
+      ],
+      "news": [
+        {
+          "title": "Broadcom earnings outlook: four watchpoints ahead of September 2 report",
+          "url": "https://www.investing.com/news/stock-market-news/broadcom-earnings-outlook-four-watchpoints-ahead-of-september-2-report-93CH-4884519",
+          "source": "Investing.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-02T22:00:00Z",
+      "timeBerlin": "2026-09-03T00:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 66,
+      "confidencePct": 70,
+      "dominantMode": "event/whipsaw",
+      "analysis": "First hour after the Broadcom call. The scores assume the initial repricing is absorbed and the danger window closes at 22:00 UTC, leaving a watch-band reading. Repeated extension after failed retracements in the post-close book would be the condition for a higher path, and is not assumed.",
+      "drivers": [
+        "End of the 20:00-22:00 UTC danger window",
+        "Conditional absorption of the after-hours semiconductor repricing",
+        "Invalidation: failed retracements with continued overnight extension"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-02T23:00:00Z",
+      "timeBerlin": "2026-09-03T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 62,
+      "confidencePct": 68,
+      "dominantMode": "mixed",
+      "analysis": "Late-evening handover toward Asian hours. The scores assume the after-hours reaction has largely settled and two-way trade resumes in a thinner book. Stress stays elevated because the crude and sovereign-yield backdrop is structural rather than intraday.",
+      "drivers": [
+        "Assumed settling of the after-hours semiconductor reaction",
+        "Thin liquidity makes single prints unrepresentative",
+        "Structural crude and long-end backdrop keeps Stress elevated"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-03T00:00:00Z",
+      "timeBerlin": "2026-09-03T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 60,
+      "confidencePct": 66,
+      "dominantMode": "mixed",
+      "analysis": "Start of the Asian session. Conditional on an orderly Broadcom aftermath, this hour carries mainly gap and headline risk rather than observed structure, and Middle East developments remain the most likely source of an overnight impulse.",
+      "drivers": [
+        "Asian session start with gap and headline risk",
+        "Middle East escalation is the main overnight headline source",
+        "No scheduled US macro release inside this hour"
+      ],
+      "news": [
+        {
+          "title": "US launches new barrage of strikes on Iran around Strait of Hormuz",
+          "url": "https://www.militarytimes.com/news/your-military/2026/09/01/us-launches-new-barrage-of-strikes-on-iran-around-strait-of-hormuz/",
+          "source": "Military Times"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-03T01:00:00Z",
+      "timeBerlin": "2026-09-03T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 58,
+      "confidencePct": 65,
+      "dominantMode": "mixed",
+      "analysis": "Asian mid-session. The scores assume crude and Treasury futures stabilise and volatility keeps decaying, so Stress steps down. A fresh Strait of Hormuz supply headline would raise Stress first; only observed one-way index structure would raise Tail.",
+      "drivers": [
+        "Assumed overnight stabilisation in crude and the Treasury curve",
+        "A Hormuz supply headline would lift Stress before Tail",
+        "No scheduled US macro release inside this hour"
+      ],
+      "news": [
+        {
+          "title": "US launches new barrage of strikes on Iran around Strait of Hormuz",
+          "url": "https://www.militarytimes.com/news/your-military/2026/09/01/us-launches-new-barrage-of-strikes-on-iran-around-strait-of-hormuz/",
+          "source": "Military Times"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-03T02:00:00Z",
+      "timeBerlin": "2026-09-03T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 57,
+      "confidencePct": 64,
+      "dominantMode": "mixed",
+      "analysis": "The Asian session continues with no scheduled catalyst. The reading is unchanged in substance: conditional two-way trade, with Confidence decaying because nothing in this hour has been observed at the assessment cutoff.",
+      "drivers": [
+        "No scheduled catalyst inside this hour",
+        "Confidence decays with forecast horizon",
+        "Conditional two-way overnight structure assumed"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-03T03:00:00Z",
+      "timeBerlin": "2026-09-03T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 56,
+      "confidencePct": 63,
+      "dominantMode": "mixed",
+      "analysis": "Late Asian hours, historically the lowest-participation stretch of the cycle. Stress is assumed at its lowest forecast point on the basis that the after-hours earnings risk has passed and the European session has not yet begun.",
+      "drivers": [
+        "Lowest-participation window of the 24-hour cycle",
+        "After-hours earnings risk assumed resolved by this hour",
+        "European session catalysts not yet in play"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-03T04:00:00Z",
+      "timeBerlin": "2026-09-03T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 56,
+      "confidencePct": 62,
+      "dominantMode": "mixed",
+      "analysis": "Asian close into the European pre-market. The scores hold at the low end of the forecast path, conditional on an orderly overnight session. The first meaningful structural test at this horizon is the European cash open two hours later.",
+      "drivers": [
+        "Asian close into the European pre-market",
+        "Conditional on an orderly overnight session",
+        "Next structural test is the European cash open"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-03T05:00:00Z",
+      "timeBerlin": "2026-09-03T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 57,
+      "confidencePct": 62,
+      "dominantMode": "mixed",
+      "analysis": "European pre-open hour. Volume begins to rebuild and any overnight gap is typically repriced during this transition, so the scores add a small allowance for the session handover rather than for any observed structure.",
+      "drivers": [
+        "European pre-open volume rebuild",
+        "Overnight gap repricing typically occurs in this transition",
+        "Transition allowance only, not an observed-structure call"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-03T06:00:00Z",
+      "timeBerlin": "2026-09-03T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 58,
+      "confidencePct": 61,
+      "dominantMode": "mixed",
+      "analysis": "European cash open. Session transitions are the recurring points at which a directional impulse can begin, so the forecast treats this hour as a checkpoint without assuming that a trend actually develops.",
+      "drivers": [
+        "European cash open as a session-transition checkpoint",
+        "Directional impulses frequently begin at session transitions",
+        "No trend assumed without observed structure"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-03T07:00:00Z",
+      "timeBerlin": "2026-09-03T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 59,
+      "confidencePct": 60,
+      "dominantMode": "mixed",
+      "analysis": "European morning. Stress is assumed to rebuild gradually as the Thursday US data block approaches and crude reprices in European hours. Tail stays in the low band because a rebuild in Stress is not by itself evidence of mean-reversion failure.",
+      "drivers": [
+        "Gradual Stress rebuild into the Thursday US data block",
+        "Crude repricing during European trading hours",
+        "A Stress rebuild alone does not lift Tail"
+      ],
+      "news": [
+        {
+          "title": "Crude oil edges below $90 a barrel, pausing a two-session rally to a six-week high",
+          "url": "https://tradingeconomics.com/commodity/crude-oil",
+          "source": "Trading Economics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-03T08:00:00Z",
+      "timeBerlin": "2026-09-03T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 60,
+      "confidencePct": 60,
+      "dominantMode": "mixed",
+      "analysis": "European mid-morning. The reading is carried forward conditionally as positioning ahead of the US claims block and the ISM Services print later that day, with no observed price-path evidence available for this hour.",
+      "drivers": [
+        "Positioning ahead of Thursday's US data block",
+        "ISM Services PMI at 14:00 UTC on 3 September is the day's high-impact item",
+        "No observed price-path evidence at this horizon"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-03T09:00:00Z",
+      "timeBerlin": "2026-09-03T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 60,
+      "confidencePct": 59,
+      "dominantMode": "mixed",
+      "analysis": "The European session continues. Confidence decays further because the reading rests entirely on scheduled-catalyst structure rather than on an observed price path, while the mapped state stays in the low band.",
+      "drivers": [
+        "Reading rests on scheduled structure, not an observed price path",
+        "Confidence decays with forecast horizon",
+        "No scheduled US macro release inside this hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-03T10:00:00Z",
+      "timeBerlin": "2026-09-03T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 61,
+      "confidencePct": 58,
+      "dominantMode": "mixed",
+      "analysis": "Late European morning. Stress is assumed to keep rebuilding into the US pre-market as the Thursday calendar approaches. The Tail path is unchanged because event proximity alone raises Stress rather than the probability of a pathological price path.",
+      "drivers": [
+        "Stress rebuild into the US pre-market",
+        "Event proximity raises Stress, not Tail, absent observed structure",
+        "Challenger Job Cuts at 11:30 UTC follows next"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-03T11:00:00Z",
+      "timeBerlin": "2026-09-03T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 62,
+      "confidencePct": 58,
+      "dominantMode": "mixed",
+      "analysis": "Challenger Job Cuts are released at 11:30 UTC. It is a second-tier labour indicator that mainly shapes expectations for Friday's payrolls, so the forecast adds only a marginal allowance and keeps the mapped state in the low band.",
+      "drivers": [
+        "Challenger Job Cuts at 11:30 UTC",
+        "Second-tier labour read ahead of Friday's payrolls",
+        "Marginal allowance only; low band retained"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-03T12:00:00Z",
+      "timeBerlin": "2026-09-03T14:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 66,
+      "confidencePct": 58,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Initial Jobless Claims and the July trade balance are released at 12:30 UTC. A labour surprise inside this hour, with Friday's payrolls two days away, is a genuine two-way repricing checkpoint, so forecast Tail lifts into the watch band for this hour.",
+      "drivers": [
+        "Initial Jobless Claims and Balance of Trade at 12:30 UTC",
+        "Consensus near 203K claims and a -$73.3bn trade deficit",
+        "Sensitivity amplified by the soft 38K August ADP print",
+        "Single-hour watch-band allowance ahead of Friday payrolls"
+      ],
+      "news": [
+        {
+          "title": "US calendar: August ADP Employment Change 38K and July Factory Orders +0.9% released 2 September 2026",
+          "url": "https://tradingeconomics.com/united-states/calendar",
+          "source": "Trading Economics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-03T13:00:00Z",
+      "timeBerlin": "2026-09-03T15:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 66,
+      "confidencePct": 57,
+      "dominantMode": "event/whipsaw",
+      "analysis": "US pre-market into the 13:30 UTC cash open, with the S&P Global Services PMI final at 13:45 UTC and ISM Services at 14:00 UTC immediately after. The opening auction combined with a high-impact services print is the strongest conditional catalyst cluster at the end of this horizon.",
+      "drivers": [
+        "US cash open at 13:30 UTC",
+        "S&P Global US Services PMI final at 13:45 UTC",
+        "ISM Services PMI at 14:00 UTC is the day's high-impact release",
+        "Opening-auction continuation is the specific condition to watch"
+      ],
+      "news": []
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-09-02T14:00:00Z",
+      "timeBerlin": "2026-09-02T16:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 16,
+      "stressRiskPct": 63,
+      "comment": "Observed two-way discovery: the 28,927.50 session low is fully retraced, NQ trades near 29,142 and NDX cash near 29,139, while VIX at 15.62 sits close to its session low and the curve and crude both ease."
+    },
+    {
+      "ts": "2026-09-02T15:00:00Z",
+      "timeBerlin": "2026-09-02T17:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 16,
+      "stressRiskPct": 62,
+      "comment": "Mid-session hour after the 14:30 UTC EIA crude inventory print; orderly two-way discovery is assumed to persist, with a renewed crude impulse plus a held session extreme as the condition for a higher reading."
+    },
+    {
+      "ts": "2026-09-02T16:00:00Z",
+      "timeBerlin": "2026-09-02T18:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 16,
+      "stressRiskPct": 61,
+      "comment": "Quietest stretch of the cash session between the data block and the Beige Book; Stress is assumed to ease further, with a held break of the day range as the main invalidation."
+    },
+    {
+      "ts": "2026-09-02T17:00:00Z",
+      "timeBerlin": "2026-09-02T19:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 17,
+      "stressRiskPct": 62,
+      "comment": "Positioning ahead of the 18:00 UTC Beige Book; a single-point Tail allowance for the scheduled checkpoint only, with no pre-event alignment treated as observed."
+    },
+    {
+      "ts": "2026-09-02T18:00:00Z",
+      "timeBerlin": "2026-09-02T20:00:00+02:00",
+      "status": "yellow",
+      "tailRiskPct": 21,
+      "stressRiskPct": 65,
+      "comment": "Beige Book at 18:00 UTC; a conditional two-way repricing in rates and index futures lifts forecast Tail into the watch band for this hour alone."
+    },
+    {
+      "ts": "2026-09-02T19:00:00Z",
+      "timeBerlin": "2026-09-02T21:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 18,
+      "stressRiskPct": 63,
+      "comment": "Final full cash hour; the Beige Book reaction is assumed to decay, with late-session one-way extension into the 20:00 UTC close as the condition for a higher reading."
+    }
+  ],
+  "events": [
+    {
+      "name": "Federal Reserve Beige Book",
+      "ts": "2026-09-02T18:00:00Z",
+      "timeBerlin": "2026-09-02T20:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Broadcom Q3 FY2026 results and management call",
+      "ts": "2026-09-02T21:00:00Z",
+      "timeBerlin": "2026-09-02T23:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Challenger Job Cuts (Aug)",
+      "ts": "2026-09-03T11:30:00Z",
+      "timeBerlin": "2026-09-03T13:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "US Balance of Trade (Jul)",
+      "ts": "2026-09-03T12:30:00Z",
+      "timeBerlin": "2026-09-03T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "US Initial Jobless Claims",
+      "ts": "2026-09-03T12:30:00Z",
+      "timeBerlin": "2026-09-03T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "S&P Global US Services PMI Final (Aug)",
+      "ts": "2026-09-03T13:45:00Z",
+      "timeBerlin": "2026-09-03T15:45:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "ISM Services PMI (Aug)",
+      "ts": "2026-09-03T14:00:00Z",
+      "timeBerlin": "2026-09-03T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Nonfarm Payrolls (Aug)",
+      "ts": "2026-09-04T12:30:00Z",
+      "timeBerlin": "2026-09-04T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Unemployment Rate (Aug)",
+      "ts": "2026-09-04T12:30:00Z",
+      "timeBerlin": "2026-09-04T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Average Hourly Earnings (Aug)",
+      "ts": "2026-09-04T12:30:00Z",
+      "timeBerlin": "2026-09-04T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US market holiday: Labor Day, NYSE and Nasdaq closed",
+      "ts": "2026-09-07T13:30:00Z",
+      "timeBerlin": "2026-09-07T15:30:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
