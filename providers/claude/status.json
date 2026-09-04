@@ -3,20 +3,20 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-09-04T17:33:00Z",
+  "generatedAt": "2026-09-04T18:32:53Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "green",
-  "statusText": "Mapped policy state: EA_ON (green). Tail 14% (low), Stress 54% (elevated), Confidence 88% (high).",
-  "recommendation": "Tail remains well below the block threshold and the mapped policy state is EA_ON. Elevated attention is flagged for the 19:00-21:00 UTC Friday close window, after which US equity futures halt for the Labor Day long weekend and no live price path exists until the Sunday 22:00 UTC reopen.",
-  "headline": "Nasdaq-100 roughly unchanged after a hot August payroll print; two-sided price discovery keeps Tail low into the long weekend",
-  "body": "August payrolls printed +162k against roughly 53k expected with unemployment steady at 4.1% and average hourly earnings up 0.3% m/m, and June-July revisions added a combined 55k. The initial reaction was a good-news-is-bad-news selloff that lifted September Fed hike pricing to about 60%, yet the transmission has stayed orderly: the 10-year sits at 4.77% and the 2-year at 4.38%, both little changed on the day. The Nasdaq-100 opened at 29,539.57, extended to 29,655.22, fully retraced that advance to a 29,450.37 low around midday and has since recovered to 29,492.13, essentially unchanged against a 29,482.32 prior close. That is a two-sided path in which retracements are occurring, which is the opposite of the persistent no-retracement structure this Tail score measures. Cross-assets conflict rather than align: VIX is at 14.08 and falling, semiconductors are firm while megacaps and a sharply lower Lululemon drag the tape. The genuine background risk is geopolitical - renewed US-Iran exchanges and reduced Strait of Hormuz transits have carried WTI to about $91 for a weekly gain near 8% - but crude is lower on the day and equities have absorbed it. That combination is scored as elevated Stress with low Tail. From 21:00 UTC futures settle for the week and the forecast reflects a halted market through the remainder of the horizon, with residual Stress representing weekend gap exposure that cannot price until Sunday.",
-  "tailRiskPct": 14,
+  "statusText": "Mapped policy state: EA_ON (green). Tail 13% (low), Stress 51% (elevated), Confidence 88% (high).",
+  "recommendation": "Tail remains well below the block threshold and the mapped policy state is EA_ON. Elevated attention is flagged for the 19:00-21:00 UTC pre-holiday close window. CME equity index futures settle at 21:00 UTC, after which no live price path exists until the Sunday 22:00 UTC reopen, and Monday 7 September is the Labor Day holiday, so the next US cash session is Tuesday 8 September.",
+  "headline": "Nasdaq-100 back to unchanged after a full intraday round trip; a falling VIX and an orderly curve keep Tail low into the pre-holiday close",
+  "body": "The August employment report printed 162,000 payrolls against roughly 56,000 expected, with unemployment steady at 4.1% and average hourly earnings up 0.3% m/m to $37.75. September Fed hike pricing moved to about 60%, yet transmission has stayed orderly: the 10-year is 4.78%, up about one basis point on the day, and the 2-year sits near 4.39%. The Nasdaq-100 opened at 29,539.57, extended to 29,655.22, fully retraced that advance to a 29,440.15 low and has recovered to 29,481.00 against a 29,482.32 prior close. That is a path in which retracements are repeatedly occurring in both directions, which is the opposite of the persistent no-retracement structure this Tail score measures. Volatility confirms it: VIX is 14.10, down 1.54%, inside a 13.80-14.36 range. Internals are unusually split rather than aligned. Semiconductors are firm, with Micron, AMD, Arm and Intel all higher, while Apple, Microsoft and Tesla are lower and Tesla is down about 6% on an NHTSA audit query into Cybercab self-certification. Lululemon fell sharply on a second guidance cut, a consumer read rather than a Nasdaq-100 driver. That dispersion keeps the index flat while the broader composite is modestly lower, and dispersion of this kind is mean-reversion friendly at index level. Delayed shared cross-asset context is consistent: index futures marginally lower, VIX futures lower, Treasury futures little changed and gold weaker, with no single aligned direction. Oil is quiet at $91.19 WTI and $96.00 Brent despite unresolved US-Iran hostilities and reduced Strait of Hormuz transits, which remain a standing rather than a freshly escalating premium. Stress stays elevated because the hawkish repricing, the geopolitical backdrop and the single-name damage are all real, but none of them has produced the price-path behaviour that Tail is defined to capture. The near-term structural fact dominates the forecast: US cash closes at 20:00 UTC and CME equity index futures settle at 21:00 UTC, after which the remainder of this horizon is a halted market with no live price path.",
+  "tailRiskPct": 13,
   "tailLevel": "low",
-  "stressRiskPct": 54,
+  "stressRiskPct": 51,
   "stressLevel": "elevated",
   "dominantMode": "mixed",
   "confidencePct": 88,
@@ -40,12 +40,12 @@
       "url": "https://finance.yahoo.com/quote/%5EVIX/"
     },
     {
-      "title": "BLS Employment Situation - August 2026",
-      "url": "https://www.bls.gov/news.release/archives/empsit_09042026.htm"
+      "title": "CBOE 10-Year Treasury Note Yield (^TNX)",
+      "url": "https://finance.yahoo.com/quote/%5ETNX/"
     },
     {
-      "title": "US 2-year and 10-year Treasury yields",
-      "url": "https://tradingeconomics.com/united-states/government-bond-yield"
+      "title": "BLS Employment Situation - August 2026",
+      "url": "https://www.bls.gov/news.release/archives/empsit_09042026.htm"
     },
     {
       "title": "WTI and Brent crude oil prices",
@@ -56,19 +56,9 @@
       "url": "https://tradingeconomics.com/united-states/calendar"
     }
   ],
-  "lookbackSummary": "The prior 24 hours cover a calm overnight regime followed by the August payroll release. Tail drifted between 12% and 17% through the Asian and European sessions with Stress climbing steadily into the print. The 12:30 UTC release produced the only genuine spike, with Tail reaching 24%, Stress 76% and Confidence dropping to 74% as the event/whipsaw mode took over. Price discovery then proved orderly: Tail decayed to 20%, 18%, 17% and 15% over the following four hourly assessments as retracements appeared and volatility decayed, and the mode reverted to mixed. No hour required a blocking action.",
+  "lookbackSummary": "The prior 24 hours cover a calm overnight regime, the August payroll release and its subsequent decay. Tail drifted between 12% and 17% through the Asian and European sessions while Stress climbed steadily into the print. The 12:30 UTC release produced the only genuine spike, with Tail reaching 24%, Stress 76% and Confidence falling to 74% as event/whipsaw mode took over. Price discovery then proved orderly: Tail decayed through 20%, 18%, 17%, 15% and 14% over the following five hourly assessments as retracements appeared and volatility fell, and the mode reverted to mixed. No hour in the window required a blocking action.",
+  "outlookSummary": "The remaining cash hours are expected to keep two-sided structure with Tail in the 13-15% band, the upper end reserved for the flagged 19:00-21:00 UTC window where pre-holiday squaring can thin liquidity. US cash closes at 20:00 UTC and CME equity index futures settle at 21:00 UTC, after which the entire remainder of this horizon is a halted market with no live price path; forecast Tail therefore falls to a 4-5% closed-venue floor and the published dominant mode of normal denotes a closed venue rather than a resolved regime. Residual Stress in the 31-39% band carries what cannot price until the Sunday 22:00 UTC futures reopen, principally unresolved US-Iran hostilities and reduced Strait of Hormuz transits, and secondarily roughly 60% September Fed hike pricing. Monday 7 September is the Labor Day holiday, so the next US cash session is Tuesday 8 September, and the next scheduled US data of consequence is PPI and jobless claims on Thursday 10 September followed by August CPI on Friday 11 September.",
   "lookback": [
-    {
-      "ts": "2026-09-03T17:00:00Z",
-      "timeBerlin": "2026-09-03T19:00:00+02:00",
-      "available": true,
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 19,
-      "stressRiskPct": 59,
-      "confidencePct": 87,
-      "dominantMode": "trend-up"
-    },
     {
       "ts": "2026-09-03T18:00:00Z",
       "timeBerlin": "2026-09-03T20:00:00+02:00",
@@ -321,59 +311,46 @@
       "stressRiskPct": 53,
       "confidencePct": 87,
       "dominantMode": "mixed"
-    }
-  ],
-  "outlookSummary": "The remaining cash hours are expected to keep two-sided structure with Tail in the 13-16% band, the upper end reserved for the 19:00-21:00 UTC close window where pre-holiday position squaring can thin liquidity. US cash closes at 20:00 UTC and CME equity index futures settle at 21:00 UTC, after which the entire remainder of this horizon is a halted market with no live price path; forecast Tail therefore falls to 4-5% and the published dominant mode of normal denotes a closed venue rather than a resolved regime. Residual Stress in the 31-42% band carries what cannot price until the Sunday 22:00 UTC futures reopen, principally unresolved US-Iran hostilities and reduced Strait of Hormuz transits, and secondarily roughly 60% September Fed hike pricing. Monday 7 September is the Labor Day holiday, so the next US cash open is Tuesday 8 September, and the next scheduled US data of consequence is PPI and jobless claims on Thursday 10 September followed by August CPI on Friday 11 September.",
-  "forecast": [
+    },
     {
       "ts": "2026-09-04T17:00:00Z",
       "timeBerlin": "2026-09-04T19:00:00+02:00",
+      "available": true,
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 14,
       "stressRiskPct": 54,
       "confidencePct": 88,
-      "dominantMode": "mixed",
-      "analysis": "Observed now: NDX 29,492 (+0.03%) inside a 29,450-29,655 range after the morning high was fully retraced and then partly recovered. VIX 14.08 (-1.7%), 10Y 4.77%, 2Y 4.38% after the 162k payroll beat. Two-sided discovery with real retracement keeps Tail low.",
-      "drivers": [
-        "Aug payrolls +162k vs ~53k consensus; unemployment steady at 4.1%",
-        "Morning high fully retraced, then recovered to roughly unchanged",
-        "VIX 14.08 and falling; 10Y 4.77% barely moved on the beat",
-        "Semiconductor strength offsets megacap softness and an 18% LULU drop"
-      ],
-      "news": [
-        {
-          "title": "The Employment Situation — August 2026",
-          "url": "https://www.bls.gov/news.release/archives/empsit_09042026.htm",
-          "source": "U.S. Bureau of Labor Statistics"
-        },
-        {
-          "title": "Stock Market Midday, Sept. 4: Stocks Edge Lower on Strong Jobs Report as Lululemon Plummets",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-midday-sept-4-163537251.html",
-          "source": "Yahoo Finance"
-        }
-      ]
-    },
+      "dominantMode": "mixed"
+    }
+  ],
+  "forecast": [
     {
       "ts": "2026-09-04T18:00:00Z",
       "timeBerlin": "2026-09-04T20:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 13,
-      "stressRiskPct": 52,
-      "confidencePct": 87,
+      "stressRiskPct": 51,
+      "confidencePct": 88,
       "dominantMode": "mixed",
-      "analysis": "Second-to-last full cash hour. If the two-sided structure of the morning persists, mean reversion stays available and Tail eases to 13%. A sustained break of the 29,450 session low would be the first evidence of directional efficiency; that structure is not observed at assessment time.",
+      "analysis": "Observed now: NDX 29,481 against a 29,482 prior close after a full round trip from the 29,655 high to the 29,440 low, VIX 14.10 and down 1.5%, 10-year 4.78%. Retracement is occurring in both directions, which is the opposite of the persistent no-retracement path this Tail score measures.",
       "drivers": [
-        "Session low near 29,450 is the first conditional invalidation level",
-        "September Fed hike odds near 60% keep rate sensitivity live",
-        "A sub-15 VIX regime caps expected range absent a fresh catalyst"
+        "NDX flat at 29,481 after retracing both the 29,655 high and the 29,440 low",
+        "VIX 14.10, down 1.54%, holding a 13.80-14.36 day range",
+        "10-year 4.78% (+1bp) and 2-year near 4.39%: muted transmission for a hot payroll beat",
+        "Wide internal dispersion: semis firm while AAPL, MSFT and TSLA trade lower"
       ],
       "news": [
         {
-          "title": "Stock Market Midday, Sept. 4: Stocks Edge Lower on Strong Jobs Report as Lululemon Plummets",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-midday-sept-4-163537251.html",
+          "title": "Stock market today: Dow, S&P 500, Nasdaq slip as hot jobs report fuels Fed rate-hike bets",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-september-3-dow-sp-500-nasdaq-august-jobs-report-081005475.html",
           "source": "Yahoo Finance"
+        },
+        {
+          "title": "The Employment Situation - August 2026",
+          "url": "https://www.bls.gov/news.release/archives/empsit_09042026.htm",
+          "source": "U.S. Bureau of Labor Statistics"
         }
       ]
     },
@@ -382,32 +359,38 @@
       "timeBerlin": "2026-09-04T21:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 16,
-      "stressRiskPct": 56,
-      "confidencePct": 85,
+      "tailRiskPct": 15,
+      "stressRiskPct": 53,
+      "confidencePct": 87,
       "dominantMode": "mixed",
-      "analysis": "Final cash hour and the start of the flagged attention window. Pre-holiday position squaring can thin liquidity and allow a one-way closing drift, so forecast Tail is lifted to 16% purely as a conditional allowance. No such closing structure has been observed at assessment time.",
+      "analysis": "Final US cash hour and the opening of the flagged 19:00-21:00 UTC window. Pre-holiday squaring can thin liquidity and produce a directional close drift, but that structure is not yet observed, so the modest Tail step is conditional rather than a read of current price action.",
       "drivers": [
-        "Friday power hour ahead of a three-day Labor Day weekend",
-        "Position squaring can thin liquidity and stretch closing moves",
-        "Conditional checkpoint: a directional close that denies retracement"
+        "Flagged danger window 19:00-21:00 UTC opens with the final cash hour",
+        "Pre-Labor-Day position squaring can thin liquidity into the 20:00 UTC cash close",
+        "Invalidation: continued two-sided retracement would hold Tail at the current-hour level"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Stock Market Midday, Sept. 4: Stocks Edge Lower on Strong Jobs Report as Lululemon Plummets",
+          "url": "https://www.fool.com/coverage/stock-market-today/2026/09/04/stock-market-midday-sept-4-stocks-edge-lower-on-strong-jobs-report-as-lululemon-plummets/",
+          "source": "The Motley Fool"
+        }
+      ]
     },
     {
       "ts": "2026-09-04T20:00:00Z",
       "timeBerlin": "2026-09-04T22:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 15,
-      "stressRiskPct": 54,
-      "confidencePct": 84,
+      "tailRiskPct": 14,
+      "stressRiskPct": 49,
+      "confidencePct": 86,
       "dominantMode": "mixed",
-      "analysis": "US cash equities close at 20:00 UTC. A closing-auction imbalance can carry into the residual futures hour, but the window is short and mean reversion has generally re-established into settlement today. Forecast Tail eases to 15% on the assumption no fresh catalyst lands in this hour.",
+      "analysis": "US cash has closed and only the final CME futures hour remains before the 21:00 UTC settle. Futures-only liquidity ahead of a long weekend can exaggerate an impulse, but the window is too short to build the repeated extension after failed retracement that Tail requires.",
       "drivers": [
-        "US cash equity close and closing-auction imbalance at 20:00 UTC",
-        "Residual CME equity futures session runs until 21:00 UTC",
-        "Assumption: no new Middle East or Fed headline inside this hour"
+        "US cash close at 20:00 UTC leaves a futures-only final hour",
+        "Thin pre-settlement liquidity can exaggerate an impulse without sustaining it",
+        "Checkpoint: CME equity index futures settle at 21:00 UTC"
       ],
       "news": []
     },
@@ -416,15 +399,15 @@
       "timeBerlin": "2026-09-04T23:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 9,
-      "stressRiskPct": 42,
-      "confidencePct": 82,
+      "tailRiskPct": 5,
+      "stressRiskPct": 39,
+      "confidencePct": 88,
       "dominantMode": "normal",
-      "analysis": "CME equity index futures settle for the week at 21:00 UTC. Once the session closes there is no continuous price path, so the persistent-trend risk this score measures largely disappears and forecast Tail drops to 9%. Residual Stress reflects gap exposure that opens at settlement.",
+      "analysis": "CME equity index futures settle at 21:00 UTC and no live NQ or NAS100 price path exists for the remainder of this horizon. Published Tail collapses because no path can form in a halted venue; the mode of normal denotes a closed market rather than a resolved regime.",
       "drivers": [
-        "CME equity index futures close for the week at 21:00 UTC",
-        "No continuous price path exists once the week settles",
-        "Weekend gap exposure begins accumulating from settlement onward"
+        "Futures halted from 21:00 UTC Friday until the 22:00 UTC Sunday reopen",
+        "No live price path means no mean-reversion failure can occur in this slot",
+        "Residual Stress carries weekend headline risk to a reopen outside this horizon"
       ],
       "news": []
     },
@@ -433,23 +416,17 @@
       "timeBerlin": "2026-09-05T00:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 5,
-      "stressRiskPct": 36,
-      "confidencePct": 80,
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "confidencePct": 88,
       "dominantMode": "normal",
-      "analysis": "First full hour with US equity futures halted for the weekend. With no live NQ price path, trend-continuation risk is near zero and Tail sits at 5%. Stress stays moderate because US-Iran hostilities and reduced Strait of Hormuz transits remain unresolved and unpriced until Sunday.",
+      "analysis": "First full hour of the halt. What would normally be the post-settlement futures session is closed, so the hour carries no executable path risk. Stress steps down because the payroll repricing is complete and the remaining carry cannot price until Sunday.",
       "drivers": [
-        "Equity futures halted; no live price path available to assess",
-        "US-Iran escalation is an open, unpriced weekend headline risk",
-        "WTI near $91 after roughly an 8% weekly gain on supply risk"
+        "First full hour of the pre-holiday halt",
+        "August payroll repricing complete: roughly 60% September hike odds carried over",
+        "Unresolved US-Iran and Hormuz shipping risk stays an unpriced weekend carry"
       ],
-      "news": [
-        {
-          "title": "Oil slides on Friday, heads for weekly gain on US-Iran fight",
-          "url": "https://finance.yahoo.com/energy/articles/oil-set-steepest-weekly-gain-043839818.html",
-          "source": "Yahoo Finance"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-04T23:00:00Z",
@@ -457,14 +434,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 34,
-      "confidencePct": 79,
+      "stressRiskPct": 36,
+      "confidencePct": 88,
       "dominantMode": "normal",
-      "analysis": "Market closed and no regional cash or futures reference exists in this hour. Tail stays minimal at 4%. The only meaningful variable is headline accumulation, and anything landing now would be expressed at the Sunday 22:00 UTC futures reopen, which lies beyond this forecast window.",
+      "analysis": "Halted market through what would be the Asian handover. No NQ price discovery is possible, so Tail stays at the closed-venue floor while Stress decays toward the level representing pure weekend gap carry rather than live volatility.",
       "drivers": [
-        "No tradable session; the score reflects a closed venue",
-        "Headlines arriving now can only price at the Sunday reopen",
-        "Sunday 22:00 UTC futures reopen sits outside this 24-hour window"
+        "Asian handover hour passes with US equity index futures halted",
+        "Stress decays toward pure weekend gap carry",
+        "US cash equities do not reopen until Tuesday 8 September after Labor Day"
       ],
       "news": []
     },
@@ -474,14 +451,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 33,
-      "confidencePct": 78,
+      "stressRiskPct": 35,
+      "confidencePct": 88,
       "dominantMode": "normal",
-      "analysis": "Saturday opens with every US equity venue closed. Tail of 4% reflects the absence of a price path rather than a benign regime: the hot payroll print, roughly 60% September hike odds and $91 crude are unchanged and simply carry forward unpriced into next week.",
+      "analysis": "Saturday begins with US equity futures still halted and no Asian, European or US venue able to transmit a price path to NQ or NAS100. Tail sits at the closed-venue floor and the published mode reflects the absence of trading, not an observed regime.",
       "drivers": [
-        "Saturday begins; all US equity venues remain closed",
-        "Low Tail here reflects no price path, not a benign regime",
-        "Hawkish rate repricing carries forward unpriced into next week"
+        "Saturday session: every NQ-relevant venue is closed",
+        "Closed-venue Tail floor rather than an observed regime read",
+        "Next live price discovery is the 22:00 UTC Sunday futures reopen"
       ],
       "news": []
     },
@@ -491,14 +468,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 33,
-      "confidencePct": 78,
+      "stressRiskPct": 35,
+      "confidencePct": 88,
       "dominantMode": "normal",
-      "analysis": "Deep weekend hours. Continuously traded crypto markets are the only live risk proxy in this window, and they are not a reliable read on Nasdaq-100 structure. Tail remains 4% and Stress is held at a moderate level that represents unresolved macro and geopolitical carry, not observed price action.",
+      "analysis": "Second Saturday hour of the halt. The only evidence that can change before the Sunday reopen is headline flow, and that accumulates as gap risk rather than as the persistent no-retracement structure Tail is defined to measure.",
       "drivers": [
-        "Crypto is the only continuously traded weekend risk proxy",
-        "Weekend crypto moves are a weak proxy for Nasdaq-100 structure",
-        "Stress reflects unresolved macro carry, not observed price action"
+        "Weekend headline flow accumulates as gap risk, not as trend structure",
+        "Tail measures path persistence, which a halted venue cannot produce",
+        "Iran and Hormuz shipping headlines are the main weekend gap channel"
       ],
       "news": []
     },
@@ -508,16 +485,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 32,
-      "confidencePct": 77,
+      "stressRiskPct": 34,
+      "confidencePct": 88,
       "dominantMode": "normal",
-      "analysis": "No Asia-Pacific session exists on a Saturday, so the usual Tokyo and Hong Kong handover reference is absent. Tail holds at 4%. The next regional cash reference is Tuesday, because Monday 7 September is the Labor Day holiday and US markets are shut.",
+      "analysis": "The halt continues. Carried macro context is an August payroll print of 162k against roughly 56k expected with unemployment at 4.1%, which lifted September hike pricing without disordering the curve during Friday's observed session.",
       "drivers": [
-        "No Asia-Pacific Saturday session; the usual handover is absent",
-        "Monday 7 September is Labor Day; US cash markets are closed",
-        "Next US cash open is Tuesday 8 September"
+        "Carried print: August payrolls 162k versus roughly 56k expected",
+        "Unemployment steady at 4.1%, average hourly earnings +0.3% m/m",
+        "Friday's curve reaction stayed orderly, with the 10-year up about 1bp"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "The Employment Situation - August 2026",
+          "url": "https://www.bls.gov/news.release/archives/empsit_09042026.htm",
+          "source": "U.S. Bureau of Labor Statistics"
+        }
+      ]
     },
     {
       "ts": "2026-09-05T03:00:00Z",
@@ -525,16 +508,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 32,
-      "confidencePct": 77,
+      "stressRiskPct": 34,
+      "confidencePct": 88,
       "dominantMode": "normal",
-      "analysis": "Mid-weekend hour with the venue closed. The published scores here are structural rather than observational: they encode a halted market plus an unchanged macro backdrop. No amplifier from the Friday session, including the 60% September hike pricing, can express itself while trading is suspended.",
+      "analysis": "Halted hour. Friday's internals are the carried structural read: a flat NDX masking semiconductor strength against megacap weakness. That dispersion is mean-reversion friendly at index level and argues against one-way structure absent a weekend catalyst.",
       "drivers": [
-        "Scores in this hour are structural, not observational",
-        "No Friday amplifier can express itself while trading is suspended",
-        "September hike pricing near 60% remains dormant until the reopen"
+        "Carried internals: MU, AMD, ARM and INTC firm against AAPL, MSFT and TSLA lower",
+        "Index-level dispersion is mean-reversion friendly",
+        "Conditional: a weekend catalyst would be needed to align internals one way"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Stock Market Midday, Sept. 4: Stocks Edge Lower on Strong Jobs Report as Lululemon Plummets",
+          "url": "https://www.fool.com/coverage/stock-market-today/2026/09/04/stock-market-midday-sept-4-stocks-edge-lower-on-strong-jobs-report-as-lululemon-plummets/",
+          "source": "The Motley Fool"
+        }
+      ]
     },
     {
       "ts": "2026-09-05T04:00:00Z",
@@ -542,16 +531,27 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 32,
-      "confidencePct": 76,
+      "stressRiskPct": 34,
+      "confidencePct": 88,
       "dominantMode": "normal",
-      "analysis": "The evidence base behind this assessment continues to age with no refreshing market data available, so Confidence steps down while Tail stays at 4%. The live NDX, VIX, yield and crude readings used at 17:00 UTC remain the most recent observations and are now several hours old.",
+      "analysis": "Still halted. Friday's single-name damage was idiosyncratic: Lululemon's guidance cut is a consumer read, while Tesla's roughly 6% decline on the Cybercab audit query was absorbed without producing directional index structure.",
       "drivers": [
-        "Evidence ages with no refreshing market data on a closed Saturday",
-        "The 17:00 UTC NDX, VIX, yield and crude readings are the latest",
-        "Confidence steps down gradually rather than the risk score rising"
+        "Tesla -6% on the NHTSA Cybercab audit query was absorbed without index trend",
+        "Lululemon's guidance cut is a consumer read rather than a Nasdaq-100 driver",
+        "No venue is open to express single-name flow before the Sunday reopen"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Tesla Cybercab is already under NHTSA investigation after launch",
+          "url": "https://electrek.co/2026/09/04/tesla-cybercab-nhtsa-investigation-fmvss-certification/",
+          "source": "Electrek"
+        },
+        {
+          "title": "Lululemon sinks after cutting forecast as revenue declines",
+          "url": "https://finance.yahoo.com/markets/article/lululemon-sinks-after-cutting-forecast-as-revenue-declines-210101310.html",
+          "source": "Yahoo Finance"
+        }
+      ]
     },
     {
       "ts": "2026-09-05T05:00:00Z",
@@ -559,14 +559,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 32,
-      "confidencePct": 76,
+      "stressRiskPct": 33,
+      "confidencePct": 88,
       "dominantMode": "normal",
-      "analysis": "No US macro releases are scheduled on a Saturday, so the economic calendar is empty for this hour and contributes nothing to risk. Tail remains 4%. The next scheduled US data of consequence is PPI and jobless claims on Thursday 10 September at 12:30 UTC.",
+      "analysis": "Halted. Cross-asset carry stays benign: VIX ended the last observed window at 14.10 and falling, with WTI near $91.19 and Brent near $96.00 after a quiet session despite the unresolved Hormuz backdrop.",
       "drivers": [
-        "No US macro releases are scheduled anywhere on Saturday",
-        "Next scheduled US data: PPI and jobless claims Thu 10 Sep 12:30 UTC",
-        "An empty calendar contributes no event risk to this hour"
+        "VIX 14.10 and falling in the last observed window",
+        "WTI $91.19 (-0.1%) and Brent $96.00 (+0.5%): oil quiet on the day",
+        "Elevated absolute oil levels are a standing, not a fresh, risk premium"
       ],
       "news": []
     },
@@ -576,14 +576,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 32,
-      "confidencePct": 76,
+      "stressRiskPct": 33,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "Berlin morning with European venues also closed for the weekend. Neither a European cash reference nor a US futures reference is available, so cross-asset confirmation cannot be tested in this hour. Tail is unchanged at 4% and the Stress level continues to represent carried, not current, risk.",
+      "analysis": "Halted hour with Confidence edging up: the assessment now rests on a completed, fully observed Friday session rather than an in-progress path, and no contradicting evidence can arrive from a closed venue.",
       "drivers": [
-        "European venues are closed; no European cash reference exists",
-        "Cross-asset confirmation cannot be tested while venues are shut",
-        "Stress represents carried weekend risk rather than current risk"
+        "Evidence base is a completed session rather than an in-progress path",
+        "No closed-venue evidence can contradict the carried read",
+        "Confidence limited only by unquantifiable weekend headline risk"
       ],
       "news": []
     },
@@ -593,14 +593,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 31,
-      "confidencePct": 75,
+      "stressRiskPct": 33,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "This clock-hour would normally carry the European cash open, which is the first liquidity handover of a weekday. On Saturday there is no such handover, removing the usual transition risk entirely. Tail stays at 4% and no session-transition amplifier applies in this window.",
+      "analysis": "Saturday European hours with US equity index futures halted. Nothing inside this slot can produce the shallow pullbacks, failed retracements or extension after failure that would justify a materially higher Tail reading.",
       "drivers": [
-        "Clock-hour of the normal European cash open; no Saturday analogue",
-        "Session-transition risk is absent because no handover occurs",
-        "No liquidity handover means no transition amplifier this hour"
+        "European Saturday hours: no NQ-relevant venue open",
+        "None of the Tail amplifiers can form while trading is halted",
+        "Next checkpoint remains the 22:00 UTC Sunday futures reopen"
       ],
       "news": []
     },
@@ -610,14 +610,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 31,
-      "confidencePct": 75,
+      "stressRiskPct": 33,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "European mid-morning equivalent with all venues shut. Assessment inputs remain the Friday close-adjacent readings and no new confirmation or conflict can arrive from breadth, megacaps or semiconductors. Tail is held at 4% and Confidence continues its gradual decay.",
+      "analysis": "Halted. The macro calendar is empty until Thursday 10 September, when August PPI and weekly jobless claims print at 12:30 UTC, so no scheduled catalyst falls inside this 24-hour horizon at all.",
       "drivers": [
-        "European mid-morning equivalent; every relevant venue is shut",
-        "No new breadth, megacap or semiconductor confirmation can arrive",
-        "Confidence decays gradually as the observation set stays fixed"
+        "No scheduled US macro release falls inside this horizon",
+        "Next scheduled catalyst: August PPI and jobless claims, 10 September 12:30 UTC",
+        "August CPI follows on 11 September at 12:30 UTC"
       ],
       "news": []
     },
@@ -627,22 +627,16 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 31,
-      "confidencePct": 75,
+      "stressRiskPct": 32,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "Weekend geopolitical headlines historically cluster in this part of the day, and US-Iran exchanges plus reduced Hormuz transits remain unresolved. That risk is real but cannot produce a Nasdaq-100 price path while futures are halted, so it is carried in Stress at 31% and not in Tail.",
+      "analysis": "Halt continues. Stress settles near the floor representing weekend gap carry alone, its largest single component the unresolved US-Iran situation and reduced Strait of Hormuz transits rather than anything the equity tape priced on Friday.",
       "drivers": [
-        "Unresolved US-Iran exchanges remain the main weekend headline risk",
-        "Reduced Strait of Hormuz transits keep the crude premium live",
-        "Geopolitical risk is carried in Stress, not Tail, while futures are halted"
+        "Stress reduced to weekend gap carry alone",
+        "US-Iran hostilities and Hormuz shipping disruption are the largest unpriced component",
+        "The equity tape carried no directional stress into the halt"
       ],
-      "news": [
-        {
-          "title": "Oil slides on Friday, heads for weekly gain on US-Iran fight",
-          "url": "https://finance.yahoo.com/energy/articles/oil-set-steepest-weekly-gain-043839818.html",
-          "source": "Yahoo Finance"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-05T10:00:00Z",
@@ -650,16 +644,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 31,
-      "confidencePct": 74,
+      "stressRiskPct": 32,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "Late European morning equivalent. The forecast carries no directional bias into this hour because the Friday session ended roughly unchanged on the index with conflicting internals: semiconductors firm, megacaps softer. Tail remains 4% with the venue closed.",
+      "analysis": "Halted. Rate pricing is the second carried component: roughly 60% odds of a September Fed hike after the payroll beat, a repricing Friday's equity session absorbed without a disorderly move in either direction.",
       "drivers": [
-        "Friday ended roughly unchanged with conflicting internals",
-        "Semiconductors firm while megacaps and LULU dragged",
-        "No directional bias is carried into a closed weekend hour"
+        "Roughly 60% September Fed hike odds carried into the weekend",
+        "Friday's equity session absorbed the hawkish repricing without disorder",
+        "Conditional: Fed commentary before Tuesday could shift that pricing"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq slip as hot jobs report fuels Fed rate-hike bets",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-september-3-dow-sp-500-nasdaq-august-jobs-report-081005475.html",
+          "source": "Yahoo Finance"
+        }
+      ]
     },
     {
       "ts": "2026-09-05T11:00:00Z",
@@ -667,14 +667,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 31,
-      "confidencePct": 74,
+      "stressRiskPct": 32,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "Midday Berlin on Saturday. The dominant mode is published as normal because a halted market has no active regime; it is not a claim that the underlying regime has resolved. Tail stays at 4% and the mixed Friday regime is expected to be retested only after the Sunday reopen.",
+      "analysis": "Halted. With no live path, the only forward question is what the Sunday reopen gaps into, and gap risk is a Stress channel rather than a Tail channel: a gap that then retraces is precisely the environment this score treats as benign.",
       "drivers": [
-        "Dominant mode normal denotes a halted market, not a resolved regime",
-        "The mixed Friday regime is retested only after the Sunday reopen",
-        "No active regime can be observed while the venue is closed"
+        "Gap risk is a Stress channel, not a Tail channel",
+        "A gap that subsequently retraces is a benign environment for this score",
+        "Only a gap that then extends without pullback would raise Tail"
       ],
       "news": []
     },
@@ -684,22 +684,16 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 31,
-      "confidencePct": 74,
+      "stressRiskPct": 32,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "This clock-hour delivered the August payroll release on Friday at 12:30 UTC. There is no Saturday analogue and no scheduled release, so the event-risk component of this hour is nil. Tail is unchanged at 4% and the payroll result is now fully absorbed into the published levels.",
+      "analysis": "Halted through what on a weekday would be the pre-US-open hour. With neither an open venue nor a scheduled release, neither of the two usual Tail-raising mechanisms, event repricing and opening-auction continuation, is available.",
       "drivers": [
-        "Friday's 12:30 UTC payroll slot has no Saturday analogue",
-        "Event-risk component of this hour is nil with nothing scheduled",
-        "The 162k payroll beat is already absorbed into published levels"
+        "No opening auction and no scheduled release in this slot",
+        "Both usual Tail mechanisms are unavailable in a halted market",
+        "The next opening auction is Tuesday 8 September after Labor Day"
       ],
-      "news": [
-        {
-          "title": "The Employment Situation — August 2026",
-          "url": "https://www.bls.gov/news.release/archives/empsit_09042026.htm",
-          "source": "U.S. Bureau of Labor Statistics"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-05T13:00:00Z",
@@ -708,13 +702,13 @@
       "action": "EA_ON",
       "tailRiskPct": 4,
       "stressRiskPct": 32,
-      "confidencePct": 73,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "This is the clock-hour of the normal US cash open. No open occurs today, and the next one is Tuesday 8 September because of the Labor Day holiday. The absence of an opening auction removes the single most common source of abnormal gap and continuation structure.",
+      "analysis": "Halted. Monday 7 September is the Labor Day holiday, so even after the Sunday 22:00 UTC futures reopen the first US cash session is Tuesday 8 September, extending thinner futures-only liquidity well beyond this horizon.",
       "drivers": [
-        "Clock-hour of the normal US cash open; none occurs on Saturday",
-        "Next US cash open is Tuesday 8 September after Labor Day",
-        "No opening auction removes the usual gap and continuation risk"
+        "Labor Day on Monday 7 September keeps US cash equities closed",
+        "First US cash session is Tuesday 8 September",
+        "Thin futures-only liquidity extends past this horizon into Monday"
       ],
       "news": []
     },
@@ -724,14 +718,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 32,
-      "confidencePct": 73,
+      "stressRiskPct": 31,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "Early US afternoon equivalent with markets closed. Forecast Tail stays at 4%. The main forward consideration remains the Sunday 22:00 UTC futures reopen, where a weekend gap would be priced in a single move rather than through a tradable path; that instant sits beyond this window.",
+      "analysis": "Halted. The carried regime label is mixed rather than directional: Friday closed the observed window with the index unchanged, internals split and volatility falling, the profile that leaves mean reversion available rather than denying it.",
       "drivers": [
-        "A weekend gap prices in one move, not through a tradable path",
-        "Sunday 22:00 UTC reopen is the first repricing opportunity",
-        "That reopen instant lies beyond this 24-hour forecast window"
+        "Carried regime is mixed, not directional",
+        "Index unchanged, internals split, volatility falling",
+        "That profile leaves mean reversion available rather than denying it"
       ],
       "news": []
     },
@@ -740,15 +734,15 @@
       "timeBerlin": "2026-09-05T17:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 5,
-      "stressRiskPct": 33,
-      "confidencePct": 73,
+      "tailRiskPct": 4,
+      "stressRiskPct": 31,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "Tail is nudged to 5% for the closing hours of this window purely because the assessment is ageing and the unpriced interval before the Sunday reopen has grown longer. No market observation supports a higher figure; the venue remains closed throughout this hour.",
+      "analysis": "Halted. Nothing observable changes in this slot; the published values are a closed-venue floor plus residual weekend carry, and the next assessment able to use live evidence will follow the Sunday futures reopen.",
       "drivers": [
-        "Tail nudged up only because the unpriced interval keeps growing",
-        "No market observation supports a higher figure in this hour",
-        "Venue remains closed; the adjustment is time-based, not price-based"
+        "Published values are a closed-venue floor plus residual carry",
+        "No observable change is possible within this slot",
+        "Live evidence resumes only after the 22:00 UTC Sunday reopen"
       ],
       "news": []
     },
@@ -757,67 +751,84 @@
       "timeBerlin": "2026-09-05T18:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 5,
-      "stressRiskPct": 33,
-      "confidencePct": 72,
+      "tailRiskPct": 4,
+      "stressRiskPct": 31,
+      "confidencePct": 89,
       "dominantMode": "normal",
-      "analysis": "Final hour of this forecast horizon, still inside the weekend halt. Confidence closes at 72% reflecting an evidence set roughly 23 hours old. Subsequent scheduled assessments are expected to refresh well before the Sunday 22:00 UTC reopen and to re-anchor on live prices then.",
+      "analysis": "Halted. Confidence stays high because the closed-market conclusion is structural rather than inferred: the exchange calendar, not a model view, establishes that no NQ or NAS100 price path exists during this hour.",
       "drivers": [
-        "Final hour of the horizon; the weekend halt is still in force",
-        "Confidence closes at 72% on an evidence set roughly 23 hours old",
-        "Later scheduled assessments re-anchor before the Sunday reopen"
+        "The closed-market conclusion is calendar-determined, not inferred",
+        "Exchange schedule rather than model inference sets this slot",
+        "Weekend headline risk is the only unquantified residual"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T17:00:00Z",
+      "timeBerlin": "2026-09-05T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 31,
+      "confidencePct": 89,
+      "dominantMode": "normal",
+      "analysis": "Final slot of the horizon, still halted, roughly five hours before the 22:00 UTC Sunday futures reopen. Any structure at that reopen is unobserved and conditional: it would take a gap that then extends without meaningful retracement to lift Tail materially.",
+      "drivers": [
+        "Roughly five hours from the 22:00 UTC Sunday futures reopen",
+        "Reopen structure is unobserved and strictly conditional",
+        "Tail would lift only on a gap that extends without meaningful retracement"
       ],
       "news": []
     }
   ],
   "forecastDetail": [
     {
-      "ts": "2026-09-04T17:00:00Z",
-      "timeBerlin": "2026-09-04T19:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 14,
-      "stressRiskPct": 54,
-      "comment": "Live cash hour: index roughly unchanged inside a 205-point range, with the morning high fully retraced and then partly recovered. VIX at 14.08 and near-static yields leave mean reversion intact, so Tail stays low despite the payroll beat."
-    },
-    {
       "ts": "2026-09-04T18:00:00Z",
       "timeBerlin": "2026-09-04T20:00:00+02:00",
       "status": "green",
       "tailRiskPct": 13,
-      "stressRiskPct": 52,
-      "comment": "Two-sided structure is assumed to persist through the second-to-last cash hour, easing Tail to 13%. The 29,450 session low is the conditional level whose sustained loss would first signal directional efficiency."
+      "stressRiskPct": 51,
+      "comment": "Live evidence: NDX 29,481 versus a 29,482 prior close, VIX 14.10 and falling, 10-year 4.78%. The full round trip from the 29,655 high through the 29,440 low is repeated two-sided retracement, so Tail stays low and the mapped state is EA_ON."
     },
     {
       "ts": "2026-09-04T19:00:00Z",
       "timeBerlin": "2026-09-04T21:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 16,
-      "stressRiskPct": 56,
-      "comment": "Power hour into a three-day weekend: Tail is lifted to 16% as a conditional allowance for thinner liquidity and a possible one-way closing drift. This is the flagged attention window, not an observed condition."
+      "tailRiskPct": 15,
+      "stressRiskPct": 53,
+      "comment": "Final cash hour and start of the flagged 19:00-21:00 UTC window; the small Tail step is a conditional allowance for pre-holiday squaring, not observed one-way structure."
     },
     {
       "ts": "2026-09-04T20:00:00Z",
       "timeBerlin": "2026-09-04T22:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 15,
-      "stressRiskPct": 54,
-      "comment": "Cash close and closing auction at 20:00 UTC, followed by a short residual futures hour. Tail eases to 15% assuming no fresh catalyst arrives before settlement."
+      "tailRiskPct": 14,
+      "stressRiskPct": 49,
+      "comment": "US cash closes at 20:00 UTC, leaving one futures-only hour into the 21:00 UTC settle; thin liquidity can exaggerate an impulse but has too little time to build repeated extension."
     },
     {
       "ts": "2026-09-04T21:00:00Z",
       "timeBerlin": "2026-09-04T23:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 9,
-      "stressRiskPct": 42,
-      "comment": "Futures settle for the week at 21:00 UTC. With the continuous price path gone, Tail falls to 9% while Stress at 42% carries the gap exposure opening into the Sunday reopen."
+      "tailRiskPct": 5,
+      "stressRiskPct": 39,
+      "comment": "CME equity index futures settle at 21:00 UTC; Tail drops to a closed-venue floor because no price path can form, and the normal mode denotes a halted market rather than a resolved regime."
     },
     {
       "ts": "2026-09-04T22:00:00Z",
       "timeBerlin": "2026-09-05T00:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 5,
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "comment": "First full hour of the halt, with Stress stepping down as the payroll repricing completes and only weekend headline carry remaining."
+    },
+    {
+      "ts": "2026-09-04T23:00:00Z",
+      "timeBerlin": "2026-09-05T01:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 4,
       "stressRiskPct": 36,
-      "comment": "First full halted hour. Tail of 5% reflects an absent price path; Stress of 36% carries unresolved US-Iran and Strait of Hormuz risk that cannot be priced until Sunday."
+      "comment": "Halted through the Asian handover; no NQ price discovery is possible and Stress continues to decay toward pure weekend gap carry."
     }
   ],
   "events": [
