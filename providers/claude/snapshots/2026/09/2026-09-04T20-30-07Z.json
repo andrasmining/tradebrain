@@ -1,0 +1,892 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-09-04T20:30:07Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Mapped policy state: EA_ON (green). Tail 12% (low), Stress 48% (elevated), Confidence 88% (high).",
+  "recommendation": "Tail remains well below the block threshold and the mapped policy state is EA_ON. Elevated attention is flagged for the 20:00-21:00 UTC window, which covers thin post-close futures trade into the CME equity index settlement at 21:00 UTC. After settlement no live price path exists until the Sunday 22:00 UTC futures reopen, and Monday 7 September is the Labor Day holiday, so the next US cash session is Tuesday 8 September.",
+  "headline": "Nasdaq-100 closes the payroll session higher after a full two-way range; low VIX and orderly yields keep Tail low into the pre-holiday futures settlement",
+  "body": "The Nasdaq-100 closed at 29,544.15, up 0.21% against a 29,482.32 prior close, after opening at 29,539.57, extending to 29,655.22, fully retracing that advance to a 29,440.15 low and then recovering into the close. Retracements occurred repeatedly in both directions, which is the opposite of the persistent no-retracement structure this Tail score measures. Volatility confirms the reading: VIX finished at 14.54, up 1.54% but historically low, inside a 13.80-14.58 range. The August employment report printed 162,000 payrolls against roughly 55,000 expected, with unemployment steady at 4.1% and average hourly earnings up 0.3% on the month to $37.75 and 3.1% year-on-year, moving September Fed hike pricing into the 58-60% area ahead of the 15-16 September FOMC. Rate transmission stayed orderly rather than disorderly: the 10-year closed at 4.784%, up about 2 basis points inside a 4.748-4.812 range, with the 2-year in the 4.3-4.4% area. Index internals were unusually split rather than aligned, which argues against a single directional impulse: semiconductors were firm, with Micron up 4.24%, AMD up 3.66% and Arm up 3.20%, while Apple fell 2.17%, Microsoft 1.80%, Alphabet 1.19% and Tesla 6.40%. The broader tape diverged from the Nasdaq-100, with the Nasdaq Composite down 0.29% and the S&P 500 down 0.38%. Energy remains the most active cross-asset carry: Brent is near $95.9 and WTI near $91.2, up roughly 6-8% on the week, as US-Iran hostilities entered their seventh month and Strait of Hormuz transits fell to four vessels on Thursday against a 10-day average near 15. That combination supports elevated Stress without the aligned one-way price path that would lift Tail. Cash equities are now closed and CME equity index futures settle at 21:00 UTC, after which the horizon contains no live price path until the Sunday 22:00 UTC reopen.",
+  "tailRiskPct": 12,
+  "tailLevel": "low",
+  "stressRiskPct": 48,
+  "stressLevel": "elevated",
+  "dominantMode": "mixed",
+  "confidencePct": 88,
+  "confidenceLevel": "high",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": "2026-09-04T20:00:00Z",
+    "end": "2026-09-04T21:00:00Z"
+  },
+  "dangerWindowBerlin": {
+    "start": "2026-09-04T22:00:00+02:00",
+    "end": "2026-09-04T23:00:00+02:00"
+  },
+  "sources": [
+    {
+      "title": "Nasdaq-100 (^NDX) quote, level and day range",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    {
+      "title": "CBOE 10-Year Treasury Note Yield (^TNX)",
+      "url": "https://finance.yahoo.com/quote/%5ETNX/"
+    },
+    {
+      "title": "BLS Employment Situation - August 2026",
+      "url": "https://www.bls.gov/news.release/archives/empsit_09042026.htm"
+    },
+    {
+      "title": "Reuters: oil slides Friday, heads for weekly gain on US-Iran fight",
+      "url": "https://www.investing.com/news/commodities-news/oil-prices-set-for-weekly-gain-as-usiran-hostilities-intensify-4888883"
+    },
+    {
+      "title": "United States economic calendar",
+      "url": "https://tradingeconomics.com/united-states/calendar"
+    }
+  ],
+  "lookbackSummary": "The prior 24 hours cover a calm overnight regime, the August payroll release and its decay into the cash close. Tail drifted between 12% and 17% through the Asian and European sessions while Stress climbed steadily into the print. The 12:00 UTC hour carried the only genuine spike, with Tail at 24%, Stress at 76% and Confidence down to 74% as event/whipsaw mode took over. Price discovery then proved orderly: Tail decayed through 20%, 18%, 17%, 15%, 14% and 13% over the following hourly assessments as retracements appeared in both directions and volatility fell, and the mode reverted to mixed. No hour in the window required a blocking action.",
+  "lookback": [
+    {
+      "ts": "2026-09-03T20:00:00Z",
+      "timeBerlin": "2026-09-03T22:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 56,
+      "confidencePct": 88,
+      "dominantMode": "trend-up"
+    },
+    {
+      "ts": "2026-09-03T21:00:00Z",
+      "timeBerlin": "2026-09-03T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 53,
+      "confidencePct": 88,
+      "dominantMode": "trend-up"
+    },
+    {
+      "ts": "2026-09-03T22:00:00Z",
+      "timeBerlin": "2026-09-04T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 52,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-03T23:00:00Z",
+      "timeBerlin": "2026-09-04T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 51,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T00:00:00Z",
+      "timeBerlin": "2026-09-04T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 51,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T01:00:00Z",
+      "timeBerlin": "2026-09-04T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 51,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T02:00:00Z",
+      "timeBerlin": "2026-09-04T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 52,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T03:00:00Z",
+      "timeBerlin": "2026-09-04T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 52,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T04:00:00Z",
+      "timeBerlin": "2026-09-04T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 53,
+      "confidencePct": 87,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T05:00:00Z",
+      "timeBerlin": "2026-09-04T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 55,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T06:00:00Z",
+      "timeBerlin": "2026-09-04T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 56,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T07:00:00Z",
+      "timeBerlin": "2026-09-04T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 57,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T08:00:00Z",
+      "timeBerlin": "2026-09-04T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 58,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T09:00:00Z",
+      "timeBerlin": "2026-09-04T11:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 59,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T10:00:00Z",
+      "timeBerlin": "2026-09-04T12:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 60,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T11:00:00Z",
+      "timeBerlin": "2026-09-04T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 62,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-04T12:00:00Z",
+      "timeBerlin": "2026-09-04T14:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 24,
+      "stressRiskPct": 76,
+      "confidencePct": 74,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-04T13:00:00Z",
+      "timeBerlin": "2026-09-04T15:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 64,
+      "confidencePct": 82,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-04T14:00:00Z",
+      "timeBerlin": "2026-09-04T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 58,
+      "confidencePct": 86,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-04T15:00:00Z",
+      "timeBerlin": "2026-09-04T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 56,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-04T16:00:00Z",
+      "timeBerlin": "2026-09-04T18:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 53,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-04T17:00:00Z",
+      "timeBerlin": "2026-09-04T19:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 54,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-04T18:00:00Z",
+      "timeBerlin": "2026-09-04T20:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 51,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-04T19:00:00Z",
+      "timeBerlin": "2026-09-04T21:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 52,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    }
+  ],
+  "outlookSummary": "The current post-close hour keeps two-sided structure with Tail at 12% inside the flagged 20:00-21:00 UTC window, which covers thin futures trade into the CME equity index settlement at 21:00 UTC. From that settlement the entire remainder of this horizon is a halted market with no live price path, so forecast Tail falls to a 4-6% closed-venue floor and the published dominant mode of normal denotes a closed venue rather than a resolved regime. Residual Stress in the 36-40% band carries what cannot price until the Sunday 22:00 UTC reopen, principally unresolved US-Iran hostilities with Brent near $96, and secondarily September Fed hike pricing near 58-60% into the 15-16 September FOMC. Monday 7 September is the Labor Day holiday, so the next US cash session is Tuesday 8 September and the next scheduled US macro checkpoints are PPI and jobless claims on 10 September and CPI on 11 September.",
+  "forecast": [
+    {
+      "ts": "2026-09-04T20:00:00Z",
+      "timeBerlin": "2026-09-04T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 48,
+      "confidencePct": 88,
+      "dominantMode": "mixed",
+      "analysis": "Cash equities closed at 20:00 UTC with the Nasdaq-100 at 29,544.15, up 0.21%, after a full two-way session that ran 29,655.22 high to 29,440.15 low and recovered. Retracements occurred in both directions, the opposite of the no-retracement structure Tail measures, so Tail stays low into the 21:00 UTC futures settlement.",
+      "drivers": [
+        "Nasdaq-100 closed 29,544.15, up 0.21%, after a full two-way 29,440.15-29,655.22 range",
+        "Retracements occurred in both directions during the cash session",
+        "VIX closed 14.54, up 1.54%, inside a narrow 13.80-14.58 range",
+        "Conditional checkpoint: thin post-close futures trade into the 21:00 UTC settlement"
+      ],
+      "news": [
+        {
+          "title": "The Nasdaq, S&P 500, and Dow All Fell Slightly Friday. The Jobs Report Wasn't Really Why.",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-p-500-dow-fell-183730153.html",
+          "source": "The Motley Fool"
+        },
+        {
+          "title": "Stock Market Today (Sept. 4, 2026): Yields jump, stocks fall after jobs report surprises to upside",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-4-133716564.html",
+          "source": "TheStreet"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-04T21:00:00Z",
+      "timeBerlin": "2026-09-04T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 40,
+      "confidencePct": 87,
+      "dominantMode": "normal",
+      "analysis": "CME equity index futures settle at 21:00 UTC and the live price path ends there. Conditional risk in this hour is a settlement-print imbalance on thin pre-holiday participation rather than trend continuation. Tail drops toward the closed-venue floor because no further price discovery is available after the settlement.",
+      "drivers": [
+        "CME equity index futures settle at 21:00 UTC, ending the live price path",
+        "Pre-holiday participation is thin, so settlement imbalance can move price",
+        "No macro release is scheduled in this hour",
+        "Conditional checkpoint: settlement print rather than trend structure"
+      ],
+      "news": [
+        {
+          "title": "The Nasdaq, S&P 500, and Dow All Fell Slightly Friday. The Jobs Report Wasn't Really Why.",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-p-500-dow-fell-183730153.html",
+          "source": "The Motley Fool"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-04T22:00:00Z",
+      "timeBerlin": "2026-09-05T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 38,
+      "confidencePct": 86,
+      "dominantMode": "normal",
+      "analysis": "The venue is halted from 21:00 UTC Friday until the 22:00 UTC Sunday futures reopen, so no mean-reversion failure can occur in this hour. The published mode of normal denotes a closed market, not a resolved regime. Residual Stress carries unpriceable weekend headline risk rather than any observed structure.",
+      "drivers": [
+        "CME equity index futures are halted until 22:00 UTC Sunday",
+        "Mode normal denotes a closed venue, not a resolved regime",
+        "Residual Stress carries unpriceable weekend headline risk"
+      ],
+      "news": [
+        {
+          "title": "Oil slides on Friday, heads for weekly gain on US-Iran fight",
+          "url": "https://www.investing.com/news/commodities-news/oil-prices-set-for-weekly-gain-as-usiran-hostilities-intensify-4888883",
+          "source": "Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-04T23:00:00Z",
+      "timeBerlin": "2026-09-05T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 38,
+      "confidencePct": 86,
+      "dominantMode": "normal",
+      "analysis": "This hour would normally cover late US futures trade; instead the market is shut. Tail sits at the closed-venue floor. Stress holds in the upper-30s because US-Iran hostilities and near-even September Fed hike pricing remain live stories that cannot be repriced until Sunday.",
+      "drivers": [
+        "No live price path during the weekend halt",
+        "US-Iran hostilities remain unresolved in their seventh month",
+        "September Fed hike pricing near 58-60% is carried, not traded"
+      ],
+      "news": [
+        {
+          "title": "Stock Market Today (Sept. 4, 2026): Yields jump, stocks fall after jobs report surprises to upside",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-4-133716564.html",
+          "source": "TheStreet"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-05T00:00:00Z",
+      "timeBerlin": "2026-09-05T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "confidencePct": 85,
+      "dominantMode": "normal",
+      "analysis": "Asian futures hours would normally begin repricing the US close here, but the CME halt removes that path entirely. No structure can form, so Tail remains at the floor. Confidence eases marginally as the distance from the last observed price grows.",
+      "drivers": [
+        "Asian futures repricing is unavailable because CME equity futures are shut",
+        "Tail held at the closed-venue floor",
+        "Confidence eases as distance from the last observed price grows"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T01:00:00Z",
+      "timeBerlin": "2026-09-05T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "confidencePct": 85,
+      "dominantMode": "normal",
+      "analysis": "A closed venue through the early Asian window. The August payroll print at 162,000 against roughly 55,000 expected is already fully absorbed in Friday's close, so it is history rather than a pending catalyst for this hour. Tail stays at the floor with no live price path.",
+      "drivers": [
+        "August payrolls at 162,000 versus roughly 55,000 expected are already absorbed in Friday's close",
+        "Unemployment steady at 4.1% with average hourly earnings up 0.3% to $37.75",
+        "No live venue in which a post-payroll path could extend"
+      ],
+      "news": [
+        {
+          "title": "The Employment Situation - August 2026",
+          "url": "https://www.bls.gov/news.release/archives/empsit_09042026.htm",
+          "source": "U.S. Bureau of Labor Statistics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-05T02:00:00Z",
+      "timeBerlin": "2026-09-05T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "confidencePct": 85,
+      "dominantMode": "normal",
+      "analysis": "No Asian cash or futures reference for the Nasdaq-100 exists in this hour because CME equity futures are halted for the weekend. Stress reflects only carried geopolitical and rate-path risk, which cannot express itself until the Sunday reopen.",
+      "drivers": [
+        "No Asian equity-futures reference for the Nasdaq-100 during the halt",
+        "Stress reflects carried geopolitical and rate-path risk only",
+        "Conditional checkpoint: the 22:00 UTC Sunday reopen"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T03:00:00Z",
+      "timeBerlin": "2026-09-05T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 36,
+      "confidencePct": 85,
+      "dominantMode": "normal",
+      "analysis": "The venue remains closed through the Tokyo morning equivalent. Tail is at the closed-market floor and Stress drifts slightly lower as the immediate post-payroll news cycle quiets. Nothing in this hour can produce the persistent one-way path the Tail score measures.",
+      "drivers": [
+        "Closed market through the Tokyo morning equivalent",
+        "Post-payroll news flow quieting into the weekend",
+        "No mechanism for persistent one-way structure while trading is halted"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T04:00:00Z",
+      "timeBerlin": "2026-09-05T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 36,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "A halted-market hour spanning the Asian midday equivalent. Any weekend escalation headline would accumulate rather than trade, which is a gap consideration for the Sunday reopen and not an intraday Tail input for this slot.",
+      "drivers": [
+        "Weekend escalation headlines accumulate rather than trade",
+        "Gap consideration for the Sunday reopen, not an intraday Tail input",
+        "Tail remains at the closed-venue floor"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T05:00:00Z",
+      "timeBerlin": "2026-09-05T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 36,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "Closed venue. The relevant conditional question for the weekend is whether Strait of Hormuz shipping disruption worsens, since Brent near $96 after a roughly 6-8% weekly gain is the most active cross-asset carry into the reopen. No price path exists here.",
+      "drivers": [
+        "Brent near $96 after a roughly 6-8% weekly gain on US-Iran hostilities",
+        "Strait of Hormuz transits ran four vessels Thursday against a 10-day average near 15",
+        "Crude carry is the most active cross-asset input into the reopen"
+      ],
+      "news": [
+        {
+          "title": "Oil slides on Friday, heads for weekly gain on US-Iran fight",
+          "url": "https://www.investing.com/news/commodities-news/oil-prices-set-for-weekly-gain-as-usiran-hostilities-intensify-4888883",
+          "source": "Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-05T06:00:00Z",
+      "timeBerlin": "2026-09-05T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 36,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "The European pre-open equivalent falls inside the weekend halt, so the usual Asia-to-Europe transition is absent. Tail holds at the floor. Confidence is capped slightly below the live-session reading by the growing gap since the last observed print.",
+      "drivers": [
+        "European pre-open transition is absent on a weekend",
+        "Tail at the closed-market floor",
+        "Confidence capped below the live-session reading by the widening evidence gap"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T07:00:00Z",
+      "timeBerlin": "2026-09-05T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 36,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "A closed Saturday hour. Stress in the mid-30s represents the difficulty of the environment awaiting the reopen, principally an unresolved US-Iran conflict in its seventh month, rather than any probability of mean-reversion failure in this slot.",
+      "drivers": [
+        "Unresolved US-Iran conflict in its seventh month",
+        "Stress describes environment difficulty awaiting the reopen",
+        "No probability of mean-reversion failure in a halted slot"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T08:00:00Z",
+      "timeBerlin": "2026-09-05T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 36,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "No European session exists on a Saturday and CME equity futures remain halted. Tail stays at the closed-venue floor. Any assessment of continuation or reversal must wait for genuine price evidence after the 22:00 UTC Sunday reopen.",
+      "drivers": [
+        "No European cash session on a Saturday",
+        "CME equity index futures remain halted",
+        "Conditional checkpoint: first genuine prints after the Sunday reopen"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T09:00:00Z",
+      "timeBerlin": "2026-09-05T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 36,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "Halted market. September Fed hike pricing near 58-60% into the 15-16 September FOMC is a scheduled structural checkpoint well beyond this horizon, so it shapes Stress carry rather than this hour's conditional Tail.",
+      "drivers": [
+        "September FOMC meeting on 15-16 September sits well beyond this horizon",
+        "Hike pricing near 58-60% shapes Stress carry rather than this hour's Tail",
+        "No live evidence can be gathered while the venue is closed"
+      ],
+      "news": [
+        {
+          "title": "Stock Market Today (Sept. 4, 2026): Yields jump, stocks fall after jobs report surprises to upside",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-4-133716564.html",
+          "source": "TheStreet"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-05T10:00:00Z",
+      "timeBerlin": "2026-09-05T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "A closed hour covering the European mid-morning equivalent. Stress ticks up marginally as the horizon moves closer to the Sunday reopen, where accumulated weekend news would price in a single move rather than a gradual path.",
+      "drivers": [
+        "Horizon moving closer to the Sunday reopen",
+        "Accumulated weekend news would price as one move rather than a gradual path",
+        "Stress ticks up marginally on that gap shape"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T11:00:00Z",
+      "timeBerlin": "2026-09-05T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "The venue remains shut. Split internals from Friday, with semiconductors firm while several megacaps fell, are the opposite of the aligned one-way configuration that would justify elevated Tail, and nothing can change that reading while the market is closed.",
+      "drivers": [
+        "Friday internals split: semiconductors firm while several megacaps fell",
+        "Split internals are the opposite of an aligned one-way configuration",
+        "No new evidence can arrive while the venue is closed"
+      ],
+      "news": [
+        {
+          "title": "The Nasdaq, S&P 500, and Dow All Fell Slightly Friday. The Jobs Report Wasn't Really Why.",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-p-500-dow-fell-183730153.html",
+          "source": "The Motley Fool"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-05T12:00:00Z",
+      "timeBerlin": "2026-09-05T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "Closed venue through the European midday equivalent. Monday 7 September is the Labor Day holiday, so the next US cash session is Tuesday 8 September; this shortens the runway of live evidence available before the next scheduled macro checkpoints.",
+      "drivers": [
+        "Monday 7 September is the Labor Day holiday",
+        "Next US cash session is Tuesday 8 September",
+        "Shortened runway of live evidence before the next macro checkpoints"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T13:00:00Z",
+      "timeBerlin": "2026-09-05T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "A halted Saturday hour. Conditional risk remains entirely gap-shaped: an escalation or de-escalation headline would arrive as a reopen level rather than as an intraday trend, which affects Stress and reopen Confidence rather than this slot's Tail.",
+      "drivers": [
+        "Conditional risk remains gap-shaped rather than trend-shaped",
+        "Escalation or de-escalation would arrive as a reopen level",
+        "Affects Stress and reopen Confidence rather than this slot's Tail"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T14:00:00Z",
+      "timeBerlin": "2026-09-05T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "No live price path. The 10-year at 4.784% and the 2-year near 4.3-4.4% left Friday in orderly rather than disorderly repricing, which is the rate condition that would normally have to deteriorate before Tail could rise on the reopen.",
+      "drivers": [
+        "10-year Treasury yield closed 4.784%, up about 2 basis points",
+        "2-year yield in the 4.3-4.4% area after the payroll print",
+        "Rate repricing has stayed orderly rather than disorderly"
+      ],
+      "news": [
+        {
+          "title": "Stock Market Today (Sept. 4, 2026): Yields jump, stocks fall after jobs report surprises to upside",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-4-133716564.html",
+          "source": "TheStreet"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-05T15:00:00Z",
+      "timeBerlin": "2026-09-05T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 38,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "Closed market during what would be the US pre-open equivalent on a weekday. Stress edges to the upper-30s as the unpriced weekend interval lengthens. Tail remains at the floor because mean reversion cannot fail where no trades occur.",
+      "drivers": [
+        "US pre-open equivalent falls inside the weekend halt",
+        "Unpriced weekend interval lengthening",
+        "Mean reversion cannot fail where no trades occur"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T16:00:00Z",
+      "timeBerlin": "2026-09-05T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 38,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "A halted hour. VIX closed at 14.54, up 1.54% but still historically low and inside a 13.80-14.58 range, so the volatility backdrop carried into the weekend is calm rather than stressed.",
+      "drivers": [
+        "VIX closed 14.54, historically low despite a 1.54% daily rise",
+        "Volatility backdrop carried into the weekend is calm",
+        "Tail held at the closed-venue floor"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T17:00:00Z",
+      "timeBerlin": "2026-09-05T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 38,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "The venue stays closed. Any conditional path for the reopen depends on weekend developments in the US-Iran conflict and on diesel and crude pricing, none of which can be observed as structure within this slot.",
+      "drivers": [
+        "Weekend developments in the US-Iran conflict are the main open variable",
+        "Diesel at record highs keeps energy-led inflation in view",
+        "None of it observable as structure within this slot"
+      ],
+      "news": [
+        {
+          "title": "Oil slides on Friday, heads for weekly gain on US-Iran fight",
+          "url": "https://www.investing.com/news/commodities-news/oil-prices-set-for-weekly-gain-as-usiran-hostilities-intensify-4888883",
+          "source": "Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-05T18:00:00Z",
+      "timeBerlin": "2026-09-05T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 38,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Closed venue in the late Saturday window. Confidence is held slightly lower than the live-session reading because the last observed price is now roughly a day old, while the absence of trading keeps Tail at the floor.",
+      "drivers": [
+        "Last observed price is roughly a day old by this hour",
+        "Confidence held slightly below the live-session reading",
+        "Absence of trading keeps Tail at the floor"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-05T19:00:00Z",
+      "timeBerlin": "2026-09-05T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 38,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "The final hour of this horizon remains inside the weekend halt, with the reopen still ahead at 22:00 UTC Sunday. Tail stays at the closed-market floor and Stress reflects only what is waiting to be priced, not anything observed.",
+      "drivers": [
+        "Reopen still ahead at 22:00 UTC Sunday",
+        "Tail at the closed-market floor for the final slot of this horizon",
+        "Stress reflects what is waiting to be priced, not anything observed"
+      ],
+      "news": []
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-09-04T20:00:00Z",
+      "timeBerlin": "2026-09-04T22:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 12,
+      "stressRiskPct": 48,
+      "comment": "Cash closed at 29,544.15, up 0.21%, after a two-way 29,440.15-29,655.22 session with retracements in both directions; only thin futures trade remains into the 21:00 UTC settlement."
+    },
+    {
+      "ts": "2026-09-04T21:00:00Z",
+      "timeBerlin": "2026-09-04T23:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 6,
+      "stressRiskPct": 40,
+      "comment": "CME equity index futures settle at 21:00 UTC and the live price path ends; conditional risk is a settlement imbalance on thin pre-holiday participation rather than trend continuation."
+    },
+    {
+      "ts": "2026-09-04T22:00:00Z",
+      "timeBerlin": "2026-09-05T00:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 4,
+      "stressRiskPct": 38,
+      "comment": "Venue halted until the 22:00 UTC Sunday reopen; mode normal denotes a closed market and Stress carries unpriceable weekend headline risk."
+    },
+    {
+      "ts": "2026-09-04T23:00:00Z",
+      "timeBerlin": "2026-09-05T01:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 4,
+      "stressRiskPct": 38,
+      "comment": "Still halted; US-Iran hostilities and near-even September Fed hike pricing remain carried stories that cannot reprice until Sunday."
+    },
+    {
+      "ts": "2026-09-05T00:00:00Z",
+      "timeBerlin": "2026-09-05T02:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "comment": "Asian futures repricing is unavailable during the halt, so Tail stays at the closed-venue floor while Confidence eases with the widening evidence gap."
+    },
+    {
+      "ts": "2026-09-05T01:00:00Z",
+      "timeBerlin": "2026-09-05T03:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 4,
+      "stressRiskPct": 37,
+      "comment": "The 162,000 August payroll print is already absorbed in Friday's close and has no live venue in which to extend during this hour."
+    }
+  ],
+  "events": [
+    {
+      "name": "US PPI MoM (Aug)",
+      "ts": "2026-09-10T12:30:00Z",
+      "timeBerlin": "2026-09-10T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Core PPI MoM (Aug)",
+      "ts": "2026-09-10T12:30:00Z",
+      "timeBerlin": "2026-09-10T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "US Initial Jobless Claims",
+      "ts": "2026-09-10T12:30:00Z",
+      "timeBerlin": "2026-09-10T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "US CPI MoM / YoY (Aug)",
+      "ts": "2026-09-11T12:30:00Z",
+      "timeBerlin": "2026-09-11T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Core CPI MoM / YoY (Aug)",
+      "ts": "2026-09-11T12:30:00Z",
+      "timeBerlin": "2026-09-11T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Michigan Consumer Sentiment Preliminary (Sep)",
+      "ts": "2026-09-11T14:00:00Z",
+      "timeBerlin": "2026-09-11T16:00:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
