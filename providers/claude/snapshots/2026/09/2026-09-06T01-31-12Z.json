@@ -1,0 +1,922 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-09-06T01:31:12Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Mapped policy state: EA_ON. CME equity-index futures have been halted since the Friday 21:00 UTC settle, so no Nasdaq-100 price path exists in the current hour and Tail is held at the closed-venue floor of 5%. Stress is unchanged at 54%: another hour without a verified kinetic step in the US-Iran tanker exchange is offset by Iran’s military threatening more severe strikes on US naval forces and by an Israeli assessment that Tehran is seeking a coordinated regional assault, neither of which has met an equity quote. The scheduled 22:00 UTC Sunday reopen and the first full hour after it are the two WATCH slots of this horizon.",
+  "recommendation": "Tail holds a 4-5% closed-venue floor through the dormant weekend hours and rises gradually to 13% in the final hour of the halt, so the deterministic mapping stays EA_ON and green for the first 21 published hours. The 22:00 UTC reopening hour and the first full hour after it are each scored at 20% Tail and therefore map to WATCH and yellow; together they form the only published danger window. The final slot steps back to 17% and green on the assumption of an orderly two-way auction. Stress runs from 54% down to a 52% low and then rebuilds to 70% at the reopen, entering the high band in the last five slots. Confidence declines from 85% to 74% as later slots rest on progressively older evidence.",
+  "headline": "Nasdaq-100 unquoted at 29,544.15 into the final day of the CME weekend halt as the Hormuz exchange stays two-sided and unconfirmed; the 22:00 UTC reopen and the hour after it are the horizon’s two WATCH slots",
+  "body": "The Nasdaq-100 closed the August payroll session on Friday 4 September at 29,544.15, up 61.85 points or 0.21% from a 29,482.30 previous close, having ranged between 29,440.15 and 29,655.22. Price retraced repeatedly in both directions inside that range, which is the opposite of the persistent no-retracement structure the Tail score measures. CME equity-index futures have been halted since the Friday settle and are scheduled to reopen at 22:00 UTC on 6 September. That reopening hour and the first full hour after it are the two WATCH slots of this forecast, and the horizon now also contains the second hour of the new session.\n\nThe macro impulse into the halt is hawkish. August non-farm payrolls printed 162,000 against roughly 56,000 expected, with July revised to a 21,000 gain and the unemployment rate steady at 4.1%. The 2-year yield rose about 5 basis points to 4.38%, its highest since January 2025, and the 10-year added a basis point to 4.776%; the Federal Reserve H.15 release for 3 September carries 4.34% and 4.77% for those maturities, consistent with that move. Rate futures shifted to price roughly a 59% probability of a hike at the 15-16 September FOMC. Equities absorbed the repricing calmly: the Nasdaq-100 held a small gain and VIX closed at 14.53 against a 14.32 previous close. A separate unresolved strand is the trade-embargo threat made late in Friday’s session, which tied possible embargoes on deficit partners to a demand for lower policy rates.\n\nThe geopolitical sequence has not advanced kinetically in roughly eleven hours, but the rhetorical perimeter widened overnight. US Central Command says American forces struck three Iranian crude oil tankers on Saturday morning after an aircraft carrier and a guided-missile destroyer were targeted by ballistic missiles; two vessels were permanently disabled and a third, unladen, was destroyed in the Gulf of Oman, and Adm. Brad Cooper said the US would destroy Iran’s oil fleet if necessary. Iran’s military then threatened that strikes would be \"more severe than before\" if harassment of Iranian shipping continues, and the IRGC claimed it had targeted three tankers in the Strait of Hormuz and three US-affiliated vessels elsewhere; CENTCOM says neither US ship was hit and the IRGC counter-claim remains unconfirmed. Israeli reporting adds an assessment that Tehran is working to coordinate Hezbollah, Hamas and Houthi forces for a simultaneous assault, which is an intelligence assessment rather than a verified action. The campaign therefore remains two-sided and unresolved rather than a confirmed escalation ladder, which is why Stress carries it and Tail does not.\n\nCross-asset context remains conflicted rather than aligned. WTI is quoted near $91.5 after a weekly gain of roughly 9% and a monthly gain above 21%, an oil-led risk premium that pulls against equities. Friday’s internals were rotational: every tracked semiconductor name rose, led by Micron and AMD, while five of eight megacaps fell, including Tesla, Apple and Microsoft, and delayed index futures closed split with NQ up 0.14% against ES down 0.42% and YM down 0.57%. Conflicting internals of that kind reduce directional conviction and belong in Stress, not in Tail.\n\nThe structural feature of this horizon is that roughly 49 hours of accumulated and so far unpriced information, an unresolved military exchange at a shipping chokepoint, an energy premium and untested hawkish rate pricing all meet a single opening auction rather than a continuous session. Monday 7 September is the US Labor Day holiday, so cash equities are closed and the futures session that follows the reopen is a shortened holiday session with a midday halt, which implies thinner liquidity around any gap. That concentration is scored as a 20% Tail allowance in the 22:00 and 23:00 UTC slots, which maps to WATCH and yellow and forms the only published danger window, then steps down to 17% in the following hour. It is a conditional gap-and-extension allowance, not an assertion that directional structure has been observed: an orderly two-way auction with genuine retracement would decay both scores quickly, while repeated extension after failed pullbacks would be the first genuine Tail amplifier of this sequence. Every earlier hour remains at the closed-venue floor and maps to EA_ON. The next seven-day calendar is led by PPI on Thursday 10 September and CPI on Friday 11 September, both at 12:30 UTC, with the 15-16 September FOMC beyond this window.",
+  "tailRiskPct": 5,
+  "tailLevel": "low",
+  "stressRiskPct": 54,
+  "stressLevel": "elevated",
+  "dominantMode": "normal",
+  "confidencePct": 85,
+  "confidenceLevel": "high",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": "2026-09-06T22:00:00Z",
+    "end": "2026-09-07T00:00:00Z"
+  },
+  "dangerWindowBerlin": {
+    "start": "2026-09-07T00:00:00+02:00",
+    "end": "2026-09-07T02:00:00+02:00"
+  },
+  "sources": [
+    {
+      "title": "Nasdaq-100 (^NDX) quote",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "Federal Reserve H.15 Selected Interest Rates",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "title": "Trading Economics: Crude Oil price and historical data",
+      "url": "https://tradingeconomics.com/commodity/crude-oil"
+    },
+    {
+      "title": "ABC News: Iran live updates - US strikes 3 Iranian oil tankers in retaliation for targeting warships",
+      "url": "https://abcnews.com/International/live-updates/iran-live-updates-centcom-targeted-iranian-forces-posed/?id=136080582"
+    },
+    {
+      "title": "The Jerusalem Post: Iran-Israel live updates, 5 September 2026",
+      "url": "https://www.jpost.com/middle-east/iran-news/2026-09-05/live-updates-907625"
+    },
+    {
+      "title": "Reuters: Strong August jobs report sends yields higher",
+      "url": "https://finance.yahoo.com/economy/articles/strong-august-jobs-report-sends-125410799.html"
+    }
+  ],
+  "lookbackSummary": "The preceding 24 hours run from 01:00 UTC on 5 September to 00:00 UTC on 6 September and lie entirely inside the CME weekend halt. All 24 slots are available from published Claude assessments, every one is scored at the closed-venue Tail floor of 5% under a normal mode, and every one maps to EA_ON and green. Stress was flat at 38% from 01:00 UTC through 10:00 UTC, climbed from 39% at 11:00 UTC to 42% by 14:00 UTC as the Saturday US-Iran sequence developed, stepped to 48% at 15:00 UTC once the CENTCOM tanker strikes were verified, rose to 52% by 19:00 UTC and peaked at 57% at 20:00 UTC when the Iranian counter-claim was published, then eased through 56% and 55% to 54% in the final slot as that claim went unconfirmed. Confidence held in a narrow 85-86% band throughout, reflecting a complete evidence set in which only the live price path was unavailable.",
+  "lookback": [
+    {
+      "ts": "2026-09-05T01:00:00Z",
+      "timeBerlin": "2026-09-05T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 38,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T02:00:00Z",
+      "timeBerlin": "2026-09-05T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 38,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T03:00:00Z",
+      "timeBerlin": "2026-09-05T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 38,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T04:00:00Z",
+      "timeBerlin": "2026-09-05T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 38,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T05:00:00Z",
+      "timeBerlin": "2026-09-05T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 38,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T06:00:00Z",
+      "timeBerlin": "2026-09-05T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 38,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T07:00:00Z",
+      "timeBerlin": "2026-09-05T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 38,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T08:00:00Z",
+      "timeBerlin": "2026-09-05T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 38,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T09:00:00Z",
+      "timeBerlin": "2026-09-05T11:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 38,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T10:00:00Z",
+      "timeBerlin": "2026-09-05T12:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 38,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T11:00:00Z",
+      "timeBerlin": "2026-09-05T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 39,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T12:00:00Z",
+      "timeBerlin": "2026-09-05T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 40,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T13:00:00Z",
+      "timeBerlin": "2026-09-05T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 41,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T14:00:00Z",
+      "timeBerlin": "2026-09-05T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 42,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T15:00:00Z",
+      "timeBerlin": "2026-09-05T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 48,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T16:00:00Z",
+      "timeBerlin": "2026-09-05T18:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 50,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T17:00:00Z",
+      "timeBerlin": "2026-09-05T19:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 51,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T18:00:00Z",
+      "timeBerlin": "2026-09-05T20:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 51,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T19:00:00Z",
+      "timeBerlin": "2026-09-05T21:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 52,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T20:00:00Z",
+      "timeBerlin": "2026-09-05T22:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 57,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T21:00:00Z",
+      "timeBerlin": "2026-09-05T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 56,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T22:00:00Z",
+      "timeBerlin": "2026-09-06T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 56,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-05T23:00:00Z",
+      "timeBerlin": "2026-09-06T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 55,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-06T00:00:00Z",
+      "timeBerlin": "2026-09-06T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 54,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    }
+  ],
+  "outlookSummary": "Twenty-one of the twenty-four published hours fall inside the CME weekend halt, so no observable Nasdaq-100 price path can form in them; the mapped policy state stays EA_ON with Tail on a 4-5% closed-venue floor through the dormant hours, lifting from 06:00 UTC as the Tel Aviv and Gulf Sunday cash sessions provide the first equity quotes since Friday and reaching 13% in the last full hour of the halt as a pre-auction gap allowance. The final three slots are different: futures are scheduled to reopen at 22:00 UTC on 6 September, so those hours are the first in which structure can exist. The reopening hour and the first full hour after it each carry a 20% Tail allowance, map to WATCH and yellow, and together form the only published danger window; the last slot steps back to 17% and green. Stress opens at 54%, reaches a 52% low in the quietest overnight hours, rebuilds through the Sunday sessions and reaches 70% at the reopen, entering the high band in the final five slots. The drivers are a two-sided and unconfirmed Hormuz tanker campaign now accompanied by an explicit Iranian threat of more severe strikes, an oil complex up roughly 9% on the week, hawkish September rate pricing after the 162K August payroll print, and an unresolved trade-embargo threat, none of which has met an equity quote since Friday. The Labor Day holiday calendar implies thinner liquidity around the reopen. Confidence declines from 85% to 74% because later slots rest on progressively older evidence during an actively developing sequence. Orderly two-way retracement at the reopen would decay both scores quickly, while repeated extension after failed pullbacks would be the first genuine Tail amplifier.",
+  "forecast": [
+    {
+      "ts": "2026-09-06T01:00:00Z",
+      "timeBerlin": "2026-09-06T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 54,
+      "confidencePct": 85,
+      "dominantMode": "normal",
+      "analysis": "CME equity-index futures have been halted since the Friday 21:00 UTC settle, so no Nasdaq-100 price path exists in this hour and Tail stays at the closed-venue floor of 5%. Stress holds at 54%: a further hour without a verified kinetic step is offset by new Iranian threat language and an Israeli coordination assessment.",
+      "drivers": [
+        "No Nasdaq-100 price path exists during the CME weekend halt",
+        "Tail held at the closed-venue floor of 5%",
+        "About eleven hours without a verified follow-on step in the Hormuz exchange",
+        "Iranian military threatens more severe strikes on US naval forces",
+        "Israeli assessment of a sought coordinated regional assault is unconfirmed"
+      ],
+      "news": [
+        {
+          "title": "Iran live updates: US strikes 3 Iranian oil tankers in retaliation for targeting warships",
+          "url": "https://abcnews.com/International/live-updates/iran-live-updates-centcom-targeted-iranian-forces-posed/?id=136080582",
+          "source": "ABC News"
+        },
+        {
+          "title": "Iran threatens 'more severe attacks' against US Navy, claims to have targeted oil tankers in Hormuz",
+          "url": "https://www.timesofisrael.com/liveblog-september-05-2026/",
+          "source": "The Times of Israel"
+        },
+        {
+          "title": "Live updates: IRGC claims strikes on six ships; Israeli assessment says Tehran is seeking a coordinated regional assault",
+          "url": "https://www.jpost.com/middle-east/iran-news/2026-09-05/live-updates-907625",
+          "source": "The Jerusalem Post"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-06T02:00:00Z",
+      "timeBerlin": "2026-09-06T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 54,
+      "confidencePct": 85,
+      "dominantMode": "normal",
+      "analysis": "Deep overnight hour of the halt with no venue and no scoreable structure. The published scores carry the 01:00 UTC evidence set forward unchanged; only a newly verified headline could move them, because nothing in this hour can be observed in price.",
+      "drivers": [
+        "Venue closed, so no structure can be observed or scored",
+        "Scores carry the 01:00 UTC evidence set forward unchanged",
+        "Only a newly verified headline could move this hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T03:00:00Z",
+      "timeBerlin": "2026-09-06T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 53,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "Quietest part of the Sunday UTC night. Tail is trimmed to 4% because a further hour of confirmed inactivity slightly reduces the chance that the weekend ends in an unresolved kinetic sequence, and Stress eases one point on the same reasoning.",
+      "drivers": [
+        "Quietest hour of the Sunday UTC night",
+        "Tail trimmed to 4% on a further hour of confirmed inactivity",
+        "Stress decay reflects elapsed time, not observed price behaviour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T04:00:00Z",
+      "timeBerlin": "2026-09-06T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 53,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "Second hour at the trimmed 4% floor. No equity venue anywhere is quoting, so the assessment is a decay function on headline risk rather than a reading of structure. The mapped policy state remains EA_ON throughout the dormant block.",
+      "drivers": [
+        "Second hour at the trimmed 4% closed-venue floor",
+        "Assessment is a headline-risk decay, not a structure reading",
+        "Mapped policy state remains EA_ON through the dormant block"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T05:00:00Z",
+      "timeBerlin": "2026-09-06T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 52,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Final dormant hour before the first Sunday cash sessions. Stress eases to 52%, its low for this horizon, reflecting roughly fifteen hours without a verified follow-on step in the tanker exchange. Tail is unchanged because no price path can confirm or contradict that decay.",
+      "drivers": [
+        "Stress low of the horizon at 52%",
+        "Roughly fifteen hours without a verified kinetic follow-on",
+        "No price path can confirm or contradict the decay"
+      ],
+      "news": [
+        {
+          "title": "Iran live updates: US strikes 3 Iranian oil tankers in retaliation for targeting warships",
+          "url": "https://abcnews.com/International/live-updates/iran-live-updates-centcom-targeted-iranian-forces-posed/?id=136080582",
+          "source": "ABC News"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-06T06:00:00Z",
+      "timeBerlin": "2026-09-06T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 52,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "The Tel Aviv and Gulf Sunday cash sessions come into range in this hour. They are the first venues able to price the weekend exchange, so Tail lifts back to 5% as the possibility of observable reaction returns, while the Nasdaq-100 itself remains unquoted.",
+      "drivers": [
+        "Tel Aviv and Gulf Sunday cash sessions come into range",
+        "First venues able to price the weekend exchange",
+        "Nasdaq-100 itself remains unquoted"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T07:00:00Z",
+      "timeBerlin": "2026-09-06T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 53,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Israeli and Gulf equities are trading in this hour and provide the first market-implied read on the weekend sequence since Friday. Tail is 6% as a small allowance for a regional risk signal that later transmits to index futures; Stress ticks up because that read may reprice the geopolitical premium.",
+      "drivers": [
+        "Israeli and Gulf equities give the first market-implied weekend read",
+        "Regional risk signal may later transmit to index futures",
+        "Tail allowance of 6% is transmission risk, not observed structure"
+      ],
+      "news": [
+        {
+          "title": "Live updates: IRGC claims strikes on six ships; Israeli assessment says Tehran is seeking a coordinated regional assault",
+          "url": "https://www.jpost.com/middle-east/iran-news/2026-09-05/live-updates-907625",
+          "source": "The Jerusalem Post"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-06T08:00:00Z",
+      "timeBerlin": "2026-09-06T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 54,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Regional Sunday sessions are underway. Any disorderly move in Tel Aviv or Gulf energy names would be evidence, but it is not a Nasdaq-100 price path and cannot by itself establish the persistent no-retracement structure that Tail measures. Scores drift rather than step.",
+      "drivers": [
+        "Regional Sunday sessions underway as the only live equity input",
+        "A regional move is not a Nasdaq-100 price path",
+        "Scores drift rather than step"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T09:00:00Z",
+      "timeBerlin": "2026-09-06T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 54,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Mid-morning UTC inside the halt with regional cash trading as the only live equity input. Stress holds at 54% and Tail at 6%, both reflecting an unresolved but stationary sequence rather than any observed directional efficiency.",
+      "drivers": [
+        "Unresolved but stationary geopolitical sequence",
+        "No observed directional efficiency anywhere to score",
+        "Stress steady at 54% and Tail at 6%"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T10:00:00Z",
+      "timeBerlin": "2026-09-06T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 55,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Stress rises to 55% as the horizon shortens toward a single reopening auction that must absorb the whole weekend at once. Tail stays at 6% because the reopen is a scheduled checkpoint, not observed structure, and hypothetical alignment is not counted before it prints.",
+      "drivers": [
+        "Whole weekend must be absorbed by one reopening auction",
+        "Scheduled reopen is a checkpoint, not observed structure",
+        "Hypothetical post-reopen alignment is not counted before it prints"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T11:00:00Z",
+      "timeBerlin": "2026-09-06T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 7,
+      "stressRiskPct": 55,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Tel Aviv trade winds down in this hour and Gulf sessions approach their close, so the brief window of live regional equity evidence narrows again. Tail lifts to 7% purely as an accumulation term on unpriced information.",
+      "drivers": [
+        "Tel Aviv trade winds down and Gulf sessions approach the close",
+        "Window of live regional equity evidence narrows",
+        "Tail of 7% is an accumulation term on unpriced information"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T12:00:00Z",
+      "timeBerlin": "2026-09-06T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 7,
+      "stressRiskPct": 56,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Regional Sunday cash sessions have closed by the end of this hour, returning the horizon to a headline-only state until the CME reopen. The evidence set stops improving here, which is reflected in falling Confidence rather than in Tail.",
+      "drivers": [
+        "Regional Sunday cash sessions close during this hour",
+        "Horizon returns to a headline-only state until the reopen",
+        "Stalled evidence set is reflected in falling Confidence"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T13:00:00Z",
+      "timeBerlin": "2026-09-06T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 7,
+      "stressRiskPct": 56,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Quiet Sunday afternoon in Europe with no equity venue relevant to the Nasdaq-100 open. Scores are unchanged from the previous hour; the assessment continues to distinguish unavailable live evidence from genuine gap and headline risk.",
+      "drivers": [
+        "Quiet Sunday afternoon in Europe with no relevant equity venue",
+        "Unavailable live evidence is distinguished from gap risk",
+        "Scores unchanged from the previous hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T14:00:00Z",
+      "timeBerlin": "2026-09-06T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 57,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Stress reaches 57% as the count of hours of unpriced information keeps growing against a fixed reopening time. Tail moves to 8%, still deep in the low band, and the mapped policy state stays EA_ON because no structure has been observed.",
+      "drivers": [
+        "Hours of unpriced information keep growing against a fixed reopen",
+        "Tail of 8% remains deep in the low band",
+        "Mapped policy state stays EA_ON"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T15:00:00Z",
+      "timeBerlin": "2026-09-06T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 58,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "The US Sunday policy and interview cycle falls in this window and has repeatedly been a source of weekend headlines in this sequence, including on trade and on the naval campaign. That raises Stress rather than Tail, since a headline is not a price path.",
+      "drivers": [
+        "US Sunday policy and interview cycle falls in this window",
+        "Weekend headlines have repeatedly moved this sequence",
+        "A headline raises Stress, not Tail"
+      ],
+      "news": [
+        {
+          "title": "Trump threatens to stop trading with countries that have a trade deficit unless the Fed cuts rates",
+          "url": "https://finance.yahoo.com/markets/article/trump-threatens-to-stop-trading-with-countries-that-have-a-trade-deficit-unless-the-fed-cuts-rates-150838488.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-06T16:00:00Z",
+      "timeBerlin": "2026-09-06T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 59,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Six hours before the scheduled reopen. Tail is 9% as a graded pre-auction gap allowance and Stress is 59%, one point below the high band. Nothing in this hour can confirm continuation risk; the allowance is conditional by construction.",
+      "drivers": [
+        "Six hours before the scheduled 22:00 UTC reopen",
+        "Tail of 9% is a graded pre-auction gap allowance",
+        "Stress one point below the high band at 59%"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T17:00:00Z",
+      "timeBerlin": "2026-09-06T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 60,
+      "confidencePct": 77,
+      "dominantMode": "normal",
+      "analysis": "Stress reaches the top of the elevated band at 60%. The composition is unchanged: an unresolved two-sided Hormuz campaign, an oil complex up about 9% on the week, hawkish September rate pricing, and an unpriced trade-embargo threat, none tested against an equity quote since Friday.",
+      "drivers": [
+        "Unresolved two-sided Hormuz campaign",
+        "WTI near $91.5 after a weekly gain of about 9%",
+        "Hawkish September rate pricing after the 162K August payroll print",
+        "Trade-embargo threat still untested against an equity quote"
+      ],
+      "news": [
+        {
+          "title": "Crude Oil WTI price, chart and historical data",
+          "url": "https://tradingeconomics.com/commodity/crude-oil",
+          "source": "Trading Economics"
+        },
+        {
+          "title": "Strong August jobs report sends yields higher",
+          "url": "https://finance.yahoo.com/economy/articles/strong-august-jobs-report-sends-125410799.html",
+          "source": "Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-06T18:00:00Z",
+      "timeBerlin": "2026-09-06T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 62,
+      "confidencePct": 76,
+      "dominantMode": "normal",
+      "analysis": "Sunday evening in Europe, four hours from the reopen. Stress steps to 62% and Tail to 10%. Confidence continues to fall because every score in this part of the horizon rests on evidence that is now more than a day old.",
+      "drivers": [
+        "Four hours from the scheduled reopen",
+        "Stress steps to 62% and Tail to 10%",
+        "Confidence falls as evidence ages beyond a day"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T19:00:00Z",
+      "timeBerlin": "2026-09-06T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 63,
+      "confidencePct": 76,
+      "dominantMode": "normal",
+      "analysis": "Pre-auction positioning risk builds as the reopening time approaches, but no venue is yet quoting the index. Tail of 11% remains an allowance for a gap that has not printed, not a claim that directional structure exists.",
+      "drivers": [
+        "Pre-auction positioning risk builds with no venue quoting",
+        "Tail of 11% is an allowance for a gap that has not printed",
+        "No claim of observed directional structure"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T20:00:00Z",
+      "timeBerlin": "2026-09-06T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 65,
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "Stress enters the high band at 65% two hours before the scheduled reopen, reflecting the concentration of roughly two days of accumulated information into one auction. Tail is 12% and the mapped policy state is still EA_ON.",
+      "drivers": [
+        "Stress enters the high band at 65%",
+        "Roughly two days of information concentrated into one auction",
+        "Mapped policy state still EA_ON at 12% Tail"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-06T21:00:00Z",
+      "timeBerlin": "2026-09-06T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 68,
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "The last full hour of the CME weekend halt. Tail rises to 13% as the final pre-auction gap allowance while Stress reaches 68%. The first genuinely scoreable Nasdaq-100 structure of this horizon can only appear in the next slot.",
+      "drivers": [
+        "Final full hour of the CME weekend halt",
+        "Tail of 13% is the last pre-auction gap allowance",
+        "First scoreable structure can only appear in the next slot"
+      ],
+      "news": [
+        {
+          "title": "Nasdaq-100 (^NDX) quote and session range",
+          "url": "https://finance.yahoo.com/quote/%5ENDX/",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-06T22:00:00Z",
+      "timeBerlin": "2026-09-07T00:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 70,
+      "confidencePct": 74,
+      "dominantMode": "event/whipsaw",
+      "analysis": "CME equity-index futures are scheduled to reopen at 22:00 UTC, so this is the first published hour in which a Nasdaq-100 price path can exist. Tail is set to 20%, mapping to WATCH, for conditional gap-and-extension risk into a single auction thinned by the Labor Day holiday calendar.",
+      "drivers": [
+        "Scheduled CME equity-index futures reopen at 22:00 UTC",
+        "Tail of 20% maps to WATCH and opens the danger window",
+        "Labor Day holiday calendar implies thinner reopening liquidity",
+        "Conditional gap-and-extension allowance, not observed structure",
+        "Orderly two-way retracement would decay both scores quickly"
+      ],
+      "news": [
+        {
+          "title": "Iran live updates: US strikes 3 Iranian oil tankers in retaliation for targeting warships",
+          "url": "https://abcnews.com/International/live-updates/iran-live-updates-centcom-targeted-iranian-forces-posed/?id=136080582",
+          "source": "ABC News"
+        },
+        {
+          "title": "Strong August jobs report sends yields higher",
+          "url": "https://finance.yahoo.com/economy/articles/strong-august-jobs-report-sends-125410799.html",
+          "source": "Reuters"
+        },
+        {
+          "title": "Crude Oil WTI price, chart and historical data",
+          "url": "https://tradingeconomics.com/commodity/crude-oil",
+          "source": "Trading Economics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-06T23:00:00Z",
+      "timeBerlin": "2026-09-07T01:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 68,
+      "confidencePct": 74,
+      "dominantMode": "event/whipsaw",
+      "analysis": "First full hour after the scheduled reopen and the second half of the published danger window. Any opening gap will have printed by now; whether it is retraced or extended is the open question. The 20% allowance is held because continuation risk does not end with the auction.",
+      "drivers": [
+        "First full hour after the scheduled reopen",
+        "Retracement versus extension of any opening gap is the open question",
+        "Continuation risk does not end with the auction itself",
+        "Allowance held at 20%, closing the published danger window"
+      ],
+      "news": [
+        {
+          "title": "Iran threatens 'more severe attacks' against US Navy, claims to have targeted oil tankers in Hormuz",
+          "url": "https://www.timesofisrael.com/liveblog-september-05-2026/",
+          "source": "The Times of Israel"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-07T00:00:00Z",
+      "timeBerlin": "2026-09-07T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 66,
+      "confidencePct": 75,
+      "dominantMode": "mixed",
+      "analysis": "Second full hour of the holiday session, with Asian Monday trade underway and US cash equities closed for Labor Day. Tail is stepped down to 17% on the assumption of an orderly two-way auction; observed repeated extension after failed pullbacks would instead be the first genuine amplifier of this sequence.",
+      "drivers": [
+        "US cash equities closed for Labor Day on 7 September",
+        "Asian Monday trade provides the cross-check on the reopen",
+        "Tail stepped down to 17% assuming an orderly two-way auction",
+        "Repeated extension after failed pullbacks would be the first amplifier"
+      ],
+      "news": [
+        {
+          "title": "Live updates: IRGC claims strikes on six ships; Israeli assessment says Tehran is seeking a coordinated regional assault",
+          "url": "https://www.jpost.com/middle-east/iran-news/2026-09-05/live-updates-907625",
+          "source": "The Jerusalem Post"
+        },
+        {
+          "title": "Trump threatens to stop trading with countries that have a trade deficit unless the Fed cuts rates",
+          "url": "https://finance.yahoo.com/markets/article/trump-threatens-to-stop-trading-with-countries-that-have-a-trade-deficit-unless-the-fed-cuts-rates-150838488.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-09-06T01:00:00Z",
+      "timeBerlin": "2026-09-06T03:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 54,
+      "comment": "Venue closed since the Friday 21:00 UTC settle, so no Nasdaq-100 price path exists and Tail stays at the 5% closed-venue floor; Stress holds at 54% as another quiet hour is offset by fresh Iranian threat language and an unconfirmed Israeli coordination assessment."
+    },
+    {
+      "ts": "2026-09-06T02:00:00Z",
+      "timeBerlin": "2026-09-06T04:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 54,
+      "comment": "Deep overnight hour inside the halt: the 01:00 UTC evidence set is carried forward unchanged because nothing in this hour can be observed in price, and only a newly verified headline would move the scores."
+    },
+    {
+      "ts": "2026-09-06T03:00:00Z",
+      "timeBerlin": "2026-09-06T05:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 4,
+      "stressRiskPct": 53,
+      "comment": "Quietest part of the Sunday UTC night; Tail is trimmed to 4% and Stress to 53% purely as a decay on elapsed time without a verified kinetic follow-on, not as a reading of structure."
+    },
+    {
+      "ts": "2026-09-06T04:00:00Z",
+      "timeBerlin": "2026-09-06T06:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 4,
+      "stressRiskPct": 53,
+      "comment": "Second hour at the trimmed 4% floor with no equity venue quoting anywhere; the mapped policy state remains EA_ON and the assessment continues to be a headline-risk decay function."
+    },
+    {
+      "ts": "2026-09-06T05:00:00Z",
+      "timeBerlin": "2026-09-06T07:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 4,
+      "stressRiskPct": 52,
+      "comment": "Final dormant hour before the first Sunday cash sessions; Stress reaches its 52% horizon low after roughly fifteen hours without a verified follow-on step, while Tail is unchanged because no price path can test that decay."
+    },
+    {
+      "ts": "2026-09-06T06:00:00Z",
+      "timeBerlin": "2026-09-06T08:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 5,
+      "stressRiskPct": 52,
+      "comment": "Tel Aviv and Gulf Sunday sessions come into range, returning the possibility of observable reaction, so Tail lifts back to 5% while the Nasdaq-100 itself stays unquoted until the 22:00 UTC reopen."
+    }
+  ],
+  "events": [
+    {
+      "name": "NFIB Small Business Optimism Index (August)",
+      "ts": "2026-09-08T10:00:00Z",
+      "timeBerlin": "2026-09-08T12:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "10-Year Treasury Note Auction",
+      "ts": "2026-09-09T17:00:00Z",
+      "timeBerlin": "2026-09-09T19:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Producer Price Index and Core PPI (August)",
+      "ts": "2026-09-10T12:30:00Z",
+      "timeBerlin": "2026-09-10T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Initial Jobless Claims",
+      "ts": "2026-09-10T12:30:00Z",
+      "timeBerlin": "2026-09-10T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "30-Year Treasury Bond Auction",
+      "ts": "2026-09-10T17:00:00Z",
+      "timeBerlin": "2026-09-10T19:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Consumer Price Index and Core CPI (August)",
+      "ts": "2026-09-11T12:30:00Z",
+      "timeBerlin": "2026-09-11T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Michigan Consumer Sentiment, preliminary (September)",
+      "ts": "2026-09-11T14:00:00Z",
+      "timeBerlin": "2026-09-11T16:00:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
