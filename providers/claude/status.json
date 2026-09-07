@@ -3,23 +3,23 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-09-07T15:30:12Z",
+  "generatedAt": "2026-09-07T16:32:15Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "green",
-  "statusText": "Mapped policy state: EA_ON (green). Tail 7 sits well below the block threshold because the observed Labor Day price path is two-sided: NQ futures printed 29,682, retraced roughly 117 points back toward the session low and are near 29,565. Stress 61 remains elevated on crude at a six-week high, a 4.77% 10-year yield and the unresolved Strait of Hormuz escalation.",
-  "recommendation": "The deterministic Tail-to-action mapping yields EA_ON at Tail 7. A narrow evidence-based danger window is published for 22:00-00:00 UTC, covering the CME Globex equity-futures reopen after the five-hour Labor Day halt, when a thin order book would have to absorb the entire holiday information gap. A second, smaller conditional risk cluster is flagged around the 13:30 UTC US cash reopen on 8 September. Existing-position management and emergency protection are unaffected by this mapping.",
-  "headline": "Nasdaq-100 futures fade a holiday-session high as Hormuz escalation lifts crude to a six-week peak",
-  "body": "US cash equities, the Nasdaq and the SIFMA bond market are closed for Labor Day, and CME equity index futures trade a shortened session that halts at 17:00 UTC (12:00 CT) before reopening at 22:00 UTC. NQ futures are near 29,565, up about 0.14%, inside a narrow 29,530-29,682 range; the most informative observation of the session is that the move to 29,682 was fully retraced, a completed two-sided sequence rather than one-way extension. The Nasdaq-100 cash index closed Friday at 29,544.15, up 0.21%, roughly 4% below its 30,762 record. The dominant new information remains geopolitical: US forces struck three Iranian oil tankers over the weekend after Iranian ballistic-missile fire at US warships, and Tehran has declared a restricted maritime zone beyond the Strait of Hormuz. Brent is $97.85 and WTI $92.97, both up about 1.6% and at multi-week highs, with Iran reported to be negotiating a tanker route through the strait with Oman while the US naval blockade continues and the Strategic Petroleum Reserve sits below 290 million barrels, its lowest since 1982. Friday's payrolls printed 162,000 against roughly 53,000 expected with unemployment steady at 4.1%, lifting the 10-year to 4.77% and the 2-year to 4.34% and moving futures-implied odds of a September rate hike to about 60% ahead of the 15-16 September FOMC. Equity volatility is not yet pricing the energy shock, with VIX around 15. Latest-session breadth is rotational rather than directional: semiconductors were uniformly higher on Friday while several megacaps including Apple, Microsoft and Tesla fell, a two-sided tape that historically supports mean reversion. Tail therefore stays low in the absence of observed persistent one-way structure, failed retracements or index extension, while Stress stays elevated on the energy, rates and holiday-liquidity backdrop. The identified discontinuity mechanisms are the thin futures reopen at 22:00 UTC and Tuesday's 13:30 UTC US cash reopen, which must price two sessions of headlines at once; PPI on 10 September and CPI on 11 September are the week's scheduled catalysts, with crude at these levels feeding the inflation channel directly.",
-  "tailRiskPct": 7,
+  "statusText": "Mapped policy state: EA_ON (green). Tail 10% (low), Stress 64% (elevated), Confidence 79% (high).",
+  "recommendation": "Tail remains far below the block threshold because the observed Nasdaq-100 path is narrow and mean-reverting. Stress is elevated on live US-Iran escalation and a five-hour CME holiday halt. The only flagged window is the 22:00Z futures reopen, where Tail is mapped to WATCH for a single hour.",
+  "headline": "Rangebound Labor Day tape; risk concentrated at the 22:00Z futures reopen",
+  "body": "US cash equities are closed for Labor Day and CME equity-index futures halt at 17:00Z, resuming at 22:00Z. Into that halt NQ futures trade near 29,565 (+0.14%) inside a narrow 29,530-29,682 range, having faded about 117 points from the session high, so retracements are occurring and no one-way structure is present. VIX near 15.3 and a benign equity path contrast with a genuine energy and geopolitical impulse: Brent reached $97.93 and WTI about $92 after US strikes on three Iranian oil tankers, Iranian retaliation against vessels near the Strait of Hormuz, and a reported attack on Saudi Aramco's Jazan refinery. Hormuz tanker traffic is at its lowest rate since May. Asian equities were nonetheless firm on chipmaker strength, with the Nikkei up 2.12% and the Kospi up 4.61%. That cross-asset conflict raises Stress and lowers directional conviction without producing the persistent no-retracement path that defines Tail. The identified structural risk is mechanical: five hours of unpriced escalation headlines clearing into a thin Sunday-style order book at the 22:00Z reopen, which is why the danger window is narrow rather than session-wide. Treasury yields last printed 4.34% at 2 years and 4.77% at 10 years in the Sep 3 H.15 release; no update is published on the holiday. The week's macro risk sits Thursday and Friday with PPI, jobless claims and August CPI.",
+  "tailRiskPct": 10,
   "tailLevel": "low",
-  "stressRiskPct": 61,
+  "stressRiskPct": 64,
   "stressLevel": "elevated",
-  "dominantMode": "normal",
-  "confidencePct": 81,
+  "dominantMode": "mixed",
+  "confidencePct": 79,
   "confidenceLevel": "high",
   "action": "EA_ON",
   "dangerWindow": {
@@ -32,44 +32,33 @@
   },
   "sources": [
     {
-      "title": "NASDAQ-100 (^NDX) quote, close and day range",
+      "title": "Nasdaq-100 Index (^NDX) quote and day range - Yahoo Finance",
       "url": "https://finance.yahoo.com/quote/%5ENDX/"
     },
     {
-      "title": "Nasdaq 100 futures (NQ=F) quote and day range",
+      "title": "E-mini Nasdaq 100 futures (NQ=F) quote and day range - Yahoo Finance",
       "url": "https://finance.yahoo.com/quote/NQ%3DF/"
     },
     {
-      "title": "Federal Reserve H.15 Selected Interest Rates",
+      "title": "Federal Reserve H.15 Selected Interest Rates (2Y and 10Y Treasury yields)",
       "url": "https://www.federalreserve.gov/releases/h15/"
     },
     {
-      "title": "Brent crude oil price, chart and market commentary",
-      "url": "https://tradingeconomics.com/commodity/brent-crude-oil"
+      "title": "United States economic calendar - Trading Economics",
+      "url": "https://tradingeconomics.com/united-states/calendar"
     },
     {
-      "title": "US, Iran engaged in tanker war: Where is the months-long conflict headed?",
-      "url": "https://www.aljazeera.com/news/2026/9/6/us-iran-engaged-in-tanker-war-where-is-the-months-long-conflict-headed"
+      "title": "Oil Prices Hold Near Six-Week Highs on US-Iran Attacks - GV Wire",
+      "url": "https://gvwire.com/2026/09/07/oil-prices-hold-near-six-week-highs-on-us-iran-attacks/"
     },
     {
-      "title": "CME futures holiday schedule: Labor Day, September 7, 2026",
-      "url": "https://www.financecalendar.com/futures-market-holidays/"
+      "title": "Labor Day 2026 US stock market holiday trading schedule - Yahoo Finance",
+      "url": "https://finance.yahoo.com/personal-finance/investing/article/is-the-stock-market-open-on-labor-day-heres-the-holiday-trading-schedule-for-2026-210239142.html"
     }
   ],
-  "lookbackSummary": "Twenty-three of the last twenty-four hourly Claude assessments were published; the 21:00 UTC slot on 6 September has no published assessment and is marked unavailable. Across the available hours the mapped state held at EA_ON throughout, with Tail between 5 and 9, Stress between 54 and 62 and Confidence between 79 and 86. The dominant mode was normal for twenty-two of the twenty-three published hours, turning mixed only at 14:00 UTC on 7 September as rotational breadth and the approaching futures halt were recognised. The two Tail upticks, to 8 at the 6 September futures reopen and to 9 at 14:00 UTC, both coincided with liquidity transitions rather than with observed directional failure. The published series therefore shows a quiet, range-bound weekend and holiday session with no episode of persistent one-way structure or failed retracement.",
-  "outlookSummary": "The next twenty-four hours are shaped by market structure more than by scheduled data. Tail is expected to hold near current levels through the last full hour of the shortened futures session, then fall to the run's floor while CME equity index futures are halted between 17:00 and 22:00 UTC, because no price path can form in a closed book. It rises to the highest published level of the run, 16, at the 22:00 UTC Globex reopen, when a thin order book would have to absorb the full holiday information gap alongside Iran's declared Hormuz restricted zone. From there the conditional path normalises through Asian and European hours, with only second-tier US data scheduled, before a second, smaller step up into the 13:30 UTC US cash reopen on 8 September, the first full-liquidity session since Friday. Every one of the twenty-four hours maps to EA_ON: this is conditional gap and headline risk, not observed mean-reversion failure. Stress stays elevated throughout on crude near six-week highs, a hawkish rate backdrop after the 162,000 payrolls print and unusually low outright equity volatility. Confidence eases during the halt, when no live Nasdaq-100 price path is available, and recovers once continuous trading resumes.",
+  "lookbackSummary": "Twenty-three of the last twenty-four hourly Claude assessments are available; the 2026-09-06T21:00Z slot has no published assessment and is marked unavailable. The window was uniformly green with Tail between 5% and 9% and EA_ON throughout. Stress ran in a 54-62% band, drifting up late as crude extended and the Labor Day holiday thinned participation. Confidence sat at 79-86%. Dominant mode was normal for all but the 14:00Z slot, which was mixed as the energy-versus-equity divergence widened.",
+  "outlookSummary": "The next twenty-four hours are dominated by market structure rather than macro. Futures halt at 17:00Z and resume at 22:00Z, so five forecast hours carry no tradable price path and Tail sits near its floor. The single elevated slot is the 22:00Z reopen, where five hours of unpriced US-Iran escalation meet the thinnest liquidity of the window; Tail is mapped to WATCH there for one hour only. Path risk then decays through Asian and European hours as depth rebuilds, with a secondary rise into the 13:30Z US cash reopen, the first regular session after the three-day weekend. All post-halt structure is framed conditionally because none of it is observable at the assessment cutoff. The week's principal macro checkpoints, PPI and jobless claims on Thursday and August CPI on Friday, fall outside this window.",
   "lookback": [
-    {
-      "ts": "2026-09-06T15:00:00Z",
-      "timeBerlin": "2026-09-06T17:00:00+02:00",
-      "available": true,
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 5,
-      "stressRiskPct": 56,
-      "confidencePct": 85,
-      "dominantMode": "normal"
-    },
     {
       "ts": "2026-09-06T16:00:00Z",
       "timeBerlin": "2026-09-06T18:00:00+02:00",
@@ -322,58 +311,47 @@
       "stressRiskPct": 62,
       "confidencePct": 79,
       "dominantMode": "mixed"
-    }
-  ],
-  "forecast": [
+    },
     {
       "ts": "2026-09-07T15:00:00Z",
       "timeBerlin": "2026-09-07T17:00:00+02:00",
+      "available": true,
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 7,
       "stressRiskPct": 61,
       "confidencePct": 81,
-      "dominantMode": "normal",
-      "analysis": "Observed now: NQ futures near 29,565 after printing 29,682 and retracing about 117 points back toward the session low, a completed two-sided move inside a narrow Labor Day range. No persistent one-way structure, so Tail stays low while Stress reflects crude at a six-week high and a hawkish rate backdrop.",
-      "drivers": [
-        "NQ futures 29,565, day range 29,530-29,682, retracement from the high already observed",
-        "US cash equities and the SIFMA bond market closed for Labor Day",
-        "Brent $97.85 and WTI $92.97, both +1.6% on Hormuz escalation",
-        "10Y 4.77% and 2Y 4.34% per Friday H.15; no live cash rate discovery today"
-      ],
-      "news": [
-        {
-          "title": "Nasdaq Today: Is Nasdaq Open Or Closed On Labor Day, September 7, 2026?",
-          "url": "https://sundayguardianlive.com/business/nasdaq-today-is-nasdaq-open-or-closed-on-labor-day-september-7-2026-check-nasdaq-trading-hours-holiday-schedule-when-us-stock-market-reopens-279498/",
-          "source": "The Sunday Guardian"
-        },
-        {
-          "title": "Brent Crude Rises to 6-Week High",
-          "url": "https://www.tradingview.com/news/te_news:581663:0-brent-crude-rises-to-6-week-high/",
-          "source": "TradingView"
-        }
-      ]
-    },
+      "dominantMode": "normal"
+    }
+  ],
+  "forecast": [
     {
       "ts": "2026-09-07T16:00:00Z",
       "timeBerlin": "2026-09-07T18:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 8,
-      "stressRiskPct": 61,
-      "confidencePct": 80,
-      "dominantMode": "normal",
-      "analysis": "Final full hour before the CME equity-futures halt at 17:00 UTC. Liquidity conditionally thins into a holiday close, which can widen quotes without implying directional failure. Tail is nudged up only for that book-depth effect; no extension or failed retracement is assumed here.",
+      "tailRiskPct": 10,
+      "stressRiskPct": 64,
+      "confidencePct": 79,
+      "dominantMode": "mixed",
+      "analysis": "Observed now: NQ futures ~29,565, up 0.14%, inside a narrow 29,530-29,682 holiday range after fading roughly 117 points off the session high. Retracements are occurring and price sits below mid-range, so no one-way structure is present into the 17:00Z CME halt.",
       "drivers": [
-        "CME equity index futures halt at 17:00 UTC (12:00 CT) for Labor Day",
-        "Thinning holiday book can widen spreads into the close",
-        "No observed one-way NQ structure carried into this hour"
+        "NQ held a 152-point (~0.51%) range with a clean fade from the 29,682.50 high",
+        "US cash equities closed for Labor Day; futures liquidity unusually thin",
+        "CME equity-index futures move to pre-open at 17:00Z (12:00 CT)",
+        "Brent near $97 and WTI near $92 on US-Iran strikes; equities not transmitting it",
+        "VIX ~15.3 keeps the volatility backdrop benign"
       ],
       "news": [
         {
-          "title": "Next CME Futures Holidays 2026 and 2027: September 7, 2026",
-          "url": "https://www.financecalendar.com/futures-market-holidays/",
-          "source": "Finance Calendar"
+          "title": "Oil Prices Hold Near Six-Week Highs on US-Iran Attacks",
+          "url": "https://gvwire.com/2026/09/07/oil-prices-hold-near-six-week-highs-on-us-iran-attacks/",
+          "source": "GV Wire"
+        },
+        {
+          "title": "Is the stock market open on Labor Day? Here's the holiday trading schedule for 2026.",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/is-the-stock-market-open-on-labor-day-heres-the-holiday-trading-schedule-for-2026-210239142.html",
+          "source": "Yahoo Finance"
         }
       ]
     },
@@ -383,20 +361,20 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 58,
-      "confidencePct": 72,
+      "stressRiskPct": 55,
+      "confidencePct": 82,
       "dominantMode": "normal",
-      "analysis": "The equity-futures halt begins at 17:00 UTC. With no continuous NQ price path forming, a pathological no-retracement sequence cannot develop, so Tail falls sharply. Confidence eases because live price-path evidence is unavailable rather than because evidence conflicts.",
+      "analysis": "CME equity-index futures enter their Labor Day halt at 17:00Z and no order matching occurs for the rest of this hour. With no tradable price path, hour-specific path risk is minimal; the exposure that persists is headline accumulation carried toward the 22:00Z reopen rather than anything resolvable intraday.",
       "drivers": [
-        "Equity index futures halted; no NQ price path can form",
-        "Confidence eased on absence of live price-path evidence, not on conflict",
-        "Energy and geopolitical backdrop persists unpriced through the halt"
+        "Verified CME Labor Day halt from 17:00Z (12:00 CT) to 22:00Z (17:00 CT)",
+        "No order matching means no mean-reversion path risk this hour",
+        "Middle East headlines can accumulate unpriced during the halt"
       ],
       "news": [
         {
-          "title": "Next CME Futures Holidays 2026 and 2027: September 7, 2026",
-          "url": "https://www.financecalendar.com/futures-market-holidays/",
-          "source": "Finance Calendar"
+          "title": "Is the stock market open on Labor Day? Here's the holiday trading schedule for 2026.",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/is-the-stock-market-open-on-labor-day-heres-the-holiday-trading-schedule-for-2026-210239142.html",
+          "source": "Yahoo Finance"
         }
       ]
     },
@@ -406,22 +384,16 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 58,
-      "confidencePct": 70,
+      "stressRiskPct": 54,
+      "confidencePct": 82,
       "dominantMode": "normal",
-      "analysis": "Second halted hour. Risk is limited to information accumulating against a closed market: any Hormuz or Iran headline in this window would be stored rather than traded. Tail is near its floor for the run because no executable path exists.",
+      "analysis": "Second hour of the CME holiday halt. No Nasdaq-100 futures price discovery is available and US cash markets remain closed, so published scores describe a dormant tape rather than an observed structure. Cross-asset attention stays on crude, which held six-week highs before the halt began.",
       "drivers": [
-        "Market closed; headline flow accumulates rather than repricing",
-        "Iran restricted-zone announcement remains a pending unpriced catalyst",
-        "Tail floor reflects absence of an executable price path"
+        "Futures halt continues; no Nasdaq-100 price discovery available",
+        "US cash equity market closed all session for Labor Day",
+        "Crude strength is the live cross-asset variable while equities are dark"
       ],
-      "news": [
-        {
-          "title": "US, Iran engaged in tanker war: Where is the months-long conflict headed?",
-          "url": "https://www.aljazeera.com/news/2026/9/6/us-iran-engaged-in-tanker-war-where-is-the-months-long-conflict-headed",
-          "source": "Al Jazeera"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-07T19:00:00Z",
@@ -429,20 +401,20 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 58,
-      "confidencePct": 69,
+      "stressRiskPct": 54,
+      "confidencePct": 81,
       "dominantMode": "normal",
-      "analysis": "Third halted hour, mid-afternoon US time. The assessment is structural rather than observational: with no quotes, the only change is the size of the information gap that the reopen would have to absorb. Stress holds on the unchanged crude and rates backdrop.",
+      "analysis": "Third halt hour. Absent trading, path risk stays near its floor. Stress remains elevated because the unresolved US-Iran tanker escalation and the Saudi Aramco Jazan refinery damage assessment continue to develop while Nasdaq-100 exposure cannot be repriced.",
       "drivers": [
-        "No live quotes; assessment is structural, not observational",
-        "Information gap into the 22:00 UTC reopen conditionally widens with time",
-        "Crude near six-week highs remains the dominant unpriced input"
+        "No tradable session; scores reflect a dormant rather than a calm tape",
+        "Jazan refinery damage assessment is an unresolved headline thread",
+        "Strait of Hormuz tanker traffic reported at its lowest rate since May"
       ],
       "news": [
         {
-          "title": "Latest Oil Market News and Analysis for September 7",
-          "url": "https://www.bloomberg.com/news/articles/2026-09-06/latest-oil-market-news-and-analysis-for-september-7",
-          "source": "Bloomberg"
+          "title": "Oil Prices Hold Near Six-Week Highs on US-Iran Attacks",
+          "url": "https://gvwire.com/2026/09/07/oil-prices-hold-near-six-week-highs-on-us-iran-attacks/",
+          "source": "GV Wire"
         }
       ]
     },
@@ -452,27 +424,16 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 59,
-      "confidencePct": 69,
+      "stressRiskPct": 55,
+      "confidencePct": 81,
       "dominantMode": "normal",
-      "analysis": "Fourth halted hour. Stress edges up as the accumulated holiday news window lengthens ahead of the reopen, while Tail stays at its floor because no mean-reversion failure can occur in a closed book.",
+      "analysis": "Fourth halt hour, with the reopen two hours out. Conditions are unchanged and unobservable. If material Middle East or energy headlines land in this window they would be absorbed only at 22:00Z, which is why the flagged risk is concentrated at the reopen rather than spread across the halt.",
       "drivers": [
-        "Accumulated holiday headline window lengthens ahead of reopen",
-        "Tail stays at floor: no trading, so no mean-reversion failure possible",
-        "Stress carries crude, Hormuz and hawkish-rate context forward"
+        "Halt continues; any new headline is deferred to the 22:00Z reopen",
+        "Gap risk accumulates rather than dissipating while the tape is closed",
+        "Energy complex is the most likely source of an overnight repricing impulse"
       ],
-      "news": [
-        {
-          "title": "US, Iran engaged in tanker war: Where is the months-long conflict headed?",
-          "url": "https://www.aljazeera.com/news/2026/9/6/us-iran-engaged-in-tanker-war-where-is-the-months-long-conflict-headed",
-          "source": "Al Jazeera"
-        },
-        {
-          "title": "Brent Crude Rises to 6-Week High",
-          "url": "https://www.tradingview.com/news/te_news:581663:0-brent-crude-rises-to-6-week-high/",
-          "source": "TradingView"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-07T21:00:00Z",
@@ -480,49 +441,50 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 4,
-      "stressRiskPct": 60,
-      "confidencePct": 70,
+      "stressRiskPct": 57,
+      "confidencePct": 80,
       "dominantMode": "normal",
-      "analysis": "Final halted hour before the Globex reopen. Tail begins to lift from the floor purely as a pre-reopen adjustment; nothing about the coming session's structure has been observed and no direction is implied.",
+      "analysis": "Final halt hour before Globex resumes. Stress ticks up to reflect five hours of unpriced news flow meeting a thin Sunday-style opening book. No price structure has been observed since 17:00Z, so any characterisation of the reopen remains conditional.",
       "drivers": [
-        "Last halted hour before the 22:00 UTC Globex equity-futures reopen",
-        "Pre-reopen Tail lift is structural, not a directional expectation",
-        "Reopen would price roughly five hours of accumulated headlines"
+        "Last hour before the 22:00Z (17:00 CT) Globex resumption",
+        "Five hours of unpriced headline flow meets a thin opening book",
+        "Pre-open indications are not a substitute for observed structure"
       ],
       "news": [
         {
-          "title": "Next CME Futures Holidays 2026 and 2027: September 7, 2026",
-          "url": "https://www.financecalendar.com/futures-market-holidays/",
-          "source": "Finance Calendar"
+          "title": "Is the stock market open on Labor Day? Here's the holiday trading schedule for 2026.",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/is-the-stock-market-open-on-labor-day-heres-the-holiday-trading-schedule-for-2026-210239142.html",
+          "source": "Yahoo Finance"
         }
       ]
     },
     {
       "ts": "2026-09-07T22:00:00Z",
       "timeBerlin": "2026-09-08T00:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 16,
-      "stressRiskPct": 66,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 70,
       "confidencePct": 72,
       "dominantMode": "event/whipsaw",
-      "analysis": "Published danger window opens. At the 22:00 UTC Globex reopen a thin book would have to absorb the full Labor Day information gap, including any Iran Hormuz restricted-zone development. This is conditional gap and liquidity risk; Tail stays below the block threshold because no one-way structure has been observed.",
+      "analysis": "Conditional checkpoint, not an observation: futures resume continuous trading at 22:00Z into thin holiday-transition liquidity after a five-hour halt, with an active US-Iran escalation unpriced since 17:00Z. That combination is the run's clearest gap-and-extension mechanism, so Tail is lifted into the watch band for this hour only.",
       "drivers": [
-        "CME equity futures reopen 22:00 UTC after a five-hour Labor Day halt",
-        "Thin reopen book would absorb the whole holiday information gap",
-        "Iran's pending Hormuz restricted zone is the main unpriced headline risk",
-        "Highest Tail of the run, still mapped to EA_ON below the block threshold"
+        "Globex resumes at 22:00Z after a five-hour Labor Day halt",
+        "Thinnest liquidity of the 24-hour window coincides with the reopen",
+        "Unpriced US-Iran tanker and Jazan refinery headlines may clear at once",
+        "A wide opening gap that fails to retrace would be the invalidating path",
+        "Mapped policy state for this hour only: WATCH"
       ],
       "news": [
         {
-          "title": "US, Iran engaged in tanker war: Where is the months-long conflict headed?",
-          "url": "https://www.aljazeera.com/news/2026/9/6/us-iran-engaged-in-tanker-war-where-is-the-months-long-conflict-headed",
-          "source": "Al Jazeera"
+          "title": "Oil Prices Hold Near Six-Week Highs on US-Iran Attacks",
+          "url": "https://gvwire.com/2026/09/07/oil-prices-hold-near-six-week-highs-on-us-iran-attacks/",
+          "source": "GV Wire"
         },
         {
-          "title": "Latest Oil Market News and Analysis for September 7",
-          "url": "https://www.bloomberg.com/news/articles/2026-09-06/latest-oil-market-news-and-analysis-for-september-7",
-          "source": "Bloomberg"
+          "title": "European stocks close mixed and Asia-Pacific markets rise as investors assess renewed Middle East hostilities",
+          "url": "https://www.cnbc.com/2026/09/07/stock-market-today-live-updates.html",
+          "source": "CNBC"
         }
       ]
     },
@@ -531,38 +493,44 @@
       "timeBerlin": "2026-09-08T01:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 13,
-      "stressRiskPct": 64,
-      "confidencePct": 74,
+      "tailRiskPct": 17,
+      "stressRiskPct": 66,
+      "confidencePct": 72,
       "dominantMode": "event/whipsaw",
-      "analysis": "Second hour of the danger window. If the reopen gap is absorbed with normal two-sided trade, conditional Tail decays from here; a sequence of failed retracements would instead be the invalidation to watch. Neither path is observed yet.",
+      "analysis": "Conditional: the first full hour after the reopen typically absorbs the opening imbalance as depth rebuilds. If an initial gap retraces and two-sided trade returns, path risk should fall back quickly; persistent extension without pullbacks would be the signal that the reopen impulse is still running.",
       "drivers": [
-        "Checkpoint: whether the reopen gap is absorbed with two-sided trade",
-        "Invalidation: repeated extension after failed retracements post-reopen",
-        "Depth typically improves through the first hour after a holiday reopen"
+        "Opening imbalance normally clears within the first full hour",
+        "Watch whether any reopen gap retraces or extends without pullbacks",
+        "Order-book depth rebuilding is the key normalisation checkpoint"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "European stocks close mixed and Asia-Pacific markets rise as investors assess renewed Middle East hostilities",
+          "url": "https://www.cnbc.com/2026/09/07/stock-market-today-live-updates.html",
+          "source": "CNBC"
+        }
+      ]
     },
     {
       "ts": "2026-09-08T00:00:00Z",
       "timeBerlin": "2026-09-08T02:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 10,
+      "tailRiskPct": 13,
       "stressRiskPct": 62,
-      "confidencePct": 76,
+      "confidencePct": 73,
       "dominantMode": "mixed",
-      "analysis": "Asian cash sessions come in and take over price discovery. Conditional risk normalises as a second liquidity pool joins, though the crude complex and any overnight Hormuz headline remain the live transmission channel into index futures.",
+      "analysis": "Conditional: by the Tuesday UTC date change the reopen impulse has usually been absorbed and Asian participants take over. Prior sessions showed a strong regional tech bid, with the Nikkei up 2.12% and the Kospi up 4.61% on Monday, which argues against a one-way downside path if escalation headlines stay contained.",
       "drivers": [
-        "Asian cash open adds a second liquidity pool to overnight futures",
-        "Crude remains the main transmission channel into index futures",
-        "Conditional normalisation assumes an orderly reopen in the prior hours"
+        "Asian participation takes over as the reopen impulse fades",
+        "Monday saw Nikkei +2.12% and Kospi +4.61% on a broad chipmaker bid",
+        "Regional tech strength conflicts with the energy-driven risk overhang"
       ],
       "news": [
         {
-          "title": "Brent Crude Rises to 6-Week High",
-          "url": "https://www.tradingview.com/news/te_news:581663:0-brent-crude-rises-to-6-week-high/",
-          "source": "TradingView"
+          "title": "European stocks close mixed and Asia-Pacific markets rise as investors assess renewed Middle East hostilities",
+          "url": "https://www.cnbc.com/2026/09/07/stock-market-today-live-updates.html",
+          "source": "CNBC"
         }
       ]
     },
@@ -571,32 +539,38 @@
       "timeBerlin": "2026-09-08T03:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 8,
+      "tailRiskPct": 11,
       "stressRiskPct": 60,
-      "confidencePct": 78,
-      "dominantMode": "normal",
-      "analysis": "Asian morning. In the absence of a scheduled US catalyst this window historically supports two-sided trade, so conditional Tail returns toward the run's baseline. Stress stays elevated on the unchanged energy and rates backdrop.",
+      "confidencePct": 74,
+      "dominantMode": "mixed",
+      "analysis": "Conditional: early Asian hours generally restore a two-sided, range-respecting tape that suits mean reversion. The unresolved variable is whether crude holds near six-week highs, since a further leg there is the most credible route to renewed cross-asset pressure on index futures.",
       "drivers": [
-        "No scheduled US macro release in this window",
-        "Conditional return toward the run's low Tail baseline",
-        "Stress anchored by crude near six-week highs and 10Y at 4.77%"
+        "Early Asian hours typically restore two-sided, range-bound trade",
+        "Crude holding near six-week highs is the main cross-asset checkpoint",
+        "Semiconductor leadership remains the offsetting bullish input"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Oil prices jump as US, Iranian attacks stoke fears of escalation",
+          "url": "https://www.aljazeera.com/economy/2026/9/1/oil-prices-climb-as-us-iranian-attacks-stoke-fears-of-escalation",
+          "source": "Al Jazeera"
+        }
+      ]
     },
     {
       "ts": "2026-09-08T02:00:00Z",
       "timeBerlin": "2026-09-08T04:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
+      "tailRiskPct": 10,
       "stressRiskPct": 59,
-      "confidencePct": 79,
+      "confidencePct": 74,
       "dominantMode": "normal",
-      "analysis": "Asian mid-session. Conditional path assumes continuing range behaviour with intact retracements; the checkpoint is whether Asian equity markets treat higher crude as an inflation problem or absorb it as they did on Friday.",
+      "analysis": "Conditional: mid-Asian trade is normally the quietest stretch of the 24-hour window, with contained ranges and reliable retracements. Scores step down accordingly, on the assumption that no fresh geopolitical discontinuity arrives during the session.",
       "drivers": [
-        "Checkpoint: Asian equity reaction function to higher crude",
-        "Assumes intact retracements and range behaviour, not observed yet",
-        "Two-sided megacap and semiconductor tone from Friday persists as context"
+        "Mid-Asian hours are historically the lowest-range stretch",
+        "Assumes no fresh geopolitical discontinuity overnight",
+        "Contained ranges with reliable retracements are the base case"
       ],
       "news": []
     },
@@ -605,15 +579,15 @@
       "timeBerlin": "2026-09-08T05:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
+      "tailRiskPct": 9,
       "stressRiskPct": 58,
-      "confidencePct": 79,
+      "confidencePct": 74,
       "dominantMode": "normal",
-      "analysis": "Late Asian hours, typically the thinnest liquidity of the overnight cycle. Thin depth can exaggerate individual prints without creating persistent one-way structure, which is why conditional Stress eases while Tail is unchanged.",
+      "analysis": "Conditional: continued quiet Asian trade. With the halt and reopen behind it, the tape's dominant feature should revert to the narrow, mean-reverting behaviour observed through Monday's holiday session rather than any directional regime.",
       "drivers": [
-        "Thinnest overnight liquidity window of the cycle",
-        "Thin depth exaggerates prints without implying persistent structure",
-        "No scheduled catalyst; conditional Stress eases slightly"
+        "Post-reopen normalisation assumed complete by this hour",
+        "Monday's observed range behaviour is the reference for the base case",
+        "No scheduled US macro release in this window"
       ],
       "news": []
     },
@@ -622,72 +596,78 @@
       "timeBerlin": "2026-09-08T06:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 58,
-      "confidencePct": 79,
+      "tailRiskPct": 9,
+      "stressRiskPct": 57,
+      "confidencePct": 74,
       "dominantMode": "normal",
-      "analysis": "Asian close into the European pre-market handover. Conditional risk is unchanged; the relevant checkpoint is whether the Asian session hands over a settled range or an unresolved directional imbalance for Europe to price.",
+      "analysis": "Conditional: late Asian hours ahead of the European handover. Path risk stays low in the base case; the standing caveat is that Middle East news flow has repeatedly arrived outside US hours during this escalation and could reset the range without warning.",
       "drivers": [
-        "Asia-to-Europe handover checkpoint: settled range versus imbalance",
-        "No scheduled US macro release in this window",
-        "Conditional risk unchanged from the prior hour"
+        "Late Asian hours into the European handover",
+        "Escalation headlines have repeatedly landed outside US hours",
+        "Base case is continued range behaviour, not directional extension"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Oil prices jump as US, Iranian attacks stoke fears of escalation",
+          "url": "https://www.aljazeera.com/economy/2026/9/1/oil-prices-climb-as-us-iranian-attacks-stoke-fears-of-escalation",
+          "source": "Al Jazeera"
+        }
+      ]
     },
     {
       "ts": "2026-09-08T05:00:00Z",
       "timeBerlin": "2026-09-08T07:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
-      "stressRiskPct": 58,
-      "confidencePct": 79,
+      "tailRiskPct": 9,
+      "stressRiskPct": 57,
+      "confidencePct": 73,
       "dominantMode": "normal",
-      "analysis": "European pre-market. Attention conditionally shifts to how European energy-sensitive sectors mark the higher crude complex, which is the most direct channel from the Hormuz situation into Nasdaq-100 futures during these hours.",
+      "analysis": "Conditional: the Asia-to-Europe transition typically brings a modest pickup in volume without a change of regime. Absent a new catalyst the mean-reverting base case is retained, with crude and Treasury yields as the inputs most likely to alter it.",
       "drivers": [
-        "European pre-market marks the higher crude complex",
-        "Energy channel is the main Hormuz-to-index transmission in these hours",
-        "Baseline low Tail maintained absent observed one-way structure"
+        "Asia-to-Europe transition lifts volume without changing regime",
+        "Crude and Treasury yields are the inputs most likely to shift the tape",
+        "10-year yield last printed 4.77% on the Sep 3 H.15 release"
       ],
-      "news": [
-        {
-          "title": "US, Iran engaged in tanker war: Where is the months-long conflict headed?",
-          "url": "https://www.aljazeera.com/news/2026/9/6/us-iran-engaged-in-tanker-war-where-is-the-months-long-conflict-headed",
-          "source": "Al Jazeera"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-08T06:00:00Z",
       "timeBerlin": "2026-09-08T08:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 8,
-      "stressRiskPct": 59,
-      "confidencePct": 79,
+      "tailRiskPct": 10,
+      "stressRiskPct": 58,
+      "confidencePct": 73,
       "dominantMode": "normal",
-      "analysis": "Hour before the European cash open. Conditional Tail lifts marginally for the usual pre-open order build; this is a liquidity-event checkpoint, not an expectation that a directional path has formed.",
+      "analysis": "Conditional: European cash markets open in this window. Monday's regional trade was mixed, with London muted as rising oil and firmer rate expectations weighed while energy names gained. A similar split would keep index futures range-bound rather than directional.",
       "drivers": [
-        "Pre-open order build ahead of the European cash open",
-        "Marginal Tail lift is a liquidity checkpoint, not a directional call",
-        "Overnight Hormuz headline flow would be repriced here if it occurred"
+        "European cash equities open during this hour",
+        "Monday's European tape was mixed with energy outperforming",
+        "Rising oil feeding rate expectations is the main European crosscurrent"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "European stocks close mixed and Asia-Pacific markets rise as investors assess renewed Middle East hostilities",
+          "url": "https://www.cnbc.com/2026/09/07/stock-market-today-live-updates.html",
+          "source": "CNBC"
+        }
+      ]
     },
     {
       "ts": "2026-09-08T07:00:00Z",
       "timeBerlin": "2026-09-08T09:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 9,
-      "stressRiskPct": 60,
-      "confidencePct": 79,
-      "dominantMode": "normal",
-      "analysis": "European cash open. The first sizeable non-US liquidity event of the forecast window would price the accumulated holiday news alongside overnight futures. Conditional Tail lifts modestly and stays far below the block threshold.",
+      "tailRiskPct": 11,
+      "stressRiskPct": 59,
+      "confidencePct": 73,
+      "dominantMode": "mixed",
+      "analysis": "Conditional: the first full European hour usually sets the day's early range. Energy-led strength alongside soft rate-sensitive sectors would reproduce the cross-asset conflict already observed on Monday, which historically raises uncertainty more than it produces a no-retracement path.",
       "drivers": [
-        "European cash equity markets open at 07:00 UTC (09:00 Berlin)",
-        "First sizeable non-US liquidity event of the forecast window",
-        "Conditional Tail lift stays well below the block threshold"
+        "First full European hour typically defines the early range",
+        "Energy-versus-rate-sensitive split reproduces Monday's conflict",
+        "Cross-asset conflict raises uncertainty more than trend persistence"
       ],
       "news": []
     },
@@ -696,15 +676,15 @@
       "timeBerlin": "2026-09-08T10:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 8,
-      "stressRiskPct": 60,
-      "confidencePct": 79,
-      "dominantMode": "normal",
-      "analysis": "European morning. Conditional path assumes the open is absorbed without persistent extension; the invalidation would be NQ futures holding near a session extreme with pullbacks failing repeatedly, none of which is observed.",
+      "tailRiskPct": 10,
+      "stressRiskPct": 58,
+      "confidencePct": 72,
+      "dominantMode": "mixed",
+      "analysis": "Conditional: mid-European trade. Nasdaq-100 futures typically track the semiconductor complex most closely here, and the sector has been the strongest global input, with chipmakers driving Monday's Asian gains and leading the prior US session.",
       "drivers": [
-        "Invalidation: NQ holding near a session extreme with failed pullbacks",
-        "Assumes European open absorbed without persistent extension",
-        "Crude and Bund-driven yield moves are the cross-asset checkpoints"
+        "Nasdaq-100 futures track the semiconductor complex most closely here",
+        "Chipmakers led both the prior US session and Monday's Asian gains",
+        "Sector leadership is constructive, arguing against a downside trend path"
       ],
       "news": []
     },
@@ -713,15 +693,15 @@
       "timeBerlin": "2026-09-08T11:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 8,
-      "stressRiskPct": 59,
-      "confidencePct": 78,
+      "tailRiskPct": 10,
+      "stressRiskPct": 58,
+      "confidencePct": 72,
       "dominantMode": "normal",
-      "analysis": "European mid-morning lull. Conditional risk drifts back toward baseline ahead of the US session. Confidence eases slightly with forecast distance rather than because of any conflicting evidence.",
+      "analysis": "Conditional: late-morning European hours are normally low-catalyst, with the tape consolidating the overnight range. No scheduled US release falls in this window, so the base case is continued two-sided trade.",
       "drivers": [
-        "Mid-morning lull ahead of the US session",
-        "Confidence eases with forecast distance, not with evidence conflict",
-        "Conditional drift back toward the run's low Tail baseline"
+        "Low-catalyst late-morning European stretch",
+        "No scheduled US macro release in this window",
+        "Base case is consolidation of the overnight range"
       ],
       "news": []
     },
@@ -730,15 +710,15 @@
       "timeBerlin": "2026-09-08T12:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 8,
-      "stressRiskPct": 59,
-      "confidencePct": 78,
+      "tailRiskPct": 10,
+      "stressRiskPct": 58,
+      "confidencePct": 72,
       "dominantMode": "normal",
-      "analysis": "NFIB Small Business Optimism for August is scheduled at 10:00 UTC. It is a second-tier release that rarely drives index-level structure on its own; treated as a checkpoint, it informs Stress rather than Tail.",
+      "analysis": "Conditional: the NFIB Small Business Optimism index for August is scheduled at 10:00Z. It is a second-tier release that rarely moves index futures on its own and is treated as a calendar checkpoint rather than a source of path risk.",
       "drivers": [
-        "Scheduled checkpoint: NFIB Small Business Optimism (Aug) at 10:00 UTC",
-        "Second-tier release; informs Stress and Confidence rather than Tail",
-        "No index-level one-way structure assumed from this release"
+        "Scheduled checkpoint: NFIB Small Business Optimism (Aug) at 10:00Z",
+        "Second-tier release with limited index-futures impact historically",
+        "Treated as a calendar marker, not an assumed volatility event"
       ],
       "news": []
     },
@@ -747,67 +727,62 @@
       "timeBerlin": "2026-09-08T13:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 9,
-      "stressRiskPct": 60,
-      "confidencePct": 78,
+      "tailRiskPct": 10,
+      "stressRiskPct": 58,
+      "confidencePct": 71,
       "dominantMode": "normal",
-      "analysis": "Late European morning into the US pre-market build. Conditional Tail edges up as positioning ahead of the first full-liquidity US session since Friday begins, with the two-day headline backlog still to be priced.",
+      "analysis": "Conditional: the European afternoon typically quiets ahead of the US handover. Positioning into the first regular US cash session after the three-day weekend begins to dominate, though nothing is observable at this range.",
       "drivers": [
-        "US pre-market positioning begins ahead of the cash reopen",
-        "Two sessions of headlines still to be priced by US cash liquidity",
-        "Conditional Tail edges up on positioning, not on observed structure"
+        "European afternoon quiets ahead of the US handover",
+        "Positioning builds into the first post-holiday US cash session",
+        "Nothing observable at this forecast distance; framing is conditional"
       ],
-      "news": [
-        {
-          "title": "Jobs report August 2026",
-          "url": "https://www.cnbc.com/2026/09/04/jobs-report-august-2026.html",
-          "source": "CNBC"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-08T12:00:00Z",
       "timeBerlin": "2026-09-08T14:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 11,
-      "stressRiskPct": 62,
-      "confidencePct": 78,
+      "tailRiskPct": 12,
+      "stressRiskPct": 61,
+      "confidencePct": 71,
       "dominantMode": "mixed",
-      "analysis": "Hour before the US cash reopen. Conditional risk builds as US participants set up for the 13:30 UTC open; opening-auction imbalances and the pending PPI and CPI prints later in the week are the identified checkpoints.",
+      "analysis": "Conditional: the pre-cash-open hour. Volume and volatility usually build ahead of the 13:30Z US equity reopen, and after a three-day weekend the opening auction has to absorb accumulated weekend and holiday news flow, which modestly widens the plausible range.",
       "drivers": [
-        "Final hour before the 13:30 UTC US cash equity reopen",
-        "Opening-auction imbalance is the identified structural checkpoint",
-        "PPI on 10 September and CPI on 11 September frame the week ahead"
+        "Pre-open hour ahead of the 13:30Z US cash reopen",
+        "First US cash session after a three-day weekend",
+        "Accumulated holiday news flow must clear through the opening auction"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Is the stock market open on Labor Day? Here's the holiday trading schedule for 2026.",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/is-the-stock-market-open-on-labor-day-heres-the-holiday-trading-schedule-for-2026-210239142.html",
+          "source": "Yahoo Finance"
+        }
+      ]
     },
     {
       "ts": "2026-09-08T13:00:00Z",
       "timeBerlin": "2026-09-08T15:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 15,
+      "tailRiskPct": 16,
       "stressRiskPct": 66,
-      "confidencePct": 78,
+      "confidencePct": 70,
       "dominantMode": "event/whipsaw",
-      "analysis": "Second published risk cluster. The 13:30 UTC US cash reopen is the first full-liquidity session since Friday and must price two sessions of Hormuz and energy headlines at once. Conditional opening-auction continuation is the mechanism; it has not been observed.",
+      "analysis": "Conditional: US cash equities reopen at 13:30Z. Post-holiday opening auctions carry above-average gap and reversal risk, so Tail is lifted for this hour. It stays a checkpoint rather than an assumed block, because opening structure counts as path evidence only once it has actually been observed.",
       "drivers": [
-        "US cash equities reopen 13:30 UTC after the Labor Day holiday",
-        "First full-liquidity session since Friday prices a two-session backlog",
-        "Invalidation: opening-auction continuation with shallow pullbacks",
-        "Conditional Tail remains below the block threshold"
+        "US cash equities reopen at 13:30Z after the Labor Day closure",
+        "Post-holiday opening auctions carry above-average gap risk",
+        "Opening continuation is a checkpoint, not an assumed outcome",
+        "Shallow pullbacks after the open would be the escalating signal"
       ],
       "news": [
         {
-          "title": "Nasdaq Today: Is Nasdaq Open Or Closed On Labor Day, September 7, 2026?",
-          "url": "https://sundayguardianlive.com/business/nasdaq-today-is-nasdaq-open-or-closed-on-labor-day-september-7-2026-check-nasdaq-trading-hours-holiday-schedule-when-us-stock-market-reopens-279498/",
-          "source": "The Sunday Guardian"
-        },
-        {
-          "title": "US, Iran engaged in tanker war: Where is the months-long conflict headed?",
-          "url": "https://www.aljazeera.com/news/2026/9/6/us-iran-engaged-in-tanker-war-where-is-the-months-long-conflict-headed",
-          "source": "Al Jazeera"
+          "title": "Is the stock market open on Labor Day? Here's the holiday trading schedule for 2026.",
+          "url": "https://finance.yahoo.com/personal-finance/investing/article/is-the-stock-market-open-on-labor-day-heres-the-holiday-trading-schedule-for-2026-210239142.html",
+          "source": "Yahoo Finance"
         }
       ]
     },
@@ -816,70 +791,94 @@
       "timeBerlin": "2026-09-08T16:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 13,
-      "stressRiskPct": 65,
-      "confidencePct": 78,
+      "tailRiskPct": 14,
+      "stressRiskPct": 64,
+      "confidencePct": 70,
       "dominantMode": "event/whipsaw",
-      "analysis": "First full hour after the US cash reopen. If the opening range resolves with genuine retracements, conditional Tail decays quickly from here; persistent extension after failed pullbacks would be the evidence that changes the assessment.",
+      "analysis": "Conditional: the first full US cash hour, when opening imbalances usually resolve and the day's initial range is established. Whether early direction persists or mean-reverts is the decisive input for path risk, and none of it is observable from here.",
       "drivers": [
-        "Checkpoint: whether the opening range resolves with real retracements",
-        "Invalidation: persistent extension after failed pullbacks",
-        "Conditional decay assumes orderly post-open price discovery"
+        "First full US cash hour; opening imbalance normally resolves",
+        "Establishment of the initial balance is the decisive structural read",
+        "Persistence versus reversion of early direction is unobservable now"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-08T15:00:00Z",
+      "timeBerlin": "2026-09-08T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 62,
+      "confidencePct": 70,
+      "dominantMode": "mixed",
+      "analysis": "Conditional: the US mid-morning normally sees the opening range mature into two-sided trade. Attention then shifts toward Thursday's PPI and jobless claims and Friday's August CPI, both scheduled at 12:30Z, which are the week's principal macro checkpoints.",
+      "drivers": [
+        "US mid-morning typically matures into two-sided trade",
+        "Scheduled checkpoint: PPI and jobless claims Thursday at 12:30Z",
+        "Scheduled checkpoint: August CPI Friday at 12:30Z",
+        "Week's macro risk is concentrated Thursday and Friday, not Tuesday"
       ],
       "news": []
     }
   ],
   "forecastDetail": [
     {
-      "ts": "2026-09-07T15:00:00Z",
-      "timeBerlin": "2026-09-07T17:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 7,
-      "stressRiskPct": 61,
-      "comment": "Observed structure: NQ futures faded roughly 117 points from the 29,682 session high back toward the low, a completed two-sided move in a narrow Labor Day range. Mapped policy state: EA_ON. Stress elevated on crude at a six-week high and a hawkish rate backdrop."
-    },
-    {
       "ts": "2026-09-07T16:00:00Z",
       "timeBerlin": "2026-09-07T18:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 8,
-      "stressRiskPct": 61,
-      "comment": "Final full hour before the 17:00 UTC CME equity-futures halt. Liquidity conditionally thins into the holiday close; the marginal Tail lift reflects book depth only, with no directional path assumed."
+      "tailRiskPct": 10,
+      "stressRiskPct": 64,
+      "comment": "Observed narrow 29,530-29,682 holiday range with a clean fade off the high; no one-way structure into the 17:00Z CME halt."
     },
     {
       "ts": "2026-09-07T17:00:00Z",
       "timeBerlin": "2026-09-07T19:00:00+02:00",
       "status": "green",
       "tailRiskPct": 4,
-      "stressRiskPct": 58,
-      "comment": "Equity index futures halt at 17:00 UTC. With no continuous NQ price path forming, Tail drops sharply and Confidence eases because live price-path evidence is unavailable, not because evidence conflicts."
+      "stressRiskPct": 55,
+      "comment": "CME equity-index futures enter the Labor Day halt at 17:00Z; no order matching, so hour-specific path risk is minimal."
     },
     {
       "ts": "2026-09-07T18:00:00Z",
       "timeBerlin": "2026-09-07T20:00:00+02:00",
       "status": "green",
       "tailRiskPct": 3,
-      "stressRiskPct": 58,
-      "comment": "Second halted hour. Any Hormuz or Iran headline in this window accumulates against a closed market rather than repricing it, keeping Tail near the run's floor."
+      "stressRiskPct": 54,
+      "comment": "Second halt hour with no Nasdaq-100 price discovery; crude remains the live cross-asset variable while equities are dark."
     },
     {
       "ts": "2026-09-07T19:00:00Z",
       "timeBerlin": "2026-09-07T21:00:00+02:00",
       "status": "green",
       "tailRiskPct": 3,
-      "stressRiskPct": 58,
-      "comment": "Third halted hour. Assessment is structural rather than observational; the only change is the widening size of the information gap the 22:00 UTC reopen would have to absorb."
+      "stressRiskPct": 54,
+      "comment": "Third halt hour; Stress stays elevated on the unresolved US-Iran tanker escalation and Jazan refinery damage assessment."
     },
     {
       "ts": "2026-09-07T20:00:00Z",
       "timeBerlin": "2026-09-07T22:00:00+02:00",
       "status": "green",
       "tailRiskPct": 3,
-      "stressRiskPct": 59,
-      "comment": "Fourth halted hour. Stress edges up with the lengthening accumulated news window ahead of the reopen, while Tail holds at the floor because a closed book cannot produce mean-reversion failure."
+      "stressRiskPct": 55,
+      "comment": "Fourth halt hour; any headline in this window is deferred to the 22:00Z reopen, so gap risk accumulates rather than clearing."
+    },
+    {
+      "ts": "2026-09-07T21:00:00Z",
+      "timeBerlin": "2026-09-07T23:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 4,
+      "stressRiskPct": 57,
+      "comment": "Final halt hour; five hours of unpriced news flow meet a thin Sunday-style opening book at the 22:00Z Globex resumption."
     }
   ],
   "events": [
+    {
+      "name": "CME equity-index futures Labor Day halt ends (Globex resumes)",
+      "ts": "2026-09-07T22:00:00Z",
+      "timeBerlin": "2026-09-08T00:00:00+02:00",
+      "impact": "high"
+    },
     {
       "name": "NFIB Small Business Optimism Index (Aug)",
       "ts": "2026-09-08T10:00:00Z",
@@ -887,7 +886,7 @@
       "impact": "medium"
     },
     {
-      "name": "NY Fed Survey of Consumer Expectations (Aug)",
+      "name": "NY Fed Consumer Inflation Expectations (Aug)",
       "ts": "2026-09-08T15:00:00Z",
       "timeBerlin": "2026-09-08T17:00:00+02:00",
       "impact": "medium"
@@ -905,40 +904,46 @@
       "impact": "medium"
     },
     {
-      "name": "US PPI and Core PPI (Aug)",
+      "name": "Producer Price Index MoM/YoY (Aug)",
       "ts": "2026-09-10T12:30:00Z",
       "timeBerlin": "2026-09-10T14:30:00+02:00",
       "impact": "high"
     },
     {
-      "name": "US Initial Jobless Claims",
+      "name": "Core Producer Price Index MoM/YoY (Aug)",
       "ts": "2026-09-10T12:30:00Z",
       "timeBerlin": "2026-09-10T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Initial and Continuing Jobless Claims",
+      "ts": "2026-09-10T12:30:00Z",
+      "timeBerlin": "2026-09-10T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US 30-Year Bond Auction",
+      "ts": "2026-09-10T17:00:00Z",
+      "timeBerlin": "2026-09-10T19:00:00+02:00",
       "impact": "medium"
     },
     {
-      "name": "US Existing Home Sales (Aug)",
-      "ts": "2026-09-10T14:00:00Z",
-      "timeBerlin": "2026-09-10T16:00:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "US CPI and Core CPI (Aug)",
+      "name": "Consumer Price Index MoM/YoY (Aug)",
       "ts": "2026-09-11T12:30:00Z",
       "timeBerlin": "2026-09-11T14:30:00+02:00",
       "impact": "high"
     },
     {
-      "name": "University of Michigan Consumer Sentiment (Sep, preliminary)",
-      "ts": "2026-09-11T14:00:00Z",
-      "timeBerlin": "2026-09-11T16:00:00+02:00",
-      "impact": "medium"
+      "name": "Core Consumer Price Index MoM/YoY (Aug)",
+      "ts": "2026-09-11T12:30:00Z",
+      "timeBerlin": "2026-09-11T14:30:00+02:00",
+      "impact": "high"
     },
     {
-      "name": "US Monthly Budget Statement (Aug)",
-      "ts": "2026-09-11T18:00:00Z",
-      "timeBerlin": "2026-09-11T20:00:00+02:00",
-      "impact": "medium"
+      "name": "Michigan Consumer Sentiment Preliminary (Sep)",
+      "ts": "2026-09-11T14:00:00Z",
+      "timeBerlin": "2026-09-11T16:00:00+02:00",
+      "impact": "high"
     }
   ]
 }
