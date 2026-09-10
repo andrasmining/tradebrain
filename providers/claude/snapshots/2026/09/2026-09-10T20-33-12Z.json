@@ -1,0 +1,907 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-09-10T20:33:12Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Mapped policy state: EA_ON. Tail moves from 17 to 19 as the U.S. cash session closes and Oracle's fiscal first-quarter results land in thin post-close liquidity. Cash NAS100 finished at 29,103.51, down 318.04 points or 1.08%, inside a 29,038.22 to 29,250.41 band whose low was never retested after the opening hour. NQ futures are 29,152.00, down 1.01%. VIX closed 17.93, up 8.93%, just under an 18.17 high; the ten-year is 4.944% and the two-year 4.59% after a fourteen basis-point rise; Brent has re-extended to about $108.31. Oracle shares are quoted near $163.91 after hours, roughly 7% above a regular-session close that was down 5.38%.",
+  "recommendation": "Tail at 19 maps the policy state to EA_ON for both NQ futures and the NAS100 CFD, with pause false and caution false under the fixed repository mapping. The step from 17 reflects one specific, observed condition: a large single-stock earnings impulse repricing in thin post-close liquidity, with the conference call still ahead at 21:00 UTC. It does not reflect any break in the index price structure, which stayed two-way and range-contained through the entire cash session. The danger window remains drawn narrowly around 12:30 to 14:00 UTC on 11 September, covering the August consumer price release, the first hour of post-release discovery and the 13:30 UTC cash open. Stress at 87 is the elevated part of this assessment and does not by itself change the mapped state.",
+  "headline": "Cash NAS100 closes at 29,103.51, down 1.08%, with the 29,038.22 session low never retested after the opening hour; tail steps 17 to 19 as Oracle's results print after the bell and the stock trades about 7% higher after hours, while VIX closes 17.93 and Brent re-extends to $108.31.",
+  "body": "The cash session finished the way it traded: contained. Cash NAS100 closed at 29,103.51, down 318.04 points or 1.08%, and the whole day fitted inside a 212-point band between 29,038.22 and 29,250.41. The opening-auction low was set in the first hour and was never revisited, and price traded in both directions inside that band for the remainder of the session. That is the observation this framework weights most heavily. Tail measures the probability of a price path that denies meaningful mean reversion long enough to overwhelm a reverse or grid approach, not the size of the day's decline, and today's path repeatedly offered retracement. NQ futures settled the regular window at 29,152.00, down 1.01%, having covered 29,044.25 to 29,508.25 across the full overnight range.\n\nWhat changed in this hour is the catalyst position rather than the structure. Oracle published fiscal first-quarter results after the close: total revenue of $19.3 billion, up 30%; cloud revenue of $11.6 billion, up 62%, with infrastructure revenue up 121%; and remaining performance obligations of $664 billion, an increase of $209 billion year over year, alongside full-year guidance of at least $90 billion in revenue. The stock closed the regular session down 5.38% at $152.94 and is quoted near $163.91 after hours, about 7% higher. Oracle is NYSE-listed and is not a Nasdaq-100 member, so the transmission into this index is indirect, running through AI-infrastructure sentiment and the semiconductor complex. That complex closed weak: the PHLX Semiconductor Index fell 2.66% to 11,614.17, near its session low, which leaves it positioned for a sharp reversal if the read-across is taken up. A large directional impulse in thin post-close liquidity, with the conference call still ahead at 21:00 UTC, is a genuine but bounded tail amplifier, and it is the reason the score steps from 17 to 19 rather than staying flat.\n\nThe cross-asset backdrop is unchanged and remains the difficult part of the picture. The ten-year yield is 4.944%, near a 4.952% session high and the highest since 2023; the two-year is 4.59%, up about fourteen basis points; the thirty-year has printed 5.36%, the highest since 2007. Brent settled up more than 6% at $107.63 and has since re-extended to about $108.31, with WTI closing at $102.48, both driven by Persian Gulf supply risk that has no visible path to resolution. August producer prices rose 0.4% on the month and 5.4% over twelve months, with the core measure at 4.7%, and market-implied odds of a rate increase at the 16 September meeting stood near 69% at the close. VIX closed at 17.93, up 8.93% and just under its 18.17 high, elevated but still short of the level that usually accompanies a disorderly tape.\n\nInternal composition argues against one-way structure. Apple rose about 3% on its product event while semiconductors fell sharply, so the index decline was driven by dispersion rather than by a synchronised liquidation. Dispersion of that kind normally raises stress and lowers directional conviction rather than raising tail. Stress is therefore held at 87, in the extreme band, while tail stays in the low band at 19.\n\nThe shared Finviz context file was not used in this assessment. Its most recent collection is timestamped 17:55 UTC, roughly 155 minutes before this run and outside the 90-minute freshness limit, and its collection status is partial with the calendar section unavailable. Under the inherited contract stale or partial context is excluded rather than relied upon, so every figure above comes from independent primary-source research. Confidence is set at 86: the verified evidence set covers the cash close, futures, volatility, the full yield curve, crude, semiconductors, megacap dispersion, the producer price release, Fed pricing and the Oracle actuals, and the one material gap is that no live NQ price path is available for the period after the 16:17 Eastern futures print.",
+  "tailRiskPct": 19,
+  "tailLevel": "low",
+  "stressRiskPct": 87,
+  "stressLevel": "extreme",
+  "dominantMode": "event/whipsaw",
+  "confidencePct": 86,
+  "confidenceLevel": "high",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": "2026-09-11T12:30:00Z",
+    "end": "2026-09-11T14:00:00Z"
+  },
+  "dangerWindowBerlin": {
+    "start": "2026-09-11T14:30:00+02:00",
+    "end": "2026-09-11T16:00:00+02:00"
+  },
+  "sources": [
+    {
+      "title": "NASDAQ-100 Index (^NDX) quote",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "Nasdaq 100 E-mini Futures (NQ=F) quote",
+      "url": "https://finance.yahoo.com/quote/NQ%3DF/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    {
+      "title": "U.S. Bureau of Labor Statistics - Producer Price Index news release, August 2026",
+      "url": "https://www.bls.gov/news.release/ppi.nr0.htm"
+    },
+    {
+      "title": "Oracle Announces Q1 Results Driven by Triple Digit Growth in Cloud Infrastructure Revenues",
+      "url": "https://www.prnewswire.com/news-releases/oracle-announces-q1-results-driven-by-triple-digit-growth-in-cloud-infrastructure-revenues-302875728.html"
+    },
+    {
+      "title": "NBC News - Oil prices soar to $108 for the first time since May as bond yields jump",
+      "url": "https://www.nbcnews.com/business/energy/us-crude-oil-iran-trump-hormuz-rcna596997"
+    }
+  ],
+  "lookbackSummary": "All 24 clock-hours from 20:00 UTC on 9 September to 19:00 UTC on 10 September carry a published Claude assessment, so every lookback slot is available and none is reconstructed. The window opens at tail 11, troughs at 8 to 9 across the U.S. close and the first overnight hours, and holds a 9 to 11 band through the Asian and European morning. The regime change sits in the middle of the U.S. session: tail 14 at 11:00 UTC as the mode turned trend-down on the pre-release grind, 20 at 12:00 UTC when the producer price report printed and the mode became event/whipsaw, and a 24 peak at 13:00 UTC covering post-release discovery and the cash open. The last six slots record the decay back into range, 17 then 14, a 16 tick as yields and crude extended, 15, 16 and 17 into the final cash hour. Stress never left the extreme band, running 80 to 86 throughout, which is the defining feature of this window: a difficult, high-volatility tape in which mean reversion nonetheless kept working.",
+  "lookback": [
+    {
+      "ts": "2026-09-09T20:00:00Z",
+      "timeBerlin": "2026-09-09T22:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 82,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-09T21:00:00Z",
+      "timeBerlin": "2026-09-09T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 81,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-09T22:00:00Z",
+      "timeBerlin": "2026-09-10T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 81,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-09T23:00:00Z",
+      "timeBerlin": "2026-09-10T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 81,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T00:00:00Z",
+      "timeBerlin": "2026-09-10T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 80,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T01:00:00Z",
+      "timeBerlin": "2026-09-10T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 81,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T02:00:00Z",
+      "timeBerlin": "2026-09-10T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 81,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T03:00:00Z",
+      "timeBerlin": "2026-09-10T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 81,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T04:00:00Z",
+      "timeBerlin": "2026-09-10T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 80,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T05:00:00Z",
+      "timeBerlin": "2026-09-10T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 80,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T06:00:00Z",
+      "timeBerlin": "2026-09-10T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 80,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T07:00:00Z",
+      "timeBerlin": "2026-09-10T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 80,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T08:00:00Z",
+      "timeBerlin": "2026-09-10T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 81,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T09:00:00Z",
+      "timeBerlin": "2026-09-10T11:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 10,
+      "stressRiskPct": 82,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T10:00:00Z",
+      "timeBerlin": "2026-09-10T12:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 82,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T11:00:00Z",
+      "timeBerlin": "2026-09-10T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 83,
+      "confidencePct": 87,
+      "dominantMode": "trend-down"
+    },
+    {
+      "ts": "2026-09-10T12:00:00Z",
+      "timeBerlin": "2026-09-10T14:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 85,
+      "confidencePct": 84,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-10T13:00:00Z",
+      "timeBerlin": "2026-09-10T15:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 24,
+      "stressRiskPct": 86,
+      "confidencePct": 87,
+      "dominantMode": "trend-down"
+    },
+    {
+      "ts": "2026-09-10T14:00:00Z",
+      "timeBerlin": "2026-09-10T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 84,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T15:00:00Z",
+      "timeBerlin": "2026-09-10T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 84,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T16:00:00Z",
+      "timeBerlin": "2026-09-10T18:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 85,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T17:00:00Z",
+      "timeBerlin": "2026-09-10T19:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 85,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T18:00:00Z",
+      "timeBerlin": "2026-09-10T20:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 86,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-10T19:00:00Z",
+      "timeBerlin": "2026-09-10T21:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 86,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    }
+  ],
+  "outlookSummary": "The forward window opens at the cash close of 10 September and ends in the New York afternoon of 11 September. Conditional tail starts at 19 and holds there across the 21:00 UTC slot covering Oracle's conference call, then decays through 17 and 15 into the late evening. It settles to an 11 floor across the Asian hours, where no U.S. macro is scheduled, and rebuilds gradually from the European pre-market, 12 through 14, and steps to 16 in the final full hour before the release. The window peak is 23 in the 12:00 UTC slot containing the August consumer price print and 23 again at 13:00 UTC where post-release discovery overlaps the cash open; both map to WATCH and neither reaches the block threshold, since no post-release price path is observed. The path then eases to 20 at the University of Michigan release, then 17, 15, 14, 14 and 15 for the final Friday slots. Stress stays in the extreme band throughout, peaking at 89 across the two release hours, and confidence declines from 86 to 70 with distance from observed evidence.",
+  "forecast": [
+    {
+      "ts": "2026-09-10T20:00:00Z",
+      "timeBerlin": "2026-09-10T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 87,
+      "confidencePct": 86,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Cash closed at 29,103.51, down 1.08%, inside a 212-point band whose 29,038.22 low was never retested after the opening hour, so mean reversion worked all session. Tail rises 17 to 19 only because Oracle's results printed into thin post-close liquidity with shares quoted about 7% higher after hours.",
+      "drivers": [
+        "Cash NAS100 closed 29,103.51, -1.08%; session low 29,038.22 untested after the opening hour",
+        "NQ futures 29,152.00, -1.01%, overnight range 29,044.25-29,508.25",
+        "Oracle Q1 FY27 published after the close: revenue $19.3bn +30%, RPO $664bn",
+        "ORCL quoted near $163.91 after hours, about +7% versus a -5.38% regular-session close",
+        "VIX closed 17.93, +8.93%, just under an 18.17 session high"
+      ],
+      "news": [
+        {
+          "title": "Oracle Announces Q1 Results Driven by Triple Digit Growth in Cloud Infrastructure Revenues",
+          "url": "https://www.prnewswire.com/news-releases/oracle-announces-q1-results-driven-by-triple-digit-growth-in-cloud-infrastructure-revenues-302875728.html",
+          "source": "PR Newswire"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq fall for fourth straight day as bond yields jump, oil stays above $100",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-10-dow-sp-500-nasdaq-oil-gains-100-083717303.html",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "Oil prices soar to $108 for the first time since May as bond yields jump",
+          "url": "https://www.nbcnews.com/business/energy/us-crude-oil-iran-trump-hormuz-rcna596997",
+          "source": "NBC News"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-10T21:00:00Z",
+      "timeBerlin": "2026-09-10T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 87,
+      "confidencePct": 84,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Oracle's 21:00 UTC conference call is the scheduled checkpoint for this slot. Conditional tail holds at 19: guidance commentary could extend or unwind the after-hours move in thin liquidity, with AI-infrastructure read-across to semiconductors the transmission channel into NQ. No post-call price path is observed yet.",
+      "drivers": [
+        "Oracle fiscal Q1 2027 conference call scheduled 21:00 UTC",
+        "AI-infrastructure read-across is indirect: Oracle is NYSE-listed, not a Nasdaq-100 member",
+        "SOX closed -2.66% at 11,614.17, near its session low, leaving semis positioned for a squeeze",
+        "Post-close futures liquidity thins, widening conditional excursion size"
+      ],
+      "news": [
+        {
+          "title": "Oracle Announces Q1 Results Driven by Triple Digit Growth in Cloud Infrastructure Revenues",
+          "url": "https://www.prnewswire.com/news-releases/oracle-announces-q1-results-driven-by-triple-digit-growth-in-cloud-infrastructure-revenues-302875728.html",
+          "source": "PR Newswire"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-10T22:00:00Z",
+      "timeBerlin": "2026-09-11T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 85,
+      "confidencePct": 82,
+      "dominantMode": "mixed",
+      "analysis": "First hour after the scheduled call. Conditional tail eases to 17 on the assumption that single-stock repricing decays and two-way trade resumes, as it did through the cash session. A failure of that assumption would show as repeated extension without meaningful retracement in NQ futures.",
+      "drivers": [
+        "Assumes single-stock earnings repricing decays within roughly one hour of the call",
+        "Invalidation: NQ futures extending repeatedly without a meaningful retracement",
+        "No U.S. macro releases are scheduled in this slot"
+      ],
+      "news": [
+        {
+          "title": "Oracle Announces Q1 Results Driven by Triple Digit Growth in Cloud Infrastructure Revenues",
+          "url": "https://www.prnewswire.com/news-releases/oracle-announces-q1-results-driven-by-triple-digit-growth-in-cloud-infrastructure-revenues-302875728.html",
+          "source": "PR Newswire"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-10T23:00:00Z",
+      "timeBerlin": "2026-09-11T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 84,
+      "confidencePct": 80,
+      "dominantMode": "mixed",
+      "analysis": "Late New York evening with no scheduled catalyst. Conditional tail 15 assumes the Oracle impulse has been absorbed and futures settle into a range. Stress stays extreme because the yield and oil backdrop that drove the cash decline is unchanged rather than resolved.",
+      "drivers": [
+        "No scheduled U.S. macro or corporate catalyst in this slot",
+        "Ten-year at 4.944% and thirty-year at 5.36% remain the standing backdrop",
+        "Checkpoint: whether futures hold above the 29,044.25 overnight low"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T00:00:00Z",
+      "timeBerlin": "2026-09-11T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 83,
+      "confidencePct": 78,
+      "dominantMode": "mixed",
+      "analysis": "Asian hours begin. Conditional tail 13 reflects the empty U.S. calendar and the historical tendency of this window to trade in a range, which is the condition in which mean reversion functions. Any repricing would most likely come through crude, which settled up more than 6%.",
+      "drivers": [
+        "Asian session opens with no scheduled U.S. macro",
+        "Crude is the most likely overnight transmission channel after a 6%-plus settlement gain",
+        "Conditional assumption: contained overnight range rather than directional continuation"
+      ],
+      "news": [
+        {
+          "title": "Oil prices soar to $108 for the first time since May as bond yields jump",
+          "url": "https://www.nbcnews.com/business/energy/us-crude-oil-iran-trump-hormuz-rcna596997",
+          "source": "NBC News"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-11T01:00:00Z",
+      "timeBerlin": "2026-09-11T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 82,
+      "confidencePct": 76,
+      "dominantMode": "mixed",
+      "analysis": "Mid-Asian session. Conditional tail slips to 12, the lower part of the band this window occupied over the prior 24 hours, when published assessments ran 8 to 11 across the same clock-hours. Confidence declines with distance from observed evidence.",
+      "drivers": [
+        "Prior 24-hour lookback recorded tail 8 to 11 across the equivalent Asian clock-hours",
+        "No scheduled catalyst; regional equity direction is the main conditional input",
+        "Confidence steps down as observed price-path evidence ages"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T02:00:00Z",
+      "timeBerlin": "2026-09-11T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 82,
+      "confidencePct": 75,
+      "dominantMode": "mixed",
+      "analysis": "Quietest part of the forward window. Conditional tail 11 assumes no overnight geopolitical discontinuity. The standing amplifier is the Persian Gulf situation, where any fresh supply headline would transmit through crude before equities.",
+      "drivers": [
+        "Empty U.S. calendar through the Asian afternoon",
+        "Standing amplifier: unresolved Persian Gulf tension affecting crude supply",
+        "Conditional path assumes no fresh geopolitical discontinuity"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T03:00:00Z",
+      "timeBerlin": "2026-09-11T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 81,
+      "confidencePct": 74,
+      "dominantMode": "mixed",
+      "analysis": "Late Asian trade into the European pre-market handover. Conditional tail stays 11 on an assumption of continued range behaviour. This slot carries no scheduled release, so the risk profile is defined by carry-over positioning rather than new information.",
+      "drivers": [
+        "Asia-to-Europe handover with no scheduled release",
+        "Risk profile defined by carry-over positioning rather than new information",
+        "Checkpoint: overnight range width relative to the 464-point NQ session range"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T04:00:00Z",
+      "timeBerlin": "2026-09-11T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 81,
+      "confidencePct": 73,
+      "dominantMode": "mixed",
+      "analysis": "European pre-market. Conditional tail 11. The first structural checkpoint of the new day is whether NQ futures open the European window inside or outside the prior session's 29,044.25 to 29,508.25 range, which would frame the pre-CPI positioning path.",
+      "drivers": [
+        "Checkpoint: European open inside or outside the 29,044.25-29,508.25 NQ range",
+        "No scheduled U.S. macro before the European cash open",
+        "Conditional framing only; no European price path is observed at assessment time"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T05:00:00Z",
+      "timeBerlin": "2026-09-11T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 82,
+      "confidencePct": 72,
+      "dominantMode": "mixed",
+      "analysis": "European cash markets open. Conditional tail edges to 12 as liquidity returns and the market begins positioning for the 12:30 UTC August consumer price release. Bund and gilt direction is the usual early tell for whether the global yield backdrop extends.",
+      "drivers": [
+        "European cash open restores liquidity ahead of the U.S. inflation release",
+        "European sovereign yields are the early tell for a global yield extension",
+        "Positioning ahead of the 12:30 UTC CPI print begins in this window"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T06:00:00Z",
+      "timeBerlin": "2026-09-11T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 82,
+      "confidencePct": 72,
+      "dominantMode": "mixed",
+      "analysis": "European morning. Conditional tail holds at 12. With roughly six hours to the consumer price release, the expected structure is two-sided positioning rather than directional commitment, which is the environment in which mean reversion typically functions.",
+      "drivers": [
+        "Roughly six hours to the August CPI release limits directional commitment",
+        "Conditional expectation of two-sided positioning rather than trend",
+        "Standing backdrop: two-year at 4.59% after a fourteen basis-point rise"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T07:00:00Z",
+      "timeBerlin": "2026-09-11T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 83,
+      "confidencePct": 71,
+      "dominantMode": "mixed",
+      "analysis": "Mid-European morning. Conditional tail 13 reflects a gradual rebuild toward the release rather than any observed structure. Fed pricing is the reason this CPI matters more than usual: market-implied odds of a hike at the 16 September meeting stood near 69% at the U.S. close.",
+      "drivers": [
+        "Market-implied odds of a 16 September hike stood near 69% at the U.S. close",
+        "Conditional rebuild toward the release, not observed European structure",
+        "August PPI at 5.4% year-over-year is the immediate inflation precedent"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T08:00:00Z",
+      "timeBerlin": "2026-09-11T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 83,
+      "confidencePct": 71,
+      "dominantMode": "mixed",
+      "analysis": "European late morning. Conditional tail holds at 13. This slot is the last quiet window before pre-release positioning compresses ranges; the conditional risk is an early leak of direction through crude or European yields rather than through equity flow.",
+      "drivers": [
+        "Last quiet window before pre-release range compression",
+        "Conditional risk transmits through crude or European yields first",
+        "No scheduled U.S. release in this slot"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T09:00:00Z",
+      "timeBerlin": "2026-09-11T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 84,
+      "confidencePct": 70,
+      "dominantMode": "mixed",
+      "analysis": "European midday, roughly three hours before the August consumer price release. Conditional tail 14. Typical pre-release behaviour is narrowing range and thinning depth, which raises the size of any subsequent excursion without itself constituting one-way structure.",
+      "drivers": [
+        "Roughly three hours to the 12:30 UTC August CPI release",
+        "Pre-release depth thinning raises conditional excursion size",
+        "Narrowing range is not by itself evidence of one-way structure"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T10:00:00Z",
+      "timeBerlin": "2026-09-11T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 84,
+      "confidencePct": 70,
+      "dominantMode": "mixed",
+      "analysis": "Two hours before the release. Conditional tail holds at 14. U.S. pre-market participation builds from here, and the conditional risk in this slot is an early directional lean forming before the data rather than any completed move.",
+      "drivers": [
+        "Two hours to the 12:30 UTC release as U.S. pre-market participation builds",
+        "Conditional risk is an early directional lean, not a completed move",
+        "No scheduled release lands inside this slot"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T11:00:00Z",
+      "timeBerlin": "2026-09-11T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 84,
+      "confidencePct": 70,
+      "dominantMode": "mixed",
+      "analysis": "Final full hour before the release window. Conditional tail steps to 16. The framework treats a scheduled high-impact print as a checkpoint rather than an automatic block, so the increase is deliberately small until an actual post-release path can be scored.",
+      "drivers": [
+        "Final full hour before the 12:30 UTC August CPI release",
+        "Scheduled high-impact events are checkpoints, not automatic blocks",
+        "Conditional scores only; no post-release path exists at assessment time",
+        "August PPI at 5.4% year-over-year is the immediate inflation precedent for this print"
+      ],
+      "news": [
+        {
+          "title": "Producer Price Index News Release summary, August 2026",
+          "url": "https://www.bls.gov/news.release/ppi.nr0.htm",
+          "source": "U.S. Bureau of Labor Statistics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-11T12:00:00Z",
+      "timeBerlin": "2026-09-11T14:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 89,
+      "confidencePct": 70,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Slot containing the 12:30 UTC August consumer price release. Conditional tail peaks at 23 and maps to WATCH, below the block threshold, because no post-release price path is observed. Dispersion is unusually wide given hike odds near 69% and August producer prices at 5.4% year-over-year.",
+      "drivers": [
+        "U.S. August CPI and Core CPI scheduled 12:30 UTC",
+        "Hike odds near 69% for 16 September widen the conditional reaction distribution",
+        "August PPI printed 0.4% month-over-month and 5.4% year-over-year",
+        "Conditional peak maps to WATCH; the block threshold is not reached on unobserved structure"
+      ],
+      "news": [
+        {
+          "title": "Producer Price Index News Release summary, August 2026",
+          "url": "https://www.bls.gov/news.release/ppi.nr0.htm",
+          "source": "U.S. Bureau of Labor Statistics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-11T13:00:00Z",
+      "timeBerlin": "2026-09-11T15:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 89,
+      "confidencePct": 70,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Post-release discovery overlaps the 13:30 UTC cash open, the overlap that carries the most conditional path risk in the window. Tail holds at 23. A delayed second leg through the yield curve, rather than the initial print reaction, is the mechanism this framework watches most closely.",
+      "drivers": [
+        "Post-release discovery overlaps the 13:30 UTC U.S. cash open",
+        "Watched mechanism: a delayed second leg transmitted through the yield curve",
+        "Opening-auction continuation with shallow pullbacks would be the escalation signal",
+        "Conditional only; the 11 September cash open is not observed at assessment time"
+      ],
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq fall for fourth straight day as bond yields jump, oil stays above $100",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-10-dow-sp-500-nasdaq-oil-gains-100-083717303.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-11T14:00:00Z",
+      "timeBerlin": "2026-09-11T16:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 87,
+      "confidencePct": 70,
+      "dominantMode": "event/whipsaw",
+      "analysis": "University of Michigan preliminary sentiment at 14:00 UTC lands inside the first cash hour. Conditional tail eases to 20, still WATCH, on the assumption that initial price discovery produces two-way trade. Persistent extension without retracement would invalidate that assumption.",
+      "drivers": [
+        "University of Michigan preliminary sentiment scheduled 14:00 UTC",
+        "Assumption: initial discovery resolves into two-way trade within the first cash hour",
+        "Invalidation: persistent extension with no meaningful retracement"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T15:00:00Z",
+      "timeBerlin": "2026-09-11T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 86,
+      "confidencePct": 70,
+      "dominantMode": "mixed",
+      "analysis": "Second cash hour. Conditional tail falls to 17 on the assumption that volatility decays after the release, matching what today's session actually did once the producer price print was absorbed. Stress stays extreme because the yield and crude backdrop is unresolved.",
+      "drivers": [
+        "Assumes post-release volatility decay, as observed after today's PPI print",
+        "Stress stays extreme on an unresolved yield and crude backdrop",
+        "Checkpoint: whether the day's opening range contains subsequent trade"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T16:00:00Z",
+      "timeBerlin": "2026-09-11T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 85,
+      "confidencePct": 70,
+      "dominantMode": "mixed",
+      "analysis": "New York midday. Conditional tail 15. The historical pattern in this window is range consolidation after the morning's information is priced, which is the condition under which mean reversion functions rather than fails.",
+      "drivers": [
+        "Midday consolidation is the conditional base case after morning repricing",
+        "No further scheduled U.S. macro releases on 11 September",
+        "Conditional path assumes the CPI reaction has been largely absorbed"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T17:00:00Z",
+      "timeBerlin": "2026-09-11T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 84,
+      "confidencePct": 70,
+      "dominantMode": "mixed",
+      "analysis": "Early New York afternoon. Conditional tail 14. With the calendar clear for the rest of the day, the remaining conditional amplifiers are crude headlines out of the Persian Gulf and any further extension in long-end yields.",
+      "drivers": [
+        "Calendar clear for the remainder of 11 September",
+        "Remaining amplifiers: Persian Gulf crude headlines and long-end yield extension",
+        "Thirty-year at 5.36% is the highest since 2007 and the level to watch"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T18:00:00Z",
+      "timeBerlin": "2026-09-11T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 84,
+      "confidencePct": 70,
+      "dominantMode": "mixed",
+      "analysis": "Mid New York afternoon. Conditional tail holds at 14. This is the slot in which a delayed second leg would normally appear if the morning reaction had been incomplete, so it is carried at the same level rather than reduced further.",
+      "drivers": [
+        "Delayed second legs, when they occur, typically appear in this window",
+        "Level held rather than reduced to keep the delayed-repricing case open",
+        "Conditional structure only; no 11 September afternoon path is observed"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-11T19:00:00Z",
+      "timeBerlin": "2026-09-11T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 84,
+      "confidencePct": 70,
+      "dominantMode": "mixed",
+      "analysis": "Final full cash hour into the weekend close. Conditional tail edges to 15 on position-squaring flow ahead of a weekend that carries unresolved Persian Gulf risk and an FOMC decision five days later.",
+      "drivers": [
+        "Weekend position-squaring into an unresolved geopolitical backdrop",
+        "FOMC decision and projections follow on 16 September",
+        "Conditional uplift reflects flow, not any observed directional structure"
+      ],
+      "news": []
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-09-10T20:00:00Z",
+      "timeBerlin": "2026-09-10T22:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 19,
+      "stressRiskPct": 87,
+      "comment": "Cash close at 29,103.51 leaves the session low untested after the opening hour; the 17-to-19 step reflects Oracle's post-close results landing in thin liquidity, not any observed break of range structure."
+    },
+    {
+      "ts": "2026-09-10T21:00:00Z",
+      "timeBerlin": "2026-09-10T23:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 19,
+      "stressRiskPct": 87,
+      "comment": "Oracle's 21:00 UTC call is carried as a scheduled checkpoint; conditional tail stays 19 because guidance commentary can extend or unwind the after-hours move before liquidity returns."
+    },
+    {
+      "ts": "2026-09-10T22:00:00Z",
+      "timeBerlin": "2026-09-11T00:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 17,
+      "stressRiskPct": 85,
+      "comment": "Conditional easing to 17 assumes single-stock repricing decays within about an hour of the call; repeated extension without retracement in NQ futures would invalidate that."
+    },
+    {
+      "ts": "2026-09-10T23:00:00Z",
+      "timeBerlin": "2026-09-11T01:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 15,
+      "stressRiskPct": 84,
+      "comment": "Conditional 15 with no scheduled catalyst; the yield and crude backdrop that drove the decline is unchanged, which is why stress stays extreme while tail falls."
+    },
+    {
+      "ts": "2026-09-11T00:00:00Z",
+      "timeBerlin": "2026-09-11T02:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 13,
+      "stressRiskPct": 83,
+      "comment": "Asian hours open with an empty U.S. calendar; conditional 13 assumes a contained range, with crude the most likely overnight transmission channel."
+    },
+    {
+      "ts": "2026-09-11T01:00:00Z",
+      "timeBerlin": "2026-09-11T03:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 12,
+      "stressRiskPct": 82,
+      "comment": "Mid-Asian conditional 12 sits inside the 8-to-11 band the equivalent clock-hours actually recorded over the prior 24 hours, with confidence stepping down as evidence ages."
+    }
+  ],
+  "events": [
+    {
+      "name": "Oracle fiscal Q1 2027 results conference call",
+      "ts": "2026-09-10T21:00:00Z",
+      "timeBerlin": "2026-09-10T23:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "U.S. Consumer Price Index and Core CPI, August",
+      "ts": "2026-09-11T12:30:00Z",
+      "timeBerlin": "2026-09-11T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "University of Michigan consumer sentiment, September preliminary",
+      "ts": "2026-09-11T14:00:00Z",
+      "timeBerlin": "2026-09-11T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "NY Empire State Manufacturing Index, September",
+      "ts": "2026-09-15T12:30:00Z",
+      "timeBerlin": "2026-09-15T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "U.S. Retail Sales, August",
+      "ts": "2026-09-16T12:30:00Z",
+      "timeBerlin": "2026-09-16T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "FOMC interest-rate decision and Summary of Economic Projections",
+      "ts": "2026-09-16T18:00:00Z",
+      "timeBerlin": "2026-09-16T20:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Fed Chair press conference",
+      "ts": "2026-09-16T18:30:00Z",
+      "timeBerlin": "2026-09-16T20:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "U.S. initial jobless claims, week ending 12 September",
+      "ts": "2026-09-17T12:30:00Z",
+      "timeBerlin": "2026-09-17T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Philadelphia Fed Manufacturing Index, September",
+      "ts": "2026-09-17T12:30:00Z",
+      "timeBerlin": "2026-09-17T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "U.S. Housing Starts and Building Permits, August",
+      "ts": "2026-09-17T12:30:00Z",
+      "timeBerlin": "2026-09-17T14:30:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
