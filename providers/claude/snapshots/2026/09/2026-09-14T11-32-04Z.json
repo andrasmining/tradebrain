@@ -1,0 +1,905 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-09-14T11:32:04Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "yellow",
+  "statusText": "Mapped policy state: WATCH (yellow). NQ is quoted at 28,942.25, down 1.51%, and is holding 126 points above the 28,816.25 session low that was set an hour ago. That low has now survived a full hour and the retracement has extended to roughly 43% of the session range, against 19% an hour ago and 3% two hours ago. The three counterweights have all resolved in the same direction: ES has joined the bounce at 19.25 points off its own low, the VIX at 17.59 sits near its 17.48 session low after an 18.17 high, and WTI at 102.54 continues to ease from 103.81. Tail steps down three points to 22 and leaves the block band.",
+  "recommendation": "Tail at 22 sits in the watch band, below the block threshold, so the mapped state is WATCH for both NQ futures and the NAS100 CFD. The danger window has been narrowed to 13:00-16:00 UTC, covering the 13:30 UTC cash open and the first two cash hours, because the current hour no longer carries the structure that placed the two prior hours in the block band. Conditional Tail re-enters the elevated band only across those three hours and peaks at 27, eight points below the strong-block threshold. From 16:00 UTC the conditional path returns to the watch band and reaches the EA_ON mapping across the thinnest Asian hours. Existing-position management and emergency protection are unaffected by this mapping.",
+  "headline": "The 28,816.25 low holds for a full hour and NQ retraces 43% of the session range while ES, the VIX and WTI all come off their extremes; Tail eases to 22 and leaves the block band",
+  "body": "The repeated-extension structure that carried the two prior assessments into the block band has now been contradicted by the observed path. NQ is quoted at 28,942.25, down 444.75 points or 1.51% against a 29,387.00 reference, as of 07:15 EDT. The session low is unchanged at 28,816.25, so the sequence of consecutive lower lows has stopped at four, and the contract is trading about 126 points above that low, roughly 43% of the 28,816.25 to 29,111.00 range. An hour ago the same measure was 19% and two hours ago 3%. Tail scores the probability of a path that denies meaningful mean reversion, and a low that has held for a full hour while the bounce extends is direct evidence against that path.\n\nThe cross-asset picture has resolved in the same direction. ES at 7,613.00, down 0.61%, is now 19.25 points above its 7,593.75 session low, against 3.75 points an hour ago; the S&P contract was the dissenting signal in the prior assessment and it is no longer dissenting. The VIX at 17.59 is up 11.07% on the day but is trading near its 17.48 session low, with the 18.17 session high unchanged for a second hour, which is decay rather than expansion. WTI at 102.54, up 2.49%, has eased further from its 103.81 high, and Brent is near 107.30. The 10-year is quoted around 4.975% and is not extending, against a 2-year constant maturity of 4.56% at the most recent H.15 publication. The Asian cash sessions have closed, so Monday’s regional reaction to the AI story is complete: the Kospi finished down 3.26% at 6,684.37, SK Hynix down 6.35%, Samsung Electronics down 4.05% and SoftBank down 10.7%.\n\nBoth underlying drivers remain unresolved, which is why Tail eases rather than collapses. Anthropic’s chief executive called at the weekend for AI companies to slow the pace at which they advance model capabilities, and the chief executives of OpenAI and xAI said they agreed; premarket quotes put Nvidia below -2% with Intel near -6%, AMD near -5% and Marvell near -6%. On the energy side, Saudi Arabia’s East-West pipeline, which had been carrying roughly 5 million barrels a day, remains shut after drone strikes on 10-11 September, with the Strait of Hormuz closed since March. The Dow-to-Nasdaq spread stays wide, with Dow futures down 0.18% against NQ down 1.51%, which continues to describe a concentrated AI and semiconductor de-rating rather than index-wide liquidation.\n\nStress stays high at 76 and Confidence at 88. The week still carries Retail Sales and the Fed decision on Wednesday, with roughly 83-86% probability of a hike priced, and event importance under the inherited rule is scored into Stress and Confidence rather than into Tail until a post-event price path is observed. The 13:30 UTC cash open is the remaining checkpoint and is not yet observed, so it is carried in the forecast rather than in the current score. A fresh low beneath 28,816.25 with shallow bounces would restore the one-way reading; a reclaim of 29,000 is the nearest confirmation that the structure has turned two-sided.",
+  "tailRiskPct": 22,
+  "tailLevel": "watch",
+  "stressRiskPct": 76,
+  "stressLevel": "high",
+  "dominantMode": "mixed",
+  "confidencePct": 88,
+  "confidenceLevel": "high",
+  "action": "WATCH",
+  "dangerWindow": {
+    "start": "2026-09-14T13:00:00Z",
+    "end": "2026-09-14T16:00:00Z"
+  },
+  "dangerWindowBerlin": {
+    "start": "2026-09-14T15:00:00+02:00",
+    "end": "2026-09-14T18:00:00+02:00"
+  },
+  "sources": [
+    {
+      "title": "Nasdaq 100 E-mini Futures (NQ=F) quote - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/NQ%3DF/"
+    },
+    {
+      "title": "E-mini S&P 500 Futures (ES=F) quote - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/ES%3DF/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    {
+      "title": "Federal Reserve H.15 Selected Interest Rates",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "title": "AI warnings knock Nasdaq futures, pressure tech stocks - Reuters",
+      "url": "https://www.investing.com/news/economy-news/ai-warnings-knock-nasdaq-futures-pressure-tech-stocks-4898987"
+    },
+    {
+      "title": "Saudi Arabia shuts critical oil pipeline after drone attack - Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/9/12/saudi-arabia-shuts-critical-oil-pipeline-after-drone-attack-what-happened"
+    }
+  ],
+  "lookbackSummary": "All 24 preceding published hours were available. Tail rose through Sunday’s European and US hours from 13 at 11:00 UTC to 17 by 15:00 UTC, eased to 16 at the 16:00 UTC handover, then stepped through 17, 18, 18 and 19 into the Globex reopen, crossing into the watch band at 21 and peaking at 22 in the reopen hour. Across the overnight session it was unusually stable, printing 20 in six of the following eight hours with 19 at 02:00 and 06:00 UTC, before the European open lifted it to 21 at 07:00 UTC, 23 at 08:00 UTC, 26 at 09:00 UTC and 25 at 10:00 UTC, the two hours in the block band. The mapped state was EA_ON and green for the first ten hours, WATCH and yellow for most of the overnight session with two single-hour reversions to green, and BLOCK_NEW_BASE_ENTRIES with orange for the two most recent hours. Dominant mode read normal through the Sunday hours, event/whipsaw for the reopen hour, mixed from 23:00 UTC onward and trend-down for the two most recent hours. Confidence fell from 86 to 71 around the 16:00 UTC handover, then rebuilt steadily to 88 as live overnight price-path evidence accumulated.",
+  "outlookSummary": "The danger window has been narrowed from six hours to three and no longer starts at the current hour: it now runs from 13:00 to 16:00 UTC, covering the 13:30 UTC cash open and the first two cash hours. The current hour and the premarket build sit in the watch band at 22 and 23 because the observed retracement has held. Conditional Tail re-enters the elevated band at 26 for the opening-auction hour and peaks at 27 in the first full cash hour, the narrow single-hour top of the series and eight points below the strong-block threshold, before easing to 25 in the second cash hour. That shape reflects a concentrated AI and semiconductor de-rating against a stagflationary energy backdrop rather than index-wide liquidation, and it is carried in the forecast rather than the current score because the opening auction is not yet observed. From 16:00 UTC the conditional path returns to the watch band at 23 and decays through 22 into the 20:00 UTC cash close, with a single tick held at 22 for the power hour. It falls to 20 across the CME maintenance break on a mechanical basis, lifts to 21 at the Globex reopen and 23 for the Tokyo and Seoul opens, where second-day AI sector reaction risk sits, then eases to the EA_ON mapping at 19 through the thinnest Asian hours. It rebuilds to 20, 21, 21 and 22 as Europe reopens on day one of the two-day policy meeting. A fresh low beneath 28,816.25 with shallow pullbacks is the conditional amplifier; a reclaim of 29,000 is the nearest conditional confirmation that structure has turned two-sided.",
+  "lookback": [
+    {
+      "ts": "2026-09-13T11:00:00Z",
+      "timeBerlin": "2026-09-13T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 66,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T12:00:00Z",
+      "timeBerlin": "2026-09-13T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 67,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T13:00:00Z",
+      "timeBerlin": "2026-09-13T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 68,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T14:00:00Z",
+      "timeBerlin": "2026-09-13T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 69,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T15:00:00Z",
+      "timeBerlin": "2026-09-13T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 70,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T16:00:00Z",
+      "timeBerlin": "2026-09-13T18:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 71,
+      "confidencePct": 71,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T17:00:00Z",
+      "timeBerlin": "2026-09-13T19:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 72,
+      "confidencePct": 72,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T18:00:00Z",
+      "timeBerlin": "2026-09-13T20:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 73,
+      "confidencePct": 73,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T19:00:00Z",
+      "timeBerlin": "2026-09-13T21:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 75,
+      "confidencePct": 72,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T20:00:00Z",
+      "timeBerlin": "2026-09-13T22:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 76,
+      "confidencePct": 73,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T21:00:00Z",
+      "timeBerlin": "2026-09-13T23:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 77,
+      "confidencePct": 74,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-13T22:00:00Z",
+      "timeBerlin": "2026-09-14T00:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 78,
+      "confidencePct": 78,
+      "dominantMode": "event/whipsaw"
+    },
+    {
+      "ts": "2026-09-13T23:00:00Z",
+      "timeBerlin": "2026-09-14T01:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 77,
+      "confidencePct": 80,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-14T00:00:00Z",
+      "timeBerlin": "2026-09-14T02:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 77,
+      "confidencePct": 82,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-14T01:00:00Z",
+      "timeBerlin": "2026-09-14T03:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 77,
+      "confidencePct": 84,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-14T02:00:00Z",
+      "timeBerlin": "2026-09-14T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 76,
+      "confidencePct": 85,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-14T03:00:00Z",
+      "timeBerlin": "2026-09-14T05:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 77,
+      "confidencePct": 86,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-14T04:00:00Z",
+      "timeBerlin": "2026-09-14T06:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 76,
+      "confidencePct": 86,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-14T05:00:00Z",
+      "timeBerlin": "2026-09-14T07:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 77,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-14T06:00:00Z",
+      "timeBerlin": "2026-09-14T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 76,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-14T07:00:00Z",
+      "timeBerlin": "2026-09-14T09:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 77,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-14T08:00:00Z",
+      "timeBerlin": "2026-09-14T10:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 78,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-14T09:00:00Z",
+      "timeBerlin": "2026-09-14T11:00:00+02:00",
+      "available": true,
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 26,
+      "stressRiskPct": 79,
+      "confidencePct": 88,
+      "dominantMode": "trend-down"
+    },
+    {
+      "ts": "2026-09-14T10:00:00Z",
+      "timeBerlin": "2026-09-14T12:00:00+02:00",
+      "available": true,
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 25,
+      "stressRiskPct": 78,
+      "confidencePct": 88,
+      "dominantMode": "trend-down"
+    }
+  ],
+  "forecast": [
+    {
+      "ts": "2026-09-14T11:00:00Z",
+      "timeBerlin": "2026-09-14T13:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 76,
+      "confidencePct": 88,
+      "dominantMode": "mixed",
+      "analysis": "Observed: NQ 28,942.25, down 1.51%, holding 126 points above the 28,816.25 session low set an hour ago, about 43% of the session range. No fifth lower low. ES has joined the bounce 19.25 points off its own low, VIX has eased to 17.59 near the session low, and WTI is off its 103.81 high. Tail steps down to 22.",
+      "drivers": [
+        "Session low 28,816.25 has held for a full hour; no fifth lower low",
+        "NQ retracement extended to ~43% of the 28,816.25-29,111.00 range",
+        "ES 19.25 pts off its low; last hour’s S&P dissent has resolved",
+        "VIX 17.59 near session low 17.48 after an 18.17 high: volatility decay",
+        "WTI 102.54, easing from the 103.81 high; 10Y steady near 4.975%"
+      ],
+      "news": [
+        {
+          "title": "AI warnings knock Nasdaq futures, pressure tech stocks",
+          "url": "https://www.investing.com/news/economy-news/ai-warnings-knock-nasdaq-futures-pressure-tech-stocks-4898987",
+          "source": "Reuters"
+        },
+        {
+          "title": "Saudi Arabia shuts critical oil pipeline after drone attack: What it means",
+          "url": "https://www.aljazeera.com/news/2026/9/12/saudi-arabia-shuts-critical-oil-pipeline-after-drone-attack-what-happened",
+          "source": "Al Jazeera"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-14T12:00:00Z",
+      "timeBerlin": "2026-09-14T14:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 77,
+      "confidencePct": 87,
+      "dominantMode": "mixed",
+      "analysis": "European afternoon into the US premarket build. If the 28,816.25 low continues to hold, the two-sided reading persists and conditional Tail stays in the watch band at 23. A decisive loss of that low before the cash open is the conditional amplifier; a reclaim of 29,000 is the nearest invalidation of the earlier one-way structure.",
+      "drivers": [
+        "28,816.25 remains the conditional downside pivot into the open",
+        "29,000 reclaim is the nearest conditional invalidation",
+        "Premarket chips: Nvidia -2%, Intel -6%, AMD -5%, Marvell -6%",
+        "Cash open at 13:30 UTC is the session’s main checkpoint"
+      ],
+      "news": [
+        {
+          "title": "AI warnings knock Nasdaq futures, pressure tech stocks",
+          "url": "https://www.investing.com/news/economy-news/ai-warnings-knock-nasdaq-futures-pressure-tech-stocks-4898987",
+          "source": "Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-14T13:00:00Z",
+      "timeBerlin": "2026-09-14T15:00:00+02:00",
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 26,
+      "stressRiskPct": 79,
+      "confidencePct": 85,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Opening-auction hour. The 13:30 UTC cash open is the session’s main checkpoint and is not yet observed. Conditional Tail steps to 26 on the possibility that the auction reopens directional efficiency in the AI and semiconductor complex. Orderly two-sided discovery after the print would leave that level unreached.",
+      "drivers": [
+        "13:30 UTC cash open: opening auction not yet observed",
+        "Concentrated AI/semi de-rating rather than index-wide liquidation",
+        "Conditional: shallow pullbacks after the open would restore one-way risk",
+        "Dow futures -0.18% against NQ -1.51% keeps the spread wide"
+      ],
+      "news": [
+        {
+          "title": "AI warnings knock Nasdaq futures, pressure tech stocks",
+          "url": "https://www.investing.com/news/economy-news/ai-warnings-knock-nasdaq-futures-pressure-tech-stocks-4898987",
+          "source": "Reuters"
+        },
+        {
+          "title": "AI Concerns Pressure Stocks as Oil Jumps - Asia Market Wrap",
+          "url": "https://features.financialjuice.com/2026/09/14/ai-concerns-pressure-stocks-as-oil-jumps-asia-market-wrap/",
+          "source": "FinancialJuice"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-14T14:00:00Z",
+      "timeBerlin": "2026-09-14T16:00:00+02:00",
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 27,
+      "stressRiskPct": 79,
+      "confidencePct": 83,
+      "dominantMode": "event/whipsaw",
+      "analysis": "First full cash hour carries the conditional peak of the series at 27, eight points below the strong-block threshold. Whether opening-auction direction persists past the first thirty minutes is the discriminator: repeated extension after failed retracements would justify the level, while a retracement that holds would not.",
+      "drivers": [
+        "Conditional peak of the 24-hour series at Tail 27",
+        "Discriminator: does opening direction persist past the first 30 minutes",
+        "Failed retracements the amplifier; a held bounce the invalidation"
+      ],
+      "news": [
+        {
+          "title": "AI warnings knock Nasdaq futures, pressure tech stocks",
+          "url": "https://www.investing.com/news/economy-news/ai-warnings-knock-nasdaq-futures-pressure-tech-stocks-4898987",
+          "source": "Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-14T15:00:00Z",
+      "timeBerlin": "2026-09-14T17:00:00+02:00",
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 25,
+      "stressRiskPct": 78,
+      "confidencePct": 82,
+      "dominantMode": "mixed",
+      "analysis": "Second full cash hour, still on the block boundary at a conditional 25. By this point the opening range would normally be established; if the session has settled into a range instead of extending, the conditional level decays from here. The danger window closes at 16:00 UTC.",
+      "drivers": [
+        "Opening range normally established by this hour",
+        "Danger window closes at 16:00 UTC",
+        "Conditional decay if the cash session settles into a range"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-14T16:00:00Z",
+      "timeBerlin": "2026-09-14T18:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 76,
+      "confidencePct": 80,
+      "dominantMode": "mixed",
+      "analysis": "The danger window closes and the conditional path returns to the watch band at 23. European cash markets are shut by this point and liquidity thins in the NQ book, which historically lowers rather than raises the odds of a fresh persistent directional leg.",
+      "drivers": [
+        "Danger window ends; conditional return to the watch band",
+        "European cash closed; NQ liquidity thins into the US afternoon"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-14T17:00:00Z",
+      "timeBerlin": "2026-09-14T19:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 75,
+      "confidencePct": 79,
+      "dominantMode": "mixed",
+      "analysis": "Mid-afternoon US cash. The conditional path holds at 22 with no scheduled release in the hour. Residual path risk is carry-through from the AI and semiconductor de-rating rather than a new information event.",
+      "drivers": [
+        "No scheduled US release in this hour",
+        "Residual risk is AI/semi carry-through, not a new catalyst"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-14T18:00:00Z",
+      "timeBerlin": "2026-09-14T20:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 74,
+      "confidencePct": 78,
+      "dominantMode": "mixed",
+      "analysis": "The conditional path is flat at 22. Positioning ahead of Wednesday’s Retail Sales and Fed decision is the background driver; on the inherited rule a scheduled event ahead informs Stress and Confidence rather than Tail until a price path has actually been observed.",
+      "drivers": [
+        "Wednesday 12:30 UTC Retail Sales and 18:00 UTC Fed decision ahead",
+        "Scheduled events inform Stress, not Tail, until a path is observed"
+      ],
+      "news": [
+        {
+          "title": "FOMC September 2026 Odds for a Rate Hike Surpass 50%",
+          "url": "https://finance.yahoo.com/economy/policy/articles/fomc-september-2026-odds-rate-201618784.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-14T19:00:00Z",
+      "timeBerlin": "2026-09-14T21:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 75,
+      "confidencePct": 77,
+      "dominantMode": "mixed",
+      "analysis": "Power hour, 15:00-16:00 ET. The conditional level is unchanged at 22; late-session continuation or reversal risk is the reason it does not decay further into the close. A directional close on the session lows would be the conditional amplifier for the Globex session that follows.",
+      "drivers": [
+        "Power hour: late-session continuation or reversal risk",
+        "Conditional: a close on the session lows would carry into Globex"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-14T20:00:00Z",
+      "timeBerlin": "2026-09-14T22:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 73,
+      "confidencePct": 76,
+      "dominantMode": "mixed",
+      "analysis": "US cash closes at 20:00 UTC. The conditional level eases to 20 at the lower edge of the watch band as the cash order flow that drove the session ends. Settlement prints the reference against which the Asian session will trade.",
+      "drivers": [
+        "US cash close at 20:00 UTC ends the session’s dominant order flow",
+        "Settlement sets the reference for the Asian session"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-14T21:00:00Z",
+      "timeBerlin": "2026-09-14T23:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 70,
+      "confidencePct": 75,
+      "dominantMode": "normal",
+      "analysis": "CME maintenance break, 17:00-18:00 ET. The conditional level of 20 is mechanical: there is effectively no price discovery in the hour, so a persistent directional path is not available. Dominant mode reads normal for that reason.",
+      "drivers": [
+        "CME maintenance break: effectively no price discovery",
+        "Mechanical level; no persistent path risk available in the hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-14T22:00:00Z",
+      "timeBerlin": "2026-09-15T00:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 71,
+      "confidencePct": 74,
+      "dominantMode": "normal",
+      "analysis": "Globex reopens. The conditional level lifts a point to 21 because the reopen is a recurring gap checkpoint, particularly after a session carrying a concentrated sector de-rating. Whether a gap forms is not observable in advance.",
+      "drivers": [
+        "Globex reopen is a recurring gap checkpoint",
+        "Conditional only: no reopen gap is observable in advance"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-14T23:00:00Z",
+      "timeBerlin": "2026-09-15T01:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 72,
+      "confidencePct": 73,
+      "dominantMode": "mixed",
+      "analysis": "Pre-Asian hour. The conditional level of 22 reflects positioning ahead of the Tokyo and Seoul opens, where a second-day reaction to the AI safety story would land. Monday’s Asian cash session has already closed, with the Kospi down 3.26%.",
+      "drivers": [
+        "Positioning ahead of Tokyo and Seoul opens at 00:00 UTC",
+        "Monday Kospi closed -3.26%; SK Hynix -6.35%, Samsung -4.05%"
+      ],
+      "news": [
+        {
+          "title": "AI Concerns Pressure Stocks as Oil Jumps - Asia Market Wrap",
+          "url": "https://features.financialjuice.com/2026/09/14/ai-concerns-pressure-stocks-as-oil-jumps-asia-market-wrap/",
+          "source": "FinancialJuice"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-15T00:00:00Z",
+      "timeBerlin": "2026-09-15T02:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 73,
+      "confidencePct": 72,
+      "dominantMode": "mixed",
+      "analysis": "Tokyo and Seoul open. The conditional level of 23 is the overnight high of the series because this is where a second-day reaction to the AI safety story in the Asian chip complex would appear. A muted Asian open would invalidate the step-up.",
+      "drivers": [
+        "Tokyo and Seoul cash opens: second-day AI reaction checkpoint",
+        "SoftBank fell 10.7% on Monday; any second leg is unobserved",
+        "Conditional: a muted Asian open invalidates this step-up"
+      ],
+      "news": [
+        {
+          "title": "AI Concerns Pressure Stocks as Oil Jumps - Asia Market Wrap",
+          "url": "https://features.financialjuice.com/2026/09/14/ai-concerns-pressure-stocks-as-oil-jumps-asia-market-wrap/",
+          "source": "FinancialJuice"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-15T01:00:00Z",
+      "timeBerlin": "2026-09-15T03:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 72,
+      "confidencePct": 71,
+      "dominantMode": "mixed",
+      "analysis": "First full Asian cash hour. The conditional level eases to 22 as the Asian open is absorbed. If Monday’s chip-complex weakness does not extend into a second day, the conditional path decays through the remainder of the Asian session.",
+      "drivers": [
+        "Asian open absorbed; conditional decay if chip weakness stops extending"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-15T02:00:00Z",
+      "timeBerlin": "2026-09-15T04:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 71,
+      "confidencePct": 70,
+      "dominantMode": "normal",
+      "analysis": "Mid-Asian session. The conditional level of 21 continues the decay with no scheduled US catalyst in the hour. Dominant mode reads normal on the assumption that Asian trade is orderly rather than directional.",
+      "drivers": [
+        "No scheduled US catalyst during the Asian session",
+        "Assumes orderly rather than directional Asian trade"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-15T03:00:00Z",
+      "timeBerlin": "2026-09-15T05:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 70,
+      "confidencePct": 70,
+      "dominantMode": "normal",
+      "analysis": "Late Asian session. The conditional level reaches the lower edge of the watch band at 20 as the Asian cash reaction completes and liquidity begins to thin ahead of the European handover.",
+      "drivers": [
+        "Asian cash reaction largely complete by this hour",
+        "Liquidity thinning ahead of the European handover"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-15T04:00:00Z",
+      "timeBerlin": "2026-09-15T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 69,
+      "confidencePct": 69,
+      "dominantMode": "normal",
+      "analysis": "Thinnest hours of the Globex session; the conditional level of 19 maps to the EA_ON state. Sustained directional efficiency is historically least likely here because participation is at its lowest. This is a conditional projection, not an observation.",
+      "drivers": [
+        "Thinnest Globex participation of the 24-hour cycle",
+        "Conditional projection; no overnight path is observed"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-15T05:00:00Z",
+      "timeBerlin": "2026-09-15T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 69,
+      "confidencePct": 69,
+      "dominantMode": "normal",
+      "analysis": "Pre-European hours. The conditional level holds at 19, the series low. Tokyo’s lunch break and the gap before European participation arrives keep projected path risk at its lowest point across the forecast horizon.",
+      "drivers": [
+        "Series low for conditional Tail ahead of European participation",
+        "No scheduled release before the European open"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-15T06:00:00Z",
+      "timeBerlin": "2026-09-15T08:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 70,
+      "confidencePct": 68,
+      "dominantMode": "normal",
+      "analysis": "European pre-market. The conditional level lifts to 20 as continental participation begins to build ahead of the cash opens. Any overnight development in the AI complex, which is unknown at this assessment, would be repriced into this hour.",
+      "drivers": [
+        "European participation builds ahead of the cash opens",
+        "Conditional repricing window for any overnight AI-complex news"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-15T07:00:00Z",
+      "timeBerlin": "2026-09-15T09:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 72,
+      "confidencePct": 68,
+      "dominantMode": "mixed",
+      "analysis": "European cash opens. The conditional level of 21 reflects the first meaningful liquidity event of the new day, which is also day one of the two-day FOMC meeting. Monday’s European behaviour is not a guide to Tuesday’s open.",
+      "drivers": [
+        "European cash opens: first meaningful liquidity event of the day",
+        "Day one of the two-day FOMC meeting begins"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-15T08:00:00Z",
+      "timeBerlin": "2026-09-15T10:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 73,
+      "confidencePct": 67,
+      "dominantMode": "mixed",
+      "analysis": "European morning. The conditional level is flat at 21 with the 12:15 UTC ADP weekly print and the 12:30 UTC Empire State index still ahead. Neither is a Tier-1 release, so both are scored into Stress and Confidence rather than into Tail.",
+      "drivers": [
+        "12:15 UTC ADP weekly and 12:30 UTC Empire State index ahead",
+        "Second-tier releases inform Stress and Confidence, not Tail"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-15T09:00:00Z",
+      "timeBerlin": "2026-09-15T11:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 74,
+      "confidencePct": 67,
+      "dominantMode": "mixed",
+      "analysis": "Late European morning. The conditional level of 22 reflects the approach of the US premarket build on the day before the Fed decision. The horizon is 22 hours out, so confidence in this specific level is correspondingly low.",
+      "drivers": [
+        "US premarket build approaches on the eve of the Fed decision",
+        "22-hour horizon; low confidence in the specific level"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-15T10:00:00Z",
+      "timeBerlin": "2026-09-15T12:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 75,
+      "confidencePct": 66,
+      "dominantMode": "mixed",
+      "analysis": "End of the forecast horizon. The conditional level holds at 22 into the European afternoon of the day before the Fed decision. By this point the current session’s observed structure will have been superseded by 23 hours of unobserved price action.",
+      "drivers": [
+        "End of the 24-hour forecast horizon",
+        "Level superseded by 23 hours of unobserved price action",
+        "Fed decision follows on Wednesday at 18:00 UTC"
+      ],
+      "news": [
+        {
+          "title": "FOMC September 2026 Odds for a Rate Hike Surpass 50%",
+          "url": "https://finance.yahoo.com/economy/policy/articles/fomc-september-2026-odds-rate-201618784.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-09-14T11:00:00Z",
+      "timeBerlin": "2026-09-14T13:00:00+02:00",
+      "status": "yellow",
+      "tailRiskPct": 22,
+      "stressRiskPct": 76,
+      "comment": "NQ holds 126 points above the 28,816.25 low with ES, VIX and WTI all off their extremes; Tail eases to 22 and the mapped state returns to the watch band."
+    },
+    {
+      "ts": "2026-09-14T12:00:00Z",
+      "timeBerlin": "2026-09-14T14:00:00+02:00",
+      "status": "yellow",
+      "tailRiskPct": 23,
+      "stressRiskPct": 77,
+      "comment": "European afternoon into the premarket build. 28,816.25 is the conditional downside pivot and a 29,000 reclaim the nearest invalidation; conditional Tail 23."
+    },
+    {
+      "ts": "2026-09-14T13:00:00Z",
+      "timeBerlin": "2026-09-14T15:00:00+02:00",
+      "status": "orange",
+      "tailRiskPct": 26,
+      "stressRiskPct": 79,
+      "comment": "Opening-auction hour at 13:30 UTC. Conditional Tail 26 covers the possibility that the auction reopens directional efficiency in the AI and chip complex."
+    },
+    {
+      "ts": "2026-09-14T14:00:00Z",
+      "timeBerlin": "2026-09-14T16:00:00+02:00",
+      "status": "orange",
+      "tailRiskPct": 27,
+      "stressRiskPct": 79,
+      "comment": "Conditional series peak at 27 in the first full cash hour, eight points below the strong-block threshold; persistence past the first 30 minutes is the discriminator."
+    },
+    {
+      "ts": "2026-09-14T15:00:00Z",
+      "timeBerlin": "2026-09-14T17:00:00+02:00",
+      "status": "orange",
+      "tailRiskPct": 25,
+      "stressRiskPct": 78,
+      "comment": "Second cash hour on the block boundary at a conditional 25; the danger window closes at 16:00 UTC and the path decays if a range establishes."
+    },
+    {
+      "ts": "2026-09-14T16:00:00Z",
+      "timeBerlin": "2026-09-14T18:00:00+02:00",
+      "status": "yellow",
+      "tailRiskPct": 23,
+      "stressRiskPct": 76,
+      "comment": "Danger window ends and the conditional path returns to the watch band at 23 as European cash closes and NQ liquidity thins."
+    }
+  ],
+  "events": [
+    {
+      "name": "ADP Weekly Employment Change",
+      "ts": "2026-09-15T12:15:00Z",
+      "timeBerlin": "2026-09-15T14:15:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "NY Empire State Manufacturing Index",
+      "ts": "2026-09-15T12:30:00Z",
+      "timeBerlin": "2026-09-15T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "US Retail Sales MoM (August)",
+      "ts": "2026-09-16T12:30:00Z",
+      "timeBerlin": "2026-09-16T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Retail Sales ex Autos MoM (August)",
+      "ts": "2026-09-16T12:30:00Z",
+      "timeBerlin": "2026-09-16T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Business Inventories MoM",
+      "ts": "2026-09-16T14:00:00Z",
+      "timeBerlin": "2026-09-16T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "FOMC Federal Funds Rate Decision",
+      "ts": "2026-09-16T18:00:00Z",
+      "timeBerlin": "2026-09-16T20:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "FOMC Chair Press Conference",
+      "ts": "2026-09-16T18:30:00Z",
+      "timeBerlin": "2026-09-16T20:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Initial Jobless Claims",
+      "ts": "2026-09-17T12:30:00Z",
+      "timeBerlin": "2026-09-17T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Building Permits",
+      "ts": "2026-09-17T12:30:00Z",
+      "timeBerlin": "2026-09-17T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "US Housing Starts",
+      "ts": "2026-09-17T12:30:00Z",
+      "timeBerlin": "2026-09-17T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "US Industrial Production MoM",
+      "ts": "2026-09-18T13:15:00Z",
+      "timeBerlin": "2026-09-18T15:15:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Capacity Utilization",
+      "ts": "2026-09-18T13:15:00Z",
+      "timeBerlin": "2026-09-18T15:15:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
