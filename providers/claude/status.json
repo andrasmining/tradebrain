@@ -3,72 +3,61 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-09-15T12:33:08Z",
+  "generatedAt": "2026-09-15T13:32:21Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "yellow",
-  "statusText": "Mapped policy state: WATCH. Tail at 20% sits in the watch band and below the blocking threshold, while Stress remains high on the oil and duration backdrop.",
-  "recommendation": "A narrow evidence-based danger window is flagged around the 13:30Z US cash open and the first cash hour, where an opening imbalance that holds without retracement would be the amplifying evidence. Outside that window the current evidence is consistent with intact mean reversion rather than a persistent one-way path.",
-  "headline": "Nasdaq-100 steady into the US open as futures pare losses; oil near four-month highs and a 5% 10-year keep Stress high ahead of the Fed",
-  "body": "NQ futures are near 29,431, down 0.06%, after paring an earlier decline of roughly 90 points, and VIX near 17.0 sits at the low of its 17.02-18.03 daily range. The Nasdaq-100 cash index closed Sep 14 at 29,127.16, down 0.82%, but well off its 28,867.67 session low, so meaningful retracement has been occurring rather than failing. The macro backdrop is genuinely stressed: the 10-year yield is near 4.96% after briefly topping 5% on Sep 14 for the first time since 2023, the 30-year touched 5.38%, and WTI near $102 with Brent near $106 reflects the Saudi East-West pipeline outage that places roughly 4% of global supply at risk. Commentary on AI safety is weighing on AI-linked names, and delayed latest-session context shows split internals, with semiconductors firm against softer software and most megacaps. That combination of conflicting internals, high event importance and an unresolved supply shock raises Stress rather than Tail, because none of it is yet evidence of a price path that denies retracement. Tail is held at 20% in the watch band, with the narrow danger window limited to the cash-open transition. The Fed decision at 18:00Z on Sep 16 and the Chair press conference at 18:30Z fall beyond this 24-hour horizon and are carried as calendar checkpoints.",
-  "tailRiskPct": 20,
+  "statusText": "Mapped policy state: WATCH. Tail sits in the watch band and remains below the block threshold, while Stress stays high on the rate and energy backdrop.",
+  "recommendation": "Tail is below the block threshold, so the deterministic mapping yields WATCH for both NQ futures and the NAS100 CFD. The narrow danger window covers the U.S. cash open and the first ninety minutes of cash trade; outside it the observed overnight path shows retracements rather than one-way extension.",
+  "headline": "Nasdaq-100 two-sided into the U.S. open as a 5% 10-year yield and $100 oil fade off their overnight extremes",
+  "body": "NQ futures traded about 29,428 shortly before the 13:30Z cash open, down roughly 0.1%, after an overnight range of 29,231 to 29,495. The overnight low was retraced, which is the central piece of price-path evidence: mean reversion was available rather than denied. The U.S. 10-year yield stands near 4.996% after tagging 5.014%, its highest area since 2007, with the 2-year at 4.63% and the 30-year at 5.35% on the latest H.15 publication. VIX eased to 16.88 from an 18.03 overnight high and WTI slipped to about $101.62 after reaching $104.21, so both stress impulses faded rather than extended. Cross-asset tone is split: semiconductors were uniformly firm in the latest session while megacap software was softer, which reduces directional conviction more than it raises tail risk. The macro backdrop is demanding - a global term-premium selloff, U.S.-Iran supply risk around the Strait of Hormuz, and a two-day FOMC meeting starting today into a decision expected Wednesday at 18:00Z - and that is carried in a high Stress reading. No U.S. Tier-1 release is scheduled for the remainder of today's session. Absent observed persistent one-way structure, shallow pullbacks or repeated extension after failed retracements, Tail is held in the watch band rather than the block band.",
+  "tailRiskPct": 21,
   "tailLevel": "watch",
-  "stressRiskPct": 70,
+  "stressRiskPct": 72,
   "stressLevel": "high",
   "dominantMode": "mixed",
   "confidencePct": 87,
   "confidenceLevel": "high",
   "action": "WATCH",
   "dangerWindow": {
-    "start": "2026-09-15T13:25:00Z",
-    "end": "2026-09-15T14:30:00Z"
+    "start": "2026-09-15T13:30:00Z",
+    "end": "2026-09-15T15:00:00Z"
   },
   "dangerWindowBerlin": {
-    "start": "2026-09-15T15:25:00+02:00",
-    "end": "2026-09-15T16:30:00+02:00"
+    "start": "2026-09-15T15:30:00+02:00",
+    "end": "2026-09-15T17:00:00+02:00"
   },
   "sources": [
     {
-      "title": "Nasdaq-100 Index (^NDX) quote",
+      "title": "Nasdaq-100 (^NDX) quote - Yahoo Finance",
       "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "Nasdaq 100 futures (NQ=F) quote - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/NQ%3DF/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
     },
     {
       "title": "Federal Reserve H.15 Selected Interest Rates",
       "url": "https://www.federalreserve.gov/releases/h15/"
     },
     {
-      "title": "WTI and Brent crude oil prices",
-      "url": "https://tradingeconomics.com/commodity/crude-oil"
+      "title": "United States economic calendar - Trading Economics",
+      "url": "https://tradingeconomics.com/united-states/calendar"
     },
     {
-      "title": "Stock market live coverage, September 15 2026",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-15-dow-sp-500-nasdaq-081307838.html"
-    },
-    {
-      "title": "NY Fed Empire State Manufacturing Survey",
-      "url": "https://www.newyorkfed.org/survey/empire/empiresurvey_overview"
-    },
-    {
-      "title": "Oil prices climb as Saudi pipeline outage deepens supply concerns",
-      "url": "https://za.investing.com/news/commodities-news/oil-prices-rise-as-saudi-pipeline-outage-fresh-attacks-raise-supply-concerns-4464317"
+      "title": "Treasury yields are above 5%. Here's what it means for stocks - CNBC",
+      "url": "https://www.cnbc.com/2026/09/15/treasury-yields-stocks-investors.html"
     }
   ],
-  "lookbackSummary": "All 24 preceding clock hours carry a published Claude assessment. Tail oscillated between 14% and 26% without settling above the blocking threshold: it printed 26% at 13:00Z on Sep 14 and 25% at 08:00Z today on two brief trend-down phases, and fell to 14-16% through the overnight hours. Stress declined steadily from the high 70s on Sep 14 into the mid 60s overnight before rebuilding into the low 70s this morning as the oil and yield backdrop reasserted. The repeated failure of trend-down phases to persist is itself evidence that retracement has been available.",
+  "lookbackSummary": "Across the past 24 published hours Tail oscillated between 14 and 26 without settling in the block band. Two brief trend-down excursions were recorded, at the 13:00Z hour yesterday and again at the 08:00Z hour this morning, each reverting within one to two hours. The overnight U.S. session was the calmest stretch, with Tail between 14 and 17, before the European morning lifted it back toward the watch band as the global bond selloff carried the U.S. 10-year through 5%. Stress stayed in the high band throughout, between 65 and 79, and Confidence held between 86 and 89.",
   "lookback": [
-    {
-      "ts": "2026-09-14T12:00:00Z",
-      "timeBerlin": "2026-09-14T14:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 76,
-      "confidencePct": 88,
-      "dominantMode": "mixed"
-    },
     {
       "ts": "2026-09-14T13:00:00Z",
       "timeBerlin": "2026-09-14T15:00:00+02:00",
@@ -321,60 +310,47 @@
       "stressRiskPct": 71,
       "confidencePct": 88,
       "dominantMode": "mixed"
-    }
-  ],
-  "outlookSummary": "The horizon runs from the current pre-open hour to 11:00Z on Sep 16 and therefore ends before the Fed decision. Tail is modeled highest around the 13:30Z cash open and the first cash hour, easing through midday as two-way discovery is assumed to re-establish, rising again modestly into the power hour and cash close on hedging and settlement flow, then falling to its lowest levels overnight. It drifts back toward the watch band across the European morning of Sep 16 as the pre-Fed session builds. Stress stays high or elevated throughout because the oil supply shock and the 5% long end are unresolved, and Confidence decays with distance from the evidence cutoff.",
-  "forecast": [
+    },
     {
       "ts": "2026-09-15T12:00:00Z",
       "timeBerlin": "2026-09-15T14:00:00+02:00",
+      "available": true,
       "status": "yellow",
       "action": "WATCH",
       "tailRiskPct": 20,
       "stressRiskPct": 70,
       "confidencePct": 87,
-      "dominantMode": "mixed",
-      "analysis": "Pre-open. NQ futures near 29,431 (-0.06%) after paring an earlier decline of roughly 90 points, and VIX near 17.0 sits at the low of its 17.02-18.03 daily range. Retracement is functioning. The Empire State manufacturing print lands at 12:30Z, at the evidence cutoff, and its outcome is not verified here.",
-      "drivers": [
-        "NQ futures ~29,431 (-0.06%) after paring an earlier ~90-point decline",
-        "VIX ~17.0, at the low end of its 17.02-18.03 daily range",
-        "Empire State manufacturing print at 12:30Z; outcome unverified at cutoff",
-        "10Y ~4.96% after briefly topping 5% on Sep 14, first since 2023",
-        "WTI ~$102 on the Saudi East-West pipeline outage"
-      ],
-      "news": [
-        {
-          "title": "Stock market today: Dow, S&P 500, Nasdaq futures retreat ahead of Fed meeting amid AI safety fears",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-15-dow-sp-500-nasdaq-081307838.html",
-          "source": "Yahoo Finance"
-        },
-        {
-          "title": "US Stock Futures Fall Ahead of Fed Meeting as Oil and Treasury Yields Rise",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/us-stock-futures-fall-ahead-092943720.html",
-          "source": "Yahoo Finance"
-        }
-      ]
-    },
+      "dominantMode": "mixed"
+    }
+  ],
+  "outlookSummary": "The cash-open hour carries the highest near-term conditional Tail at 22, reflecting an unresolved opening-auction continuation checkpoint rather than observed structure. Conditional Tail then eases through the U.S. afternoon as opening volatility decays, with a secondary rise into the 19:00Z power hour ahead of the rate decision. The overnight and Asian hours are modelled at the low end of the horizon. Conditional Tail rebuilds through the European morning and peaks at 23 in the 12:00Z hour on Wednesday, which contains the U.S. retail sales and import-price releases on the morning of the Fed decision; that hour is modelled as event/whipsaw. No forecast hour reaches the block band. Confidence is stepped down with distance from the assessment cutoff.",
+  "forecast": [
     {
       "ts": "2026-09-15T13:00:00Z",
       "timeBerlin": "2026-09-15T15:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 24,
-      "stressRiskPct": 74,
-      "confidencePct": 86,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Covers the 13:30Z US cash open, the session's decisive checkpoint. A directional opening imbalance that holds without a meaningful pullback would lift Tail from here; an orderly two-way auction would keep it inside the watch band. No structure for this hour is observed yet.",
+      "tailRiskPct": 22,
+      "stressRiskPct": 73,
+      "confidencePct": 87,
+      "dominantMode": "mixed",
+      "analysis": "Hour containing the 13:30Z U.S. cash open. Observed overnight NQ path is two-sided: the 29,231 low was retraced toward 29,428, VIX eased to 16.88 from an 18.03 high and WTI slipped from $104.21 to about $101.62. Opening-auction continuation is still an unresolved checkpoint, so Tail stays in the watch band.",
       "drivers": [
-        "13:30Z US cash open; opening-auction structure is the hour's checkpoint",
-        "Conditional: shallow or failed pullbacks after the open would amplify Tail",
-        "Split internals: semis firm, software and most megacaps soft (delayed context)",
-        "AI-safety commentary weighing on AI-linked names into the open"
+        "U.S. cash open at 13:30Z is an unresolved continuation checkpoint",
+        "10-year yield about 4.996% after tagging 5.014% overnight",
+        "NQ futures retraced from the 29,231 low back toward 29,428",
+        "VIX 16.88, down from an 18.03 overnight high",
+        "WTI about $101.62 after fading from a $104.21 overnight high"
       ],
       "news": [
         {
-          "title": "Stock market today: Dow, S&P 500, Nasdaq futures retreat ahead of Fed meeting amid AI safety fears",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-15-dow-sp-500-nasdaq-081307838.html",
+          "title": "Treasury yields are above 5%. Here's what it means for stocks",
+          "url": "https://www.cnbc.com/2026/09/15/treasury-yields-stocks-investors.html",
+          "source": "CNBC"
+        },
+        {
+          "title": "Bond selloff drives US benchmark beyond 5%; stocks rattled",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/bond-selloff-drives-us-benchmark-073953494.html",
           "source": "Yahoo Finance"
         }
       ]
@@ -384,21 +360,22 @@
       "timeBerlin": "2026-09-15T16:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 23,
-      "stressRiskPct": 73,
-      "confidencePct": 85,
-      "dominantMode": "event/whipsaw",
-      "analysis": "First full cash hour, conditional on how the open resolves. Repeated extension after failed retracements, or the index holding near a session extreme, would be the evidence that lifts Tail; a two-way range with intact mean reversion would let it decay. Oil near four-month highs remains the live inflation channel.",
+      "tailRiskPct": 21,
+      "stressRiskPct": 72,
+      "confidencePct": 86,
+      "dominantMode": "mixed",
+      "analysis": "First full post-open hour. Overnight evidence shows retracements occurring rather than one-way extension, so the base case is two-sided discovery. If the opening auction instead produced shallow pullbacks and repeated extension, that would be the condition to revisit; it is not observed at the assessment cutoff.",
       "drivers": [
-        "First full cash hour; assumes the opening imbalance is tested",
-        "Invalidation: a session extreme that holds without retracement",
-        "Brent ~$106, WTI ~$102 with ~4% of global supply at risk while the pipeline is shut"
+        "Post-open price discovery is the primary conditional checkpoint",
+        "Overnight retracement depth argues against a no-pullback path",
+        "Rate-sensitive tape with the 10-year pinned near 5%",
+        "Semiconductor leadership against softer megacap software"
       ],
       "news": [
         {
-          "title": "Oil Prices Climb as Attacks, Pipeline Outage Deepen Saudi Supply Concerns",
-          "url": "https://za.investing.com/news/commodities-news/oil-prices-rise-as-saudi-pipeline-outage-fresh-attacks-raise-supply-concerns-4464317",
-          "source": "Reuters via Investing.com"
+          "title": "Treasury yields are above 5%. Here's what it means for stocks",
+          "url": "https://www.cnbc.com/2026/09/15/treasury-yields-stocks-investors.html",
+          "source": "CNBC"
         }
       ]
     },
@@ -407,21 +384,21 @@
       "timeBerlin": "2026-09-15T17:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 21,
+      "tailRiskPct": 20,
       "stressRiskPct": 71,
-      "confidencePct": 84,
+      "confidencePct": 86,
       "dominantMode": "mixed",
-      "analysis": "Mid-morning. Post-open price discovery is usually more two-way by this hour, so Tail is modeled lower on the assumption that retracement re-establishes. A sustained 10-year move back above 5% would be the main conditional amplifier for long-duration technology exposure.",
+      "analysis": "Late U.S. morning. Typical behaviour after an orderly open is decaying opening volatility and a widening of intraday ranges, which supports mean reversion. Tail eases slightly on that conditional path; a re-acceleration in the 10-year above 5.05% would be the invalidation to watch.",
       "drivers": [
-        "Mid-morning: two-way discovery assumed unless the open trends cleanly",
-        "Checkpoint: 10Y back above 5% would pressure long-duration tech",
-        "30Y touched 5.38% on Sep 14; curve steepening is the background stressor"
+        "Opening-range volatility normally decays into late morning",
+        "Invalidation: 10-year pushing decisively back above 5.05%",
+        "European cash session still open, adding cross-market flow"
       ],
       "news": [
         {
-          "title": "10-year Treasury yield briefly tops 5% for the first time since 2023",
-          "url": "https://finance.yahoo.com/markets/article/10-year-treasury-yield-climbs-to-5-for-the-first-time-since-2023-123457398.html",
-          "source": "Yahoo Finance"
+          "title": "10-year Treasury yield hits 5% before reversing as traders await Fed meeting",
+          "url": "https://www.cnbc.com/2026/09/14/10-year-us-treasury-is-closing-in-on-5percent.html",
+          "source": "CNBC"
         }
       ]
     },
@@ -432,13 +409,13 @@
       "action": "EA_ON",
       "tailRiskPct": 19,
       "stressRiskPct": 69,
-      "confidencePct": 83,
+      "confidencePct": 85,
       "dominantMode": "mixed",
-      "analysis": "Midday lull. Absent an intraday catalyst, ranges typically compress into and after the European close, which supports mean reversion, and Tail is modeled back below the watch threshold on that basis. Stress stays high because the oil and duration backdrop is unresolved, not because the price path is disorderly.",
+      "analysis": "European cash close hour. Cross-market flow usually thins after the 15:30Z fixing window, and no U.S. Tier-1 release is scheduled for the remainder of the session. Conditional Tail drops below the watch band on an assumed orderly path.",
       "drivers": [
-        "Midday range compression assumed; no scheduled US release this hour",
-        "Stress stays high on the unresolved oil and duration backdrop",
-        "European cash close near 15:30Z removes one liquidity source"
+        "European cash close removes a cross-market flow driver",
+        "No scheduled U.S. Tier-1 release left in this session",
+        "Assumes orderly two-sided discovery through the morning"
       ],
       "news": []
     },
@@ -447,34 +424,46 @@
       "timeBerlin": "2026-09-15T19:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 19,
+      "tailRiskPct": 18,
       "stressRiskPct": 68,
-      "confidencePct": 82,
+      "confidencePct": 85,
       "dominantMode": "mixed",
-      "analysis": "Early afternoon, modeled as a continuation of midday conditions with liquidity thinning after the European close. The conditional risk for this hour is a late directional push beginning to build into the final cash hours, rather than anything present in the current evidence.",
+      "analysis": "Midday lull. In the absence of a new catalyst this window historically carries the session's lowest directional efficiency, which favours retracement. Stress remains high purely on the rate and oil backdrop rather than on observed price-path evidence.",
       "drivers": [
-        "Post-European-close liquidity thinning",
-        "Conditional: an afternoon directional push that denies pullbacks",
-        "No scheduled US macro release in this hour"
+        "Midday window typically shows the lowest directional efficiency",
+        "Stress stays high on the rate and oil backdrop, not on path evidence",
+        "No scheduled catalyst inside this hour"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "A 5% Treasury Yield Raises New Risks for Markets, Economy",
+          "url": "https://www.bloomberg.com/news/articles/2026-09-13/a-5-treasury-yield-is-raising-new-risks-for-markets-economy",
+          "source": "Bloomberg"
+        }
+      ]
     },
     {
       "ts": "2026-09-15T18:00:00Z",
       "timeBerlin": "2026-09-15T20:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 67,
-      "confidencePct": 81,
+      "tailRiskPct": 19,
+      "stressRiskPct": 69,
+      "confidencePct": 84,
       "dominantMode": "mixed",
-      "analysis": "Afternoon. Positioning ahead of the following day's Fed decision tends to reduce directional conviction, which usually favours range behaviour over persistent trend, and Tail is modeled at its intraday low on that basis. This is an assumption about positioning, not an observation.",
+      "analysis": "Early afternoon in New York. Pre-FOMC positioning can begin to build a day ahead of the decision, which modestly lifts conditional Tail. This is a scheduled-meeting effect, not an observed structure, and the two-day meeting only begins today.",
       "drivers": [
-        "Pre-FOMC positioning typically suppresses directional conviction",
-        "Fed decision at 2026-09-16T18:00Z falls outside this 24-hour window",
-        "Assumption rather than observation: range behaviour into the close"
+        "Pre-FOMC positioning can build the day before the decision",
+        "Two-day FOMC meeting begins today; decision is Wednesday 18:00Z",
+        "Effect treated as conditional, not as observed structure"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "US 10-year yield tops 5% as markets price Fed hike",
+          "url": "https://invezz.com/in/news/2026/09/14/us-10-year-yield-tops-5percent-as-markets-price-fed-hike/",
+          "source": "Invezz"
+        }
+      ]
     },
     {
       "ts": "2026-09-15T19:00:00Z",
@@ -483,36 +472,36 @@
       "action": "WATCH",
       "tailRiskPct": 22,
       "stressRiskPct": 71,
-      "confidencePct": 80,
+      "confidencePct": 84,
       "dominantMode": "mixed",
-      "analysis": "Power hour. The final cash hour before a Fed decision day can carry concentrated hedging and index rebalancing flow, a recognised source of one-way extension. Tail is modeled back into the watch band as a conditional allowance for that flow, not because such structure is present now.",
+      "analysis": "U.S. power hour into the 20:00Z cash close, with the added feature that closing flow arrives the day before a rate decision. Late-session continuation or reversal risk is the main conditional amplifier here; conditional Tail rises but stays below the block threshold.",
       "drivers": [
-        "Power hour: concentrated hedging and rebalancing flow into the close",
-        "Pre-decision-day hedging demand is the specific mechanism",
-        "Conditional allowance only; no one-way structure observed at the cutoff"
+        "Power hour into the 20:00Z U.S. cash close",
+        "Closing flow lands one day before the Fed decision",
+        "Late-session continuation or reversal is the key conditional risk"
       ],
       "news": [
         {
-          "title": "US Stock Futures Fall Ahead of Fed Meeting as Oil and Treasury Yields Rise",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/us-stock-futures-fall-ahead-092943720.html",
-          "source": "Yahoo Finance"
+          "title": "10-year Treasury yield hits 5% before reversing as traders await Fed meeting",
+          "url": "https://www.cnbc.com/2026/09/14/10-year-us-treasury-is-closing-in-on-5percent.html",
+          "source": "CNBC"
         }
       ]
     },
     {
       "ts": "2026-09-15T20:00:00Z",
       "timeBerlin": "2026-09-15T22:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 70,
-      "confidencePct": 79,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 66,
+      "confidencePct": 84,
       "dominantMode": "mixed",
-      "analysis": "US cash close and settlement. Closing auction prints can produce a sharp, short-lived imbalance that normally resolves once trading moves to the overnight futures session. The modeled path assumes that imbalance clears rather than extends.",
+      "analysis": "Post-close hour. Cash liquidity steps down and futures usually revert to a narrower range once the closing auction clears. Conditional Tail falls back below the watch band absent a fresh headline.",
       "drivers": [
-        "20:00Z US cash close and closing-auction imbalance",
-        "Assumption: settlement imbalance clears rather than extends overnight",
-        "Overnight futures liquidity thins immediately after the cash close"
+        "Cash close clears; futures liquidity steps down",
+        "Ranges typically narrow once the closing auction is complete",
+        "Assumes no fresh geopolitical headline in this window"
       ],
       "news": []
     },
@@ -523,21 +512,15 @@
       "action": "EA_ON",
       "tailRiskPct": 16,
       "stressRiskPct": 64,
-      "confidencePct": 78,
-      "dominantMode": "normal",
-      "analysis": "Post-close. Overnight index futures typically trade a narrower range with mean reversion intact once the settlement imbalance has cleared, and Tail and Stress are modeled lower on that basis. Middle East oil headlines remain the main overnight discontinuity risk.",
+      "confidencePct": 84,
+      "dominantMode": "mixed",
+      "analysis": "U.S. evening. Historically the quietest part of the 24-hour cycle for NQ, with thin but orderly two-way flow. Stress eases into the elevated band as the session's rate and oil impulses are marked to a settled level.",
       "drivers": [
-        "Post-settlement: narrower overnight range assumed",
-        "Overnight discontinuity risk sits mainly in Middle East oil headlines",
-        "Hormuz commodity vessel traffic fell to four from ten, per Reuters reporting"
+        "Quietest part of the 24-hour NQ cycle",
+        "Thin but normally orderly two-way overnight flow",
+        "Stress marked down as session impulses settle"
       ],
-      "news": [
-        {
-          "title": "Oil Prices Climb as Attacks, Pipeline Outage Deepen Saudi Supply Concerns",
-          "url": "https://za.investing.com/news/commodities-news/oil-prices-rise-as-saudi-pipeline-outage-fresh-attacks-raise-supply-concerns-4464317",
-          "source": "Reuters via Investing.com"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-15T22:00:00Z",
@@ -545,51 +528,65 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
-      "stressRiskPct": 62,
-      "confidencePct": 77,
-      "dominantMode": "normal",
-      "analysis": "Late US evening ahead of Asia. Historically the quietest part of the 24-hour cycle for index futures and the most favourable for mean reversion. The modeled decline in Stress reflects expected range compression, not a resolution of the underlying oil or duration backdrop.",
+      "stressRiskPct": 63,
+      "confidencePct": 84,
+      "dominantMode": "mixed",
+      "analysis": "Late U.S. evening ahead of the Asian handover. No scheduled catalyst; conditional Tail is at its lowest for the forecast horizon. The persistent U.S.-Iran supply risk remains the main source of gap potential rather than trend potential.",
       "drivers": [
-        "Quietest part of the cycle for index futures; range compression expected",
-        "Underlying oil and duration backdrop stays unresolved into Asia"
+        "No scheduled catalyst in this window",
+        "U.S.-Iran supply risk is gap risk rather than trend risk",
+        "Lowest conditional Tail across the forecast horizon"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Oil prices surge as US-Iran strikes intensify in Strait of Hormuz",
+          "url": "https://www.aljazeera.com/economy/2026/9/7/oil-prices-surge-as-us-iran-strikes-intensify-in-strait-of-hormuz",
+          "source": "Al Jazeera"
+        }
+      ]
     },
     {
       "ts": "2026-09-15T23:00:00Z",
       "timeBerlin": "2026-09-16T01:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 14,
-      "stressRiskPct": 61,
-      "confidencePct": 76,
-      "dominantMode": "normal",
-      "analysis": "Pre-Asia handover, modeled as the lowest-Tail hour of the horizon on expected thin and range-bound conditions. A gap at the Asian reopen driven by an overnight geopolitical headline is the identified conditional break from this modeled path.",
+      "tailRiskPct": 15,
+      "stressRiskPct": 63,
+      "confidencePct": 84,
+      "dominantMode": "mixed",
+      "analysis": "Asian pre-open hour. Conditional Tail stays low; the checkpoint is whether Japanese and Australian government bond markets extend the global term-premium move that pushed the U.S. 10-year through 5%.",
       "drivers": [
-        "Thin pre-Asia conditions; lowest modeled Tail of the horizon",
-        "Conditional break: an overnight geopolitical headline gapping the Asian open"
+        "Checkpoint: JGB and ACGB opening in a global term-premium selloff",
+        "Global yield direction is the main overnight transmission channel",
+        "Conditional Tail held at the low end of the horizon"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Global Bond Selloff Sends 10-Year Treasury Yields to Cusp of 5%",
+          "url": "https://finance.yahoo.com/economy/policy/articles/global-bond-selloff-sends-10-001324539.html",
+          "source": "Yahoo Finance"
+        }
+      ]
     },
     {
       "ts": "2026-09-16T00:00:00Z",
       "timeBerlin": "2026-09-16T02:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 15,
-      "stressRiskPct": 62,
-      "confidencePct": 74,
-      "dominantMode": "normal",
-      "analysis": "Asian session underway. Long-end yields in Australia and the UK were cited above 5% alongside the Sep 14 US move, so the Asia bond open is the specific checkpoint for whether upward yield pressure resumes. Conditions are modeled as orderly absent that impulse.",
+      "tailRiskPct": 16,
+      "stressRiskPct": 64,
+      "confidencePct": 83,
+      "dominantMode": "mixed",
+      "analysis": "Tokyo and Sydney trade. Cross-asset alignment is the thing to test: equities, yields and oil moving together in one direction would matter, whereas the observed overnight pattern was impulse and fade. Conditional Tail ticks up only marginally.",
       "drivers": [
-        "Asia bond open is the checkpoint for renewed global duration pressure",
-        "Long-end yields above 5% in Australia and the UK were cited on Sep 14",
-        "Modeled orderly absent a renewed yield impulse"
+        "Test of cross-asset alignment across equities, yields and oil",
+        "Observed overnight pattern was impulse followed by fade",
+        "Asian session flow is the transmission checkpoint"
       ],
       "news": [
         {
-          "title": "10-year Treasury yield briefly tops 5% for the first time since 2023",
-          "url": "https://finance.yahoo.com/markets/article/10-year-treasury-yield-climbs-to-5-for-the-first-time-since-2023-123457398.html",
+          "title": "Bond selloff drives US benchmark beyond 5%; stocks rattled",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/bond-selloff-drives-us-benchmark-073953494.html",
           "source": "Yahoo Finance"
         }
       ]
@@ -599,15 +596,15 @@
       "timeBerlin": "2026-09-16T03:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 15,
-      "stressRiskPct": 62,
-      "confidencePct": 73,
-      "dominantMode": "normal",
-      "analysis": "Mid-Asia, modeled as range-bound with retracement intact. The conditional amplifier specific to this hour is a yen or carry-trade move feeding back into global duration, which was cited among the contributors to the Sep 14 yield spike.",
+      "tailRiskPct": 16,
+      "stressRiskPct": 65,
+      "confidencePct": 83,
+      "dominantMode": "mixed",
+      "analysis": "Mid-Asian session. Regional index direction typically sets the tone for NQ's overnight drift. No U.S. release is scheduled, so any structure forming here would be flow-driven rather than catalyst-driven.",
       "drivers": [
-        "Mid-Asia: range-bound conditions modeled",
-        "Conditional: a yen carry-trade unwind feeding back into global duration",
-        "Carry unwind was cited among Sep 14 yield-spike contributors"
+        "Regional index direction sets the NQ overnight drift",
+        "Any structure here would be flow-driven, not catalyst-driven",
+        "No U.S. scheduled release in this window"
       ],
       "news": []
     },
@@ -616,16 +613,23 @@
       "timeBerlin": "2026-09-16T04:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 14,
-      "stressRiskPct": 61,
-      "confidencePct": 72,
-      "dominantMode": "normal",
-      "analysis": "Late Asia, typically a low-volatility hour for NQ futures with no US catalyst scheduled, and modeled at the low end of the horizon. Any move here would most plausibly be spillover from Asian equity or rates markets rather than an index-specific impulse.",
+      "tailRiskPct": 16,
+      "stressRiskPct": 65,
+      "confidencePct": 83,
+      "dominantMode": "mixed",
+      "analysis": "China and Hong Kong session hour. Commodity-linked headlines out of Asia are the realistic source of a fresh oil impulse; a renewed move above the $104.21 overnight high would be the condition that lifts conditional Tail.",
       "drivers": [
-        "Late Asia: no scheduled US catalyst; low-volatility hour modeled",
-        "Any impulse likely spillover from Asian equities or rates, not index-specific"
+        "Condition: WTI reclaiming the $104.21 overnight high",
+        "Asian commodity headlines are the realistic oil impulse source",
+        "Conditional Tail unchanged absent that trigger"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Brent crude tops $100 as U.S.-Iran tit-for-tat strikes stoke oil supply worries",
+          "url": "https://www.cnbc.com/2026/09/09/oil-prices-today-wti-brent-us-iran-hormuz-attacks.html",
+          "source": "CNBC"
+        }
+      ]
     },
     {
       "ts": "2026-09-16T03:00:00Z",
@@ -633,13 +637,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 15,
-      "stressRiskPct": 62,
-      "confidencePct": 71,
-      "dominantMode": "normal",
-      "analysis": "Asia-to-Europe handover begins and volatility usually starts to rebuild modestly as European desks come online. Modeled with a small increase in Stress and unchanged low Tail, on the assumption that early European flow is two-way rather than directional.",
+      "stressRiskPct": 64,
+      "confidencePct": 83,
+      "dominantMode": "mixed",
+      "analysis": "Asian close approach. Volatility in this window is usually contained and retracements are frequent, which is the condition that keeps conditional Tail low. Stress stays elevated on the unchanged macro backdrop.",
       "drivers": [
-        "Asia-to-Europe handover; volatility rebuilds modestly",
-        "Assumption: early European flow is two-way rather than directional"
+        "Asian close approach usually contains realised volatility",
+        "Frequent retracements are the assumption behind low conditional Tail",
+        "Macro backdrop keeps Stress elevated regardless of path"
       ],
       "news": []
     },
@@ -649,22 +654,16 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 16,
-      "stressRiskPct": 63,
-      "confidencePct": 70,
+      "stressRiskPct": 65,
+      "confidencePct": 82,
       "dominantMode": "mixed",
-      "analysis": "Pre-European open, with the mode returning to mixed as cross-asset repricing resumes. The specific checkpoint is where Brent and WTI settle overnight, since the Saudi pipeline outage has been the dominant overnight headline generator this week.",
+      "analysis": "Asia-to-Europe handover. The transition can produce a short directional impulse as the Asian close clears; conditional Tail is nudged up marginally on that handover effect alone.",
       "drivers": [
-        "Pre-European open; cross-asset repricing resumes",
-        "Checkpoint: overnight Brent and WTI levels after the pipeline outage",
-        "Reported repair timeline for the pipeline ranges from immediate to eight weeks"
+        "Asia-to-Europe handover can produce a short directional impulse",
+        "Handover effect is the only driver of the marginal Tail increase",
+        "No scheduled macro release in this window"
       ],
-      "news": [
-        {
-          "title": "Oil Prices Climb as Attacks, Pipeline Outage Deepen Saudi Supply Concerns",
-          "url": "https://za.investing.com/news/commodities-news/oil-prices-rise-as-saudi-pipeline-outage-fresh-attacks-raise-supply-concerns-4464317",
-          "source": "Reuters via Investing.com"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-16T05:00:00Z",
@@ -672,16 +671,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 17,
-      "stressRiskPct": 65,
-      "confidencePct": 69,
+      "stressRiskPct": 67,
+      "confidencePct": 82,
       "dominantMode": "mixed",
-      "analysis": "European cash open at 07:00 Berlin, a transition that has been an active source of directional impulses during the current oil and yield regime. Modeled with rising Stress and Tail still contained, conditional on the European bond open being orderly.",
+      "analysis": "European pre-open. Bund and gilt opening levels are the checkpoint, since the move that carried the U.S. 10-year past 5% has been a global rather than purely domestic term-premium repricing.",
       "drivers": [
-        "European cash open at 07:00 Berlin is an active transition",
-        "Conditional on an orderly European bond open",
-        "Oil and yield regime has made this transition directionally active"
+        "Checkpoint: Bund and gilt opening levels",
+        "Term-premium repricing has been global, not purely U.S. domestic",
+        "European rate direction feeds NQ through the discount-rate channel"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Global Bond Selloff Sends 10-Year Treasury Yields to Cusp of 5%",
+          "url": "https://finance.yahoo.com/economy/policy/articles/global-bond-selloff-sends-10-001324539.html",
+          "source": "Yahoo Finance"
+        }
+      ]
     },
     {
       "ts": "2026-09-16T06:00:00Z",
@@ -689,16 +694,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 18,
-      "stressRiskPct": 66,
-      "confidencePct": 68,
+      "stressRiskPct": 68,
+      "confidencePct": 82,
       "dominantMode": "mixed",
-      "analysis": "European morning, where gilt and Bund long-end behaviour is the relevant read-across because the Sep 14 move was a global rather than US-only duration event. Tail stays contained in the modeled path; a synchronised long-end selloff would be the amplifier.",
+      "analysis": "Early European trade. Conditional Tail edges higher as liquidity returns, but the base case remains two-sided given that yesterday's and this morning's yield and oil spikes both faded rather than extended.",
       "drivers": [
-        "European morning: gilt and Bund long-end read-across",
-        "Sep 14 repricing was global, not US-only",
-        "Amplifier: a synchronised long-end selloff across European curves"
+        "Liquidity returns as European cash trade begins",
+        "Base case remains two-sided given faded yield and oil spikes",
+        "Conditional Tail edges up with the liquidity profile"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "10-year Treasury yield hits 5% before reversing as traders await Fed meeting",
+          "url": "https://www.cnbc.com/2026/09/14/10-year-us-treasury-is-closing-in-on-5percent.html",
+          "source": "CNBC"
+        }
+      ]
     },
     {
       "ts": "2026-09-16T07:00:00Z",
@@ -706,16 +717,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 19,
-      "stressRiskPct": 67,
-      "confidencePct": 67,
+      "stressRiskPct": 69,
+      "confidencePct": 81,
       "dominantMode": "mixed",
-      "analysis": "Mid-European morning on Fed decision day. Sessions preceding a decision typically show reduced directional conviction in index futures, which supports mean reversion, and the hour is modeled accordingly with Stress drifting up as the decision approaches.",
+      "analysis": "European cash open hour. Conditional Tail approaches the watch band as the U.S. session's pre-FOMC agenda comes into view; the amplifier to watch is equities, yields and oil aligning in the same direction rather than offsetting.",
       "drivers": [
-        "Fed decision day; pre-decision conviction typically reduced",
-        "Stress drifts up as the 18:00Z decision approaches",
-        "Mean reversion supported by range-bound pre-event behaviour"
+        "European cash open lifts participation in NQ",
+        "Amplifier to watch: aligned equities, yields and oil",
+        "Pre-FOMC agenda begins to shape positioning"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "A 5% Treasury Yield Raises New Risks for Markets, Economy",
+          "url": "https://www.bloomberg.com/news/articles/2026-09-13/a-5-treasury-yield-is-raising-new-risks-for-markets-economy",
+          "source": "Bloomberg"
+        }
+      ]
     },
     {
       "ts": "2026-09-16T08:00:00Z",
@@ -723,16 +740,22 @@
       "status": "yellow",
       "action": "WATCH",
       "tailRiskPct": 20,
-      "stressRiskPct": 69,
-      "confidencePct": 66,
+      "stressRiskPct": 70,
+      "confidencePct": 81,
       "dominantMode": "mixed",
-      "analysis": "Late European morning. Tail returns to the watch band as the pre-Fed session builds, reflecting the approaching multi-stage event rather than any observed structure. Confidence declines because this hour sits twenty hours beyond the evidence cutoff.",
+      "analysis": "Mid-European morning, one day into the FOMC meeting. Conditional Tail enters the watch band on the approach to a scheduled data and policy sequence; nothing about the path is treated as observed at this range.",
       "drivers": [
-        "Pre-Fed session building; Tail returns to the watch band",
-        "Reflects the approaching event, not observed structure",
-        "Confidence decays: twenty hours beyond the evidence cutoff"
+        "Approach to a scheduled data and policy sequence",
+        "Conditional Tail enters the watch band on calendar proximity alone",
+        "No price-path structure is treated as observed at this horizon"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "US 10-year yield tops 5% as markets price Fed hike",
+          "url": "https://invezz.com/in/news/2026/09/14/us-10-year-yield-tops-5percent-as-markets-price-fed-hike/",
+          "source": "Invezz"
+        }
+      ]
     },
     {
       "ts": "2026-09-16T09:00:00Z",
@@ -740,37 +763,31 @@
       "status": "yellow",
       "action": "WATCH",
       "tailRiskPct": 20,
-      "stressRiskPct": 69,
-      "confidencePct": 65,
+      "stressRiskPct": 70,
+      "confidencePct": 80,
       "dominantMode": "mixed",
-      "analysis": "European midday on Fed decision day. Positioning ahead of a decision carrying roughly 92-93% priced probability of a 25 basis point increase tends to keep ranges contained until the release itself, so the hour is modeled flat to the prior one.",
+      "analysis": "European late morning. Positioning ahead of the 12:30Z U.S. retail sales release and the 18:00Z rate decision typically compresses ranges before the print, which is neutral for mean reversion but raises uncertainty.",
       "drivers": [
-        "~92-93% priced probability of a 25bp increase at the Sep 16 decision",
-        "Pre-release ranges typically contained; modeled flat to the prior hour",
-        "Target range would move to 3.75-4.00% if the priced outcome is realised"
+        "Pre-release range compression is typical in this window",
+        "12:30Z U.S. retail sales is the next scheduled checkpoint",
+        "Compression is neutral for reversion but raises uncertainty"
       ],
-      "news": [
-        {
-          "title": "US Stock Futures Fall Ahead of Fed Meeting as Oil and Treasury Yields Rise",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/us-stock-futures-fall-ahead-092943720.html",
-          "source": "Yahoo Finance"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-16T10:00:00Z",
       "timeBerlin": "2026-09-16T12:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 70,
-      "confidencePct": 64,
+      "tailRiskPct": 20,
+      "stressRiskPct": 71,
+      "confidencePct": 80,
       "dominantMode": "mixed",
-      "analysis": "Approaching the US pre-market on Fed decision day, with August retail sales due at 12:30Z shortly after this hour. Stress is modeled higher into that release while Tail stays in the watch band, because event importance alone is not evidence of a no-retracement path.",
+      "analysis": "Pre-release hour. Confidence is marked down with distance from the assessment cutoff. Forecast dispersion around retail sales and the rate decision is treated as a Stress and Confidence input rather than as evidence of a lethal price path.",
       "drivers": [
-        "August retail sales due 2026-09-16T12:30Z, shortly after this hour",
-        "Event importance alone is not evidence of a no-retracement path",
-        "Stress modeled higher into the release while Tail stays contained"
+        "Confidence marked down with distance from the assessment cutoff",
+        "Event dispersion treated as Stress and Confidence, not Tail evidence",
+        "Retail sales prints 30 minutes after this hour ends"
       ],
       "news": []
     },
@@ -779,58 +796,67 @@
       "timeBerlin": "2026-09-16T13:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 71,
-      "confidencePct": 63,
+      "tailRiskPct": 21,
+      "stressRiskPct": 72,
+      "confidencePct": 80,
       "dominantMode": "mixed",
-      "analysis": "Final hour of the horizon, immediately before the 12:30Z retail sales release on Fed decision day. The modeled path carries the highest Stress and lowest Confidence of the forecast, reflecting distance from the evidence cutoff and a dense catalyst stack sitting beyond it.",
+      "analysis": "Final hour before the U.S. retail sales release. Conditional Tail sits just inside the watch band; the release itself has not occurred and no post-release structure is assumed here.",
       "drivers": [
-        "Immediately precedes the 12:30Z retail sales release on Fed decision day",
-        "Dense catalyst stack sits beyond the end of this horizon",
-        "Lowest Confidence of the forecast: 23 hours past the evidence cutoff",
-        "Fed decision 18:00Z and Chair press conference 18:30Z follow later that day"
+        "Final hour before the 12:30Z U.S. retail sales release",
+        "No post-release price structure is assumed at this range",
+        "Conditional Tail held just inside the watch band"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-16T12:00:00Z",
+      "timeBerlin": "2026-09-16T14:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 76,
+      "confidencePct": 79,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Hour containing the 12:30Z U.S. retail sales and import-price releases on the morning of the Fed decision. Event-driven whipsaw is the expected mode. Scheduled-release importance raises Stress and lowers Confidence more than it raises Tail, so conditional Tail stays below the block threshold.",
+      "drivers": [
+        "12:30Z U.S. retail sales and import prices land inside this hour",
+        "Release falls on the morning of the 18:00Z Fed decision",
+        "Event-driven whipsaw is the expected mode for this window",
+        "Release importance lifts Stress and lowers Confidence more than Tail"
       ],
       "news": [
         {
-          "title": "Stock market today: Dow, S&P 500, Nasdaq futures retreat ahead of Fed meeting amid AI safety fears",
-          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-15-dow-sp-500-nasdaq-081307838.html",
-          "source": "Yahoo Finance"
+          "title": "US 10-year yield tops 5% as markets price Fed hike",
+          "url": "https://invezz.com/in/news/2026/09/14/us-10-year-yield-tops-5percent-as-markets-price-fed-hike/",
+          "source": "Invezz"
         }
       ]
     }
   ],
   "forecastDetail": [
     {
-      "ts": "2026-09-15T12:00:00Z",
-      "timeBerlin": "2026-09-15T14:00:00+02:00",
-      "status": "yellow",
-      "tailRiskPct": 20,
-      "stressRiskPct": 70,
-      "comment": "Pre-open with futures having pared an earlier decline and VIX at the low of its daily range; the 12:30Z Empire State print sits at the evidence cutoff with its outcome unverified here."
-    },
-    {
       "ts": "2026-09-15T13:00:00Z",
       "timeBerlin": "2026-09-15T15:00:00+02:00",
       "status": "yellow",
-      "tailRiskPct": 24,
-      "stressRiskPct": 74,
-      "comment": "The 13:30Z cash open is the session's decisive checkpoint; a held directional imbalance would raise Tail, an orderly two-way auction would not."
+      "tailRiskPct": 22,
+      "stressRiskPct": 73,
+      "comment": "Cash-open hour: observed overnight path was two-sided with a retracement off 29,231 and fading yield and oil spikes; opening-auction continuation remains the unresolved checkpoint."
     },
     {
       "ts": "2026-09-15T14:00:00Z",
       "timeBerlin": "2026-09-15T16:00:00+02:00",
       "status": "yellow",
-      "tailRiskPct": 23,
-      "stressRiskPct": 73,
-      "comment": "First full cash hour: repeated extension after failed retracements or a session extreme that holds would be the amplifying evidence, with oil near four-month highs the live inflation channel."
+      "tailRiskPct": 21,
+      "stressRiskPct": 72,
+      "comment": "First full post-open hour: base case is two-sided discovery, with shallow pullbacks and repeated extension as the conditional invalidation."
     },
     {
       "ts": "2026-09-15T15:00:00Z",
       "timeBerlin": "2026-09-15T17:00:00+02:00",
       "status": "yellow",
-      "tailRiskPct": 21,
+      "tailRiskPct": 20,
       "stressRiskPct": 71,
-      "comment": "Mid-morning discovery is assumed to be more two-way; a sustained 10-year move back above 5% is the main conditional amplifier for long-duration technology."
+      "comment": "Late morning: opening-range volatility normally decays; a decisive 10-year push back above 5.05% is the invalidation."
     },
     {
       "ts": "2026-09-15T16:00:00Z",
@@ -838,76 +864,72 @@
       "status": "green",
       "tailRiskPct": 19,
       "stressRiskPct": 69,
-      "comment": "Midday compression into and after the European close supports mean reversion, so Tail is modeled below the watch threshold while Stress stays high on the unresolved oil and duration backdrop."
+      "comment": "European cash close: cross-market flow thins and no U.S. Tier-1 release remains, so conditional Tail eases below the watch band."
     },
     {
       "ts": "2026-09-15T17:00:00Z",
       "timeBerlin": "2026-09-15T19:00:00+02:00",
       "status": "green",
-      "tailRiskPct": 19,
+      "tailRiskPct": 18,
       "stressRiskPct": 68,
-      "comment": "Early afternoon continuation of midday conditions with liquidity thinning post-European close; the conditional risk is a late directional push rather than anything currently observed."
+      "comment": "Midday lull: lowest directional efficiency of the session; Stress stays high on the rate and oil backdrop rather than on path evidence."
+    },
+    {
+      "ts": "2026-09-15T18:00:00Z",
+      "timeBerlin": "2026-09-15T20:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 19,
+      "stressRiskPct": 69,
+      "comment": "Early New York afternoon: pre-FOMC positioning can begin building a day ahead of the decision, a scheduled-meeting effect rather than observed structure."
     }
   ],
   "events": [
     {
-      "name": "US Retail Sales (Aug)",
+      "name": "U.S. Retail Sales (Aug)",
       "ts": "2026-09-16T12:30:00Z",
       "timeBerlin": "2026-09-16T14:30:00+02:00",
       "impact": "high"
     },
     {
-      "name": "NAHB Housing Market Index (Sep)",
-      "ts": "2026-09-16T14:00:00Z",
-      "timeBerlin": "2026-09-16T16:00:00+02:00",
+      "name": "U.S. Import and Export Prices (Aug)",
+      "ts": "2026-09-16T12:30:00Z",
+      "timeBerlin": "2026-09-16T14:30:00+02:00",
       "impact": "medium"
     },
     {
-      "name": "FOMC Interest Rate Decision and Summary of Economic Projections",
+      "name": "FOMC Interest Rate Decision",
       "ts": "2026-09-16T18:00:00Z",
       "timeBerlin": "2026-09-16T20:00:00+02:00",
       "impact": "high"
     },
     {
-      "name": "FOMC Chair Press Conference",
+      "name": "Fed Chair Press Conference",
       "ts": "2026-09-16T18:30:00Z",
       "timeBerlin": "2026-09-16T20:30:00+02:00",
       "impact": "high"
     },
     {
-      "name": "US Initial Jobless Claims",
+      "name": "U.S. Initial Jobless Claims",
       "ts": "2026-09-17T12:30:00Z",
       "timeBerlin": "2026-09-17T14:30:00+02:00",
-      "impact": "high"
+      "impact": "medium"
+    },
+    {
+      "name": "U.S. Housing Starts (Aug)",
+      "ts": "2026-09-17T12:30:00Z",
+      "timeBerlin": "2026-09-17T14:30:00+02:00",
+      "impact": "medium"
     },
     {
       "name": "Philadelphia Fed Manufacturing Index (Sep)",
       "ts": "2026-09-17T12:30:00Z",
       "timeBerlin": "2026-09-17T14:30:00+02:00",
-      "impact": "high"
-    },
-    {
-      "name": "US Housing Starts and Building Permits (Aug)",
-      "ts": "2026-09-17T12:30:00Z",
-      "timeBerlin": "2026-09-17T14:30:00+02:00",
       "impact": "medium"
     },
     {
-      "name": "US Industrial Production (Aug)",
+      "name": "U.S. Industrial Production (Aug)",
       "ts": "2026-09-18T13:15:00Z",
       "timeBerlin": "2026-09-18T15:15:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "Chicago Fed National Activity Index (Aug)",
-      "ts": "2026-09-21T12:30:00Z",
-      "timeBerlin": "2026-09-21T14:30:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "Richmond Fed Manufacturing Index (Sep)",
-      "ts": "2026-09-22T14:00:00Z",
-      "timeBerlin": "2026-09-22T16:00:00+02:00",
       "impact": "medium"
     }
   ]
