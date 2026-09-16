@@ -1,0 +1,936 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-09-16T04:33:00Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Mapped policy state: EA_ON (green). Tail risk is low at 14% while Stress is high at 72% on FOMC decision day.",
+  "recommendation": "Tail remains below the block threshold in the current hour, so the deterministic mapping yields EA_ON. A narrow evidence-based danger window is flagged from 18:00 to 21:00 UTC covering the FOMC statement, the Summary of Economic Projections, the press conference and the delayed repricing that can follow; the forecast maps that window to BLOCK_NEW_BASE_ENTRIES. Existing-position management and emergency protection are unaffected by this mapping.",
+  "headline": "Orderly, narrow overnight tape keeps Tail low into the Fed decision; danger window flagged for the 18:00-21:00 UTC FOMC sequence.",
+  "body": "Observed conditions at the assessment cutoff remain orderly. NQ futures trade near 29,330, up about 0.28% from the prior settlement, inside an overnight band of roughly 29,226 to 29,358 that spans only about 0.45%. Price has already eased some 28 points off the session high, which is retracement rather than the repeated extension after failed pullbacks that Tail measures, and overnight volume is thin at roughly 32k contracts. VIX is 17.20 against a 17.10 close, after a 16.79 to 18.03 range, so there is no volatility bid into the decision. Cash NDX closed the prior session at 28,937.84, down 0.65% and near the low of its 28,899.43 to 29,142.80 range, so the reference point is weak while the overnight drift is a partial recovery rather than a persistent one-way path. The Stress backdrop is genuinely difficult. The US 10-year sits near 4.97% after touching 5.041% in the prior session, the highest since 2007, with the 2-year at 4.65% and the 30-year at 5.34%. Crude is easing off four-month highs, WTI near 104.58 and Brent near 107.78, after an unexpected 7.14 million barrel US inventory build, but Saudi Arabia's East-West pipeline has been shut since the 11 September drone strikes, removing roughly 4 to 5 million barrels per day of export capacity with repair estimates running to five or six weeks. Cross-asset evidence conflicts rather than aligns: semiconductors closed firm while megacaps were broadly weaker, which raises uncertainty instead of creating index-level directional efficiency. The dominant near-term feature is the FOMC. The statement and Summary of Economic Projections are due at 18:00 UTC with the Chair's press conference at 18:30 UTC, and roughly 90% of a 25 basis point hike to 3.75-4.00% is already priced, which would be the first increase in about three years. Because the rate itself is largely discounted, the dot plot and the press conference Q&A carry the greater surprise capacity, and the sequence is structurally multi-stage. US Retail Sales for August at 12:30 UTC is an earlier checkpoint. None of this is observed price-path evidence, so it raises Stress and shapes the conditional forecast rather than the current Tail, which stays in the low band on the orderly structure actually visible now.",
+  "tailRiskPct": 14,
+  "tailLevel": "low",
+  "stressRiskPct": 72,
+  "stressLevel": "high",
+  "dominantMode": "normal",
+  "confidencePct": 88,
+  "confidenceLevel": "high",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": "2026-09-16T18:00:00Z",
+    "end": "2026-09-16T21:00:00Z"
+  },
+  "dangerWindowBerlin": {
+    "start": "2026-09-16T20:00:00+02:00",
+    "end": "2026-09-16T23:00:00+02:00"
+  },
+  "sources": [
+    {
+      "title": "Nasdaq-100 (^NDX) quote",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "Federal Reserve H.15 Selected Interest Rates",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "title": "United States Economic Calendar",
+      "url": "https://tradingeconomics.com/united-states/calendar"
+    },
+    {
+      "title": "Stock futures fall as 10-year Treasury yield tops 5%",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/stock-futures-fall-10-treasury-112558192.html"
+    },
+    {
+      "title": "Stock market today: Dow, S&P 500, Nasdaq fall as 10-year Treasury yield touches 2007 high ahead of Fed decision day",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-15-dow-sp-500-nasdaq-081307838.html"
+    },
+    {
+      "title": "Why Saudi Arabia's East-West pipeline matters for global oil",
+      "url": "https://www.aljazeera.com/news/2026/9/14/why-saudi-arabias-east-west-pipeline-matters-for-global-oil"
+    }
+  ],
+  "lookbackSummary": "Across the prior 24 hourly assessments Tail ranged from 13 to 25 and Stress from 68 to 77. Risk peaked during the European morning of 15 September, touching 25 at 08:00 UTC, the only hour mapped to BLOCK_NEW_BASE_ENTRIES, amid the move in yields toward 5% and the crude rally. The US session then held a persistent watch-band regime between 20 and 24 through the cash close. Conditions normalised overnight, with Tail easing from 20 at 20:00 UTC to 13 by 01:00 UTC and dominant mode settling from mixed to normal. Stress never fell below 68, reflecting a persistently difficult regime rather than an acute price-path threat.",
+  "lookback": [
+    {
+      "ts": "2026-09-15T04:00:00Z",
+      "timeBerlin": "2026-09-15T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 68,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T05:00:00Z",
+      "timeBerlin": "2026-09-15T07:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 24,
+      "stressRiskPct": 74,
+      "confidencePct": 86,
+      "dominantMode": "trend-down"
+    },
+    {
+      "ts": "2026-09-15T06:00:00Z",
+      "timeBerlin": "2026-09-15T08:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 71,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T07:00:00Z",
+      "timeBerlin": "2026-09-15T09:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 72,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T08:00:00Z",
+      "timeBerlin": "2026-09-15T10:00:00+02:00",
+      "available": true,
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 25,
+      "stressRiskPct": 76,
+      "confidencePct": 87,
+      "dominantMode": "trend-down"
+    },
+    {
+      "ts": "2026-09-15T09:00:00Z",
+      "timeBerlin": "2026-09-15T11:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 24,
+      "stressRiskPct": 75,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T10:00:00Z",
+      "timeBerlin": "2026-09-15T12:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 73,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T11:00:00Z",
+      "timeBerlin": "2026-09-15T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 71,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T12:00:00Z",
+      "timeBerlin": "2026-09-15T14:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 70,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T13:00:00Z",
+      "timeBerlin": "2026-09-15T15:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 72,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T14:00:00Z",
+      "timeBerlin": "2026-09-15T16:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 76,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T15:00:00Z",
+      "timeBerlin": "2026-09-15T17:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 24,
+      "stressRiskPct": 77,
+      "confidencePct": 88,
+      "dominantMode": "trend-down"
+    },
+    {
+      "ts": "2026-09-15T16:00:00Z",
+      "timeBerlin": "2026-09-15T18:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 76,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T17:00:00Z",
+      "timeBerlin": "2026-09-15T19:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 76,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T18:00:00Z",
+      "timeBerlin": "2026-09-15T20:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 75,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T19:00:00Z",
+      "timeBerlin": "2026-09-15T21:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 76,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T20:00:00Z",
+      "timeBerlin": "2026-09-15T22:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 75,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T21:00:00Z",
+      "timeBerlin": "2026-09-15T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 73,
+      "confidencePct": 86,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T22:00:00Z",
+      "timeBerlin": "2026-09-16T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 72,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-15T23:00:00Z",
+      "timeBerlin": "2026-09-16T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 72,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-09-16T00:00:00Z",
+      "timeBerlin": "2026-09-16T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 71,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-16T01:00:00Z",
+      "timeBerlin": "2026-09-16T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 13,
+      "stressRiskPct": 70,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-16T02:00:00Z",
+      "timeBerlin": "2026-09-16T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 72,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-09-16T03:00:00Z",
+      "timeBerlin": "2026-09-16T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 71,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    }
+  ],
+  "outlookSummary": "The forecast keeps Tail in the low band through the Asian and European sessions on the expectation that pre-decision trade stays range-bound, with the largest European-morning allowance at 08:00 UTC where the prior session peaked. It steps into the watch band around US Retail Sales at 12:30 UTC and the 13:30 UTC cash open, eases back through the pre-FOMC lull, then rises into the elevated band for the 18:00 to 21:00 UTC window covering the statement, the projections, the press conference and the delayed repricing that can follow, peaking at 31 in the 19:00 UTC hour where the Q&A overlaps the power hour. Those event-window scores are conditional allowances rather than observed structure. Tail then decays back to the low band overnight on the assumption that price discovery turns orderly and volatility decays once the sequence completes, while Stress unwinds more slowly because the rates and energy backdrop remains unresolved.",
+  "forecast": [
+    {
+      "ts": "2026-09-16T04:00:00Z",
+      "timeBerlin": "2026-09-16T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 72,
+      "confidencePct": 88,
+      "dominantMode": "normal",
+      "analysis": "Observed at the cutoff: NQ futures near 29,330, up 0.28% inside a narrow 29,226-29,358 overnight band and already eased off that high, with VIX at 17.20 and no repeated extension. Tail stays low. Stress stays high on a 10-year near 5% and an unresolved Saudi pipeline outage.",
+      "drivers": [
+        "NQ ~29,330, +0.28%, inside a narrow 29,226-29,358 overnight band",
+        "Pullback from the 29,358 high shows retracement still functioning",
+        "VIX 17.20 against a 17.10 close; no volatility bid before the decision",
+        "10-year near 4.97% after a 5.041% print, the highest since 2007",
+        "FOMC decision, projections and press conference land 18:00-18:30 UTC"
+      ],
+      "news": [
+        {
+          "title": "Stock futures fall as 10-year Treasury yield tops 5%",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-futures-fall-10-treasury-112558192.html",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq fall as 10-year Treasury yield touches 2007 high ahead of Fed decision day",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-15-dow-sp-500-nasdaq-081307838.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T05:00:00Z",
+      "timeBerlin": "2026-09-16T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 72,
+      "confidencePct": 88,
+      "dominantMode": "normal",
+      "analysis": "Late Asian trade before the European handover. Scores carry forward because no new evidence is expected in this hour. The published path assumes the narrow pre-decision band persists; a break that holds beyond the overnight extremes without retracement would be the first condition to revisit Tail.",
+      "drivers": [
+        "Late Asian session with typically thin pre-decision liquidity",
+        "Assumes the narrow overnight band holds into the European handover",
+        "Invalidation: a sustained break of the overnight extremes"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-16T06:00:00Z",
+      "timeBerlin": "2026-09-16T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 72,
+      "confidencePct": 87,
+      "dominantMode": "normal",
+      "analysis": "Asian cash closes and European pre-market opens. Tail edges up marginally to reflect the handover rather than any observed structure. The conditional risk is a gap-driven repricing of the 5% 10-year level; orderly two-way trade would keep the low band intact.",
+      "drivers": [
+        "Asian cash close into the European pre-market handover",
+        "Checkpoint: European repricing of the 5% US 10-year level",
+        "No observed structure supports a higher Tail at this hour"
+      ],
+      "news": [
+        {
+          "title": "Stock futures fall as 10-year Treasury yield tops 5%",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-futures-fall-10-treasury-112558192.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T07:00:00Z",
+      "timeBerlin": "2026-09-16T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 73,
+      "confidencePct": 87,
+      "dominantMode": "mixed",
+      "analysis": "European cash open. Mode shifts to mixed on the conditional expectation that yield-sensitive and semiconductor-linked sectors trade in opposite directions, as they did in the prior session. Conflicting breadth normally raises uncertainty rather than producing the one-way path Tail measures.",
+      "drivers": [
+        "European cash open, the first real liquidity event of the day",
+        "Prior session showed firm semiconductors against weak megacaps",
+        "Conflicting breadth raises Stress and uncertainty, not Tail"
+      ],
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq fall as 10-year Treasury yield touches 2007 high ahead of Fed decision day",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-15-dow-sp-500-nasdaq-081307838.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T08:00:00Z",
+      "timeBerlin": "2026-09-16T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 74,
+      "confidencePct": 87,
+      "dominantMode": "mixed",
+      "analysis": "European mid-morning, the hour where the prior session's risk peaked at 25 amid the move in yields toward 5% and the crude rally. Tail is allowed to the top of the low band as a conditional repeat allowance. Absent a fresh yield or energy impulse the band should hold.",
+      "drivers": [
+        "Prior session risk peaked in this hour at Tail 25",
+        "Conditional allowance for a repeat yield or crude impulse",
+        "Saudi East-West pipeline still shut; Yanbu cover estimated 5-7 days",
+        "WTI 104.58 and Brent 107.78 are easing off four-month highs"
+      ],
+      "news": [
+        {
+          "title": "Why Saudi Arabia's East-West pipeline matters for global oil",
+          "url": "https://www.aljazeera.com/news/2026/9/14/why-saudi-arabias-east-west-pipeline-matters-for-global-oil",
+          "source": "Al Jazeera"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T09:00:00Z",
+      "timeBerlin": "2026-09-16T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 74,
+      "confidencePct": 87,
+      "dominantMode": "mixed",
+      "analysis": "European morning continues. Tail eases back within the low band as the conditional yield-impulse window from the prior hour passes without an assumed trigger. Pre-decision positioning typically compresses ranges rather than extending them.",
+      "drivers": [
+        "Conditional yield-impulse window passes without an assumed trigger",
+        "Pre-FOMC positioning normally compresses intraday ranges",
+        "10-year direction remains the primary cross-asset checkpoint"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-16T10:00:00Z",
+      "timeBerlin": "2026-09-16T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 73,
+      "confidencePct": 87,
+      "dominantMode": "mixed",
+      "analysis": "Late European morning ahead of the US pre-market. Scores hold in the low band. The conditional path assumes range-bound trade into the 12:30 UTC Retail Sales release; a sustained directional expansion before that print is the condition that would lift Tail.",
+      "drivers": [
+        "Late European morning into the US pre-market handover",
+        "Checkpoint: US Retail Sales at 12:30 UTC, consensus +0.7% MoM",
+        "Invalidation: sustained directional expansion before the print"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-16T11:00:00Z",
+      "timeBerlin": "2026-09-16T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 73,
+      "confidencePct": 87,
+      "dominantMode": "mixed",
+      "analysis": "US pre-market builds ahead of Retail Sales. Tail stays in the low band because pre-release drift is not the persistent no-retracement structure Tail measures. Stress remains high on the rates backdrop rather than on any observed price path.",
+      "drivers": [
+        "US pre-market ahead of the 12:30 UTC Retail Sales print",
+        "Pre-release drift is not evidence of a no-retracement path",
+        "Stress is driven by the 5% 10-year, not by observed structure"
+      ],
+      "news": [
+        {
+          "title": "Stock futures fall as 10-year Treasury yield tops 5%",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-futures-fall-10-treasury-112558192.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T12:00:00Z",
+      "timeBerlin": "2026-09-16T14:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 76,
+      "confidencePct": 86,
+      "dominantMode": "event/whipsaw",
+      "analysis": "US Retail Sales for August prints at 12:30 UTC. Tail moves into the watch band as a conditional event allowance covering the immediate repricing. Recent precedent suggests a large surprise usually raises Stress and dispersion rather than producing a lethal one-way path.",
+      "drivers": [
+        "US Retail Sales (Aug) releases at 12:30 UTC, consensus +0.7% MoM",
+        "Conditional allowance for the immediate post-release repricing",
+        "Surprise magnitude normally raises Stress more than Tail",
+        "Watch whether the first retracement after the print is accepted"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-16T13:00:00Z",
+      "timeBerlin": "2026-09-16T15:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 77,
+      "confidencePct": 86,
+      "dominantMode": "event/whipsaw",
+      "analysis": "US cash opens at 13:30 UTC with the Retail Sales reaction still unresolved. The watch band reflects opening-auction risk: continuation with shallow pullbacks off the open is the specific structure that has previously overwhelmed mean reversion. None of that is observed yet.",
+      "drivers": [
+        "US cash open at 13:30 UTC on an unresolved Retail Sales reaction",
+        "Opening-auction continuation with shallow pullbacks is the key risk",
+        "Cash NDX closed 28,937.84, near the low of its prior session range",
+        "No opening structure is observed at the assessment cutoff"
+      ],
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq fall as 10-year Treasury yield touches 2007 high ahead of Fed decision day",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-15-dow-sp-500-nasdaq-081307838.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T14:00:00Z",
+      "timeBerlin": "2026-09-16T16:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 75,
+      "confidencePct": 86,
+      "dominantMode": "mixed",
+      "analysis": "First full US cash hour, with the EIA petroleum report at 14:30 UTC. Tail eases within the watch band on the conditional assumption that the opening auction resolves two-way. A second consecutive inventory build would likely extend the crude unwind and relieve one Stress input.",
+      "drivers": [
+        "First full US cash hour after the opening auction resolves",
+        "EIA Weekly Petroleum Status Report at 14:30 UTC",
+        "Prior week showed an unexpected 7.14M barrel US crude build",
+        "A further build would ease the energy component of Stress"
+      ],
+      "news": [
+        {
+          "title": "Why Saudi Arabia's East-West pipeline matters for global oil",
+          "url": "https://www.aljazeera.com/news/2026/9/14/why-saudi-arabias-east-west-pipeline-matters-for-global-oil",
+          "source": "Al Jazeera"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T15:00:00Z",
+      "timeBerlin": "2026-09-16T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 73,
+      "confidencePct": 86,
+      "dominantMode": "mixed",
+      "analysis": "US midday ahead of the decision. The pre-FOMC lull typically drains liquidity and compresses ranges, so Tail returns to the low band. This is a conditional expectation; observed one-way extension into the decision would invalidate it.",
+      "drivers": [
+        "Pre-FOMC lull typically compresses ranges and drains liquidity",
+        "Tail returns to the low band on that conditional expectation",
+        "Invalidation: observed one-way extension into the decision"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-16T16:00:00Z",
+      "timeBerlin": "2026-09-16T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 73,
+      "confidencePct": 86,
+      "dominantMode": "mixed",
+      "analysis": "Two hours before the statement. Positioning rather than direction normally dominates this window, so scores hold in the low band. Stress stays high because the decision, the projections and the press conference are all still ahead.",
+      "drivers": [
+        "Two hours ahead of the 18:00 UTC statement and projections",
+        "Positioning rather than direction normally dominates this window",
+        "Decision, dot plot and press conference are all still ahead"
+      ],
+      "news": [
+        {
+          "title": "FOMC September 2026 Odds for a Rate Hike Surpass 50%",
+          "url": "https://finance.yahoo.com/economy/policy/articles/fomc-september-2026-odds-rate-201618784.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T17:00:00Z",
+      "timeBerlin": "2026-09-16T19:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 74,
+      "confidencePct": 85,
+      "dominantMode": "mixed",
+      "analysis": "Final hour before the decision. Tail steps into the watch band as a conditional pre-event allowance for last-minute repositioning. Roughly 90% of a 25bp hike is already priced, so the dot plot and the press conference carry more surprise capacity than the rate itself.",
+      "drivers": [
+        "Final hour before the 18:00 UTC statement and projections",
+        "Roughly 90% priced for a 25bp hike to 3.75-4.00%",
+        "Dot plot and press conference carry the larger surprise capacity",
+        "Conditional pre-event allowance, not observed structure"
+      ],
+      "news": [
+        {
+          "title": "FOMC September 2026 Odds for a Rate Hike Surpass 50%",
+          "url": "https://finance.yahoo.com/economy/policy/articles/fomc-september-2026-odds-rate-201618784.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T18:00:00Z",
+      "timeBerlin": "2026-09-16T20:00:00+02:00",
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 30,
+      "stressRiskPct": 81,
+      "confidencePct": 82,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Statement, Summary of Economic Projections and the opening of the press conference all land in this hour. Tail enters the elevated band because FOMC is a structurally multi-stage event whose statement, dot plot and Q&A can each start a separate leg. This is a conditional allowance, not observed structure.",
+      "drivers": [
+        "FOMC statement and Summary of Economic Projections at 18:00 UTC",
+        "Chair press conference begins 18:30 UTC, inside the same hour",
+        "Multi-stage sequence: each stage can start a separate leg",
+        "Mapped policy state for this hour: BLOCK_NEW_BASE_ENTRIES",
+        "Danger window runs 18:00-21:00 UTC (20:00-23:00 Berlin)"
+      ],
+      "news": [
+        {
+          "title": "FOMC September 2026 Odds for a Rate Hike Surpass 50%",
+          "url": "https://finance.yahoo.com/economy/policy/articles/fomc-september-2026-odds-rate-201618784.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T19:00:00Z",
+      "timeBerlin": "2026-09-16T21:00:00+02:00",
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 31,
+      "stressRiskPct": 82,
+      "confidencePct": 81,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Press conference Q&A overlaps the US power hour, the highest-risk combination of the day. A delayed second leg after a hawkish Q&A, repriced through the bond market into equities, is the specific mechanism that has previously defeated mean reversion. Peak conditional Tail of 31.",
+      "drivers": [
+        "Press conference Q&A overlaps the 19:00-20:00 UTC power hour",
+        "Delayed second leg via bond-market repricing is the key mechanism",
+        "A 10-year near 5% leaves little cushion for a hawkish dot plot",
+        "Peak conditional Tail of the published 24-hour path at 31"
+      ],
+      "news": [
+        {
+          "title": "Stock futures fall as 10-year Treasury yield tops 5%",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/stock-futures-fall-10-treasury-112558192.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-16T20:00:00Z",
+      "timeBerlin": "2026-09-16T22:00:00+02:00",
+      "status": "orange",
+      "action": "BLOCK_NEW_BASE_ENTRIES",
+      "tailRiskPct": 27,
+      "stressRiskPct": 78,
+      "confidencePct": 82,
+      "dominantMode": "event/whipsaw",
+      "analysis": "US cash closes at 20:00 UTC. Tail eases but stays in the elevated band because closing-auction imbalances and the first post-decision settlement can still extend a directional move. The flagged danger window remains in force through 21:00 UTC.",
+      "drivers": [
+        "US cash close at 20:00 UTC with closing-auction imbalance risk",
+        "Post-decision settlement can still extend a directional move",
+        "Flagged danger window remains in force through 21:00 UTC"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-16T21:00:00Z",
+      "timeBerlin": "2026-09-16T23:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 74,
+      "confidencePct": 84,
+      "dominantMode": "mixed",
+      "analysis": "First hour after the cash close and the end of the flagged danger window. Tail falls back to the watch band on the conditional expectation that price discovery turns orderly once the event sequence completes and volatility begins to decay.",
+      "drivers": [
+        "First hour after the cash close and the flagged danger window",
+        "Assumes orderly post-event price discovery and volatility decay",
+        "Invalidation: futures continuing to extend without retracement"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-16T22:00:00Z",
+      "timeBerlin": "2026-09-17T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 18,
+      "stressRiskPct": 71,
+      "confidencePct": 85,
+      "dominantMode": "mixed",
+      "analysis": "Post-session futures trade. Tail returns to the low band as the conditional path assumes retracements resume and cross-assets stabilise. Stress eases from the event peak but stays high while the rates and energy backdrop is unresolved.",
+      "drivers": [
+        "Post-session futures trade after the decision sequence completes",
+        "Assumes retracements resume and cross-assets stabilise",
+        "Rates and energy backdrop keeps Stress high even as Tail falls"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-16T23:00:00Z",
+      "timeBerlin": "2026-09-17T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 69,
+      "confidencePct": 86,
+      "dominantMode": "normal",
+      "analysis": "Late US evening into the Asian handover. Mode returns to normal on the conditional expectation of range-bound overnight trade. From this point the new policy rate and the dot plot become the backdrop rather than an active catalyst.",
+      "drivers": [
+        "Late US evening into the Asian handover",
+        "New policy rate becomes backdrop rather than active catalyst",
+        "Assumes range-bound overnight trade resumes"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-17T00:00:00Z",
+      "timeBerlin": "2026-09-17T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 15,
+      "stressRiskPct": 68,
+      "confidencePct": 86,
+      "dominantMode": "normal",
+      "analysis": "Asian session opens on the first full trading day after the decision. Scores continue easing on the conditional expectation of a settled post-event regime. Asian equity reaction to the new US policy rate is the checkpoint for this hour.",
+      "drivers": [
+        "Asian session opens on the first post-decision trading day",
+        "Checkpoint: Asian equity reaction to the new US policy rate",
+        "Assumes a settled post-event regime rather than continuation"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-17T01:00:00Z",
+      "timeBerlin": "2026-09-17T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 67,
+      "confidencePct": 87,
+      "dominantMode": "normal",
+      "analysis": "Asian mid-session. Tail settles at the level that has characterised recent quiet overnight hours. Attention begins rotating toward the jobless claims and Philadelphia Fed releases scheduled for 12:30 UTC on 17 September.",
+      "drivers": [
+        "Asian mid-session in a conditionally settled overnight regime",
+        "Next checkpoints: jobless claims and Philly Fed at 12:30 UTC",
+        "Assumes no unresolved second leg carries into Asian hours"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-17T02:00:00Z",
+      "timeBerlin": "2026-09-17T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 67,
+      "confidencePct": 87,
+      "dominantMode": "normal",
+      "analysis": "Asian session continues. The published path assumes a quiet overnight band comparable to the one observed before this assessment. Confidence for this horizon reflects distance from the cutoff rather than any deficiency in the current evidence set.",
+      "drivers": [
+        "Asian session in an assumed quiet overnight band",
+        "Confidence reflects forecast horizon, not current evidence quality",
+        "Stress continues easing as the event premium unwinds"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-17T03:00:00Z",
+      "timeBerlin": "2026-09-17T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 66,
+      "confidencePct": 87,
+      "dominantMode": "normal",
+      "analysis": "Final forecast hour, 24 hours beyond the assessment cutoff. Tail sits in the low band on the conditional assumption that the FOMC sequence resolved without leaving a persistent no-retracement path. Any unresolved second leg would supersede this projection.",
+      "drivers": [
+        "Final forecast hour, 24 hours beyond the assessment cutoff",
+        "Assumes the FOMC sequence resolved without a persistent trend",
+        "An unresolved second leg would supersede this projection"
+      ],
+      "news": []
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-09-16T04:00:00Z",
+      "timeBerlin": "2026-09-16T06:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 14,
+      "stressRiskPct": 72,
+      "comment": "Observed overnight structure is orderly: NQ near 29,330 inside a narrow 29,226-29,358 band, already off the high, with VIX at 17.20 and no repeated extension, so Tail stays low while Stress stays high on the rates and energy backdrop."
+    },
+    {
+      "ts": "2026-09-16T05:00:00Z",
+      "timeBerlin": "2026-09-16T07:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 14,
+      "stressRiskPct": 72,
+      "comment": "Late Asian trade carries the same scores forward with no new evidence due in this hour; the path assumes the narrow pre-decision band persists into the European handover."
+    },
+    {
+      "ts": "2026-09-16T06:00:00Z",
+      "timeBerlin": "2026-09-16T08:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 15,
+      "stressRiskPct": 72,
+      "comment": "The Asian close into the European pre-market lifts Tail only marginally, reflecting the handover rather than observed structure, with the 5% 10-year level the conditional checkpoint."
+    },
+    {
+      "ts": "2026-09-16T07:00:00Z",
+      "timeBerlin": "2026-09-16T09:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 17,
+      "stressRiskPct": 73,
+      "comment": "The European cash open shifts mode to mixed on the conditional expectation that yield-sensitive and semiconductor-linked sectors diverge, which raises uncertainty rather than one-way risk."
+    },
+    {
+      "ts": "2026-09-16T08:00:00Z",
+      "timeBerlin": "2026-09-16T10:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 19,
+      "stressRiskPct": 74,
+      "comment": "European mid-morning carries the largest low-band allowance because the prior session peaked at Tail 25 in this hour on the yield and crude impulse; the pipeline outage remains unresolved."
+    },
+    {
+      "ts": "2026-09-16T09:00:00Z",
+      "timeBerlin": "2026-09-16T11:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 18,
+      "stressRiskPct": 74,
+      "comment": "Tail eases back as the conditional yield-impulse window passes without an assumed trigger, with pre-decision positioning normally compressing rather than extending ranges."
+    }
+  ],
+  "events": [
+    {
+      "name": "US Retail Sales MoM (Aug)",
+      "ts": "2026-09-16T12:30:00Z",
+      "timeBerlin": "2026-09-16T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "NAHB Housing Market Index (Sep)",
+      "ts": "2026-09-16T14:00:00Z",
+      "timeBerlin": "2026-09-16T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "EIA Weekly Petroleum Status Report",
+      "ts": "2026-09-16T14:30:00Z",
+      "timeBerlin": "2026-09-16T16:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "FOMC Interest Rate Decision and Summary of Economic Projections",
+      "ts": "2026-09-16T18:00:00Z",
+      "timeBerlin": "2026-09-16T20:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "FOMC Chair Press Conference",
+      "ts": "2026-09-16T18:30:00Z",
+      "timeBerlin": "2026-09-16T20:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Initial Jobless Claims",
+      "ts": "2026-09-17T12:30:00Z",
+      "timeBerlin": "2026-09-17T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Housing Starts and Building Permits (Aug)",
+      "ts": "2026-09-17T12:30:00Z",
+      "timeBerlin": "2026-09-17T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Philadelphia Fed Manufacturing Index (Sep)",
+      "ts": "2026-09-17T12:30:00Z",
+      "timeBerlin": "2026-09-17T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "US Industrial Production MoM (Aug)",
+      "ts": "2026-09-18T13:15:00Z",
+      "timeBerlin": "2026-09-18T15:15:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Fed Governor Bowman Speech",
+      "ts": "2026-09-18T13:30:00Z",
+      "timeBerlin": "2026-09-18T15:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "S&P Global Flash Composite PMI (Sep)",
+      "ts": "2026-09-23T13:45:00Z",
+      "timeBerlin": "2026-09-23T15:45:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
