@@ -3,25 +3,25 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-09-21T10:32:07Z",
+  "generatedAt": "2026-09-21T11:32:29Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
-  "status": "green",
-  "statusText": "Tail risk remains in the low band despite an observed overnight uptrend; mapped policy state: EA_ON.",
-  "recommendation": "Conditions are consistent with a functioning mean-reversion regime, with a narrow elevated-risk window flagged around the 13:30Z US cash open. Tail remains below the block threshold.",
-  "headline": "Nasdaq-100 futures grind to session highs on oil retreat and US-China thaw; yields at 5% cap the risk-on read",
-  "body": "NQ futures trade near 30,251 (+1.1%) and ES near 7,766 (+0.7%), both within a few points of their session highs after a persistent one-way European-session advance from a low near 29,904. The driver stack is a retreat in crude (WTI near $97, Brent near $101, a fourth consecutive decline) as a risk premium unwinds on hopes of US-Iran diplomacy around the UN General Assembly, alongside US-China talks that Treasury Secretary Bessent called very successful ahead of a Trump-Xi summit in Washington on Thursday. Cross-asset confirmation is incomplete: the 10-year yield sits at about 5.00% and the 2-year at a cycle high above 4.74%, with the real 10-year yield near a 20-year high, while VIX near 14.9 shows no stress. Friday's internals were narrow, with semiconductors strong but communication services and software lower. Observed directional efficiency lifts Tail from the prior assessment, but the move is moderate in magnitude, was set in Globex liquidity, and conflicting rates evidence argues for Stress over Tail. The main conditional test is the US cash open: opening continuation with shallow pullbacks would degrade mean reversion, while a faded gap would re-form the range. Saudi Arabia's East-West pipeline remains disrupted, so the oil de-escalation trade is reversible on a single headline.",
-  "tailRiskPct": 18,
-  "tailLevel": "low",
-  "stressRiskPct": 41,
+  "status": "yellow",
+  "statusText": "An observed overnight uptrend now has cross-asset alignment behind it, lifting Tail to the top of the watch band; mapped policy state: WATCH.",
+  "recommendation": "Conditions remain consistent with a functioning mean-reversion regime, but directional efficiency has improved, and a narrow elevated-risk window is flagged from the 13:30Z US cash open through 15:30Z. Tail remains below the block threshold across the full 24-hour horizon.",
+  "headline": "Nasdaq-100 futures hold near session highs as yields ease and oil extends its slide into the US cash open",
+  "body": "NQ futures trade near 30,235 (+1.07%) after a persistent European-session advance from a 29,904 low to a 30,266 session high, with the contract currently holding within roughly 0.1% of that extreme after a shallow ease-back. ES is up about 0.7% and YM about 0.78%. The cross-asset picture has shifted from conflicted to aligned since the prior assessment: the 10-year yield eased about 3-4bp to roughly 4.96% and the 2-year to about 4.73%, while WTI fell 2.71% to near $97.6 and Brent 2.67% to near $101.1, a fourth consecutive decline as a risk premium unwinds on hopes that UN General Assembly diplomacy can de-escalate the US-Iran conflict. Treasury Secretary Bessent described roughly eight hours of talks with Vice Premier He Lifeng as very successful, with both sides discussing a US-China AI dialogue ahead of Thursday's Trump-Xi meeting. Friday's session closed at its high with latest-session breadth broadly positive and semiconductors notably strong. Against that, the structural backdrop remains restrictive: the 10-year sits near 5% after September's first Fed hike in three years, with at least one further increase signalled, and VIX near 14.9 shows no stress bid. Observed one-way structure plus genuine alignment justifies the step into the watch band, but the advance is moderate in magnitude, was set in Globex liquidity, and has flattened below the session high over the past hour. The main conditional test is the 13:30Z cash open: opening continuation with shallow pullbacks would degrade mean reversion further, while a faded gap would re-form the range. The oil de-escalation trade remains reversible on a single headline while the US-Iran conflict is unresolved.",
+  "tailRiskPct": 20,
+  "tailLevel": "watch",
+  "stressRiskPct": 42,
   "stressLevel": "moderate",
   "dominantMode": "trend-up",
   "confidencePct": 85,
   "confidenceLevel": "high",
-  "action": "EA_ON",
+  "action": "WATCH",
   "dangerWindow": {
     "start": "2026-09-21T13:30:00Z",
     "end": "2026-09-21T15:30:00Z"
@@ -32,12 +32,12 @@
   },
   "sources": [
     {
-      "title": "Nasdaq-100 (^NDX) quote and range - Yahoo Finance",
-      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+      "title": "Nasdaq 100 futures (NQ=F) quote and session range - Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/NQ%3DF/"
     },
     {
-      "title": "Federal Reserve H.15 Selected Interest Rates",
-      "url": "https://www.federalreserve.gov/releases/h15/"
+      "title": "US 10-Year and 2-Year Treasury yields - Trading Economics",
+      "url": "https://tradingeconomics.com/united-states/government-bond-yield"
     },
     {
       "title": "Crude oil price and daily change - Trading Economics",
@@ -56,19 +56,8 @@
       "url": "https://www.thenationalnews.com/business/energy/2026/09/21/oil-prices-slide-on-hopes-diplomacy-at-un-will-help-end-iran-conflict/"
     }
   ],
-  "lookbackSummary": "The prior 24 hours divide cleanly. Through Sunday's futures session and the early Asian hours the regime was quiet and range-consistent, with Tail between 5 and 9 and mode normal. From roughly 06:00Z the character changed: a steady bid developed on the oil retreat and the constructive US-China headlines, mode shifted to trend-up, and Tail ratcheted from 5 to 14 across four consecutive hourly assessments while confidence improved as live evidence accumulated. Every hour in the window carried a mapped EA_ON state, and no assessment approached the block threshold.",
+  "lookbackSummary": "The prior 24 hours split cleanly into two regimes. From Sunday's futures session through the early Asian hours conditions were quiet and range-consistent, with Tail between 5 and 9 and mode normal. From roughly 06:00Z the character changed as a steady bid developed on the oil retreat and constructive US-China headlines: mode shifted to trend-up and Tail ratcheted from 5 to 18 across five consecutive hourly assessments, while confidence improved as live evidence accumulated. Every hour in the window carried a mapped EA_ON state and none approached the block threshold.",
   "lookback": [
-    {
-      "ts": "2026-09-20T10:00:00Z",
-      "timeBerlin": "2026-09-20T12:00:00+02:00",
-      "available": true,
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 5,
-      "stressRiskPct": 31,
-      "confidencePct": 75,
-      "dominantMode": "normal"
-    },
     {
       "ts": "2026-09-20T11:00:00Z",
       "timeBerlin": "2026-09-20T13:00:00+02:00",
@@ -321,25 +310,37 @@
       "stressRiskPct": 37,
       "confidencePct": 84,
       "dominantMode": "trend-up"
-    }
-  ],
-  "outlookSummary": "The forecast path holds the low band through the European afternoon, steps into the watch band for the 13:30Z US cash open and the two hours that follow, then decays through the US afternoon and into a quiet overnight baseline. Peak conditional Tail is 24 at the first full cash hour, which keeps the mapped state at WATCH and below the block threshold for the entire 24-hour horizon. The escalation is a conditional allowance for gap-extension risk at the open, not an assertion that continuation has been observed; if the opening auction produces genuine retracements and volatility decays, the path should resolve toward the lower branch quickly. Confidence declines steadily with distance from the current evidence set. Wednesday's flash PMIs and Thursday's Trump-Xi summit are the next scheduled regime-relevant catalysts.",
-  "forecast": [
+    },
     {
       "ts": "2026-09-21T10:00:00Z",
       "timeBerlin": "2026-09-21T12:00:00+02:00",
+      "available": true,
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 18,
       "stressRiskPct": 41,
       "confidencePct": 85,
+      "dominantMode": "trend-up"
+    }
+  ],
+  "outlookSummary": "The forecast path holds the watch band through the pre-open hours, peaks at a conditional Tail of 24 in the first full US cash hour, then decays through the US afternoon and into a quiet overnight baseline before drifting up again with Tuesday's European liquidity. The mapped state never reaches the block threshold anywhere on the 24-hour horizon. The escalation around the 13:30Z open is a conditional allowance for gap-extension risk, not an assertion that continuation has been observed; if the opening auction produces genuine retracements and intraday volatility decays, the path should resolve toward the lower branch quickly. Confidence declines steadily with distance from the current evidence set. Wednesday's flash PMIs and Thursday's Trump-Xi meeting are the next regime-relevant catalysts.",
+  "forecast": [
+    {
+      "ts": "2026-09-21T11:00:00Z",
+      "timeBerlin": "2026-09-21T13:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 42,
+      "confidencePct": 85,
       "dominantMode": "trend-up",
-      "analysis": "Observed now: NQ futures near 30,251 (+1.1%) and ES near 7,766 (+0.7%) are both pinned within a few points of their session highs after a one-way European-session grind, with WTI near $97 (-2.9%) on Iran diplomacy hopes. Directional efficiency is real, so Tail steps up, but 10Y near 5.00% conflicts.",
+      "analysis": "NQ trades near 30,235 after a persistent advance from 29,904, holding within about 0.1% of the 30,266 session high with only shallow pauses. Yields eased to 4.96% and WTI fell 2.7%, so cross-assets now align with the bid. Observed one-way structure plus that alignment lifts Tail into the watch band.",
       "drivers": [
-        "NQ ~30,251 (+1.1%) holding within ~12 pts of the 30,263 session high",
-        "WTI ~$97 (-2.9%), Brent ~$101, fourth straight decline on Iran diplomacy hopes",
-        "10Y ~5.00% and 2Y at a cycle high above 4.74% conflict with the equity bid",
-        "VIX ~14.9 calm and not confirming stress"
+        "Observed one-way European-session advance from 29,904 to a 30,266 session high",
+        "NQ holding within about 0.1% of the session extreme with shallow pauses only",
+        "10Y eased to about 4.96% and 2Y to about 4.73%, removing a prior cross-asset conflict",
+        "WTI down 2.7% near $97.6 on US-Iran diplomacy hopes around the UN General Assembly",
+        "VIX near 14.9 shows no stress bid alongside the directional move"
       ],
       "news": [
         {
@@ -351,64 +352,53 @@
           "title": "Oil prices slide on hopes diplomacy at UN will help end Iran conflict",
           "url": "https://www.thenationalnews.com/business/energy/2026/09/21/oil-prices-slide-on-hopes-diplomacy-at-un-will-help-end-iran-conflict/",
           "source": "The National"
-        }
-      ]
-    },
-    {
-      "ts": "2026-09-21T11:00:00Z",
-      "timeBerlin": "2026-09-21T13:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 42,
-      "confidencePct": 84,
-      "dominantMode": "trend-up",
-      "analysis": "European afternoon. The overnight up-grind is the established structure, so the working assumption is continued drift with shallow dips unless the session low near 29,904 is reclaimed from above. Any renewed Iran headline out of the UN General Assembly is a two-sided catalyst rather than a one-way one.",
-      "drivers": [
-        "Session low ~29,904 near Friday's settle marks the first structural invalidation",
-        "UNGA Iran headline flow is two-sided, not directionally reliable",
-        "Tech-led breadth: NQ outperforming ES by roughly 40bp"
-      ],
-      "news": [
+        },
         {
-          "title": "Market Quick Take - Oil extends its slide before the Trump-Xi summit - 21 September 2026",
-          "url": "https://www.home.saxo/content/articles/macro/market-quick-take---oil-extends-its-slide-before-the-trump-xi-summit---21-september-2026-21092026",
-          "source": "Saxo Bank"
+          "title": "US seeks 'AI dialogue' with China as officials set stage for Trump-Xi summit",
+          "url": "https://www.france24.com/en/live-news/20260921-us-seeks-ai-dialogue-with-china-as-officials-set-stage-for-trump-xi-summit",
+          "source": "France 24"
         }
       ]
     },
     {
       "ts": "2026-09-21T12:00:00Z",
       "timeBerlin": "2026-09-21T14:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 19,
-      "stressRiskPct": 44,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 43,
       "confidencePct": 83,
       "dominantMode": "trend-up",
-      "analysis": "Pre-open hour into the 12:30Z Chicago Fed National Activity Index, a low-market-impact release. Stress edges up as positioning shifts toward the US cash auction; Tail stays in the low band because opening continuation is a hypothesis at this point, not observed structure.",
+      "analysis": "Pre-open hour carrying the 12:30Z Chicago Fed National Activity Index, a medium-impact checkpoint unlikely to reset the regime on its own. Tail is held in the watch band on the assumption that overnight directional structure persists into the auction; a decisive give-back before 13:30Z would argue for the lower branch.",
       "drivers": [
-        "12:30Z Chicago Fed National Activity Index (Aug) is a minor checkpoint",
-        "Pre-open repositioning typically widens the range without breaking structure",
-        "Opening continuation remains unobserved and is not priced into Tail"
+        "12:30Z Chicago Fed National Activity Index (Aug) is a medium-impact checkpoint",
+        "Carry-over of overnight structure is an assumption here, not an observation",
+        "Final pre-open positioning ahead of the 13:30Z cash auction",
+        "A break back below the overnight midpoint would invalidate the trend read"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures rise as oil falls, anticipation builds for Trump-Xi summit",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-september-21-dow-sp-500-nasdaq-080214605.html",
+          "source": "Yahoo Finance"
+        }
+      ]
     },
     {
       "ts": "2026-09-21T13:00:00Z",
       "timeBerlin": "2026-09-21T15:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 49,
-      "confidencePct": 82,
+      "tailRiskPct": 23,
+      "stressRiskPct": 50,
+      "confidencePct": 80,
       "dominantMode": "event/whipsaw",
-      "analysis": "Cash open at 13:30Z is the session's main structural test. If the opening auction extends the overnight trend with shallow pullbacks, mean reversion can degrade quickly; if the gap is faded, the range should re-form. Tail moves to the watch band for that conditional risk. Mapped policy state: WATCH.",
+      "analysis": "Contains the 13:30Z US cash open, the session's main conditional test. If the opening auction extends the gap with shallow pullbacks, mean reversion degrades and the upper branch applies; a faded gap would re-form the range. The step up is an allowance for auction risk, not evidence that continuation has occurred.",
       "drivers": [
-        "13:30Z US cash open is the primary conditional checkpoint",
-        "Gap-up opening auctions can extend or fully fade; both paths are live",
-        "Real 10Y yield near a 20-year high caps a sustained melt-up",
-        "Mapped policy state: WATCH, below the block threshold"
+        "13:30Z US cash open is the primary conditional test of the overnight trend",
+        "Gap-up opening auction risk after an advance of roughly 1.1% overnight",
+        "Scenario: shallow pullbacks and repeated extension would degrade mean reversion",
+        "Scenario: a faded opening gap would re-form a range-consistent regime"
       ],
       "news": [
         {
@@ -424,15 +414,164 @@
       "status": "yellow",
       "action": "WATCH",
       "tailRiskPct": 24,
-      "stressRiskPct": 52,
-      "confidencePct": 80,
+      "stressRiskPct": 54,
+      "confidencePct": 78,
       "dominantMode": "event/whipsaw",
-      "analysis": "First full cash hour carries the highest conditional risk of the 24-hour window. The adverse path is opening continuation that holds near session extremes and denies retracement; the benign path is orderly two-way price discovery. Scores reflect that dispersion, not an assertion that either has occurred.",
+      "analysis": "First full cash hour and the conditional peak of the path. This is where an already aligned bullish regime can produce its most efficient continuation if the open holds. Peak conditional Tail of 24 keeps the mapped state at WATCH and below the block threshold; a genuinely two-way auction would release risk quickly.",
       "drivers": [
-        "Peak conditional risk window: 13:30Z-15:30Z US cash open",
-        "Adverse path: continuation holding near extremes with no meaningful pullback",
-        "Benign path: orderly two-way discovery and gap fill",
-        "Stress elevated on yield, oil and geopolitical dispersion combined"
+        "First full US cash hour is the conditional peak of the forecast path",
+        "Aligned catalyst stack: oil retreat, easing yields and the US-China thaw",
+        "Peak conditional Tail of 24 remains below the block threshold",
+        "Genuine two-way retracement here would release conditional risk quickly"
+      ],
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq futures rise as oil falls, anticipation builds for Trump-Xi summit",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-september-21-dow-sp-500-nasdaq-080214605.html",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "US seeks 'AI dialogue' with China as officials set stage for Trump-Xi summit",
+          "url": "https://www.france24.com/en/live-news/20260921-us-seeks-ai-dialogue-with-china-as-officials-set-stage-for-trump-xi-summit",
+          "source": "France 24"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-21T15:00:00Z",
+      "timeBerlin": "2026-09-21T17:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 51,
+      "confidencePct": 76,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Post-open consolidation window. By this hour the opening auction's character should be established, so the conditional band narrows. Sustained holding near session extremes would keep the watch band intact, while orderly price discovery and decaying intraday volatility would move the path toward the lower branch.",
+      "drivers": [
+        "Opening-auction character should be established by this hour",
+        "Checkpoint: whether NQ still holds near session extremes after the open",
+        "Decaying intraday volatility would argue for the lower branch",
+        "European cash close adds a liquidity transition near 15:30Z"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-21T16:00:00Z",
+      "timeBerlin": "2026-09-21T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 46,
+      "confidencePct": 74,
+      "dominantMode": "mixed",
+      "analysis": "Midday US session, typically the least directionally efficient part of the day. Conditional Tail returns to the low band on the assumption that the opening imbalance has been absorbed, so the mapped state returns to EA_ON. A fresh extension to new session highs instead would keep the higher branch in force.",
+      "drivers": [
+        "Midday US session is typically the least directionally efficient window",
+        "Assumption: the opening imbalance has been absorbed by this hour",
+        "Invalidation: a fresh push to new session highs would keep the upper branch",
+        "Rates backdrop remains a structural cap on sustained extension"
+      ],
+      "news": [
+        {
+          "title": "10-year Treasury yield climbs back to 5% after Fed hikes rates, Warsh highlights inflation risks",
+          "url": "https://www.cnbc.com/2026/09/16/treasury-yield-bond-market-fed-decision.html",
+          "source": "CNBC"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-21T17:00:00Z",
+      "timeBerlin": "2026-09-21T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 43,
+      "confidencePct": 72,
+      "dominantMode": "mixed",
+      "analysis": "Early US afternoon with no scheduled macro catalyst. The conditional path assumes a two-sided regime with meaningful retracements restored. Rates remain the main structural cross-current: the 10-year sits near 5% after September's hike, which caps sustained multi-hour equity extension even in a constructive tape.",
+      "drivers": [
+        "No scheduled US macro catalyst falls in this hour",
+        "Assumption: two-sided regime with meaningful retracements restored",
+        "10Y near 5% after September's Fed hike caps sustained extension",
+        "Oil headline reversibility remains a live source of intraday turns"
+      ],
+      "news": [
+        {
+          "title": "10-year Treasury yield climbs back to 5% after Fed hikes rates, Warsh highlights inflation risks",
+          "url": "https://www.cnbc.com/2026/09/16/treasury-yield-bond-market-fed-decision.html",
+          "source": "CNBC"
+        }
+      ]
+    },
+    {
+      "ts": "2026-09-21T18:00:00Z",
+      "timeBerlin": "2026-09-21T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 41,
+      "confidencePct": 70,
+      "dominantMode": "mixed",
+      "analysis": "Mid-afternoon lull. Conditional Tail continues to decay in the absence of a catalyst, while Stress stays moderate because the underlying macro backdrop is unresolved. The main watch item is whether the tape drifts rather than trends, which is the condition most consistent with a functioning mean-reversion regime.",
+      "drivers": [
+        "Mid-afternoon lull with no scheduled catalyst",
+        "Drift rather than trend is the condition most consistent with mean reversion",
+        "Stress stays moderate on an unresolved macro backdrop",
+        "Checkpoint: whether the post-open session high still caps the tape"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-21T19:00:00Z",
+      "timeBerlin": "2026-09-21T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 17,
+      "stressRiskPct": 43,
+      "confidencePct": 68,
+      "dominantMode": "mixed",
+      "analysis": "Approach to the final US cash hour. Conditional Tail ticks up modestly because late-session imbalance can restore directional efficiency, particularly on a day that opened with a gap. This is a conditional allowance for close-related flow, not an assertion that a late trend has formed.",
+      "drivers": [
+        "Approach to the final US cash hour can restore directional efficiency",
+        "Gap-open days can carry late-session imbalance into the close",
+        "Conditional allowance only; no late-session trend has been observed",
+        "Checkpoint: whether the day closes near its session high"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-21T20:00:00Z",
+      "timeBerlin": "2026-09-21T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 16,
+      "stressRiskPct": 42,
+      "confidencePct": 66,
+      "dominantMode": "mixed",
+      "analysis": "Contains the 20:00Z US cash close. Closing auction flow can produce a sharp but short imbalance that typically resolves quickly, which is why this hour carries elevated Stress relative to its Tail. Conditional Tail eases as the cash session ends and liquidity begins to thin.",
+      "drivers": [
+        "20:00Z US cash close and its associated auction imbalance",
+        "Closing prints are sharp but usually short-lived, favouring Stress over Tail",
+        "Liquidity begins to thin once the cash session ends",
+        "A close near the session high would carry the trend read into Globex"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-21T21:00:00Z",
+      "timeBerlin": "2026-09-21T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 36,
+      "confidencePct": 64,
+      "dominantMode": "normal",
+      "analysis": "Post-close hour running into the Globex maintenance break. Directional conviction normally collapses with participation, and the conditional path steps down accordingly. Residual risk is limited to headline gaps rather than sustained structure, with the US-Iran diplomatic track the most reversible source.",
+      "drivers": [
+        "Participation collapses after the US cash close",
+        "Globex maintenance break limits sustained directional structure",
+        "Residual risk is headline-gap driven rather than path driven",
+        "US-Iran diplomatic track remains the most reversible headline source"
       ],
       "news": [
         {
@@ -443,144 +582,20 @@
       ]
     },
     {
-      "ts": "2026-09-21T15:00:00Z",
-      "timeBerlin": "2026-09-21T17:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 23,
-      "stressRiskPct": 50,
-      "confidencePct": 78,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Second cash hour usually resolves whether the opening drive is trending or mean-reverting. If retracements appear and volatility decays, conditional Tail should fall away quickly from here; if extension repeats after failed pullbacks, the elevated reading persists into the afternoon.",
-      "drivers": [
-        "Retracement quality in this hour is the key discriminator",
-        "Repeated extension after failed pullbacks would sustain the elevated reading",
-        "Volatility decay and a stabilising VIX would argue for a lower path"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-09-21T16:00:00Z",
-      "timeBerlin": "2026-09-21T18:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 20,
-      "stressRiskPct": 46,
-      "confidencePct": 76,
-      "dominantMode": "mixed",
-      "analysis": "US midday. Liquidity and range typically compress after the opening auction resolves, which historically supports mean reversion. The reading is held at the lower edge of the watch band pending confirmation that the morning structure has broken rather than paused.",
-      "drivers": [
-        "Midday liquidity lull normally compresses range and aids mean reversion",
-        "Conditional on the opening drive having resolved rather than paused",
-        "Mapped policy state: WATCH at the lower edge of the band"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-09-21T17:00:00Z",
-      "timeBerlin": "2026-09-21T19:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 44,
-      "confidencePct": 75,
-      "dominantMode": "mixed",
-      "analysis": "Early US afternoon. Absent a fresh catalyst, the base case is a consolidating range after the morning's repricing, so the conditional reading returns to the low band. An Iran or US-China headline remains the most plausible source of a fresh directional impulse.",
-      "drivers": [
-        "Post-open consolidation is the base case absent new headlines",
-        "Iran de-escalation headlines remain the live directional wildcard",
-        "US-China working-group talks continue ahead of the Thursday summit"
-      ],
-      "news": [
-        {
-          "title": "US proposes AI safety notification mechanism in talks with China",
-          "url": "https://www.aljazeera.com/economy/2026/9/20/us-china-open-high-level-talks-ahead-of-trump-xi-summit",
-          "source": "Al Jazeera"
-        }
-      ]
-    },
-    {
-      "ts": "2026-09-21T18:00:00Z",
-      "timeBerlin": "2026-09-21T20:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 17,
-      "stressRiskPct": 42,
-      "confidencePct": 74,
-      "dominantMode": "mixed",
-      "analysis": "Mid-afternoon in New York. Conditional risk is at its lowest point of the US session in this window, with the morning event risk behind and the late-session flows not yet active. No scheduled US release falls in this hour.",
-      "drivers": [
-        "No scheduled US macro release in this hour",
-        "Morning event risk resolved; late-session flows not yet active",
-        "Lowest conditional risk window of the US cash session"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-09-21T19:00:00Z",
-      "timeBerlin": "2026-09-21T21:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 19,
-      "stressRiskPct": 44,
-      "confidencePct": 73,
-      "dominantMode": "mixed",
-      "analysis": "Power hour into 20:00Z. Late-session flows can produce a directional close, and on a strong trend day that late leg is the second-most plausible no-retracement window after the open. The reading rises modestly as a conditional allowance, not an observation.",
-      "drivers": [
-        "19:00Z-20:00Z power hour can produce a one-way closing drive",
-        "Conditional allowance only; no late-session structure is observed yet",
-        "Index rebalancing and month-end positioning flows are not yet material"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-09-21T20:00:00Z",
-      "timeBerlin": "2026-09-21T22:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 43,
-      "confidencePct": 72,
-      "dominantMode": "mixed",
-      "analysis": "US cash close at 20:00Z. Closing auctions concentrate volume into a single print and can extend a trend briefly before liquidity drops away. Conditional risk eases as the cash session ends and the futures session thins out.",
-      "drivers": [
-        "20:00Z cash close concentrates volume into the closing auction",
-        "Post-close liquidity drops sharply, reducing sustained-trend capacity",
-        "Conditional reading eases as the US session ends"
-      ],
-      "news": []
-    },
-    {
-      "ts": "2026-09-21T21:00:00Z",
-      "timeBerlin": "2026-09-21T23:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 14,
-      "stressRiskPct": 38,
-      "confidencePct": 71,
-      "dominantMode": "normal",
-      "analysis": "Post-close futures. Volume falls away and the dominant conditional mode reverts toward range behaviour. The main overnight risk is a headline gap rather than a sustained intraday trend, which is a Stress consideration more than a Tail one.",
-      "drivers": [
-        "Post-close thin tape favours range behaviour over sustained trend",
-        "Headline gap risk rather than trend risk dominates overnight",
-        "Iran and UNGA newsflow can print outside cash hours"
-      ],
-      "news": []
-    },
-    {
       "ts": "2026-09-21T22:00:00Z",
       "timeBerlin": "2026-09-22T00:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 12,
-      "stressRiskPct": 35,
-      "confidencePct": 70,
+      "tailRiskPct": 10,
+      "stressRiskPct": 32,
+      "confidencePct": 62,
       "dominantMode": "normal",
-      "analysis": "Globex reopens at 22:00Z. The reopening print can gap but rarely establishes a durable one-way path on its own. Conditional scores settle into the overnight baseline pending Asian-session direction.",
+      "analysis": "Globex reopen with thin early-evening liquidity. Conditional Tail sits in the low band because thin books tend to produce noise rather than the persistent no-retracement structure that defeats mean reversion. Any gap in this window would most likely be headline-driven and subject to rapid retracement.",
       "drivers": [
-        "22:00Z Globex reopen can gap without establishing a durable trend",
-        "Overnight baseline pending Asian-session direction",
-        "Thin liquidity limits sustained directional efficiency"
+        "Globex reopen with thin early-evening liquidity",
+        "Thin books produce noise rather than persistent no-retracement structure",
+        "Headline-driven gaps in this window typically retrace quickly",
+        "No scheduled US macro release falls in this hour"
       ],
       "news": []
     },
@@ -589,15 +604,16 @@
       "timeBerlin": "2026-09-22T01:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 11,
-      "stressRiskPct": 34,
-      "confidencePct": 69,
+      "tailRiskPct": 9,
+      "stressRiskPct": 31,
+      "confidencePct": 61,
       "dominantMode": "normal",
-      "analysis": "Early Asian session. Tokyo and Sydney flows set the overnight tone. Absent an Iran or US-China development, the conditional expectation is a contained range that supports mean reversion.",
+      "analysis": "Late US evening ahead of the Asian handover. The conditional path is quiet, with Tail in the low band and Stress moderate on the unresolved macro and geopolitical backdrop. No scheduled catalyst falls in this hour and the mapped policy state is EA_ON.",
       "drivers": [
-        "Asian session typically contained absent a fresh catalyst",
-        "Iran de-escalation newsflow is the main overnight wildcard",
-        "Conditional expectation: contained range"
+        "Late US evening ahead of the Asian handover",
+        "No scheduled catalyst falls in this hour",
+        "Stress stays moderate on an unresolved geopolitical backdrop",
+        "Mapped policy state sits in the low Tail band"
       ],
       "news": []
     },
@@ -606,32 +622,40 @@
       "timeBerlin": "2026-09-22T02:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 11,
-      "stressRiskPct": 34,
-      "confidencePct": 69,
+      "tailRiskPct": 8,
+      "stressRiskPct": 30,
+      "confidencePct": 60,
       "dominantMode": "normal",
-      "analysis": "Asian session continues. Conditional risk stays at the overnight baseline. Any material move would most plausibly come from an oil-market or Middle East headline rather than from scheduled data, since no US release falls in this window.",
+      "analysis": "Tuesday's Asian session opens. Regional risk appetite and any carryover in the US-China narrative set the early tone. Conditional Tail is at its overnight baseline; Asian sessions rarely generate the multi-hour directional efficiency in Nasdaq futures that overwhelms mean reversion.",
       "drivers": [
-        "No scheduled US macro release in this window",
-        "Oil and Middle East headlines are the plausible overnight movers",
-        "Conditional risk held at the overnight baseline"
+        "Tuesday's Asian session opens and sets the early regional tone",
+        "US-China narrative carryover is the main regional sensitivity",
+        "Asian sessions rarely produce multi-hour NQ directional efficiency",
+        "Conditional Tail sits at its overnight baseline"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "US seeks 'AI dialogue' with China as officials set stage for Trump-Xi summit",
+          "url": "https://www.france24.com/en/live-news/20260921-us-seeks-ai-dialogue-with-china-as-officials-set-stage-for-trump-xi-summit",
+          "source": "France 24"
+        }
+      ]
     },
     {
       "ts": "2026-09-22T01:00:00Z",
       "timeBerlin": "2026-09-22T03:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 11,
-      "stressRiskPct": 33,
-      "confidencePct": 68,
+      "tailRiskPct": 8,
+      "stressRiskPct": 30,
+      "confidencePct": 59,
       "dominantMode": "normal",
-      "analysis": "Mid Asian session. Evidence supporting this slot is now well over half a day old, so confidence steps down while the conditional risk reading stays low and range-consistent.",
+      "analysis": "Asian mid-session. The conditional baseline holds with no scheduled US catalyst. Watch items are limited to regional equity tone and any incremental headline around the Trump-Xi summit scheduled for Thursday, which is a calendar checkpoint rather than an observed development.",
       "drivers": [
-        "Evidence ageing beyond half a day lowers confidence",
-        "Range-consistent conditional reading retained",
-        "Mid-Asia liquidity trough"
+        "Asian mid-session with no scheduled US catalyst",
+        "Thursday's Trump-Xi summit is a calendar checkpoint, not an observed event",
+        "Regional equity tone is the main incremental input",
+        "Conditional baseline holds in the low Tail band"
       ],
       "news": []
     },
@@ -640,15 +664,16 @@
       "timeBerlin": "2026-09-22T04:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 10,
-      "stressRiskPct": 33,
-      "confidencePct": 68,
+      "tailRiskPct": 8,
+      "stressRiskPct": 30,
+      "confidencePct": 58,
       "dominantMode": "normal",
-      "analysis": "Late Asian session. This is typically the quietest stretch of the 24-hour cycle for Nasdaq futures, with the lowest conditional probability of a persistent no-retracement path.",
+      "analysis": "Quiet Asian hours. The path assumes range-consistent conditions with two-sided flow, which is the regime most favourable to mean reversion. Confidence continues to decay purely as a function of distance from the current verified evidence set, not because of any identified deterioration.",
       "drivers": [
-        "Quietest stretch of the 24-hour cycle for Nasdaq futures",
-        "Lowest conditional probability of a persistent one-way path",
-        "Liquidity trough between Asian and European hours"
+        "Quiet Asian hours with range-consistent conditions assumed",
+        "Two-sided flow is the regime most favourable to mean reversion",
+        "Confidence decay reflects evidence distance, not identified deterioration",
+        "No scheduled macro release falls in this hour"
       ],
       "news": []
     },
@@ -657,15 +682,16 @@
       "timeBerlin": "2026-09-22T05:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 10,
-      "stressRiskPct": 32,
-      "confidencePct": 67,
+      "tailRiskPct": 8,
+      "stressRiskPct": 30,
+      "confidencePct": 57,
       "dominantMode": "normal",
-      "analysis": "Asia into the European pre-market. Conditional risk stays at the cycle low. The handover normally widens spreads modestly without producing directional persistence.",
+      "analysis": "Late Asian session ahead of the European handover. Conditional Tail remains at baseline. The main structural watch item for the coming day is whether Monday's advance is confirmed or faded once European cash desks arrive, since that transition is where today's observed trend began.",
       "drivers": [
-        "Asia-to-Europe handover widens spreads without directional persistence",
-        "Conditional risk held at the cycle low",
-        "No scheduled US macro release in this window"
+        "Late Asian session ahead of the European handover",
+        "Checkpoint: whether Monday's advance is confirmed or faded in Europe",
+        "Today's observed trend began at this same session transition",
+        "Conditional Tail remains at the overnight baseline"
       ],
       "news": []
     },
@@ -674,15 +700,16 @@
       "timeBerlin": "2026-09-22T06:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 10,
-      "stressRiskPct": 32,
-      "confidencePct": 67,
+      "tailRiskPct": 9,
+      "stressRiskPct": 31,
+      "confidencePct": 56,
       "dominantMode": "normal",
-      "analysis": "European pre-market hours. The overnight range established in Asia usually frames the early European session. Conditional scores remain at their lowest, consistent with a range-dominated regime.",
+      "analysis": "Pre-European hours. Conditional Tail ticks marginally higher as the session transition approaches, reflecting the general tendency for directional structure to form at liquidity handovers rather than any specific observed setup for Tuesday.",
       "drivers": [
-        "Asian overnight range frames the early European session",
-        "Conditional scores at their 24-hour low",
-        "Range-dominated regime assumption"
+        "Pre-European hours approaching the main liquidity handover",
+        "Directional structure tends to form at session transitions",
+        "No specific observed setup for Tuesday exists at this point",
+        "The marginal step up is a structural allowance, not an observation"
       ],
       "news": []
     },
@@ -691,15 +718,16 @@
       "timeBerlin": "2026-09-22T07:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 11,
-      "stressRiskPct": 33,
-      "confidencePct": 67,
+      "tailRiskPct": 9,
+      "stressRiskPct": 32,
+      "confidencePct": 55,
       "dominantMode": "normal",
-      "analysis": "Approaching the European cash open. Conditional risk begins a modest step up as European liquidity returns, though the base case remains two-way trade rather than a repeat of the prior session's directional grind.",
+      "analysis": "European pre-market. Tuesday's early tone will be set against Monday's close and any overnight oil or geopolitical headlines. The conditional path stays in the low band, with Stress drifting up as Tuesday's scheduled supply and Fed-speaker risk come back into view.",
       "drivers": [
-        "European liquidity returning ahead of the 07:00Z cash open",
-        "Base case is two-way trade, not a repeat directional grind",
-        "Modest conditional step up on returning volume"
+        "European pre-market sets Tuesday's early tone",
+        "Reference point: Monday's close and any overnight oil headlines",
+        "Tuesday brings Fed speakers and a 2-year note auction back into view",
+        "Conditional path stays within the low Tail band"
       ],
       "news": []
     },
@@ -708,21 +736,22 @@
       "timeBerlin": "2026-09-22T08:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 12,
-      "stressRiskPct": 35,
-      "confidencePct": 66,
+      "tailRiskPct": 10,
+      "stressRiskPct": 33,
+      "confidencePct": 54,
       "dominantMode": "mixed",
-      "analysis": "European cash open. Tuesday's opening hour re-prices the overnight tape against the prior US close and any Iran or US-China developments from the interim. Conditional risk is moderate and the mode is uncertain this far ahead.",
+      "analysis": "European cash open. This is the hour at which Monday's observed trend began, so it is the natural checkpoint for whether a comparable structure forms on Tuesday. The conditional step up is symmetric: it allows for a directional open in either direction, not a repeat of Monday's advance.",
       "drivers": [
-        "07:00Z European cash open re-prices the overnight tape",
-        "Interim Iran and US-China headlines are the key unknown",
-        "Mode genuinely uncertain at a 21-hour horizon"
+        "European cash open, the hour at which Monday's trend began",
+        "The conditional step up allows a directional open in either direction",
+        "No assumption is made that Monday's advance repeats",
+        "Oil and rates carryover are the main cross-asset inputs"
       ],
       "news": [
         {
-          "title": "US proposes AI safety notification mechanism in talks with China",
-          "url": "https://www.aljazeera.com/economy/2026/9/20/us-china-open-high-level-talks-ahead-of-trump-xi-summit",
-          "source": "Al Jazeera"
+          "title": "Oil prices slide on hopes diplomacy at UN will help end Iran conflict",
+          "url": "https://www.thenationalnews.com/business/energy/2026/09/21/oil-prices-slide-on-hopes-diplomacy-at-un-will-help-end-iran-conflict/",
+          "source": "The National"
         }
       ]
     },
@@ -731,15 +760,16 @@
       "timeBerlin": "2026-09-22T09:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 13,
-      "stressRiskPct": 36,
-      "confidencePct": 66,
+      "tailRiskPct": 11,
+      "stressRiskPct": 34,
+      "confidencePct": 53,
       "dominantMode": "mixed",
-      "analysis": "European morning. Ahead of Tuesday's US session, Richmond Fed Manufacturing at 14:00Z is the day's notable scheduled US datapoint. Conditional risk drifts slightly higher with European volume but stays well inside the low band.",
+      "analysis": "Early European session. Conditional Tail continues to drift up with liquidity. Tuesday's scheduled US calendar is lighter than a typical macro day, with the Richmond Fed index, Fed speakers and a 2-year note auction concentrated in the afternoon rather than in this window.",
       "drivers": [
-        "Tuesday 14:00Z Richmond Fed Manufacturing Index is the next US checkpoint",
-        "European volume lifts conditional risk modestly",
-        "Reading stays well inside the low band"
+        "Early European session with liquidity building through the hour",
+        "Tuesday's US calendar is concentrated in the afternoon",
+        "Richmond Fed, Fed speakers and a 2-year auction are the afternoon checkpoints",
+        "The conditional drift reflects liquidity, not an identified setup"
       ],
       "news": []
     },
@@ -748,84 +778,110 @@
       "timeBerlin": "2026-09-22T10:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 13,
-      "stressRiskPct": 36,
-      "confidencePct": 66,
+      "tailRiskPct": 12,
+      "stressRiskPct": 35,
+      "confidencePct": 52,
       "dominantMode": "mixed",
-      "analysis": "European morning continues. This slot sits a full day beyond the current evidence set, so it is framed as a baseline expectation that the next scheduled assessment will supersede rather than as a specific structural call.",
+      "analysis": "European mid-morning. The conditional band widens modestly as the session matures. The key question for Tuesday is whether the rates backdrop, with the 10-year near 5% after September's hike, reasserts itself as a cap after Monday's easing in yields supported equities.",
       "drivers": [
-        "Slot sits a full day beyond the current evidence set",
-        "Baseline expectation pending the next scheduled assessment",
-        "No specific structural call at this horizon"
+        "European mid-morning with a maturing session",
+        "Key question: whether the rates backdrop reasserts itself as a cap",
+        "10Y near 5% after September's Fed hike is the structural reference",
+        "Monday's easing in yields supported equities and may not persist"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "10-year Treasury yield climbs back to 5% after Fed hikes rates, Warsh highlights inflation risks",
+          "url": "https://www.cnbc.com/2026/09/16/treasury-yield-bond-market-fed-decision.html",
+          "source": "CNBC"
+        }
+      ]
     },
     {
       "ts": "2026-09-22T09:00:00Z",
       "timeBerlin": "2026-09-22T11:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 36,
+      "confidencePct": 51,
+      "dominantMode": "mixed",
+      "analysis": "Late European morning. Conditional Tail holds its modest level with no scheduled US release in the window. By this hour Tuesday's own directional character should be observable, and this published path should be treated as a prior to be replaced by that hour's live assessment.",
+      "drivers": [
+        "Late European morning with no scheduled US release",
+        "Tuesday's own directional character should be observable by this hour",
+        "This published path is a prior, superseded by the live hourly assessment",
+        "Conditional Tail holds at a modest level"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-09-22T10:00:00Z",
+      "timeBerlin": "2026-09-22T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
       "tailRiskPct": 13,
       "stressRiskPct": 36,
-      "confidencePct": 66,
+      "confidencePct": 50,
       "dominantMode": "mixed",
-      "analysis": "End of the forecast horizon, one day out. Conditional risk is held at a neutral baseline. The Thursday Trump-Xi summit and Wednesday's flash PMIs are the next scheduled catalysts capable of changing the regime materially.",
+      "analysis": "Final forecast hour, a full day out from the current assessment. The conditional level reflects the general tendency for pre-US-open European hours to carry more directional risk than the overnight baseline. Confidence is at its lowest here, reflecting distance from today's verified evidence.",
       "drivers": [
-        "Wednesday 13:45Z S&P Global flash PMIs are the next high-impact release",
-        "Thursday Trump-Xi summit in Washington is the week's main geopolitical catalyst",
-        "Neutral baseline at the far end of the horizon"
+        "Final forecast hour, a full day from the current evidence set",
+        "Pre-US-open European hours carry more directional risk than overnight",
+        "Confidence is at its lowest point across the horizon",
+        "The path should be re-derived from Tuesday's live evidence"
       ],
       "news": []
     }
   ],
   "forecastDetail": [
     {
-      "ts": "2026-09-21T10:00:00Z",
-      "timeBerlin": "2026-09-21T12:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 18,
-      "stressRiskPct": 41,
-      "comment": "Observed one-way European-session grind with NQ and ES both pinned near session highs; Tail steps up on that structure while elevated yields and a calm VIX argue against a full risk-on alignment. Mapped policy state: EA_ON."
-    },
-    {
       "ts": "2026-09-21T11:00:00Z",
       "timeBerlin": "2026-09-21T13:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 18,
+      "status": "yellow",
+      "tailRiskPct": 20,
       "stressRiskPct": 42,
-      "comment": "Established up-structure carries into the European afternoon; the ~29,904 session low is the first structural invalidation, and UNGA Iran headlines cut both ways."
+      "comment": "Observed overnight one-way structure with NQ holding near its session high, now with aligned yields and oil; mapped policy state is WATCH."
     },
     {
       "ts": "2026-09-21T12:00:00Z",
       "timeBerlin": "2026-09-21T14:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 19,
-      "stressRiskPct": 44,
-      "comment": "Pre-open hour into a minor Chicago Fed release; Stress edges up on repositioning while Tail stays low because opening continuation is still unobserved."
+      "status": "yellow",
+      "tailRiskPct": 20,
+      "stressRiskPct": 43,
+      "comment": "Pre-open hour with a medium-impact Chicago Fed print at 12:30Z; the watch band assumes rather than observes continuation into the auction."
     },
     {
       "ts": "2026-09-21T13:00:00Z",
       "timeBerlin": "2026-09-21T15:00:00+02:00",
       "status": "yellow",
-      "tailRiskPct": 22,
-      "stressRiskPct": 49,
-      "comment": "US cash open is the session's main structural test; Tail enters the watch band for conditional gap-extension risk. Mapped policy state: WATCH, below the block threshold."
+      "tailRiskPct": 23,
+      "stressRiskPct": 50,
+      "comment": "The 13:30Z cash open is the session's main conditional test; the elevated band is an allowance for gap-extension risk rather than observed continuation."
     },
     {
       "ts": "2026-09-21T14:00:00Z",
       "timeBerlin": "2026-09-21T16:00:00+02:00",
       "status": "yellow",
       "tailRiskPct": 24,
-      "stressRiskPct": 52,
-      "comment": "Highest conditional risk hour of the window: opening continuation that denies retracement is the adverse path, orderly two-way discovery the benign one."
+      "stressRiskPct": 54,
+      "comment": "Conditional peak of the path at the first full cash hour; Tail 24 keeps the mapped state at WATCH and stays below the block threshold."
     },
     {
       "ts": "2026-09-21T15:00:00Z",
       "timeBerlin": "2026-09-21T17:00:00+02:00",
       "status": "yellow",
-      "tailRiskPct": 23,
-      "stressRiskPct": 50,
-      "comment": "Second cash hour normally resolves trend versus mean reversion; visible retracements and decaying volatility would let the conditional reading fall away quickly."
+      "tailRiskPct": 22,
+      "stressRiskPct": 51,
+      "comment": "Post-open consolidation; the band narrows as the auction's character becomes observable, with orderly discovery favouring the lower branch."
+    },
+    {
+      "ts": "2026-09-21T16:00:00Z",
+      "timeBerlin": "2026-09-21T18:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 19,
+      "stressRiskPct": 46,
+      "comment": "Midday lull with conditional Tail back in the low band on the assumption the opening imbalance has been absorbed; new session highs would invalidate that."
     }
   ],
   "events": [
@@ -839,6 +895,18 @@
       "name": "US Richmond Fed Manufacturing Index (Sep)",
       "ts": "2026-09-22T14:00:00Z",
       "timeBerlin": "2026-09-22T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Fed Williams speech",
+      "ts": "2026-09-22T14:05:00Z",
+      "timeBerlin": "2026-09-22T16:05:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "US 2-Year Note Auction",
+      "ts": "2026-09-22T17:00:00Z",
+      "timeBerlin": "2026-09-22T19:00:00+02:00",
       "impact": "medium"
     },
     {
