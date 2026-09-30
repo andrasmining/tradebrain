@@ -3,73 +3,62 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-09-30T13:35:00Z",
+  "generatedAt": "2026-09-30T14:32:28Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "yellow",
-  "statusText": "Mapped policy state: WATCH. Tail risk 20% sits at the bottom of the watch band while stress eases to 67% after a softer August inflation print.",
-  "recommendation": "Tail remains well below the block threshold, so the mapped policy state is WATCH. The narrow evidence-based danger window runs 13:30Z to 15:30Z, covering the quarter-end US cash open, Chicago PMI and the first full cash hour where a delayed second leg would appear. A second, smaller watch-band window is projected at 20:00Z to 22:00Z around the quarter-end close and Micron's post-close report. Existing-position management and emergency protection are unaffected.",
-  "headline": "August core PCE undershoots at 3.0% as NQ lifts 0.41% and yields ease into a quarter-end cash open",
-  "body": "The August personal income and outlays report released at 12:30Z resolved the session's main uncertainty to the soft side. Core PCE rose 0.2% on the month and 3.0% year over year against consensus of 0.3% and 3.3%, with July revised down to 3.0% from 3.3%; headline PCE rose 0.3% monthly and 3.4% year over year. Nasdaq-100 futures trade 30,739.25, up 0.41%, inside a day range of 30,512.25 to 30,779.50, which leaves price roughly 40 points below the session high rather than pinned at the extreme. The cross-asset reaction is coherent and orderly rather than pathological: the 10-year Treasury yield eased about 4 basis points to roughly 5.22%, the 2-year to roughly 4.87% and the 30-year about 4 basis points to roughly 5.55% after touching its highest level since 2002 in the prior session, while VIX fell 1.50% to 15.80 within a 15.62 to 16.32 range. That combination of a benign surprise, easing long-end yields, decaying implied volatility and an observed retracement off the high is the orderly price discovery that keeps Tail at the bottom of the watch band. The reason Tail does not fall further is timing rather than structure: the US cash open at 13:30Z had only just occurred at the assessment cutoff and Chicago PMI at 13:45Z is still ahead, so post-open structure on the final session of the quarter is unobserved, and quarter-end rebalancing can distort the opening auction. An aligned bullish regime meeting a quarter-end open is the configuration where opening-auction continuation with shallow pullbacks would become meaningful Tail evidence, and that evidence does not yet exist. Stress stays high at 67% because the rates complex remains the dominant carrier, with the long end near multi-decade highs even after today's easing, and because crude conflicts with the disinflation read: WTI is up 2.10% at $91.25 and Brent up 2.60% at $98.67 on continued US-Iran uncertainty. The Fed raised its target range to 3.75-4.00% on 16 September, and the softer print reduces the pressure for an October follow-up. Ahead lie Micron's fiscal Q4 results after the US close, whose exact release time is not verified and which is therefore carried as a driver rather than a dated event, and the 1 October jobless claims and ISM Manufacturing block. Shared Finviz context was collected at 2026-09-29T23:14Z with partial status and no futures coverage, so it is stale under the 90-minute freshness rule and was not used as current evidence.",
-  "tailRiskPct": 20,
+  "statusText": "Mapped policy state: WATCH. Tail risk sits in the watch band, below the block threshold, while the environment remains high-stress.",
+  "recommendation": "Tail remains below the block threshold, so the mapped state stays WATCH. The published danger window covers the quarter-end close from 19:00Z to 20:00Z, where power-hour and market-on-close imbalances overlap.",
+  "headline": "Cooler core PCE lifts the Nasdaq-100, but narrow leadership and a quarter-end close keep Tail in the watch band",
+  "body": "August core PCE cooled to 3.0% year over year against about 3.3% expected, with the monthly core at +0.2%. The 10-year Treasury yield eased to roughly 5.22% from its highest level since 2007 and the 2-year sits near 4.83-4.89%. The Nasdaq-100 trades at 30568.15, up 0.75%, having continued up from the 30421.68 open to a 30617.74 session high before retracing about 50 points; the session low of 30415.16 was set early. VIX is 15.72, down 2.0%. Cross-asset confirmation is incomplete: the PHLX Semiconductor Index is at 12612.12, down 0.13%, and WTI is up 2.0% at $91.17 with Brent near $102.56, which cuts against the disinflation read. The Strait of Hormuz disruption and US-Iran conflict remain unresolved and keep energy bid, while a House-passed stopgap extends federal funding to December 11 and removes the October 1 shutdown question. Because the advance is orderly, retracements are appearing and semiconductors are not confirming, the observed price path does not establish the persistent mean-reversion failure that Tail measures; sticky 3.0% core inflation, multiyear-high yields and elevated energy keep Stress high instead. This is the final session of Q3, so quarter-end rebalancing concentrates two-way imbalance risk into the 20:00Z cash close.",
+  "tailRiskPct": 22,
   "tailLevel": "watch",
-  "stressRiskPct": 67,
+  "stressRiskPct": 69,
   "stressLevel": "high",
   "dominantMode": "mixed",
-  "confidencePct": 87,
+  "confidencePct": 88,
   "confidenceLevel": "high",
   "action": "WATCH",
   "dangerWindow": {
-    "start": "2026-09-30T13:30:00Z",
-    "end": "2026-09-30T15:30:00Z"
+    "start": "2026-09-30T19:00:00Z",
+    "end": "2026-09-30T20:00:00Z"
   },
   "dangerWindowBerlin": {
-    "start": "2026-09-30T15:30:00+02:00",
-    "end": "2026-09-30T17:30:00+02:00"
+    "start": "2026-09-30T21:00:00+02:00",
+    "end": "2026-09-30T22:00:00+02:00"
   },
   "sources": [
     {
-      "title": "Nasdaq 100 futures (NQ=F) quote, day range and percent change",
-      "url": "https://finance.yahoo.com/quote/NQ%3DF/"
+      "title": "Nasdaq-100 (^NDX) quote, level and day range",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
     },
     {
-      "title": "Fed's preferred gauge showed core inflation at 3.0% in August, much lighter than expected",
-      "url": "https://www.cnbc.com/2026/09/30/feds-preferred-gauge-showed-core-inflation-at-3point0percent-in-august-much-lighter-than-expected.html"
+      "title": "Stock market live updates for September 30, 2026: core PCE cools to 3.0%",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-september-30-dow-sp-500-nasdaq-080339262.html"
     },
     {
-      "title": "Pressure on U.S. Treasurys eases after 30-year yield hits highest level since 2002",
+      "title": "10-year Treasury yield retreats from 2007 high after PCE data shows inflation cooled",
       "url": "https://www.cnbc.com/2026/09/30/treasury-yields-bonds-selloff.html"
     },
     {
-      "title": "CBOE Volatility Index (^VIX) level and day range",
-      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+      "title": "Current price of oil as of Sept. 30, 2026",
+      "url": "https://fortune.com/article/price-of-oil-09-30-2026/"
     },
     {
-      "title": "Crude oil price and market data",
-      "url": "https://tradingeconomics.com/commodity/crude-oil"
+      "title": "Iran touts Hormuz attacks as oil flows increase despite tensions",
+      "url": "https://www.aljazeera.com/news/2026/9/28/iran-touts-hormuz-attacks-as-oil-flows-increase-despite-tensions"
     },
     {
       "title": "United States economic calendar",
       "url": "https://tradingeconomics.com/united-states/calendar"
     }
   ],
-  "lookbackSummary": "Across the preceding 24 hours Claude Tail risk eased from 20% through a 24% peak at 2026-09-29T15:00Z down to 15% overnight, then firmed back to 20% at 12:00Z as the August inflation block approached. Stress fell steadily from 74% to 65% before rising to 70%, and the yellow WATCH readings of the 29 September US session gave way to a green EA_ON run from 20:00Z through 11:00Z. One hour, 2026-09-29T14:00Z, has no published assessment and is marked unavailable. Dominant mode moved from trend-down during the 29 September cash session to normal overnight and then mixed, consistent with orderly two-way trade rather than sustained one-way structure.",
-  "outlookSummary": "The forecast holds Tail in the 20% watch band through 14:00Z, covering the quarter-end cash open, Chicago PMI and the first full cash hour where a delayed second leg from the 12:30Z data would appear, then eases to EA_ON from 15:00Z on the base case of orderly price discovery and continued volatility decay. A second watch-band window at 20:00Z to 21:00Z reflects the quarter-end cash close and Micron's fiscal Q4 report landing in a thin post-close book, where a semiconductor repricing is the plausible delayed second-leg mechanism. Overnight and through the European session Tail settles at 17-18% while confidence decays from 87% to 66% as the verified evidence base ages, before a final watch-band slot at 12:00Z on 1 October ahead of jobless claims and ISM Manufacturing.",
+  "lookbackSummary": "Published Claude assessments over the preceding 24 hours held Tail between 15 and 20 with a green EA_ON mapping through the Asian and European sessions, then moved to the watch band at 12:35Z and 13:35Z as the US pre-open and the August PCE release approached. Stress eased from the low 70s to the mid 60s overnight before firming again into the US session. One slot, the 14:00Z hour on September 29, has no published assessment and is marked unavailable.",
+  "outlookSummary": "Tail is expected to stay in the watch band through the US morning, ease into the midday lull, then widen to 23 for the 19:00Z-20:00Z power hour where quarter-end market-on-close imbalances overlap the cash close. Tail then returns to the low band across the post-close and Asian hours, with the low point in the quietest overnight stretch, before firming again into the European session and the 12:30Z US jobless claims release on October 1. No forecast hour reaches the 25 block threshold; ISM Manufacturing at 14:00Z on October 1 falls just beyond this window.",
   "lookback": [
-    {
-      "ts": "2026-09-29T13:00:00Z",
-      "timeBerlin": "2026-09-29T15:00:00+02:00",
-      "available": true,
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 20,
-      "stressRiskPct": 74,
-      "confidencePct": 87,
-      "dominantMode": "mixed"
-    },
     {
       "ts": "2026-09-29T14:00:00Z",
       "timeBerlin": "2026-09-29T16:00:00+02:00",
@@ -322,162 +311,138 @@
       "stressRiskPct": 70,
       "confidencePct": 85,
       "dominantMode": "mixed"
-    }
-  ],
-  "forecast": [
+    },
     {
       "ts": "2026-09-30T13:00:00Z",
       "timeBerlin": "2026-09-30T15:00:00+02:00",
+      "available": true,
       "status": "yellow",
       "action": "WATCH",
       "tailRiskPct": 20,
       "stressRiskPct": 67,
       "confidencePct": 87,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Observed at cutoff: NQ 30,739.25, +0.41%, day range 30,512.25-30,779.50, so price sits about 40 points under the high after the softer August core PCE print, with VIX 15.80 (-1.50%) and yields easing. Post-open structure is not yet observed. Watch-band Tail marks that unresolved window, not a pathological path.",
+      "dominantMode": "mixed"
+    }
+  ],
+  "forecast": [
+    {
+      "ts": "2026-09-30T14:00:00Z",
+      "timeBerlin": "2026-09-30T16:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 69,
+      "confidencePct": 88,
+      "dominantMode": "mixed",
+      "analysis": "Observed: NDX 30568 (+0.75%) about 50 points below the 30617.74 session high after continuation from the 30421.68 open, while SOX sits at -0.13%. Cooler August core PCE at 3.0% eased yields. Leadership is narrow, so a persistent one-way path is not established.",
       "drivers": [
-        "August core PCE 3.0% y/y vs 3.3% consensus; monthly 0.2% vs 0.3%",
-        "NQ +0.41% but roughly 40 points below the session high at cutoff",
-        "VIX 15.80, -1.50%, realised volatility decaying into the open",
-        "US cash open 13:30Z and Chicago PMI 13:45Z inside this hour",
-        "Quarter-end rebalancing can distort the opening auction"
+        "NDX +0.75% with a shallow retracement off the session high",
+        "SOX -0.13% refuses to confirm the index advance",
+        "Core PCE 3.0% vs 3.3% expected eased the 10-year to about 5.22%",
+        "VIX 15.72, down 2.0%, day low 15.62"
       ],
       "news": [
         {
-          "title": "Fed's preferred gauge showed core inflation at 3.0% in August, much lighter than expected",
-          "url": "https://www.cnbc.com/2026/09/30/feds-preferred-gauge-showed-core-inflation-at-3point0percent-in-august-much-lighter-than-expected.html",
-          "source": "CNBC"
+          "title": "Stock market live updates: August core PCE cools to 3.0% year over year, below expectations, and Treasury yields ease",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-september-30-dow-sp-500-nasdaq-080339262.html",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "August PCE: Fed's favored inflation gauge rose less than expected",
-          "url": "https://www.foxbusiness.com/economy/august-2026-pce-inflation",
-          "source": "Fox Business"
-        },
-        {
-          "title": "Pressure on U.S. Treasurys eases after 30-year yield hits highest level since 2002",
+          "title": "10-year Treasury yield retreats from 2007 high after PCE data shows inflation cooled",
           "url": "https://www.cnbc.com/2026/09/30/treasury-yields-bonds-selloff.html",
           "source": "CNBC"
         }
       ]
     },
     {
-      "ts": "2026-09-30T14:00:00Z",
-      "timeBerlin": "2026-09-30T16:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 20,
-      "stressRiskPct": 66,
-      "confidencePct": 86,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Conditional: the first full cash hour is where a delayed second leg would appear if the post-PCE relief bid were faded and then re-established. An aligned bullish regime into a quarter-end open is the setup that warrants the watch band; normal retracement depth on the first pullback would invalidate it.",
-      "drivers": [
-        "Delayed second-leg window after the 12:30Z data block",
-        "Checkpoint: whether the first cash-session retracement holds or fails",
-        "Aligned regime risk: soft inflation print, lower yields, firmer equities",
-        "Invalidation: two-way trade with ordinary pullback depth"
-      ],
-      "news": [
-        {
-          "title": "US core PCE inflation softens to 3% in August vs. 3.3% expected",
-          "url": "https://www.fxstreet.com/news/us-core-pce-inflation-set-to-rise-in-august-pressuring-the-federal-reserve-202609300830",
-          "source": "FXStreet"
-        }
-      ]
-    },
-    {
       "ts": "2026-09-30T15:00:00Z",
       "timeBerlin": "2026-09-30T17:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 19,
-      "stressRiskPct": 65,
-      "confidencePct": 86,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 69,
+      "confidencePct": 88,
       "dominantMode": "mixed",
-      "analysis": "Conditional: by mid-session a benign inflation surprise is normally priced and volatility decays, returning Tail to the low band on the base case of orderly discovery. The rates complex stays the stress carrier, with the 30-year near 5.553% and the 10-year near 5.22% despite the day's easing.",
+      "analysis": "Mid-morning continuation checkpoint. Tail stays in the watch band on the assumption that retracements keep appearing; a shift toward repeated extension after failed pullbacks with semiconductors joining the advance would be the condition that changes this hour's read.",
       "drivers": [
-        "Base case: post-data price discovery completes and volatility decays",
-        "Long-end yields near multi-decade highs keep stress elevated",
-        "WTI firm at $91.25, +2.10%, conflicting with the disinflation read"
+        "Checkpoint: whether pullbacks remain shallow or deepen",
+        "Semiconductor confirmation still absent as a condition to watch",
+        "WTI near $91.17, up 2.0%, as a conflicting cross-asset input"
       ],
       "news": [
         {
-          "title": "Treasury yields fall as investors await key PCE inflation reading",
-          "url": "https://invezz.com/news/2026/09/30/treasury-yields-fall-as-investors-await-key-pce-inflation-reading/",
-          "source": "Invezz"
+          "title": "Current price of oil as of Sept. 30, 2026",
+          "url": "https://fortune.com/article/price-of-oil-09-30-2026/",
+          "source": "Fortune"
         }
       ]
     },
     {
       "ts": "2026-09-30T16:00:00Z",
       "timeBerlin": "2026-09-30T18:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 64,
-      "confidencePct": 85,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 68,
+      "confidencePct": 87,
       "dominantMode": "mixed",
-      "analysis": "Conditional: mid-afternoon usually carries the lowest event density of the US session. Tail eases toward the low band absent observed repeated extension. Oil strength on US-Iran uncertainty remains the main cross-asset conflict against the softer inflation read.",
+      "analysis": "European cash close removes a liquidity source. Conditionally, thinner books either let an existing drift extend or invite two-way rotation; the mean-reversion-friendly outcome is the more common one and is assumed here absent evidence of sustained directional efficiency.",
       "drivers": [
-        "Low scheduled-event density in the mid-afternoon window",
-        "Oil strength on US-Iran uncertainty conflicts with the disinflation read",
-        "Checkpoint: whether the morning range holds through mid-session"
+        "European cash close thins order books",
+        "Conditional: liquidity gap can widen spreads either way",
+        "Narrow leadership caps directional conviction"
       ],
       "news": []
     },
     {
       "ts": "2026-09-30T17:00:00Z",
       "timeBerlin": "2026-09-30T19:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 63,
-      "confidencePct": 85,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 20,
+      "stressRiskPct": 67,
+      "confidencePct": 87,
       "dominantMode": "mixed",
-      "analysis": "Conditional: the base case is continued two-way trade with contained realised volatility. A renewed long-end yield push back toward the prior session's 2002 highs is the most credible mechanism that would re-tighten equity risk appetite into the final hours of the quarter.",
+      "analysis": "Midday lull typically carries the session's lowest directional efficiency. Tail eases toward the low band on the assumption that no new catalyst lands; nothing scheduled falls in this hour.",
       "drivers": [
-        "Base case: contained realised volatility with two-way trade",
-        "Re-tightening risk if long-end yields resume the prior session's push",
-        "Fed hiked to 3.75-4.00% on 16 September; October pricing now softer"
+        "No scheduled US macro release in this hour",
+        "Midday liquidity lull historically favours rotation",
+        "Assumption: no fresh geopolitical headline"
       ],
-      "news": [
-        {
-          "title": "September Fed Meeting: Updates and Commentary",
-          "url": "https://www.kiplinger.com/investing/live/fed-meeting-updates-and-commentary-september-2026",
-          "source": "Kiplinger"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-30T18:00:00Z",
       "timeBerlin": "2026-09-30T20:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 63,
-      "confidencePct": 84,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 68,
+      "confidencePct": 87,
       "dominantMode": "mixed",
-      "analysis": "Conditional: risk stays in the low band on the base case. Quarter-end market-on-close imbalances begin to build into the final hour, which can produce mechanical rather than information-driven direction; that flow is not by itself evidence of mean-reversion failure.",
+      "analysis": "Early afternoon is when quarter-end rebalancing interest begins to build into the close. As the final session of Q3, index-level imbalances are a known structural checkpoint rather than an observed path, so Tail edges up only modestly.",
       "drivers": [
-        "Quarter-end market-on-close imbalances begin to build",
-        "Mechanical rebalancing flow is not evidence of a pathological path",
-        "Checkpoint: size and direction of published closing imbalances"
+        "Final trading session of Q3 2026 concentrates rebalancing flow",
+        "Checkpoint: imbalance build ahead of the 20:00Z cash close",
+        "Rebalancing can cut against an existing trend"
       ],
       "news": []
     },
     {
       "ts": "2026-09-30T19:00:00Z",
       "timeBerlin": "2026-09-30T21:00:00+02:00",
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 19,
-      "stressRiskPct": 64,
-      "confidencePct": 83,
-      "dominantMode": "mixed",
-      "analysis": "Conditional: the final cash hour of the quarter concentrates rebalancing flow, so directional efficiency can rise for mechanical reasons. Tail edges up within the low band to reflect thinner two-way liquidity rather than any observed one-way structure.",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 70,
+      "confidencePct": 87,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Power hour combined with quarter-end market-on-close imbalances is the session's widest two-way risk. This is the published danger window. Whipsaw around the 20:00Z close is the assumed shape; a one-way close would need the imbalance to align with the day's direction.",
       "drivers": [
-        "Final cash hour of the quarter concentrates rebalancing flow",
-        "Thinner two-way liquidity can exaggerate directional efficiency",
-        "Invalidation: orderly close with normal retracement behaviour"
+        "Power hour plus quarter-end MOC imbalance overlap",
+        "Published danger window 19:00Z-20:00Z",
+        "Conditional: imbalance direction may align with or oppose the trend",
+        "Two-way whipsaw more likely than a clean one-way close"
       ],
       "news": []
     },
@@ -487,38 +452,31 @@
       "status": "yellow",
       "action": "WATCH",
       "tailRiskPct": 21,
-      "stressRiskPct": 67,
-      "confidencePct": 83,
+      "stressRiskPct": 69,
+      "confidencePct": 86,
       "dominantMode": "event/whipsaw",
-      "analysis": "Conditional: the 20:00Z quarter-end cash close is followed by Micron's fiscal Q4 report after the US close, a scheduled checkpoint whose exact release time is not verified. A semiconductor repricing landing in a thin post-close book is the credible delayed second-leg mechanism for this window.",
+      "analysis": "The 20:00Z cash close resolves the imbalance and post-close futures liquidity thins quickly. Residual repricing can persist briefly; the assumption is that quarter-end flow decays rather than initiating a new leg.",
       "drivers": [
-        "Quarter-end US cash close at 20:00Z",
-        "Micron fiscal Q4 results scheduled after the US close",
-        "Thin post-close liquidity can amplify a semiconductor repricing",
-        "Checkpoint: AI and memory demand commentary in guidance"
+        "Cash close at 20:00Z resolves rebalancing imbalance",
+        "Post-close futures liquidity thins sharply",
+        "Assumption: quarter-end flow decays rather than extends"
       ],
-      "news": [
-        {
-          "title": "Live updates: Bitcoin gains as yields dip following better-than-expected PCE inflation data",
-          "url": "https://www.coindesk.com/markets/2026/09/30/live-updates-bitcoin-below-usd84-000-ahead-of-pce-inflation-data-micron-earnings",
-          "source": "CoinDesk"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-09-30T21:00:00Z",
       "timeBerlin": "2026-09-30T23:00:00+02:00",
-      "status": "yellow",
-      "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 67,
-      "confidencePct": 82,
-      "dominantMode": "event/whipsaw",
-      "analysis": "Conditional: the guidance call window is where an initial earnings reaction is most often faded or extended. Watch-band Tail reflects an unresolved single-name catalyst with index-level reach through the semiconductor complex, not an observed trend.",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 19,
+      "stressRiskPct": 66,
+      "confidencePct": 86,
+      "dominantMode": "normal",
+      "analysis": "Post-close futures hours. Tail returns to the low band because index-level catalysts are absent, though thin books mean individual prints can look outsized without establishing structure.",
       "drivers": [
-        "Micron guidance call window with index-level semiconductor reach",
-        "Initial post-earnings reactions are frequently faded or extended",
-        "Invalidation: contained single-name move without sector follow-through"
+        "No scheduled catalyst in post-close futures hours",
+        "Thin books exaggerate individual prints",
+        "Quarter-end flow assumed complete"
       ],
       "news": []
     },
@@ -527,32 +485,38 @@
       "timeBerlin": "2026-10-01T00:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 19,
-      "stressRiskPct": 65,
-      "confidencePct": 81,
-      "dominantMode": "mixed",
-      "analysis": "Conditional: by late evening an earnings reaction is normally absorbed and liquidity begins to normalise, so Tail returns to the low band on the base case. A sustained semiconductor gap that fails to retrace would be the exception that keeps risk elevated.",
+      "tailRiskPct": 18,
+      "stressRiskPct": 64,
+      "confidencePct": 86,
+      "dominantMode": "normal",
+      "analysis": "Late US evening futures. Conditions are assumed quiet, with the main residual input being any headline from the ongoing Strait of Hormuz disruption that could reprice energy before Asia opens.",
       "drivers": [
-        "Base case: earnings reaction absorbed as liquidity normalises",
-        "Exception: a semiconductor gap that fails to retrace",
-        "Quarter boundary passed; rebalancing flow no longer a factor"
+        "Quiet late-evening futures session assumed",
+        "Conditional: overnight Hormuz headline risk to energy",
+        "No US macro release scheduled"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Iran touts Hormuz attacks as oil flows increase despite tensions",
+          "url": "https://www.aljazeera.com/news/2026/9/28/iran-touts-hormuz-attacks-as-oil-flows-increase-despite-tensions",
+          "source": "Al Jazeera"
+        }
+      ]
     },
     {
       "ts": "2026-09-30T23:00:00Z",
       "timeBerlin": "2026-10-01T01:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 18,
+      "tailRiskPct": 17,
       "stressRiskPct": 63,
-      "confidencePct": 80,
+      "confidencePct": 85,
       "dominantMode": "normal",
-      "analysis": "Conditional: the late US evening into the Asian handover is typically the quietest window of the cycle. Absent an unresolved catalyst, Tail sits in the low band with realised volatility expected to stay contained.",
+      "analysis": "Handover toward the Asian session. Tail sits low on the assumption that the new month and quarter begin without a gap-forming catalyst; Asia's reaction to the cooler US inflation print is the input to watch.",
       "drivers": [
-        "Quietest window of the cycle into the Asian handover",
-        "Base case: contained realised volatility with no live catalyst",
-        "Checkpoint: whether any earnings gap persists into Asian trade"
+        "Asia handover with no scheduled US catalyst",
+        "Conditional: Asian response to the cooler PCE print",
+        "Month-end and quarter-end flow assumed finished"
       ],
       "news": []
     },
@@ -563,13 +527,13 @@
       "action": "EA_ON",
       "tailRiskPct": 17,
       "stressRiskPct": 62,
-      "confidencePct": 78,
+      "confidencePct": 85,
       "dominantMode": "normal",
-      "analysis": "Conditional: Asian trade opens the new quarter. Direction here is usually a handover of the prior US session rather than independent price discovery, so it rarely establishes the persistent structure that Tail measures.",
+      "analysis": "First hour of October and of Q4. Fresh-quarter allocation can add a directional bias, but it is a hypothesis rather than an observed path, so Tail remains in the low band.",
       "drivers": [
-        "Asian session opens the new quarter",
-        "Handover trade rarely establishes persistent one-way structure",
-        "Confidence decays as the verified evidence base ages"
+        "October 1 opens a new month and quarter",
+        "Conditional: fresh-quarter allocation bias unproven",
+        "Asian session liquidity only"
       ],
       "news": []
     },
@@ -578,15 +542,15 @@
       "timeBerlin": "2026-10-01T03:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 17,
-      "stressRiskPct": 61,
-      "confidencePct": 77,
-      "dominantMode": "normal",
-      "analysis": "Conditional: mid-Asian trade normally carries low event density for Nasdaq-100 risk. Tail stays in the low band on the base case of orderly two-way conditions.",
+      "tailRiskPct": 16,
+      "stressRiskPct": 62,
+      "confidencePct": 85,
+      "dominantMode": "mixed",
+      "analysis": "Asian mid-session. Absent a catalyst, mean reversion is the assumed regime; the conditional risk is energy-led repricing if Gulf shipping headlines escalate while Western desks are away.",
       "drivers": [
-        "Low event density for Nasdaq-100 risk in mid-Asian trade",
-        "Base case: orderly two-way conditions",
-        "Evidence base ageing beyond twelve hours"
+        "Asian mid-session with mean reversion assumed",
+        "Conditional: Gulf shipping escalation during thin hours",
+        "No scheduled US data"
       ],
       "news": []
     },
@@ -595,15 +559,15 @@
       "timeBerlin": "2026-10-01T04:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 17,
+      "tailRiskPct": 16,
       "stressRiskPct": 61,
-      "confidencePct": 76,
-      "dominantMode": "normal",
-      "analysis": "Conditional: conditions are expected to stay orderly through the Asian afternoon. The persistent driver remains the long-end rates complex, which sets the stress floor rather than the current Tail path.",
+      "confidencePct": 85,
+      "dominantMode": "mixed",
+      "analysis": "Quietest part of the 24-hour cycle. Tail is at its published low for the window on the assumption that no discontinuity occurs; this is a baseline rather than a forecast of calm as fact.",
       "drivers": [
-        "Long-end rates complex sets the stress floor, not the Tail path",
-        "Base case: orderly Asian afternoon conditions",
-        "Checkpoint: Asian reaction to the softer US inflation print"
+        "Lowest-liquidity hours of the cycle",
+        "Baseline assumption of no overnight discontinuity",
+        "No scheduled catalyst"
       ],
       "news": []
     },
@@ -612,15 +576,15 @@
       "timeBerlin": "2026-10-01T05:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 17,
+      "tailRiskPct": 16,
       "stressRiskPct": 61,
-      "confidencePct": 75,
-      "dominantMode": "normal",
-      "analysis": "Conditional: the Asian close into the European pre-market is typically a low-information window. Tail remains in the low band absent a fresh overnight catalyst.",
+      "confidencePct": 84,
+      "dominantMode": "mixed",
+      "analysis": "Late Asian session. Confidence decays with distance from the verified evidence set; the risk read itself is unchanged and still assumes an orderly, catalyst-free overnight path.",
       "drivers": [
-        "Asian close into the European pre-market is low-information",
-        "Tail stays low absent a fresh overnight catalyst",
-        "Oil remains the live geopolitical variable via US-Iran talks"
+        "Confidence decays with forecast distance",
+        "Late Asian session, no scheduled release",
+        "Orderly overnight path assumed"
       ],
       "news": []
     },
@@ -629,15 +593,15 @@
       "timeBerlin": "2026-10-01T06:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 17,
+      "tailRiskPct": 16,
       "stressRiskPct": 61,
-      "confidencePct": 74,
+      "confidencePct": 84,
       "dominantMode": "mixed",
-      "analysis": "Conditional: the European pre-market begins to reprice the overnight session. Mode shifts to mixed because European and US futures can diverge before cash trade establishes a single direction.",
+      "analysis": "Asia-to-Europe transition. Conditionally, European desks reprice the prior US inflation relief; that is a repositioning checkpoint rather than a mean-reversion failure mechanism.",
       "drivers": [
-        "European pre-market begins repricing the overnight session",
-        "European and US futures can diverge before cash trade",
-        "Ageing evidence lowers confidence toward the solid band"
+        "Asia-to-Europe transition repositioning",
+        "Conditional: European reaction to US PCE relief",
+        "Transition hours rarely set persistent structure"
       ],
       "news": []
     },
@@ -647,14 +611,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 17,
-      "stressRiskPct": 61,
-      "confidencePct": 73,
+      "stressRiskPct": 62,
+      "confidencePct": 84,
       "dominantMode": "mixed",
-      "analysis": "Conditional: early European trade normally produces two-way flow rather than sustained direction. The base case keeps Tail in the low band with stress anchored by the rates backdrop.",
+      "analysis": "European pre-market. Tail ticks up only to reflect that the liquid part of the day is approaching, not because directional structure has been observed at this distance.",
       "drivers": [
-        "Early European trade normally produces two-way flow",
-        "Stress anchored by the long-end rates backdrop",
-        "Checkpoint: whether the US inflation relief carries into Europe"
+        "European pre-market positioning begins",
+        "Liquidity rebuilding ahead of the cash session",
+        "No observed structure at this horizon"
       ],
       "news": []
     },
@@ -663,17 +627,23 @@
       "timeBerlin": "2026-10-01T08:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 62,
-      "confidencePct": 72,
+      "tailRiskPct": 17,
+      "stressRiskPct": 63,
+      "confidencePct": 84,
       "dominantMode": "mixed",
-      "analysis": "Conditional: the European cash open adds volume and can produce a short directional impulse. That impulse is a checkpoint rather than evidence of mean-reversion failure unless retracements visibly fail.",
+      "analysis": "European cash open. Gap and opening-auction behaviour is the checkpoint here; an aligned gap with shallow pullbacks would be the evidence that raises Tail, but none is observed yet.",
       "drivers": [
-        "European cash open adds volume and a possible directional impulse",
-        "An opening impulse is a checkpoint, not proven structure",
-        "Invalidation: normal retracement depth after the open"
+        "European cash open auction as a checkpoint",
+        "Condition that would raise Tail: aligned gap plus shallow pullbacks",
+        "10-year near multiyear highs remains a background constraint"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "10-year Treasury yield retreats from 2007 high after PCE data shows inflation cooled",
+          "url": "https://www.cnbc.com/2026/09/30/treasury-yields-bonds-selloff.html",
+          "source": "CNBC"
+        }
+      ]
     },
     {
       "ts": "2026-10-01T07:00:00Z",
@@ -681,16 +651,27 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 18,
-      "stressRiskPct": 62,
-      "confidencePct": 71,
+      "stressRiskPct": 64,
+      "confidencePct": 84,
       "dominantMode": "mixed",
-      "analysis": "Conditional: mid-European trade positions ahead of the US data block. Tail edges up marginally within the low band to reflect the approaching jobless-claims and ISM Manufacturing checkpoints.",
+      "analysis": "First full European hour. Energy remains the conditional swing factor with Brent near $102.56 and Gulf transit still disrupted, though equity transmission has so far been limited.",
       "drivers": [
-        "Positioning ahead of the 1 October US data block",
-        "Initial jobless claims scheduled 12:30Z on 1 October",
-        "ISM Manufacturing PMI scheduled 14:00Z on 1 October"
+        "Brent near $102.56, up 2.37%, as a standing input",
+        "Gulf transit disruption unresolved",
+        "Equity transmission from energy so far limited"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Current price of oil as of Sept. 30, 2026",
+          "url": "https://fortune.com/article/price-of-oil-09-30-2026/",
+          "source": "Fortune"
+        },
+        {
+          "title": "Strait of Hormuz tensions linger as Iran and US move further from a deal",
+          "url": "https://www.aljazeera.com/economy/2026/9/27/strait-of-hormuz-tensions-linger-as-iran-and-us-move-further-from-a-deal",
+          "source": "Al Jazeera"
+        }
+      ]
     },
     {
       "ts": "2026-10-01T08:00:00Z",
@@ -698,14 +679,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 18,
-      "stressRiskPct": 63,
-      "confidencePct": 70,
+      "stressRiskPct": 64,
+      "confidencePct": 83,
       "dominantMode": "mixed",
-      "analysis": "Conditional: the European afternoon builds toward the US session. Stress firms slightly on the approaching data stack while Tail stays low, consistent with the rule that event importance informs stress before it informs the price-path risk.",
+      "analysis": "European mid-morning. The assumed regime stays two-way; the sticky 3.0% core inflation backdrop and October policy-tightening odds near 35% keep Stress in the high band without implying a pathological path.",
       "drivers": [
-        "Approaching US data stack firms stress before Tail",
-        "Event importance informs stress and confidence first",
-        "Base case: orderly European afternoon conditions"
+        "Core PCE at 3.0% remains sticky",
+        "October policy-tightening odds near 35% after the print",
+        "Stress elevated without a Tail mechanism"
       ],
       "news": []
     },
@@ -715,14 +696,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 18,
-      "stressRiskPct": 63,
-      "confidencePct": 69,
+      "stressRiskPct": 64,
+      "confidencePct": 83,
       "dominantMode": "mixed",
-      "analysis": "Conditional: the pre-release hour normally sees liquidity thin as participants step back. Thinner books raise the chance of a sharp but recoverable move rather than a persistent one-way path.",
+      "analysis": "Late European morning. This hour usually precedes US pre-positioning; conditionally, a quiet tape here raises the chance that the US session sets the day's structure instead.",
       "drivers": [
-        "Liquidity typically thins in the pre-release hour",
-        "Thin books favour sharp but recoverable moves",
-        "Checkpoint: US futures direction entering the release window"
+        "Late European morning ahead of US pre-positioning",
+        "Conditional: quiet Europe shifts structure to the US session",
+        "No scheduled US release in this hour"
       ],
       "news": []
     },
@@ -731,15 +712,15 @@
       "timeBerlin": "2026-10-01T12:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 63,
-      "confidencePct": 68,
+      "tailRiskPct": 19,
+      "stressRiskPct": 65,
+      "confidencePct": 83,
       "dominantMode": "mixed",
-      "analysis": "Conditional: the hour before the US data block. Tail stays in the low band because hypothetical post-release alignment must not be counted as already observed; only the realised path after the print can raise it.",
+      "analysis": "Pre-US positioning begins ahead of the 12:30Z claims release. Tail stays in the low band because event proximity alone is a checkpoint and not observed mean-reversion failure.",
       "drivers": [
-        "Hypothetical post-release alignment is not observed evidence",
-        "Only the realised post-print path can raise Tail",
-        "Confidence continues to decay as the evidence base ages"
+        "Pre-positioning ahead of 12:30Z jobless claims",
+        "Event proximity is a checkpoint, not observed Tail",
+        "Two-way positioning flow assumed"
       ],
       "news": []
     },
@@ -748,15 +729,15 @@
       "timeBerlin": "2026-10-01T13:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 18,
-      "stressRiskPct": 64,
-      "confidencePct": 67,
+      "tailRiskPct": 19,
+      "stressRiskPct": 66,
+      "confidencePct": 83,
       "dominantMode": "mixed",
-      "analysis": "Conditional: final positioning ahead of the 12:30Z jobless claims release on 1 October. Stress firms while Tail holds, reflecting a difficult environment rather than an established mean-reversion failure.",
+      "analysis": "Final hour before the release. Spreads typically widen and participation drops as desks square up; that is a Stress and Confidence input rather than a Tail amplifier.",
       "drivers": [
-        "Final positioning before 1 October jobless claims at 12:30Z",
-        "Stress firms while Tail holds in the low band",
-        "Difficult environment is not the same as a pathological path"
+        "Final hour before the 12:30Z release",
+        "Pre-release spread widening affects Stress, not Tail",
+        "Participation typically drops into the print"
       ],
       "news": []
     },
@@ -765,105 +746,139 @@
       "timeBerlin": "2026-10-01T14:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 20,
-      "stressRiskPct": 66,
-      "confidencePct": 66,
+      "tailRiskPct": 21,
+      "stressRiskPct": 68,
+      "confidencePct": 82,
       "dominantMode": "event/whipsaw",
-      "analysis": "Conditional: initial jobless claims print at 12:30Z and ISM Manufacturing follows at 14:00Z on 1 October. The watch band marks an unresolved reaction window at the edge of this forecast horizon, where the evidence base is more than twenty-four hours old.",
+      "analysis": "US initial jobless claims print at 12:30Z. Whipsaw around the release is the assumed shape. A surprise would primarily move Stress and Confidence; Tail would only follow if the subsequent path showed repeated extension after failed retracements.",
       "drivers": [
-        "Initial jobless claims scheduled 12:30Z on 1 October",
-        "ISM Manufacturing PMI scheduled 14:00Z on 1 October",
-        "Evidence base exceeds twenty-four hours at this horizon",
-        "Unresolved reaction window, not observed structure"
+        "Initial jobless claims released at 12:30Z",
+        "Surprise maps first to Stress and Confidence",
+        "Tail requires observed failed retracements, not the surprise itself"
       ],
       "news": []
+    },
+    {
+      "ts": "2026-10-01T13:00:00Z",
+      "timeBerlin": "2026-10-01T15:00:00+02:00",
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 69,
+      "confidencePct": 82,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Post-claims repricing runs into US pre-open, with ISM Manufacturing scheduled shortly after this window at 14:00Z. Two scheduled checkpoints in close succession justify the watch band on a conditional basis only.",
+      "drivers": [
+        "Post-claims repricing into the US pre-open",
+        "ISM Manufacturing follows at 14:00Z, just beyond this window",
+        "Stacked checkpoints justify the watch band conditionally"
+      ],
+      "news": [
+        {
+          "title": "House passes funding stopgap, averting government shutdown in October",
+          "url": "https://breakingdefense.com/2026/09/house-passes-funding-stopgap-averting-government-shutdown-in-october/",
+          "source": "Breaking Defense"
+        }
+      ]
     }
   ],
   "forecastDetail": [
     {
-      "ts": "2026-09-30T13:00:00Z",
-      "timeBerlin": "2026-09-30T15:00:00+02:00",
-      "status": "yellow",
-      "tailRiskPct": 20,
-      "stressRiskPct": 67,
-      "comment": "US cash open at 13:30Z and Chicago PMI at 13:45Z land inside this hour. NQ trades 30,739.25, +0.41%, roughly 40 points below the session high after the softer August core PCE print, with VIX 15.80. Post-open structure is not yet observed, so the watch band marks an unresolved window rather than a pathological path."
-    },
-    {
       "ts": "2026-09-30T14:00:00Z",
       "timeBerlin": "2026-09-30T16:00:00+02:00",
       "status": "yellow",
-      "tailRiskPct": 20,
-      "stressRiskPct": 66,
-      "comment": "First full cash hour of a quarter-end session. This is where a delayed second leg would appear if the post-PCE relief bid were faded and then re-established. Ordinary retracement depth on the first pullback would invalidate the watch-band reading."
+      "tailRiskPct": 22,
+      "stressRiskPct": 69,
+      "comment": "US cash session up 0.75% with a shallow pullback off the session high, but semiconductors are not confirming, so leadership stays narrow."
     },
     {
       "ts": "2026-09-30T15:00:00Z",
       "timeBerlin": "2026-09-30T17:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 19,
-      "stressRiskPct": 65,
-      "comment": "Base case is that the benign inflation surprise is priced by mid-session and volatility decays, returning Tail to the low band. Long-end yields near multi-decade highs and WTI up 2.10% at $91.25 keep stress elevated."
+      "status": "yellow",
+      "tailRiskPct": 22,
+      "stressRiskPct": 69,
+      "comment": "Mid-morning continuation checkpoint; retracements are assumed to keep appearing while semiconductor confirmation is still missing."
     },
     {
       "ts": "2026-09-30T16:00:00Z",
       "timeBerlin": "2026-09-30T18:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 18,
-      "stressRiskPct": 64,
-      "comment": "Lowest event density of the US session. Tail eases within the low band absent observed repeated extension after failed retracements."
+      "status": "yellow",
+      "tailRiskPct": 21,
+      "stressRiskPct": 68,
+      "comment": "European cash close thins liquidity, which conditionally favours two-way rotation rather than sustained directional efficiency."
     },
     {
       "ts": "2026-09-30T17:00:00Z",
       "timeBerlin": "2026-09-30T19:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 18,
-      "stressRiskPct": 63,
-      "comment": "Continued two-way trade is the base case. A renewed long-end yield push toward the prior session's 2002 highs is the most credible mechanism for re-tightening equity risk appetite."
+      "status": "yellow",
+      "tailRiskPct": 20,
+      "stressRiskPct": 67,
+      "comment": "Midday lull with no scheduled release; directional efficiency is normally lowest in this hour."
     },
     {
       "ts": "2026-09-30T18:00:00Z",
       "timeBerlin": "2026-09-30T20:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 18,
-      "stressRiskPct": 63,
-      "comment": "Quarter-end market-on-close imbalances start to build. Mechanical rebalancing flow can create direction without information and is not by itself evidence of mean-reversion failure."
+      "status": "yellow",
+      "tailRiskPct": 21,
+      "stressRiskPct": 68,
+      "comment": "Quarter-end rebalancing interest begins building into the close as a structural checkpoint, not an observed path."
+    },
+    {
+      "ts": "2026-09-30T19:00:00Z",
+      "timeBerlin": "2026-09-30T21:00:00+02:00",
+      "status": "yellow",
+      "tailRiskPct": 23,
+      "stressRiskPct": 70,
+      "comment": "Published danger window: power hour overlaps quarter-end market-on-close imbalances, giving the session's widest two-way risk."
     }
   ],
   "events": [
     {
-      "name": "Chicago PMI (September)",
-      "ts": "2026-09-30T13:45:00Z",
-      "timeBerlin": "2026-09-30T15:45:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "Initial Jobless Claims",
+      "name": "US Initial Jobless Claims (week ending Sep 26)",
       "ts": "2026-10-01T12:30:00Z",
       "timeBerlin": "2026-10-01T14:30:00+02:00",
-      "impact": "medium"
+      "impact": "high"
     },
     {
-      "name": "ISM Manufacturing PMI (September)",
+      "name": "US ISM Manufacturing PMI (September)",
       "ts": "2026-10-01T14:00:00Z",
       "timeBerlin": "2026-10-01T16:00:00+02:00",
       "impact": "high"
     },
     {
-      "name": "Nonfarm Payrolls and Unemployment Rate (September)",
+      "name": "US Non-Farm Payrolls (September)",
       "ts": "2026-10-02T12:30:00Z",
       "timeBerlin": "2026-10-02T14:30:00+02:00",
       "impact": "high"
     },
     {
-      "name": "ISM Services PMI (September)",
+      "name": "US Unemployment Rate (September)",
+      "ts": "2026-10-02T12:30:00Z",
+      "timeBerlin": "2026-10-02T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US ISM Services PMI (September)",
       "ts": "2026-10-05T14:00:00Z",
       "timeBerlin": "2026-10-05T16:00:00+02:00",
       "impact": "high"
     },
     {
-      "name": "FOMC Minutes (September 15-16 meeting)",
-      "ts": "2026-10-07T18:00:00Z",
-      "timeBerlin": "2026-10-07T20:00:00+02:00",
+      "name": "US Balance of Trade (August)",
+      "ts": "2026-10-06T12:30:00Z",
+      "timeBerlin": "2026-10-06T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "US CPI Inflation Rate YoY (September)",
+      "ts": "2026-10-07T12:30:00Z",
+      "timeBerlin": "2026-10-07T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "US Core CPI Inflation Rate YoY (September)",
+      "ts": "2026-10-07T12:30:00Z",
+      "timeBerlin": "2026-10-07T14:30:00+02:00",
       "impact": "high"
     }
   ]
