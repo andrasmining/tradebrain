@@ -1,0 +1,886 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-10-03T19:32:22Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Mapped policy state: EA_ON. Tail sits far below the block threshold because CME equity-index futures have been halted since Friday 21:00Z and no NQ price path exists to score, while Stress steps up to 64 as the Saudi-Houthi exchange broadened on Saturday with an unclaimed fire at Aramco's Riyadh refinery, Houthi-affiliated claims of 26 Saudi air strikes on Sanaa, and a declared naval blockade on Saudi Red Sea shipping.",
+  "recommendation": "Tail remains in the low band for every hour of this window, so the deterministic mapping stays at EA_ON and green throughout. All 24 scored hours fall inside the CME equity-index weekend halt; the restart at 22:00Z on 4 October lies about four hours beyond the final scored hour, so restart gap risk is not scored in this publication. The Gulf equity session from roughly 07:00Z to 12:00Z on 4 October is the only interval containing an open venue able to respond to the refinery incident, and under the delayed-evidence rule it informs Stress and Confidence rather than current Nasdaq-100 structure. Existing-position management and emergency protection logic are unaffected by this publication.",
+  "headline": "Weekend halt holds Tail at 3 while a broadened Saudi-Houthi exchange and an unclaimed Riyadh refinery fire lift Stress to 64",
+  "body": "Friday 2 October remains the last traded session before the halt, and its verified levels are unchanged: the Nasdaq-100 closed at a record 30,807.93, up 306.37 points or 1.00% from a 30,501.56 previous close, with a 30,737.07-31,017.53 session range. The structurally decisive detail for this framework is that the new intraday record at 31,017.53 was fully retraced into a close near the session low. That is orderly mean reversion, not the shallow-pullback extension or failed-retracement pattern that defines Tail, so Tail holds at 3 across the whole window. VIX closed at 15.31, down 6.59% from 16.39 with a 15.30-16.24 range, confirming volatility decay into the halt. The soft September employment report behind that close showed unemployment ticking up to 4.2% from 4.1% and average hourly earnings up only 0.1% on the month, yet Treasury yields reversed upward anyway: the Federal Reserve H.15 release for 1 October shows the 2-year at 4.78%, the 10-year at 5.24% and the 30-year at 5.61%, with Friday's close reported at 4.84% and 5.28% and an intraday 10-year high described as the strongest since 2002. That conflict between a soft labour print and a higher curve is a Stress and Confidence input, not a Tail input. Brent settled at $102.25, down 0.06% on the day but up 7.05% on the month and 58.45% on the year. The material change since the previous publication is that the Yemen thread broadened from a single unexplained incident into a reported bilateral military exchange. Reuters-sourced reporting describes a plume of smoke and flames near Aramco's Riyadh refinery from Saturday morning, with the cause not immediately clear; as of this assessment neither Saudi authorities nor Aramco had confirmed the incident, its cause, any damage, casualties or production impact, and no group had claimed responsibility. Separately, France 24 reports the Houthi-affiliated channel Al-Masirah alleging that Saudi aircraft struck Sanaa 26 times on Saturday, which Riyadh has not confirmed, alongside a Saudi-led coalition account of intercepting two ballistic missiles and four drones aimed at Khamis Mushait and Jazan, and a Houthi-declared naval blockade on Saudi shipping in the Red Sea. Reuters reporting carried by the Jerusalem Post describes Saudi Arabia preparing an operation to retake the Bab al-Mandeb strait, led by Yemeni ground forces under Saudi air support and potentially mobilising more than 100,000 troops, with timing estimates spanning from within a week to after the U.S. midterm elections and Washington providing advisers and intelligence but declining air strikes. Stress therefore steps up to 64 from 60 and drifts to 73 across the window. Tail does not follow, because this framework requires an observed pathological price path rather than an unresolved mechanism: with every venue relevant to the Nasdaq-100 closed, the escalation produces restart gap risk, not persistent one-way structure. The 2026 precedent supports that separation, since earlier strikes on Aramco facilities produced temporary interruptions the company described as immaterial to operations and equity markets absorbed them without a no-retracement path. Confidence is 83: the index level, session range and close, volatility, the H.15 curve, Brent and the seven-day U.S. calendar were each verified from primary or authoritative current sources this run, and the open items are the unexplained Riyadh fire, the absence of any Saudi statement, and a disputed strike count, with one outlet headlining 56 strikes against the 26 that France 24 attributes to Al-Masirah. The shared Finviz context file carried a generatedAt of 29 September and a partial collection status, leaving it more than four days stale, so it was discarded and this assessment rests entirely on independent research. No Nasdaq-100 futures or CFD price discovery is available anywhere inside this forecast window.",
+  "tailRiskPct": 3,
+  "tailLevel": "low",
+  "stressRiskPct": 64,
+  "stressLevel": "elevated",
+  "dominantMode": "normal",
+  "confidencePct": 83,
+  "confidenceLevel": "high",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": null,
+    "end": null
+  },
+  "dangerWindowBerlin": {
+    "start": null,
+    "end": null
+  },
+  "sources": [
+    {
+      "title": "Nasdaq-100 (^NDX) quote, day range, previous close and 52-week high for 2 October 2026",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote and session range for 2 October 2026",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    {
+      "title": "Federal Reserve H.15 selected interest rates, daily Treasury constant-maturity yields",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "title": "Loud blasts rock Sanaa as Houthis accuse Saudi forces of pounding Yemeni capital",
+      "url": "https://www.france24.com/en/middle-east/20261003-houthis-blame-saudi-air-strikes-loud-blasts-rock-yemen-capital-sanaa"
+    },
+    {
+      "title": "Saudis plan assault on Houthis to break Red Sea chokehold (Reuters via the Jerusalem Post)",
+      "url": "https://www.jpost.com/middle-east/article-910424"
+    },
+    {
+      "title": "Trading Economics United States economic calendar for 4-10 October 2026",
+      "url": "https://tradingeconomics.com/united-states/calendar"
+    }
+  ],
+  "lookbackSummary": "All 24 preceding clock-hours carry published Claude assessments. The window opens in Friday's post-payroll U.S. session with Tail 21-22 and Stress 76-78 under a mixed mode, then decays steadily after the 21:00Z futures close: Tail falls from 14 to 3 and Stress from 74 to 52 across the overnight and Saturday hours, with the mode settling to normal from 00:00Z. The last seven hours sit flat at Tail 3 while Stress troughs at 52 and recovers to 60 as the Gulf escalation thread reopened and broadened.",
+  "lookback": [
+    {
+      "ts": "2026-10-02T19:00:00Z",
+      "timeBerlin": "2026-10-02T21:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 78,
+      "confidencePct": 89,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T20:00:00Z",
+      "timeBerlin": "2026-10-02T22:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 76,
+      "confidencePct": 89,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T21:00:00Z",
+      "timeBerlin": "2026-10-02T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 74,
+      "confidencePct": 86,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T22:00:00Z",
+      "timeBerlin": "2026-10-03T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 72,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T23:00:00Z",
+      "timeBerlin": "2026-10-03T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 71,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-03T00:00:00Z",
+      "timeBerlin": "2026-10-03T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 68,
+      "confidencePct": 84,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T01:00:00Z",
+      "timeBerlin": "2026-10-03T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 66,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T02:00:00Z",
+      "timeBerlin": "2026-10-03T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 65,
+      "confidencePct": 82,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T03:00:00Z",
+      "timeBerlin": "2026-10-03T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T04:00:00Z",
+      "timeBerlin": "2026-10-03T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T05:00:00Z",
+      "timeBerlin": "2026-10-03T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T06:00:00Z",
+      "timeBerlin": "2026-10-03T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T07:00:00Z",
+      "timeBerlin": "2026-10-03T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 7,
+      "stressRiskPct": 62,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T08:00:00Z",
+      "timeBerlin": "2026-10-03T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 60,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T09:00:00Z",
+      "timeBerlin": "2026-10-03T11:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 59,
+      "confidencePct": 87,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T10:00:00Z",
+      "timeBerlin": "2026-10-03T12:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 57,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T11:00:00Z",
+      "timeBerlin": "2026-10-03T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 55,
+      "confidencePct": 87,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T12:00:00Z",
+      "timeBerlin": "2026-10-03T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 54,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T13:00:00Z",
+      "timeBerlin": "2026-10-03T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 53,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T14:00:00Z",
+      "timeBerlin": "2026-10-03T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 52,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T15:00:00Z",
+      "timeBerlin": "2026-10-03T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 54,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T16:00:00Z",
+      "timeBerlin": "2026-10-03T18:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 57,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T17:00:00Z",
+      "timeBerlin": "2026-10-03T19:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 58,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T18:00:00Z",
+      "timeBerlin": "2026-10-03T20:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 60,
+      "confidencePct": 84,
+      "dominantMode": "normal"
+    }
+  ],
+  "outlookSummary": "Every hour of this forecast window falls inside the CME equity-index weekend halt, so no NQ price path can form; Tail is held at 3 and ticks only to 5 late, mapping to EA_ON and green throughout. Stress drifts from 64 to 73 because the broadened Saudi-Houthi exchange, the unclaimed Riyadh refinery fire, the declared Red Sea blockade and a 5.28% 10-year accumulate with no venue able to price them. Confidence eases from 83 to 77 as Friday's verified levels age, lifting briefly to 80 during the Gulf session. That Gulf equity session from roughly 07:00Z to 12:00Z on 4 October is the one genuinely differentiating interval and the only open market relevant to the refinery incident; under the delayed-evidence rule it can inform Stress and Confidence but cannot establish current Nasdaq-100 structure. The CME restart at 22:00Z on 4 October lies about four hours past the final scored hour, so the first genuine post-weekend price-path evidence, and any restart gap, fall outside this horizon.",
+  "forecast": [
+    {
+      "ts": "2026-10-03T19:00:00Z",
+      "timeBerlin": "2026-10-03T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 64,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Observed now: CME equity-index futures have been halted since Friday 21:00Z, so no NQ price path exists to score and Tail holds at 3. Friday's record intraday high at 31,017.53 was fully retraced into a 30,807.93 close near the 30,737.07 session low - orderly mean reversion, not the shallow-pullback extension that defines Tail.",
+      "drivers": [
+        "CME equity-index futures halted since Friday 21:00Z; no NQ price path to score",
+        "Record high 31,017.53 fully retraced into a 30,807.93 close near the 30,737.07 low",
+        "VIX 15.31, down 6.59% Friday, range 15.30-16.24: volatility decay into the halt",
+        "Al-Masirah alleges 26 Saudi air strikes on Sanaa Saturday; unconfirmed by Riyadh",
+        "Riyadh refinery fire still unclaimed and unconfirmed by Aramco or Saudi authorities"
+      ],
+      "news": [
+        {
+          "title": "Loud blasts rock Sanaa as Houthis accuse Saudi forces of pounding Yemeni capital",
+          "url": "https://www.france24.com/en/middle-east/20261003-houthis-blame-saudi-air-strikes-loud-blasts-rock-yemen-capital-sanaa",
+          "source": "France 24"
+        },
+        {
+          "title": "Smoke and fire reported near Aramco facility in Riyadh as Houthi tensions escalate",
+          "url": "https://www.investing.com/news/economy-news/smoke-and-fire-reported-near-aramco-facility-in-riyadh-as-houthi-tensions-escalate-4930846",
+          "source": "Investing.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T20:00:00Z",
+      "timeBerlin": "2026-10-03T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 65,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Saturday evening with no equity venue open. Stress edges to 65 because the Yemen exchange broadened today while nothing can price it: alleged strikes on Sanaa plus an unclaimed Riyadh refinery fire. Tail stays 3 - an unresolved escalation with no open market raises gap risk, not a pathological price path.",
+      "drivers": [
+        "No open equity venue; escalation accumulates without price discovery",
+        "Reported bilateral exchange: alleged Sanaa strikes and intercepts over Saudi cities",
+        "Unresolved mechanism lifts Stress and restart gap risk, not current Tail"
+      ],
+      "news": [
+        {
+          "title": "Loud blasts rock Sanaa as Houthis accuse Saudi forces of pounding Yemeni capital",
+          "url": "https://www.france24.com/en/middle-east/20261003-houthis-blame-saudi-air-strikes-loud-blasts-rock-yemen-capital-sanaa",
+          "source": "France 24"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T21:00:00Z",
+      "timeBerlin": "2026-10-03T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 65,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Twenty-four hours since the Friday 21:00Z halt began. Confidence slips to 82 as the verified Friday tape ages. Tail remains 3 on the absence of any scorable NQ structure; the Houthi-declared naval blockade on Saudi Red Sea shipping is a supply-side thread that would have to clear the energy complex before it could reach index structure.",
+      "drivers": [
+        "Twenty-four hours elapsed since the Friday 21:00Z equity-index halt",
+        "Houthi-declared naval blockade on Saudi Red Sea shipping is an open supply thread",
+        "Friday's verified levels age; Confidence eases to 82"
+      ],
+      "news": [
+        {
+          "title": "Saudis plan assault on Houthis to break Red Sea chokehold",
+          "url": "https://www.jpost.com/middle-east/article-910424",
+          "source": "The Jerusalem Post / Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T22:00:00Z",
+      "timeBerlin": "2026-10-04T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 66,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Mid-evening Saturday. Stress 66 reflects an accumulating but entirely unpriced escalation stack: the refinery fire, the alleged Sanaa strikes, and a reported Saudi plan to retake Bab al-Mandeb with Yemeni ground forces under Saudi air support. None of that is observed NQ structure, so Tail is unchanged at 3.",
+      "drivers": [
+        "Reported Saudi plan to retake Bab al-Mandeb using Yemeni ground forces",
+        "Escalation stack is conditional and unpriced; Tail requires observed structure",
+        "No venue open to translate Gulf risk into index structure"
+      ],
+      "news": [
+        {
+          "title": "Saudis plan assault on Houthis to break Red Sea chokehold",
+          "url": "https://www.jpost.com/middle-east/article-910424",
+          "source": "The Jerusalem Post / Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T23:00:00Z",
+      "timeBerlin": "2026-10-04T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 66,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Late Saturday. Confidence 81 as the gap widens between Friday's verified close and current conditions. Should Aramco or Saudi authorities confirm damage or a production impact overnight, that would be an energy and Stress input first; it could only become a Tail input after the restart produces an actual one-way path.",
+      "drivers": [
+        "Any Aramco damage or output confirmation would be a Stress input first",
+        "Tail could only respond after the restart yields an observed price path",
+        "Friday close remains the newest genuine Nasdaq-100 reference"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T00:00:00Z",
+      "timeBerlin": "2026-10-04T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 67,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Midnight UTC into Sunday. Stress 67 on the carried escalation plus a 5.28% 10-year that closed Friday near its strongest level since 2002, having reversed higher despite a soft September payroll report. Tail stays 3: the entire hour sits inside the halt, so no mean-reversion failure can be observed.",
+      "drivers": [
+        "10-year closed Friday at 5.28% after an intraday high near a 2002 extreme",
+        "Yields reversed higher despite the soft September employment report",
+        "Hour sits wholly inside the weekend halt; no observable structure"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T01:00:00Z",
+      "timeBerlin": "2026-10-04T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 67,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Early Sunday, no venue. The soft payroll print - unemployment up to 4.2% and average hourly earnings up only 0.1% month-on-month - sits against yields that rose anyway. That tension is a Stress and Confidence input; it has not yet been tested by a live tape, so Tail is held at 3.",
+      "drivers": [
+        "September payrolls soft: unemployment 4.2%, average hourly earnings +0.1% m/m",
+        "Rate reaction conflicted with the soft print; tension untested by a live tape",
+        "Conflicting signals raise Stress rather than Tail under this framework"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T02:00:00Z",
+      "timeBerlin": "2026-10-04T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 67,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Deep overnight Sunday. Confidence 80 with the tape now roughly 32 hours stale. Nothing in this hour can establish NQ structure. Brent's $102.25 Friday settle, up 7.05% on the month and 58.45% on the year, frames the energy backdrop the Gulf session will test in a few hours.",
+      "drivers": [
+        "Brent settled $102.25 Friday: +7.05% on the month, +58.45% on the year",
+        "Tape roughly 32 hours stale; Confidence eases to 80",
+        "Gulf session later this morning is the first venue able to react"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T03:00:00Z",
+      "timeBerlin": "2026-10-04T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 68,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Pre-dawn Sunday UTC. Stress 68 as the escalation remains unresolved into the final hours before any market opens. Tail unchanged at 3. The relevant checkpoint is the Gulf equity session from roughly 07:00Z, not this hour, and even that cannot establish current Nasdaq-100 structure under the delayed-evidence rule.",
+      "drivers": [
+        "Gulf equity session from roughly 07:00Z is the next real checkpoint",
+        "Delayed non-NQ evidence cannot establish current index structure",
+        "Escalation still unresolved with no venue open"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T04:00:00Z",
+      "timeBerlin": "2026-10-04T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 68,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Sunday early morning. Confidence 79, the floor for the pre-Gulf hours. Tail 3 on an absent price path. Repeated 2026 precedent is instructive here: earlier Aramco facility strikes produced temporary interruptions that Aramco described as immaterial to operations, and equity markets absorbed them without a no-retracement path.",
+      "drivers": [
+        "2026 precedent: earlier Aramco strikes caused only temporary interruptions",
+        "Equity markets previously absorbed such incidents without a lethal path",
+        "Precedent supports a low Tail absent fresh contradictory structure"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T05:00:00Z",
+      "timeBerlin": "2026-10-04T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 68,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Final hour before Gulf pre-open. Stress 68 and Tail 3 both carry forward unchanged, because nothing observable has entered the window. Any claim of responsibility for the Riyadh fire during this hour would sharpen the Stress and gap picture without supplying the observed NQ structure a higher Tail requires.",
+      "drivers": [
+        "No observable input has entered the window; scores carry forward",
+        "A claim of responsibility would sharpen Stress and gap risk, not Tail",
+        "Last hour before the only open venue in this forecast window"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T06:00:00Z",
+      "timeBerlin": "2026-10-04T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 69,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Tail ticks to 4 as the unpriced escalation stack accumulates toward an eventual restart, though that restart lies outside this window. Stress 69. The Gulf pre-open approaches; Saudi Tadawul is the one venue in this forecast horizon positioned to price the refinery incident directly.",
+      "drivers": [
+        "Tail to 4 on escalation accumulating without any price discovery",
+        "Saudi Tadawul is the only venue inside this horizon able to react",
+        "CME restart lies beyond the final scored hour of this window"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T07:00:00Z",
+      "timeBerlin": "2026-10-04T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 69,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Gulf equity session opens in this hour - the only open market inside this forecast window. Confidence improves to 80 because a real venue finally prices the refinery incident and the Yemen escalation. Under the delayed-evidence rule that reaction informs Stress and Confidence; it cannot establish current Nasdaq-100 structure, so Tail stays 4.",
+      "drivers": [
+        "Gulf equity session opens: first venue to price the refinery incident",
+        "Tadawul reaction is delayed, non-NQ evidence by contract",
+        "Confidence improves to 80 on a live venue, Tail unchanged at 4"
+      ],
+      "news": [
+        {
+          "title": "Smoke and fire reported near Aramco facility in Riyadh as Houthi tensions escalate",
+          "url": "https://www.investing.com/news/economy-news/smoke-and-fire-reported-near-aramco-facility-in-riyadh-as-houthi-tensions-escalate-4930846",
+          "source": "Investing.com"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T08:00:00Z",
+      "timeBerlin": "2026-10-04T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 70,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Gulf session underway. Stress 70. A sharp Saudi energy or petrochemical reaction here would raise the odds that the escalation is repriced at the CME restart, but the restart falls about four hours past this window's final scored hour, so the gap itself is not scored in this publication.",
+      "drivers": [
+        "Saudi energy and petrochemical reaction is the hour's live evidence",
+        "CME restart falls past this window's final scored hour",
+        "Restart gap risk is explicitly not scored in this publication"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T09:00:00Z",
+      "timeBerlin": "2026-10-04T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 70,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Mid Gulf session. Tail 4 and Stress 70 hold. If Tadawul absorbs the incident with an orderly, bounded move, that is mild evidence against a pathological repricing path later; if it gaps and extends without retracement, it would raise Stress and the conditional restart gap rather than this window's Tail.",
+      "drivers": [
+        "Orderly bounded Tadawul move would be mild evidence against a lethal path",
+        "A gapping, non-retracing Gulf tape would raise Stress and gap risk",
+        "Neither outcome changes this window's Tail, which needs NQ structure"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T10:00:00Z",
+      "timeBerlin": "2026-10-04T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 70,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Gulf session continues with no Nasdaq-100 venue open. Confidence steady at 80 on the live Gulf reference. Tail 4. The Friday Nasdaq-100 record close at 30,807.93 remains the only genuine index reference available anywhere in this forecast window.",
+      "drivers": [
+        "Friday's 30,807.93 record close is the sole index reference in this window",
+        "Live Gulf tape holds Confidence at 80",
+        "No Nasdaq-100 venue open in this hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T11:00:00Z",
+      "timeBerlin": "2026-10-04T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 71,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Late Gulf session. Stress 71 as the escalation thread stays live into the Gulf close with no resolution. Tail 4. A verified Aramco statement on damage or throughput in this hour would be the single most useful new input, and would land first in Stress and in the energy complex.",
+      "drivers": [
+        "Escalation unresolved into the Gulf close; Stress to 71",
+        "A verified Aramco throughput statement would be the key new input",
+        "Such a statement lands in Stress and energy before it could reach Tail"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T12:00:00Z",
+      "timeBerlin": "2026-10-04T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 71,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Gulf session closes in roughly this hour, removing the only live venue from the remainder of the window. Confidence eases to 79. Tail 4 on the continued absence of NQ structure, with the market again fully blind to the escalation until the CME restart beyond this horizon.",
+      "drivers": [
+        "Gulf close removes the only live venue for the rest of the window",
+        "Market again fully blind to the escalation after the Gulf close",
+        "Confidence eases to 79 as the live reference disappears"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T13:00:00Z",
+      "timeBerlin": "2026-10-04T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 71,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Post-Gulf Sunday afternoon. Stress 71 and Confidence 78. Tail 4. With Gulf cash closed, the remaining hours of this window carry the accumulated escalation entirely unpriced again, which is a gap-risk profile rather than the persistent one-way structure a higher Tail would require.",
+      "drivers": [
+        "Accumulated escalation is unpriced again after the Gulf close",
+        "Profile is gap risk, not persistent one-way structure",
+        "Tail 4 and Stress 71 carry into the late window"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T14:00:00Z",
+      "timeBerlin": "2026-10-04T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 72,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Tail ticks to 5, its high for the window, reflecting an escalation stack that has now gone a full weekend without being priced. Stress 72. This remains a conditional, pre-restart assessment: no Nasdaq-100 price path has been observed anywhere inside these 24 hours.",
+      "drivers": [
+        "Tail to 5, the window high, on a full weekend of unpriced escalation",
+        "Assessment stays conditional; no NQ path observed in the window",
+        "Mapped policy state remains EA_ON throughout on Tail far below 20"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T15:00:00Z",
+      "timeBerlin": "2026-10-04T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 72,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Late Sunday afternoon UTC. Stress 72 and Confidence 78. The reported Saudi operation timing is wide - estimates run from within a week to after the U.S. midterms - so this is a standing conditional risk rather than a dated catalyst inside this window.",
+      "drivers": [
+        "Reported operation timing spans a week out to after the U.S. midterms",
+        "Wide timing makes this a standing risk, not a dated in-window catalyst",
+        "Tail 5 and Stress 72 hold into the close of the window"
+      ],
+      "news": [
+        {
+          "title": "Saudis plan assault on Houthis to break Red Sea chokehold",
+          "url": "https://www.jpost.com/middle-east/article-910424",
+          "source": "The Jerusalem Post / Reuters"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T16:00:00Z",
+      "timeBerlin": "2026-10-04T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 72,
+      "confidencePct": 77,
+      "dominantMode": "normal",
+      "analysis": "Approaching the final hours before the CME restart, which still falls outside this window. Confidence 77. Tail 5. Monday's scheduled U.S. data - final S&P Global services and composite PMIs and ISM Services - sits beyond this horizon and is tracked in the event calendar, not as current evidence.",
+      "drivers": [
+        "Monday's PMI and ISM Services prints sit beyond this forecast horizon",
+        "Scheduled items tracked in the event calendar, not as current evidence",
+        "Confidence 77 as Friday's reference becomes roughly two days old"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T17:00:00Z",
+      "timeBerlin": "2026-10-04T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 73,
+      "confidencePct": 77,
+      "dominantMode": "normal",
+      "analysis": "Second-to-last scored hour. Stress 73, the window high, on an escalation that will have to be repriced after this horizon closes rather than inside it. Tail 5 and the mapped policy state stays EA_ON, because every hour in this publication lacks the observed NQ structure a block would require.",
+      "drivers": [
+        "Stress 73, the window high, on escalation deferred past this horizon",
+        "Every scored hour lacks the observed structure a block would require",
+        "Mapped policy state remains EA_ON across all 24 hours"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T18:00:00Z",
+      "timeBerlin": "2026-10-04T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 73,
+      "confidencePct": 77,
+      "dominantMode": "normal",
+      "analysis": "Final scored hour, ending about four hours before the CME equity-index restart at 22:00Z. Tail 5, Stress 73, Confidence 77. The first genuine post-weekend NQ price-path evidence, and any restart gap, fall outside this publication and will be scored in a later assessment.",
+      "drivers": [
+        "Window ends about four hours before the 22:00Z CME restart",
+        "First genuine post-weekend NQ evidence falls outside this publication",
+        "Any restart gap will be scored in a subsequent assessment"
+      ],
+      "news": []
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-10-03T19:00:00Z",
+      "timeBerlin": "2026-10-03T21:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 64,
+      "comment": "Halt in force since Friday 21:00Z with no NQ price path to score, so Tail is 3. Friday's record intraday high at 31,017.53 was fully retraced into a 30,807.93 close near the 30,737.07 session low, which is orderly mean reversion rather than shallow-pullback extension. Stress 64 steps up on the broadened Yemen exchange and the still-unclaimed Riyadh refinery fire."
+    },
+    {
+      "ts": "2026-10-03T20:00:00Z",
+      "timeBerlin": "2026-10-03T22:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 65,
+      "comment": "Saturday evening with no equity venue open. Stress 65 as today's alleged Sanaa strikes and the unclaimed refinery fire accumulate with nothing able to price them. Tail holds at 3 because an unresolved escalation without an open market is gap risk, not a pathological price path."
+    },
+    {
+      "ts": "2026-10-03T21:00:00Z",
+      "timeBerlin": "2026-10-03T23:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 65,
+      "comment": "Twenty-four hours past the Friday halt. Confidence eases to 82 as the verified Friday tape ages. Tail stays 3 on absent NQ structure, while the Houthi-declared naval blockade on Saudi Red Sea shipping remains a supply-side thread that would have to move the energy complex before reaching index structure."
+    },
+    {
+      "ts": "2026-10-03T22:00:00Z",
+      "timeBerlin": "2026-10-04T00:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 66,
+      "comment": "Mid-evening Saturday. Stress 66 on an unpriced stack of the refinery fire, the alleged Sanaa strikes and a reported Saudi plan to retake Bab al-Mandeb with Yemeni ground forces under Saudi air support. None of that is observed NQ structure, so Tail is unchanged at 3."
+    },
+    {
+      "ts": "2026-10-03T23:00:00Z",
+      "timeBerlin": "2026-10-04T01:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 66,
+      "comment": "Late Saturday. Confidence 81 as the distance from Friday's close widens. Any overnight Aramco confirmation of damage or a production impact would register first in energy and Stress; it could only reach Tail once a restart produced an actual one-way path."
+    },
+    {
+      "ts": "2026-10-04T00:00:00Z",
+      "timeBerlin": "2026-10-04T02:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 67,
+      "comment": "Midnight UTC into Sunday. Stress 67 on the carried escalation plus a 5.28% 10-year that reversed higher on Friday despite a soft September payroll report. Tail stays 3 because the hour sits wholly inside the halt and no mean-reversion failure can be observed."
+    }
+  ],
+  "events": [
+    {
+      "name": "S&P Global Services and Composite PMI final (September)",
+      "ts": "2026-10-05T13:45:00Z",
+      "timeBerlin": "2026-10-05T15:45:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "ISM Services PMI (September)",
+      "ts": "2026-10-05T14:00:00Z",
+      "timeBerlin": "2026-10-05T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "U.S. international trade balance (August)",
+      "ts": "2026-10-06T12:30:00Z",
+      "timeBerlin": "2026-10-06T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Fed speaker: Vice Chair for Supervision Bowman, regulation and supervision",
+      "ts": "2026-10-06T14:45:00Z",
+      "timeBerlin": "2026-10-06T16:45:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "EIA weekly petroleum status report",
+      "ts": "2026-10-07T14:30:00Z",
+      "timeBerlin": "2026-10-07T16:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "FOMC minutes of the September meeting",
+      "ts": "2026-10-07T18:00:00Z",
+      "timeBerlin": "2026-10-07T20:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Fed speaker: Governor Waller, economic outlook (Istanbul)",
+      "ts": "2026-10-08T08:30:00Z",
+      "timeBerlin": "2026-10-08T10:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Initial jobless claims",
+      "ts": "2026-10-08T12:30:00Z",
+      "timeBerlin": "2026-10-08T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "University of Michigan consumer sentiment preliminary (October)",
+      "ts": "2026-10-09T14:00:00Z",
+      "timeBerlin": "2026-10-09T16:00:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
