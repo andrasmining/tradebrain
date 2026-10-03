@@ -1,0 +1,936 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-10-03T16:35:32Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Mapped policy state: EA_ON. Tail is far below the block threshold because CME equity-index futures are in their weekend halt and no NQ price path exists to score, while Stress stays elevated on the carried-in rate, energy and Middle East backdrop.",
+  "recommendation": "Tail remains in the low band for every hour of this window, so the deterministic mapping stays at EA_ON and green. The entire 24-hour forecast span falls inside the weekend halt; the CME restart at 22:00Z on 4 October lies beyond the horizon, so restart gap risk is not scored here. Existing-position management and emergency protection logic are unaffected by this publication.",
+  "headline": "Weekend halt keeps Tail minimal after Friday's record probe fully retraced into the close",
+  "body": "Friday 2 October was the last session before the halt. The Nasdaq-100 closed at a record 30,807.93, up 306.37 points or 1.00%, after a softer September employment report showed 29,000 jobs added against about 90,000 expected and unemployment at 4.2%. The structurally important detail for this framework is that the new intraday record at 31,017.53 was fully retraced into a close near the 30,737.07 session low. That is orderly mean reversion, not the shallow-pullback extension or failed-retracement pattern that defines Tail, so Tail stays at 3 for the whole window. VIX closed at 15.31, down 6.59%. Stress stays elevated at 57 and drifts modestly higher across the window on the carried-in environment rather than on observed structure: Treasury yields reversed upward despite the soft payroll print, with the 2-year at 4.84% and the 10-year at 5.28%, while Brent sits near $102.25, up 7.05% on the month and 58.45% on the year, with the Strait of Hormuz still not fully reopened. A fire and smoke plume was reported near an Aramco facility in Riyadh on Saturday amid escalating Saudi-Houthi exchanges; neither Saudi authorities nor Aramco had confirmed the incident or a cause at the time of this assessment, and no claim of responsibility had been made, so it is treated as an unresolved Stress and Confidence input rather than a priced supply shock. U.S. naval deployments continue, with the USS Theodore Roosevelt and the Makin Island amphibious group heading to the region. Confidence is 83: index level, session range, volatility, yields, oil and the seven-day calendar were all verified from primary sources, and the single open item is the unconfirmed cause of the Riyadh fire. No futures price discovery is available anywhere inside this forecast window.",
+  "tailRiskPct": 3,
+  "tailLevel": "low",
+  "stressRiskPct": 57,
+  "stressLevel": "elevated",
+  "dominantMode": "normal",
+  "confidencePct": 83,
+  "confidenceLevel": "high",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": null,
+    "end": null
+  },
+  "dangerWindowBerlin": {
+    "start": null,
+    "end": null
+  },
+  "sources": [
+    {
+      "title": "Nasdaq-100 (^NDX) quote, session range and 52-week high for 2 October 2026",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote and session range for 2 October 2026",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    {
+      "title": "Trading Economics United States government bond yields: 2-year, 10-year and 30-year",
+      "url": "https://tradingeconomics.com/united-states/government-bond-yield"
+    },
+    {
+      "title": "Trading Economics Brent crude oil price, G7 reserve release and Gulf supply context",
+      "url": "https://tradingeconomics.com/commodity/brent-crude-oil"
+    },
+    {
+      "title": "Trading Economics United States economic calendar for 3-10 October 2026",
+      "url": "https://tradingeconomics.com/united-states/calendar"
+    },
+    {
+      "title": "Fire, smoke seen near Aramco facility in Riyadh as Saudi-Houthi conflict continues",
+      "url": "https://www.jpost.com/middle-east/article-910460"
+    }
+  ],
+  "lookbackSummary": "All 24 preceding clock-hours carry published Claude assessments. The window opens inside Friday's post-payroll U.S. session with Tail 21-23 and Stress 76-79 under a mixed mode, then decays steadily after the 21:00Z futures close: Tail falls from 14 to 3 and Stress from 74 to 52 across the overnight and Saturday hours, with the mode settling to normal from 00:00Z. The final four hours sit flat at Tail 3 with Stress between 52 and 54.",
+  "lookback": [
+    {
+      "ts": "2026-10-02T16:00:00Z",
+      "timeBerlin": "2026-10-02T18:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 79,
+      "confidencePct": 89,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T17:00:00Z",
+      "timeBerlin": "2026-10-02T19:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 23,
+      "stressRiskPct": 79,
+      "confidencePct": 89,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T18:00:00Z",
+      "timeBerlin": "2026-10-02T20:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 79,
+      "confidencePct": 89,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T19:00:00Z",
+      "timeBerlin": "2026-10-02T21:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 22,
+      "stressRiskPct": 78,
+      "confidencePct": 89,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T20:00:00Z",
+      "timeBerlin": "2026-10-02T22:00:00+02:00",
+      "available": true,
+      "status": "yellow",
+      "action": "WATCH",
+      "tailRiskPct": 21,
+      "stressRiskPct": 76,
+      "confidencePct": 89,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T21:00:00Z",
+      "timeBerlin": "2026-10-02T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 14,
+      "stressRiskPct": 74,
+      "confidencePct": 86,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T22:00:00Z",
+      "timeBerlin": "2026-10-03T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 72,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T23:00:00Z",
+      "timeBerlin": "2026-10-03T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 71,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-03T00:00:00Z",
+      "timeBerlin": "2026-10-03T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 68,
+      "confidencePct": 84,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T01:00:00Z",
+      "timeBerlin": "2026-10-03T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 66,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T02:00:00Z",
+      "timeBerlin": "2026-10-03T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 65,
+      "confidencePct": 82,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T03:00:00Z",
+      "timeBerlin": "2026-10-03T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T04:00:00Z",
+      "timeBerlin": "2026-10-03T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T05:00:00Z",
+      "timeBerlin": "2026-10-03T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T06:00:00Z",
+      "timeBerlin": "2026-10-03T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T07:00:00Z",
+      "timeBerlin": "2026-10-03T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 7,
+      "stressRiskPct": 62,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T08:00:00Z",
+      "timeBerlin": "2026-10-03T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 60,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T09:00:00Z",
+      "timeBerlin": "2026-10-03T11:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 59,
+      "confidencePct": 87,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T10:00:00Z",
+      "timeBerlin": "2026-10-03T12:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 57,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T11:00:00Z",
+      "timeBerlin": "2026-10-03T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 55,
+      "confidencePct": 87,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T12:00:00Z",
+      "timeBerlin": "2026-10-03T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 54,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T13:00:00Z",
+      "timeBerlin": "2026-10-03T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 53,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T14:00:00Z",
+      "timeBerlin": "2026-10-03T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 52,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T15:00:00Z",
+      "timeBerlin": "2026-10-03T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 54,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    }
+  ],
+  "outlookSummary": "Every hour of this forecast window falls inside the CME equity-index weekend halt, so no NQ price path can form and Tail is held flat at 3, mapping to EA_ON and green throughout. Stress drifts from 57 to 62 purely because unresolved energy and Middle East threads accumulate without a market able to price them, and Confidence eases from 83 to 78 as Friday's verified levels age. The restart at 22:00Z on 4 October lies about six hours past the end of the final scored hour, so the first genuine post-weekend price-path evidence, and any restart gap, falls outside this horizon.",
+  "forecast": [
+    {
+      "ts": "2026-10-03T16:00:00Z",
+      "timeBerlin": "2026-10-03T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 57,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Current hour sits inside the CME equity-index weekend halt, so no NQ price path exists to score. The newest observed structure remains Friday's record probe to 31,017.53 being fully retraced into a 30,807.93 close near the 30,737.07 session low, a mean-reverting outcome rather than the shallow-pullback extension this framework scores as Tail.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Friday record probe to 31,017.53 fully retraced into a 30,807.93 close",
+        "VIX closed 15.31, down 6.6%, with volatility decaying"
+      ],
+      "news": [
+        {
+          "title": "Nasdaq 100 closes at a record after soft US jobs; Treasury yields reverse higher",
+          "url": "https://investinglive.com/news/investinglive-americas-fx-news-wrap-2-oct-nasdaq-100-closes-at-a-record-after-soft-us-jobs-treasury-yields-reverse-higher/",
+          "source": "investingLive"
+        },
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq rally as Fed rate-hike expectations fade, tech gains",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-2-dow-sp-500-nasdaq-september-jobs-report-080623878.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T17:00:00Z",
+      "timeBerlin": "2026-10-03T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 57,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "No futures price discovery in this hour. Saturday headline flow around the unconfirmed Riyadh Aramco fire is the live thread; were Saudi authorities or Aramco to confirm damage to processing capacity, energy-led gap risk would build toward the Sunday restart rather than inside this closed window.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Unconfirmed fire near an Aramco facility in Riyadh reported Saturday",
+        "No claim of responsibility and no Saudi or Aramco confirmation"
+      ],
+      "news": [
+        {
+          "title": "Fire, smoke seen near Aramco facility in Riyadh as Saudi-Houthi conflict continues",
+          "url": "https://www.jpost.com/middle-east/article-910460",
+          "source": "The Jerusalem Post"
+        },
+        {
+          "title": "Smoke seen over Riyadh as fire reported near Aramco facility",
+          "url": "https://www.siasat.com/smoke-seen-over-riyadh-as-fire-reported-near-aramco-facility-3551899/",
+          "source": "The Siasat Daily"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T18:00:00Z",
+      "timeBerlin": "2026-10-03T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 57,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Halt continues. Stress carries Brent near $102.25 after a 58% year-over-year advance and a 10-year yield at 5.28%. That is an environment reading, not evidence of a one-way NQ path, and no retracement behaviour can be observed while the venue is shut.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Brent $102.25, up 7.1% on the month and 58.5% on the year",
+        "U.S. 10-year yield 5.28%, 2-year 4.84%"
+      ],
+      "news": [
+        {
+          "title": "Nasdaq 100 closes at a record after soft US jobs; Treasury yields reverse higher",
+          "url": "https://investinglive.com/news/investinglive-americas-fx-news-wrap-2-oct-nasdaq-100-closes-at-a-record-after-soft-us-jobs-treasury-yields-reverse-higher/",
+          "source": "investingLive"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T19:00:00Z",
+      "timeBerlin": "2026-10-03T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 58,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Still closed. Any claim of responsibility for the Riyadh incident emerging in this hour would be a Stress and Confidence input first; the framework would require observed post-restart directional efficiency before treating it as Tail.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Attribution of the Riyadh incident still open",
+        "Escalating Saudi-Houthi exchanges over energy infrastructure"
+      ],
+      "news": [
+        {
+          "title": "Fire erupts near Aramco facility in Riyadh as Saudi-Houthi fighting escalates",
+          "url": "https://www.kurdistan24.net/en/story/943658/fire-erupts-near-aramco-facility-in-riyadh-as-saudi-houthi-fighting-escalates",
+          "source": "Kurdistan24"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T20:00:00Z",
+      "timeBerlin": "2026-10-03T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 58,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Weekend halt. Friday's cross-asset conflict, with equities higher on a 29K September payroll print while 2-year and 10-year yields reversed upward, remains unresolved and stands as a conditional checkpoint for the restart rather than an observed structure in this hour.",
+      "drivers": [
+        "September payrolls 29K versus 90K expected, unemployment 4.2%",
+        "Yields reversed higher despite the soft jobs print",
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z"
+      ],
+      "news": [
+        {
+          "title": "Nasdaq climbs to record after softer jobs data cools rate-hike expectations",
+          "url": "https://spokesman.com/stories/2026/oct/02/nasdaq-climbs-to-record-after-softer-jobs-data-coo",
+          "source": "The Spokesman-Review"
+        },
+        {
+          "title": "Nasdaq 100 closes at a record after soft US jobs; Treasury yields reverse higher",
+          "url": "https://investinglive.com/news/investinglive-americas-fx-news-wrap-2-oct-nasdaq-100-closes-at-a-record-after-soft-us-jobs-treasury-yields-reverse-higher/",
+          "source": "investingLive"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T21:00:00Z",
+      "timeBerlin": "2026-10-03T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 58,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "This hour marks 24 hours since Friday's 21:00Z futures close. No price path is available, and VIX at 15.31 after a 6.6% decline is the last observed volatility reading rather than a live one.",
+      "drivers": [
+        "24 hours elapsed since the Friday 21:00Z futures close",
+        "VIX 15.31 is the last observed volatility reading, not a live one",
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-03T22:00:00Z",
+      "timeBerlin": "2026-10-04T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 58,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "The overnight weekend dead zone begins and Gulf and U.S. news flow thins. Absent an official Saudi statement, the Aramco fire remains unverified as an attack and cannot be scored as a supply shock.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Thin weekend Gulf and U.S. headline flow",
+        "Aramco fire unverified as an attack"
+      ],
+      "news": [
+        {
+          "title": "US-Iran conflict: What UAE residents need to know today (October 3, 2026)",
+          "url": "https://gulfnews.com/uae/us-iran-conflict-what-uae-residents-need-to-know-today-october-3-2026-1.500696823",
+          "source": "Gulf News"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T23:00:00Z",
+      "timeBerlin": "2026-10-04T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 59,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Closed venue with minimal scheduled flow. Conditional risk in this hour is confined to headline accumulation, and the restart lies roughly 23 hours beyond this hour's start.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Restart roughly 23 hours beyond this hour's start",
+        "No scheduled macro release in this hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T00:00:00Z",
+      "timeBerlin": "2026-10-04T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 59,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Sunday begins with cash and futures venues shut worldwide. No macro release is scheduled, so this hour's conditional risk rests entirely on unscheduled geopolitical developments.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Sunday with cash and futures venues shut worldwide",
+        "Unscheduled geopolitical headlines are the only live input"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T01:00:00Z",
+      "timeBerlin": "2026-10-04T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 59,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Dead zone continues. An Iranian or IRGC response in this hour would inform the restart gap rather than create an intra-hour NQ path, because no quote is produced while the venue is closed.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "IRGC has threatened a decisive response to any further strike",
+        "No venue able to price a response in this hour"
+      ],
+      "news": [
+        {
+          "title": "Live Updates: Senior Trump administration officials met to discuss Iran war at Camp David",
+          "url": "https://www.cbsnews.com/live-updates/trump-iran-war-us-midterm-elections-troops-deployment/",
+          "source": "CBS News"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T02:00:00Z",
+      "timeBerlin": "2026-10-04T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 59,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Halt. Stress drifts higher only because unresolved weekend energy and Middle East threads accumulate without a market able to price them, not because directional structure has been observed.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Unresolved weekend energy and Middle East threads accumulating",
+        "Strait of Hormuz not fully reopened"
+      ],
+      "news": [
+        {
+          "title": "Smoke seen over Riyadh as fire reported near Aramco facility",
+          "url": "https://www.siasat.com/smoke-seen-over-riyadh-as-fire-reported-near-aramco-facility-3551899/",
+          "source": "The Siasat Daily"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T03:00:00Z",
+      "timeBerlin": "2026-10-04T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 60,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "No price discovery. Confidence decays gradually as Friday's verified levels age, while the evidence set itself remains complete and internally consistent.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Friday's verified levels ageing through the weekend",
+        "Evidence set complete and internally consistent"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T04:00:00Z",
+      "timeBerlin": "2026-10-04T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 60,
+      "confidencePct": 80,
+      "dominantMode": "normal",
+      "analysis": "Sunday pre-dawn in Europe with venues shut. Asia-Pacific cash markets are closed for the weekend, so no regional handover can establish current Nasdaq-100 structure in this hour.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Asia-Pacific cash venues closed for the weekend",
+        "No regional handover available in this hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T05:00:00Z",
+      "timeBerlin": "2026-10-04T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 60,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Still closed. An official Aramco or Saudi energy-ministry statement would most plausibly land within Gulf business hours, and its content is a conditional Stress input for the restart.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Gulf business hours as the plausible window for an official statement",
+        "Aramco damage assessment still outstanding"
+      ],
+      "news": [
+        {
+          "title": "Fire, smoke seen near Aramco facility in Riyadh as Saudi-Houthi conflict continues",
+          "url": "https://www.jpost.com/middle-east/article-910460",
+          "source": "The Jerusalem Post"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T06:00:00Z",
+      "timeBerlin": "2026-10-04T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 60,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Halt. Were the Riyadh fire confirmed as limited and non-structural, the restart-gap component of Stress would be expected to ease rather than this hour's Tail changing.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Confirmation of limited damage would ease restart-gap Stress",
+        "Tail unchanged because no price path can form"
+      ],
+      "news": [
+        {
+          "title": "Fire erupts near Aramco facility in Riyadh as Saudi-Houthi fighting escalates",
+          "url": "https://www.kurdistan24.net/en/story/943658/fire-erupts-near-aramco-facility-in-riyadh-as-saudi-houthi-fighting-escalates",
+          "source": "Kurdistan24"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T07:00:00Z",
+      "timeBerlin": "2026-10-04T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 60,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "No quote available. The seven-day calendar's first catalyst, S&P Global and ISM Services on 5 October, sits beyond this window and is carried in the events array as a scheduled checkpoint.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "S&P Global and ISM Services on 5 October carried as a scheduled checkpoint",
+        "No catalyst inside this window"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T08:00:00Z",
+      "timeBerlin": "2026-10-04T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 61,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Closed. The conditional path for the session that follows depends on whether Brent gaps on confirmed Gulf supply loss, and nothing in this hour can confirm or deny that.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Brent restart gap conditional on confirmed Gulf supply loss",
+        "G7 agreed release of up to 100 million barrels of crude and diesel"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T09:00:00Z",
+      "timeBerlin": "2026-10-04T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 61,
+      "confidencePct": 79,
+      "dominantMode": "normal",
+      "analysis": "Halt. Weekend commentary and positioning notes may appear, but they are opinion rather than price-path evidence and do not move Tail under this framework.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Weekend commentary is opinion rather than price-path evidence",
+        "No observed retracement behaviour available"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T10:00:00Z",
+      "timeBerlin": "2026-10-04T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 61,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Sunday mid-morning with the venue shut. Roughly 12 hours remain to the restart from this hour's start, and gap risk is a restart property that falls outside the scored window.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Roughly 12 hours to the restart from this hour's start",
+        "Gap risk is a restart property outside the scored window"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T11:00:00Z",
+      "timeBerlin": "2026-10-04T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 61,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "No price discovery. Should the Middle East threads quieten through Sunday, the orderly mean reversion observed into Friday's close would remain the most recent structural reference for the restart.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Orderly mean reversion into Friday's close as the latest structural reference",
+        "Middle East threads unresolved through Sunday"
+      ],
+      "news": [
+        {
+          "title": "Stock market today: Dow, S&P 500, Nasdaq rally as Fed rate-hike expectations fade, tech gains",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-2-dow-sp-500-nasdaq-september-jobs-report-080623878.html",
+          "source": "Yahoo Finance"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T12:00:00Z",
+      "timeBerlin": "2026-10-04T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 62,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Halt. Stress stays elevated on the carried-in environment of $102 Brent, a 5.28% 10-year yield and a continuing U.S. naval build-up toward the region, while Tail stays minimal because no path can form.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Brent near $102 and a 5.28% 10-year yield as carried-in Stress",
+        "USS Theodore Roosevelt and Makin Island group heading to the region"
+      ],
+      "news": [
+        {
+          "title": "US-Iran conflict: What UAE residents need to know today (October 3, 2026)",
+          "url": "https://gulfnews.com/uae/us-iran-conflict-what-uae-residents-need-to-know-today-october-3-2026-1.500696823",
+          "source": "Gulf News"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T13:00:00Z",
+      "timeBerlin": "2026-10-04T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 62,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Closed. A confirmed escalation in this hour would raise the conditional probability of a one-way restart, though the framework would still require observed failed retracements before Tail rises.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Confirmed escalation would raise conditional restart risk",
+        "Observed failed retracements still required before Tail rises"
+      ],
+      "news": [
+        {
+          "title": "Live Updates: Senior Trump administration officials met to discuss Iran war at Camp David",
+          "url": "https://www.cbsnews.com/live-updates/trump-iran-war-us-midterm-elections-troops-deployment/",
+          "source": "CBS News"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T14:00:00Z",
+      "timeBerlin": "2026-10-04T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 62,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "No quote. Confidence is held in the high band because the underlying index levels, yields, oil and volatility readings and the calendar were all verified, with the unconfirmed Riyadh cause the one open item.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Index level, yields, oil, volatility and calendar all verified",
+        "Unconfirmed Riyadh cause is the one open evidence item"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T15:00:00Z",
+      "timeBerlin": "2026-10-04T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 62,
+      "confidencePct": 78,
+      "dominantMode": "normal",
+      "analysis": "Final scored hour of this window. The CME restart at 22:00Z on 4 October lies about seven hours beyond this hour's start, so the first genuine post-weekend price-path evidence arrives after this forecast horizon.",
+      "drivers": [
+        "CME equity-index futures halted: closed Friday 21:00Z, restart Sunday 22:00Z",
+        "Restart at 22:00Z on 4 October, about seven hours past this hour's start",
+        "First post-weekend price-path evidence falls beyond this horizon"
+      ],
+      "news": []
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-10-03T16:00:00Z",
+      "timeBerlin": "2026-10-03T18:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 57,
+      "comment": "Weekend halt: no NQ price path to score. Friday's record probe to 31,017.53 was fully retraced into a 30,807.93 close near the session low, which is mean-reverting rather than Tail behaviour."
+    },
+    {
+      "ts": "2026-10-03T17:00:00Z",
+      "timeBerlin": "2026-10-03T19:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 57,
+      "comment": "Venue closed. The unconfirmed Riyadh Aramco fire is the live headline thread; confirmed damage to processing capacity would build energy-led gap risk toward the Sunday restart, not inside this hour."
+    },
+    {
+      "ts": "2026-10-03T18:00:00Z",
+      "timeBerlin": "2026-10-03T20:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 57,
+      "comment": "Closed. Brent near $102.25 and a 5.28% 10-year yield keep Stress elevated as an environment reading; no retracement behaviour is observable while the venue is shut."
+    },
+    {
+      "ts": "2026-10-03T19:00:00Z",
+      "timeBerlin": "2026-10-03T21:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 58,
+      "comment": "Closed. A claim of responsibility for the Riyadh incident would register first in Stress and Confidence; observed post-restart directional efficiency would be required before Tail moves."
+    },
+    {
+      "ts": "2026-10-03T20:00:00Z",
+      "timeBerlin": "2026-10-03T22:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 58,
+      "comment": "Closed. Friday's equities-up, yields-up conflict after the 29K payroll print is unresolved and stands as a conditional restart checkpoint, not an observed structure in this hour."
+    },
+    {
+      "ts": "2026-10-03T21:00:00Z",
+      "timeBerlin": "2026-10-03T23:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 58,
+      "comment": "Closed, 24 hours after Friday's 21:00Z futures close. VIX 15.31 after a 6.6% decline is the last observed volatility reading rather than a live one."
+    }
+  ],
+  "events": [
+    {
+      "name": "S&P Global Services and Composite PMI final (September)",
+      "ts": "2026-10-05T13:45:00Z",
+      "timeBerlin": "2026-10-05T15:45:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "ISM Services PMI (September)",
+      "ts": "2026-10-05T14:00:00Z",
+      "timeBerlin": "2026-10-05T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "U.S. international trade balance (August)",
+      "ts": "2026-10-06T12:30:00Z",
+      "timeBerlin": "2026-10-06T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Fed speakers: Williams and Bowman",
+      "ts": "2026-10-06T14:00:00Z",
+      "timeBerlin": "2026-10-06T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "EIA weekly petroleum status report",
+      "ts": "2026-10-07T14:30:00Z",
+      "timeBerlin": "2026-10-07T16:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "FOMC minutes of the September meeting",
+      "ts": "2026-10-07T18:00:00Z",
+      "timeBerlin": "2026-10-07T20:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Federal Reserve G.19 consumer credit (August)",
+      "ts": "2026-10-07T19:00:00Z",
+      "timeBerlin": "2026-10-07T21:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Initial jobless claims",
+      "ts": "2026-10-08T12:30:00Z",
+      "timeBerlin": "2026-10-08T14:30:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "University of Michigan consumer sentiment preliminary (October)",
+      "ts": "2026-10-09T14:00:00Z",
+      "timeBerlin": "2026-10-09T16:00:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
