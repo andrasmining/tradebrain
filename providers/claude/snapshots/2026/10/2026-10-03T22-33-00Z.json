@@ -1,0 +1,934 @@
+{
+  "schemaVersion": "1.0.0",
+  "provider": "claude",
+  "engineVersion": "1.0.0",
+  "promptVersion": "1.3.0",
+  "generatedAt": "2026-10-03T22:33:00Z",
+  "market": "NASDAQ-100",
+  "instruments": [
+    "NQ_FUTURES",
+    "NAS100_CFD"
+  ],
+  "status": "green",
+  "statusText": "Mapped policy state: EA_ON. Tail is 3 and far below the block threshold because CME equity-index futures have been halted since Friday 21:00Z, leaving no Nasdaq-100 price path to score; the last observed path, Friday's new 31,017.53 intraday record fully retraced into a 30,807.93 close in the lower quarter of the 30,737.07-31,017.53 range with VIX down 6.59% to 15.31, is orderly two-way discovery rather than the extension pattern Tail measures. Stress is 70 in the high band because a record U.S. diesel squeeze, the G7's 100-million-barrel emergency release, an unconfirmed Houthi strike on a Riyadh Aramco facility and a 10-year that reversed higher to 5.2939% on a 29,000 payroll print accumulate with no venue able to price them. Confidence is 84: Friday's index, volatility, curve and crude levels are independently verified and the payroll data is taken from the primary release, with the absence of a live price path the one unavoidable gap.",
+  "recommendation": "Tail remains in the low band for all 24 scored hours, so the deterministic mapping stays at EA_ON and green throughout. Every hour of this window falls inside the CME equity-index weekend halt, and the restart at 22:00Z on 4 October lies exactly at the end of the final scored hour, so restart gap risk is described rather than scored here. The Gulf cash session from roughly 07:00Z to 12:00Z on 4 October is the one differentiating interval and the only live venue with direct exposure to the claimed Riyadh refinery strike; under the inherited delayed-evidence rule it can inform Stress and Confidence but cannot establish current Nasdaq-100 structure or move the mapped action. Stress drifts from 70 to a peak of 79 and stays inside the high band, which on this contract does not by itself change the mapped state. No evidence-based danger window falls inside this horizon, so none is published.",
+  "headline": "Weekend halt holds Tail at 3 with no Nasdaq-100 price path to score, while a record diesel squeeze, the G7's 100-million-barrel release and an unconfirmed Riyadh refinery strike keep Stress at 70",
+  "body": "Friday 2 October remains the last traded session and its levels are independently re-verified for this publication. The Nasdaq-100 closed at a record 30,807.93, up 306.37 points or 1.00% from a 30,501.56 previous close, inside a 30,737.07-31,017.53 session range whose high is also the 52-week high. The detail that matters most for this framework is that the new intraday record at 31,017.53 was fully retraced and the index finished in the lower quarter of its own daily range. That is orderly two-way price discovery, not the shallow-pullback extension or failed-retracement pattern that defines Tail, so Tail holds at 3. VIX closed at 15.31, down 6.59% from 16.39 and at the bottom of a 15.30-16.24 range, confirming volatility decay into the halt.\n\nThe session's driver was the September employment report, taken here from the primary release: nonfarm payrolls rose 29,000 against a 90,000 consensus, the unemployment rate was 4.2%, and average hourly earnings edged up 0.1% to $37.81 for a 3.0% annual rate. Equities read that as cementing a Fed hold at the 28 October meeting, but the curve did not follow: the 10-year traded as low as 5.17% immediately after the data before reversing to 5.2939%, about 6 basis points higher on the day, and the 2-year ended at 4.8414%, about 5 basis points higher. The Federal Reserve H.15 release for 1 October shows the 2-year at 4.78% and the 10-year at 5.24%, so Friday's move extended an already elevated curve. A record equity close against rising long yields on weak labour data is a legitimate Stress and Confidence input; on this contract it is not a Tail input.\n\nThe energy complex is the dominant Stress driver. The G7 and its partners agreed to release 100 million barrels of oil and refined products over four months, with a frontloaded substantial diesel release inside the first 20 days, after the U.S. national average diesel price reached a record $6.52 per gallon on 22 September and stood at $6.37 on Friday. The release is a direct response to a supply crunch with three identified sources: the U.S.-Israel war on Iran disrupting Gulf exports, Ukrainian strikes halting Russian refinery output, and China ceasing diesel exports. Brent briefly fell below $100 on the announcement before recovering to about $102.25, and WTI reached a one-month low near $88 before trimming losses to roughly $91. The U.S. administration has separately ruled out a diesel export ban, which removes one discontinuous policy path from the week ahead. Cited expert views hold that the release will press prices lower only briefly because underlying supply remains below normal.\n\nAgainst that offset sits the escalation thread. A large plume of smoke and fire was reported near an Aramco facility in Riyadh on Saturday, and the Houthis later said they had targeted it with ballistic missiles and drones in retaliation for Saudi strikes on Sanaa and other Yemeni provinces. Saudi authorities have not confirmed an attack and Aramco has not commented; damage, casualties and any throughput effect remain unconfirmed. Elsewhere the Gaza ceasefire reached under the 20-point plan continues to hold with its later phases stalled rather than breaking, which is a persistent uncertainty rather than new escalation with market transmission. None of this is scoreable as a Nasdaq-100 price path while every relevant venue is closed, and on this contract event importance and geopolitical discontinuity raise Stress and shape Confidence until observed market structure supports Tail.\n\nThe week ahead is moderate on U.S. macro: ISM Services on Monday, the trade balance and a 3-year auction on Tuesday, FOMC minutes on Wednesday, jobless claims on Thursday and preliminary Michigan sentiment on Friday, with the next rate decision not until 28 October. The OPEC+ participating countries also meet online on Sunday to review November targets, which are widely expected to be left unchanged; because the exact hour is not reliably published it is carried as a driver checkpoint rather than as a dated calendar event. The shared Finviz context was not usable for this run: it was collected on 29 September, roughly four days old against the 90-minute freshness bound, and is marked partial, so the assessment rests entirely on independent research and the evidence failed open as the contract requires.",
+  "tailRiskPct": 3,
+  "tailLevel": "low",
+  "stressRiskPct": 70,
+  "stressLevel": "high",
+  "dominantMode": "normal",
+  "confidencePct": 84,
+  "confidenceLevel": "high",
+  "action": "EA_ON",
+  "dangerWindow": {
+    "start": null,
+    "end": null
+  },
+  "dangerWindowBerlin": {
+    "start": null,
+    "end": null
+  },
+  "sources": [
+    {
+      "title": "Nasdaq-100 (^NDX) quote, previous close and session range for 2 October 2026",
+      "url": "https://finance.yahoo.com/quote/%5ENDX/"
+    },
+    {
+      "title": "CBOE Volatility Index (^VIX) quote and session range for 2 October 2026",
+      "url": "https://finance.yahoo.com/quote/%5EVIX/"
+    },
+    {
+      "title": "U.S. Bureau of Labor Statistics Employment Situation Summary, September 2026",
+      "url": "https://www.bls.gov/news.release/empsit.nr0.htm"
+    },
+    {
+      "title": "Federal Reserve H.15 selected interest rates, daily Treasury constant-maturity yields",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "title": "Al Jazeera: G7 to release 100 million barrels of oil and diesel, will it curb prices?",
+      "url": "https://www.aljazeera.com/news/2026/10/3/g7-to-release-100-million-barrels-of-oil-and-diesel-will-it-curb-prices"
+    },
+    {
+      "title": "Trading Economics United States economic calendar for 5-9 October 2026",
+      "url": "https://tradingeconomics.com/united-states/calendar"
+    }
+  ],
+  "lookbackSummary": "All 24 preceding clock-hours carry published Claude assessments. The window opens in the first hour after Friday's close with Tail 12 and Stress 72 under a mixed mode, then decays as the halt takes hold: Tail falls from 12 to 3 by 12:00Z and the mode settles to normal from 00:00Z onward. Stress troughs at 52 around 14:00Z on Saturday and then climbs steadily back to 69 by 21:00Z as the energy and Gulf escalation threads reopened and finally produced a claimed strike on a Riyadh refinery. Confidence held in a narrow 82 to 88 range throughout, consistent with verified session levels and no live price path.",
+  "outlookSummary": "Every hour of this forecast window falls inside the CME equity-index weekend halt, so no Nasdaq-100 price path can form. Tail is held at 3 for the first seventeen hours and rises only to 6 in the final hours as the restart approaches, mapping to EA_ON and green throughout. Stress drifts from 70 to a peak of 79 and remains in the high band, because a record diesel squeeze, the G7's 100-million-barrel release, an unconfirmed Riyadh refinery strike and a 10-year that reversed higher to 5.2939% accumulate with no venue able to price them. Confidence eases from 84 to 81 overnight as Friday's levels age, lifts to 83 during the Gulf cash session when the only live venue with direct exposure can be observed, then settles at 79. The mode shifts from normal to mixed for the final eight hours, which is the honest label for a two-sided unpriced stack rather than an assertion of structure. The restart at 22:00Z on 4 October sits exactly at the end of the final scored hour and falls to later publications to score.",
+  "lookback": [
+    {
+      "ts": "2026-10-02T22:00:00Z",
+      "timeBerlin": "2026-10-03T00:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 72,
+      "confidencePct": 87,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-02T23:00:00Z",
+      "timeBerlin": "2026-10-03T01:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 11,
+      "stressRiskPct": 71,
+      "confidencePct": 88,
+      "dominantMode": "mixed"
+    },
+    {
+      "ts": "2026-10-03T00:00:00Z",
+      "timeBerlin": "2026-10-03T02:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 68,
+      "confidencePct": 84,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T01:00:00Z",
+      "timeBerlin": "2026-10-03T03:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 66,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T02:00:00Z",
+      "timeBerlin": "2026-10-03T04:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 9,
+      "stressRiskPct": 65,
+      "confidencePct": 82,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T03:00:00Z",
+      "timeBerlin": "2026-10-03T05:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T04:00:00Z",
+      "timeBerlin": "2026-10-03T06:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T05:00:00Z",
+      "timeBerlin": "2026-10-03T07:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T06:00:00Z",
+      "timeBerlin": "2026-10-03T08:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 8,
+      "stressRiskPct": 65,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T07:00:00Z",
+      "timeBerlin": "2026-10-03T09:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 7,
+      "stressRiskPct": 62,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T08:00:00Z",
+      "timeBerlin": "2026-10-03T10:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 60,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T09:00:00Z",
+      "timeBerlin": "2026-10-03T11:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 59,
+      "confidencePct": 87,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T10:00:00Z",
+      "timeBerlin": "2026-10-03T12:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 57,
+      "confidencePct": 88,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T11:00:00Z",
+      "timeBerlin": "2026-10-03T13:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 55,
+      "confidencePct": 87,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T12:00:00Z",
+      "timeBerlin": "2026-10-03T14:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 54,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T13:00:00Z",
+      "timeBerlin": "2026-10-03T15:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 53,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T14:00:00Z",
+      "timeBerlin": "2026-10-03T16:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 52,
+      "confidencePct": 86,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T15:00:00Z",
+      "timeBerlin": "2026-10-03T17:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 54,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T16:00:00Z",
+      "timeBerlin": "2026-10-03T18:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 57,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T17:00:00Z",
+      "timeBerlin": "2026-10-03T19:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 58,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T18:00:00Z",
+      "timeBerlin": "2026-10-03T20:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 60,
+      "confidencePct": 84,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T19:00:00Z",
+      "timeBerlin": "2026-10-03T21:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 64,
+      "confidencePct": 83,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T20:00:00Z",
+      "timeBerlin": "2026-10-03T22:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 67,
+      "confidencePct": 84,
+      "dominantMode": "normal"
+    },
+    {
+      "ts": "2026-10-03T21:00:00Z",
+      "timeBerlin": "2026-10-03T23:00:00+02:00",
+      "available": true,
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 69,
+      "confidencePct": 85,
+      "dominantMode": "normal"
+    }
+  ],
+  "forecast": [
+    {
+      "ts": "2026-10-03T22:00:00Z",
+      "timeBerlin": "2026-10-04T00:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 70,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "Assessment hour, 22:00Z to 23:00Z. CME equity-index futures have been halted since Friday 21:00Z, so no Nasdaq-100 price path exists to score and Tail holds at 3. The last observed path is Friday's: a new 31,017.53 intraday record fully retraced into a 30,807.93 close in the lower quarter of the 30,737.07-31,017.53 range.",
+      "drivers": [
+        "CME equity-index futures halted since Friday 21:00Z; no venue can price risk",
+        "Friday's 31,017.53 intraday record fully retraced into a close near the session low",
+        "VIX closed at 15.31, down 6.59%, at the bottom of a 15.30-16.24 range",
+        "Houthi claim on a Riyadh Aramco facility unconfirmed by Saudi authorities or Aramco"
+      ],
+      "news": [
+        {
+          "title": "Nasdaq 100 closes at a record after soft US jobs; Treasury yields reverse higher",
+          "url": "https://investinglive.com/news/investinglive-americas-fx-news-wrap-2-oct-nasdaq-100-closes-at-a-record-after-soft-us-jobs-treasury-yields-reverse-higher/",
+          "source": "investingLive"
+        },
+        {
+          "title": "Fire, smoke seen near Aramco facility in Riyadh as Saudi-Houthi conflict continues",
+          "url": "https://www.jpost.com/middle-east/article-910460",
+          "source": "The Jerusalem Post"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-03T23:00:00Z",
+      "timeBerlin": "2026-10-04T01:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 70,
+      "confidencePct": 84,
+      "dominantMode": "normal",
+      "analysis": "Second halt hour. Nothing changes the scored price path because no venue is open; the hour's only content is that Saturday's claimed Riyadh refinery strike remains unconfirmed on damage, casualties and throughput, and cannot be priced anywhere. Tail stays at 3 on the absence of structure, not on a benign view of the news.",
+      "drivers": [
+        "No open venue between the Friday close and the Sunday 22:00Z restart",
+        "Riyadh damage, casualties and throughput effect all still unconfirmed",
+        "Tail 3 reflects an unscoreable path, not a judgement that the stack is benign"
+      ],
+      "news": [
+        {
+          "title": "Fire, smoke seen near Aramco facility in Riyadh as Saudi-Houthi conflict continues",
+          "url": "https://www.jpost.com/middle-east/article-910460",
+          "source": "The Jerusalem Post"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T00:00:00Z",
+      "timeBerlin": "2026-10-04T02:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 71,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Sunday opens in European time with every relevant venue closed. Stress edges to 71 as the unresolved energy stack ages without a market read: diesel at a $6.37 national average after a $6.52 record, Brent near $102, and the G7's 100-million-barrel release only beginning to be delivered.",
+      "drivers": [
+        "U.S. diesel national average $6.37 after a $6.52 record on 22 September",
+        "G7/IEA release of 100 million barrels frontloads diesel over the first 20 days",
+        "Brent near $102 after briefly trading below $100 on the announcement"
+      ],
+      "news": [
+        {
+          "title": "G7 to release 100 million barrels of oil and diesel, will it curb prices?",
+          "url": "https://www.aljazeera.com/news/2026/10/3/g7-to-release-100-million-barrels-of-oil-and-diesel-will-it-curb-prices",
+          "source": "Al Jazeera"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T01:00:00Z",
+      "timeBerlin": "2026-10-04T03:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 71,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Deep weekend hour. Confidence eases to 83 purely because Friday's verified levels continue to age with no newer market observation available. The scored assessment still rests on independently verified index, volatility, curve and crude levels rather than on any inferred overnight structure.",
+      "drivers": [
+        "Friday's verified close is the newest market observation and is ageing",
+        "No live price path can exist, so no structure may be inferred for this hour",
+        "Confidence decay is an evidence-freshness effect, not a risk signal"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T02:00:00Z",
+      "timeBerlin": "2026-10-04T04:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 72,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Stress reaches 72. The configuration carried into the weekend is genuinely difficult: a record Nasdaq-100 close against a 10-year that reversed higher to 5.2939%, up about 6 basis points on a day when payrolls printed 29,000 against a 90,000 consensus. Rising long yields on weak labour data is a stress input, not a Tail input.",
+      "drivers": [
+        "10-year reversed from 5.17% post-payrolls to 5.2939%, up about 6bp on the day",
+        "2-year ended at 4.8414%, up about 5bp, despite the soft September payrolls",
+        "Record equity close against rising long yields is a Stress and Confidence input"
+      ],
+      "news": [
+        {
+          "title": "Employment Situation Summary for September 2026: nonfarm payrolls +29,000, unemployment rate 4.2%",
+          "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+          "source": "U.S. Bureau of Labor Statistics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T03:00:00Z",
+      "timeBerlin": "2026-10-04T05:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 72,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Overnight hour with no venue. The hour's relevance is the standing offset to the escalation thread: the G7 release is designed to work against exactly the supply crunch the Gulf and Russian refinery attacks created, so the two sides of the stack partly cancel and neither can be scored as an NQ price path here.",
+      "drivers": [
+        "G7 release is an explicit policy offset to the Gulf and Russian supply crunch",
+        "Ukrainian strikes on Russian refineries and halted Chinese diesel exports persist",
+        "Offsetting policy and escalation keep the stack two-sided and unscoreable"
+      ],
+      "news": [
+        {
+          "title": "G7 to release 100 million barrels of oil and diesel, will it curb prices?",
+          "url": "https://www.aljazeera.com/news/2026/10/3/g7-to-release-100-million-barrels-of-oil-and-diesel-will-it-curb-prices",
+          "source": "Al Jazeera"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T04:00:00Z",
+      "timeBerlin": "2026-10-04T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 72,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Confidence settles to 81 as the gap between Friday's close and the present widens past thirty hours. Tail remains 3 because the inherited contract scores observed mean-reversion failure, and the most recent observation available is an orderly two-way session that ended below its own intraday record.",
+      "drivers": [
+        "More than thirty hours since the last observable Nasdaq-100 price",
+        "Most recent observed path was orderly two-way discovery, not extension",
+        "No shallow-pullback or failed-retracement evidence exists for this hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T05:00:00Z",
+      "timeBerlin": "2026-10-04T07:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 73,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Stress 73. Equity internals carried into the halt are narrow: the September payroll miss reframed the Fed path toward a hold at the 28 October meeting and lifted megacaps and semiconductors, while breadth outside that leadership was far weaker. Narrow leadership is a fragility input that has not yet produced mean-reversion failure.",
+      "drivers": [
+        "Soft payrolls reframed the October Fed meeting toward a hold",
+        "Friday's gains concentrated in megacaps and semiconductors",
+        "Narrow leadership raises Stress without establishing Tail structure"
+      ],
+      "news": [
+        {
+          "title": "Employment Situation Summary for September 2026: nonfarm payrolls +29,000, unemployment rate 4.2%",
+          "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+          "source": "U.S. Bureau of Labor Statistics"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T06:00:00Z",
+      "timeBerlin": "2026-10-04T08:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 73,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Final hour before Gulf cash markets open. No Nasdaq-100 evidence is available in this hour; the forward relevance is that Saudi equities will shortly provide the first and only live market read on the claimed Riyadh refinery strike while every Western venue stays closed.",
+      "drivers": [
+        "Gulf cash session opens around 07:00Z and is the only live venue today",
+        "A Gulf read would be delayed, foreign-market evidence under the inherited rule",
+        "No Gulf outcome can establish current Nasdaq-100 structure or move the action"
+      ],
+      "news": [
+        {
+          "title": "Fire, smoke seen near Aramco facility in Riyadh as Saudi-Houthi conflict continues",
+          "url": "https://www.jpost.com/middle-east/article-910460",
+          "source": "The Jerusalem Post"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T07:00:00Z",
+      "timeBerlin": "2026-10-04T09:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 74,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Gulf cash markets open. Confidence lifts to 82 because a live venue with direct exposure to the Riyadh claim becomes observable for the first time since the event. Under the inherited delayed-evidence rule this can inform Stress and Confidence only; it cannot establish current Nasdaq-100 structure or change the mapped action.",
+      "drivers": [
+        "Saudi cash session opens, offering the first market read on the Riyadh claim",
+        "Delayed foreign-venue evidence informs Stress and Confidence, never Tail action",
+        "Stress 74 reflects an unresolved stack, not a confirmed production loss"
+      ],
+      "news": [
+        {
+          "title": "Fire, smoke seen near Aramco facility in Riyadh as Saudi-Houthi conflict continues",
+          "url": "https://www.jpost.com/middle-east/article-910460",
+          "source": "The Jerusalem Post"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T08:00:00Z",
+      "timeBerlin": "2026-10-04T10:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 74,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Gulf session underway. If Saudi energy names trade without disorder, that is mild evidence against a confirmed throughput loss at Riyadh and supports Confidence at 83. A disorderly Gulf session would raise Stress further but still could not establish a Nasdaq-100 price path while CME equity futures remain halted.",
+      "drivers": [
+        "An orderly Gulf session would be mild evidence against a throughput loss",
+        "A disorderly Gulf session would raise Stress but not the Tail action",
+        "CME equity-index futures stay halted throughout this hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T09:00:00Z",
+      "timeBerlin": "2026-10-04T11:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 74,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Mid-Gulf-session hour. The checkpoint that matters for the restart is confirmation: official Saudi or Aramco comment on damage, interception reports, or independent imagery identifying the cause. None of that exists as of the assessment cutoff, so the hour is scored on the absence of confirmation rather than on an assumed outcome.",
+      "drivers": [
+        "Official Saudi or Aramco confirmation is the decisive unresolved checkpoint",
+        "Interception reports or independent imagery would also resolve the claim",
+        "Hour scored on absence of confirmation, not an assumed outcome"
+      ],
+      "news": [
+        {
+          "title": "Fire, smoke seen near Aramco facility in Riyadh as Saudi-Houthi conflict continues",
+          "url": "https://www.jpost.com/middle-east/article-910460",
+          "source": "The Jerusalem Post"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T10:00:00Z",
+      "timeBerlin": "2026-10-04T12:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 75,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Stress 75. The OPEC+ online meeting of the participating countries is scheduled for today, with November targets widely expected to be left unchanged; the exact hour is not reliably published, so it is carried as a checkpoint in this window rather than as a dated calendar event. Any outcome reaches Nasdaq-100 pricing only after the restart.",
+      "drivers": [
+        "OPEC+ participating countries meet online today to review November targets",
+        "Exact meeting time is not reliably published, so it stays a checkpoint",
+        "Unchanged November targets are the widely expected outcome",
+        "Any OPEC+ outcome can only be priced by NQ after the 22:00Z restart"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T11:00:00Z",
+      "timeBerlin": "2026-10-04T13:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 75,
+      "confidencePct": 83,
+      "dominantMode": "normal",
+      "analysis": "Hour before the Gulf cash close. The two-sided character of the stack is clearest here: an unconfirmed strike on Saudi refining capacity on one side, and a frontloaded G7 diesel release plus an expected unchanged OPEC+ target on the other. Neither side has produced observable Nasdaq-100 extension.",
+      "drivers": [
+        "Unconfirmed Saudi refining damage sits against a frontloaded G7 diesel release",
+        "An expected unchanged OPEC+ November target adds to the offsetting side",
+        "Neither side has produced observable Nasdaq-100 extension"
+      ],
+      "news": [
+        {
+          "title": "G7 to release 100 million barrels of oil and diesel, will it curb prices?",
+          "url": "https://www.aljazeera.com/news/2026/10/3/g7-to-release-100-million-barrels-of-oil-and-diesel-will-it-curb-prices",
+          "source": "Al Jazeera"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T12:00:00Z",
+      "timeBerlin": "2026-10-04T14:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 75,
+      "confidencePct": 82,
+      "dominantMode": "normal",
+      "analysis": "Gulf cash markets close and the last live venue of the day shuts. Confidence eases to 82 as observation stops again and the window to the 22:00Z restart becomes entirely unobservable. Stress holds at 75 inside the high band, which on this contract does not by itself change the mapped state.",
+      "drivers": [
+        "Gulf cash close removes the only live venue until the 22:00Z restart",
+        "Remaining hours before the restart are entirely unobservable",
+        "Stress in the high band does not by itself change the mapped state"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T13:00:00Z",
+      "timeBerlin": "2026-10-04T15:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 3,
+      "stressRiskPct": 76,
+      "confidencePct": 81,
+      "dominantMode": "normal",
+      "analysis": "Post-Gulf hour with no open market. Tail is still 3 on the ninth consecutive scored hour of the halt. The weekend has produced no evidence of the pattern Tail measures: there has been no opportunity for a shallow pullback to fail or for price to extend after a failed retracement.",
+      "drivers": [
+        "Ninth consecutive scored hour of the equity-index halt",
+        "No opportunity for a pullback to fail or for price to extend",
+        "Tail 3 is an absence-of-structure reading throughout the halt"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T14:00:00Z",
+      "timeBerlin": "2026-10-04T16:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 76,
+      "confidencePct": 81,
+      "dominantMode": "mixed",
+      "analysis": "Tail ticks to 4 and the mode moves to mixed, which is the honest label for a two-sided unpriced stack rather than an assertion of structure. The increment is conditional restart-proximity risk: roughly six hours remain before CME equity-index futures reopen into news that no venue has yet absorbed.",
+      "drivers": [
+        "About six hours remain before the 22:00Z equity-index restart",
+        "Mixed mode labels a two-sided unpriced stack, not observed structure",
+        "Tail increment is conditional restart proximity, not observed extension"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T15:00:00Z",
+      "timeBerlin": "2026-10-04T17:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 4,
+      "stressRiskPct": 76,
+      "confidencePct": 80,
+      "dominantMode": "mixed",
+      "analysis": "Restart-approach hour. One published view on this window is that the market could reverse by Monday if the structural question of who releases energy stocks is not resolved; that is a cited opinion about a future path, not an observation, and on this contract it informs Stress and Confidence rather than the Tail action.",
+      "drivers": [
+        "A cited view warns of a possible reversal by Monday on unresolved stock releases",
+        "Cited forward opinion informs Stress and Confidence, never the Tail action",
+        "No observed price path supports or contradicts it while venues are closed"
+      ],
+      "news": [
+        {
+          "title": "G7 to release 100 million barrels of oil and diesel, will it curb prices?",
+          "url": "https://www.aljazeera.com/news/2026/10/3/g7-to-release-100-million-barrels-of-oil-and-diesel-will-it-curb-prices",
+          "source": "Al Jazeera"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T16:00:00Z",
+      "timeBerlin": "2026-10-04T18:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 77,
+      "confidencePct": 80,
+      "dominantMode": "mixed",
+      "analysis": "Tail 5. Policy risk on the energy side is narrower than it was a week ago: the U.S. administration has explicitly ruled out a diesel export ban, removing one discontinuous policy path that could have forced a disorderly repricing of refiners and transport costs into the restart.",
+      "drivers": [
+        "A U.S. diesel export ban has been explicitly ruled out",
+        "Removing that policy path narrows one discontinuous restart scenario",
+        "Diesel remains historically expensive at a $6.37 national average"
+      ],
+      "news": [
+        {
+          "title": "After threatening to ban U.S. exports of diesel fuel, Trump admits 'we were never going to do it'",
+          "url": "https://fortune.com/2026/10/03/us-diesel-export-ban-record-prices-trump-europe-g7-reserves-release/",
+          "source": "Fortune"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T17:00:00Z",
+      "timeBerlin": "2026-10-04T19:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 77,
+      "confidencePct": 80,
+      "dominantMode": "mixed",
+      "analysis": "Conditional pre-restart hour. If the Riyadh claim is confirmed with a measurable throughput loss before the restart, the appropriate response under this contract is higher Stress and a tighter Confidence band first, with Tail following only once observed Nasdaq-100 extension or failed retracements appear after trading resumes.",
+      "drivers": [
+        "Confirmed throughput loss would raise Stress and tighten Confidence first",
+        "Tail would follow only on observed extension after trading resumes",
+        "No confirmation exists as of the assessment cutoff"
+      ],
+      "news": [
+        {
+          "title": "Fire, smoke seen near Aramco facility in Riyadh as Saudi-Houthi conflict continues",
+          "url": "https://www.jpost.com/middle-east/article-910460",
+          "source": "The Jerusalem Post"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T18:00:00Z",
+      "timeBerlin": "2026-10-04T20:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 78,
+      "confidencePct": 79,
+      "dominantMode": "mixed",
+      "analysis": "Stress 78 near the top of the high band. Weekend-gap uncertainty is at its maximum here because the full unpriced stack, energy supply, the Gulf escalation thread, the payroll-driven Fed repricing and a record index level, must clear into a single thinly traded restart print four hours from now.",
+      "drivers": [
+        "Unpriced stack must clear into one thinly traded restart print",
+        "Weekend-gap uncertainty peaks in the hours immediately before the restart",
+        "Record index level raises the size of any restart gap, not its direction"
+      ],
+      "news": [
+        {
+          "title": "Nasdaq 100 closes at a record after soft US jobs; Treasury yields reverse higher",
+          "url": "https://investinglive.com/news/investinglive-americas-fx-news-wrap-2-oct-nasdaq-100-closes-at-a-record-after-soft-us-jobs-treasury-yields-reverse-higher/",
+          "source": "investingLive"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-04T19:00:00Z",
+      "timeBerlin": "2026-10-04T21:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 5,
+      "stressRiskPct": 78,
+      "confidencePct": 79,
+      "dominantMode": "mixed",
+      "analysis": "Restart now roughly three hours out. The scored framing stays conditional: a gap alone is not the pattern Tail measures, and the inherited contract requires observed persistent one-way structure or repeated extension after failed retracements before Tail leaves the low band.",
+      "drivers": [
+        "A restart gap alone is not the pattern Tail measures",
+        "Observed persistent one-way structure is required before Tail leaves the low band",
+        "Restart is about three hours beyond this hour"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T20:00:00Z",
+      "timeBerlin": "2026-10-04T22:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 79,
+      "confidencePct": 79,
+      "dominantMode": "mixed",
+      "analysis": "Tail 6 and Stress 79, both still inside their current bands, so the deterministic mapping remains EA_ON and green. The restart sequence to watch after this window is the opening print, whether early pullbacks are bought shallowly, and whether price holds near a session extreme rather than retracing.",
+      "drivers": [
+        "Opening restart print and the depth of early pullbacks are the first checkpoints",
+        "Holding near a session extreme without retracement would be Tail evidence",
+        "Tail 6 and Stress 79 remain inside their current bands"
+      ],
+      "news": []
+    },
+    {
+      "ts": "2026-10-04T21:00:00Z",
+      "timeBerlin": "2026-10-04T23:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 6,
+      "stressRiskPct": 79,
+      "confidencePct": 79,
+      "dominantMode": "mixed",
+      "analysis": "Final scored hour, 21:00Z to 22:00Z, ending exactly at the CME equity-index restart. Tail 6, Stress 79 and Confidence 79 all describe a closed market carrying an unresolved but two-sided stack. The restart print and any post-restart structure fall outside this window and to later publications to score.",
+      "drivers": [
+        "Final scored hour ends exactly at the 22:00Z equity-index restart",
+        "Restart print and post-restart structure are outside this window",
+        "Two-sided unresolved stack keeps the mode mixed and Tail in the low band"
+      ],
+      "news": []
+    }
+  ],
+  "forecastDetail": [
+    {
+      "ts": "2026-10-03T22:00:00Z",
+      "timeBerlin": "2026-10-04T00:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 70,
+      "comment": "Halt hour with no Nasdaq-100 price path to score. Friday's full retracement of the 31,017.53 intraday record into a 30,807.93 close in the lower quarter of the range, with VIX at 15.31, is orderly mean reversion rather than the extension pattern Tail measures."
+    },
+    {
+      "ts": "2026-10-03T23:00:00Z",
+      "timeBerlin": "2026-10-04T01:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 70,
+      "comment": "Second halt hour. The claimed Riyadh refinery strike remains unconfirmed on damage, casualties and throughput, and no venue is open to price it; Tail 3 reflects an unscoreable path rather than a benign reading of the news."
+    },
+    {
+      "ts": "2026-10-04T00:00:00Z",
+      "timeBerlin": "2026-10-04T02:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 71,
+      "comment": "Sunday opens in European time with all relevant venues closed. Stress edges to 71 as the energy stack ages without a market read: diesel at a $6.37 average after a $6.52 record, Brent near $102, and the G7 release only beginning to deliver."
+    },
+    {
+      "ts": "2026-10-04T01:00:00Z",
+      "timeBerlin": "2026-10-04T03:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 71,
+      "comment": "Deep weekend hour. Confidence eases to 83 solely because Friday's verified levels continue to age with no newer market observation available; no overnight structure is inferred."
+    },
+    {
+      "ts": "2026-10-04T02:00:00Z",
+      "timeBerlin": "2026-10-04T04:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 72,
+      "comment": "Stress 72. A record Nasdaq-100 close against a 10-year that reversed higher to 5.2939% on a 29,000 payroll print is a genuinely difficult configuration, and rising long yields on weak labour data is a Stress input rather than a Tail input."
+    },
+    {
+      "ts": "2026-10-04T03:00:00Z",
+      "timeBerlin": "2026-10-04T05:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 72,
+      "comment": "Overnight hour with no venue. The G7 release works directly against the supply crunch the Gulf and Russian refinery attacks created, so the two sides of the stack partly cancel and neither is scoreable as a Nasdaq-100 price path."
+    }
+  ],
+  "events": [
+    {
+      "name": "S&P Global Services and Composite PMI final (September)",
+      "ts": "2026-10-05T13:45:00Z",
+      "timeBerlin": "2026-10-05T15:45:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "ISM Services PMI (September)",
+      "ts": "2026-10-05T14:00:00Z",
+      "timeBerlin": "2026-10-05T16:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "U.S. balance of trade (August)",
+      "ts": "2026-10-06T12:30:00Z",
+      "timeBerlin": "2026-10-06T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "U.S. 3-year note auction",
+      "ts": "2026-10-06T17:00:00Z",
+      "timeBerlin": "2026-10-06T19:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "EIA weekly petroleum status report",
+      "ts": "2026-10-07T14:30:00Z",
+      "timeBerlin": "2026-10-07T16:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "FOMC minutes of the September meeting",
+      "ts": "2026-10-07T18:00:00Z",
+      "timeBerlin": "2026-10-07T20:00:00+02:00",
+      "impact": "high"
+    },
+    {
+      "name": "Initial jobless claims (week ending 3 October)",
+      "ts": "2026-10-08T12:30:00Z",
+      "timeBerlin": "2026-10-08T14:30:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Wholesale inventories (August)",
+      "ts": "2026-10-08T14:00:00Z",
+      "timeBerlin": "2026-10-08T16:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "University of Michigan consumer sentiment preliminary (October)",
+      "ts": "2026-10-09T14:00:00Z",
+      "timeBerlin": "2026-10-09T16:00:00+02:00",
+      "impact": "medium"
+    }
+  ]
+}
