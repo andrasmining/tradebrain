@@ -3,23 +3,23 @@
   "provider": "claude",
   "engineVersion": "1.0.0",
   "promptVersion": "1.3.0",
-  "generatedAt": "2026-10-04T04:34:18Z",
+  "generatedAt": "2026-10-04T05:33:52Z",
   "market": "NASDAQ-100",
   "instruments": [
     "NQ_FUTURES",
     "NAS100_CFD"
   ],
   "status": "green",
-  "statusText": "Mapped policy state: EA_ON. Tail is 3 and far below the block threshold because CME equity-index futures have been halted since Friday 21:00Z, leaving no Nasdaq-100 price path to score. The last observed path was orderly two-way discovery: Friday's record 31,017.53 intraday high was fully retraced into a 30,807.93 close in the lower quarter of the 30,737.07-31,017.53 session range, with VIX down 6.59% to 15.31. Stress eases to 73, one point below the previous hour, because newly verified weekend evidence partly offsets the unconfirmed Houthi-claimed strike on Aramco's Riyadh refinery: Strait of Hormuz crude flows are reported back near 98% of pre-war levels, the Saudi East-West pipeline and Yanbu loadings have been restored, and the G7 and IEA release of up to 100 million barrels is frontloaded into the next 20 days. Confidence is 85 on verified Friday levels, yields, oil, VIX and a seven-day calendar, with the absence of a live price path as the one explicit completeness gap.",
-  "recommendation": "Tail stays in the low band for the first eighteen scored hours, so the deterministic mapping remains EA_ON and green through 21:00Z while the weekend halt runs. The three hours from the 22:00Z CME restart carry Tail 21, 22 and 20, which maps to WATCH and yellow: that is the mildest cautionary band and reflects roughly 49 hours of accumulated news repricing into the thinnest books of the week, where a gap can extend without the retracements this framework depends on. Tail returns to the low band at 17 by 01:00Z and eases to 13 by 03:00Z, so the mapping reverts to EA_ON and green for the final three hours. No hour in this window reaches the block threshold, because no persistent one-way Nasdaq-100 structure has been observed and none can be observed while the venue is closed. Existing-position management and emergency protection remain unaffected by the mapping.",
-  "headline": "Weekend CME halt holds Tail at 3 with no Nasdaq-100 price path to score, while verified Hormuz recovery near 98% of pre-war flows and the frontloaded G7 barrel release ease Stress to 73 against an unconfirmed Riyadh refinery strike, keeping the three hours after the 22:00Z restart in the watch band",
-  "body": "Friday 2 October remains the last traded session and its levels were independently re-verified for this publication. The Nasdaq-100 closed at a record 30,807.93, up 306.37 points or 1.00% from a 30,501.56 previous close, inside a 30,737.07-31,017.53 session range whose high is also the 52-week high. The detail that matters most for this framework is unchanged: the new intraday record at 31,017.53 was fully retraced and the index finished in the lower quarter of its own daily range. That is orderly two-way price discovery, not the shallow-pullback extension or failed-retracement pattern that defines Tail, so Tail holds at 3. VIX closed at 15.31, down 6.59% from 16.39 inside a 15.30-16.24 range, confirming volatility decay into the halt. Nasdaq-100 futures settled roughly 0.94% higher near 31,049 before CME equity-index trading halted at 21:00Z, and the venue reopens at 22:00Z on Sunday.\n\nThe session's driver was the September employment report: nonfarm payrolls rose 29,000 against a consensus near 90,000, the unemployment rate rose to 4.2% from 4.1%, and August was revised down to 133,000. Reporting indicates the probability of an October Fed hike collapsed from 64% to below 21% on that print. The rates reaction was two-way rather than one-way: the 10-year Treasury yield reached 5.34%, its highest since 2002, before retreating to settle near 5.205%, down about 3 basis points on the day. Federal Reserve H.15 data for 1 October shows the 2-year at 4.78%, the 10-year at 5.24% and the 30-year at 5.61%. Yields near two-decade highs alongside a record index level is the central tension holding Stress in the high band at 73.\n\nThe weekend's unresolved input is a large fire at Aramco's Riyadh refinery on Saturday 3 October. Houthi military spokesman Yahya Saree claimed a ballistic-missile and drone strike; neither Saudi authorities nor Aramco have confirmed the cause or any damage, and reporting also describes Saudi strikes on Sanaa. This is the third such episode in 2026 after comparable attacks in August and September, both of which markets absorbed, and the Riyadh site is a domestic refinery rather than a crude export terminal. Set against it is a genuinely verified de-escalation and supply-normalisation thread that this hour's research confirmed: Strait of Hormuz crude flows are reported recovered to roughly 13.2 million barrels per day, about 98% of pre-war levels; Saudi Arabia restarted the East-West pipeline and resumed Yanbu loadings, restoring a Red Sea export route; the G7 and IEA agreed on 2 October to release up to 100 million barrels of crude and diesel over four months with a frontloaded diesel component in the first 20 days and a pledge not to impose energy export restrictions; and weekend remarks attributed to the U.S. president stated that Iran has virtually given up plans for a nuclear weapon and that oil is falling. WTI spot was quoted at $91.11, down 1.90% on 2 October after an intraday one-month low of $88.06, with November WTI futures settling at $93.00 and Brent near $102.25. Oil fell on Friday despite the Gulf headlines, which is itself evidence that the supply-release and normalisation channel is currently dominant.\n\nTwo further threads inform Stress rather than Tail. Leadership is narrow: the Nasdaq-100 and the semiconductor complex are firm while the equal-weight S&P, the Dow and small caps are described as still held in bearish intermediate-term downtrends. Under the inherited evidence rules, conflicting breadth reduces directional conviction and raises uncertainty rather than mechanically raising Tail. Separately, a European bond-contagion thread centred on France has the 10-year OAT at 4.924%, its highest since 2002, with the OAT-Bund spread at 1.4 percentage points, the widest since the 2011-2012 crisis. Neither thread establishes a pathological Nasdaq-100 price path.\n\nThe shared Finviz context file was read as required and is not usable this hour: its generatedAt is 2026-09-29T23:14:22Z with collectionStatus partial, roughly 4.7 days old and far outside the 90-minute freshness contract. Under the fail-open rule that isolates evidence failure, this publication proceeds on full independent research and the stale context contributed nothing to the scores.\n\nThe forward window is shaped by one dated discontinuity. Eighteen of the 24 forecast hours fall inside the halt, where Tail cannot be scored from structure and stays at or just above the floor. The 22:00Z restart repricing roughly 49 hours of accumulated news into the thinnest books of the week is a genuine gap-extension risk, which is why three hours carry watch-band Tail of 21, 22 and 20 and a mixed mode. It is not a block: no persistent one-way structure has been observed, the escalation input is unquantified, the offsetting evidence is verified, and the overlay requires observed mean-reversion failure before Tail crosses 25. The next dated checkpoint after the restart is the ISM Services PMI at 14:00Z on 5 October, with the 10-year auction and September FOMC minutes on 7 October the week's principal rates events.",
+  "statusText": "Mapped policy state: EA_ON. Tail risk 3% (low) with no Nasdaq-100 price path available during the CME weekend halt.",
+  "recommendation": "Tail remains far below the block threshold, so the mapped policy state stays EA_ON. A narrow danger window is published around the 22:00Z CME reopen (00:00 Berlin on 5 October), where the forecast Tail path reaches the WATCH band on gap and discontinuity risk.",
+  "headline": "Nasdaq-100 at a record close into the weekend futures halt, with an unresolved Saudi escalation framing the Sunday reopen",
+  "body": "CME equity-index futures have been halted since Friday 21:00Z, so no Nasdaq-100 price path exists to assess and Tail stays at its structural floor. The last observed path was orderly: the index traded to an all-time intraday high of 31,017.53 on Friday, fully retraced it, and finished at a record 30,807.93 close in the lower quarter of the session range, with VIX settling at 15.31, down 6.59%. Friday's rally followed September payrolls at +29,000 against a +90,000 forecast, which cut rate-hike expectations, while semiconductors led and breadth was broad. Stress is high rather than low because the macro backdrop is unusually tense for a record close: Brent settled at 102.25 and WTI at 91.11, the 10-year note yield closed near 5.28%, and the Saudi-Houthi conflict escalated after the close. The Houthis claimed a ballistic-missile and drone strike on an Aramco refinery south of Riyadh on 3 October, Yemeni government forces struck Sanaa and Saada in response, and neither Saudi authorities nor Aramco have confirmed the cause of the fire or any impact on production, refining or exports. The G7 commitment to release up to 100 million barrels of crude and diesel is an active offsetting supply response. Event importance of this kind informs Stress and Confidence; it does not by itself establish the persistent no-retracement path that Tail measures. The published forecast therefore holds Tail low through the closed Sunday session and raises it into the WATCH band only across the reopen hours, where gap and discontinuity risk is genuine but not yet observable.",
   "tailRiskPct": 3,
   "tailLevel": "low",
-  "stressRiskPct": 73,
+  "stressRiskPct": 74,
   "stressLevel": "high",
   "dominantMode": "normal",
-  "confidencePct": 85,
+  "confidencePct": 83,
   "confidenceLevel": "high",
   "action": "EA_ON",
   "dangerWindow": {
@@ -44,7 +44,7 @@
       "url": "https://www.federalreserve.gov/releases/h15/"
     },
     {
-      "title": "Trading Economics WTI and Brent crude prices for 2 October 2026",
+      "title": "Trading Economics WTI and Brent crude settlement prices for 2 October 2026",
       "url": "https://tradingeconomics.com/commodity/crude-oil"
     },
     {
@@ -52,23 +52,12 @@
       "url": "https://tradingeconomics.com/united-states/calendar"
     },
     {
-      "title": "OilPrice.com: WTI whipsaws as Gulf supply improves and Middle East risk returns, 2 October 2026",
-      "url": "https://oilprice.com/Energy/Energy-General/WTI-Whipsaws-as-Gulf-Supply-Improves-and-Middle-East-Risk-Returns.html"
+      "title": "Investing.com: Houthis claim strike on Saudi Aramco facility as Yemen fighting intensifies, 4 October 2026",
+      "url": "https://www.investing.com/news/economy-news/houthis-claim-strike-on-saudi-aramco-facility-as-yemen-fighting-intensifies-4930902"
     }
   ],
-  "lookbackSummary": "All 24 preceding clock-hours carry published Claude assessments and no slot required an unavailable entry. The window opens at 04:00Z on 3 October with Tail 8 and Stress 65 under a normal mode and decays as the halt takes hold: Tail falls from 8 to 3 by 12:00Z and holds at 3 for the remaining sixteen hours. Stress troughs at 52 around 14:00Z, then climbs steadily to 75 by 02:00Z on 4 October as the energy and Gulf escalation threads reopened and produced the Riyadh refinery fire. Confidence held in a narrow 83 to 88 band throughout, consistent with verified session levels and no live price path. Every slot carried the normal mode and the EA_ON mapping, and no historical opinion was revised with hindsight.",
+  "lookbackSummary": "Across the past 24 hours Claude published Tail between 8% and 3%, easing to a 3% floor from 12:00Z on 3 October and holding there, while Stress fell to 52% in the European afternoon and then rebuilt steadily to 73-75% through the weekend halt. Confidence stayed in the 83-88% band. Every hour mapped to EA_ON and green, and the dominant mode was normal throughout.",
   "lookback": [
-    {
-      "ts": "2026-10-03T04:00:00Z",
-      "timeBerlin": "2026-10-03T06:00:00+02:00",
-      "available": true,
-      "status": "green",
-      "action": "EA_ON",
-      "tailRiskPct": 8,
-      "stressRiskPct": 65,
-      "confidencePct": 85,
-      "dominantMode": "normal"
-    },
     {
       "ts": "2026-10-03T05:00:00Z",
       "timeBerlin": "2026-10-03T07:00:00+02:00",
@@ -321,65 +310,47 @@
       "stressRiskPct": 75,
       "confidencePct": 85,
       "dominantMode": "normal"
-    }
-  ],
-  "outlookSummary": "Eighteen of the 24 forecast hours fall inside the CME equity-index weekend halt, so no Nasdaq-100 price path can form in them. Tail is held at 3 through 15:00Z, then lifts only gradually to 9 by 21:00Z on the restart approach, mapping to EA_ON and green for all eighteen halted hours. The three hours from 22:00Z carry Tail 21, 22 and 20, crossing into the watch band and mapping to WATCH and yellow on a dated discontinuity, the thinnest books of the week and an unresolved Riyadh damage question. Tail then returns to the low band at 17 by 01:00Z and eases to 13 by 03:00Z. Stress runs from 73 down to a 70 trough in the Asian Sunday void, then up to a 78 peak across the restart before easing to 73, remaining in the high band throughout. Confidence decays from 85 to 77 with evidence age through the halt and recovers to 87 once a live price path exists again. The mode is normal through 19:00Z, mixed across the two-sided reopening from 20:00Z to 01:00Z, and normal for the final two hours.",
-  "forecast": [
+    },
     {
       "ts": "2026-10-04T04:00:00Z",
       "timeBerlin": "2026-10-04T06:00:00+02:00",
+      "available": true,
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
       "stressRiskPct": 73,
       "confidencePct": 85,
-      "dominantMode": "normal",
-      "analysis": "No Nasdaq-100 price path exists in this hour: CME equity-index futures have been halted since Friday 21:00Z. The last observed path was orderly two-way discovery, with Friday's record 31,017.53 high fully retraced into a 30,807.93 close in the lower quarter of the session range and VIX down 6.59% to 15.31.",
-      "drivers": [
-        "Weekend CME halt since Friday 21:00Z leaves no NQ price path to score",
-        "Friday's record 31,017.53 high fully retraced into a lower-quarter close",
-        "VIX closed at 15.31, down 6.59%, showing volatility decay into the halt",
-        "Riyadh Aramco refinery fire still unconfirmed by Saudi authorities or Aramco"
-      ],
-      "news": [
-        {
-          "title": "Saudi-Houthi conflict escalates with reported strikes on one another",
-          "url": "https://www.jpost.com/middle-east/article-910460",
-          "source": "The Jerusalem Post"
-        },
-        {
-          "title": "October 2026 market crossroads: where jobs, oil and bonds collide",
-          "url": "https://que.com/october-2026-market-crossroads-where-jobs-oil-and-bonds-collide",
-          "source": "QUE.com"
-        }
-      ]
-    },
+      "dominantMode": "normal"
+    }
+  ],
+  "outlookSummary": "The closed Sunday session carries no scoreable structure, so Tail is held at 3-8% through 21:00Z with Stress rebuilding from 72% to 79% as unpriced weekend headline flow accumulates. Tail is raised to 21-23%, inside the WATCH band, for the 22:00Z CME reopen and the two hours after it, which form the published danger window. It then decays conditionally to 12% by 04:00Z on the assumption that price discovery is orderly, an assumption that NQ holding a session extreme without meaningful retracement would invalidate. Confidence troughs at 77% late in the halt and peaks at 86% once a live path is observable again.",
+  "forecast": [
     {
       "ts": "2026-10-04T05:00:00Z",
       "timeBerlin": "2026-10-04T07:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 73,
-      "confidencePct": 85,
+      "stressRiskPct": 74,
+      "confidencePct": 83,
       "dominantMode": "normal",
-      "analysis": "Deep inside the weekend halt. The verified weekend inputs are two-sided: a Houthi-claimed strike on Aramco's Riyadh refinery with no Saudi damage confirmation, set against Strait of Hormuz flows back near 98% of pre-war levels. Nothing is tradable, so Tail stays at the floor.",
+      "analysis": "No Nasdaq-100 price path exists this hour: CME equity-index futures have been halted since Friday 21:00Z. The last observed path was orderly two-way discovery, with Friday's all-time intraday high of 31,017.53 fully retraced into a record 30,807.93 close sitting in the lower quarter of the session range.",
       "drivers": [
-        "Houthi spokesman claims ballistic missile and drone strike on the Riyadh refinery",
-        "Strait of Hormuz crude flows back near 98% of pre-war levels",
-        "No tradable venue, so Tail stays pinned at the floor",
-        "Saudi East-West pipeline and Yanbu loadings reported restored"
+        "CME weekend halt since Friday 21:00Z leaves no NQ price path to score",
+        "Friday's 31,017.53 intraday record fully retraced into a lower-quarter close",
+        "VIX settled 15.31, down 6.59%, confirming volatility decay into the halt",
+        "Houthi Aramco claim unconfirmed by Saudi authorities; no supply impact reported"
       ],
       "news": [
         {
-          "title": "Thick smoke covers Riyadh sky as massive blaze breaks out at Aramco site after Houthi strike",
-          "url": "https://www.businesstoday.in/world/story/west-asia-war-blaze-engulfs-riyadh-aramco-site-after-houthis-claim-missile-drone-strike-559362-2026-10-04",
-          "source": "Business Today"
+          "title": "Houthis claim strike on Saudi Aramco facility as Yemen fighting intensifies",
+          "url": "https://www.investing.com/news/economy-news/houthis-claim-strike-on-saudi-aramco-facility-as-yemen-fighting-intensifies-4930902",
+          "source": "Investing.com"
         },
         {
-          "title": "WTI whipsaws as Gulf supply improves and Middle East risk returns",
-          "url": "https://oilprice.com/Energy/Energy-General/WTI-Whipsaws-as-Gulf-Supply-Improves-and-Middle-East-Risk-Returns.html",
-          "source": "OilPrice.com"
+          "title": "Yemen government forces strike Sanaa and Saada as Houthis claim Aramco attack",
+          "url": "https://thenationalnews.com/news/gulf/2026/10/04/yemen-government-forces-strike-sanaa-and-saada-as-houthis-claim-aramco-attack",
+          "source": "The National"
         }
       ]
     },
@@ -389,17 +360,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 72,
-      "confidencePct": 84,
+      "stressRiskPct": 74,
+      "confidencePct": 83,
       "dominantMode": "normal",
-      "analysis": "Early Asian weekend hours with no equity-index venue open. Stress eases a notch because the supply-side evidence gathered overnight leans toward normalisation rather than disruption. A revision would require an official Saudi or Aramco statement, which has not been issued.",
+      "analysis": "Futures stay shut through the European pre-dawn, so Tail cannot be established from structure. Carried risk is headline accumulation: the Houthi claim on the Riyadh refinery is still uncorroborated by Aramco, and any confirmation of damage during this hour would be read at the 22:00Z reopen rather than priced now.",
       "drivers": [
-        "Stress eases a notch on supply normalisation rather than disruption",
-        "No official Saudi or Aramco damage statement has been issued",
-        "Riyadh is a domestic refinery, not a crude export terminal",
-        "No equity-index venue open anywhere in this hour"
+        "Halted tape means Tail is carried, not observed, in this hour",
+        "Aramco silence on refinery damage is the open question of the weekend",
+        "Any Saudi statement here would price only at the 22:00Z reopen"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Houthis claim strike on Saudi Aramco facility as Yemen fighting intensifies",
+          "url": "https://www.investing.com/news/economy-news/houthis-claim-strike-on-saudi-aramco-facility-as-yemen-fighting-intensifies-4930902",
+          "source": "Investing.com"
+        }
+      ]
     },
     {
       "ts": "2026-10-04T07:00:00Z",
@@ -407,14 +383,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 72,
-      "confidencePct": 84,
+      "stressRiskPct": 73,
+      "confidencePct": 82,
       "dominantMode": "normal",
-      "analysis": "Tokyo morning on a Sunday: no equity-index liquidity anywhere. The hour's only plausible new information is a Gulf statement or an early OPEC+ readout. Absent either, the published scores carry forward and conditional Tail remains at the floor.",
+      "analysis": "Still a closed tape. Stress eases marginally as Friday's volatility decay remains the most recent market fact, while Confidence begins to erode purely because the Friday 21:00Z reference set ages without any refreshing price observation.",
       "drivers": [
-        "Tokyo Sunday morning with no equity-index liquidity",
-        "Only a Gulf statement or an early OPEC+ readout could move the scores",
-        "Conditional Tail held at the floor with no observable structure"
+        "Friday 21:00Z reference prints are the newest available market evidence",
+        "Confidence decays on evidence age, not on any new conflicting signal",
+        "No mean-reversion failure is possible while the venue is closed"
       ],
       "news": []
     },
@@ -424,16 +400,22 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 71,
-      "confidencePct": 83,
+      "stressRiskPct": 73,
+      "confidencePct": 82,
       "dominantMode": "normal",
-      "analysis": "Asian Sunday mid-morning. Evidence age is the only moving part, so Confidence steps down while Tail and Stress hold. The framework needs an observable price path to score Tail, and none can form before the 22:00Z CME restart.",
+      "analysis": "Gulf business hours begin inside this hour, which is the first realistic window for an Aramco or Saudi energy-ministry statement on the Riyadh fire. Scores stay flat because any such statement would be a text event against a halted tape, not observable price structure.",
       "drivers": [
-        "Evidence age is the only moving part, so Confidence steps down",
-        "No price path can form before the 22:00Z CME restart",
-        "Verified Friday levels and the week-ahead calendar remain intact"
+        "Gulf business hours open the first realistic Saudi statement window",
+        "A confirmed refining outage would lift reopen gap risk, not current Tail",
+        "Brent settled 102.25 and WTI 91.11 on Friday, already carrying a risk premium"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Yemen government forces strike Sanaa and Saada as Houthis claim Aramco attack",
+          "url": "https://thenationalnews.com/news/gulf/2026/10/04/yemen-government-forces-strike-sanaa-and-saada-as-houthis-claim-aramco-attack",
+          "source": "The National"
+        }
+      ]
     },
     {
       "ts": "2026-10-04T09:00:00Z",
@@ -441,26 +423,20 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 71,
-      "confidencePct": 83,
+      "stressRiskPct": 72,
+      "confidencePct": 81,
       "dominantMode": "normal",
-      "analysis": "Conditions unchanged through the Asian Sunday void. Stress continues easing toward its trough as the de-escalation thread, including reported remarks that Iran has virtually given up nuclear weapon plans, stands unchallenged by any new escalation report.",
+      "analysis": "Sunday mid-morning in Europe with no cash or futures venue open. The countervailing fact to the escalation remains the G7 decision to release up to 100 million barrels of crude and diesel, a supply response that argues against treating the weekend headlines as a one-way energy shock.",
       "drivers": [
-        "Reported remarks that Iran has virtually given up nuclear weapon plans",
-        "G7 and IEA release of up to 100 million barrels over four months",
-        "No new escalation report has challenged the de-escalation thread",
-        "Stress drifts toward its trough inside the Asian Sunday void"
+        "G7 pledge of up to 100 million barrels caps the oil-shock interpretation",
+        "A frontloaded diesel release lands within the first 20 days",
+        "No venue is open, so this hour contributes no directional evidence"
       ],
       "news": [
         {
-          "title": "Trump claims Iran has virtually given up nuclear ambitions",
-          "url": "https://newscentraltv.com/trump-iran-virtually-given-up-nuclear-ambitions",
-          "source": "News Central TV"
-        },
-        {
-          "title": "G7 to release 100 million barrels of oil and diesel, will it curb prices?",
-          "url": "https://www.aljazeera.com/news/2026/10/3/g7-to-release-100-million-barrels-of-oil-and-diesel-will-it-curb-prices",
-          "source": "Al Jazeera"
+          "title": "G7 announces release of diesel, crude oil reserves to curb high prices",
+          "url": "https://www.upi.com/Top_News/World-News/2026/10/02/g7-diesel-crude-oil-reserve-release-fuel-prices/7111790963774/",
+          "source": "UPI"
         }
       ]
     },
@@ -470,20 +446,20 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 70,
-      "confidencePct": 82,
+      "stressRiskPct": 72,
+      "confidencePct": 81,
       "dominantMode": "normal",
-      "analysis": "Stress reaches its trough for this window. The verified picture is a recovering physical oil market against elevated but retreating yields, and nothing in the hour can establish a price path, so conditional Tail stays at the floor by construction.",
+      "analysis": "Conditions are unchanged and unobservable. The relevant distinction for this hour is that the Saudi infrastructure story is already weeks old: the cross-country pipeline was reported back above 80% capacity after earlier attack damage, so the market has repeatedly absorbed this class of headline without a persistent equity trend.",
       "drivers": [
-        "Stress troughs at 70 for this forecast window",
-        "Physical oil supply recovering while yields retreat from 24-year highs",
-        "Tail at the floor by construction with no observable price path"
+        "Saudi cross-country pipeline reported back above 80% of capacity",
+        "Repeated absorption of Gulf supply headlines argues against a Tail regime",
+        "Stress stays high on the unresolved conflict rather than on price action"
       ],
       "news": [
         {
-          "title": "WTI whipsaws as Gulf supply improves and Middle East risk returns",
-          "url": "https://oilprice.com/Energy/Energy-General/WTI-Whipsaws-as-Gulf-Supply-Improves-and-Middle-East-Risk-Returns.html",
-          "source": "OilPrice.com"
+          "title": "Oil Falls as G7 Taps Emergency Supplies",
+          "url": "https://www.rigzone.com/news/oil_falls_as_g7_taps_emergency_supplies-02-oct-2026-184766-article",
+          "source": "Rigzone"
         }
       ]
     },
@@ -493,15 +469,14 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 70,
-      "confidencePct": 82,
+      "stressRiskPct": 72,
+      "confidencePct": 80,
       "dominantMode": "normal",
-      "analysis": "European Sunday midday. The OPEC+ online meeting of seven core members is expected during the daytime hours, but its exact time is not verifiable, so it is carried as a driver checkpoint rather than a dated event. Published scores hold.",
+      "analysis": "The quietest point of the weekend window. Confidence reaches its low here because the Friday evidence set is now more than half a day old with no replacement, while Tail stays minimal since a halted market cannot deny mean reversion.",
       "drivers": [
-        "OPEC+ online meeting of seven core members expected during Sunday daytime",
-        "Exact OPEC+ time not verifiable, so it is a driver and not a dated event",
-        "Reporting points to a rollover of November output targets",
-        "Published scores simply carry forward in this hour"
+        "Evidence age, not evidence conflict, drives the Confidence trough",
+        "Tail floor reflects structural impossibility of a path during the halt",
+        "Next genuine observation is not available before the 22:00Z reopen"
       ],
       "news": []
     },
@@ -511,55 +486,66 @@
       "status": "green",
       "action": "EA_ON",
       "tailRiskPct": 3,
-      "stressRiskPct": 71,
-      "confidencePct": 81,
+      "stressRiskPct": 73,
+      "confidencePct": 80,
       "dominantMode": "normal",
-      "analysis": "Stress turns back up from its trough as the window starts counting down toward the restart with the Riyadh damage question still unanswered. Conditional Tail is unchanged, because no structure can be observed while the venue is closed.",
+      "analysis": "Stress begins to rebuild from this hour as the reopen moves inside a ten-hour horizon and weekend positioning risk becomes the dominant consideration. Tail is held at its floor because gap risk is a reopen-hour property and nothing about Sunday afternoon can be observed as structure.",
       "drivers": [
-        "Countdown to the restart begins to dominate the Stress path",
-        "Extent of any Riyadh refinery damage remains unquantified",
-        "No structure observable while the venue is closed"
+        "Reopen moves inside a ten-hour horizon, rebuilding Stress",
+        "Gap risk belongs to the 22:00Z slot, not to this hour",
+        "Middle East afternoon is the live headline window for the day"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Houthis claim strike on Saudi Aramco facility as Yemen fighting intensifies",
+          "url": "https://www.investing.com/news/economy-news/houthis-claim-strike-on-saudi-aramco-facility-as-yemen-fighting-intensifies-4930902",
+          "source": "Investing.com"
+        }
+      ]
     },
     {
       "ts": "2026-10-04T13:00:00Z",
       "timeBerlin": "2026-10-04T15:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 3,
-      "stressRiskPct": 72,
-      "confidencePct": 81,
+      "tailRiskPct": 4,
+      "stressRiskPct": 73,
+      "confidencePct": 80,
       "dominantMode": "normal",
-      "analysis": "European Sunday afternoon. Stress continues rebuilding because the gap between accumulated weekend news and the next tradable price becomes the dominant consideration from here. Conditional Tail stays at the floor for another set of halted hours.",
+      "analysis": "A first small Tail increment is carried here, reflecting only the shortening distance to the reopen rather than any observed behaviour. If Saudi Arabia proceeds with the reported offensive against the Houthis, that would be a new escalation leg to price at 22:00Z rather than a developing path now.",
       "drivers": [
-        "Gap between accumulated weekend news and the next tradable price",
-        "Stress rebuilds from its trough through the European afternoon",
-        "Conditional Tail stays at the floor for another halted hour"
+        "Reported Saudi offensive plans against the Houthis are an unresolved leg",
+        "Tail increment reflects proximity to the reopen, not observed structure",
+        "US reinforcements, including an additional carrier, remain in the region"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Yemen government forces strike Sanaa and Saada as Houthis claim Aramco attack",
+          "url": "https://thenationalnews.com/news/gulf/2026/10/04/yemen-government-forces-strike-sanaa-and-saada-as-houthis-claim-aramco-attack",
+          "source": "The National"
+        }
+      ]
     },
     {
       "ts": "2026-10-04T14:00:00Z",
       "timeBerlin": "2026-10-04T16:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 3,
-      "stressRiskPct": 73,
-      "confidencePct": 80,
+      "tailRiskPct": 4,
+      "stressRiskPct": 74,
+      "confidencePct": 79,
       "dominantMode": "normal",
-      "analysis": "Mid-afternoon in Europe. Stress rises as the restart approaches with the open items unresolved: the extent of any Aramco damage, the OPEC+ readout, and whether Saudi retaliation extends beyond the reported strikes on Sanaa.",
+      "analysis": "Stress firms as the session approaches. The underlying tension to resolve at the reopen is a genuine cross-asset divergence: Nasdaq-100 at a record close against Brent above 100, the 10-year near 5.28% and VIX at 15.31, which is a complacent volatility price for that macro backdrop.",
       "drivers": [
-        "Open item: extent of any Aramco damage at Riyadh",
-        "Open item: OPEC+ November output readout",
-        "Open item: whether Saudi retaliation extends beyond reported Sanaa strikes",
-        "Mapped policy state unchanged at EA_ON"
+        "Record NQ close against Brent above 100 and the 10-year near 5.28%",
+        "VIX at 15.31 prices little of the standing geopolitical risk",
+        "Divergence informs Stress and Confidence, not current Tail"
       ],
       "news": [
         {
-          "title": "Saudi-Houthi conflict escalates with reported strikes on one another",
-          "url": "https://www.jpost.com/middle-east/article-910460",
-          "source": "The Jerusalem Post"
+          "title": "US stocks close higher as the Nasdaq 100 finish at records",
+          "url": "https://investinglive.com/stocks/us-stocks-close-higher-as-the-nasdaq-100-finish-at-records/",
+          "source": "InvestingLive"
         }
       ]
     },
@@ -568,15 +554,15 @@
       "timeBerlin": "2026-10-04T17:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 3,
+      "tailRiskPct": 4,
       "stressRiskPct": 74,
-      "confidencePct": 80,
+      "confidencePct": 79,
       "dominantMode": "normal",
-      "analysis": "Late European Sunday. Confidence continues its slow decay with evidence age while Stress holds in the high band. Conditional Tail stays at the floor because the first tradable print is still around seven hours away.",
+      "analysis": "Unchanged and still unobservable. This hour's specific relevance is the Monday calendar: ISM Services for September lands at 14:00Z on 5 October, which is the first scheduled catalyst after the reopen and a checkpoint for the soft-jobs repricing that drove Friday's rally.",
       "drivers": [
-        "Confidence decays slowly with evidence age through the halt",
-        "Stress holds in the high band around the mid-70s",
-        "First tradable print still roughly seven hours away"
+        "ISM Services (September) at 14:00Z Monday is the first scheduled catalyst",
+        "Friday's +29K payrolls against a +90K forecast cut rate-hike bets",
+        "Scheduled items stay checkpoints and do not by themselves raise Tail"
       ],
       "news": []
     },
@@ -585,95 +571,117 @@
       "timeBerlin": "2026-10-04T18:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 4,
+      "tailRiskPct": 5,
       "stressRiskPct": 75,
       "confidencePct": 79,
       "dominantMode": "normal",
-      "analysis": "Conditional Tail lifts off the floor to 4, purely as a function of proximity to the restart rather than any observed structure. Stress reaches 75. This hour is still entirely inside the CME halt, so the mapped policy state is unchanged.",
+      "analysis": "Tail steps up modestly as the final pre-reopen stretch begins. The step is a gap-risk allowance only. Whether it is justified will be decided by the opening auction, since the strategy-relevant question is retracement behaviour after the gap print, not the size of the gap itself.",
       "drivers": [
-        "Conditional Tail lifts off the floor to 4 on restart proximity alone",
-        "No observed structure underlies the increase",
-        "Stress reaches 75 as the reopening approach begins"
+        "Final pre-reopen stretch begins; allowance is for gap risk only",
+        "Retracement behaviour after the gap, not gap size, decides Tail",
+        "No observed structure supports a blocking Tail level at this point"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Houthis claim strike on Saudi Aramco facility as Yemen fighting intensifies",
+          "url": "https://www.investing.com/news/economy-news/houthis-claim-strike-on-saudi-aramco-facility-as-yemen-fighting-intensifies-4930902",
+          "source": "Investing.com"
+        }
+      ]
     },
     {
       "ts": "2026-10-04T17:00:00Z",
       "timeBerlin": "2026-10-04T19:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 5,
+      "tailRiskPct": 6,
       "stressRiskPct": 76,
-      "confidencePct": 79,
+      "confidencePct": 78,
       "dominantMode": "normal",
-      "analysis": "Roughly five hours before the CME restart, conditional Tail edges to 5. The two-sided framing matters: a confirmed limited-damage outcome at Riyadh would argue for a muted reopen, while an unquantified strike on refining would price for the first time.",
+      "analysis": "Pre-positioning risk continues to build with roughly five hours to the reopen. Confidence drifts to its weakest sustained level here, as the entire evidence base is now a Friday snapshot plus unverified weekend conflict reporting with no confirmation of physical supply loss.",
       "drivers": [
-        "Limited-damage confirmation at Riyadh would argue for a muted reopen",
-        "An unquantified strike on refining would price for the first time",
-        "Conditional Tail 5, still deep in the low band"
+        "Roughly five hours to the CME reopen",
+        "Evidence base is a Friday snapshot plus unconfirmed weekend reporting",
+        "No confirmed loss of Saudi production, refining or export capacity"
       ],
-      "news": [
-        {
-          "title": "Thick smoke covers Riyadh sky as massive blaze breaks out at Aramco site after Houthi strike",
-          "url": "https://www.businesstoday.in/world/story/west-asia-war-blaze-engulfs-riyadh-aramco-site-after-houthis-claim-missile-drone-strike-559362-2026-10-04",
-          "source": "Business Today"
-        }
-      ]
+      "news": []
     },
     {
       "ts": "2026-10-04T18:00:00Z",
       "timeBerlin": "2026-10-04T20:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 6,
+      "tailRiskPct": 7,
       "stressRiskPct": 76,
       "confidencePct": 78,
       "dominantMode": "normal",
-      "analysis": "Four hours out, Stress holds at 76 near the top of the high band. Conditional Tail of 6 reflects only the dated discontinuity ahead; gap risk is not treated as mean-reversion failure until a failed retracement is actually observed.",
+      "analysis": "Tail continues a measured climb toward the reopen window. The asymmetry worth naming for this hour is that an Aramco statement confirming no material damage would compress the entire reopen premium, while continued silence leaves the premium intact into the auction.",
       "drivers": [
-        "Stress holds at 76 near the top of the high band",
-        "Gap risk is not mean-reversion failure until a retracement actually fails",
-        "Four hours before the 22:00Z CME restart"
+        "Aramco confirming no material damage would compress the reopen premium",
+        "Continued official silence leaves that premium intact into the auction",
+        "Climb in Tail is anticipatory and remains well below the block threshold"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Yemen government forces strike Sanaa and Saada as Houthis claim Aramco attack",
+          "url": "https://thenationalnews.com/news/gulf/2026/10/04/yemen-government-forces-strike-sanaa-and-saada-as-houthis-claim-aramco-attack",
+          "source": "The National"
+        },
+        {
+          "title": "Oil Falls as G7 Taps Emergency Supplies",
+          "url": "https://www.rigzone.com/news/oil_falls_as_g7_taps_emergency_supplies-02-oct-2026-184766-article",
+          "source": "Rigzone"
+        }
+      ]
     },
     {
       "ts": "2026-10-04T19:00:00Z",
       "timeBerlin": "2026-10-04T21:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 7,
+      "tailRiskPct": 8,
       "stressRiskPct": 77,
       "confidencePct": 78,
-      "dominantMode": "normal",
-      "analysis": "Three hours before the restart, conditional Tail of 7 remains deep in the low band. Any pre-restart indication would come from cash-market proxies, which cannot establish current NQ structure under the inherited delayed-evidence rules.",
+      "dominantMode": "mixed",
+      "analysis": "Mode shifts to mixed for the approach, acknowledging that the reopen must reconcile record-high equities with an escalating energy conflict and a 5.28% 10-year. Tail stays in the low single digits to low teens because that reconciliation has not yet produced any price path.",
       "drivers": [
-        "Cash-market proxies cannot establish current NQ structure",
-        "Inherited delayed-evidence rules bar contextual feeds as live price path",
-        "Conditional Tail 7 three hours before the restart"
+        "Reopen must reconcile record equities with an escalating energy conflict",
+        "Mixed mode reflects unresolved cross-asset tension, not observed trend",
+        "Dealers reprice weekend risk in the final hours before 22:00Z"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "US stocks close higher as the Nasdaq 100 finish at records",
+          "url": "https://investinglive.com/stocks/us-stocks-close-higher-as-the-nasdaq-100-finish-at-records/",
+          "source": "InvestingLive"
+        }
+      ]
     },
     {
       "ts": "2026-10-04T20:00:00Z",
       "timeBerlin": "2026-10-04T22:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 8,
-      "stressRiskPct": 77,
+      "tailRiskPct": 10,
+      "stressRiskPct": 78,
       "confidencePct": 77,
       "dominantMode": "mixed",
-      "analysis": "Two hours out, the mode shifts to mixed because the reopening scenario set is genuinely two-sided: Riyadh escalation against verified supply normalisation and a softer expected Fed path after the 29,000 September payrolls print.",
+      "analysis": "Two hours out, Tail reaches double digits on gap-risk allowance alone. Stress peaks around this point because the weekend's accumulated, unpriced headline flow is at its maximum immediately before the venue reopens and begins discounting it.",
       "drivers": [
-        "Mode shifts to mixed on a genuinely two-sided reopening scenario set",
-        "September payrolls of 29,000 against roughly 90,000 consensus softened the Fed path",
-        "October Fed hike odds reported collapsing from 64% to below 21%"
+        "Two hours to the reopen; unpriced weekend headline flow is at maximum",
+        "Stress peak is a function of pricing delay, not of observed drawdown",
+        "Tail stays below the WATCH band until the auction is actually observed"
       ],
       "news": [
         {
-          "title": "October 2026 market crossroads: where jobs, oil and bonds collide",
-          "url": "https://que.com/october-2026-market-crossroads-where-jobs-oil-and-bonds-collide",
-          "source": "QUE.com"
+          "title": "Houthis claim strike on Saudi Aramco facility as Yemen fighting intensifies",
+          "url": "https://www.investing.com/news/economy-news/houthis-claim-strike-on-saudi-aramco-facility-as-yemen-fighting-intensifies-4930902",
+          "source": "Investing.com"
+        },
+        {
+          "title": "Yemen government forces strike Sanaa and Saada as Houthis claim Aramco attack",
+          "url": "https://thenationalnews.com/news/gulf/2026/10/04/yemen-government-forces-strike-sanaa-and-saada-as-houthis-claim-aramco-attack",
+          "source": "The National"
         }
       ]
     },
@@ -682,15 +690,15 @@
       "timeBerlin": "2026-10-04T23:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 9,
-      "stressRiskPct": 78,
+      "tailRiskPct": 13,
+      "stressRiskPct": 79,
       "confidencePct": 77,
       "dominantMode": "mixed",
-      "analysis": "Final halted hour. Stress peaks at 78 as the reopening arrives with the damage question open. Conditional Tail of 9 stays well inside the low band because nothing is tradable yet, so the mapped policy state remains EA_ON to the end of the halt.",
+      "analysis": "The last hour before CME equity-index futures reopen. Tail is carried higher as an explicit gap allowance, and the published path deliberately stops short of the WATCH band here because the distinguishing evidence, the opening auction itself, does not yet exist.",
       "drivers": [
-        "Last halted hour before the 22:00Z CME restart",
-        "Stress peaks at 78 with the Riyadh damage question still open",
-        "Conditional Tail 9 keeps the mapped policy state at EA_ON"
+        "Final hour before CME equity-index futures reopen at 22:00Z",
+        "Tail allowance remains pre-emptive and short of the WATCH band",
+        "Opening auction is the first slot capable of producing real evidence"
       ],
       "news": []
     },
@@ -699,27 +707,27 @@
       "timeBerlin": "2026-10-05T00:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 21,
-      "stressRiskPct": 78,
+      "tailRiskPct": 23,
+      "stressRiskPct": 79,
       "confidencePct": 81,
-      "dominantMode": "mixed",
-      "analysis": "CME equity-index futures restart and the mapped policy state moves to WATCH. Roughly 49 hours of accumulated news would reprice into the thinnest books of the week, where a gap can extend without the retracements this framework depends on. This is the mildest cautionary band, not a block.",
+      "dominantMode": "event/whipsaw",
+      "analysis": "Reopen hour and the start of the flagged danger window. Tail is lifted into the WATCH band for genuine gap and discontinuity risk from the unresolved Saudi escalation. It is held under the block threshold because no supply loss is confirmed and the G7 release is an active offsetting supply response.",
       "drivers": [
-        "Restart hour: a dated discontinuity meets the thinnest books of the week",
-        "Gap extension without retracement is the specific failure mode",
-        "Mapped policy state: WATCH, the mildest cautionary band",
-        "Roughly 49 hours of accumulated weekend news would price at once"
+        "CME equity-index futures reopen at 22:00Z into unpriced weekend risk",
+        "Danger window opens; Tail enters the WATCH band on gap risk",
+        "No confirmed Saudi supply loss and an active G7 release cap the level",
+        "Shallow or absent pullbacks after the gap would be the escalating signal"
       ],
       "news": [
         {
-          "title": "G7 to release 100m oil barrels as Trump hails Europe diesel deal",
-          "url": "https://www.aljazeera.com/news/2026/10/2/trump-says-europe-agrees-to-release-massive-amount-diesel-stockpile",
-          "source": "Al Jazeera"
+          "title": "Houthis claim strike on Saudi Aramco facility as Yemen fighting intensifies",
+          "url": "https://www.investing.com/news/economy-news/houthis-claim-strike-on-saudi-aramco-facility-as-yemen-fighting-intensifies-4930902",
+          "source": "Investing.com"
         },
         {
-          "title": "G7 countries to release 100 million barrels of diesel and oil to curb fuel prices",
-          "url": "https://www.abc.net.au/news/2026-10-03/g7-to-release-100m-barrels-oil-in-bid-to-curb-soaring-prices/107224282",
-          "source": "ABC News"
+          "title": "US stocks close higher as the Nasdaq 100 finish at records",
+          "url": "https://investinglive.com/stocks/us-stocks-close-higher-as-the-nasdaq-100-finish-at-records/",
+          "source": "InvestingLive"
         }
       ]
     },
@@ -728,32 +736,38 @@
       "timeBerlin": "2026-10-05T01:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 22,
-      "stressRiskPct": 77,
+      "tailRiskPct": 23,
+      "stressRiskPct": 78,
       "confidencePct": 83,
-      "dominantMode": "mixed",
-      "analysis": "Conditional Tail peaks at 22 in the hour where an initial reopening gap would either retrace or extend, with Asian liquidity not yet in the book. Repeated extension after a failed first retracement is the pattern that would matter; an orderly fill would argue for a quick return to the low band.",
+      "dominantMode": "event/whipsaw",
+      "analysis": "First full hour of live discovery, and Confidence improves because an actual price path becomes observable again. Tail is held at the WATCH level pending the decisive evidence: whether an initial gap is retraced in an orderly way or extends after failed pullbacks.",
       "drivers": [
-        "Peak conditional Tail at 22: a first retracement either holds or fails",
-        "Asian liquidity is not yet present to absorb a one-way move",
-        "An orderly gap fill would argue for a fast return to the low band"
+        "Live price discovery returns, lifting Confidence on evidence quality",
+        "Orderly retracement of any gap would justify a rapid Tail decline",
+        "Repeated extension after failed pullbacks would instead escalate Tail"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "Yemen government forces strike Sanaa and Saada as Houthis claim Aramco attack",
+          "url": "https://thenationalnews.com/news/gulf/2026/10/04/yemen-government-forces-strike-sanaa-and-saada-as-houthis-claim-aramco-attack",
+          "source": "The National"
+        }
+      ]
     },
     {
       "ts": "2026-10-05T00:00:00Z",
       "timeBerlin": "2026-10-05T02:00:00+02:00",
       "status": "yellow",
       "action": "WATCH",
-      "tailRiskPct": 20,
-      "stressRiskPct": 76,
-      "confidencePct": 85,
-      "dominantMode": "mixed",
-      "analysis": "Tokyo opens and adds depth, so conditional Tail eases to 20 at the bottom of the watch band. By this hour the OPEC+ readout and any Saudi or Aramco statement would be known, converting the largest unquantified weekend inputs into observable evidence.",
+      "tailRiskPct": 21,
+      "stressRiskPct": 77,
+      "confidencePct": 84,
+      "dominantMode": "event/whipsaw",
+      "analysis": "Tokyo joins and liquidity deepens, which historically improves two-way behaviour and makes a persistent one-way path harder to sustain. Tail eases slightly on that liquidity effect while the danger window remains open through the end of this hour.",
       "drivers": [
-        "Tokyo open adds the depth that Sunday-evening books lacked",
-        "OPEC+ readout and any Saudi statement would be known by this hour",
-        "Watch band retained until two-way behaviour is actually observed"
+        "Tokyo participation deepens liquidity and supports two-way behaviour",
+        "Danger window remains open through the close of this hour",
+        "Easing is conditional on the reopen having cleared without a one-way path"
       ],
       "news": []
     },
@@ -762,32 +776,38 @@
       "timeBerlin": "2026-10-05T03:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 17,
-      "stressRiskPct": 75,
-      "confidencePct": 86,
+      "tailRiskPct": 18,
+      "stressRiskPct": 76,
+      "confidencePct": 85,
       "dominantMode": "mixed",
-      "analysis": "Conditional Tail returns to the low band at 17 and the mapped policy state reverts to EA_ON. Asian depth plus three hours of observable discovery would normally distinguish an orderly repricing from a one-way path; only the latter would justify holding the watch band.",
+      "analysis": "The danger window closes at the start of this hour. Tail returns below the WATCH threshold on the working assumption that the reopen produced orderly price discovery; that assumption would be invalidated by NQ holding near a session extreme with no meaningful retracement.",
       "drivers": [
-        "Conditional Tail returns to the low band and the mapping reverts to EA_ON",
-        "Three hours of observable discovery would classify the reopening path",
-        "Only a sustained one-way path would justify holding the watch band"
+        "Danger window closes; Tail returns below the WATCH threshold",
+        "Invalidation would be NQ holding a session extreme without retracement",
+        "Asian session typically lacks the flow to sustain a lethal one-way path"
       ],
-      "news": []
+      "news": [
+        {
+          "title": "G7 announces release of diesel, crude oil reserves to curb high prices",
+          "url": "https://www.upi.com/Top_News/World-News/2026/10/02/g7-diesel-crude-oil-reserve-release-fuel-prices/7111790963774/",
+          "source": "UPI"
+        }
+      ]
     },
     {
       "ts": "2026-10-05T02:00:00Z",
       "timeBerlin": "2026-10-05T04:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 15,
-      "stressRiskPct": 74,
-      "confidencePct": 86,
-      "dominantMode": "normal",
-      "analysis": "Asian session proper. Conditional Tail eases to 15 and the mode returns to normal on the base case that the reopening resolves into two-way trade. Confidence recovers to 86 because a live NQ price path would exist again for the first time since Friday.",
+      "tailRiskPct": 16,
+      "stressRiskPct": 75,
+      "confidencePct": 85,
+      "dominantMode": "mixed",
+      "analysis": "Mid-Asian session with the reopen premium largely discharged. Stress stays high because the underlying conflict and the oil and yield backdrop are unchanged, while Tail continues its conditional decay as the hours without observed mean-reversion failure accumulate.",
       "drivers": [
-        "Mode returns to normal on a two-way reopening base case",
-        "Confidence recovers to 86 as a live NQ price path exists again",
-        "Asian session depth supports orderly mean reversion"
+        "Reopen premium largely discharged by mid-Asian session",
+        "Conflict, oil and yield backdrop unchanged, so Stress stays high",
+        "Tail decay is conditional on continued orderly two-way discovery"
       ],
       "news": []
     },
@@ -796,73 +816,96 @@
       "timeBerlin": "2026-10-05T05:00:00+02:00",
       "status": "green",
       "action": "EA_ON",
-      "tailRiskPct": 13,
-      "stressRiskPct": 73,
-      "confidencePct": 87,
+      "tailRiskPct": 14,
+      "stressRiskPct": 74,
+      "confidencePct": 86,
       "dominantMode": "normal",
-      "analysis": "Final forecast hour, roughly ten hours before the ISM Services PMI checkpoint. Conditional Tail of 13 reflects a normalised Asian session, while Stress at 73 keeps the environment difficult on Brent above $100 and a 10-year yield near 5.2%.",
+      "analysis": "Mode returns to normal on the expectation of restored two-way discovery. Confidence is near its published peak because a full post-reopen price path plus the verified Friday reference set is the most complete evidence state available in this forecast.",
       "drivers": [
-        "Brent above $100 and a 10-year yield near 5.2% keep Stress high",
-        "ISM Services PMI on 5 October at 14:00Z is the next dated checkpoint",
-        "Narrow leadership: NDX and SOX firm while equal-weight and small caps lag"
+        "Mode normalises on expected restoration of two-way discovery",
+        "Confidence peaks on a full post-reopen path plus verified Friday prints",
+        "European pre-market and the Monday calendar become the next focus"
       ],
       "news": [
         {
-          "title": "WTI whipsaws as Gulf supply improves and Middle East risk returns",
-          "url": "https://oilprice.com/Energy/Energy-General/WTI-Whipsaws-as-Gulf-Supply-Improves-and-Middle-East-Risk-Returns.html",
-          "source": "OilPrice.com"
+          "title": "US stocks close higher as the Nasdaq 100 finish at records",
+          "url": "https://investinglive.com/stocks/us-stocks-close-higher-as-the-nasdaq-100-finish-at-records/",
+          "source": "InvestingLive"
+        }
+      ]
+    },
+    {
+      "ts": "2026-10-05T04:00:00Z",
+      "timeBerlin": "2026-10-05T06:00:00+02:00",
+      "status": "green",
+      "action": "EA_ON",
+      "tailRiskPct": 12,
+      "stressRiskPct": 74,
+      "confidencePct": 86,
+      "dominantMode": "normal",
+      "analysis": "Final published hour, covering the handover from Asia toward the European pre-market. Residual Tail above the Sunday floor is retained for the unresolved escalation and for Monday's 14:00Z ISM Services print, both of which remain live rather than settled.",
+      "drivers": [
+        "Asia-to-Europe handover with the Monday session still ahead",
+        "Residual Tail retained for the unresolved Saudi-Houthi escalation",
+        "ISM Services (September) at 14:00Z Monday is the next scheduled checkpoint"
+      ],
+      "news": [
+        {
+          "title": "Houthis claim strike on Saudi Aramco facility as Yemen fighting intensifies",
+          "url": "https://www.investing.com/news/economy-news/houthis-claim-strike-on-saudi-aramco-facility-as-yemen-fighting-intensifies-4930902",
+          "source": "Investing.com"
         }
       ]
     }
   ],
   "forecastDetail": [
     {
-      "ts": "2026-10-04T04:00:00Z",
-      "timeBerlin": "2026-10-04T06:00:00+02:00",
-      "status": "green",
-      "tailRiskPct": 3,
-      "stressRiskPct": 73,
-      "comment": "No Nasdaq-100 price path exists in this hour because CME equity-index futures have been halted since Friday 21:00Z. The last observed path was orderly: a record 31,017.53 intraday high fully retraced into a 30,807.93 close in the lower quarter of the 30,737.07-31,017.53 range, with VIX down 6.59% to 15.31."
-    },
-    {
       "ts": "2026-10-04T05:00:00Z",
       "timeBerlin": "2026-10-04T07:00:00+02:00",
       "status": "green",
       "tailRiskPct": 3,
-      "stressRiskPct": 73,
-      "comment": "Still deep inside the halt. The weekend evidence set is two-sided: a Houthi-claimed ballistic-missile and drone strike on Aramco's Riyadh refinery with no Saudi or Aramco damage confirmation, against Strait of Hormuz crude flows reported back near 98% of pre-war levels and restored Yanbu loadings. Tail stays at the floor because nothing is tradable."
+      "stressRiskPct": 74,
+      "comment": "No scoreable Nasdaq-100 path exists during the CME weekend halt; the last observed structure was orderly two-way discovery that fully retraced Friday's 31,017.53 intraday record into a 30,807.93 record close."
     },
     {
       "ts": "2026-10-04T06:00:00Z",
       "timeBerlin": "2026-10-04T08:00:00+02:00",
       "status": "green",
       "tailRiskPct": 3,
-      "stressRiskPct": 72,
-      "comment": "Stress eases one point as the overnight supply-side evidence leans toward normalisation rather than disruption. Riyadh is a domestic refinery rather than a crude export terminal, which limits the direct export channel. No official damage statement has been issued and no venue is open."
+      "stressRiskPct": 74,
+      "comment": "Tape still shut through the European pre-dawn, so the Houthi Aramco claim accumulates as unpriced headline risk for the 22:00Z reopen rather than as current structure."
     },
     {
       "ts": "2026-10-04T07:00:00Z",
       "timeBerlin": "2026-10-04T09:00:00+02:00",
       "status": "green",
       "tailRiskPct": 3,
-      "stressRiskPct": 72,
-      "comment": "Tokyo Sunday morning with no equity-index liquidity anywhere. Only a Gulf statement or an early OPEC+ readout could change the published scores in this hour. Conditional Tail remains at the floor with no observable structure to score."
+      "stressRiskPct": 73,
+      "comment": "Confidence erodes on the ageing of the Friday 21:00Z reference set, not on any new conflicting evidence; mean-reversion failure is not possible with the venue closed."
     },
     {
       "ts": "2026-10-04T08:00:00Z",
       "timeBerlin": "2026-10-04T10:00:00+02:00",
       "status": "green",
       "tailRiskPct": 3,
-      "stressRiskPct": 71,
-      "comment": "Confidence steps down to 83 purely on evidence age, while Tail and Stress hold. The framework requires an observable price path to score Tail and none can form before the 22:00Z CME restart, so the mapped policy state is unchanged at EA_ON."
+      "stressRiskPct": 73,
+      "comment": "Gulf business hours open the first realistic window for a Saudi or Aramco statement on the Riyadh fire, which would be a text event against a halted tape."
     },
     {
       "ts": "2026-10-04T09:00:00Z",
       "timeBerlin": "2026-10-04T11:00:00+02:00",
       "status": "green",
       "tailRiskPct": 3,
-      "stressRiskPct": 71,
-      "comment": "Stress continues easing toward its 70 trough as the de-escalation thread stands unchallenged: reported remarks that Iran has virtually given up nuclear weapon plans, the G7 and IEA release of up to 100 million barrels over four months, and no new escalation report during the Asian Sunday void."
+      "stressRiskPct": 72,
+      "comment": "The G7 commitment of up to 100 million barrels of crude and diesel remains the standing counterweight to a one-way energy-shock reading of the weekend."
+    },
+    {
+      "ts": "2026-10-04T10:00:00Z",
+      "timeBerlin": "2026-10-04T12:00:00+02:00",
+      "status": "green",
+      "tailRiskPct": 3,
+      "stressRiskPct": 72,
+      "comment": "Repeated market absorption of Gulf supply headlines, with the Saudi cross-country pipeline reported back above 80% capacity, argues against a Tail regime."
     }
   ],
   "events": [
@@ -885,33 +928,21 @@
       "impact": "medium"
     },
     {
-      "name": "Fed Williams speech",
-      "ts": "2026-10-06T13:05:00Z",
-      "timeBerlin": "2026-10-06T15:05:00+02:00",
-      "impact": "medium"
-    },
-    {
-      "name": "Fed Bowman speech",
-      "ts": "2026-10-06T14:45:00Z",
-      "timeBerlin": "2026-10-06T16:45:00+02:00",
-      "impact": "medium"
-    },
-    {
       "name": "U.S. 3-year note auction",
       "ts": "2026-10-06T17:00:00Z",
       "timeBerlin": "2026-10-06T19:00:00+02:00",
       "impact": "medium"
     },
     {
-      "name": "Fed Logan speech",
-      "ts": "2026-10-06T23:00:00Z",
-      "timeBerlin": "2026-10-07T01:00:00+02:00",
+      "name": "EIA weekly petroleum status report (week ending 2 October)",
+      "ts": "2026-10-07T14:30:00Z",
+      "timeBerlin": "2026-10-07T16:30:00+02:00",
       "impact": "medium"
     },
     {
-      "name": "EIA crude oil stocks change (week ending 2 October)",
-      "ts": "2026-10-07T14:30:00Z",
-      "timeBerlin": "2026-10-07T16:30:00+02:00",
+      "name": "New York Fed Survey of Consumer Expectations (September)",
+      "ts": "2026-10-07T15:00:00Z",
+      "timeBerlin": "2026-10-07T17:00:00+02:00",
       "impact": "medium"
     },
     {
@@ -927,7 +958,13 @@
       "impact": "high"
     },
     {
-      "name": "Initial jobless claims (week ending 3 October)",
+      "name": "Federal Reserve G.19 consumer credit (August)",
+      "ts": "2026-10-07T19:00:00Z",
+      "timeBerlin": "2026-10-07T21:00:00+02:00",
+      "impact": "medium"
+    },
+    {
+      "name": "Initial and continuing jobless claims (week ending 3 October)",
       "ts": "2026-10-08T12:30:00Z",
       "timeBerlin": "2026-10-08T14:30:00+02:00",
       "impact": "high"
@@ -945,21 +982,15 @@
       "impact": "high"
     },
     {
-      "name": "Fed Musalem speech",
-      "ts": "2026-10-08T17:40:00Z",
-      "timeBerlin": "2026-10-08T19:40:00+02:00",
-      "impact": "medium"
-    },
-    {
       "name": "University of Michigan consumer sentiment preliminary (October)",
       "ts": "2026-10-09T14:00:00Z",
       "timeBerlin": "2026-10-09T16:00:00+02:00",
       "impact": "high"
     },
     {
-      "name": "Fed Collins speech",
-      "ts": "2026-10-09T20:00:00Z",
-      "timeBerlin": "2026-10-09T22:00:00+02:00",
+      "name": "University of Michigan inflation expectations preliminary (October)",
+      "ts": "2026-10-09T14:00:00Z",
+      "timeBerlin": "2026-10-09T16:00:00+02:00",
       "impact": "medium"
     }
   ]
